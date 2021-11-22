@@ -1,0 +1,193 @@
+datatypes xs = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+start = element expr {expr}
+
+# General Expression / Sub Expressions
+
+expr = operation | function-call | primitive 
+
+arg = element arg {expr}
+
+predicate = element predicate {expr}
+
+
+# Functions
+
+
+function-call = element function-call {function-spec, arg*}
+
+function-spec = element function {qname | expr}
+
+postFixFunction = element function-call {arg*}
+
+# Maps
+
+lookup = element lookup {(integerLiteral | key | arg)?}
+
+unaryLookup = element lookup {(integerLiteral | arg | key)?}
+
+key = element field {ncname}
+
+# Operations
+
+operation = regular-operation | unary-operation | type-operation | step-operation | postfix-operation | arrow-operation
+
+regular-operation = element operation {regular-operation-type, arg, (operator, arg)+}
+step-operation = element operation {step-operation-type, stepOp?, arg, (stepOp, arg)*}
+unary-operation = element operation {unary-operation-type, additiveOp+, arg}
+type-operation = element operation {type-operation-type, arg, type-operator, seqType}
+postfix-operation = element operation {postfix-operation-type, arg, (predicate | postFixFunction | lookup)+}
+arrow-operation = element operation {arrow-operation-type, arg, (arrowOp, function-call)+}
+
+unary-operation-type = attribute type {
+"unary"
+}
+postfix-operation-type = attribute type {
+"postfix"
+}
+arrow-operation-type = attribute type {
+"arrow"
+}
+type-operation-type = attribute type {
+"instance-of" |
+"treat-as" |
+"castable" |
+"cast"
+}
+
+regular-operation-type = attribute type {
+"or" | 
+"and" | 
+"compare" | 
+"value-compare" | 
+"node-compare" | 
+"concat" | 
+"range" | 
+"additive" | 
+"multiplicativ" | 
+"union" | 
+"intersect-except" | 
+"map" |
+"sequence"
+}
+
+step-operation-type = attribute type {
+"step"
+}
+
+# - Operator Sings / Key Words
+
+operator = arithmeticOp | logicOp | compareOp | otherOp
+
+
+arithmeticOp = additiveOp | dividation | mult | mod
+
+additiveOp = plus | minus
+
+plus = element plus {empty}
+minus = element minus {empty}
+dividation = element div {attribute type {"integer" | "decimal"}?}
+mult = element x {empty}
+mod = element mod {empty}
+
+logicOp = and | or
+
+and = element and {empty}
+or = element or {empty}
+
+compareOp = gt | lt | ge | le | ne | eq
+
+gt = element gt {empty}
+lt = element lt {empty}
+ge = element ge {empty}
+le = element le {empty}
+ne = element ne {empty}
+eq = element eq {empty}
+
+otherOp = concat | range | union | intersect | except | map | comma
+
+concat = element concat {empty}
+range = element to {empty}
+union = element union {empty}
+intersect = element intersect {empty}
+except = element except {empty}
+map = element map {empty}
+comma = element comma {empty}
+
+type-operator = instance | treat | castable | cast
+
+instance = element instanceOf {empty}
+treat = element treatAs {empty}
+castable = element castableAs {empty}
+cast = element castAs {empty}
+
+stepOp = slash
+
+slash = element slash {empty}
+
+arrowOp = element arrow {empty}
+
+
+# Primitives
+
+primitive = literal | locationStep | emptySequence | varRef | self | contsructors | unaryLookup | root
+
+literal = stringLiteral | integerLiteral | decimalLiteral
+
+stringLiteral = element string {attribute value {xs:string}}
+
+integerLiteral = element integer {attribute value {xs:integer}}
+
+decimalLiteral = element decimal {attribute value {xs:decimal}}
+
+varRef = element varRef {qname}
+
+emptySequence = element empty {empty}
+
+self = element self {empty}
+
+root = element root {empty} 
+
+# TDB!!!
+contsructors = element contsructors {empty}
+
+# - Location Steps
+
+locationStep = element locationStep {axis, nodeTestGr, predicate*}
+
+axis = attribute axis {"self" | "attribute" | "preceding" | "following" | "preceding-sibling" | "following-sibling" | "ancestor" | "ancestor-or-self" | "descendant" | "descendant-or-self" | "namespace" | "parent" | "child"}
+
+nodeTestGr = nodeTest | nodeTestDoc
+
+nodeTest = element nodeTest {nameKindAttr}
+
+nodeTestDoc = element nodeTest {attribute kind {"document-node"}, nodeTest}
+
+nameKindAttr =  (qname?, kindTest, attribute type {xs:QName}?)
+
+
+kindTest = attribute kind {"element" | "attribute" | "document-node" | "comment" | "text" | "processing-instruction" | "namespace-node" | "node" | "schema-element" | "schema-attribute"}
+
+# - Type Tests
+
+seqType = emptySequence | itemType
+
+itemType = element itemType {typeOccurrence?, (nodeTestGr | atomicType | mapType | arrayType | functType)? }
+
+typeOccurrence = attribute occurrence {"one" | "zero-or-one" | "one-or-more" | "zero-or-more"}
+
+atomicType = element atomic {qname}
+
+mapType = element mapType {(atomicType, seqType)?}
+
+arrayType = element arrayType {seqType?}
+
+functType = element functType {(seqType*, element as {seqType})?}
+
+
+# Common Attributes
+
+qname = attribute name {bracedURILiteral | xs:QName}
+ncname = attribute name {xs:NCName}
+
+bracedURILiteral = xsd:string { pattern = "Q\{[^{}]*\}.*" }
