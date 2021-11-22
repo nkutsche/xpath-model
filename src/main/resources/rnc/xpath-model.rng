@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="expr">
+      <ref name="expr"/>
+    </element>
+  </start>
+  <!-- General Expression / Sub Expressions -->
+  <define name="expr">
+    <choice>
+      <ref name="operation"/>
+      <ref name="function-call"/>
+      <ref name="primitive"/>
+    </choice>
+  </define>
+  <define name="arg">
+    <element name="arg">
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="predicate">
+    <element name="predicate">
+      <ref name="expr"/>
+    </element>
+  </define>
+  <!-- Functions -->
+  <define name="function-call">
+    <element name="function-call">
+      <ref name="function-spec"/>
+      <zeroOrMore>
+        <ref name="arg"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="function-spec">
+    <element name="function">
+      <choice>
+        <ref name="qname"/>
+        <ref name="expr"/>
+      </choice>
+    </element>
+  </define>
+  <define name="postFixFunction">
+    <element name="function-call">
+      <zeroOrMore>
+        <ref name="arg"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- Maps -->
+  <define name="lookup">
+    <element name="lookup">
+      <optional>
+        <choice>
+          <ref name="integerLiteral"/>
+          <ref name="key"/>
+          <ref name="arg"/>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="unaryLookup">
+    <element name="lookup">
+      <optional>
+        <choice>
+          <ref name="integerLiteral"/>
+          <ref name="arg"/>
+          <ref name="key"/>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="key">
+    <element name="field">
+      <ref name="ncname"/>
+    </element>
+  </define>
+  <!-- Operations -->
+  <define name="operation">
+    <choice>
+      <ref name="regular-operation"/>
+      <ref name="unary-operation"/>
+      <ref name="type-operation"/>
+      <ref name="step-operation"/>
+      <ref name="postfix-operation"/>
+      <ref name="arrow-operation"/>
+    </choice>
+  </define>
+  <define name="regular-operation">
+    <element name="operation">
+      <ref name="regular-operation-type"/>
+      <ref name="arg"/>
+      <oneOrMore>
+        <ref name="operator"/>
+        <ref name="arg"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="step-operation">
+    <element name="operation">
+      <ref name="step-operation-type"/>
+      <optional>
+        <ref name="stepOp"/>
+      </optional>
+      <ref name="arg"/>
+      <zeroOrMore>
+        <ref name="stepOp"/>
+        <ref name="arg"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="unary-operation">
+    <element name="operation">
+      <ref name="unary-operation-type"/>
+      <oneOrMore>
+        <ref name="additiveOp"/>
+      </oneOrMore>
+      <ref name="arg"/>
+    </element>
+  </define>
+  <define name="type-operation">
+    <element name="operation">
+      <ref name="type-operation-type"/>
+      <ref name="arg"/>
+      <ref name="type-operator"/>
+      <ref name="seqType"/>
+    </element>
+  </define>
+  <define name="postfix-operation">
+    <element name="operation">
+      <ref name="postfix-operation-type"/>
+      <ref name="arg"/>
+      <oneOrMore>
+        <choice>
+          <ref name="predicate"/>
+          <ref name="postFixFunction"/>
+          <ref name="lookup"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="arrow-operation">
+    <element name="operation">
+      <ref name="arrow-operation-type"/>
+      <ref name="arg"/>
+      <oneOrMore>
+        <ref name="arrowOp"/>
+        <ref name="function-call"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="unary-operation-type">
+    <attribute name="type">
+      <value>unary</value>
+    </attribute>
+  </define>
+  <define name="postfix-operation-type">
+    <attribute name="type">
+      <value>postfix</value>
+    </attribute>
+  </define>
+  <define name="arrow-operation-type">
+    <attribute name="type">
+      <value>arrow</value>
+    </attribute>
+  </define>
+  <define name="type-operation-type">
+    <attribute name="type">
+      <choice>
+        <value>instance-of</value>
+        <value>treat-as</value>
+        <value>castable</value>
+        <value>cast</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="regular-operation-type">
+    <attribute name="type">
+      <choice>
+        <value>or</value>
+        <value>and</value>
+        <value>compare</value>
+        <value>value-compare</value>
+        <value>node-compare</value>
+        <value>concat</value>
+        <value>range</value>
+        <value>additive</value>
+        <value>multiplicativ</value>
+        <value>union</value>
+        <value>intersect-except</value>
+        <value>map</value>
+        <value>sequence</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="step-operation-type">
+    <attribute name="type">
+      <value>step</value>
+    </attribute>
+  </define>
+  <!-- - Operator Sings / Key Words -->
+  <define name="operator">
+    <choice>
+      <ref name="arithmeticOp"/>
+      <ref name="logicOp"/>
+      <ref name="compareOp"/>
+      <ref name="otherOp"/>
+    </choice>
+  </define>
+  <define name="arithmeticOp">
+    <choice>
+      <ref name="additiveOp"/>
+      <ref name="dividation"/>
+      <ref name="mult"/>
+      <ref name="mod"/>
+    </choice>
+  </define>
+  <define name="additiveOp">
+    <choice>
+      <ref name="plus"/>
+      <ref name="minus"/>
+    </choice>
+  </define>
+  <define name="plus">
+    <element name="plus">
+      <empty/>
+    </element>
+  </define>
+  <define name="minus">
+    <element name="minus">
+      <empty/>
+    </element>
+  </define>
+  <define name="dividation">
+    <element name="div">
+      <optional>
+        <attribute name="type">
+          <choice>
+            <value>integer</value>
+            <value>decimal</value>
+          </choice>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="mult">
+    <element name="x">
+      <empty/>
+    </element>
+  </define>
+  <define name="mod">
+    <element name="mod">
+      <empty/>
+    </element>
+  </define>
+  <define name="logicOp">
+    <choice>
+      <ref name="and"/>
+      <ref name="or"/>
+    </choice>
+  </define>
+  <define name="and">
+    <element name="and">
+      <empty/>
+    </element>
+  </define>
+  <define name="or">
+    <element name="or">
+      <empty/>
+    </element>
+  </define>
+  <define name="compareOp">
+    <choice>
+      <ref name="gt"/>
+      <ref name="lt"/>
+      <ref name="ge"/>
+      <ref name="le"/>
+      <ref name="ne"/>
+      <ref name="eq"/>
+    </choice>
+  </define>
+  <define name="gt">
+    <element name="gt">
+      <empty/>
+    </element>
+  </define>
+  <define name="lt">
+    <element name="lt">
+      <empty/>
+    </element>
+  </define>
+  <define name="ge">
+    <element name="ge">
+      <empty/>
+    </element>
+  </define>
+  <define name="le">
+    <element name="le">
+      <empty/>
+    </element>
+  </define>
+  <define name="ne">
+    <element name="ne">
+      <empty/>
+    </element>
+  </define>
+  <define name="eq">
+    <element name="eq">
+      <empty/>
+    </element>
+  </define>
+  <define name="otherOp">
+    <choice>
+      <ref name="concat"/>
+      <ref name="range"/>
+      <ref name="union"/>
+      <ref name="intersect"/>
+      <ref name="except"/>
+      <ref name="map"/>
+      <ref name="comma"/>
+    </choice>
+  </define>
+  <define name="concat">
+    <element name="concat">
+      <empty/>
+    </element>
+  </define>
+  <define name="range">
+    <element name="to">
+      <empty/>
+    </element>
+  </define>
+  <define name="union">
+    <element name="union">
+      <empty/>
+    </element>
+  </define>
+  <define name="intersect">
+    <element name="intersect">
+      <empty/>
+    </element>
+  </define>
+  <define name="except">
+    <element name="except">
+      <empty/>
+    </element>
+  </define>
+  <define name="map">
+    <element name="map">
+      <empty/>
+    </element>
+  </define>
+  <define name="comma">
+    <element name="comma">
+      <empty/>
+    </element>
+  </define>
+  <define name="type-operator">
+    <choice>
+      <ref name="instance"/>
+      <ref name="treat"/>
+      <ref name="castable"/>
+      <ref name="cast"/>
+    </choice>
+  </define>
+  <define name="instance">
+    <element name="instanceOf">
+      <empty/>
+    </element>
+  </define>
+  <define name="treat">
+    <element name="treatAs">
+      <empty/>
+    </element>
+  </define>
+  <define name="castable">
+    <element name="castableAs">
+      <empty/>
+    </element>
+  </define>
+  <define name="cast">
+    <element name="castAs">
+      <empty/>
+    </element>
+  </define>
+  <define name="stepOp">
+    <ref name="slash"/>
+  </define>
+  <define name="slash">
+    <element name="slash">
+      <empty/>
+    </element>
+  </define>
+  <define name="arrowOp">
+    <element name="arrow">
+      <empty/>
+    </element>
+  </define>
+  <!-- Primitives -->
+  <define name="primitive">
+    <choice>
+      <ref name="literal"/>
+      <ref name="locationStep"/>
+      <ref name="emptySequence"/>
+      <ref name="varRef"/>
+      <ref name="self"/>
+      <ref name="contsructors"/>
+      <ref name="unaryLookup"/>
+      <ref name="root"/>
+    </choice>
+  </define>
+  <define name="literal">
+    <choice>
+      <ref name="stringLiteral"/>
+      <ref name="integerLiteral"/>
+      <ref name="decimalLiteral"/>
+    </choice>
+  </define>
+  <define name="stringLiteral">
+    <element name="string">
+      <attribute name="value">
+        <data type="string"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="integerLiteral">
+    <element name="integer">
+      <attribute name="value">
+        <data type="integer"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="decimalLiteral">
+    <element name="decimal">
+      <attribute name="value">
+        <data type="decimal"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="varRef">
+    <element name="varRef">
+      <ref name="qname"/>
+    </element>
+  </define>
+  <define name="emptySequence">
+    <element name="empty">
+      <empty/>
+    </element>
+  </define>
+  <define name="self">
+    <element name="self">
+      <empty/>
+    </element>
+  </define>
+  <define name="root">
+    <element name="root">
+      <empty/>
+    </element>
+  </define>
+  <!-- TDB!!! -->
+  <define name="contsructors">
+    <element name="contsructors">
+      <empty/>
+    </element>
+  </define>
+  <!-- - Location Steps -->
+  <define name="locationStep">
+    <element name="locationStep">
+      <ref name="axis"/>
+      <ref name="nodeTestGr"/>
+      <zeroOrMore>
+        <ref name="predicate"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="axis">
+    <attribute name="axis">
+      <choice>
+        <value>self</value>
+        <value>attribute</value>
+        <value>preceding</value>
+        <value>following</value>
+        <value>preceding-sibling</value>
+        <value>following-sibling</value>
+        <value>ancestor</value>
+        <value>ancestor-or-self</value>
+        <value>descendant</value>
+        <value>descendant-or-self</value>
+        <value>namespace</value>
+        <value>parent</value>
+        <value>child</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="nodeTestGr">
+    <choice>
+      <ref name="nodeTest"/>
+      <ref name="nodeTestDoc"/>
+    </choice>
+  </define>
+  <define name="nodeTest">
+    <element name="nodeTest">
+      <ref name="nameKindAttr"/>
+    </element>
+  </define>
+  <define name="nodeTestDoc">
+    <element name="nodeTest">
+      <attribute name="kind">
+        <value>document-node</value>
+      </attribute>
+      <ref name="nodeTest"/>
+    </element>
+  </define>
+  <define name="nameKindAttr">
+    <optional>
+      <ref name="qname"/>
+    </optional>
+    <ref name="kindTest"/>
+    <optional>
+      <attribute name="type">
+        <data type="QName"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="kindTest">
+    <attribute name="kind">
+      <choice>
+        <value>element</value>
+        <value>attribute</value>
+        <value>document-node</value>
+        <value>comment</value>
+        <value>text</value>
+        <value>processing-instruction</value>
+        <value>namespace-node</value>
+        <value>node</value>
+        <value>schema-element</value>
+        <value>schema-attribute</value>
+      </choice>
+    </attribute>
+  </define>
+  <!-- - Type Tests -->
+  <define name="seqType">
+    <choice>
+      <ref name="emptySequence"/>
+      <ref name="itemType"/>
+    </choice>
+  </define>
+  <define name="itemType">
+    <element name="itemType">
+      <optional>
+        <ref name="typeOccurrence"/>
+      </optional>
+      <optional>
+        <choice>
+          <ref name="nodeTestGr"/>
+          <ref name="atomicType"/>
+          <ref name="mapType"/>
+          <ref name="arrayType"/>
+          <ref name="functType"/>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="typeOccurrence">
+    <attribute name="occurrence">
+      <choice>
+        <value>one</value>
+        <value>zero-or-one</value>
+        <value>one-or-more</value>
+        <value>zero-or-more</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="atomicType">
+    <element name="atomic">
+      <ref name="qname"/>
+    </element>
+  </define>
+  <define name="mapType">
+    <element name="mapType">
+      <optional>
+        <ref name="atomicType"/>
+        <ref name="seqType"/>
+      </optional>
+    </element>
+  </define>
+  <define name="arrayType">
+    <element name="arrayType">
+      <optional>
+        <ref name="seqType"/>
+      </optional>
+    </element>
+  </define>
+  <define name="functType">
+    <element name="functType">
+      <optional>
+        <zeroOrMore>
+          <ref name="seqType"/>
+        </zeroOrMore>
+        <element name="as">
+          <ref name="seqType"/>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <!-- Common Attributes -->
+  <define name="qname">
+    <attribute name="name">
+      <choice>
+        <ref name="bracedURILiteral"/>
+        <data type="QName"/>
+      </choice>
+    </attribute>
+  </define>
+  <define name="ncname">
+    <attribute name="name">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="bracedURILiteral">
+    <data type="string">
+      <param name="pattern">Q\{[^{}]*\}.*</param>
+    </data>
+  </define>
+</grammar>
