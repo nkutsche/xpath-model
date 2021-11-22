@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser"
+    xmlns:r="http://maxtoroq.github.io/rng.xsl"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map" exclude-result-prefixes="#all" version="3.0">
+    <xsl:import href="../rnc-compiler/rng.xsl"/>
+    <xsl:import href="xpath-31.xsl"/>
+
+    <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
+    
+    <xsl:param name="config" as="map(xs:string, item()*)" select="map{}"/>
+
+    <xsl:template match="/">
+        <xsl:variable name="xpath" as="xs:string">foo[1]</xsl:variable>
+        <root>
+            <model>
+                <xsl:sequence select="nk:xpath-model($xpath)"/>
+            </model>
+            <raw>
+                <xsl:sequence select="p:parse-XPath($xpath)"/>
+            </raw>
+        </root>
+    </xsl:template>
+
+    <xsl:function name="nk:xpath-model" as="element()">
+        <xsl:param name="xpath" as="xs:string"/>
+        <xsl:sequence select="nk:xpath-model($xpath, $config)"/>
+    </xsl:function>
+
+    <xsl:function name="nk:xpath-model" as="element()">
+        <xsl:param name="xpath" as="xs:string"/>
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:variable name="parsed" select="p:parse-XPath($xpath)"/>
+        <xsl:choose>
+            <xsl:when test="$parsed/self::ERROR">
+                <xsl:sequence select="$parsed"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="expr" as="element(expr)">
+                    <expr>
+                        <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
+                        <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
+                    </expr>
+                </xsl:variable>
+                <xsl:try>
+                    <xsl:variable name="rng-validate" as="xs:boolean">
+                        <xsl:call-template name="r:main">
+                            <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
+                            <xsl:with-param name="instance" select="$expr"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="$rng-validate">
+                            <xsl:sequence select="$expr"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:catch>
+                        <ERROR>Invalid result: <xsl:sequence select="$expr"/></ERROR>
+                    </xsl:catch>
+                </xsl:try>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="nk:create-namespaces" as="namespace-node()*">
+        <xsl:param name="parsed" as="element()"/>
+        <xsl:param name="namespace-bindings" as="map(xs:string, xs:string)"/>
+        
+        <xsl:variable name="used-prefixes" as="xs:string*"
+            select="$parsed//QName[contains(., ':')]/substring-before(., ':') => distinct-values()"
+        />
+        <xsl:variable name="base-ns-uri" select="'http://www.nkutsche.com/xpath-model/dummy-namespace/'"/>
+        <xsl:for-each select="$used-prefixes">
+            <xsl:namespace name="{.}" select="
+                ($namespace-bindings(.), $base-ns-uri || .)[1]
+                "></xsl:namespace>
+        </xsl:for-each>
+        
+        
+    </xsl:function>
+
+    <!--    
+    Primitives
+    -->
+
+    <xsl:template match="Literal" mode="nk:xpath-model">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="StringLiteral" mode="nk:xpath-model">
+        <xsl:variable name="value" select="string(.)"/>
+        <xsl:variable name="value" select="substring($value, 2, string-length($value) - 2)"/>
+        <xsl:variable name="value" select="nk:quote-unesc($value)"/>
+        <string value="{$value}"/>
+    </xsl:template>
+
+    <xsl:template match="IntegerLiteral" mode="nk:xpath-model">
+        <xsl:variable name="value" select="string(.)"/>
+        <xsl:variable name="value" select="xs:integer($value)"/>
+        <integer value="{$value}"/>
+    </xsl:template>
+
+    <xsl:template match="DecimalLiteral" mode="nk:xpath-model">
+        <xsl:variable name="value" select="string(.)"/>
+        <xsl:variable name="value" select="xs:decimal($value)"/>
+        <decimal value="{$value}"/>
+    </xsl:template>
+
+    <xsl:template match="ParenthesizedExpr[not(* except TOKEN)]" mode="nk:xpath-model">
+        <empty/>
+    </xsl:template>
+
+    <xsl:template match="ContextItemExpr" mode="nk:xpath-model">
+        <self/>
+    </xsl:template>
+
+    <xsl:template match="PathExpr[not(* except TOKEN)][TOKEN = '/']" priority="10" mode="nk:xpath-model">
+        <root/>
+    </xsl:template>
+
+    <xsl:template match="VarRef" mode="nk:xpath-model">
+        <varRef name="{VarName/string(.)}"/>
+    </xsl:template>
+
+    <!--    
+    Location Steps
+    -->
+
+    <xsl:template match="AxisStep" mode="nk:xpath-model">
+        <xsl:variable name="step" select="(ReverseStep | ForwardStep)"/>
+        <xsl:variable name="axis" select="
+                if ($step/AbbrevForwardStep/TOKEN[1] = '@')
+                then
+                    ('attribute')
+                else
+                    if ($step/AbbrevForwardStep) then
+                        ('child')
+                    else
+                        if ($step/AbbrevReverseStep) then
+                            'parent'
+                        else
+                            $step/(ReverseAxis | ForwardAxis)/string(TOKEN[1])" as="xs:string"/>
+        <locationStep axis="{$axis}">
+            <xsl:apply-templates select="$step/(NodeTest | AbbrevForwardStep | AbbrevReverseStep)" mode="#current">
+                <xsl:with-param name="axis" select="$axis" tunnel="yes"/>
+            </xsl:apply-templates>
+            <xsl:apply-templates select="PredicateList" mode="#current"/>
+        </locationStep>
+    </xsl:template>
+
+    <xsl:template match="AbbrevReverseStep" mode="nk:xpath-model">
+        <nodeTest kind="node"/>
+    </xsl:template>
+
+    <xsl:template match="AbbrevForwardStep" mode="nk:xpath-model">
+        <xsl:apply-templates select="NodeTest" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="NodeTest[NameTest]" mode="nk:xpath-model">
+        <xsl:param name="axis" tunnel="yes" as="xs:string"/>
+        <nodeTest>
+            <xsl:if test="NameTest/EQName or NameTest/Wildcard[not(normalize-space(.) = '*')]">
+                <xsl:attribute name="name" select="string(NameTest/(EQName|Wildcard))"/>
+            </xsl:if>
+            <xsl:attribute name="kind" select="
+                    if ($axis = 'attribute') then
+                        'attribute'
+                    else
+                        if ($axis = 'namespace') then
+                            'namespace-node'
+                        else
+                            'element'"/>
+
+        </nodeTest>
+    </xsl:template>
+    <xsl:template match="NodeTest[KindTest]" mode="nk:xpath-model">
+        <nodeTest>
+            <xsl:apply-templates select="
+                    KindTest/(
+                    DocumentTest
+                    | ElementTest
+                    | AttributeTest
+                    | SchemaElementTest
+                    | SchemaAttributeTest
+                    | PITest
+                    | CommentTest
+                    | TextTest
+                    | NamespaceNodeTest
+                    | AnyKindTest
+                    )" mode="#current"/>
+        </nodeTest>
+    </xsl:template>
+
+    <xsl:template match="KindTest//TOKEN" mode="nk:xpath-model"/>
+
+
+
+    <xsl:template match="
+            DocumentTest
+            | ElementTest
+            | AttributeTest
+            | SchemaElementTest
+            | SchemaAttributeTest
+            | PITest
+            | CommentTest
+            | TextTest
+            | NamespaceNodeTest
+            | AnyKindTest
+            " mode="nk:xpath-model" priority="10">
+        <xsl:variable name="name" select="name()"/>
+        <xsl:variable name="kind" select="replace($name, 'Test$', '') => lower-case()"/>
+        <xsl:variable name="kind" select="
+                if ($kind = 'pi')
+                then
+                    'processing-instruction'
+                else
+                    if ($kind = 'document')
+                    then
+                        'document-node'
+                    else
+                        if ($kind = 'namespacenode')
+                        then
+                            'namespace-node'
+                        else
+                            if (starts-with($kind, 'schema'))
+                            then
+                                replace($kind, '^schema', 'schema-')
+                            else
+                                if ($kind = 'anykind')
+                                then
+                                    'node'
+                                else
+                                    $kind
+                "/>
+        <xsl:attribute name="kind" select="$kind"/>
+        <xsl:apply-templates select="*" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="DocumentTest/ElementTest | DocumentTest/SchemaElementTest" mode="nk:xpath-model" priority="20">
+        <nodeTest>
+            <xsl:next-match/>
+        </nodeTest>
+    </xsl:template>
+
+    <xsl:template match="
+            ElementNameOrWildcard |
+            AttribNameOrWildcard |
+            ElementDeclaration |
+            AttributeDeclaration" mode="nk:xpath-model">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="ElementName | AttributeName" mode="nk:xpath-model">
+        <xsl:attribute name="name" select="string(EQName)"/>
+    </xsl:template>
+    <xsl:template match="TypeName" mode="nk:xpath-model">
+        <xsl:attribute name="type" select="string(EQName)"/>
+    </xsl:template>
+
+    <xsl:template match="PITest/NCName" mode="nk:xpath-model">
+        <xsl:attribute name="name" select="string(.)"/>
+    </xsl:template>
+
+    <xsl:template match="PITest/StringLiteral" mode="nk:xpath-model">
+        <xsl:variable name="next-match" as="element(string)">
+            <xsl:next-match/>
+        </xsl:variable>
+        <xsl:attribute name="name" select="$next-match/@value"/>
+    </xsl:template>
+
+
+    <xsl:template match="PredicateList[empty(*)]" mode="nk:xpath-model"/>
+
+    <xsl:template match="PredicateList" mode="nk:xpath-model">
+        <xsl:apply-templates select="Predicate" mode="#current"/>
+    </xsl:template>
+
+
+    <xsl:template match="PredicateList/Predicate" mode="nk:xpath-model">
+        <predicate>
+            <xsl:apply-templates select="Expr" mode="#current"/>
+        </predicate>
+    </xsl:template>
+    
+    
+<!--    
+    Operators
+    -->
+    
+    
+<!--    regular operators -->
+    <xsl:variable name="regularOperations" select="map{
+        'AdditiveExpr' : 'additive',
+        'MultiplicativeExpr' : 'multiplicativ',
+        'OrExpr' : 'or',
+        'AndExpr' : 'and',
+        'StringConcatExpr' : 'concat',
+        'RangeExpr' : 'range',
+        'UnionExpr' : 'union',
+        'IntersectExceptExpr' : 'intersect-except',
+        'UnaryExpr' : 'unary',
+        'CastExpr' : 'cast',
+        'CastableExpr' : 'castable',
+        'InstanceofExpr' : 'instance-of',
+        'TreatExpr' : 'treat-as',
+        'SimpleMapExpr' : 'map',
+        'PathExpr' : 'step',
+        'RelativePathExpr' : 'step',
+        'PostfixExpr' : 'postfix',
+        'ArrowExpr' : 'arrow',
+        'Expr' : 'sequence'
+        
+        }"/>
+
+    <xsl:template match="*[map:contains($regularOperations, local-name(.))]" mode="nk:xpath-model">
+        <operation type="{$regularOperations(local-name(.))}">
+            <xsl:apply-templates select="*" mode="nk:xpath-operations"/>
+        </operation>
+    </xsl:template>
+    
+    <xsl:template match="ComparisonExpr" mode="nk:xpath-model">
+        <xsl:variable name="type-prefix" select="
+            if (ValueComp) then ('value-') else if (NodeComp) then ('node-') else ('')
+            "/>
+        
+        <operation type="{$type-prefix}compare">
+            <xsl:apply-templates select="*" mode="nk:xpath-operations"/>
+        </operation>
+    </xsl:template>
+    
+    <xsl:variable name="operatorMap" select="map{
+        '+' : 'plus',
+        '-' : 'minus',
+        '*' : 'x',
+        '=' : 'eq',
+        'is' : 'eq',
+        '!=' : 'ne',
+        '>' : 'gt',
+        '>>' : 'gt',
+        '>=' : 'ge',
+        '=>' : 'arrow',
+        '&lt;' : 'lt',
+        '&lt;&lt;' : 'lt',
+        '&lt;=' : 'le',
+        '||' : 'concat',
+        '|' : 'union',
+        '!' : 'map',
+        '/' : 'slash',
+        ',' : 'comma',
+        'as' : '#delete',
+        'of' : '#delete',
+        'cast' : 'castAs',
+        'castable' : 'castableAs',
+        'treat' : 'treatAs',
+        'instance' : 'instanceOf'
+        }"/>
+    
+    <xsl:template match="TOKEN" priority="20" mode="nk:xpath-operations">
+        <xsl:variable name="op" select="string(.)"/>
+        <xsl:variable name="name" select="
+            ($operatorMap($op), $op)[1]
+            "/>
+        <xsl:choose>
+            <xsl:when test="$name castable as xs:NCName">
+                <xsl:element name="{$name}"/>
+            </xsl:when>
+            <xsl:when test="$name = '#delete'"/>
+            <xsl:otherwise>
+                <xsl:copy-of select="."/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    
+    <xsl:template match="ValueComp | NodeComp | GeneralComp" priority="25" mode="nk:xpath-operations">
+        <xsl:apply-templates select="*" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="TOKEN[. = 'idiv']" priority="25" mode="nk:xpath-operations">
+        <div type="integer"/>
+    </xsl:template>
+    <xsl:template match="TOKEN[. = '//']" priority="25" mode="nk:xpath-operations">
+        <slash />
+        <arg>
+            <locationStep axis="descendant-or-self">
+                <nodeTest kind="node" />
+            </locationStep>
+        </arg>
+        <slash />
+    </xsl:template>
+    
+    
+    <xsl:template match="SequenceType[string-join(TOKEN, '') = 'empty-sequence()']" mode="nk:xpath-operations">
+        <empty/>
+    </xsl:template>
+    
+    <xsl:template match="SequenceType" mode="nk:xpath-operations">
+        <xsl:apply-templates select="* except OccurrenceIndicator" mode="#current">
+            <xsl:with-param name="token" select="OccurrenceIndicator/TOKEN"/>
+        </xsl:apply-templates>
+    </xsl:template>
+    
+    <xsl:template match="SingleType | ItemType" priority="25" mode="nk:xpath-operations">
+        <xsl:param name="token" select="TOKEN" as="element(TOKEN)?"/>
+        <xsl:variable name="occ" select="nk:itemTypeOcc($token)"/>
+        <itemType>
+            <xsl:if test="not($occ = 'one')">
+                <xsl:attribute name="occurrence" select="$occ"/>
+            </xsl:if>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </itemType>
+    </xsl:template>
+    
+    <xsl:template match="KindTest" mode="nk:xpath-operations">
+        <nodeTest>
+            <xsl:apply-templates select="*" mode="nk:xpath-model"/>
+        </nodeTest>
+    </xsl:template>
+
+    <xsl:template match="MapTest" mode="nk:xpath-operations">
+        <mapType>
+            <xsl:apply-templates select="*" mode="#current"/>
+        </mapType>
+    </xsl:template>
+
+    <xsl:template match="ArrayTest" mode="nk:xpath-operations">
+        <arrayType>
+            <xsl:apply-templates select="*" mode="#current"/>
+        </arrayType>
+    </xsl:template>
+
+    <xsl:template match="FunctionTest" mode="nk:xpath-operations">
+        <functType>
+            <xsl:apply-templates select="*" mode="#current"/>
+        </functType>
+    </xsl:template>
+    
+    <xsl:template match="TypedMapTest | TypedArrayTest" mode="nk:xpath-operations">
+        <xsl:apply-templates select="AtomicOrUnionType | SequenceType" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="TypedFunctionTest" mode="nk:xpath-operations">
+        <xsl:variable name="asToken" select="TOKEN[. = 'as']"/>
+        <xsl:apply-templates select="SequenceType except $asToken/following-sibling::SequenceType" mode="#current"/>
+        <as>
+            <xsl:apply-templates select="$asToken/following-sibling::SequenceType" mode="#current"/>
+        </as>
+    </xsl:template>
+    
+    <xsl:template match="AnyMapTest | AnyArrayTest | AnyFunctionTest" mode="nk:xpath-operations"/>
+        
+    
+    
+    <xsl:template match="SimpleTypeName | AtomicOrUnionType" priority="25" mode="nk:xpath-operations">
+        <atomic name="{string(TypeName/EQName|EQName)}"/>
+    </xsl:template>
+    
+    <xsl:template match="Predicate" priority="25" mode="nk:xpath-operations">
+        <predicate>
+            <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
+        </predicate>
+    </xsl:template>
+    
+    <!--ArrowFunctionSpecifier-->
+    
+    
+    <xsl:template match="ArrowExpr/ArgumentList" priority="50" mode="nk:xpath-operations">
+        <xsl:variable name="funct-spec" select="preceding-sibling::ArrowFunctionSpecifier[1]"/>
+        <function-call>
+            <xsl:apply-templates select="$funct-spec" mode="nk:xpath-model"/>
+            <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
+        </function-call>
+    </xsl:template>
+    
+    <xsl:template match="ArrowExpr/ArrowFunctionSpecifier" mode="nk:xpath-operations"/>
+        
+    
+    <xsl:template match="ArrowExpr/ArrowFunctionSpecifier[EQName]" priority="25" mode="nk:xpath-model">
+        <function name="{EQName}"/>
+    </xsl:template>
+
+    <xsl:template match="ArrowExpr/ArrowFunctionSpecifier[VarRef|ParenthesizedExpr]" priority="25" mode="nk:xpath-model">
+        <function>
+            <xsl:apply-templates select="VarRef|ParenthesizedExpr/*" mode="#current"/>
+        </function>
+    </xsl:template>
+    
+    
+    
+    <xsl:template match="ArgumentList" priority="25" mode="nk:xpath-operations">
+        <function-call>
+            <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
+        </function-call>
+    </xsl:template>
+    
+    <xsl:template match="Lookup" priority="25" mode="nk:xpath-operations">
+        <lookup>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </lookup>
+    </xsl:template>
+    <xsl:template match="Lookup/KeySpecifier[ParenthesizedExpr]" priority="25" mode="nk:xpath-operations">
+        <arg>
+            <xsl:apply-templates select="ParenthesizedExpr/(* except TOKEN)" mode="nk:xpath-model"/>
+        </arg>
+    </xsl:template>
+
+    <xsl:template match="Lookup/KeySpecifier[NCName]" priority="25" mode="nk:xpath-operations">
+        <field name="{string(NCName)}"/>
+    </xsl:template>
+    
+    <xsl:template match="Lookup/KeySpecifier" priority="20" mode="nk:xpath-operations">
+        <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
+    </xsl:template>
+    
+    <xsl:function name="nk:itemTypeOcc" as="xs:string">
+        <xsl:param name="token" as="element(TOKEN)?"/>
+        <xsl:variable name="map" select="map{
+            '*' : 'zero-or-more',
+            '+' : 'one-or-more',
+            '?' : 'zero-or-one',
+            '' : 'one'
+            }"/>
+        <xsl:variable name="token" select="($token, '')[1]"/>
+        <xsl:sequence select="
+            $map($token)
+            "/>
+        
+    </xsl:function>
+    
+    <xsl:template match="*" mode="nk:xpath-operations">
+        <arg>
+            <xsl:apply-templates select="." mode="nk:xpath-model"/>
+        </arg>
+    </xsl:template>
+    
+<!--    
+    Functions
+    -->
+    
+    <xsl:template match="FunctionCall" mode="nk:xpath-model">
+        <function-call>
+            <xsl:apply-templates select="*" mode="#current"/>
+        </function-call>
+    </xsl:template>
+    
+    <xsl:template match="FunctionEQName" mode="nk:xpath-model">
+        <function name="{string(.)}"/>
+    </xsl:template>
+    
+    <xsl:template match="ArgumentList" mode="nk:xpath-model">
+        <xsl:apply-templates select="Argument" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="Argument" priority="25" mode="nk:xpath-model">
+        <arg>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+<!--    
+    MISC
+    -->
+    
+    <xsl:template match="ParenthesizedExpr" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+    </xsl:template>
+    
+
+    <xsl:function name="nk:quote-unesc">
+        <xsl:param name="escaped" as="xs:string"/>
+
+        <xsl:sequence select="replace($escaped, '([''&quot;])\1', '$1')"/>
+
+    </xsl:function>
+
+
+    <xsl:template match="
+            XPath |
+            ExprSingle |
+            Expr |
+            PrimaryExpr |
+            NumericLiteral |
+            EOF
+            " mode="nk:xpath-model" priority="-5">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="
+            Expr[count(*) eq 1] |
+            OrExpr[count(*) eq 1] |
+            AndExpr[count(*) eq 1] |
+            ComparisonExpr[count(*) eq 1] |
+            StringConcatExpr[count(*) eq 1] |
+            RangeExpr[count(*) eq 1] |
+            AdditiveExpr[count(*) eq 1] |
+            MultiplicativeExpr[count(*) eq 1] |
+            UnionExpr[count(*) eq 1] |
+            IntersectExceptExpr[count(*) eq 1] |
+            InstanceofExpr[count(*) eq 1] |
+            TreatExpr[count(*) eq 1] |
+            CastableExpr[count(*) eq 1] |
+            CastExpr[count(*) eq 1] |
+            ArrowExpr[count(*) eq 1] |
+            UnaryExpr[count(*) eq 1] |
+            ValueExpr[count(*) eq 1] |
+            SimpleMapExpr[count(*) eq 1] |
+            PathExpr[count(*) eq 1] |
+            RelativePathExpr[count(*) eq 1] |
+            StepExpr[count(*) eq 1] |
+            PostfixExpr[count(*) eq 1]
+            " mode="nk:xpath-model">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="XPath"/>
+    <xsl:template match="ParamList"/>
+    <xsl:template match="Param"/>
+    <xsl:template match="FunctionBody"/>
+    <xsl:template match="EnclosedExpr"/>
+    <xsl:template match="Expr"/>
+    <xsl:template match="ExprSingle"/>
+    <xsl:template match="ForExpr"/>
+    <xsl:template match="SimpleForClause"/>
+    <xsl:template match="SimpleForBinding"/>
+    <xsl:template match="LetExpr"/>
+    <xsl:template match="SimpleLetClause"/>
+    <xsl:template match="SimpleLetBinding"/>
+    <xsl:template match="QuantifiedExpr"/>
+    <xsl:template match="IfExpr"/>
+    <xsl:template match="AndExpr"/>
+    <xsl:template match="ComparisonExpr"/>
+    <xsl:template match="StringConcatExpr"/>
+    <xsl:template match="RangeExpr"/>
+    <xsl:template match="AdditiveExpr"/>
+    <xsl:template match="MultiplicativeExpr"/>
+    <xsl:template match="UnionExpr"/>
+    <xsl:template match="IntersectExceptExpr"/>
+    <xsl:template match="InstanceofExpr"/>
+    <xsl:template match="TreatExpr"/>
+    <xsl:template match="CastableExpr"/>
+    <xsl:template match="CastExpr"/>
+    <xsl:template match="ArrowExpr"/>
+    <xsl:template match="UnaryExpr"/>
+    <xsl:template match="ValueExpr"/>
+    <xsl:template match="GeneralComp"/>
+    <xsl:template match="ValueComp"/>
+    <xsl:template match="NodeComp"/>
+    <xsl:template match="SimpleMapExpr"/>
+    <xsl:template match="PathExpr"/>
+    <xsl:template match="RelativePathExpr"/>
+    <xsl:template match="StepExpr"/>
+    <xsl:template match="AxisStep"/>
+    <xsl:template match="ForwardStep"/>
+    <xsl:template match="ForwardAxis"/>
+    <xsl:template match="AbbrevForwardStep"/>
+    <xsl:template match="ReverseStep"/>
+    <xsl:template match="ReverseAxis"/>
+    <xsl:template match="AbbrevReverseStep"/>
+    <xsl:template match="NodeTest"/>
+    <xsl:template match="NameTest"/>
+    <xsl:template match="PostfixExpr"/>
+    <xsl:template match="ArgumentList"/>
+    <xsl:template match="PredicateList"/>
+    <xsl:template match="Predicate"/>
+    <xsl:template match="Lookup"/>
+    <xsl:template match="KeySpecifier"/>
+    <xsl:template match="ArrowFunctionSpecifier"/>
+    <xsl:template match="PrimaryExpr"/>
+    <xsl:template match="NumericLiteral"/>
+    <xsl:template match="VarRef"/>
+    <xsl:template match="VarName"/>
+    <xsl:template match="ParenthesizedExpr"/>
+    <xsl:template match="ContextItemExpr"/>
+    <xsl:template match="FunctionCall"/>
+    <xsl:template match="Argument"/>
+    <xsl:template match="ArgumentPlaceholder"/>
+    <xsl:template match="FunctionItemExpr"/>
+    <xsl:template match="NamedFunctionRef"/>
+    <xsl:template match="InlineFunctionExpr"/>
+    <xsl:template match="MapConstructor"/>
+    <xsl:template match="MapConstructorEntry"/>
+    <xsl:template match="MapKeyExpr"/>
+    <xsl:template match="MapValueExpr"/>
+    <xsl:template match="ArrayConstructor"/>
+    <xsl:template match="SquareArrayConstructor"/>
+    <xsl:template match="CurlyArrayConstructor"/>
+    <xsl:template match="UnaryLookup"/>
+    <xsl:template match="SingleType"/>
+    <xsl:template match="TypeDeclaration"/>
+    <xsl:template match="SequenceType"/>
+    <xsl:template match="OccurrenceIndicator"/>
+    <xsl:template match="ItemType"/>
+    <xsl:template match="AtomicOrUnionType"/>
+    <xsl:template match="KindTest"/>
+    <xsl:template match="AnyKindTest"/>
+    <xsl:template match="DocumentTest"/>
+    <xsl:template match="TextTest"/>
+    <xsl:template match="CommentTest"/>
+    <xsl:template match="NamespaceNodeTest"/>
+    <xsl:template match="PITest"/>
+    <xsl:template match="AttributeTest"/>
+    <xsl:template match="AttribNameOrWildcard"/>
+    <xsl:template match="SchemaAttributeTest"/>
+    <xsl:template match="AttributeDeclaration"/>
+    <xsl:template match="ElementTest"/>
+    <xsl:template match="ElementNameOrWildcard"/>
+    <xsl:template match="SchemaElementTest"/>
+    <xsl:template match="ElementDeclaration"/>
+    <xsl:template match="AttributeName"/>
+    <xsl:template match="ElementName"/>
+    <xsl:template match="SimpleTypeName"/>
+    <xsl:template match="TypeName"/>
+    <xsl:template match="FunctionTest"/>
+    <xsl:template match="AnyFunctionTest"/>
+    <xsl:template match="TypedFunctionTest"/>
+    <xsl:template match="MapTest"/>
+    <xsl:template match="AnyMapTest"/>
+    <xsl:template match="TypedMapTest"/>
+    <xsl:template match="ArrayTest"/>
+    <xsl:template match="AnyArrayTest"/>
+    <xsl:template match="TypedArrayTest"/>
+    <xsl:template match="ParenthesizedItemType"/>
+    <xsl:template match="FunctionEQName"/>
+    <xsl:template match="EQName"/>
+    <xsl:template match="Whitespace"/>
+    <xsl:template match="Comment"/>
+    <xsl:template match="FunctionName"/>
+    <xsl:template match="QName"/>
+    <xsl:template match="IntegerLiteral"/>
+    <xsl:template match="DecimalLiteral"/>
+    <xsl:template match="DoubleLiteral"/>
+
+    <xsl:template match="URIQualifiedName"/>
+    <xsl:template match="BracedURILiteral"/>
+    <xsl:template match="EscapeQuot"/>
+    <xsl:template match="EscapeApos"/>
+    <xsl:template match="NCName"/>
+    <xsl:template match="QName"/>
+    <xsl:template match="PrefixedName"/>
+    <xsl:template match="UnprefixedName"/>
+    <xsl:template match="Prefix"/>
+    <xsl:template match="LocalPart"/>
+    <xsl:template match="Char"/>
+    <xsl:template match="NameStartChar"/>
+    <xsl:template match="NameChar"/>
+    <xsl:template match="Name"/>
+    <xsl:template match="S"/>
+    <xsl:template match="Digits"/>
+    <xsl:template match="CommentContents"/>
+    <xsl:template match="Wildcard"/>
+    <xsl:template match="EOF"/>
+    <xsl:template match="NonNCNameChar"/>
+    <xsl:template match="DelimitingChar"/>
+    <xsl:template match="DelimitingChar"/>
+    <xsl:template match="NonNCNameChar"/>
+
+</xsl:stylesheet>
