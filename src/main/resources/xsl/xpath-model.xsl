@@ -116,7 +116,7 @@
         <self/>
     </xsl:template>
 
-    <xsl:template match="PathExpr[not(* except TOKEN)][TOKEN = '/']" priority="10" mode="nk:xpath-model">
+    <xsl:template match="PathExpr[not(* except TOKEN)][TOKEN = '/']" priority="100" mode="nk:xpath-model">
         <root/>
     </xsl:template>
 
@@ -610,7 +610,7 @@
             RelativePathExpr[count(*) eq 1] |
             StepExpr[count(*) eq 1] |
             PostfixExpr[count(*) eq 1]
-            " mode="nk:xpath-model">
+            " mode="nk:xpath-model" priority="50">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
