@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.nkutsche</groupId>
+    <artifactId>xpath-model</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    
+    <properties>
+        <saxon.version>9.9.1-1</saxon.version>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>${saxon.version}</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.xspec.maven</groupId>
+                <artifactId>xspec-maven-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>run-xspec</id>
+                        <goals>
+                            <goal>run-xspec</goal>
+                        </goals>
+                        <phase>test</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>Saxon-HE</artifactId>
+                        <version>${saxon.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <generateSurefireReport>true</generateSurefireReport>
+                    <excludes>
+                        <exclude>compiled.xspec</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
