@@ -187,7 +187,9 @@ functType = element functType {(seqType*, element as {seqType})?}
 
 # Common Attributes
 
-qname = attribute name {bracedURILiteral | xs:QName}
+qname = attribute name {bracedURILiteral | wildcardPattern | xs:QName}
 ncname = attribute name {xs:NCName}
 
 bracedURILiteral = xsd:string { pattern = "Q\{[^{}]*\}.*" }
+
+wildcardPattern = xsd:string { pattern = "\*:[^*]+|[^*]+:\*" }

@@ -608,6 +608,7 @@
     <attribute name="name">
       <choice>
         <ref name="bracedURILiteral"/>
+        <ref name="wildcardPattern"/>
         <data type="QName"/>
       </choice>
     </attribute>
@@ -620,6 +621,11 @@
   <define name="bracedURILiteral">
     <data type="string">
       <param name="pattern">Q\{[^{}]*\}.*</param>
+    </data>
+  </define>
+  <define name="wildcardPattern">
+    <data type="string">
+      <param name="pattern">\*:[^*]+|[^*]+:\*</param>
     </data>
   </define>
 </grammar>
