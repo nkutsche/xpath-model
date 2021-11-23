@@ -99,32 +99,4 @@
       <x:label>empty(() &gt;&gt; ())</x:label>
       <x:variable name="expr" as="xs:string">empty(() &gt;&gt; ())</x:variable>
       <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;&gt;&gt; ()</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;&gt;&gt; ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;&gt;</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;&gt;</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>&gt;&gt; ()</x:label>
-      <x:variable name="expr" as="xs:string">&gt;&gt; ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>&gt;&gt;</x:label>
-      <x:variable name="expr" as="xs:string">&gt;&gt;</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 &gt;&gt;</x:label>
-      <x:variable name="expr" as="xs:string">1 &gt;&gt;</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>&gt;&gt; 1</x:label>
-      <x:variable name="expr" as="xs:string">&gt;&gt; 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>&gt;&gt;&gt;</x:label>
-      <x:variable name="expr" as="xs:string">&gt;&gt;&gt;</x:variable>
-      <x:like label="generic-test"/>
     </x:scenario></x:description>

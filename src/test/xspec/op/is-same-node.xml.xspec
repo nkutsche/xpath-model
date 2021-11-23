@@ -82,15 +82,7 @@
       <x:variable name="expr" as="xs:string">empty(() is ())</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>() is</x:label>
-      <x:variable name="expr" as="xs:string">() is</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>is ()</x:label>
       <x:variable name="expr" as="xs:string">is ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])</x:variable>
       <x:like label="generic-test"/>
     </x:scenario></x:description>

@@ -18,96 +18,8 @@
       <x:variable name="expr" as="xs:string">/*/.</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>1 + remove(("foo", 2), 2)asdasdad</x:label>
-      <x:variable name="expr" as="xs:string">1 + remove(("foo", 2), 2)asdasdad</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>---..---</x:label>
-      <x:variable name="expr" as="xs:string">---..---</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>foo- foo</x:label>
-      <x:variable name="expr" as="xs:string">foo- foo</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>nametest : nametest</x:label>
-      <x:variable name="expr" as="xs:string">nametest : nametest</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>nametest: nametest</x:label>
-      <x:variable name="expr" as="xs:string">nametest: nametest</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>nametest :nametest</x:label>
-      <x:variable name="expr" as="xs:string">nametest :nametest</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>f oo" eq "f oo"</x:label>
-      <x:variable name="expr" as="xs:string">f oo" eq "f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"f oo eq "f oo"</x:label>
-      <x:variable name="expr" as="xs:string">"f oo eq "f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"f oo" eq f oo"</x:label>
-      <x:variable name="expr" as="xs:string">"f oo" eq f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"f oo" eq "f oo</x:label>
-      <x:variable name="expr" as="xs:string">"f oo" eq "f oo</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("f oo") eq "f oo</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("f oo") eq "f oo</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>//</x:label>
-      <x:variable name="expr" as="xs:string">//</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*5</x:label>
-      <x:variable name="expr" as="xs:string">/*5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/ * 5</x:label>
-      <x:variable name="expr" as="xs:string">/ * 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>4 + / * 5</x:label>
-      <x:variable name="expr" as="xs:string">4 + / * 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>::ncname</x:label>
-      <x:variable name="expr" as="xs:string">::ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>::local:ncname</x:label>
-      <x:variable name="expr" as="xs:string">::local:ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>@</x:label>
-      <x:variable name="expr" as="xs:string">@</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>@</x:label>
-      <x:variable name="expr" as="xs:string">@</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>parent::</x:label>
-      <x:variable name="expr" as="xs:string">parent::</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>no-binding:*</x:label>
       <x:variable name="expr" as="xs:string">no-binding:*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>schema-element("quotesAreNotAllowed")</x:label>
-      <x:variable name="expr" as="xs:string">schema-element("quotesAreNotAllowed")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>schema-attribute("quotesAreNotAllowed")</x:label>
-      <x:variable name="expr" as="xs:string">schema-attribute("quotesAreNotAllowed")</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>schema-element(notDeclared:ncname)</x:label>
@@ -164,10 +76,6 @@
     </x:scenario><x:scenario>
       <x:label>of</x:label>
       <x:variable name="expr" as="xs:string">of</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>child:</x:label>
-      <x:variable name="expr" as="xs:string">child:</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>child::element</x:label>

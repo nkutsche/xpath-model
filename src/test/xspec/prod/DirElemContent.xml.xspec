@@ -5,20 +5,4 @@
     <x:expect label="result should be valid">
       <expr>...</expr>
     </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>3}</x:label>
-      <x:variable name="expr" as="xs:string">3}</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"a string" }</x:label>
-      <x:variable name="expr" as="xs:string">"a string" }</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>}</x:label>
-      <x:variable name="expr" as="xs:string">}</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>}</x:label>
-      <x:variable name="expr" as="xs:string">}</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+  </x:scenario></x:description>

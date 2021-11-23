@@ -90,10 +90,6 @@
       <x:variable name="expr" as="xs:string">fn:ends-with("Query","ry") eq xs:boolean("false")</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>true() eq true() eq true() eq true()</x:label>
-      <x:variable name="expr" as="xs:string">true() eq true() eq true() eq true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>((true() eq true()) eq true()) eq true()</x:label>
       <x:variable name="expr" as="xs:string">((true() eq true()) eq true()) eq true()</x:variable>
       <x:like label="generic-test"/>

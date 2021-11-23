@@ -30,14 +30,6 @@
       <x:variable name="expr" as="xs:string">for $folder in //Folder, $file in $folder/File return ( $folder/FolderName, $file/FileName )</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return $file return $file</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return $file return $file</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>for $file in (//Folder)[1]/File return $undefined</x:label>
       <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return $undefined</x:variable>
       <x:like label="generic-test"/>
@@ -52,10 +44,6 @@
     </x:scenario><x:scenario>
       <x:label>for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004</x:label>
       <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return return $file/FileName</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>for $file in (//Folder)[1]/File return xs:string( data( $file/FileName[1] ))</x:label>

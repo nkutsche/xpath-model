@@ -374,18 +374,6 @@
       <x:variable name="expr" as="xs:string">xs:double("3") idiv xs:double("-INF") eq xs:double(0)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>10idiv 3</x:label>
-      <x:variable name="expr" as="xs:string">10idiv 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 idiv3</x:label>
-      <x:variable name="expr" as="xs:string">10 idiv3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10idiv3</x:label>
-      <x:variable name="expr" as="xs:string">10idiv3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>"3" idiv "3"</x:label>
       <x:variable name="expr" as="xs:string">"3" idiv "3"</x:variable>
       <x:like label="generic-test"/>

@@ -26,22 +26,6 @@ line2'</x:label>
 line2'</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>"test</x:label>
-      <x:variable name="expr" as="xs:string">"test</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'test</x:label>
-      <x:variable name="expr" as="xs:string">'test</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'test"</x:label>
-      <x:variable name="expr" as="xs:string">'test"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"test'</x:label>
-      <x:variable name="expr" as="xs:string">"test'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>65535032</x:label>
       <x:variable name="expr" as="xs:string">65535032</x:variable>
       <x:like label="generic-test"/>
@@ -146,86 +130,6 @@ line2'</x:variable>
       <x:variable name="expr" as="xs:string">+.65535032E-2</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>65535032.001.01</x:label>
-      <x:variable name="expr" as="xs:string">65535032.001.01</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>..01</x:label>
-      <x:variable name="expr" as="xs:string">..01</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>.0.1</x:label>
-      <x:variable name="expr" as="xs:string">.0.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-.0.1</x:label>
-      <x:variable name="expr" as="xs:string">-.0.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+.0.1</x:label>
-      <x:variable name="expr" as="xs:string">+.0.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1e 2</x:label>
-      <x:variable name="expr" as="xs:string">1e 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1E 2</x:label>
-      <x:variable name="expr" as="xs:string">1E 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 e2</x:label>
-      <x:variable name="expr" as="xs:string">1 e2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 E2</x:label>
-      <x:variable name="expr" as="xs:string">1 E2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 e 2</x:label>
-      <x:variable name="expr" as="xs:string">1 e 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 E 2</x:label>
-      <x:variable name="expr" as="xs:string">1 E 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1e2.1.1</x:label>
-      <x:variable name="expr" as="xs:string">1e2.1.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1E2.1.1</x:label>
-      <x:variable name="expr" as="xs:string">1E2.1.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1.1e2</x:label>
-      <x:variable name="expr" as="xs:string">1.1.1e2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1.1.E2</x:label>
-      <x:variable name="expr" as="xs:string">1.1.1.E2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1ee2</x:label>
-      <x:variable name="expr" as="xs:string">1ee2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1EE2</x:label>
-      <x:variable name="expr" as="xs:string">1EE2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1eE2</x:label>
-      <x:variable name="expr" as="xs:string">1eE2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1e2e3</x:label>
-      <x:variable name="expr" as="xs:string">1e2e3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1e-2.1.1</x:label>
-      <x:variable name="expr" as="xs:string">1e-2.1.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>"&amp;amp;"</x:label>
       <x:variable name="expr" as="xs:string">"&amp;amp;"</x:variable>
       <x:like label="generic-test"/>
@@ -274,10 +178,6 @@ line2'</x:variable>
       <x:variable name="expr" as="xs:string">'foo' eq "foo"</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>'f'oo'</x:label>
-      <x:variable name="expr" as="xs:string">'f'oo'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>"""" eq '"'</x:label>
       <x:variable name="expr" as="xs:string">"""" eq '"'</x:variable>
       <x:like label="generic-test"/>
@@ -288,10 +188,6 @@ line2'</x:variable>
     </x:scenario><x:scenario>
       <x:label>"fo""o" eq concat("fo", """", "o")</x:label>
       <x:variable name="expr" as="xs:string">"fo""o" eq concat("fo", """", "o")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"f"oo"</x:label>
-      <x:variable name="expr" as="xs:string">"f"oo"</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>3. eq 3.</x:label>
@@ -354,36 +250,8 @@ line2'</x:variable>
       <x:variable name="expr" as="xs:string">xs:float("NaN") instance of xs:float</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>3 &gt;E 2</x:label>
-      <x:variable name="expr" as="xs:string">3 &gt;E 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>33"</x:label>
-      <x:variable name="expr" as="xs:string">33"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>2 + 3!#</x:label>
-      <x:variable name="expr" as="xs:string">2 + 3!#</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>432f542</x:label>
-      <x:variable name="expr" as="xs:string">432f542</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>.54.45</x:label>
-      <x:variable name="expr" as="xs:string">.54.45</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>0.3 eq .3</x:label>
       <x:variable name="expr" as="xs:string">0.3 eq .3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label/>
-      <x:variable name="expr" as="xs:string"/>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>{1}</x:label>
-      <x:variable name="expr" as="xs:string">{1}</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>"a string &amp;;"</x:label>
@@ -396,10 +264,6 @@ line2'</x:variable>
     </x:scenario><x:scenario>
       <x:label>"t" eq "&amp;#x74;"</x:label>
       <x:variable name="expr" as="xs:string">"t" eq "&amp;#x74;"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 &amp;lt;= 3</x:label>
-      <x:variable name="expr" as="xs:string">1 &amp;lt;= 3</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</x:label>
@@ -450,28 +314,12 @@ line2'</x:variable>
       <x:variable name="expr" as="xs:string">-0</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>1 ; 1</x:label>
-      <x:variable name="expr" as="xs:string">1 ; 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0x20</x:label>
-      <x:variable name="expr" as="xs:string">0x20</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>.5</x:label>
       <x:variable name="expr" as="xs:string">.5</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>. 5</x:label>
-      <x:variable name="expr" as="xs:string">. 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>465.</x:label>
       <x:variable name="expr" as="xs:string">465.</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>} }</x:label>
-      <x:variable name="expr" as="xs:string">} }</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>import gt import</x:label>

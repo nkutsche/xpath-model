@@ -38,10 +38,6 @@
       <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return if( $file/FileName='File00000000004' ) then 1 else data( $file/FileName )</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>if //File[1] then "true" else "false"</x:label>
-      <x:variable name="expr" as="xs:string">if //File[1] then "true" else "false"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>if( false() ) then /Folder[1] cast as xs:double ? else 10 cast as xs:double ?</x:label>
       <x:variable name="expr" as="xs:string">if( false() ) then /Folder[1] cast as xs:double ? else 10 cast as xs:double ?</x:variable>
       <x:like label="generic-test"/>
@@ -104,10 +100,6 @@
     </x:scenario><x:scenario>
       <x:label>if(//(employee[location = "Denver"]/ancestor::*)) then 1 else 3</x:label>
       <x:variable name="expr" as="xs:string">if(//(employee[location = "Denver"]/ancestor::*)) then 1 else 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(!true()) then 2 else 3</x:label>
-      <x:variable name="expr" as="xs:string">if(!true()) then 2 else 3</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else if (1) then 1 else ()</x:label>

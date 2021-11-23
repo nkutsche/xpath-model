@@ -14,10 +14,6 @@
       <x:variable name="expr" as="xs:string">fn:count(.[(/) * 5])</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>fn:count(.[/ * 5])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/ * 5])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>fn:count(.[(/) &lt; 5])</x:label>
       <x:variable name="expr" as="xs:string">fn:count(.[(/) &lt; 5])</x:variable>
       <x:like label="generic-test"/>
@@ -44,14 +40,6 @@
     </x:scenario><x:scenario>
       <x:label>fn:count(.[if (doclevel) then / else /*])</x:label>
       <x:variable name="expr" as="xs:string">fn:count(.[if (doclevel) then / else /*])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/ instance of document-node(schema-element(x))])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/ instance of document-node(schema-element(x))])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[let $doc := / return $doc/*])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[let $doc := / return $doc/*])</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>fn:count(.[/-5])</x:label>

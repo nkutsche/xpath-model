@@ -2870,14 +2870,6 @@
       <x:variable name="expr" as="xs:string">xs:integer(99e100)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>'string' cast as xs:string*</x:label>
-      <x:variable name="expr" as="xs:string">'string' cast as xs:string*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'string' cast as xs:string+</x:label>
-      <x:variable name="expr" as="xs:string">'string' cast as xs:string+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>'string' cast as xs:anyAtomicType</x:label>
       <x:variable name="expr" as="xs:string">'string' cast as xs:anyAtomicType</x:variable>
       <x:like label="generic-test"/>

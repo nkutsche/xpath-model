@@ -5,12 +5,4 @@
     <x:expect label="result should be valid">
       <expr>...</expr>
     </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>let $a := 1 let $b := $a let $c := $a+$b return ($c)</x:label>
-      <x:variable name="expr" as="xs:string">let $a := 1 let $b := $a let $c := $a+$b return ($c)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>return 1</x:label>
-      <x:variable name="expr" as="xs:string">return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+  </x:scenario></x:description>

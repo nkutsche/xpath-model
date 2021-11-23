@@ -218,10 +218,6 @@
       <x:variable name="expr" as="xs:string">not(1 = ())</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>1 == 1</x:label>
-      <x:variable name="expr" as="xs:string">1 == 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>(1, 2) = (2, 3)</x:label>
       <x:variable name="expr" as="xs:string">(1, 2) = (2, 3)</x:variable>
       <x:like label="generic-test"/>
@@ -460,10 +456,6 @@
     </x:scenario><x:scenario>
       <x:label>xs:yearMonthDuration("P1999Y") = xs:untypedAtomic("1999")</x:label>
       <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1999Y") = xs:untypedAtomic("1999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() = true() = true() = true()</x:label>
-      <x:variable name="expr" as="xs:string">true() = true() = true() = true()</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>((true() = true()) = true()) = true()</x:label>

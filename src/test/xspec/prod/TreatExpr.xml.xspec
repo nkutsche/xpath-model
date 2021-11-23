@@ -66,10 +66,6 @@
       <x:variable name="expr" as="xs:string">(4 treat as item() + - 5) = ((4 treat as item()+) - 5)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>3 treat as item(</x:label>
-      <x:variable name="expr" as="xs:string">3 treat as item(</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>(remove((5, 1e0), 2) treat as xs:integer) eq 5</x:label>
       <x:variable name="expr" as="xs:string">(remove((5, 1e0), 2) treat as xs:integer) eq 5</x:variable>
       <x:like label="generic-test"/>
@@ -80,10 +76,6 @@
     </x:scenario><x:scenario>
       <x:label>3 treat as item()+ + +1</x:label>
       <x:variable name="expr" as="xs:string">3 treat as item()+ + +1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:root(self::node()) treat as document-node()/X</x:label>
-      <x:variable name="expr" as="xs:string">fn:root(self::node()) treat as document-node()/X</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>(1 to 10)[. mod 2 = 0] treat as xs:integer+</x:label>

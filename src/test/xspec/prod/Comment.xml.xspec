@@ -227,24 +227,6 @@ if (:test:)(:t2:)(:t3:) (/fs:MyComputer)
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-8                               :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A test whose essence is: `(: "recursive comments must be balanced, this one is not :)" :)`. :)
-(:*******************************************************:)
-(: "recursive comments must be 
-	balanced, this one is not :)" :)</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-8                               :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A test whose essence is: `(: "recursive comments must be balanced, this one is not :)" :)`. :)
-(:*******************************************************:)
-(: "recursive comments must be 
-	balanced, this one is not :)" :)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
 (: Test: K-XQueryComment-9                               :)
 (: Written by: Frans Englich                             :)
 (: Date: 2007-11-22T11:31:22+01:00                       :)
@@ -309,70 +291,6 @@ for (: set up loop :) $i in 3 return $i eq 3</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-13                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A test whose essence is: `if((: comment inbetween :)) then 1 else 1`. :)
-(:*******************************************************:)
-if((: comment inbetween :)) then 1 else 1</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-13                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A test whose essence is: `if((: comment inbetween :)) then 1 else 1`. :)
-(:*******************************************************:)
-if((: comment inbetween :)) then 1 else 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-14                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A syntactically invalid comment that never ends. :)
-(:*******************************************************:)
-1(: this comment does not end:</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-14                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A syntactically invalid comment that never ends. :)
-(:*******************************************************:)
-1(: this comment does not end:</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-15                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A comment inside a comment that isn't terminated. :)
-(:*******************************************************:)
-1(: content (: this comment does not end :)</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-15                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A comment inside a comment that isn't terminated. :)
-(:*******************************************************:)
-1(: content (: this comment does not end :)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-16                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A comment inside a comment that does not start properly. :)
-(:*******************************************************:)
-1(: content this comment does not start properly :) :)</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-16                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A comment inside a comment that does not start properly. :)
-(:*******************************************************:)
-1(: content this comment does not start properly :) :)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
 (: Test: K-XQueryComment-17                              :)
 (: Written by: Frans Englich                             :)
 (: Date: 2007-11-22T11:31:22+01:00                       :)
@@ -420,21 +338,5 @@ if((: comment inbetween :)) then 1 else 1</x:variable>
 (: Purpose: A test stressing many nested comments.       :)
 (:*******************************************************:)
 1(:(:(:(:(:(:(:(::):):):):):):):) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(:*******************************************************:)
-(: Test: K-XQueryComment-20                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A syntactically invalid comment that doesn't properly start. :)
-(:*******************************************************:)
-: :) 1</x:label>
-      <x:variable name="expr" as="xs:string">(:*******************************************************:)
-(: Test: K-XQueryComment-20                              :)
-(: Written by: Frans Englich                             :)
-(: Date: 2007-11-22T11:31:22+01:00                       :)
-(: Purpose: A syntactically invalid comment that doesn't properly start. :)
-(:*******************************************************:)
-: :) 1</x:variable>
       <x:like label="generic-test"/>
     </x:scenario></x:description>

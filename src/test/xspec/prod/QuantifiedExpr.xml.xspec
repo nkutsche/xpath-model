@@ -522,14 +522,6 @@
       <x:variable name="expr" as="xs:string">every $a in (1, 2), $b in (1, 2), $c in (1, 2) satisfies 1, $c</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>some $foo in (1, $2) return 1</x:label>
-      <x:variable name="expr" as="xs:string">some $foo in (1, $2) return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>every $foo in (1, $2) return 1</x:label>
-      <x:variable name="expr" as="xs:string">every $foo in (1, $2) return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>some $foo in (1, 2, $foo) satisfies 1</x:label>
       <x:variable name="expr" as="xs:string">some $foo in (1, 2, $foo) satisfies 1</x:variable>
       <x:like label="generic-test"/>
@@ -616,22 +608,6 @@
     </x:scenario><x:scenario>
       <x:label>some $i in (1, 2, 3) satisfies ($i, $i)</x:label>
       <x:variable name="expr" as="xs:string">some $i in (1, 2, 3) satisfies ($i, $i)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>some $a at $p in (1, 2) satisfies $a</x:label>
-      <x:variable name="expr" as="xs:string">some $a at $p in (1, 2) satisfies $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>every $a at $p in (1, 2) satisfies $a</x:label>
-      <x:variable name="expr" as="xs:string">every $a at $p in (1, 2) satisfies $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>SOME $i in (1, 2, 3) satisfies $i</x:label>
-      <x:variable name="expr" as="xs:string">SOME $i in (1, 2, 3) satisfies $i</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>EVERY $i in (1, 2, 3) satisfies $i</x:label>
-      <x:variable name="expr" as="xs:string">EVERY $i in (1, 2, 3) satisfies $i</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>some $id in attribute::id satisfies $id</x:label>

@@ -5,8 +5,4 @@
     <x:expect label="result should be valid">
       <expr>...</expr>
     </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>let $add := %Q{http://example.com/speed}fast %Q{http://example.com/origin}author("Mike") function($x, $y) {$x + $y} return $add(2,2)</x:label>
-      <x:variable name="expr" as="xs:string">let $add := %Q{http://example.com/speed}fast %Q{http://example.com/origin}author("Mike") function($x, $y) {$x + $y} return $add(2,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+  </x:scenario></x:description>

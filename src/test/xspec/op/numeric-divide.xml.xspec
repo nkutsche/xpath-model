@@ -374,18 +374,6 @@
       <x:variable name="expr" as="xs:string">(xs:untypedAtomic("3") div xs:double(3)) eq 1</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>10 div3</x:label>
-      <x:variable name="expr" as="xs:string">10 div3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10div 3</x:label>
-      <x:variable name="expr" as="xs:string">10div 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10div3</x:label>
-      <x:variable name="expr" as="xs:string">10div3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>empty(() div ())</x:label>
       <x:variable name="expr" as="xs:string">empty(() div ())</x:variable>
       <x:like label="generic-test"/>

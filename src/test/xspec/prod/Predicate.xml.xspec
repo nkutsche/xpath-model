@@ -94,18 +94,6 @@
       <x:variable name="expr" as="xs:string">fn:count(((1,2,3,4,5,6,7,8,9,10,11)[fn:false()]))</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>empty((1, 2, 3)[0])</x:label>
       <x:variable name="expr" as="xs:string">empty((1, 2, 3)[0])</x:variable>
       <x:like label="generic-test"/>

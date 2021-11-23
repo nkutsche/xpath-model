@@ -168,12 +168,12 @@
       <x:variable name="expr" as="xs:string">codepoints-to-string(57343)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(57344) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(57344) eq ""</x:variable>
+      <x:label>codepoints-to-string(57344) eq ""</x:label>
+      <x:variable name="expr" as="xs:string">codepoints-to-string(57344) eq ""</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(61438) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(61438) eq ""</x:variable>
+      <x:label>codepoints-to-string(61438) eq ""</x:label>
+      <x:variable name="expr" as="xs:string">codepoints-to-string(61438) eq ""</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>codepoints-to-string(65533) eq "�"</x:label>

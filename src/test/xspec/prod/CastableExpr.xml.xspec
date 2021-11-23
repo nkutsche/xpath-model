@@ -2602,18 +2602,6 @@
       <x:variable name="expr" as="xs:string">count(//employee[if (salary castable as xs:integer) then xs:integer(salary) gt 65000 else false()])</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>'string' castable as xs:string*</x:label>
-      <x:variable name="expr" as="xs:string">'string' castable as xs:string*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'string' castable as xs:string+</x:label>
-      <x:variable name="expr" as="xs:string">'string' castable as xs:string+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>("one", "two") castable as xs:string+</x:label>
-      <x:variable name="expr" as="xs:string">("one", "two") castable as xs:string+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>'string' castable as xs:anyAtomicType</x:label>
       <x:variable name="expr" as="xs:string">'string' castable as xs:anyAtomicType</x:variable>
       <x:like label="generic-test"/>

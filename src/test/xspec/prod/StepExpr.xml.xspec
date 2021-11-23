@@ -9,12 +9,4 @@
       <x:label>(/)/(//)/foo</x:label>
       <x:variable name="expr" as="xs:string">(/)/(//)/foo</x:variable>
       <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>child::local:b(:ada</x:label>
-      <x:variable name="expr" as="xs:string">child::local:b(:ada</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>///</x:label>
-      <x:variable name="expr" as="xs:string">///</x:variable>
-      <x:like label="generic-test"/>
     </x:scenario></x:description>

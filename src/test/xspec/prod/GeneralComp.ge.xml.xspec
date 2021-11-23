@@ -214,10 +214,6 @@
       <x:variable name="expr" as="xs:string">not(() &gt;= 1 )</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>1 =&gt;; 1</x:label>
-      <x:variable name="expr" as="xs:string">1 =&gt;; 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>count((0, timezone-from-time(current-time()))) &gt;= 1</x:label>
       <x:variable name="expr" as="xs:string">count((0, timezone-from-time(current-time()))) &gt;= 1</x:variable>
       <x:like label="generic-test"/>

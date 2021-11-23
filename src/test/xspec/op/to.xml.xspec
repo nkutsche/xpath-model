@@ -122,10 +122,6 @@
       <x:variable name="expr" as="xs:string">count(18446744073709551616 to 18446744073709551620)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>11 to 11 to 12</x:label>
-      <x:variable name="expr" as="xs:string">11 to 11 to 12</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>3+1 to 4+1</x:label>
       <x:variable name="expr" as="xs:string">3+1 to 4+1</x:variable>
       <x:like label="generic-test"/>

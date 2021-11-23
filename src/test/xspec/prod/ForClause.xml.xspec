@@ -34,32 +34,12 @@
         return ($folderName, $fileName)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>for $fileName in //File/FileName for $folderName in //Folder/FolderName return $folderName return $fileName</x:label>
-      <x:variable name="expr" as="xs:string">for $fileName in //File/FileName for $folderName in //Folder/FolderName return $folderName return $fileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )</x:label>
       <x:variable name="expr" as="xs:string">for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName</x:label>
       <x:variable name="expr" as="xs:string">for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in //Folder return $folder return $folder</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in //Folder return $folder return $folder</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in in .//Folder return $folder</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in in .//Folder return $folder</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for for $folder in //Folder return $folder</x:label>
-      <x:variable name="expr" as="xs:string">for for $folder in //Folder return $folder</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in //Folder, $file in $folder/File, return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in //Folder, $file in $folder/File, return $file/FileName</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>for $i in (1, 2), $j in (3, 4) return ($i, $j)</x:label>
@@ -70,28 +50,8 @@
       <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File, $file in (//Folder)[2]/File return $file/FileName</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>for $file (//Folder)[1]/File return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $file (//Folder)[1]/File return $file/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>for $var in (1,2), $var in (2,2) return $var * $var</x:label>
       <x:variable name="expr" as="xs:string">for $var in (1,2), $var in (2,2) return $var * $var</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in 1, $bar in 2, $moo in 3, return 4</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in 1, $bar in 2, $moo in 3, return 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for in 1 return 4</x:label>
-      <x:variable name="expr" as="xs:string">for in 1 return 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for return 4</x:label>
-      <x:variable name="expr" as="xs:string">for return 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in 1 satisfies 4</x:label>
-      <x:variable name="expr" as="xs:string">for $a in 1 satisfies 4</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>deep-equal(1 to 5, (for $i in (1,2,3,4,5) return $i))</x:label>
@@ -288,10 +248,6 @@
     </x:scenario><x:scenario>
       <x:label>count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4</x:label>
       <x:variable name="expr" as="xs:string">count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>FOR $i IN (1, 2, 3)</x:label>
-      <x:variable name="expr" as="xs:string">FOR $i IN (1, 2, 3)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>for $d in person return $d</x:label>

@@ -178,18 +178,6 @@
       <x:variable name="expr" as="xs:string">1.23E2 mod 0.6E1 eq 3.0E0</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>10 mod3</x:label>
-      <x:variable name="expr" as="xs:string">10 mod3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10mod 3</x:label>
-      <x:variable name="expr" as="xs:string">10mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10mod3</x:label>
-      <x:variable name="expr" as="xs:string">10mod3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>"3" mod "3"</x:label>
       <x:variable name="expr" as="xs:string">"3" mod "3"</x:variable>
       <x:like label="generic-test"/>

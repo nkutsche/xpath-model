@@ -730,10 +730,6 @@
       <x:variable name="expr" as="xs:string">fn:count(//center//@center-attr-2)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>/*/</x:label>
-      <x:variable name="expr" as="xs:string">/*/</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>/*/namespace-node()</x:label>
       <x:variable name="expr" as="xs:string">/*/namespace-node()</x:variable>
       <x:like label="generic-test"/>
@@ -782,72 +778,12 @@
       <x:variable name="expr" as="xs:string">/*/*/*/namespace::*[not(name())]</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>*:(:hey:)ncname</x:label>
-      <x:variable name="expr" as="xs:string">*:(:hey:)ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*(:hey:):ncname</x:label>
-      <x:variable name="expr" as="xs:string">*(:hey:):ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>* :ncname</x:label>
-      <x:variable name="expr" as="xs:string">* :ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*(:hey:):ncname</x:label>
-      <x:variable name="expr" as="xs:string">*(:hey:):ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>ncname :*</x:label>
-      <x:variable name="expr" as="xs:string">ncname :*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name(:hey:):*</x:label>
-      <x:variable name="expr" as="xs:string">name(:hey:):*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>* :ncname</x:label>
-      <x:variable name="expr" as="xs:string">* :ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>ncname: *</x:label>
-      <x:variable name="expr" as="xs:string">ncname: *</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*(:hey:):ncname</x:label>
-      <x:variable name="expr" as="xs:string">*(:hey:):ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>ncname:(:hey:)*</x:label>
-      <x:variable name="expr" as="xs:string">ncname:(:hey:)*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*(:hey:):(:hey:) ncname</x:label>
-      <x:variable name="expr" as="xs:string">*(:hey:):(:hey:) ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*:(:hey:)ncname</x:label>
-      <x:variable name="expr" as="xs:string">*:(:hey:)ncname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>*:</x:label>
-      <x:variable name="expr" as="xs:string">*:</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>preceding-or-ancestor::*</x:label>
-      <x:variable name="expr" as="xs:string">preceding-or-ancestor::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>nametest//</x:label>
       <x:variable name="expr" as="xs:string">nametest//</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>nametest/</x:label>
       <x:variable name="expr" as="xs:string">nametest/</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>parent::self()</x:label>
-      <x:variable name="expr" as="xs:string">parent::self()</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>123[..]</x:label>
@@ -870,10 +806,6 @@
       <x:variable name="expr" as="xs:string">(/, 1)[2]</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>//</x:label>
-      <x:variable name="expr" as="xs:string">//</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>1/3</x:label>
       <x:variable name="expr" as="xs:string">1/3</x:variable>
       <x:like label="generic-test"/>
@@ -890,28 +822,8 @@
       <x:variable name="expr" as="xs:string">empty(()/name)</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>preceeding::node()</x:label>
-      <x:variable name="expr" as="xs:string">preceeding::node()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>prefix:</x:label>
-      <x:variable name="expr" as="xs:string">prefix:</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>prefix:</x:label>
-      <x:variable name="expr" as="xs:string">prefix:</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>declare</x:label>
       <x:variable name="expr" as="xs:string">declare</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>eclare function</x:label>
-      <x:variable name="expr" as="xs:string">eclare function</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>declare function name</x:label>
-      <x:variable name="expr" as="xs:string">declare function name</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>declare function local:foo() external;</x:label>

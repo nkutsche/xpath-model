@@ -26,8 +26,8 @@
       <x:variable name="expr" as="xs:string">'abc' le 'abc'</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>"" lt "𑅰"</x:label>
-      <x:variable name="expr" as="xs:string">"" lt "𑅰"</x:variable>
+      <x:label>"" lt "𑅰"</x:label>
+      <x:variable name="expr" as="xs:string">"" lt "𑅰"</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
       <x:label>not(string(current-time()) lt "now")</x:label>

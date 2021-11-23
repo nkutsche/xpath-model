@@ -50,18 +50,6 @@
       <x:variable name="expr" as="xs:string">f:f:()</x:variable>
       <x:like label="generic-test"/>
     </x:scenario><x:scenario>
-      <x:label>:f()</x:label>
-      <x:variable name="expr" as="xs:string">:f()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>:f()</x:label>
-      <x:variable name="expr" as="xs:string">:f()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1fd()</x:label>
-      <x:variable name="expr" as="xs:string">1fd()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
       <x:label>p:f:lname()</x:label>
       <x:variable name="expr" as="xs:string">p:f:lname()</x:variable>
       <x:like label="generic-test"/>
