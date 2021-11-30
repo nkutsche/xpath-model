@@ -211,7 +211,34 @@
                     
                 </x:scenario>
                 
-                <x:scenario label="different kind tests">
+                <x:scenario label="several name tests">
+                    <x:scenario label="*">
+                        <x:call>
+                            <x:param select="string(.)">*</x:param>
+                        </x:call>
+                        <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
+                            <nodeTest kind="element"/>
+                        </x:expect>
+                    </x:scenario>
+                    <x:scenario label="pfx:*">
+                        <x:call>
+                            <x:param select="string(.)">pfx:*</x:param>
+                        </x:call>
+                        <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
+                            <nodeTest name="pfx:*" kind="element"/>
+                        </x:expect>
+                    </x:scenario>
+                    <x:scenario label="*:local">
+                        <x:call>
+                            <x:param select="string(.)">*:local</x:param>
+                        </x:call>
+                        <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
+                            <nodeTest name="*:local" kind="element"/>
+                        </x:expect>
+                    </x:scenario>
+                </x:scenario>
+                
+                <x:scenario label="several kind tests">
                     <x:scenario label="text">
                         <x:call>
                             <x:param select="string(.)">text()</x:param>
