@@ -586,7 +586,88 @@
         </arg>
     </xsl:template>
     
-<!--    
+<!--  programming operators  -->
+    
+    <xsl:template match="IfExpr" mode="nk:xpath-model">
+        <operation type="condition">
+            <xsl:for-each-group select="*" group-starting-with="TOKEN[. = ('if', 'then', 'else')]">
+                <xsl:variable name="tokens" select="current-group()[self::TOKEN]"/>
+                <xsl:choose>
+                    <xsl:when test="self::TOKEN[. = ('if', 'then', 'else')]">
+                        <arg role="{string(.)}">
+                            <xsl:apply-templates select="current-group() except $tokens" mode="nk:xpath-model"/>
+                        </arg>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="current-group() except $tokens" mode="nk:xpath-model"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each-group> 
+        </operation>
+    </xsl:template>
+    <xsl:template match="LetExpr | ForExpr" mode="nk:xpath-model">
+        <xsl:variable name="opType" select=" if (self::LetExpr) then ('let-binding') else ('for-loop')"/>
+        <operation type="{$opType}">
+            <xsl:for-each-group select="*" group-starting-with="TOKEN[. = ('return')]">
+                <xsl:variable name="tokens" select="current-group()[self::TOKEN]"/>
+                <xsl:choose>
+                    <xsl:when test="self::TOKEN[. = ('return')]">
+                        <arg role="{string(.)}">
+                            <xsl:apply-templates select="current-group() except $tokens" mode="#current"/>
+                        </arg>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="current-group() except $tokens" mode="#current"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each-group> 
+        </operation>
+    </xsl:template>
+
+    <xsl:template match="QuantifiedExpr" mode="nk:xpath-model">
+        <xsl:variable name="opType" select="string(TOKEN[. = ('some', 'every')])"/>
+        <operation type="{$opType}-satisfies">
+            <xsl:for-each-group select="*" group-starting-with="TOKEN[. = ('satisfies', '$')]">
+                <xsl:variable name="tokens" select="current-group()[self::TOKEN]"/>
+                <xsl:variable name="non-tokens" select="current-group() except $tokens"/>
+                <xsl:choose>
+                    <xsl:when test="self::TOKEN[. = ('satisfies')]">
+                        <arg role="{string(.)}">
+                            <xsl:apply-templates select="$non-tokens" mode="#current"/>
+                        </arg>
+                    </xsl:when>
+                    <xsl:when test="self::TOKEN[. = ('$')]">
+                        <xsl:variable name="varName" select="current-group()/self::VarName"/>
+                        <let name="{string($varName)}">
+                            <arg>
+                                <xsl:apply-templates select="$non-tokens except $varName" mode="#current"/>
+                            </arg>
+                        </let>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="$non-tokens" mode="#current"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each-group> 
+        </operation>
+    </xsl:template>
+    
+    <xsl:template match="SimpleLetClause | SimpleForClause" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="SimpleLetClause/SimpleLetBinding | SimpleForClause/SimpleForBinding" mode="nk:xpath-model">
+        <let name="{string(VarName)}">
+            <xsl:variable name="children" select="* except TOKEN"/>
+            <xsl:variable name="eq" select="TOKEN[. = (':=', 'in')]"/>
+            <xsl:apply-templates select="$children except VarName intersect $eq/preceding-sibling::*" mode="#current"/>
+            <arg>
+                <xsl:apply-templates select="$children intersect $eq/following-sibling::*" mode="#current"/>
+            </arg>
+        </let>
+    </xsl:template>
+
+    <!--    
     Functions
     -->
     
