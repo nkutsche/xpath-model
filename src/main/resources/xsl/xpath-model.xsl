@@ -670,21 +670,21 @@
     <!--    
     Functions
     -->
-    
+
     <xsl:template match="FunctionCall" mode="nk:xpath-model">
         <function-call>
             <xsl:apply-templates select="*" mode="#current"/>
         </function-call>
     </xsl:template>
-    
+
     <xsl:template match="FunctionCall/FunctionEQName" mode="nk:xpath-model">
         <function name="{string(.)}"/>
     </xsl:template>
-    
+
     <xsl:template match="ArgumentList" mode="nk:xpath-model">
         <xsl:apply-templates select="Argument | Comment" mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="Argument" priority="25" mode="nk:xpath-model">
         <arg>
             <xsl:apply-templates select="* except TOKEN" mode="#current"/>
