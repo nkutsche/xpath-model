@@ -11,6 +11,7 @@
       <ref name="operation"/>
       <ref name="function-call"/>
       <ref name="primitive"/>
+      <ref name="constructor"/>
     </choice>
   </define>
   <define name="arg">
@@ -38,6 +39,14 @@
         <ref name="qname"/>
         <ref name="expr"/>
       </choice>
+    </element>
+  </define>
+  <define name="function-ref">
+    <element name="function">
+      <ref name="qname"/>
+      <attribute name="arity">
+        <data type="integer"/>
+      </attribute>
     </element>
   </define>
   <define name="postFixFunction">
@@ -73,6 +82,99 @@
   <define name="key">
     <element name="field">
       <ref name="ncname"/>
+    </element>
+  </define>
+  <!-- Map / Array / Function Constructors -->
+  <define name="constructor">
+    <choice>
+      <ref name="mapConstr"/>
+      <ref name="arrayConstr"/>
+      <ref name="functionRefConstr"/>
+    </choice>
+  </define>
+  <define name="mapConstr">
+    <element name="map">
+      <zeroOrMore>
+        <ref name="mapConstrEntry"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="mapConstrEntry">
+    <element name="entry">
+      <ref name="keyArg"/>
+      <ref name="valueArg"/>
+    </element>
+  </define>
+  <define name="arrayConstr">
+    <choice>
+      <ref name="arrayConstrItem"/>
+      <ref name="arrayConstrSeq"/>
+    </choice>
+  </define>
+  <define name="arrayConstrItem">
+    <element name="array">
+      <ref name="arrayConstrTypeItem"/>
+      <optional>
+        <ref name="valueArg"/>
+      </optional>
+    </element>
+  </define>
+  <!-- constructor: array{...} -->
+  <define name="arrayConstrTypeItem">
+    <attribute name="type">
+      <value>member-per-item</value>
+    </attribute>
+  </define>
+  <define name="arrayConstrSeq">
+    <element name="array">
+      <ref name="arrayConstrTypeSeq"/>
+      <zeroOrMore>
+        <ref name="valueArg"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- constructor [...] -->
+  <define name="arrayConstrTypeSeq">
+    <attribute name="type">
+      <value>member-per-sequence</value>
+    </attribute>
+  </define>
+  <define name="functionRefConstr">
+    <choice>
+      <ref name="function-ref"/>
+      <ref name="functionConstr"/>
+    </choice>
+  </define>
+  <define name="functionConstr">
+    <element name="function-impl">
+      <zeroOrMore>
+        <ref name="paramDecl"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="as"/>
+      </optional>
+      <ref name="returnArg"/>
+    </element>
+  </define>
+  <!-- constructor function(...){...} -->
+  <define name="paramDecl">
+    <element name="param">
+      <ref name="qname"/>
+      <optional>
+        <ref name="as"/>
+      </optional>
+    </element>
+  </define>
+  <define name="as">
+    <element name="as">
+      <ref name="seqType"/>
+    </element>
+  </define>
+  <!-- Variable based -->
+  <define name="let">
+    <element name="let">
+      <ref name="qname"/>
+      <ref name="arg"/>
     </element>
   </define>
   <!-- Operations -->

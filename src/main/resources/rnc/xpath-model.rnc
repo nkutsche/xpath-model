@@ -4,7 +4,7 @@ start = element expr {expr}
 
 # General Expression / Sub Expressions
 
-expr = operation | function-call | primitive 
+expr = operation | function-call | primitive  | constructor
 
 arg = element arg {expr}
 
@@ -18,6 +18,8 @@ function-call = element function-call {function-spec, arg*}
 
 function-spec = element function {qname | expr}
 
+function-ref = element function {qname, attribute arity {xs:integer} }
+
 postFixFunction = element function-call {arg*}
 
 # Maps
@@ -27,6 +29,37 @@ lookup = element lookup {(integerLiteral | key | arg)?}
 unaryLookup = element lookup {(integerLiteral | arg | key)?}
 
 key = element field {ncname}
+
+# Map / Array / Function Constructors 
+
+constructor = mapConstr | arrayConstr | functionRefConstr
+
+mapConstr = element map{mapConstrEntry*}
+
+mapConstrEntry = element entry {keyArg, valueArg}
+
+arrayConstr = arrayConstrItem | arrayConstrSeq
+
+ 
+arrayConstrItem = element array{arrayConstrTypeItem, valueArg?} # constructor: array{...}
+arrayConstrTypeItem = attribute type {"member-per-item"}
+
+arrayConstrSeq = element array{arrayConstrTypeSeq, valueArg*} # constructor [...]
+arrayConstrTypeSeq = attribute type {"member-per-sequence"}
+
+functionRefConstr = function-ref | functionConstr
+
+functionConstr = element function-impl {paramDecl*, as?, returnArg} # constructor function(...){...}
+
+paramDecl = element param {qname, as?}
+
+as = element as {seqType}
+
+# Variable based
+
+let = element let{qname, arg}
+
+
 
 # Operations
 
