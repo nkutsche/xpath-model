@@ -34,6 +34,30 @@
             <x:expect label="result" select="string(.)">""foo''</x:expect>
         </x:scenario>
     </x:scenario>
+    <x:scenario label="Scenario testing function call nk:parse-comment">
+        <x:call function="nk:parse-comment"/>
+        <x:scenario label="no comment" pending="not sure if we need this...">
+            <x:call>
+                <x:param select="string(.)">no-comment</x:param>
+            </x:call>
+            <x:expect label="result" select="()"/>
+        </x:scenario>
+        <x:scenario label="somme comments">
+            <x:call>
+                <x:param select="string(.)">
+(: lev1 (: lev2 (: lev3 :) lev2 (: lev3 :) lev2 :) lev1 :)
+
+(: lev1 (: lev2 :) lev1 :)
+
+</x:param>
+            </x:call>
+            <x:expect label="result">
+                <Comment> lev1 (: lev2 (: lev3 :) lev2 (: lev3 :) lev2 :) lev1 </Comment>
+                <Comment> lev1 (: lev2 :) lev1 </Comment>
+            </x:expect>
+        </x:scenario>
+
+    </x:scenario>
     
     
     <x:scenario label="Scenario testing function call nk:xpath-model">
