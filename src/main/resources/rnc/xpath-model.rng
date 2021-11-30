@@ -16,6 +16,67 @@
   </define>
   <define name="arg">
     <element name="arg">
+      <optional>
+        <attribute name="role">
+          <value>regular</value>
+        </attribute>
+      </optional>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="ifArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>if</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="thenArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>then</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="elseArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>else</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="returnArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>return</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="satisfiesArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>satisfies</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="keyArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>key</value>
+      </attribute>
+      <ref name="expr"/>
+    </element>
+  </define>
+  <define name="valueArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>value</value>
+      </attribute>
       <ref name="expr"/>
     </element>
   </define>
@@ -186,6 +247,9 @@
       <ref name="step-operation"/>
       <ref name="postfix-operation"/>
       <ref name="arrow-operation"/>
+      <ref name="let-based-operation"/>
+      <ref name="satisfies-operation"/>
+      <ref name="condition-operation"/>
     </choice>
   </define>
   <define name="regular-operation">
@@ -251,9 +315,56 @@
       </oneOrMore>
     </element>
   </define>
+  <define name="let-based-operation">
+    <element name="operation">
+      <ref name="let-based-operation-type"/>
+      <oneOrMore>
+        <ref name="let"/>
+      </oneOrMore>
+      <ref name="returnArg"/>
+    </element>
+  </define>
+  <define name="satisfies-operation">
+    <element name="operation">
+      <ref name="satisfies-operation-type"/>
+      <oneOrMore>
+        <ref name="let"/>
+      </oneOrMore>
+      <ref name="satisfiesArg"/>
+    </element>
+  </define>
+  <define name="condition-operation">
+    <element name="operation">
+      <ref name="condition-operation-type"/>
+      <ref name="ifArg"/>
+      <ref name="thenArg"/>
+      <ref name="elseArg"/>
+    </element>
+  </define>
   <define name="unary-operation-type">
     <attribute name="type">
       <value>unary</value>
+    </attribute>
+  </define>
+  <define name="let-based-operation-type">
+    <attribute name="type">
+      <choice>
+        <value>let-binding</value>
+        <value>for-loop</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="satisfies-operation-type">
+    <attribute name="type">
+      <choice>
+        <value>some-satisfies</value>
+        <value>every-satisfies</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="condition-operation-type">
+    <attribute name="type">
+      <value>condition</value>
     </attribute>
   </define>
   <define name="postfix-operation-type">

@@ -6,7 +6,14 @@ start = element expr {expr}
 
 expr = operation | function-call | primitive  | constructor
 
-arg = element arg {expr}
+arg = element arg {attribute role {"regular"}?, expr}
+ifArg = element arg {attribute role {"if"}, expr}
+thenArg = element arg {attribute role {"then"}, expr}
+elseArg = element arg {attribute role {"else"}, expr}
+returnArg = element arg {attribute role {"return"}, expr}
+satisfiesArg = element arg {attribute role {"satisfies"}, expr}
+keyArg = element arg {attribute role {"key"}, expr}
+valueArg = element arg {attribute role {"value"}, expr}
 
 predicate = element predicate {expr}
 
@@ -63,7 +70,7 @@ let = element let{qname, arg}
 
 # Operations
 
-operation = regular-operation | unary-operation | type-operation | step-operation | postfix-operation | arrow-operation
+operation = regular-operation | unary-operation | type-operation | step-operation | postfix-operation | arrow-operation | let-based-operation | satisfies-operation | condition-operation 
 
 regular-operation = element operation {regular-operation-type, arg, (operator, arg)+}
 step-operation = element operation {step-operation-type, stepOp?, arg, (stepOp, arg)*}
@@ -71,9 +78,24 @@ unary-operation = element operation {unary-operation-type, additiveOp+, arg}
 type-operation = element operation {type-operation-type, arg, type-operator, seqType}
 postfix-operation = element operation {postfix-operation-type, arg, (predicate | postFixFunction | lookup)+}
 arrow-operation = element operation {arrow-operation-type, arg, (arrowOp, function-call)+}
+let-based-operation = element operation {let-based-operation-type, let+, returnArg}
+satisfies-operation = element operation {satisfies-operation-type, let+, satisfiesArg}
+condition-operation = element operation {condition-operation-type, ifArg, thenArg, elseArg}
 
 unary-operation-type = attribute type {
 "unary"
+}
+let-based-operation-type = attribute type {
+"let-binding"|
+"for-loop"
+}
+satisfies-operation-type = attribute type {
+"some-satisfies"|
+"every-satisfies"
+}
+
+condition-operation-type = attribute type {
+"condition"
 }
 postfix-operation-type = attribute type {
 "postfix"
