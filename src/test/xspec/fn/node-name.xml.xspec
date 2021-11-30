@@ -1,44 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count(fn:node-name(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:node-name(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:node-name(/works[1]/employee[2]/child::text()[last()]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:node-name(/works[1]/employee[2]/child::text()[last()]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name-from-QName(fn:node-name(/works[1]/employee[2]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name-from-QName(fn:node-name(/works[1]/employee[2]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>node-name((), "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">node-name((), "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(node-name(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(node-name(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>node-name(/*, ())</x:label>
-      <x:variable name="expr" as="xs:string">node-name(/*, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>node-name("string")</x:label>
-      <x:variable name="expr" as="xs:string">node-name("string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>node-name(/*) instance of xs:QName</x:label>
-      <x:variable name="expr" as="xs:string">node-name(/*) instance of xs:QName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>node-name(3.3)</x:label>
-      <x:variable name="expr" as="xs:string">node-name(3.3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/node-name.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count(fn:node-name(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:node-name(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:node-name(/works[1]/employee[2]/child::text()[last()]))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:node-name(/works[1]/employee[2]/child::text()[last()]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name-from-QName(fn:node-name(/works[1]/employee[2]))">
+      <x:call>
+        <x:param select="string(.)">fn:local-name-from-QName(fn:node-name(/works[1]/employee[2]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="node-name((), &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">node-name((), "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(node-name(()))">
+      <x:call>
+        <x:param select="string(.)">empty(node-name(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="node-name(/*, ())">
+      <x:call>
+        <x:param select="string(.)">node-name(/*, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="node-name(&#34;string&#34;)">
+      <x:call>
+        <x:param select="string(.)">node-name("string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="node-name(/*) instance of xs:QName">
+      <x:call>
+        <x:param select="string(.)">node-name(/*) instance of xs:QName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="node-name(3.3)">
+      <x:call>
+        <x:param select="string(.)">node-name(3.3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

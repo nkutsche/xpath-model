@@ -1,212 +1,358 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:remove ( ("a", "b", "c"), 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove ( ("a", "b", "c"), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove ( ("a", "b", "c"), 0)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove ( ("a", "b", "c"), 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove ( ("a", "b", "c", true()), 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove ( ("a", "b", "c", true()), 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove ( (xs:string("xyz"), (), (), "a" , "b"), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove ( (xs:string("xyz"), (), (), "a" , "b"), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 10)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), -20)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), -20)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:integer("100"), xs:string("abc")), 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:integer("100"), xs:string("abc")), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:decimal("1.01"), xs:integer("12"), xs:anyURI("www.example.com")),3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:decimal("1.01"), xs:integer("12"), xs:anyURI("www.example.com")),3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:float("1.01"), xs:string("a")), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:float("1.01"), xs:string("a")), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:float("NaN"), 100, (), 2), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:float("NaN"), 100, (), 2), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:float("-INF"), xs:decimal("2.34"), "abc"), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:float("-INF"), xs:decimal("2.34"), "abc"), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:double("1.34"), xs:float("INF"), true()), 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:double("1.34"), xs:float("INF"), true()), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:double("INF"), 2, 3), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:double("INF"), 2, 3), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:double("NaN"), "a", "b"), 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:double("NaN"), "a", "b"), 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:boolean("1"), xs:double("-INF"), "s"), 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:boolean("1"), xs:double("-INF"), "s"), 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:boolean("0")), 2 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:boolean("0")), 2 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:boolean("true"), xs:date("1993-03-31"), 4, "a"),3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:boolean("true"), xs:date("1993-03-31"), 4, "a"),3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:dateTime("1972-12-31T00:00:00"), xs:boolean("false"), (), (" ")) ,3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:dateTime("1972-12-31T00:00:00"), xs:boolean("false"), (), (" ")) ,3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:remove( (xs:time("12:30:00"), xs:decimal("2.000003"), 2), 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:remove( (xs:time("12:30:00"), xs:decimal("2.000003"), 2), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove()</x:label>
-      <x:variable name="expr" as="xs:string">remove()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1, 2, "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">remove(1, 2, "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove((1, 2, 3), 0)) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(remove((1, 2, 3), 0)) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove((1, 2, 3), -4)) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(remove((1, 2, 3), -4)) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(remove((), 4))</x:label>
-      <x:variable name="expr" as="xs:string">empty(remove((), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(("one", 2, 3), 1) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">remove(("one", 2, 3), 1) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1, "two", 3), 2) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">remove((1, "two", 3), 2) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1, 2, "three"), 3) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">remove((1, 2, "three"), 3) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove(("one", 2, 3), 1)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(remove(("one", 2, 3), 1)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove((1, "two", 3), 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(remove((1, "two", 3), 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove((1, 2, "three"), 3)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(remove((1, 2, "three"), 3)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((3.1, "four"), 1)</x:label>
-      <x:variable name="expr" as="xs:string">remove((3.1, "four"), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(error(), 1)</x:label>
-      <x:variable name="expr" as="xs:string">remove(error(), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((5, 1e0), 2) eq 5</x:label>
-      <x:variable name="expr" as="xs:string">remove((5, 1e0), 2) eq 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>5 eq remove((5, 1e0), 2)</x:label>
-      <x:variable name="expr" as="xs:string">5 eq remove((5, 1e0), 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2), (1, 2)[remove((true(), "a string"), 2)]) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2), (1, 2)[remove((true(), "a string"), 2)]) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((4, xs:untypedAtomic("4")), 1) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">remove((4, xs:untypedAtomic("4")), 1) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>4 eq remove((4, xs:untypedAtomic("1")), 1)</x:label>
-      <x:variable name="expr" as="xs:string">4 eq remove((4, xs:untypedAtomic("1")), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(remove(current-time(), 1)) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(remove(current-time(), 1)) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(remove(current-time(), 1))</x:label>
-      <x:variable name="expr" as="xs:string">empty(remove(current-time(), 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1, 2, 3, current-time()), 4)[last()]</x:label>
-      <x:variable name="expr" as="xs:string">remove((1, 2, 3, current-time()), 4)[last()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1, 2, 3, current-time()), 4)[last() - 1]</x:label>
-      <x:variable name="expr" as="xs:string">remove((1, 2, 3, current-time()), 4)[last() - 1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1, 2, 3, current-time()), 9)[last() - 1]</x:label>
-      <x:variable name="expr" as="xs:string">remove((1, 2, 3, current-time()), 9)[last() - 1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(remove((1, 2, 3, current-time()), 9)[last() - 10])</x:label>
-      <x:variable name="expr" as="xs:string">empty(remove((1, 2, 3, current-time()), 9)[last() - 10])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1 to 10, 1.0)</x:label>
-      <x:variable name="expr" as="xs:string">remove(1 to 10, 1.0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1 to 10, 1.0e0)</x:label>
-      <x:variable name="expr" as="xs:string">remove(1 to 10, 1.0e0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1 to 10, "1")</x:label>
-      <x:variable name="expr" as="xs:string">remove(1 to 10, "1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1 to 10,exactly-one((1 to 10)[. div 2 = 2]))</x:label>
-      <x:variable name="expr" as="xs:string">remove(1 to 10,exactly-one((1 to 10)[. div 2 = 2]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(1 to 10,4)</x:label>
-      <x:variable name="expr" as="xs:string">remove(1 to 10,4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove((1 to 10)[. mod 2 = 0],4)</x:label>
-      <x:variable name="expr" as="xs:string">remove((1 to 10)[. mod 2 = 0],4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>remove(((1 to 10)[. mod 2 = 0],"blah",(1 to 10)[. mod 2 = 0]),4)</x:label>
-      <x:variable name="expr" as="xs:string">remove(((1 to 10)[. mod 2 = 0],"blah",(1 to 10)[. mod 2 = 0]),4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/remove.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:remove ( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;), 1)">
+      <x:call>
+        <x:param select="string(.)">fn:remove ( ("a", "b", "c"), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove ( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;), 0)">
+      <x:call>
+        <x:param select="string(.)">fn:remove ( ("a", "b", "c"), 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove ( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;, true()), 3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove ( ("a", "b", "c", true()), 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove ( (xs:string(&#34;xyz&#34;), (), (), &#34;a&#34; , &#34;b&#34;), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove ( (xs:string("xyz"), (), (), "a" , "b"), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:anyURI(&#34;www.example.com&#34;), &#34;a&#34;, (&#34;&#34;), &#34;b&#34;), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:anyURI(&#34;www.example.com&#34;), &#34;a&#34;, (&#34;&#34;), &#34;b&#34;), 10)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:anyURI(&#34;www.example.com&#34;), &#34;a&#34;, (&#34;&#34;), &#34;b&#34;), -20)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:anyURI("www.example.com"), "a", (""), "b"), -20)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:integer(&#34;100&#34;), xs:string(&#34;abc&#34;)), 1)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:integer("100"), xs:string("abc")), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:decimal(&#34;1.01&#34;), xs:integer(&#34;12&#34;), xs:anyURI(&#34;www.example.com&#34;)),3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:decimal("1.01"), xs:integer("12"), xs:anyURI("www.example.com")),3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:float(&#34;1.01&#34;), xs:string(&#34;a&#34;)), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:float("1.01"), xs:string("a")), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:float(&#34;NaN&#34;), 100, (), 2), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:float("NaN"), 100, (), 2), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:float(&#34;-INF&#34;), xs:decimal(&#34;2.34&#34;), &#34;abc&#34;), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:float("-INF"), xs:decimal("2.34"), "abc"), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:double(&#34;1.34&#34;), xs:float(&#34;INF&#34;), true()), 1)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:double("1.34"), xs:float("INF"), true()), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:double(&#34;INF&#34;), 2, 3), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:double("INF"), 2, 3), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:double(&#34;NaN&#34;), &#34;a&#34;, &#34;b&#34;), 3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:double("NaN"), "a", "b"), 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:boolean(&#34;1&#34;), xs:double(&#34;-INF&#34;), &#34;s&#34;), 3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:boolean("1"), xs:double("-INF"), "s"), 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:boolean(&#34;0&#34;)), 2 )">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:boolean("0")), 2 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:boolean(&#34;true&#34;), xs:date(&#34;1993-03-31&#34;), 4, &#34;a&#34;),3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:boolean("true"), xs:date("1993-03-31"), 4, "a"),3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:dateTime(&#34;1972-12-31T00:00:00&#34;), xs:boolean(&#34;false&#34;), (), (&#34; &#34;)) ,3)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:dateTime("1972-12-31T00:00:00"), xs:boolean("false"), (), (" ")) ,3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:remove( (xs:time(&#34;12:30:00&#34;), xs:decimal(&#34;2.000003&#34;), 2), 2)">
+      <x:call>
+        <x:param select="string(.)">fn:remove( (xs:time("12:30:00"), xs:decimal("2.000003"), 2), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove()">
+      <x:call>
+        <x:param select="string(.)">remove()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1, 2, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">remove(1, 2, "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove((1, 2, 3), 0)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(remove((1, 2, 3), 0)) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove((1, 2, 3), -4)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(remove((1, 2, 3), -4)) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(remove((), 4))">
+      <x:call>
+        <x:param select="string(.)">empty(remove((), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((&#34;one&#34;, 2, 3), 1) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">remove(("one", 2, 3), 1) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1, &#34;two&#34;, 3), 2) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">remove((1, "two", 3), 2) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1, 2, &#34;three&#34;), 3) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">remove((1, 2, "three"), 3) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove((&#34;one&#34;, 2, 3), 1)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(remove(("one", 2, 3), 1)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove((1, &#34;two&#34;, 3), 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(remove((1, "two", 3), 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove((1, 2, &#34;three&#34;), 3)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(remove((1, 2, "three"), 3)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((3.1, &#34;four&#34;), 1)">
+      <x:call>
+        <x:param select="string(.)">remove((3.1, "four"), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(error(), 1)">
+      <x:call>
+        <x:param select="string(.)">remove(error(), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((5, 1e0), 2) eq 5">
+      <x:call>
+        <x:param select="string(.)">remove((5, 1e0), 2) eq 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="5 eq remove((5, 1e0), 2)">
+      <x:call>
+        <x:param select="string(.)">5 eq remove((5, 1e0), 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2), (1, 2)[remove((true(), &#34;a string&#34;), 2)]) eq 0">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2), (1, 2)[remove((true(), "a string"), 2)]) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((4, xs:untypedAtomic(&#34;4&#34;)), 1) eq 4">
+      <x:call>
+        <x:param select="string(.)">remove((4, xs:untypedAtomic("4")), 1) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="4 eq remove((4, xs:untypedAtomic(&#34;1&#34;)), 1)">
+      <x:call>
+        <x:param select="string(.)">4 eq remove((4, xs:untypedAtomic("1")), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(remove(current-time(), 1)) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(remove(current-time(), 1)) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(remove(current-time(), 1))">
+      <x:call>
+        <x:param select="string(.)">empty(remove(current-time(), 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1, 2, 3, current-time()), 4)[last()]">
+      <x:call>
+        <x:param select="string(.)">remove((1, 2, 3, current-time()), 4)[last()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1, 2, 3, current-time()), 4)[last() - 1]">
+      <x:call>
+        <x:param select="string(.)">remove((1, 2, 3, current-time()), 4)[last() - 1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1, 2, 3, current-time()), 9)[last() - 1]">
+      <x:call>
+        <x:param select="string(.)">remove((1, 2, 3, current-time()), 9)[last() - 1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(remove((1, 2, 3, current-time()), 9)[last() - 10])">
+      <x:call>
+        <x:param select="string(.)">empty(remove((1, 2, 3, current-time()), 9)[last() - 10])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1 to 10, 1.0)">
+      <x:call>
+        <x:param select="string(.)">remove(1 to 10, 1.0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1 to 10, 1.0e0)">
+      <x:call>
+        <x:param select="string(.)">remove(1 to 10, 1.0e0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1 to 10, &#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">remove(1 to 10, "1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1 to 10,exactly-one((1 to 10)[. div 2 = 2]))">
+      <x:call>
+        <x:param select="string(.)">remove(1 to 10,exactly-one((1 to 10)[. div 2 = 2]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(1 to 10,4)">
+      <x:call>
+        <x:param select="string(.)">remove(1 to 10,4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove((1 to 10)[. mod 2 = 0],4)">
+      <x:call>
+        <x:param select="string(.)">remove((1 to 10)[. mod 2 = 0],4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="remove(((1 to 10)[. mod 2 = 0],&#34;blah&#34;,(1 to 10)[. mod 2 = 0]),4)">
+      <x:call>
+        <x:param select="string(.)">remove(((1 to 10)[. mod 2 = 0],"blah",(1 to 10)[. mod 2 = 0]),4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

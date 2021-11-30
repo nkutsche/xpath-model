@@ -1,28 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:static-base-uri("A argument")</x:label>
-      <x:variable name="expr" as="xs:string">fn:static-base-uri("A argument")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>static-base-uri()</x:label>
-      <x:variable name="expr" as="xs:string">static-base-uri()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>static-base-uri(.)</x:label>
-      <x:variable name="expr" as="xs:string">static-base-uri(.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>static-base-uri(1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">static-base-uri(1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(static-base-uri()) then true() else true()</x:label>
-      <x:variable name="expr" as="xs:string">if(static-base-uri()) then true() else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/static-base-uri.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:static-base-uri(&#34;A argument&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:static-base-uri("A argument")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="static-base-uri()">
+      <x:call>
+        <x:param select="string(.)">static-base-uri()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="static-base-uri(.)">
+      <x:call>
+        <x:param select="string(.)">static-base-uri(.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="static-base-uri(1, 2)">
+      <x:call>
+        <x:param select="string(.)">static-base-uri(1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(static-base-uri()) then true() else true()">
+      <x:call>
+        <x:param select="string(.)">if(static-base-uri()) then true() else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

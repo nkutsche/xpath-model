@@ -1,240 +1,407 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("","A Character String")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("","A Character String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("A Character String","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("A Character String","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:compare((),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:compare((),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:compare("",()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:compare("",()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:compare("A Character String",()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:compare("A Character String",()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:compare((),"A Character String"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:compare((),"A Character String"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("AAAAABBBBBCCCCC","BBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("AAAAABBBBBCCCCC","BBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("AAAAABBBBB"," ")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("AAAAABBBBB"," ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(" ","AAAAABBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(" ","AAAAABBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:compare("A","A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:compare("A","A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:compare("A","B"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:compare("A","B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare(xs:string("A"),"A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare(xs:string("A"),"A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("A",xs:string("A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("A",xs:string("A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("A","a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("A","a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("a","A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("a","A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("compare","compare")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("compare","compare")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("comparecompare","compare")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("comparecompare","compare")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("****","***")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("****","***")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("12345","1234")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("12345","1234")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("compare","erapmoc")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("compare","erapmoc")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:compare("a","a","CollationA")</x:label>
-      <x:variable name="expr" as="xs:string">fn:compare("a","a","CollationA")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoint-equal()</x:label>
-      <x:variable name="expr" as="xs:string">codepoint-equal()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoint-equal(())</x:label>
-      <x:variable name="expr" as="xs:string">codepoint-equal(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoint-equal((), (), ())</x:label>
-      <x:variable name="expr" as="xs:string">codepoint-equal((), (), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(codepoint-equal((), "a string"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(codepoint-equal((), "a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(codepoint-equal("a string", ()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(codepoint-equal("a string", ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoint-equal("a string", "a string")</x:label>
-      <x:variable name="expr" as="xs:string">codepoint-equal("a string", "a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(codepoint-equal("cow", "a string"))</x:label>
-      <x:variable name="expr" as="xs:string">not(codepoint-equal("cow", "a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare()</x:label>
-      <x:variable name="expr" as="xs:string">compare()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare(())</x:label>
-      <x:variable name="expr" as="xs:string">compare(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">compare((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(compare((), "a string"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(compare((), "a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(compare("a string", ()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(compare("a string", ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(compare("a string", (), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(compare("a string", (), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("str", "str") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">compare("str", "str") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(compare("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(compare("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("a", "b")</x:label>
-      <x:variable name="expr" as="xs:string">compare("a", "b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("b", "a")</x:label>
-      <x:variable name="expr" as="xs:string">compare("b", "a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("b", "b")</x:label>
-      <x:variable name="expr" as="xs:string">compare("b", "b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("b", ())</x:label>
-      <x:variable name="expr" as="xs:string">compare("b", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare((), "b")</x:label>
-      <x:variable name="expr" as="xs:string">compare((), "b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare((), ())</x:label>
-      <x:variable name="expr" as="xs:string">compare((), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("𐀁", "𐀂", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">compare("𐀁", "𐀂", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("a", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:label>
-      <x:variable name="expr" as="xs:string">compare("a", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare(123, 456)</x:label>
-      <x:variable name="expr" as="xs:string">compare(123, 456)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare(xs:anyURI('http://www.example.com/'), 'http://www.example.com/')</x:label>
-      <x:variable name="expr" as="xs:string">compare(xs:anyURI('http://www.example.com/'), 'http://www.example.com/')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare(xs:untypedAtomic('http://www.example.com/'), 'http://www.example.com/')</x:label>
-      <x:variable name="expr" as="xs:string">compare(xs:untypedAtomic('http://www.example.com/'), 'http://www.example.com/')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("a", "a", ("http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:label>
-      <x:variable name="expr" as="xs:string">compare("a", "a", ("http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:label>
-      <x:variable name="expr" as="xs:string">compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:label>
-      <x:variable name="expr" as="xs:string">compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/compare.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:compare(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;&#34;,&#34;A Character String&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("","A Character String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;A Character String&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("A Character String","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:compare((),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:compare((),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:compare(&#34;&#34;,()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:compare("",()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:compare(&#34;A Character String&#34;,()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:compare("A Character String",()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:compare((),&#34;A Character String&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:compare((),"A Character String"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;AAAAABBBBBCCCCC&#34;,&#34;BBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("AAAAABBBBBCCCCC","BBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;AAAAABBBBB&#34;,&#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("AAAAABBBBB"," ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34; &#34;,&#34;AAAAABBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare(" ","AAAAABBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:compare(&#34;A&#34;,&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:compare("A","A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:compare(&#34;A&#34;,&#34;B&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:compare("A","B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(xs:string(&#34;A&#34;),&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare(xs:string("A"),"A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;A&#34;,xs:string(&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:compare("A",xs:string("A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;A&#34;,&#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("A","a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;a&#34;,&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("a","A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;compare&#34;,&#34;compare&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("compare","compare")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;comparecompare&#34;,&#34;compare&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("comparecompare","compare")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;****&#34;,&#34;***&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("****","***")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;12345&#34;,&#34;1234&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("12345","1234")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;compare&#34;,&#34;erapmoc&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("compare","erapmoc")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:compare(&#34;a&#34;,&#34;a&#34;,&#34;CollationA&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:compare("a","a","CollationA")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoint-equal()">
+      <x:call>
+        <x:param select="string(.)">codepoint-equal()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoint-equal(())">
+      <x:call>
+        <x:param select="string(.)">codepoint-equal(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoint-equal((), (), ())">
+      <x:call>
+        <x:param select="string(.)">codepoint-equal((), (), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(codepoint-equal((), &#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(codepoint-equal((), "a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(codepoint-equal(&#34;a string&#34;, ()))">
+      <x:call>
+        <x:param select="string(.)">empty(codepoint-equal("a string", ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoint-equal(&#34;a string&#34;, &#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">codepoint-equal("a string", "a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(codepoint-equal(&#34;cow&#34;, &#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(codepoint-equal("cow", "a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare()">
+      <x:call>
+        <x:param select="string(.)">compare()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(())">
+      <x:call>
+        <x:param select="string(.)">compare(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare((), (), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(compare((), &#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(compare((), "a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(compare(&#34;a string&#34;, ()))">
+      <x:call>
+        <x:param select="string(.)">empty(compare("a string", ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(compare(&#34;a string&#34;, (), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(compare("a string", (), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;str&#34;, &#34;str&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">compare("str", "str") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(compare(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.example.com/COLLATION/NOT/SUPPORTED&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(compare("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;a&#34;, &#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("a", "b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;b&#34;, &#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("b", "a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;b&#34;, &#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("b", "b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;b&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">compare("b", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare((), &#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare((), "b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare((), ())">
+      <x:call>
+        <x:param select="string(.)">compare((), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;𐀁&#34;, &#34;𐀂&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("𐀁", "𐀂", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;𐀁&#34;, &#34;￰&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;𐀁&#34;, &#34;￰&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("𐀁", "￰", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;a&#34;, &#34;A&#34;, &#34;http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind&#34;)">
+      <x:call>
+        <x:param select="string(.)">compare("a", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(123, 456)">
+      <x:call>
+        <x:param select="string(.)">compare(123, 456)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(xs:anyURI('http://www.example.com/'), 'http://www.example.com/')">
+      <x:call>
+        <x:param select="string(.)">compare(xs:anyURI('http://www.example.com/'), 'http://www.example.com/')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(xs:untypedAtomic('http://www.example.com/'), 'http://www.example.com/')">
+      <x:call>
+        <x:param select="string(.)">compare(xs:untypedAtomic('http://www.example.com/'), 'http://www.example.com/')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;a&#34;, &#34;a&#34;, (&#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, ()))">
+      <x:call>
+        <x:param select="string(.)">compare("a", "a", ("http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;a&#34;, &#34;a&#34;, ((), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;))">
+      <x:call>
+        <x:param select="string(.)">compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="compare(&#34;a&#34;, &#34;a&#34;, ((), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, ()))">
+      <x:call>
+        <x:param select="string(.)">compare("a", "a", ((), "http://www.w3.org/2005/xpath-functions/collation/codepoint", ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

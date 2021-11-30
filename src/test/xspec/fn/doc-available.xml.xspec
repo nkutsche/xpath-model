@@ -1,48 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:doc-available("http://example.com","string 2")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available("http://example.com","string 2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available(xs:integer(2))</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available(xs:integer(2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available(document-uri(/))</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available(document-uri(/))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available("file:///a/b/c/wefdobqciyvdsoihnfcpinads.xml")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available("file:///a/b/c/wefdobqciyvdsoihnfcpinads.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available(())</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available("../prod/ModuleImport/module1-lib.xq")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available("../prod/ModuleImport/module1-lib.xq")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available( () )</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available( () )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc-available( 'collection1' )</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc-available( 'collection1' )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/doc-available.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:doc-available(&#34;http://example.com&#34;,&#34;string 2&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available("http://example.com","string 2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available(xs:integer(2))">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available(xs:integer(2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available(document-uri(/))">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available(document-uri(/))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available(&#34;file:///a/b/c/wefdobqciyvdsoihnfcpinads.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available("file:///a/b/c/wefdobqciyvdsoihnfcpinads.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available(())">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available(&#34;../prod/ModuleImport/module1-lib.xq&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available("../prod/ModuleImport/module1-lib.xq")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available( () )">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available( () )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc-available( 'collection1' )">
+      <x:call>
+        <x:param select="string(.)">fn:doc-available( 'collection1' )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

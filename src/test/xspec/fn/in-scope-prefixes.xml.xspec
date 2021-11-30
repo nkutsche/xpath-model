@@ -1,60 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:in-scope-prefixes(200)</x:label>
-      <x:variable name="expr" as="xs:string">fn:in-scope-prefixes(200)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(/*)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes((//*)[19])</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes((//*)[19])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(/)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(/)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(/*)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(/*)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(/*/p)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(/*/p)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(//*:outer)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(//*:outer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(//*:inner)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(//*:inner)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(//*:magpie)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(//*:magpie)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes(//*:magpie)</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes(//*:magpie)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes()</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>in-scope-prefixes("string", "nodetest", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">in-scope-prefixes("string", "nodetest", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/in-scope-prefixes.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:in-scope-prefixes(200)">
+      <x:call>
+        <x:param select="string(.)">fn:in-scope-prefixes(200)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(/*)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes((//*)[19])">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes((//*)[19])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(/)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(/)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(/*)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(/*)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(/*/p)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(/*/p)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(//*:outer)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(//*:outer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(//*:inner)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(//*:inner)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(//*:magpie)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(//*:magpie)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(//*:magpie)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes(//*:magpie)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes()">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="in-scope-prefixes(&#34;string&#34;, &#34;nodetest&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">in-scope-prefixes("string", "nodetest", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

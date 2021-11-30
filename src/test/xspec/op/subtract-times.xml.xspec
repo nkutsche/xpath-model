@@ -1,140 +1,232 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:time("00:00:00Z") - xs:time("00:00:00Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("00:00:00Z") - xs:time("00:00:00Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:03:35Z") - xs:time("00:00:00Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:03:35Z") - xs:time("00:00:00Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("23:59:59Z") - xs:time("00:00:00Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("23:59:59Z") - xs:time("00:00:00Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("00:00:00Z") - xs:time("08:03:35Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("00:00:00Z") - xs:time("08:03:35Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("00:00:00Z") - xs:time("23:59:59Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("00:00:00Z") - xs:time("23:59:59Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("11:12:00Z") - xs:time("04:00:00Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("11:12:00Z") - xs:time("04:00:00Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("11:00:00-05:00") - xs:time("21:30:00+05:30")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("11:00:00-05:00") - xs:time("21:30:00+05:30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("17:00:00-06:00") - xs:time("08:00:00+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("17:00:00-06:00") - xs:time("08:00:00+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:string(xs:time("13:00:00Z") - xs:time("14:00:00Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:string(xs:time("13:00:00Z") - xs:time("14:00:00Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:string(xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:string(xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:number(xs:time("13:00:00Z") - xs:time("12:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:number(xs:time("13:00:00Z") - xs:time("12:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:time("13:00:00Z") - xs:time("12:00:00Z"))) and fn:string((xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:time("13:00:00Z") - xs:time("12:00:00Z"))) and fn:string((xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z"))) or fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z"))) or fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("23:00:00Z") - xs:time("17:00:00Z")) div (xs:time("13:00:00Z") - xs:time("10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("23:00:00Z") - xs:time("17:00:00Z")) div (xs:time("13:00:00Z") - xs:time("10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:time("17:00:00Z") - xs:time("13:00:00Z"))) and (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:time("17:00:00Z") - xs:time("13:00:00Z"))) and (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("13:00:00Z") - xs:time("17:00:00Z")) eq xs:dayTimeDuration("P20DT01H02M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) eq xs:dayTimeDuration("P20DT01H02M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ne xs:dayTimeDuration("P10DT01H01M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ne xs:dayTimeDuration("P10DT01H01M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("13:00:00Z") - xs:time("17:00:00Z")) le xs:dayTimeDuration("P10DT02H10M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) le xs:dayTimeDuration("P10DT02H10M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ge xs:dayTimeDuration("P17DT10H02M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ge xs:dayTimeDuration("P17DT10H02M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:12:32") - xs:time("18:12:32") eq xs:dayTimeDuration("-PT10H")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:12:32") - xs:time("18:12:32") eq xs:dayTimeDuration("-PT10H")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:12:32") - xs:time("08:12:32") eq xs:dayTimeDuration("PT0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:12:32") - xs:time("08:12:32") eq xs:dayTimeDuration("PT0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P3D") - xs:time("08:01:23")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P3D") - xs:time("08:01:23")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P3D") - xs:date("1999-08-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P3D") - xs:date("1999-08-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:01:23") + xs:time("08:01:23")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:01:23") + xs:time("08:01:23")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:01:23") * xs:time("08:01:23")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:01:23") * xs:time("08:01:23")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:01:23") div xs:time("08:01:23")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:01:23") div xs:time("08:01:23")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("08:01:23") mod xs:time("08:01:23")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("08:01:23") mod xs:time("08:01:23")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("12:00:00+01:00") - xs:time("12:00:00") - implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("12:00:00+01:00") - xs:time("12:00:00") - implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("12:00:00") - xs:time("12:00:00+01:00") + implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("12:00:00") - xs:time("12:00:00+01:00") + implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-time-to-timezone(xs:time("12:00:00")) - fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) + implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-time-to-timezone(xs:time("12:00:00")) - fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) + implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) - fn:adjust-time-to-timezone(xs:time("12:00:00")) - implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) - fn:adjust-time-to-timezone(xs:time("12:00:00")) - implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/subtract-times.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:time(&#34;00:00:00Z&#34;) - xs:time(&#34;00:00:00Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("00:00:00Z") - xs:time("00:00:00Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:03:35Z&#34;) - xs:time(&#34;00:00:00Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:03:35Z") - xs:time("00:00:00Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;23:59:59Z&#34;) - xs:time(&#34;00:00:00Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("23:59:59Z") - xs:time("00:00:00Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;00:00:00Z&#34;) - xs:time(&#34;08:03:35Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("00:00:00Z") - xs:time("08:03:35Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;00:00:00Z&#34;) - xs:time(&#34;23:59:59Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("00:00:00Z") - xs:time("23:59:59Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;11:12:00Z&#34;) - xs:time(&#34;04:00:00Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("11:12:00Z") - xs:time("04:00:00Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;11:00:00-05:00&#34;) - xs:time(&#34;21:30:00+05:30&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("11:00:00-05:00") - xs:time("21:30:00+05:30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;17:00:00-06:00&#34;) - xs:time(&#34;08:00:00+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("17:00:00-06:00") - xs:time("08:00:00+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:string(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;14:00:00Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:string(xs:time("13:00:00Z") - xs:time("14:00:00Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:string(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;10:00:00Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:string(xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:number(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;12:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:number(xs:time("13:00:00Z") - xs:time("12:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:time("13:00:00Z") - xs:time("17:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;12:00:00Z&#34;))) and fn:string((xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;10:00:00Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:time("13:00:00Z") - xs:time("12:00:00Z"))) and fn:string((xs:time("13:00:00Z") - xs:time("10:00:00Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;))) or fn:string((xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z"))) or fn:string((xs:time("13:00:00Z") - xs:time("17:00:00Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;23:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)) div (xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:time("23:00:00Z") - xs:time("17:00:00Z")) div (xs:time("13:00:00Z") - xs:time("10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:time(&#34;17:00:00Z&#34;) - xs:time(&#34;13:00:00Z&#34;))) and (fn:true())">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:time("17:00:00Z") - xs:time("13:00:00Z"))) and (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)) eq xs:dayTimeDuration(&#34;P20DT01H02M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) eq xs:dayTimeDuration("P20DT01H02M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)) ne xs:dayTimeDuration(&#34;P10DT01H01M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ne xs:dayTimeDuration("P10DT01H01M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)) le xs:dayTimeDuration(&#34;P10DT02H10M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) le xs:dayTimeDuration("P10DT02H10M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:time(&#34;13:00:00Z&#34;) - xs:time(&#34;17:00:00Z&#34;)) ge xs:dayTimeDuration(&#34;P17DT10H02M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:time("13:00:00Z") - xs:time("17:00:00Z")) ge xs:dayTimeDuration("P17DT10H02M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:12:32&#34;) - xs:time(&#34;18:12:32&#34;) eq xs:dayTimeDuration(&#34;-PT10H&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:12:32") - xs:time("18:12:32") eq xs:dayTimeDuration("-PT10H")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:12:32&#34;) - xs:time(&#34;08:12:32&#34;) eq xs:dayTimeDuration(&#34;PT0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:12:32") - xs:time("08:12:32") eq xs:dayTimeDuration("PT0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P3D&#34;) - xs:time(&#34;08:01:23&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P3D") - xs:time("08:01:23")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P3D&#34;) - xs:date(&#34;1999-08-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P3D") - xs:date("1999-08-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:01:23&#34;) + xs:time(&#34;08:01:23&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:01:23") + xs:time("08:01:23")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:01:23&#34;) * xs:time(&#34;08:01:23&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:01:23") * xs:time("08:01:23")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:01:23&#34;) div xs:time(&#34;08:01:23&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:01:23") div xs:time("08:01:23")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;08:01:23&#34;) mod xs:time(&#34;08:01:23&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("08:01:23") mod xs:time("08:01:23")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;12:00:00+01:00&#34;) - xs:time(&#34;12:00:00&#34;) - implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:time("12:00:00+01:00") - xs:time("12:00:00") - implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;12:00:00&#34;) - xs:time(&#34;12:00:00+01:00&#34;) + implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:time("12:00:00") - xs:time("12:00:00+01:00") + implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-time-to-timezone(xs:time(&#34;12:00:00&#34;)) - fn:adjust-time-to-timezone(xs:time(&#34;08:00:00+05:00&#34;), xs:dayTimeDuration(&#34;PT1H&#34;)) + implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-time-to-timezone(xs:time("12:00:00")) - fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) + implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-time-to-timezone(xs:time(&#34;08:00:00+05:00&#34;), xs:dayTimeDuration(&#34;PT1H&#34;)) - fn:adjust-time-to-timezone(xs:time(&#34;12:00:00&#34;)) - implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-time-to-timezone(xs:time("08:00:00+05:00"), xs:dayTimeDuration("PT1H")) - fn:adjust-time-to-timezone(xs:time("12:00:00")) - implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

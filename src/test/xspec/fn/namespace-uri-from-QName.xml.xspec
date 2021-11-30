@@ -1,100 +1,162 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/derivQN)[1]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/derivQN)[1]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrDerivQN)[1]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrDerivQN)[1]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(/root[1]/@attrDerivQN)))) instance of xs:anyURI ?</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(/root[1]/@attrDerivQN)))) instance of xs:anyURI ?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(())</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(((),()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(((),()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName("")</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName("")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(/root/elemQN)</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(/root/elemQN)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName()</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-qname((/root/elemQN)[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-qname((/root/elemQN)[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-Qname((/root/elemQN)[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-Qname((/root/elemQN)[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespaceURIfromQName((/root/elemQN)[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespaceURIfromQName((/root/elemQN)[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(xs:integer("100"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(xs:integer("100"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(xs:time("12:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(xs:time("12:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(data((/root/elemQN))[1]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(data((/root/elemQN))[1]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName( if( true() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN[1])))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN))[1])) )</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName( if( true() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN[1])))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN))[1])) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:namespace-uri-from-QName( if( false() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))) )</x:label>
-      <x:variable name="expr" as="xs:string">fn:namespace-uri-from-QName( if( false() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>namespace-uri-from-QName()</x:label>
-      <x:variable name="expr" as="xs:string">namespace-uri-from-QName()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>namespace-uri-from-QName(1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">namespace-uri-from-QName(1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(namespace-uri-from-QName( () ))</x:label>
-      <x:variable name="expr" as="xs:string">empty(namespace-uri-from-QName( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>namespace-uri-from-QName( QName("example.com/", "pre:lname")) eq xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">namespace-uri-from-QName( QName("example.com/", "pre:lname")) eq xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>namespace-uri-from-QName( QName("example.com/", "pre:lname")) instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">namespace-uri-from-QName( QName("example.com/", "pre:lname")) instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/namespace-uri-from-QName.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/elemQN)[1]))))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/@attrQN)[1]))))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/derivQN)[1]))))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/derivQN)[1]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/@attrDerivQN)[1]))))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrDerivQN)[1]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string(/root[1]/@attrDerivQN)))) instance of xs:anyURI ?">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(/root[1]/@attrDerivQN)))) instance of xs:anyURI ?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(())">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(((),()))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(((),()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName("")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(/root/elemQN)">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(/root/elemQN)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName()">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-qname((/root/elemQN)[1])">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-qname((/root/elemQN)[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-Qname((/root/elemQN)[1])">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-Qname((/root/elemQN)[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespaceURIfromQName((/root/elemQN)[1])">
+      <x:call>
+        <x:param select="string(.)">fn:namespaceURIfromQName((/root/elemQN)[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(xs:integer(&#34;100&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(xs:integer("100"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(xs:time(&#34;12:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(xs:time("12:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName(fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string(data((/root/elemQN))[1]))))">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName(fn:QName("http://www.example.com/urn", exactly-one(xs:string(data((/root/elemQN))[1]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName( if( true() ) then fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/elemQN[1])))) else fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/@attrQN))[1])) )">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName( if( true() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN[1])))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN))[1])) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:namespace-uri-from-QName( if( false() ) then fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/elemQN)[1]))) else fn:QName(&#34;http://www.example.com/urn&#34;, exactly-one(xs:string((/root/@attrQN)[1]))) )">
+      <x:call>
+        <x:param select="string(.)">fn:namespace-uri-from-QName( if( false() ) then fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/elemQN)[1]))) else fn:QName("http://www.example.com/urn", exactly-one(xs:string((/root/@attrQN)[1]))) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="namespace-uri-from-QName()">
+      <x:call>
+        <x:param select="string(.)">namespace-uri-from-QName()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="namespace-uri-from-QName(1, 2)">
+      <x:call>
+        <x:param select="string(.)">namespace-uri-from-QName(1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(namespace-uri-from-QName( () ))">
+      <x:call>
+        <x:param select="string(.)">empty(namespace-uri-from-QName( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="namespace-uri-from-QName( QName(&#34;example.com/&#34;, &#34;pre:lname&#34;)) eq xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">namespace-uri-from-QName( QName("example.com/", "pre:lname")) eq xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="namespace-uri-from-QName( QName(&#34;example.com/&#34;, &#34;pre:lname&#34;)) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">namespace-uri-from-QName( QName("example.com/", "pre:lname")) instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

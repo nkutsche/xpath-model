@@ -1,28 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:string(xs:double("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(xs:double("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 div xs:double("-0") ne 1 div xs:double("0")</x:label>
-      <x:variable name="expr" as="xs:string">1 div xs:double("-0") ne 1 div xs:double("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exists(xs:double("+INF"))</x:label>
-      <x:variable name="expr" as="xs:string">exists(xs:double("+INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exists(xs:double("+INF"))</x:label>
-      <x:variable name="expr" as="xs:string">exists(xs:double("+INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("2.2250738585072012e-308")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("2.2250738585072012e-308")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/double.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:string(xs:double(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(xs:double("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 div xs:double(&#34;-0&#34;) ne 1 div xs:double(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">1 div xs:double("-0") ne 1 div xs:double("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exists(xs:double(&#34;+INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">exists(xs:double("+INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exists(xs:double(&#34;+INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">exists(xs:double("+INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;2.2250738585072012e-308&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("2.2250738585072012e-308")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

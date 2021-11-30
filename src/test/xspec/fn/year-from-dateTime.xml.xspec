@@ -1,116 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1996-04-07T01:40:52Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1996-04-07T01:40:52Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("2030-12-31T23:59:59Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("2030-12-31T23:59:59Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1999-05-31T13:20:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1999-05-31T13:20:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1999-05-31T21:30:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1999-05-31T21:30:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1999-12-31T19:20:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1999-12-31T19:20:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:avg((fn:year-from-dateTime(xs:dateTime("1996-12-31T12:00:00Z")),fn:year-from-dateTime(xs:dateTime("2000-12-31T12:00:00Z"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:avg((fn:year-from-dateTime(xs:dateTime("1996-12-31T12:00:00Z")),fn:year-from-dateTime(xs:dateTime("2000-12-31T12:00:00Z"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:year-from-dateTime(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:year-from-dateTime(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("-1999-05-31T00:20:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("-1999-05-31T00:20:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("0001-05-31T23:20:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("0001-05-31T23:20:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) + fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) + fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) - fn:year-from-dateTime(xs:dateTime("1969-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) - fn:year-from-dateTime(xs:dateTime("1969-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z")) * fn:year-from-dateTime(xs:dateTime("0002-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z")) * fn:year-from-dateTime(xs:dateTime("0002-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1000-01-01T02:00:00Z")) div fn:year-from-dateTime(xs:dateTime("0050-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1000-01-01T02:00:00Z")) div fn:year-from-dateTime(xs:dateTime("0050-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) idiv fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) idiv fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) mod fn:year-from-dateTime(xs:dateTime("1970-01-01T03:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) mod fn:year-from-dateTime(xs:dateTime("1970-01-01T03:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">+fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">-fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) eq fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) eq fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) ne fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) ne fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) le fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) le fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z")) ge fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z")) ge fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-dateTime()</x:label>
-      <x:variable name="expr" as="xs:string">year-from-dateTime()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-dateTime((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">year-from-dateTime((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(year-from-dateTime(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(year-from-dateTime(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-dateTime(()) instance of xs:integer?</x:label>
-      <x:variable name="expr" as="xs:string">year-from-dateTime(()) instance of xs:integer?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-dateTime(xs:dateTime("2001-02-03T08:23:12.43")) eq 2001</x:label>
-      <x:variable name="expr" as="xs:string">year-from-dateTime(xs:dateTime("2001-02-03T08:23:12.43")) eq 2001</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/year-from-dateTime.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T00:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1996-04-07T01:40:52Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1996-04-07T01:40:52Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;2030-12-31T23:59:59Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("2030-12-31T23:59:59Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1999-05-31T13:20:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1999-05-31T13:20:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1999-05-31T21:30:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1999-05-31T21:30:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1999-12-31T19:20:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1999-12-31T19:20:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:avg((fn:year-from-dateTime(xs:dateTime(&#34;1996-12-31T12:00:00Z&#34;)),fn:year-from-dateTime(xs:dateTime(&#34;2000-12-31T12:00:00Z&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:avg((fn:year-from-dateTime(xs:dateTime("1996-12-31T12:00:00Z")),fn:year-from-dateTime(xs:dateTime("2000-12-31T12:00:00Z"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:year-from-dateTime(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:year-from-dateTime(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;-1999-05-31T00:20:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("-1999-05-31T00:20:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;0001-05-31T23:20:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("0001-05-31T23:20:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T00:00:00Z&#34;)) + fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) + fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T00:00:00Z&#34;)) - fn:year-from-dateTime(xs:dateTime(&#34;1969-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T00:00:00Z")) - fn:year-from-dateTime(xs:dateTime("1969-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T02:00:00Z&#34;)) * fn:year-from-dateTime(xs:dateTime(&#34;0002-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z")) * fn:year-from-dateTime(xs:dateTime("0002-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1000-01-01T02:00:00Z&#34;)) div fn:year-from-dateTime(xs:dateTime(&#34;0050-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1000-01-01T02:00:00Z")) div fn:year-from-dateTime(xs:dateTime("0050-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;)) idiv fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T02:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) idiv fn:year-from-dateTime(xs:dateTime("1970-01-01T02:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;)) mod fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T03:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) mod fn:year-from-dateTime(xs:dateTime("1970-01-01T03:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="+fn:year-from-dateTime(xs:dateTime(&#34;1971-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">+fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">-fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;)) eq fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) eq fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;)) ne fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) ne fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;)) le fn:year-from-dateTime(xs:dateTime(&#34;1971-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z")) le fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-dateTime(xs:dateTime(&#34;1971-01-01T10:00:00Z&#34;)) ge fn:year-from-dateTime(xs:dateTime(&#34;1970-01-01T10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-dateTime(xs:dateTime("1971-01-01T10:00:00Z")) ge fn:year-from-dateTime(xs:dateTime("1970-01-01T10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-dateTime()">
+      <x:call>
+        <x:param select="string(.)">year-from-dateTime()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-dateTime((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">year-from-dateTime((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(year-from-dateTime(()))">
+      <x:call>
+        <x:param select="string(.)">empty(year-from-dateTime(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-dateTime(()) instance of xs:integer?">
+      <x:call>
+        <x:param select="string(.)">year-from-dateTime(()) instance of xs:integer?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-dateTime(xs:dateTime(&#34;2001-02-03T08:23:12.43&#34;)) eq 2001">
+      <x:call>
+        <x:param select="string(.)">year-from-dateTime(xs:dateTime("2001-02-03T08:23:12.43")) eq 2001</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

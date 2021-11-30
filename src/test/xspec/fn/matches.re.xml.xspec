@@ -1,42 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>let $d := codepoints-to-string(13) return (
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/matches.re.xml"><x:call function="nk:xpath-model"/><x:scenario label="let $d := codepoints-to-string(13) return (&#xA;        matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r\ra\r\rb\r\r$'),&#xA;        matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r+a\r+b\r+$'),&#xA;        matches($d||$d||'b'||$d||$d||'a'||$d||$d,          '^\r\ra\r\rb\r\r$'),&#xA;        matches($d||$d||'a'||$d||$d||'b'||$d||'&#xA;',     '^\r\ra\r\rb\r\r$'))">
+      <x:call>
+        <x:param select="string(.)">let $d := codepoints-to-string(13) return (
         matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r\ra\r\rb\r\r$'),
         matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r+a\r+b\r+$'),
         matches($d||$d||'b'||$d||$d||'a'||$d||$d,          '^\r\ra\r\rb\r\r$'),
         matches($d||$d||'a'||$d||$d||'b'||$d||'
-',     '^\r\ra\r\rb\r\r$'))</x:label>
-      <x:variable name="expr" as="xs:string">let $d := codepoints-to-string(13) return (
-        matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r\ra\r\rb\r\r$'),
-        matches($d||$d||'a'||$d||$d||'b'||$d||$d,          '^\r+a\r+b\r+$'),
-        matches($d||$d||'b'||$d||$d||'a'||$d||$d,          '^\r\ra\r\rb\r\r$'),
-        matches($d||$d||'a'||$d||$d||'b'||$d||'
-',     '^\r\ra\r\rb\r\r$'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>let $d := codepoints-to-string(13) return (
+',     '^\r\ra\r\rb\r\r$'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="let $d := codepoints-to-string(13) return (&#xA;        matches('a'||$d||'&#xA;b', '^(?:a\r\nb)$'), matches('ab', '^(?:a\r\nb)$'))">
+      <x:call>
+        <x:param select="string(.)">let $d := codepoints-to-string(13) return (
         matches('a'||$d||'
-b', '^(?:a\r\nb)$'), matches('ab', '^(?:a\r\nb)$'))</x:label>
-      <x:variable name="expr" as="xs:string">let $d := codepoints-to-string(13) return (
-        matches('a'||$d||'
-b', '^(?:a\r\nb)$'), matches('ab', '^(?:a\r\nb)$'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>let $d := codepoints-to-string(13) return (
+b', '^(?:a\r\nb)$'), matches('ab', '^(?:a\r\nb)$'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="let $d := codepoints-to-string(13) return (&#xA;         (every $s in tokenize('&#xA;'||$d||'a&#xA;'||$d||'b', ',') satisfies (matches($s, '^(?:\n\ra\n\rb)$'))) and&#xA;         (every $s in tokenize('', ',') satisfies not(matches($s, '^(?:\n\ra\n\rb)$'))))">
+      <x:call>
+        <x:param select="string(.)">let $d := codepoints-to-string(13) return (
          (every $s in tokenize('
 '||$d||'a
 '||$d||'b', ',') satisfies (matches($s, '^(?:\n\ra\n\rb)$'))) and
-         (every $s in tokenize('', ',') satisfies not(matches($s, '^(?:\n\ra\n\rb)$'))))</x:label>
-      <x:variable name="expr" as="xs:string">let $d := codepoints-to-string(13) return (
-         (every $s in tokenize('
-'||$d||'a
-'||$d||'b', ',') satisfies (matches($s, '^(?:\n\ra\n\rb)$'))) and
-         (every $s in tokenize('', ',') satisfies not(matches($s, '^(?:\n\ra\n\rb)$'))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+         (every $s in tokenize('', ',') satisfies not(matches($s, '^(?:\n\ra\n\rb)$'))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

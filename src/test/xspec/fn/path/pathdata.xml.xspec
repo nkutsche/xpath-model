@@ -1,748 +1,1281 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("-1873914410"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("-1873914410"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("2147483647"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("2147483647"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("830993497117024304"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("830993497117024304"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("617375191608514839"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("617375191608514839"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("-47175562203048468"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("-47175562203048468"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("44633"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("44633"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("65535"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("65535"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-297014075999096793"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-297014075999096793"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("52704602390610033"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("52704602390610033"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("130747108607674654"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("130747108607674654"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("184467440737095516"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("184467440737095516"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("-475688437271870490"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("-475688437271870490"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("303884545991464527"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("303884545991464527"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("-5324"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("-5324"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("32767"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("32767"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:decimal("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:decimal("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("2"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("2"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("-2"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("-2"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("2"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("2"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("-2"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("-2"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("-NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("-NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:string("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:string("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:string("hello"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:string("hello"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:boolean("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:boolean("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:boolean("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:boolean("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:boolean(fn:true()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:boolean(fn:true()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:boolean(fn:false()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:boolean(fn:false()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:date("2002-10-09"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:date("2002-10-09"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:time("13:20:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:time("13:20:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:dateTime("2002-10-10T12:00:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:dateTime("2002-10-10T12:00:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:anyURI("www.examples.org"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:anyURI("www.examples.org"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs()</x:label>
-      <x:variable name="expr" as="xs:string">abs()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">abs(1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(abs(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(abs(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(10.5) eq 10.5</x:label>
-      <x:variable name="expr" as="xs:string">abs(10.5) eq 10.5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(-10.5) eq 10.5</x:label>
-      <x:variable name="expr" as="xs:string">abs(-10.5) eq 10.5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs("a string")</x:label>
-      <x:variable name="expr" as="xs:string">abs("a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:byte(-4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:byte(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedInt(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedInt(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedByte(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedByte(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger(4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger(4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonPositiveInteger(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonPositiveInteger(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:negativeInteger(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:negativeInteger(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:long(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:long(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:int(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:int(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:short(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:short(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:byte(-4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:byte(-4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:nonNegativeInteger(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:nonNegativeInteger(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedLong(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedLong(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedInt(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedInt(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedShort(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedShort(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:unsignedByte(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:unsignedByte(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:positiveInteger(4)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:positiveInteger(4)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(1.1) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(1.1) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(1e1) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(1e1) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float(1)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float(1)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float(1)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float(1)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(1.1) instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(1.1) instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(1e1) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(1e1) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float(1)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float(1)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:integer(1)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:integer(1)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:unsignedShort(.)) instance of xs:unsignedShort</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:unsignedShort(.)) instance of xs:unsignedShort</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:unsignedLong(.)) instance of xs:unsignedLong</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:unsignedLong(.)) instance of xs:unsignedLong</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:unsignedInt(.)) instance of xs:unsignedInt</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:unsignedInt(.)) instance of xs:unsignedInt</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:unsignedByte(.)) instance of xs:unsignedByte</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:unsignedByte(.)) instance of xs:unsignedByte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:positiveInteger(.)) instance of xs:positiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:positiveInteger(.)) instance of xs:positiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:nonPositiveInteger(.)) instance of
-         xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:nonPositiveInteger(.)) instance of
-         xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:nonNegativeInteger(.)) instance of
-         xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:nonNegativeInteger(.)) instance of
-         xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:negativeInteger(.)) instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:negativeInteger(.)) instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:long(.)) instance of xs:long</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:long(.)) instance of xs:long</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:int(.)) instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:int(.)) instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:short(.)) instance of xs:short</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:short(.)) instance of xs:short</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>abs(xs:byte(.)) instance of xs:byte</x:label>
-      <x:variable name="expr" as="xs:string">abs(xs:byte(.)) instance of xs:byte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:float("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:float("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:abs(xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:abs(xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join(for $x in (1, xs:decimal(2), xs:float(3), xs:double(4)) return 
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/path/pathdata.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:abs(xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;-1873914410&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("-1873914410"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;2147483647&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("2147483647"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;830993497117024304&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("830993497117024304"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;617375191608514839&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("617375191608514839"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;-47175562203048468&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("-47175562203048468"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;44633&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("44633"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;65535&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("65535"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-297014075999096793&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-297014075999096793"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;52704602390610033&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("52704602390610033"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;130747108607674654&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("130747108607674654"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;184467440737095516&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("184467440737095516"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;-475688437271870490&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("-475688437271870490"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;303884545991464527&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("303884545991464527"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;-5324&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("-5324"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;32767&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("32767"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:decimal(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:decimal("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;2&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("2"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;-2&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("-2"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;2&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("2"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;-2&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("-2"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;-NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("-NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:string(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:string("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:string(&#34;hello&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:string("hello"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:boolean(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:boolean("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:boolean(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:boolean("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:boolean(fn:true()))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:boolean(fn:true()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:boolean(fn:false()))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:boolean(fn:false()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:date(&#34;2002-10-09&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:date("2002-10-09"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:time(&#34;13:20:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:time("13:20:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:dateTime(&#34;2002-10-10T12:00:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:dateTime("2002-10-10T12:00:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:anyURI(&#34;www.examples.org&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:anyURI("www.examples.org"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs()">
+      <x:call>
+        <x:param select="string(.)">abs()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(1, 2)">
+      <x:call>
+        <x:param select="string(.)">abs(1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(abs(()))">
+      <x:call>
+        <x:param select="string(.)">empty(abs(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(10.5) eq 10.5">
+      <x:call>
+        <x:param select="string(.)">abs(10.5) eq 10.5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(-10.5) eq 10.5">
+      <x:call>
+        <x:param select="string(.)">abs(-10.5) eq 10.5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(&#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">abs("a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:byte(-4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:byte(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedInt(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedInt(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedByte(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedByte(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(4))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger(4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonPositiveInteger(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonPositiveInteger(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:negativeInteger(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:negativeInteger(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:long(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:long(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:int(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:int(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:short(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:short(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:byte(-4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:byte(-4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:nonNegativeInteger(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:nonNegativeInteger(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedLong(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedLong(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedInt(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedInt(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedShort(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedShort(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:unsignedByte(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:unsignedByte(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:positiveInteger(4)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:positiveInteger(4)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(1.1) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(1.1) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(1e1) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(1e1) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(1)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float(1)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(1)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float(1)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(1.1) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">fn:abs(1.1) instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(1e1) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">fn:abs(1e1) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(1)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float(1)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:integer(1)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:integer(1)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:unsignedShort(.)) instance of xs:unsignedShort">
+      <x:call>
+        <x:param select="string(.)">abs(xs:unsignedShort(.)) instance of xs:unsignedShort</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:unsignedLong(.)) instance of xs:unsignedLong">
+      <x:call>
+        <x:param select="string(.)">abs(xs:unsignedLong(.)) instance of xs:unsignedLong</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:unsignedInt(.)) instance of xs:unsignedInt">
+      <x:call>
+        <x:param select="string(.)">abs(xs:unsignedInt(.)) instance of xs:unsignedInt</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:unsignedByte(.)) instance of xs:unsignedByte">
+      <x:call>
+        <x:param select="string(.)">abs(xs:unsignedByte(.)) instance of xs:unsignedByte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:positiveInteger(.)) instance of xs:positiveInteger">
+      <x:call>
+        <x:param select="string(.)">abs(xs:positiveInteger(.)) instance of xs:positiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:nonPositiveInteger(.)) instance of&#xA;         xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">abs(xs:nonPositiveInteger(.)) instance of
+         xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:nonNegativeInteger(.)) instance of&#xA;         xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">abs(xs:nonNegativeInteger(.)) instance of
+         xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:negativeInteger(.)) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">abs(xs:negativeInteger(.)) instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:long(.)) instance of xs:long">
+      <x:call>
+        <x:param select="string(.)">abs(xs:long(.)) instance of xs:long</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:int(.)) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">abs(xs:int(.)) instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:short(.)) instance of xs:short">
+      <x:call>
+        <x:param select="string(.)">abs(xs:short(.)) instance of xs:short</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="abs(xs:byte(.)) instance of xs:byte">
+      <x:call>
+        <x:param select="string(.)">abs(xs:byte(.)) instance of xs:byte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:float(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:float("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:abs(xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:abs(xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join(for $x in (1, xs:decimal(2), xs:float(3), xs:double(4)) return &#xA;           if ((abs($x)) instance of xs:integer) then &#34;integer&#34; &#xA;           else if ((abs($x)) instance of xs:decimal) then &#34;decimal&#34; &#xA;           else if ((abs($x)) instance of xs:float) then &#34;float&#34;&#xA;           else if ((abs($x)) instance of xs:double) then &#34;double&#34; else error(), &#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">string-join(for $x in (1, xs:decimal(2), xs:float(3), xs:double(4)) return 
            if ((abs($x)) instance of xs:integer) then "integer" 
            else if ((abs($x)) instance of xs:decimal) then "decimal" 
            else if ((abs($x)) instance of xs:float) then "float"
-           else if ((abs($x)) instance of xs:double) then "double" else error(), " ")</x:label>
-      <x:variable name="expr" as="xs:string">string-join(for $x in (1, xs:decimal(2), xs:float(3), xs:double(4)) return 
-           if ((abs($x)) instance of xs:integer) then "integer" 
-           else if ((abs($x)) instance of xs:decimal) then "decimal" 
-           else if ((abs($x)) instance of xs:float) then "float"
-           else if ((abs($x)) instance of xs:double) then "double" else error(), " ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+           else if ((abs($x)) instance of xs:double) then "double" else error(), " ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

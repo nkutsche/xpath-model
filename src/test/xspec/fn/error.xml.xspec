@@ -1,360 +1,617 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:error()</x:label>
-      <x:variable name="expr" as="xs:string">fn:error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'), 'Does not apply because salary is too high')</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'), 'Does not apply because salary is too high')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error('Wrong Argument Type')</x:label>
-      <x:variable name="expr" as="xs:string">fn:error('Wrong Argument Type')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOCH0004'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOCH0004'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error((), 'err:FOER0000')</x:label>
-      <x:variable name="expr" as="xs:string">fn:error((), 'err:FOER0000')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error((), 'err:FOER0000','error raised by this test by setting first argument to empty sequence')</x:label>
-      <x:variable name="expr" as="xs:string">fn:error((), 'err:FOER0000','error raised by this test by setting first argument to empty sequence')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FODT0001'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FODT0001'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FORG0009'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FORG0009'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOTY0012'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOTY0012'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SENR0001'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SENR0001'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0004'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0004'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0009'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0009'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0010'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0010'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0016'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0016'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0003'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0003'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0005'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0005'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0006'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0006'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0008'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0008'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0012'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0012'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0014'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0014'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0007'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0007'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0011'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0011'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPDY0002'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPDY0002'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0010'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0010'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0080'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0080'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPTY0018'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPTY0018'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0027'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0027'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0061'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0061'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0084'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0084'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0009'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0009'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0012'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0012'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0013'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0013'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0016'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0016'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0035'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0035'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0036'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0036'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0046'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0046'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0047'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0047'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0048'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0048'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0054'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0054'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0055'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0055'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0057'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0057'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0058'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0058'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0060'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0060'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0073'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0073'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0075'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0075'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0076'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0076'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0079'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0079'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0087'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0087'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQTY0030'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQTY0030'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(true()) then true() else error()</x:label>
-      <x:variable name="expr" as="xs:string">if(true()) then true() else error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(true()) then true() else error(QName("", "local"), "description")</x:label>
-      <x:variable name="expr" as="xs:string">if(true()) then true() else error(QName("", "local"), "description")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error(QName("", "local"), "description", "object", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">error(QName("", "local"), "description", "object", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error(QName('http://www.w3.org/2005/xqt-errors', 'err:FOER0000'))</x:label>
-      <x:variable name="expr" as="xs:string">error(QName('http://www.w3.org/2005/xqt-errors', 'err:FOER0000'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error((), "description")</x:label>
-      <x:variable name="expr" as="xs:string">error((), "description")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(false()) then error((), "description") else true()</x:label>
-      <x:variable name="expr" as="xs:string">if(false()) then error((), "description") else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error()</x:label>
-      <x:variable name="expr" as="xs:string">error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error(QName("", "XPDY6666"), "description", "error object")</x:label>
-      <x:variable name="expr" as="xs:string">error(QName("", "XPDY6666"), "description", "error object")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one((true(), error()))</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one((true(), error()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, error())[2]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, error())[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error(QName("", "FOO"), "DESCRIPTION")</x:label>
-      <x:variable name="expr" as="xs:string">error(QName("", "FOO"), "DESCRIPTION")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() + fn:error())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() + fn:error())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error() + ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error() + ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() eq fn:error())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() eq fn:error())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error() eq ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error() eq ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error() = ()</x:label>
-      <x:variable name="expr" as="xs:string">fn:error() = ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() = fn:error()</x:label>
-      <x:variable name="expr" as="xs:string">() = fn:error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error() is ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error() is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() is fn:error())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() is fn:error())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error() and false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:error() and false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() and fn:error()</x:label>
-      <x:variable name="expr" as="xs:string">false() and fn:error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error() or true()</x:label>
-      <x:variable name="expr" as="xs:string">fn:error() or true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() or fn:error()</x:label>
-      <x:variable name="expr" as="xs:string">true() or fn:error()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in fn:error() return true()</x:label>
-      <x:variable name="expr" as="xs:string">for $x in fn:error() return true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (fn:error()) then true() else true()</x:label>
-      <x:variable name="expr" as="xs:string">if (fn:error()) then true() else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>some $x in fn:error() satisfies false()</x:label>
-      <x:variable name="expr" as="xs:string">some $x in fn:error() satisfies false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>every $x in fn:error() satisfies true()</x:label>
-      <x:variable name="expr" as="xs:string">every $x in fn:error() satisfies true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:error() instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">fn:error() instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error()[2])</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error()[2])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error()[false()])</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error()[false()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1 div 0)[false()])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1 div 0)[false()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty( if (current-date() lt xs:date('2009-01-01')) then fn:error() else ())</x:label>
-      <x:variable name="expr" as="xs:string">empty( if (current-date() lt xs:date('2009-01-01')) then fn:error() else ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty( if (current-date() lt xs:date('2009-01-01')) then () else fn:error())</x:label>
-      <x:variable name="expr" as="xs:string">empty( if (current-date() lt xs:date('2009-01-01')) then () else fn:error())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:remove( fn:error(), 1))</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:remove( fn:error(), 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:subsequence( fn:error(), 2, 2))</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:subsequence( fn:error(), 2, 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error() except fn:error() )</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error() except fn:error() )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:error() intersect fn:error() )</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:error() intersect fn:error() )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty( fn:zero-or-one(fn:error()) )</x:label>
-      <x:variable name="expr" as="xs:string">empty( fn:zero-or-one(fn:error()) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty( fn:error() treat as empty-sequence() )</x:label>
-      <x:variable name="expr" as="xs:string">empty( fn:error() treat as empty-sequence() )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/error.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:error()">
+      <x:call>
+        <x:param select="string(.)">fn:error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'), 'Does not apply because salary is too high')">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.example.com/HR', 'myerr:toohighsal'), 'Does not apply because salary is too high')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error('Wrong Argument Type')">
+      <x:call>
+        <x:param select="string(.)">fn:error('Wrong Argument Type')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOCH0004'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOCH0004'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error((), 'err:FOER0000')">
+      <x:call>
+        <x:param select="string(.)">fn:error((), 'err:FOER0000')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error((), 'err:FOER0000','error raised by this test by setting first argument to empty sequence')">
+      <x:call>
+        <x:param select="string(.)">fn:error((), 'err:FOER0000','error raised by this test by setting first argument to empty sequence')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FODT0001'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FODT0001'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FORG0009'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FORG0009'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOTY0012'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:FOTY0012'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SENR0001'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SENR0001'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0004'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0004'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0009'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0009'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0010'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0010'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0016'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SEPM0016'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0003'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0003'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0005'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0005'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0006'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0006'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0008'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0008'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0012'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0012'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0014'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SERE0014'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0007'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0007'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0011'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:SESU0011'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPDY0002'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPDY0002'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0010'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0010'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0080'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPST0080'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPTY0018'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XPTY0018'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0027'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0027'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0061'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0061'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0084'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQDY0084'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0009'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0009'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0012'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0012'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0013'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0013'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0016'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0016'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0035'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0035'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0036'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0036'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0046'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0046'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0047'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0047'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0048'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0048'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0054'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0054'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0055'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0055'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0057'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0057'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0058'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0058'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0060'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0060'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0073'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0073'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0075'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0075'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0076'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0076'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0079'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0079'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0087'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQST0087'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQTY0030'))">
+      <x:call>
+        <x:param select="string(.)">fn:error(fn:QName('http://www.w3.org/2005/xqt-errors', 'err:XQTY0030'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(true()) then true() else error()">
+      <x:call>
+        <x:param select="string(.)">if(true()) then true() else error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(true()) then true() else error(QName(&#34;&#34;, &#34;local&#34;), &#34;description&#34;)">
+      <x:call>
+        <x:param select="string(.)">if(true()) then true() else error(QName("", "local"), "description")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error(QName(&#34;&#34;, &#34;local&#34;), &#34;description&#34;, &#34;object&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">error(QName("", "local"), "description", "object", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error(QName('http://www.w3.org/2005/xqt-errors', 'err:FOER0000'))">
+      <x:call>
+        <x:param select="string(.)">error(QName('http://www.w3.org/2005/xqt-errors', 'err:FOER0000'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error((), &#34;description&#34;)">
+      <x:call>
+        <x:param select="string(.)">error((), "description")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(false()) then error((), &#34;description&#34;) else true()">
+      <x:call>
+        <x:param select="string(.)">if(false()) then error((), "description") else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error()">
+      <x:call>
+        <x:param select="string(.)">error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error(QName(&#34;&#34;, &#34;XPDY6666&#34;), &#34;description&#34;, &#34;error object&#34;)">
+      <x:call>
+        <x:param select="string(.)">error(QName("", "XPDY6666"), "description", "error object")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one((true(), error()))">
+      <x:call>
+        <x:param select="string(.)">exactly-one((true(), error()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, error())[2]">
+      <x:call>
+        <x:param select="string(.)">(1, 2, error())[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error(QName(&#34;&#34;, &#34;FOO&#34;), &#34;DESCRIPTION&#34;)">
+      <x:call>
+        <x:param select="string(.)">error(QName("", "FOO"), "DESCRIPTION")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() + fn:error())">
+      <x:call>
+        <x:param select="string(.)">empty(() + fn:error())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error() + ())">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error() + ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() eq fn:error())">
+      <x:call>
+        <x:param select="string(.)">empty(() eq fn:error())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error() eq ())">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error() eq ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error() = ()">
+      <x:call>
+        <x:param select="string(.)">fn:error() = ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() = fn:error()">
+      <x:call>
+        <x:param select="string(.)">() = fn:error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error() is ())">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error() is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() is fn:error())">
+      <x:call>
+        <x:param select="string(.)">empty(() is fn:error())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error() and false()">
+      <x:call>
+        <x:param select="string(.)">fn:error() and false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() and fn:error()">
+      <x:call>
+        <x:param select="string(.)">false() and fn:error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error() or true()">
+      <x:call>
+        <x:param select="string(.)">fn:error() or true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() or fn:error()">
+      <x:call>
+        <x:param select="string(.)">true() or fn:error()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in fn:error() return true()">
+      <x:call>
+        <x:param select="string(.)">for $x in fn:error() return true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (fn:error()) then true() else true()">
+      <x:call>
+        <x:param select="string(.)">if (fn:error()) then true() else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="some $x in fn:error() satisfies false()">
+      <x:call>
+        <x:param select="string(.)">some $x in fn:error() satisfies false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="every $x in fn:error() satisfies true()">
+      <x:call>
+        <x:param select="string(.)">every $x in fn:error() satisfies true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:error() instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">fn:error() instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error()[2])">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error()[2])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error()[false()])">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error()[false()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1 div 0)[false()])">
+      <x:call>
+        <x:param select="string(.)">empty((1 div 0)[false()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty( if (current-date() lt xs:date('2009-01-01')) then fn:error() else ())">
+      <x:call>
+        <x:param select="string(.)">empty( if (current-date() lt xs:date('2009-01-01')) then fn:error() else ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty( if (current-date() lt xs:date('2009-01-01')) then () else fn:error())">
+      <x:call>
+        <x:param select="string(.)">empty( if (current-date() lt xs:date('2009-01-01')) then () else fn:error())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:remove( fn:error(), 1))">
+      <x:call>
+        <x:param select="string(.)">empty(fn:remove( fn:error(), 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:subsequence( fn:error(), 2, 2))">
+      <x:call>
+        <x:param select="string(.)">empty(fn:subsequence( fn:error(), 2, 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error() except fn:error() )">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error() except fn:error() )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:error() intersect fn:error() )">
+      <x:call>
+        <x:param select="string(.)">empty(fn:error() intersect fn:error() )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty( fn:zero-or-one(fn:error()) )">
+      <x:call>
+        <x:param select="string(.)">empty( fn:zero-or-one(fn:error()) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty( fn:error() treat as empty-sequence() )">
+      <x:call>
+        <x:param select="string(.)">empty( fn:error() treat as empty-sequence() )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

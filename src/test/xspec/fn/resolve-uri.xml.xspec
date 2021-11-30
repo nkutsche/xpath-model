@@ -1,154 +1,254 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count(fn:resolve-uri((),"BaseValue"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:resolve-uri((),"BaseValue"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:resolve-uri(":","http://www.example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">fn:resolve-uri(":","http://www.example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:resolve-uri("examples","http:%%")</x:label>
-      <x:variable name="expr" as="xs:string">fn:resolve-uri("examples","http:%%")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("http://www.examples.com",""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("http://www.examples.com",""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples","http://www.examples.com/"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples","http://www.examples.com/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",xs:string("http://www.examples.com/")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",xs:string("http://www.examples.com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:string("examples"),fn:string("http://www.examples.com/")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:string("examples"),fn:string("http://www.examples.com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:upper-case("examples"),fn:upper-case("http://www.examples.com/")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:upper-case("examples"),fn:upper-case("http://www.examples.com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:lower-case("EXAMPLES"),fn:lower-case("HTTP://www.examples.com/")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:lower-case("EXAMPLES"),fn:lower-case("HTTP://www.examples.com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",fn:substring("1234http://www.examples.com/",5)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",fn:substring("1234http://www.examples.com/",5)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",fn:string-join(('http://www.example','.com/'),'')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",fn:string-join(('http://www.example','.com/'),'')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",fn:concat("http://www.example",".com/")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",fn:concat("http://www.example",".com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",fn:substring-before("http://www.example.com/123","123")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",fn:substring-before("http://www.example.com/123","123")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("examples",fn:substring-after("123http://www.example.com/","123")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("examples",fn:substring-after("123http://www.example.com/","123")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:string("http://www.examples.com/"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:string("http://www.examples.com/"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:upper-case("http://www.examples.com"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:upper-case("http://www.examples.com"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:lower-case("http://www.examples.com"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:lower-case("http://www.examples.com"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:substring("123http://www.examples.com",4),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:substring("123http://www.examples.com",4),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:string-join(("http://www.examples",".com"),''),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:string-join(("http://www.examples",".com"),''),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:concat("http://www.examples",".com"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:concat("http://www.examples",".com"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:substring-before("http://www.example.com123","123"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:substring-before("http://www.example.com123","123"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri(fn:substring-after("123http://www.example.com","123"),""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri(fn:substring-after("123http://www.example.com","123"),""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:resolve-uri("a.html","b.html"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:resolve-uri("a.html","b.html"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string(resolve-uri("http://www.example.com/a.html","b.html"))</x:label>
-      <x:variable name="expr" as="xs:string">string(resolve-uri("http://www.example.com/a.html","b.html"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("b.html", "http://www.example.com/a.html#fragment")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("b.html", "http://www.example.com/a.html#fragment")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string(resolve-uri("b.html", "http://www.example.com/a.html?foo=bar"))</x:label>
-      <x:variable name="expr" as="xs:string">string(resolve-uri("b.html", "http://www.example.com/a.html?foo=bar"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string(resolve-uri("urn:isbn:01234567890X", "http://www.example.com/"))</x:label>
-      <x:variable name="expr" as="xs:string">string(resolve-uri("urn:isbn:01234567890X", "http://www.example.com/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("%C3%A0.html", "http://www.example.com/%C3%A7.html")
-         = "http://www.example.com/%C3%A0.html"</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("%C3%A0.html", "http://www.example.com/%C3%A7.html")
-         = "http://www.example.com/%C3%A0.html"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("this doc.html", "http://www.example.com/that doc.html")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("this doc.html", "http://www.example.com/that doc.html")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri()</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("http://www.example.com/", "relative/uri.ext", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("http://www.example.com/", "relative/uri.ext", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("relative/uri.ext", "http://www.example.com/") eq xs:anyURI("http://www.example.com/relative/uri.ext")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("relative/uri.ext", "http://www.example.com/") eq xs:anyURI("http://www.example.com/relative/uri.ext")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("", "http://www.example.com/") eq xs:anyURI("http://www.example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("", "http://www.example.com/") eq xs:anyURI("http://www.example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(resolve-uri((), "http://www.example.com/"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(resolve-uri((), "http://www.example.com/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>resolve-uri("http://www.example.com/absolute", "http://www.example.com/") eq xs:anyURI("http://www.example.com/absolute")</x:label>
-      <x:variable name="expr" as="xs:string">resolve-uri("http://www.example.com/absolute", "http://www.example.com/") eq xs:anyURI("http://www.example.com/absolute")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(resolve-uri(string-join(for $x in 1 to 10 return "blah","z"),"http://localhost/"))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(resolve-uri(string-join(for $x in 1 to 10 return "blah","z"),"http://localhost/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/resolve-uri.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count(fn:resolve-uri((),&#34;BaseValue&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:resolve-uri((),"BaseValue"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:resolve-uri(&#34;:&#34;,&#34;http://www.example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:resolve-uri(":","http://www.example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:resolve-uri(&#34;examples&#34;,&#34;http:%%&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:resolve-uri("examples","http:%%")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;http://www.examples.com&#34;,&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("http://www.examples.com",""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,&#34;http://www.examples.com/&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples","http://www.examples.com/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,xs:string(&#34;http://www.examples.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",xs:string("http://www.examples.com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:string(&#34;examples&#34;),fn:string(&#34;http://www.examples.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:string("examples"),fn:string("http://www.examples.com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:upper-case(&#34;examples&#34;),fn:upper-case(&#34;http://www.examples.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:upper-case("examples"),fn:upper-case("http://www.examples.com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:lower-case(&#34;EXAMPLES&#34;),fn:lower-case(&#34;HTTP://www.examples.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:lower-case("EXAMPLES"),fn:lower-case("HTTP://www.examples.com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,fn:substring(&#34;1234http://www.examples.com/&#34;,5)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",fn:substring("1234http://www.examples.com/",5)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,fn:string-join(('http://www.example','.com/'),'')))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",fn:string-join(('http://www.example','.com/'),'')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,fn:concat(&#34;http://www.example&#34;,&#34;.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",fn:concat("http://www.example",".com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,fn:substring-before(&#34;http://www.example.com/123&#34;,&#34;123&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",fn:substring-before("http://www.example.com/123","123")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;examples&#34;,fn:substring-after(&#34;123http://www.example.com/&#34;,&#34;123&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("examples",fn:substring-after("123http://www.example.com/","123")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:string(&#34;http://www.examples.com/&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:string("http://www.examples.com/"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:upper-case(&#34;http://www.examples.com&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:upper-case("http://www.examples.com"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:lower-case(&#34;http://www.examples.com&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:lower-case("http://www.examples.com"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:substring(&#34;123http://www.examples.com&#34;,4),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:substring("123http://www.examples.com",4),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:string-join((&#34;http://www.examples&#34;,&#34;.com&#34;),''),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:string-join(("http://www.examples",".com"),''),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:concat(&#34;http://www.examples&#34;,&#34;.com&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:concat("http://www.examples",".com"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:substring-before(&#34;http://www.example.com123&#34;,&#34;123&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:substring-before("http://www.example.com123","123"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(fn:substring-after(&#34;123http://www.example.com&#34;,&#34;123&#34;),&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri(fn:substring-after("123http://www.example.com","123"),""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:resolve-uri(&#34;a.html&#34;,&#34;b.html&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:resolve-uri("a.html","b.html"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string(resolve-uri(&#34;http://www.example.com/a.html&#34;,&#34;b.html&#34;))">
+      <x:call>
+        <x:param select="string(.)">string(resolve-uri("http://www.example.com/a.html","b.html"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;b.html&#34;, &#34;http://www.example.com/a.html#fragment&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("b.html", "http://www.example.com/a.html#fragment")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string(resolve-uri(&#34;b.html&#34;, &#34;http://www.example.com/a.html?foo=bar&#34;))">
+      <x:call>
+        <x:param select="string(.)">string(resolve-uri("b.html", "http://www.example.com/a.html?foo=bar"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string(resolve-uri(&#34;urn:isbn:01234567890X&#34;, &#34;http://www.example.com/&#34;))">
+      <x:call>
+        <x:param select="string(.)">string(resolve-uri("urn:isbn:01234567890X", "http://www.example.com/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;%C3%A0.html&#34;, &#34;http://www.example.com/%C3%A7.html&#34;)&#xA;         = &#34;http://www.example.com/%C3%A0.html&#34;">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("%C3%A0.html", "http://www.example.com/%C3%A7.html")
+         = "http://www.example.com/%C3%A0.html"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;this doc.html&#34;, &#34;http://www.example.com/that doc.html&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("this doc.html", "http://www.example.com/that doc.html")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri()">
+      <x:call>
+        <x:param select="string(.)">resolve-uri()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;http://www.example.com/&#34;, &#34;relative/uri.ext&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("http://www.example.com/", "relative/uri.ext", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;relative/uri.ext&#34;, &#34;http://www.example.com/&#34;) eq xs:anyURI(&#34;http://www.example.com/relative/uri.ext&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("relative/uri.ext", "http://www.example.com/") eq xs:anyURI("http://www.example.com/relative/uri.ext")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;&#34;, &#34;http://www.example.com/&#34;) eq xs:anyURI(&#34;http://www.example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("", "http://www.example.com/") eq xs:anyURI("http://www.example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(resolve-uri((), &#34;http://www.example.com/&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(resolve-uri((), "http://www.example.com/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="resolve-uri(&#34;http://www.example.com/absolute&#34;, &#34;http://www.example.com/&#34;) eq xs:anyURI(&#34;http://www.example.com/absolute&#34;)">
+      <x:call>
+        <x:param select="string(.)">resolve-uri("http://www.example.com/absolute", "http://www.example.com/") eq xs:anyURI("http://www.example.com/absolute")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(resolve-uri(string-join(for $x in 1 to 10 return &#34;blah&#34;,&#34;z&#34;),&#34;http://localhost/&#34;))">
+      <x:call>
+        <x:param select="string(.)">boolean(resolve-uri(string-join(for $x in 1 to 10 return "blah","z"),"http://localhost/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

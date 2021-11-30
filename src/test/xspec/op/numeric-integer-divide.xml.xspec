@@ -1,496 +1,855 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:int("-2147483648") idiv xs:int("-2147483648")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("-2147483648") idiv xs:int("-2147483648")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int("-1873914410") idiv xs:int("-2147483648")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("-1873914410") idiv xs:int("-2147483648")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int("2147483647") idiv xs:int("-2147483648")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("2147483647") idiv xs:int("-2147483648")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int("-2147483648") idiv xs:int("-1873914410")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("-2147483648") idiv xs:int("-1873914410")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int("-2147483648") idiv xs:int("2147483647")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("-2147483648") idiv xs:int("2147483647")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("-999999999999999999") idiv xs:integer("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("-999999999999999999") idiv xs:integer("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("830993497117024304") idiv xs:integer("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("830993497117024304") idiv xs:integer("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("999999999999999999") idiv xs:integer("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("999999999999999999") idiv xs:integer("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("-999999999999999999") idiv xs:integer("830993497117024304")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("-999999999999999999") idiv xs:integer("830993497117024304")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("-999999999999999999") idiv xs:integer("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("-999999999999999999") idiv xs:integer("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("-999999999999999999") idiv xs:decimal("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("-999999999999999999") idiv xs:decimal("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("617375191608514839") idiv xs:decimal("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("617375191608514839") idiv xs:decimal("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("999999999999999999") idiv xs:decimal("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("999999999999999999") idiv xs:decimal("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("-999999999999999999") idiv xs:decimal("617375191608514839")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("-999999999999999999") idiv xs:decimal("617375191608514839")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("-999999999999999999") idiv xs:decimal("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("-999999999999999999") idiv xs:decimal("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("-92233720368547758") idiv xs:long("-92233720368547758")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("-92233720368547758") idiv xs:long("-92233720368547758")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("-47175562203048468") idiv xs:long("-92233720368547758")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("-47175562203048468") idiv xs:long("-92233720368547758")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("92233720368547758") idiv xs:long("-92233720368547758")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("92233720368547758") idiv xs:long("-92233720368547758")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("-92233720368547758") idiv xs:long("-47175562203048468")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("-92233720368547758") idiv xs:long("-47175562203048468")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("-92233720368547758") idiv xs:long("92233720368547758")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("-92233720368547758") idiv xs:long("92233720368547758")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort("0") idiv xs:unsignedShort("44633")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort("0") idiv xs:unsignedShort("44633")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort("0") idiv xs:unsignedShort("65535")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort("0") idiv xs:unsignedShort("65535")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-297014075999096793") idiv xs:negativeInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-297014075999096793") idiv xs:negativeInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-1") idiv xs:negativeInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-1") idiv xs:negativeInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-297014075999096793")</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-297014075999096793")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") idiv xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") idiv xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("52704602390610033") idiv xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("52704602390610033") idiv xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("999999999999999999") idiv xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("999999999999999999") idiv xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") idiv xs:positiveInteger("52704602390610033")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") idiv xs:positiveInteger("52704602390610033")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") idiv xs:positiveInteger("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") idiv xs:positiveInteger("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong("0") idiv xs:unsignedLong("130747108607674654")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong("0") idiv xs:unsignedLong("130747108607674654")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong("0") idiv xs:unsignedLong("184467440737095516")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong("0") idiv xs:unsignedLong("184467440737095516")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger("-475688437271870490") idiv xs:nonPositiveInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger("-475688437271870490") idiv xs:nonPositiveInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger("0") idiv xs:nonPositiveInteger("-999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger("0") idiv xs:nonPositiveInteger("-999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-475688437271870490")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-475688437271870490")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("303884545991464527")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("303884545991464527")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("-32768") idiv xs:short("-32768")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("-32768") idiv xs:short("-32768")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("-5324") idiv xs:short("-32768")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("-5324") idiv xs:short("-32768")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("32767") idiv xs:short("-32768")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("32767") idiv xs:short("-32768")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("-32768") idiv xs:short("-5324")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("-32768") idiv xs:short("-5324")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("-32768") idiv xs:short("32767")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("-32768") idiv xs:short("32767")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() idiv 1</x:label>
-      <x:variable name="expr" as="xs:string">() idiv 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv '1'</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv '1'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv xs:integer('1')</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv xs:integer('1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv 0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(0 div 0E0) idiv xs:integer(2)</x:label>
-      <x:variable name="expr" as="xs:string">(0 div 0E0) idiv xs:integer(2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) idiv xs:integer(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) idiv xs:integer(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) idiv xs:decimal(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) idiv xs:decimal(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) idiv xs:integer(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) idiv xs:integer(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) idiv xs:decimal(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) idiv xs:decimal(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) idiv xs:float(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) idiv xs:float(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) idiv xs:integer(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) idiv xs:integer(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) idiv xs:float(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) idiv xs:float(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) idiv xs:float(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) idiv xs:float(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) idiv xs:double(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) idiv xs:double(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) idiv xs:decimal(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) idiv xs:decimal(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) idiv xs:float(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) idiv xs:float(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) idiv xs:double(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) idiv xs:double(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) idiv xs:integer(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) idiv xs:integer(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) idiv xs:double(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) idiv xs:double(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) idiv xs:double(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) idiv xs:double(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 idiv 3 eq 3</x:label>
-      <x:variable name="expr" as="xs:string">10 idiv 3 eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 idiv -2 eq -1</x:label>
-      <x:variable name="expr" as="xs:string">3 idiv -2 eq -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-3 idiv 2 eq -1</x:label>
-      <x:variable name="expr" as="xs:string">-3 idiv 2 eq -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-3 idiv -2 eq 1</x:label>
-      <x:variable name="expr" as="xs:string">-3 idiv -2 eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>5.0 idiv 2.0 eq 2</x:label>
-      <x:variable name="expr" as="xs:string">5.0 idiv 2.0 eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>9.0 idiv 3 eq 3</x:label>
-      <x:variable name="expr" as="xs:string">9.0 idiv 3 eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-3.5 idiv 3 eq -1</x:label>
-      <x:variable name="expr" as="xs:string">-3.5 idiv 3 eq -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3.0 idiv 4 eq 0</x:label>
-      <x:variable name="expr" as="xs:string">3.0 idiv 4 eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3.1E1 idiv 6 eq 5</x:label>
-      <x:variable name="expr" as="xs:string">3.1E1 idiv 6 eq 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3.1E1 idiv 7 eq 4</x:label>
-      <x:variable name="expr" as="xs:string">3.1E1 idiv 7 eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1.1 idiv 1) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(1.1 idiv 1) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(1.1) idiv 1.1) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(1.1) idiv 1.1) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 idiv 1.1 eq 2</x:label>
-      <x:variable name="expr" as="xs:string">3 idiv 1.1 eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv xs:float("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv xs:float("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("NaN") idiv 1</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("NaN") idiv 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("INF") idiv xs:float(3)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("INF") idiv xs:float(3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-INF") idiv xs:float(3)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-INF") idiv xs:float(3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("3") idiv xs:float("INF") eq xs:float(0)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("3") idiv xs:float("INF") eq xs:float(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("3") idiv xs:float("-INF") eq xs:float(0)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("3") idiv xs:float("-INF") eq xs:float(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv xs:double("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv xs:double("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("NaN") idiv 1</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("NaN") idiv 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("INF") idiv xs:double(3)</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("INF") idiv xs:double(3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-INF") idiv xs:double(3)</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-INF") idiv xs:double(3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("3") idiv xs:double("INF") eq xs:double(0)</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("3") idiv xs:double("INF") eq xs:double(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("3") idiv xs:double("-INF") eq xs:double(0)</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("3") idiv xs:double("-INF") eq xs:double(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"3" idiv "3"</x:label>
-      <x:variable name="expr" as="xs:string">"3" idiv "3"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"3" idiv xs:float(3)</x:label>
-      <x:variable name="expr" as="xs:string">"3" idiv xs:float(3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:untypedAtomic("9") idiv xs:float(5)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">(xs:untypedAtomic("9") idiv xs:float(5)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(9) idiv xs:untypedAtomic("5")) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(9) idiv xs:untypedAtomic("5")) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:untypedAtomic("nine") idiv xs:float(5)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">(xs:untypedAtomic("nine") idiv xs:float(5)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(9) idiv xs:untypedAtomic("five")) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(9) idiv xs:untypedAtomic("five")) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() idiv ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() idiv ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() idiv xs:decimal(1))</x:label>
-      <x:variable name="expr" as="xs:string">empty(() idiv xs:decimal(1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv 0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv 0.0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv 0.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv +0.0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv +0.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv -0.0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv -0.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv 0e0</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv 0e0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1 idiv 0e0</x:label>
-      <x:variable name="expr" as="xs:string">-1 idiv 0e0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 idiv xs:float(0)</x:label>
-      <x:variable name="expr" as="xs:string">1 idiv xs:float(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1 idiv xs:float(0)</x:label>
-      <x:variable name="expr" as="xs:string">-1 idiv xs:float(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-INF") idiv xs:float("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-INF") idiv xs:float("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("1") idiv xs:float("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("1") idiv xs:float("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("1") idiv xs:float("0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("1") idiv xs:float("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("INF") idiv xs:float("0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("INF") idiv xs:float("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-3.5") idiv xs:float("3")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-3.5") idiv xs:float("3")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-INF") idiv xs:double("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-INF") idiv xs:double("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("1") idiv xs:double("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("1") idiv xs:double("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("1") idiv xs:double("0.0E0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("1") idiv xs:double("0.0E0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("INF") idiv xs:double("0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("INF") idiv xs:double("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("12.78e-2") idiv xs:double("3")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("12.78e-2") idiv xs:double("3")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer(2) idiv xs:decimal(1)</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer(2) idiv xs:decimal(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float(1.5) idiv xs:decimal(1)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float(1.5) idiv xs:decimal(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double(1.5) idiv xs:decimal(1)</x:label>
-      <x:variable name="expr" as="xs:string">xs:double(1.5) idiv xs:decimal(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float('1e38') idiv xs:float('1e-37')</x:label>
-      <x:variable name="expr" as="xs:string">xs:float('1e38') idiv xs:float('1e-37')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/numeric-integer-divide.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:int(&#34;-2147483648&#34;) idiv xs:int(&#34;-2147483648&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("-2147483648") idiv xs:int("-2147483648")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(&#34;-1873914410&#34;) idiv xs:int(&#34;-2147483648&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("-1873914410") idiv xs:int("-2147483648")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(&#34;2147483647&#34;) idiv xs:int(&#34;-2147483648&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("2147483647") idiv xs:int("-2147483648")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(&#34;-2147483648&#34;) idiv xs:int(&#34;-1873914410&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("-2147483648") idiv xs:int("-1873914410")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(&#34;-2147483648&#34;) idiv xs:int(&#34;2147483647&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("-2147483648") idiv xs:int("2147483647")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;-999999999999999999&#34;) idiv xs:integer(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("-999999999999999999") idiv xs:integer("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;830993497117024304&#34;) idiv xs:integer(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("830993497117024304") idiv xs:integer("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;999999999999999999&#34;) idiv xs:integer(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("999999999999999999") idiv xs:integer("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;-999999999999999999&#34;) idiv xs:integer(&#34;830993497117024304&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("-999999999999999999") idiv xs:integer("830993497117024304")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;-999999999999999999&#34;) idiv xs:integer(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("-999999999999999999") idiv xs:integer("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;-999999999999999999&#34;) idiv xs:decimal(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("-999999999999999999") idiv xs:decimal("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;617375191608514839&#34;) idiv xs:decimal(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("617375191608514839") idiv xs:decimal("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;999999999999999999&#34;) idiv xs:decimal(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("999999999999999999") idiv xs:decimal("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;-999999999999999999&#34;) idiv xs:decimal(&#34;617375191608514839&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("-999999999999999999") idiv xs:decimal("617375191608514839")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;-999999999999999999&#34;) idiv xs:decimal(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("-999999999999999999") idiv xs:decimal("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;-92233720368547758&#34;) idiv xs:long(&#34;-92233720368547758&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("-92233720368547758") idiv xs:long("-92233720368547758")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;-47175562203048468&#34;) idiv xs:long(&#34;-92233720368547758&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("-47175562203048468") idiv xs:long("-92233720368547758")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;92233720368547758&#34;) idiv xs:long(&#34;-92233720368547758&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("92233720368547758") idiv xs:long("-92233720368547758")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;-92233720368547758&#34;) idiv xs:long(&#34;-47175562203048468&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("-92233720368547758") idiv xs:long("-47175562203048468")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;-92233720368547758&#34;) idiv xs:long(&#34;92233720368547758&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("-92233720368547758") idiv xs:long("92233720368547758")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(&#34;0&#34;) idiv xs:unsignedShort(&#34;44633&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort("0") idiv xs:unsignedShort("44633")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(&#34;0&#34;) idiv xs:unsignedShort(&#34;65535&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort("0") idiv xs:unsignedShort("65535")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-999999999999999999&#34;) idiv xs:negativeInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-297014075999096793&#34;) idiv xs:negativeInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-297014075999096793") idiv xs:negativeInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-1&#34;) idiv xs:negativeInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-1") idiv xs:negativeInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-999999999999999999&#34;) idiv xs:negativeInteger(&#34;-297014075999096793&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-297014075999096793")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-999999999999999999&#34;) idiv xs:negativeInteger(&#34;-1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-999999999999999999") idiv xs:negativeInteger("-1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) idiv xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") idiv xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;52704602390610033&#34;) idiv xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("52704602390610033") idiv xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;999999999999999999&#34;) idiv xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("999999999999999999") idiv xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) idiv xs:positiveInteger(&#34;52704602390610033&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") idiv xs:positiveInteger("52704602390610033")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) idiv xs:positiveInteger(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") idiv xs:positiveInteger("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(&#34;0&#34;) idiv xs:unsignedLong(&#34;130747108607674654&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong("0") idiv xs:unsignedLong("130747108607674654")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(&#34;0&#34;) idiv xs:unsignedLong(&#34;184467440737095516&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong("0") idiv xs:unsignedLong("184467440737095516")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(&#34;-999999999999999999&#34;) idiv xs:nonPositiveInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(&#34;-475688437271870490&#34;) idiv xs:nonPositiveInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger("-475688437271870490") idiv xs:nonPositiveInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(&#34;0&#34;) idiv xs:nonPositiveInteger(&#34;-999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger("0") idiv xs:nonPositiveInteger("-999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(&#34;-999999999999999999&#34;) idiv xs:nonPositiveInteger(&#34;-475688437271870490&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger("-999999999999999999") idiv xs:nonPositiveInteger("-475688437271870490")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;0&#34;) idiv xs:nonNegativeInteger(&#34;303884545991464527&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("303884545991464527")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;0&#34;) idiv xs:nonNegativeInteger(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("0") idiv xs:nonNegativeInteger("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;-32768&#34;) idiv xs:short(&#34;-32768&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("-32768") idiv xs:short("-32768")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;-5324&#34;) idiv xs:short(&#34;-32768&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("-5324") idiv xs:short("-32768")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;32767&#34;) idiv xs:short(&#34;-32768&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("32767") idiv xs:short("-32768")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;-32768&#34;) idiv xs:short(&#34;-5324&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("-32768") idiv xs:short("-5324")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;-32768&#34;) idiv xs:short(&#34;32767&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("-32768") idiv xs:short("32767")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() idiv 1">
+      <x:call>
+        <x:param select="string(.)">() idiv 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv '1'">
+      <x:call>
+        <x:param select="string(.)">1 idiv '1'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv xs:integer('1')">
+      <x:call>
+        <x:param select="string(.)">1 idiv xs:integer('1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv 0">
+      <x:call>
+        <x:param select="string(.)">1 idiv 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(0 div 0E0) idiv xs:integer(2)">
+      <x:call>
+        <x:param select="string(.)">(0 div 0E0) idiv xs:integer(2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) idiv xs:integer(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) idiv xs:integer(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) idiv xs:decimal(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) idiv xs:decimal(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) idiv xs:integer(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) idiv xs:integer(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) idiv xs:decimal(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) idiv xs:decimal(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) idiv xs:decimal(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) idiv xs:float(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) idiv xs:float(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) idiv xs:integer(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) idiv xs:integer(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) idiv xs:float(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) idiv xs:float(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) idiv xs:float(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) idiv xs:float(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) idiv xs:double(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) idiv xs:double(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) idiv xs:decimal(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) idiv xs:decimal(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) idiv xs:float(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) idiv xs:float(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) idiv xs:double(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) idiv xs:double(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) idiv xs:integer(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) idiv xs:integer(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) idiv xs:double(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) idiv xs:double(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) idiv xs:double(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) idiv xs:double(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 idiv 3 eq 3">
+      <x:call>
+        <x:param select="string(.)">10 idiv 3 eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 idiv -2 eq -1">
+      <x:call>
+        <x:param select="string(.)">3 idiv -2 eq -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-3 idiv 2 eq -1">
+      <x:call>
+        <x:param select="string(.)">-3 idiv 2 eq -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-3 idiv -2 eq 1">
+      <x:call>
+        <x:param select="string(.)">-3 idiv -2 eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="5.0 idiv 2.0 eq 2">
+      <x:call>
+        <x:param select="string(.)">5.0 idiv 2.0 eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="9.0 idiv 3 eq 3">
+      <x:call>
+        <x:param select="string(.)">9.0 idiv 3 eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-3.5 idiv 3 eq -1">
+      <x:call>
+        <x:param select="string(.)">-3.5 idiv 3 eq -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3.0 idiv 4 eq 0">
+      <x:call>
+        <x:param select="string(.)">3.0 idiv 4 eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3.1E1 idiv 6 eq 5">
+      <x:call>
+        <x:param select="string(.)">3.1E1 idiv 6 eq 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3.1E1 idiv 7 eq 4">
+      <x:call>
+        <x:param select="string(.)">3.1E1 idiv 7 eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1.1 idiv 1) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(1.1 idiv 1) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(1.1) idiv 1.1) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:double(1.1) idiv 1.1) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 idiv 1.1 eq 2">
+      <x:call>
+        <x:param select="string(.)">3 idiv 1.1 eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv xs:float(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">1 idiv xs:float("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;NaN&#34;) idiv 1">
+      <x:call>
+        <x:param select="string(.)">xs:float("NaN") idiv 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;INF&#34;) idiv xs:float(3)">
+      <x:call>
+        <x:param select="string(.)">xs:float("INF") idiv xs:float(3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-INF&#34;) idiv xs:float(3)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-INF") idiv xs:float(3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;3&#34;) idiv xs:float(&#34;INF&#34;) eq xs:float(0)">
+      <x:call>
+        <x:param select="string(.)">xs:float("3") idiv xs:float("INF") eq xs:float(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;3&#34;) idiv xs:float(&#34;-INF&#34;) eq xs:float(0)">
+      <x:call>
+        <x:param select="string(.)">xs:float("3") idiv xs:float("-INF") eq xs:float(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv xs:double(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">1 idiv xs:double("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;NaN&#34;) idiv 1">
+      <x:call>
+        <x:param select="string(.)">xs:double("NaN") idiv 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;INF&#34;) idiv xs:double(3)">
+      <x:call>
+        <x:param select="string(.)">xs:double("INF") idiv xs:double(3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-INF&#34;) idiv xs:double(3)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-INF") idiv xs:double(3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;3&#34;) idiv xs:double(&#34;INF&#34;) eq xs:double(0)">
+      <x:call>
+        <x:param select="string(.)">xs:double("3") idiv xs:double("INF") eq xs:double(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;3&#34;) idiv xs:double(&#34;-INF&#34;) eq xs:double(0)">
+      <x:call>
+        <x:param select="string(.)">xs:double("3") idiv xs:double("-INF") eq xs:double(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;3&#34; idiv &#34;3&#34;">
+      <x:call>
+        <x:param select="string(.)">"3" idiv "3"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;3&#34; idiv xs:float(3)">
+      <x:call>
+        <x:param select="string(.)">"3" idiv xs:float(3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:untypedAtomic(&#34;9&#34;) idiv xs:float(5)) eq 1">
+      <x:call>
+        <x:param select="string(.)">(xs:untypedAtomic("9") idiv xs:float(5)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(9) idiv xs:untypedAtomic(&#34;5&#34;)) eq 1">
+      <x:call>
+        <x:param select="string(.)">(xs:float(9) idiv xs:untypedAtomic("5")) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:untypedAtomic(&#34;nine&#34;) idiv xs:float(5)) eq 1">
+      <x:call>
+        <x:param select="string(.)">(xs:untypedAtomic("nine") idiv xs:float(5)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(9) idiv xs:untypedAtomic(&#34;five&#34;)) eq 1">
+      <x:call>
+        <x:param select="string(.)">(xs:float(9) idiv xs:untypedAtomic("five")) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() idiv ())">
+      <x:call>
+        <x:param select="string(.)">empty(() idiv ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() idiv xs:decimal(1))">
+      <x:call>
+        <x:param select="string(.)">empty(() idiv xs:decimal(1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv 0">
+      <x:call>
+        <x:param select="string(.)">1 idiv 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv 0.0">
+      <x:call>
+        <x:param select="string(.)">1 idiv 0.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv +0.0">
+      <x:call>
+        <x:param select="string(.)">1 idiv +0.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv -0.0">
+      <x:call>
+        <x:param select="string(.)">1 idiv -0.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv 0e0">
+      <x:call>
+        <x:param select="string(.)">1 idiv 0e0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1 idiv 0e0">
+      <x:call>
+        <x:param select="string(.)">-1 idiv 0e0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 idiv xs:float(0)">
+      <x:call>
+        <x:param select="string(.)">1 idiv xs:float(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1 idiv xs:float(0)">
+      <x:call>
+        <x:param select="string(.)">-1 idiv xs:float(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-INF&#34;) idiv xs:float(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-INF") idiv xs:float("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;1&#34;) idiv xs:float(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("1") idiv xs:float("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;1&#34;) idiv xs:float(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("1") idiv xs:float("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;INF&#34;) idiv xs:float(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("INF") idiv xs:float("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-3.5&#34;) idiv xs:float(&#34;3&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-3.5") idiv xs:float("3")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-INF&#34;) idiv xs:double(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-INF") idiv xs:double("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;1&#34;) idiv xs:double(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("1") idiv xs:double("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;1&#34;) idiv xs:double(&#34;0.0E0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("1") idiv xs:double("0.0E0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;INF&#34;) idiv xs:double(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("INF") idiv xs:double("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;12.78e-2&#34;) idiv xs:double(&#34;3&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("12.78e-2") idiv xs:double("3")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(2) idiv xs:decimal(1)">
+      <x:call>
+        <x:param select="string(.)">xs:integer(2) idiv xs:decimal(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(1.5) idiv xs:decimal(1)">
+      <x:call>
+        <x:param select="string(.)">xs:float(1.5) idiv xs:decimal(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(1.5) idiv xs:decimal(1)">
+      <x:call>
+        <x:param select="string(.)">xs:double(1.5) idiv xs:decimal(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float('1e38') idiv xs:float('1e-37')">
+      <x:call>
+        <x:param select="string(.)">xs:float('1e38') idiv xs:float('1e-37')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

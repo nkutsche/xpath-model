@@ -1,194 +1,324 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>iri-to-uri("http://www.example.com/00/Weather/CA/Los%20Angeles#ocean")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("http://www.example.com/00/Weather/CA/Los%20Angeles#ocean")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri("http://www.example.com/~bébé")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("http://www.example.com/~bébé")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri('')</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri('')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(())</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(12)</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(12)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri('',())</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri('',())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example0123456789")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example0123456789")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example#example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example#example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example-example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example-example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example_example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example_example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example.example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example.example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example!example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example!example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example~example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example~example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example*example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example*example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example'example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example'example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example(example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example(example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example)example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example)example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example;example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example;example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example/example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example/example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example?example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example?example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example:example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example:example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example@example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example@example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example&amp;amp;example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example&amp;amp;example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example=example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example=example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example+example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example+example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example$example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example$example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example,example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example,example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example[example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example[example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example]example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example]example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example%example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example%example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:iri-to-uri("example example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:iri-to-uri("example example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri()</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri("http://example.com/", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("http://example.com/", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-space(iri-to-uri(("somestring", current-time())[1])) eq "somestring"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-space(iri-to-uri(("somestring", current-time())[1])) eq "somestring"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri()</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri("a string", "a string")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("a string", "a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(1)</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(("a string", "a string"))</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(("a string", "a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(xs:anyURI("a string"))</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(xs:anyURI("a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(xs:untypedAtomic("a string"))</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(xs:untypedAtomic("a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri("&lt;&gt; ""{}|\^`")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("&lt;&gt; ""{}|\^`")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri("
-")</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri("
-")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(codepoints-to-string(32 to 294))</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(codepoints-to-string(32 to 294))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>iri-to-uri(codepoints-to-string(15000 to 16000))</x:label>
-      <x:variable name="expr" as="xs:string">iri-to-uri(codepoints-to-string(15000 to 16000))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/iri-to-uri.xml"><x:call function="nk:xpath-model"/><x:scenario label="iri-to-uri(&#34;http://www.example.com/00/Weather/CA/Los%20Angeles#ocean&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("http://www.example.com/00/Weather/CA/Los%20Angeles#ocean")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(&#34;http://www.example.com/~bébé&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("http://www.example.com/~bébé")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri('')">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri('')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(())">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(12)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(12)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri('',())">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri('',())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example0123456789&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example0123456789")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example#example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example#example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example-example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example-example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example_example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example_example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example.example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example.example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example!example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example!example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example~example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example~example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example*example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example*example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example'example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example'example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example(example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example(example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example)example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example)example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example;example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example;example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example/example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example/example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example?example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example?example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example:example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example:example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example@example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example@example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example&amp;amp;example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example&amp;amp;example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example=example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example=example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example+example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example+example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example$example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example$example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example,example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example,example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example[example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example[example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example]example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example]example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example%example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example%example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:iri-to-uri(&#34;example example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:iri-to-uri("example example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri()">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(&#34;http://example.com/&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("http://example.com/", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-space(iri-to-uri((&#34;somestring&#34;, current-time())[1])) eq &#34;somestring&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-space(iri-to-uri(("somestring", current-time())[1])) eq "somestring"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri()">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(&#34;a string&#34;, &#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("a string", "a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(1)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri((&#34;a string&#34;, &#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(("a string", "a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(xs:anyURI(&#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(xs:anyURI("a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(xs:untypedAtomic(&#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(xs:untypedAtomic("a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(&#34;&lt;&gt; &#34;&#34;{}|\^`&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("&lt;&gt; ""{}|\^`")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(&#34;&#xA;&#34;)">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri("
+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(codepoints-to-string(32 to 294))">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(codepoints-to-string(32 to 294))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="iri-to-uri(codepoints-to-string(15000 to 16000))">
+      <x:call>
+        <x:param select="string(.)">iri-to-uri(codepoints-to-string(15000 to 16000))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,68 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count(//center/self::nowhere)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/self::nowhere)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-2/self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-2/self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-3/self::center-attr-3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-3/self::center-attr-3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-1/self::nowhere)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-1/self::nowhere)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/self::center)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/self::center)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-1/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-1/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-2/descendant-or-self::far-south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-2/descendant-or-self::far-south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-2/descendant-or-self::center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-2/descendant-or-self::center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/parent::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/parent::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/AxisStep.static-typing.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count(//center/self::nowhere)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/self::nowhere)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-2/self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-2/self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-3/self::center-attr-3)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-3/self::center-attr-3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-1/self::nowhere)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-1/self::nowhere)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/self::center)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/self::center)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-1/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-1/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-2/descendant-or-self::far-south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-2/descendant-or-self::far-south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-2/descendant-or-self::center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-2/descendant-or-self::center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/parent::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/parent::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/..)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

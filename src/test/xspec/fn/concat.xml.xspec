@@ -1,368 +1,631 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:int("-2147483648"),xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:int("-2147483648"),xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:int("-1873914410"),xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:int("-1873914410"),xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:int("2147483647"),xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:int("2147483647"),xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:int("-2147483648"),xs:int("-1873914410"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:int("-2147483648"),xs:int("-1873914410"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:int("-2147483648"),xs:int("2147483647"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:int("-2147483648"),xs:int("2147483647"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:integer("-999999999999999999"),xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:integer("-999999999999999999"),xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:integer("830993497117024304"),xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:integer("830993497117024304"),xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:integer("999999999999999999"),xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:integer("999999999999999999"),xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:integer("-999999999999999999"),xs:integer("830993497117024304"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:integer("-999999999999999999"),xs:integer("830993497117024304"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:integer("-999999999999999999"),xs:integer("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:integer("-999999999999999999"),xs:integer("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:decimal("-999999999999999999"),xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:decimal("617375191608514839"),xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:decimal("617375191608514839"),xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:decimal("999999999999999999"),xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:decimal("999999999999999999"),xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:decimal("-999999999999999999"),xs:decimal("617375191608514839"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("617375191608514839"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:decimal("-999999999999999999"),xs:decimal("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:double("-1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:double("0"),xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:double("0"),xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:double("1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:double("1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:double("-1.7976931348623157E308"),xs:double("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:double("-1.7976931348623157E308"),xs:double("1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:float("-3.4028235E38"),xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:float("-3.4028235E38"),xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:float("0"),xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:float("0"),xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:float("3.4028235E38"),xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:float("3.4028235E38"),xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:float("-3.4028235E38"),xs:float("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:float("-3.4028235E38"),xs:float("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:float("-3.4028235E38"),xs:float("3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:float("-3.4028235E38"),xs:float("3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:long("-92233720368547758"),xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:long("-92233720368547758"),xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:long("-47175562203048468"),xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:long("-47175562203048468"),xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:long("92233720368547758"),xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:long("92233720368547758"),xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:long("-92233720368547758"),xs:long("-47175562203048468"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:long("-92233720368547758"),xs:long("-47175562203048468"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:long("-92233720368547758"),xs:long("92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:long("-92233720368547758"),xs:long("92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedShort("0"),xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedShort("44633"),xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedShort("44633"),xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedShort("65535"),xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedShort("65535"),xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedShort("0"),xs:unsignedShort("44633"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("44633"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedShort("0"),xs:unsignedShort("65535"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("65535"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:negativeInteger("-297014075999096793"),xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:negativeInteger("-297014075999096793"),xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:negativeInteger("-1"),xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:negativeInteger("-1"),xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-297014075999096793"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-297014075999096793"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:positiveInteger("1"),xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:positiveInteger("52704602390610033"),xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:positiveInteger("52704602390610033"),xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:positiveInteger("999999999999999999"),xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:positiveInteger("999999999999999999"),xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:positiveInteger("1"),xs:positiveInteger("52704602390610033"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("52704602390610033"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:positiveInteger("1"),xs:positiveInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedLong("0"),xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedLong("130747108607674654"),xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedLong("130747108607674654"),xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedLong("184467440737095516"),xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedLong("184467440737095516"),xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedLong("0"),xs:unsignedLong("130747108607674654"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("130747108607674654"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:unsignedLong("0"),xs:unsignedLong("184467440737095516"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("184467440737095516"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonPositiveInteger("-475688437271870490"),xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonPositiveInteger("-475688437271870490"),xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonPositiveInteger("0"),xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonPositiveInteger("0"),xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-475688437271870490"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-475688437271870490"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonNegativeInteger("303884545991464527"),xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonNegativeInteger("303884545991464527"),xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonNegativeInteger("999999999999999999"),xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonNegativeInteger("999999999999999999"),xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("303884545991464527"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("303884545991464527"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:short("-32768"),xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:short("-32768"),xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:short("-5324"),xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:short("-5324"),xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:short("32767"),xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:short("32767"),xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:short("-32768"),xs:short("-5324"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:short("-32768"),xs:short("-5324"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:short("-32768"),xs:short("32767"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:short("-32768"),xs:short("32767"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat('un', 'grateful')</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat('un', 'grateful')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat('Thy ', (), 'old ', "groans", "", ' ring', ' yet', ' in', ' my', ' ancient',' ears.')</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat('Thy ', (), 'old ', "groans", "", ' ring', ' yet', ' in', ' my', ' ancient',' ears.')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat('Ciao!',())</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat('Ciao!',())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat('Ingratitude, ', 'thou ', 'marble-hearted', ' fiend!')</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat('Ingratitude, ', 'thou ', 'marble-hearted', ' fiend!')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("AB","CD")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("AB","CD")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("abc","de")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("abc","de")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("ABCDE","abcde")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("ABCDE","abcde")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:concat("",""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:concat("",""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:upper-case("Abc"),fn:upper-case("DH"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:upper-case("Abc"),fn:upper-case("DH"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("**","***")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("**","***")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:concat("zzz","zz"),"123")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:concat("zzz","zz"),"123")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:concat("ab","cde"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:concat("ab","cde"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:concat("abc","de"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:concat("abc","de"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:concat("ab","cde"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:concat("ab","cde"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("%$","#@!")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("%$","#@!")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("concat","concat")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("concat","concat")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat("abc","abc") and fn:concat("abc","abc")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat("abc","abc") and fn:concat("abc","abc")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat("ab", "c") eq "abc"</x:label>
-      <x:variable name="expr" as="xs:string">concat("ab", "c") eq "abc"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat("ab", "c") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">concat("ab", "c") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat((), ()) instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">concat((), ()) instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat((), ()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">concat((), ()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat('a', 'b', 'c', (), 'd', 'e', 'f', 'g', 'h', ' ', 'i', 'j', 'k l') eq "abcdefgh ijk l"</x:label>
-      <x:variable name="expr" as="xs:string">concat('a', 'b', 'c', (), 'd', 'e', 'f', 'g', 'h', ' ', 'i', 'j', 'k l') eq "abcdefgh ijk l"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat(1, 2, 3) eq "123"</x:label>
-      <x:variable name="expr" as="xs:string">concat(1, 2, 3) eq "123"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat(1, "2", 3) eq "123"</x:label>
-      <x:variable name="expr" as="xs:string">concat(1, "2", 3) eq "123"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:concat('', ''))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:concat('', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/concat.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:concat(xs:int(&#34;-2147483648&#34;),xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:int("-2147483648"),xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:int(&#34;-1873914410&#34;),xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:int("-1873914410"),xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:int(&#34;2147483647&#34;),xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:int("2147483647"),xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:int(&#34;-2147483648&#34;),xs:int(&#34;-1873914410&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:int("-2147483648"),xs:int("-1873914410"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:int(&#34;-2147483648&#34;),xs:int(&#34;2147483647&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:int("-2147483648"),xs:int("2147483647"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:integer(&#34;-999999999999999999&#34;),xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:integer("-999999999999999999"),xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:integer(&#34;830993497117024304&#34;),xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:integer("830993497117024304"),xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:integer(&#34;999999999999999999&#34;),xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:integer("999999999999999999"),xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:integer(&#34;-999999999999999999&#34;),xs:integer(&#34;830993497117024304&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:integer("-999999999999999999"),xs:integer("830993497117024304"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:integer(&#34;-999999999999999999&#34;),xs:integer(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:integer("-999999999999999999"),xs:integer("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:decimal(&#34;-999999999999999999&#34;),xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:decimal(&#34;617375191608514839&#34;),xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:decimal("617375191608514839"),xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:decimal(&#34;999999999999999999&#34;),xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:decimal("999999999999999999"),xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:decimal(&#34;-999999999999999999&#34;),xs:decimal(&#34;617375191608514839&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("617375191608514839"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:decimal(&#34;-999999999999999999&#34;),xs:decimal(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:decimal("-999999999999999999"),xs:decimal("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:double(&#34;-1.7976931348623157E308&#34;),xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:double(&#34;0&#34;),xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:double("0"),xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:double(&#34;1.7976931348623157E308&#34;),xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:double("1.7976931348623157E308"),xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:double(&#34;-1.7976931348623157E308&#34;),xs:double(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:double(&#34;-1.7976931348623157E308&#34;),xs:double(&#34;1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:double("-1.7976931348623157E308"),xs:double("1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:float(&#34;-3.4028235E38&#34;),xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:float("-3.4028235E38"),xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:float(&#34;0&#34;),xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:float("0"),xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:float(&#34;3.4028235E38&#34;),xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:float("3.4028235E38"),xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:float(&#34;-3.4028235E38&#34;),xs:float(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:float("-3.4028235E38"),xs:float("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:float(&#34;-3.4028235E38&#34;),xs:float(&#34;3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:float("-3.4028235E38"),xs:float("3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:long(&#34;-92233720368547758&#34;),xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:long("-92233720368547758"),xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:long(&#34;-47175562203048468&#34;),xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:long("-47175562203048468"),xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:long(&#34;92233720368547758&#34;),xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:long("92233720368547758"),xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:long(&#34;-92233720368547758&#34;),xs:long(&#34;-47175562203048468&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:long("-92233720368547758"),xs:long("-47175562203048468"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:long(&#34;-92233720368547758&#34;),xs:long(&#34;92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:long("-92233720368547758"),xs:long("92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedShort(&#34;0&#34;),xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedShort(&#34;44633&#34;),xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedShort("44633"),xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedShort(&#34;65535&#34;),xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedShort("65535"),xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedShort(&#34;0&#34;),xs:unsignedShort(&#34;44633&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("44633"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedShort(&#34;0&#34;),xs:unsignedShort(&#34;65535&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedShort("0"),xs:unsignedShort("65535"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:negativeInteger(&#34;-999999999999999999&#34;),xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:negativeInteger(&#34;-297014075999096793&#34;),xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:negativeInteger("-297014075999096793"),xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:negativeInteger(&#34;-1&#34;),xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:negativeInteger("-1"),xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:negativeInteger(&#34;-999999999999999999&#34;),xs:negativeInteger(&#34;-297014075999096793&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-297014075999096793"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:negativeInteger(&#34;-999999999999999999&#34;),xs:negativeInteger(&#34;-1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:negativeInteger("-999999999999999999"),xs:negativeInteger("-1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:positiveInteger(&#34;1&#34;),xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:positiveInteger(&#34;52704602390610033&#34;),xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:positiveInteger("52704602390610033"),xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:positiveInteger(&#34;999999999999999999&#34;),xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:positiveInteger("999999999999999999"),xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:positiveInteger(&#34;1&#34;),xs:positiveInteger(&#34;52704602390610033&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("52704602390610033"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:positiveInteger(&#34;1&#34;),xs:positiveInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:positiveInteger("1"),xs:positiveInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedLong(&#34;0&#34;),xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedLong(&#34;130747108607674654&#34;),xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedLong("130747108607674654"),xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedLong(&#34;184467440737095516&#34;),xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedLong("184467440737095516"),xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedLong(&#34;0&#34;),xs:unsignedLong(&#34;130747108607674654&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("130747108607674654"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:unsignedLong(&#34;0&#34;),xs:unsignedLong(&#34;184467440737095516&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:unsignedLong("0"),xs:unsignedLong("184467440737095516"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonPositiveInteger(&#34;-999999999999999999&#34;),xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonPositiveInteger(&#34;-475688437271870490&#34;),xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonPositiveInteger("-475688437271870490"),xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonPositiveInteger(&#34;0&#34;),xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonPositiveInteger("0"),xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonPositiveInteger(&#34;-999999999999999999&#34;),xs:nonPositiveInteger(&#34;-475688437271870490&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("-475688437271870490"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonPositiveInteger(&#34;-999999999999999999&#34;),xs:nonPositiveInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonPositiveInteger("-999999999999999999"),xs:nonPositiveInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonNegativeInteger(&#34;0&#34;),xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonNegativeInteger(&#34;303884545991464527&#34;),xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonNegativeInteger("303884545991464527"),xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonNegativeInteger(&#34;999999999999999999&#34;),xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonNegativeInteger("999999999999999999"),xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonNegativeInteger(&#34;0&#34;),xs:nonNegativeInteger(&#34;303884545991464527&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("303884545991464527"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:nonNegativeInteger(&#34;0&#34;),xs:nonNegativeInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:nonNegativeInteger("0"),xs:nonNegativeInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:short(&#34;-32768&#34;),xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:short("-32768"),xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:short(&#34;-5324&#34;),xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:short("-5324"),xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:short(&#34;32767&#34;),xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:short("32767"),xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:short(&#34;-32768&#34;),xs:short(&#34;-5324&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:short("-32768"),xs:short("-5324"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:short(&#34;-32768&#34;),xs:short(&#34;32767&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:short("-32768"),xs:short("32767"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat('un', 'grateful')">
+      <x:call>
+        <x:param select="string(.)">fn:concat('un', 'grateful')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat('Thy ', (), 'old ', &#34;groans&#34;, &#34;&#34;, ' ring', ' yet', ' in', ' my', ' ancient',' ears.')">
+      <x:call>
+        <x:param select="string(.)">fn:concat('Thy ', (), 'old ', "groans", "", ' ring', ' yet', ' in', ' my', ' ancient',' ears.')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat('Ciao!',())">
+      <x:call>
+        <x:param select="string(.)">fn:concat('Ciao!',())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat('Ingratitude, ', 'thou ', 'marble-hearted', ' fiend!')">
+      <x:call>
+        <x:param select="string(.)">fn:concat('Ingratitude, ', 'thou ', 'marble-hearted', ' fiend!')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;AB&#34;,&#34;CD&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("AB","CD")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;abc&#34;,&#34;de&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("abc","de")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;ABCDE&#34;,&#34;abcde&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("ABCDE","abcde")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:concat(&#34;&#34;,&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:concat("",""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:upper-case(&#34;Abc&#34;),fn:upper-case(&#34;DH&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:upper-case("Abc"),fn:upper-case("DH"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;**&#34;,&#34;***&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("**","***")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:concat(&#34;zzz&#34;,&#34;zz&#34;),&#34;123&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:concat("zzz","zz"),"123")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:concat(&#34;ab&#34;,&#34;cde&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:concat("ab","cde"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:concat(&#34;abc&#34;,&#34;de&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:concat("abc","de"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:concat(&#34;ab&#34;,&#34;cde&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:concat("ab","cde"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;%$&#34;,&#34;#@!&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("%$","#@!")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;concat&#34;,&#34;concat&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("concat","concat")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(&#34;abc&#34;,&#34;abc&#34;) and fn:concat(&#34;abc&#34;,&#34;abc&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat("abc","abc") and fn:concat("abc","abc")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat(&#34;ab&#34;, &#34;c&#34;) eq &#34;abc&#34;">
+      <x:call>
+        <x:param select="string(.)">concat("ab", "c") eq "abc"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat(&#34;ab&#34;, &#34;c&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">concat("ab", "c") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat((), ()) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">concat((), ()) instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat((), ()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">concat((), ()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat('a', 'b', 'c', (), 'd', 'e', 'f', 'g', 'h', ' ', 'i', 'j', 'k l') eq &#34;abcdefgh ijk l&#34;">
+      <x:call>
+        <x:param select="string(.)">concat('a', 'b', 'c', (), 'd', 'e', 'f', 'g', 'h', ' ', 'i', 'j', 'k l') eq "abcdefgh ijk l"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat(1, 2, 3) eq &#34;123&#34;">
+      <x:call>
+        <x:param select="string(.)">concat(1, 2, 3) eq "123"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat(1, &#34;2&#34;, 3) eq &#34;123&#34;">
+      <x:call>
+        <x:param select="string(.)">concat(1, "2", 3) eq "123"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:concat('', ''))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:concat('', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

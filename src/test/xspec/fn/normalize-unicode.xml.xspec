@@ -1,188 +1,316 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>normalize-unicode('Nothing to normalize.')</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('Nothing to normalize.')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode(())</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('Ǻ', normalize-unicode('Ǻ'))</x:label>
-      <x:variable name="expr" as="xs:string">matches('Ǻ', normalize-unicode('Ǻ'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('Å', normalize-unicode('Å'))</x:label>
-      <x:variable name="expr" as="xs:string">matches('Å', normalize-unicode('Å'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('Å', normalize-unicode('Å'))</x:label>
-      <x:variable name="expr" as="xs:string">matches('Å', normalize-unicode('Å'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-unicode('Å') eq normalize-unicode('Å'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-unicode('Å') eq normalize-unicode('Å'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode(12)</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode(12)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode('','','')</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('','','')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode('Nothing to normalize.', 'NFC')</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('Nothing to normalize.', 'NFC')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode('Nothing to normalize.', 'nFc')</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('Nothing to normalize.', 'nFc')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode((), 'NFC')</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode((), 'NFC')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-unicode('Å', '') eq normalize-unicode('Å', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-unicode('Å', '') eq normalize-unicode('Å', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode('',())</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('',())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode('',12)</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode('',12)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:normalize-unicode("Å"," NFC "),fn:normalize-unicode("Å","NFC"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:normalize-unicode("Å"," NFC "),fn:normalize-unicode("Å","NFC"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:normalize-unicode("è","chancesareyoudonotsupportthis123ifyoudowaoo")</x:label>
-      <x:variable name="expr" as="xs:string">fn:normalize-unicode("è","chancesareyoudonotsupportthis123ifyoudowaoo")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(fn:normalize-unicode("normalizedstring"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(fn:normalize-unicode("normalizedstring"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lower-case(fn:normalize-unicode("NORMALIZEDSTRING"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lower-case(fn:normalize-unicode("NORMALIZEDSTRING"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:normalize-unicode("NORMALIZEDSTRING"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:normalize-unicode("NORMALIZEDSTRING"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:normalize-unicode("NORMALIZEDSTRING"),"another string")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:normalize-unicode("NORMALIZEDSTRING"),"another string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring(fn:normalize-unicode("NORMALIZEDSTRING"),5)</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring(fn:normalize-unicode("NORMALIZEDSTRING"),5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(normalize-unicode('﷐'))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(normalize-unicode('﷐'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(fn:normalize-unicode('ê﷐ê﷐ê'))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(fn:normalize-unicode('ê﷐ê﷐ê'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(fn:normalize-unicode('e﷐̂'))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(fn:normalize-unicode('e﷐̂'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode()</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("a string", "NFC", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("a string", "NFC", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("a string", "example.com/notSupported/")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("a string", "example.com/notSupported/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo", "NFC") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo", "NFC") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo", "NFD") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo", "NFD") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo", "NFKD") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo", "NFKD") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo", "NFKC") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo", "NFKC") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("f oo", "") eq "f oo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("f oo", "") eq "f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("foo", "") eq "foo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("foo", "") eq "foo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("f oo") eq "f oo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("f oo") eq "f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("f oo", "NFC") eq "f oo"</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("f oo", "NFC") eq "f oo"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode(("a string", error()), "NFC")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode(("a string", error()), "NFC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("blah","FULLY-NORMALIZED")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("blah","FULLY-NORMALIZED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("blah","FULLY-NORMALIZED")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("blah","FULLY-NORMALIZED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(normalize-unicode("blah","NFC"))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(normalize-unicode("blah","NFC"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(normalize-unicode("blah","ZZZ"))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(normalize-unicode("blah","ZZZ"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode((),"NFC")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode((),"NFC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode("","NFC")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode("","NFC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:label>
-      <x:variable name="expr" as="xs:string">normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/normalize-unicode.xml"><x:call function="nk:xpath-model"/><x:scenario label="normalize-unicode('Nothing to normalize.')">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('Nothing to normalize.')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(())">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('Ǻ', normalize-unicode('Ǻ'))">
+      <x:call>
+        <x:param select="string(.)">matches('Ǻ', normalize-unicode('Ǻ'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('Å', normalize-unicode('Å'))">
+      <x:call>
+        <x:param select="string(.)">matches('Å', normalize-unicode('Å'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('Å', normalize-unicode('Å'))">
+      <x:call>
+        <x:param select="string(.)">matches('Å', normalize-unicode('Å'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-unicode('Å') eq normalize-unicode('Å'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-unicode('Å') eq normalize-unicode('Å'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(12)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode(12)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode('','','')">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('','','')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode('Nothing to normalize.', 'NFC')">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('Nothing to normalize.', 'NFC')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode('Nothing to normalize.', 'nFc')">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('Nothing to normalize.', 'nFc')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode((), 'NFC')">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode((), 'NFC')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-unicode('Å', '') eq normalize-unicode('Å', ''))">
+      <x:call>
+        <x:param select="string(.)">(normalize-unicode('Å', '') eq normalize-unicode('Å', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode('',())">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('',())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode('',12)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode('',12)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:normalize-unicode(&#34;Å&#34;,&#34; NFC &#34;),fn:normalize-unicode(&#34;Å&#34;,&#34;NFC&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:normalize-unicode("Å"," NFC "),fn:normalize-unicode("Å","NFC"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:normalize-unicode(&#34;è&#34;,&#34;chancesareyoudonotsupportthis123ifyoudowaoo&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:normalize-unicode("è","chancesareyoudonotsupportthis123ifyoudowaoo")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(fn:normalize-unicode(&#34;normalizedstring&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(fn:normalize-unicode("normalizedstring"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lower-case(fn:normalize-unicode(&#34;NORMALIZEDSTRING&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:lower-case(fn:normalize-unicode("NORMALIZEDSTRING"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:normalize-unicode(&#34;NORMALIZEDSTRING&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:normalize-unicode("NORMALIZEDSTRING"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:normalize-unicode(&#34;NORMALIZEDSTRING&#34;),&#34;another string&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:normalize-unicode("NORMALIZEDSTRING"),"another string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring(fn:normalize-unicode(&#34;NORMALIZEDSTRING&#34;),5)">
+      <x:call>
+        <x:param select="string(.)">fn:substring(fn:normalize-unicode("NORMALIZEDSTRING"),5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(normalize-unicode('﷐'))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(normalize-unicode('﷐'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(fn:normalize-unicode('ê﷐ê﷐ê'))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(fn:normalize-unicode('ê﷐ê﷐ê'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(fn:normalize-unicode('e﷐̂'))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(fn:normalize-unicode('e﷐̂'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode()">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;a string&#34;, &#34;NFC&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("a string", "NFC", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;a string&#34;, &#34;example.com/notSupported/&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("a string", "example.com/notSupported/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;, &#34;NFC&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo", "NFC") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;, &#34;NFD&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo", "NFD") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;, &#34;NFKD&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo", "NFKD") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;, &#34;NFKC&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo", "NFKC") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;f oo&#34;, &#34;&#34;) eq &#34;f oo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("f oo", "") eq "f oo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;foo&#34;, &#34;&#34;) eq &#34;foo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("foo", "") eq "foo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;f oo&#34;) eq &#34;f oo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("f oo") eq "f oo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;f oo&#34;, &#34;NFC&#34;) eq &#34;f oo&#34;">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("f oo", "NFC") eq "f oo"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode((&#34;a string&#34;, error()), &#34;NFC&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode(("a string", error()), "NFC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;blah&#34;,&#34;FULLY-NORMALIZED&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("blah","FULLY-NORMALIZED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;blah&#34;,&#34;FULLY-NORMALIZED&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("blah","FULLY-NORMALIZED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(normalize-unicode(&#34;blah&#34;,&#34;NFC&#34;))">
+      <x:call>
+        <x:param select="string(.)">boolean(normalize-unicode("blah","NFC"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(normalize-unicode(&#34;blah&#34;,&#34;ZZZ&#34;))">
+      <x:call>
+        <x:param select="string(.)">boolean(normalize-unicode("blah","ZZZ"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode((),&#34;NFC&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode((),"NFC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(&#34;&#34;,&#34;NFC&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode("","NFC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(codepoints-to-string(2494),&#34;FULLY-NORMALIZED&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-unicode(codepoints-to-string(2494),&#34;FULLY-NORMALIZED&#34;)">
+      <x:call>
+        <x:param select="string(.)">normalize-unicode(codepoints-to-string(2494),"FULLY-NORMALIZED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

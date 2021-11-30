@@ -1,120 +1,197 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>/bib/book[3]/title union /bib/book[1]/title</x:label>
-      <x:variable name="expr" as="xs:string">/bib/book[3]/title union /bib/book[1]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/bib/book/title | /bib/book)/local-name()</x:label>
-      <x:variable name="expr" as="xs:string">(/bib/book/title | /bib/book)/local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/bib/book[3]/title | root(fn:exactly-one(/bib/book[3]/title))</x:label>
-      <x:variable name="expr" as="xs:string">/bib/book[3]/title | root(fn:exactly-one(/bib/book[3]/title))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/bib/book[3]/title/text() union /bib/book[1]/title</x:label>
-      <x:variable name="expr" as="xs:string">/bib/book[3]/title/text() union /bib/book[1]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/processing-instruction() union /bib/book[2]/title</x:label>
-      <x:variable name="expr" as="xs:string">/processing-instruction() union /bib/book[2]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/processing-instruction(PI1) union /bib/book[3]/title</x:label>
-      <x:variable name="expr" as="xs:string">/processing-instruction(PI1) union /bib/book[3]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/comment() union /bib/book[1]/title</x:label>
-      <x:variable name="expr" as="xs:string">/comment() union /bib/book[1]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/bib/book[3]/title/text() | /bib/book[1]/title</x:label>
-      <x:variable name="expr" as="xs:string">/bib/book[3]/title/text() | /bib/book[1]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/processing-instruction() | /bib/book[2]/title</x:label>
-      <x:variable name="expr" as="xs:string">/processing-instruction() | /bib/book[2]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/processing-instruction(PI1) | /bib/book[3]/title</x:label>
-      <x:variable name="expr" as="xs:string">/processing-instruction(PI1) | /bib/book[3]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/comment() | /bib/book[1]/title</x:label>
-      <x:variable name="expr" as="xs:string">/comment() | /bib/book[1]/title</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>//author union //nonexisting</x:label>
-      <x:variable name="expr" as="xs:string">//author union //nonexisting</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>//author | ()</x:label>
-      <x:variable name="expr" as="xs:string">//author | ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() | ()</x:label>
-      <x:variable name="expr" as="xs:string">() | ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:integer) | (/atomic:root/atomic:string)</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:integer) | (/atomic:root/atomic:string)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:duration/text()) | (/atomic:root/atomic:duration/text())</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:duration/text()) | (/atomic:root/atomic:duration/text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:date/text()) | (/atomic:root/atomic:date/text())</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:date/text()) | (/atomic:root/atomic:date/text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:base64Binary/text()) | (/atomic:root/atomic:base64Binary/text())</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:base64Binary/text()) | (/atomic:root/atomic:base64Binary/text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:QName/text()) | (/atomic:root/atomic:QName/text())</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:QName/text()) | (/atomic:root/atomic:QName/text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/atomic:root/atomic:idrefs/text()) | (/atomic:root/atomic:idrefs/text())</x:label>
-      <x:variable name="expr" as="xs:string">(/atomic:root/atomic:idrefs/text()) | (/atomic:root/atomic:idrefs/text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join(for $node in ((//price/text()) , (//price/text())) union ((//price/text()) , (//price/text())) return $node, "|")</x:label>
-      <x:variable name="expr" as="xs:string">string-join(for $node in ((//price/text()) , (//price/text())) union ((//price/text()) , (//price/text())) return $node, "|")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3) union (1, 2, 3)</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3) union (1, 2, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(//employee[location = "Denver"] union //employee[last()])</x:label>
-      <x:variable name="expr" as="xs:string">boolean(//employee[location = "Denver"] union //employee[last()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(//employee[location = "Denver"] | //employee[last()])</x:label>
-      <x:variable name="expr" as="xs:string">boolean(//employee[location = "Denver"] | //employee[last()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1|2|3</x:label>
-      <x:variable name="expr" as="xs:string">1|2|3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 union 2 union 3</x:label>
-      <x:variable name="expr" as="xs:string">1 union 2 union 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/union.xml"><x:call function="nk:xpath-model"/><x:scenario label="/bib/book[3]/title union /bib/book[1]/title">
+      <x:call>
+        <x:param select="string(.)">/bib/book[3]/title union /bib/book[1]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/bib/book/title | /bib/book)/local-name()">
+      <x:call>
+        <x:param select="string(.)">(/bib/book/title | /bib/book)/local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/bib/book[3]/title | root(fn:exactly-one(/bib/book[3]/title))">
+      <x:call>
+        <x:param select="string(.)">/bib/book[3]/title | root(fn:exactly-one(/bib/book[3]/title))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/bib/book[3]/title/text() union /bib/book[1]/title">
+      <x:call>
+        <x:param select="string(.)">/bib/book[3]/title/text() union /bib/book[1]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/processing-instruction() union /bib/book[2]/title">
+      <x:call>
+        <x:param select="string(.)">/processing-instruction() union /bib/book[2]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/processing-instruction(PI1) union /bib/book[3]/title">
+      <x:call>
+        <x:param select="string(.)">/processing-instruction(PI1) union /bib/book[3]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/comment() union /bib/book[1]/title">
+      <x:call>
+        <x:param select="string(.)">/comment() union /bib/book[1]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/bib/book[3]/title/text() | /bib/book[1]/title">
+      <x:call>
+        <x:param select="string(.)">/bib/book[3]/title/text() | /bib/book[1]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/processing-instruction() | /bib/book[2]/title">
+      <x:call>
+        <x:param select="string(.)">/processing-instruction() | /bib/book[2]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/processing-instruction(PI1) | /bib/book[3]/title">
+      <x:call>
+        <x:param select="string(.)">/processing-instruction(PI1) | /bib/book[3]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/comment() | /bib/book[1]/title">
+      <x:call>
+        <x:param select="string(.)">/comment() | /bib/book[1]/title</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="//author union //nonexisting">
+      <x:call>
+        <x:param select="string(.)">//author union //nonexisting</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="//author | ()">
+      <x:call>
+        <x:param select="string(.)">//author | ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() | ()">
+      <x:call>
+        <x:param select="string(.)">() | ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:integer) union (/atomic:root/atomic:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:integer) | (/atomic:root/atomic:string)">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:integer) | (/atomic:root/atomic:string)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:duration/text()) | (/atomic:root/atomic:duration/text())">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:duration/text()) | (/atomic:root/atomic:duration/text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:date/text()) | (/atomic:root/atomic:date/text())">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:date/text()) | (/atomic:root/atomic:date/text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:base64Binary/text()) | (/atomic:root/atomic:base64Binary/text())">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:base64Binary/text()) | (/atomic:root/atomic:base64Binary/text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:QName/text()) | (/atomic:root/atomic:QName/text())">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:QName/text()) | (/atomic:root/atomic:QName/text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/atomic:root/atomic:idrefs/text()) | (/atomic:root/atomic:idrefs/text())">
+      <x:call>
+        <x:param select="string(.)">(/atomic:root/atomic:idrefs/text()) | (/atomic:root/atomic:idrefs/text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join(for $node in ((//price/text()) , (//price/text())) union ((//price/text()) , (//price/text())) return $node, &#34;|&#34;)">
+      <x:call>
+        <x:param select="string(.)">string-join(for $node in ((//price/text()) , (//price/text())) union ((//price/text()) , (//price/text())) return $node, "|")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3) union (1, 2, 3)">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3) union (1, 2, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(//employee[location = &#34;Denver&#34;] union //employee[last()])">
+      <x:call>
+        <x:param select="string(.)">boolean(//employee[location = "Denver"] union //employee[last()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(//employee[location = &#34;Denver&#34;] | //employee[last()])">
+      <x:call>
+        <x:param select="string(.)">boolean(//employee[location = "Denver"] | //employee[last()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1|2|3">
+      <x:call>
+        <x:param select="string(.)">1|2|3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 union 2 union 3">
+      <x:call>
+        <x:param select="string(.)">1 union 2 union 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

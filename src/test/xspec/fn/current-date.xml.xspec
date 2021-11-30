@@ -1,112 +1,183 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:current-date()</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:year-from-date(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:year-from-date(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:day-from-date(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:day-from-date(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() - fn:current-date()</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() - fn:current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() + xs:dayTimeDuration("P3DT1H15M")</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() + xs:dayTimeDuration("P3DT1H15M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() - xs:dayTimeDuration("P3DT1H15M")</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() - xs:dayTimeDuration("P3DT1H15M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date("Argument 1")</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date("Argument 1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() - fn:current-date()</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() - fn:current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">xs:string(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-date(current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-date(current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) eq fn:string(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) eq fn:string(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) ne fn:string(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) ne fn:string(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) le fn:string(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) le fn:string(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) ge fn:string(fn:current-date())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) ge fn:string(fn:current-date())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) and fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) and fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) or fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) or fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:current-date()) or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:current-date()) or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:string(fn:current-date()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:string(fn:current-date()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() - xs:yearMonthDuration("P1Y2M")</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() - xs:yearMonthDuration("P1Y2M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:current-date() gt xs:date('2010-01-01')</x:label>
-      <x:variable name="expr" as="xs:string">fn:current-date() gt xs:date('2010-01-01')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exists(timezone-from-date(current-date()))</x:label>
-      <x:variable name="expr" as="xs:string">exists(timezone-from-date(current-date()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() = xs:date(current-dateTime())</x:label>
-      <x:variable name="expr" as="xs:string">current-date() = xs:date(current-dateTime())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date("WRONG PARAM")</x:label>
-      <x:variable name="expr" as="xs:string">current-date("WRONG PARAM")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() eq current-date()</x:label>
-      <x:variable name="expr" as="xs:string">current-date() eq current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/current-date.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:current-date()">
+      <x:call>
+        <x:param select="string(.)">fn:current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:year-from-date(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:year-from-date(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:day-from-date(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:day-from-date(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() - fn:current-date()">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() - fn:current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() + xs:dayTimeDuration(&#34;P3DT1H15M&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() + xs:dayTimeDuration("P3DT1H15M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() - xs:dayTimeDuration(&#34;P3DT1H15M&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() - xs:dayTimeDuration("P3DT1H15M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date(&#34;Argument 1&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:current-date("Argument 1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() - fn:current-date()">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() - fn:current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">xs:string(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-date(current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-date(current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) eq fn:string(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) eq fn:string(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) ne fn:string(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) ne fn:string(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) le fn:string(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) le fn:string(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) ge fn:string(fn:current-date())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) ge fn:string(fn:current-date())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) and fn:true()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) and fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) or fn:true()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) or fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:current-date()) or fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:current-date()) or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:string(fn:current-date()))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:string(fn:current-date()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() - xs:yearMonthDuration(&#34;P1Y2M&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() - xs:yearMonthDuration("P1Y2M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:current-date() gt xs:date('2010-01-01')">
+      <x:call>
+        <x:param select="string(.)">fn:current-date() gt xs:date('2010-01-01')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exists(timezone-from-date(current-date()))">
+      <x:call>
+        <x:param select="string(.)">exists(timezone-from-date(current-date()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() = xs:date(current-dateTime())">
+      <x:call>
+        <x:param select="string(.)">current-date() = xs:date(current-dateTime())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date(&#34;WRONG PARAM&#34;)">
+      <x:call>
+        <x:param select="string(.)">current-date("WRONG PARAM")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() eq current-date()">
+      <x:call>
+        <x:param select="string(.)">current-date() eq current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

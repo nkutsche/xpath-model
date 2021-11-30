@@ -1,156 +1,260 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:substring-after("","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("","A Character String")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("","A Character String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("A Character String","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("A Character String","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after((),"")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after((),"")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("",())</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("",())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("A Character String",())</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("A Character String",())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after((),"A Character String")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after((),"A Character String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("AAAAABBBBBCCCCC","BBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("AAAAABBBBBCCCCC","BBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("AAAAABBBBB"," ")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("AAAAABBBBB"," ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after(" ","AAAAABBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after(" ","AAAAABBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:substring-after("A","A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:substring-after("A","A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:substring-after("A","B"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:substring-after("A","B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after(xs:string("A"),"A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after(xs:string("A"),"A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("A",xs:string("A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("A",xs:string("A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("A","a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("A","a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("a","A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("a","A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("substring-after","substring-after")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("substring-after","substring-after")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("substring-aftersubstring-after","substring-after")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("substring-aftersubstring-after","substring-after")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("****","***")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("****","***")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("12345","1234")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("12345","1234")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:substring-after("substring-after","refta-gnirtsbus")</x:label>
-      <x:variable name="expr" as="xs:string">fn:substring-after("substring-after","refta-gnirtsbus")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("banana", "a", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("banana", "a", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("banana", "a", "collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("banana", "a", "collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("banana", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("banana", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("𐀁𐀂𐀃", "𐀂")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("𐀁𐀂𐀃", "𐀂")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after()</x:label>
-      <x:variable name="expr" as="xs:string">substring-after()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after(())</x:label>
-      <x:variable name="expr" as="xs:string">substring-after(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("foo", "fo", "http://www.w3.org/2005/xpath-functions/collation/codepoint") eq "o"</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("foo", "fo", "http://www.w3.org/2005/xpath-functions/collation/codepoint") eq "o"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("tattoo", "tat") eq "too"</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("tattoo", "tat") eq "too"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("tattoo", "tattoo") eq ""</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("tattoo", "tattoo") eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("abcdefgedij", "def") eq "gedij"</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("abcdefgedij", "def") eq "gedij"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after((), ()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">substring-after((), ()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("a string", ()) eq "a string"</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("a string", ()) eq "a string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>substring-after("a string", "not in other") eq ""</x:label>
-      <x:variable name="expr" as="xs:string">substring-after("a string", "not in other") eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:substring-after('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:substring-after('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/substring-after.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:substring-after(&#34;&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;&#34;,&#34;A Character String&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("","A Character String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;A Character String&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("A Character String","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after((),&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after((),"")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;&#34;,())">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("",())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;A Character String&#34;,())">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("A Character String",())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after((),&#34;A Character String&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after((),"A Character String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;AAAAABBBBBCCCCC&#34;,&#34;BBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("AAAAABBBBBCCCCC","BBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;AAAAABBBBB&#34;,&#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("AAAAABBBBB"," ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34; &#34;,&#34;AAAAABBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after(" ","AAAAABBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:substring-after(&#34;A&#34;,&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:substring-after("A","A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:substring-after(&#34;A&#34;,&#34;B&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:substring-after("A","B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(xs:string(&#34;A&#34;),&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after(xs:string("A"),"A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;A&#34;,xs:string(&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("A",xs:string("A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;A&#34;,&#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("A","a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;a&#34;,&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("a","A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;substring-after&#34;,&#34;substring-after&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("substring-after","substring-after")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;substring-aftersubstring-after&#34;,&#34;substring-after&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("substring-aftersubstring-after","substring-after")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;****&#34;,&#34;***&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("****","***")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;12345&#34;,&#34;1234&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("12345","1234")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:substring-after(&#34;substring-after&#34;,&#34;refta-gnirtsbus&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:substring-after("substring-after","refta-gnirtsbus")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;banana&#34;, &#34;a&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after("banana", "a", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;banana&#34;, &#34;a&#34;, &#34;collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after("banana", "a", "collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;banana&#34;, &#34;A&#34;, &#34;http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after("banana", "A", "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;𐀁𐀂𐀃&#34;, &#34;𐀂&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after("𐀁𐀂𐀃", "𐀂")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after()">
+      <x:call>
+        <x:param select="string(.)">substring-after()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(())">
+      <x:call>
+        <x:param select="string(.)">substring-after(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after((), (), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.example.com/COLLATION/NOT/SUPPORTED&#34;)">
+      <x:call>
+        <x:param select="string(.)">substring-after("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;foo&#34;, &#34;fo&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;) eq &#34;o&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("foo", "fo", "http://www.w3.org/2005/xpath-functions/collation/codepoint") eq "o"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;tattoo&#34;, &#34;tat&#34;) eq &#34;too&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("tattoo", "tat") eq "too"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;tattoo&#34;, &#34;tattoo&#34;) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("tattoo", "tattoo") eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;abcdefgedij&#34;, &#34;def&#34;) eq &#34;gedij&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("abcdefgedij", "def") eq "gedij"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after((), ()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after((), ()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;a string&#34;, ()) eq &#34;a string&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("a string", ()) eq "a string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="substring-after(&#34;a string&#34;, &#34;not in other&#34;) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">substring-after("a string", "not in other") eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:substring-after('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:substring-after('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>for $s in //section[section.title = "Procedure"] return ($s//incision)[2]/instrument</x:label>
-      <x:variable name="expr" as="xs:string">for $s in //section[section.title = "Procedure"] return ($s//incision)[2]/instrument</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/app/UseCaseSEQ.xml"><x:call function="nk:xpath-model"/><x:scenario label="for $s in //section[section.title = &#34;Procedure&#34;] return ($s//incision)[2]/instrument">
+      <x:call>
+        <x:param select="string(.)">for $s in //section[section.title = "Procedure"] return ($s//incision)[2]/instrument</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

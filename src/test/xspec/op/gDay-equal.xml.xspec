@@ -1,228 +1,336 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---14Z") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---14Z") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---31Z") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---31Z") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") eq xs:gDay("---14Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") eq xs:gDay("---14Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") eq xs:gDay("---31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") eq xs:gDay("---31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") ne xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") ne xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---14Z") ne xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---14Z") ne xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---31Z") ne xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---31Z") ne xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") ne xs:gDay("---14Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") ne xs:gDay("---14Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") ne xs:gDay("---31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") ne xs:gDay("---31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---12-05:00") eq xs:gDay("---12Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---12-05:00") eq xs:gDay("---12Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((xs:gDay("---12Z") eq xs:gDay("---12Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((xs:gDay("---12Z") eq xs:gDay("---12Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gDay("---05Z") ne xs:gDay("---06Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gDay("---05Z") ne xs:gDay("---06Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gDay("---11Z") eq xs:gDay("---10Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gDay("---11Z") eq xs:gDay("---10Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gDay("---05Z") ne xs:gDay("---05Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gDay("---05Z") ne xs:gDay("---05Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---04Z") eq xs:gDay("---02Z")) and (xs:gDay("---01Z") eq xs:gDay("---12Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---04Z") eq xs:gDay("---02Z")) and (xs:gDay("---01Z") eq xs:gDay("---12Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---12Z") ne xs:gDay("---03Z")) and (xs:gDay("---05Z") ne xs:gDay("---08Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---12Z") ne xs:gDay("---03Z")) and (xs:gDay("---05Z") ne xs:gDay("---08Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---02Z") eq xs:gDay("---02Z")) or (xs:gDay("---06Z") eq xs:gDay("---06Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---02Z") eq xs:gDay("---02Z")) or (xs:gDay("---06Z") eq xs:gDay("---06Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---06Z") ne xs:gDay("---06Z")) or (xs:gDay("---08Z") ne xs:gDay("---09Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---06Z") ne xs:gDay("---06Z")) or (xs:gDay("---08Z") ne xs:gDay("---09Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---03Z") eq xs:gDay("---01Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---03Z") eq xs:gDay("---01Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---08Z") ne xs:gDay("---07Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---08Z") ne xs:gDay("---07Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---05Z") eq xs:gDay("---05Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---05Z") eq xs:gDay("---05Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gDay("---09Z") ne xs:gDay("---09Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gDay("---09Z") ne xs:gDay("---09Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay(" ---31 ") eq xs:gDay("---31")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay(" ---31 ") eq xs:gDay("---31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gDay("---31") eq xs:gDay("---01"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gDay("---31") eq xs:gDay("---01"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01") ne xs:gDay("---10")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01") ne xs:gDay("---10")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gDay("---01") ne xs:gDay("---01"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gDay("---01") ne xs:gDay("---01"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01-00:00") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01-00:00") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01+00:00") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01+00:00") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01Z") eq xs:gDay("---01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01Z") eq xs:gDay("---01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---01-00:00") eq xs:gDay("---01+00:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---01-00:00") eq xs:gDay("---01+00:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/gDay-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:gDay(&#34;---01Z&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---14Z&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---14Z") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---31Z&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---31Z") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) eq xs:gDay(&#34;---14Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") eq xs:gDay("---14Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) eq xs:gDay(&#34;---31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") eq xs:gDay("---31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) ne xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") ne xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---14Z&#34;) ne xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---14Z") ne xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---31Z&#34;) ne xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---31Z") ne xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) ne xs:gDay(&#34;---14Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") ne xs:gDay("---14Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) ne xs:gDay(&#34;---31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") ne xs:gDay("---31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---12-05:00&#34;) eq xs:gDay(&#34;---12Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---12-05:00") eq xs:gDay("---12Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((xs:gDay(&#34;---12Z&#34;) eq xs:gDay(&#34;---12Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not((xs:gDay("---12Z") eq xs:gDay("---12Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gDay(&#34;---05Z&#34;) ne xs:gDay(&#34;---06Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gDay("---05Z") ne xs:gDay("---06Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gDay(&#34;---11Z&#34;) eq xs:gDay(&#34;---10Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gDay("---11Z") eq xs:gDay("---10Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gDay(&#34;---05Z&#34;) ne xs:gDay(&#34;---05Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gDay("---05Z") ne xs:gDay("---05Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---04Z&#34;) eq xs:gDay(&#34;---02Z&#34;)) and (xs:gDay(&#34;---01Z&#34;) eq xs:gDay(&#34;---12Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---04Z") eq xs:gDay("---02Z")) and (xs:gDay("---01Z") eq xs:gDay("---12Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---12Z&#34;) ne xs:gDay(&#34;---03Z&#34;)) and (xs:gDay(&#34;---05Z&#34;) ne xs:gDay(&#34;---08Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---12Z") ne xs:gDay("---03Z")) and (xs:gDay("---05Z") ne xs:gDay("---08Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---02Z&#34;) eq xs:gDay(&#34;---02Z&#34;)) or (xs:gDay(&#34;---06Z&#34;) eq xs:gDay(&#34;---06Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---02Z") eq xs:gDay("---02Z")) or (xs:gDay("---06Z") eq xs:gDay("---06Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---06Z&#34;) ne xs:gDay(&#34;---06Z&#34;)) or (xs:gDay(&#34;---08Z&#34;) ne xs:gDay(&#34;---09Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---06Z") ne xs:gDay("---06Z")) or (xs:gDay("---08Z") ne xs:gDay("---09Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---03Z&#34;) eq xs:gDay(&#34;---01Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---03Z") eq xs:gDay("---01Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---08Z&#34;) ne xs:gDay(&#34;---07Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---08Z") ne xs:gDay("---07Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---05Z&#34;) eq xs:gDay(&#34;---05Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---05Z") eq xs:gDay("---05Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gDay(&#34;---09Z&#34;) ne xs:gDay(&#34;---09Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gDay("---09Z") ne xs:gDay("---09Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34; ---31 &#34;) eq xs:gDay(&#34;---31&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay(" ---31 ") eq xs:gDay("---31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gDay(&#34;---31&#34;) eq xs:gDay(&#34;---01&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gDay("---31") eq xs:gDay("---01"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01&#34;) ne xs:gDay(&#34;---10&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01") ne xs:gDay("---10")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gDay(&#34;---01&#34;) ne xs:gDay(&#34;---01&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gDay("---01") ne xs:gDay("---01"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01-00:00&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01-00:00") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01+00:00&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01+00:00") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01Z&#34;) eq xs:gDay(&#34;---01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01Z") eq xs:gDay("---01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---01-00:00&#34;) eq xs:gDay(&#34;---01+00:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---01-00:00") eq xs:gDay("---01+00:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gDay(&#34;---30&#34;) eq xs:gDay(&#34;---31+09:01&#34;)&#xA;            else xs:gDay(&#34;---30&#34;) eq xs:gDay(&#34;---31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gDay("---30") eq xs:gDay("---31+09:01")
-            else xs:gDay("---30") eq xs:gDay("---31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gDay("---30") eq xs:gDay("---31+09:01")
-            else xs:gDay("---30") eq xs:gDay("---31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gDay("---30") eq xs:gDay("---31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gDay(&#34;---31+09:01&#34;) eq xs:gDay(&#34;---30&#34;)&#xA;            else xs:gDay(&#34;---31+09:00&#34;) eq xs:gDay(&#34;---30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gDay("---31+09:01") eq xs:gDay("---30")
-            else xs:gDay("---31+09:00") eq xs:gDay("---30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gDay("---31+09:01") eq xs:gDay("---30")
-            else xs:gDay("---31+09:00") eq xs:gDay("---30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gDay("---31+09:00") eq xs:gDay("---30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gDay(&#34;---30&#34;) eq xs:gDay(&#34;---31-09:01&#34;)&#xA;            else xs:gDay(&#34;---30&#34;) eq xs:gDay(&#34;---31-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gDay("---30") eq xs:gDay("---31-09:01")
-            else xs:gDay("---30") eq xs:gDay("---31-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gDay("---30") eq xs:gDay("---31-09:01")
-            else xs:gDay("---30") eq xs:gDay("---31-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gDay("---30") eq xs:gDay("---31-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gDay(&#34;---31-09:01&#34;) eq xs:gDay(&#34;---30&#34;)&#xA;            else xs:gDay(&#34;---31-09:00&#34;) eq xs:gDay(&#34;---30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gDay("---31-09:01") eq xs:gDay("---30")
-            else xs:gDay("---31-09:00") eq xs:gDay("---30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gDay("---31-09:01") eq xs:gDay("---30")
-            else xs:gDay("---31-09:00") eq xs:gDay("---30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gDay("---31-09:00") eq xs:gDay("---30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gDay(&#34;---30&#34;) ne xs:gDay(&#34;---31+09:01&#34;)&#xA;            else xs:gDay(&#34;---30&#34;) ne xs:gDay(&#34;---31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gDay("---30") ne xs:gDay("---31+09:01")
-            else xs:gDay("---30") ne xs:gDay("---31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gDay("---30") ne xs:gDay("---31+09:01")
-            else xs:gDay("---30") ne xs:gDay("---31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gDay("---30") ne xs:gDay("---31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gDay(&#34;---31+09:01&#34;) ne xs:gDay(&#34;---30&#34;)&#xA;            else xs:gDay(&#34;---31+09:00&#34;) ne xs:gDay(&#34;---30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gDay("---31+09:01") ne xs:gDay("---30")
-            else xs:gDay("---31+09:00") ne xs:gDay("---30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gDay("---31+09:01") ne xs:gDay("---30")
-            else xs:gDay("---31+09:00") ne xs:gDay("---30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gDay("---31+09:00") ne xs:gDay("---30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gDay(&#34;---30&#34;) ne xs:gDay(&#34;---31-09:01&#34;)&#xA;            else xs:gDay(&#34;---30&#34;) ne xs:gDay(&#34;---31-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gDay("---30") ne xs:gDay("---31-09:01")
-            else xs:gDay("---30") ne xs:gDay("---31-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gDay("---30") ne xs:gDay("---31-09:01")
-            else xs:gDay("---30") ne xs:gDay("---31-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gDay("---30") ne xs:gDay("---31-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gDay(&#34;---31-09:01&#34;) ne xs:gDay(&#34;---30&#34;)&#xA;            else xs:gDay(&#34;---31-09:00&#34;) ne xs:gDay(&#34;---30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gDay("---31-09:01") ne xs:gDay("---30")
-            else xs:gDay("---31-09:00") ne xs:gDay("---30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gDay("---31-09:01") ne xs:gDay("---30")
-            else xs:gDay("---31-09:00") ne xs:gDay("---30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---30-12:00") eq xs:gDay("---31+12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---30-12:00") eq xs:gDay("---31+12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---31+12:00") eq xs:gDay("---30-12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---31+12:00") eq xs:gDay("---30-12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---30-12:00") ne xs:gDay("---31+12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---30-12:00") ne xs:gDay("---31+12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gDay("---31+12:00") ne xs:gDay("---30-12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gDay("---31+12:00") ne xs:gDay("---30-12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
+            else xs:gDay("---31-09:00") ne xs:gDay("---30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---30-12:00&#34;) eq xs:gDay(&#34;---31+12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---30-12:00") eq xs:gDay("---31+12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---31+12:00&#34;) eq xs:gDay(&#34;---30-12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---31+12:00") eq xs:gDay("---30-12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---30-12:00&#34;) ne xs:gDay(&#34;---31+12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---30-12:00") ne xs:gDay("---31+12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gDay(&#34;---31+12:00&#34;) ne xs:gDay(&#34;---30-12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gDay("---31+12:00") ne xs:gDay("---30-12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))&#xA;            then xs:gDay(&#34;---31+01:01&#34;) eq xs:gDay(&#34;---31&#34;)&#xA;            else xs:gDay(&#34;---31+01:00&#34;) eq xs:gDay(&#34;---31&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
             then xs:gDay("---31+01:01") eq xs:gDay("---31")
-            else xs:gDay("---31+01:00") eq xs:gDay("---31")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
-            then xs:gDay("---31+01:01") eq xs:gDay("---31")
-            else xs:gDay("---31+01:00") eq xs:gDay("---31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
+            else xs:gDay("---31+01:00") eq xs:gDay("---31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))&#xA;            then xs:gDay(&#34;---31&#34;) eq xs:gDay(&#34;---31+01:01&#34;)&#xA;            else xs:gDay(&#34;---31&#34;) eq xs:gDay(&#34;---31+01:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
             then xs:gDay("---31") eq xs:gDay("---31+01:01")
-            else xs:gDay("---31") eq xs:gDay("---31+01:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT1H'))
-            then xs:gDay("---31") eq xs:gDay("---31+01:01")
-            else xs:gDay("---31") eq xs:gDay("---31+01:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+            else xs:gDay("---31") eq xs:gDay("---31+01:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,96 +1,155 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") eq xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") eq xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") ne xs:anyURI("example.com/No")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") ne xs:anyURI("example.com/No")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") eq xs:string("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") eq xs:string("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string("example.com/") eq xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:string("example.com/") eq xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") ne xs:string("example.com/No")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") ne xs:string("example.com/No")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string("example.com/") ne xs:anyURI("example.com/No")</x:label>
-      <x:variable name="expr" as="xs:string">xs:string("example.com/") ne xs:anyURI("example.com/No")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") eq xs:untypedAtomic("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") eq xs:untypedAtomic("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("example.com/") eq xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("example.com/") eq xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") ne xs:untypedAtomic("example.com/No")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") ne xs:untypedAtomic("example.com/No")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("example.com/") ne xs:anyURI("example.com/No")</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("example.com/") ne xs:anyURI("example.com/No")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:label>
-      <x:variable name="expr" as="xs:string">xs:string("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://example.com/A") eq xs:string("http://example.com/A")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://example.com/A") eq xs:string("http://example.com/A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:string("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:string("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("http://example.com/A") eq xs:string("http://example.com/B"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("http://example.com/A") eq xs:string("http://example.com/B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("http://example.com/A") ne xs:string("http://example.com/A"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("http://example.com/A") ne xs:string("http://example.com/A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:string("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:string("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://example.com/A") ne xs:string("http://example.com/B")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://example.com/A") ne xs:string("http://example.com/B")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:label>
-      <x:variable name="expr" as="xs:string">xs:string("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/anyURI-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:anyURI(&#34;example.com/&#34;) eq xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") eq xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) ne xs:anyURI(&#34;example.com/No&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") ne xs:anyURI("example.com/No")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) eq xs:string(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") eq xs:string("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(&#34;example.com/&#34;) eq xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:string("example.com/") eq xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) ne xs:string(&#34;example.com/No&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") ne xs:string("example.com/No")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(&#34;example.com/&#34;) ne xs:anyURI(&#34;example.com/No&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:string("example.com/") ne xs:anyURI("example.com/No")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) eq xs:untypedAtomic(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") eq xs:untypedAtomic("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;example.com/&#34;) eq xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("example.com/") eq xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) ne xs:untypedAtomic(&#34;example.com/No&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") ne xs:untypedAtomic("example.com/No")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;example.com/&#34;) ne xs:anyURI(&#34;example.com/No&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("example.com/") ne xs:anyURI("example.com/No")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(&#34;http://example.com/A&#34;) eq xs:anyURI(&#34;http://example.com/A&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:string("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://example.com/A&#34;) eq xs:string(&#34;http://example.com/A&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://example.com/A") eq xs:string("http://example.com/A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://example.com/A&#34;) eq xs:anyURI(&#34;http://example.com/A&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:string(&#34;http://example.com/A&#34;) eq xs:anyURI(&#34;http://example.com/B&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:string("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;http://example.com/A&#34;) eq xs:string(&#34;http://example.com/B&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("http://example.com/A") eq xs:string("http://example.com/B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;http://example.com/A&#34;) eq xs:anyURI(&#34;http://example.com/B&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("http://example.com/A") eq xs:anyURI("http://example.com/B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;http://example.com/A&#34;) ne xs:string(&#34;http://example.com/A&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("http://example.com/A") ne xs:string("http://example.com/A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:string(&#34;http://example.com/A&#34;) ne xs:anyURI(&#34;http://example.com/A&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:string("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;http://example.com/A&#34;) ne xs:anyURI(&#34;http://example.com/A&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://example.com/A&#34;) ne xs:string(&#34;http://example.com/B&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://example.com/A") ne xs:string("http://example.com/B")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(&#34;http://example.com/A&#34;) ne xs:anyURI(&#34;http://example.com/B&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:string("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://example.com/A&#34;) ne xs:anyURI(&#34;http://example.com/B&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://example.com/A") ne xs:anyURI("http://example.com/B")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

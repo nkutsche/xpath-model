@@ -1,276 +1,470 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = 1]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = 1]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>position()</x:label>
-      <x:variable name="expr" as="xs:string">position()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = 13]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = 13]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = last()]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = last()]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[last() = position()]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[last() = position()]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $var in 1 return for $h in (/works) return $h/employee[position() = $var]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $var in 1 return for $h in (/works) return $h/employee[position() = $var]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $var in "1" return for $h in (/works) return $h/employee[position() = xs:integer($var)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $var in "1" return for $h in (/works) return $h/employee[position() = xs:integer($var)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]) return $h/overtime[position() = position()]/day/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]) return $h/overtime[position() = position()]/day/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[@name][position() = 1]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[@name][position() = 1]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = 1][@name]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = 1][@name]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]/overtime) return $h/day[not(position() = 1)]/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]/overtime) return $h/day[not(position() = 1)]/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]/overtime) return $h/*[position() = position()]/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]/overtime) return $h/*[position() = position()]/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = (2 + 2)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = (2 + 2)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = (5 - 2)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = (5 - 2)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = (3 * 2)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = (3 * 2)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = (6 div 2)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = (6 div 2)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = (6 idiv 2)]/string(@name)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = (6 idiv 2)]/string(@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]) return ($h/overtime[position() and fn:true()]/*/string())</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]) return ($h/overtime[position() and fn:true()]/*/string())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]) return ($h/overtime[position() and fn:false()])</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]) return ($h/overtime[position() and fn:false()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]) return $h/overtime[position() or fn:true()]/*/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]) return $h/overtime[position() or fn:true()]/*/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[12]) return $h/overtime[position() or fn:false()]/*/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[12]) return $h/overtime[position() or fn:false()]/*/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works) return $h/employee[position() = 12]/overtime/*/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works) return $h/employee[position() = 12]/overtime/*/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>position()</x:label>
-      <x:variable name="expr" as="xs:string">position()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/works/employee/*/position()</x:label>
-      <x:variable name="expr" as="xs:string">/works/employee/*/position()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>position(1)</x:label>
-      <x:variable name="expr" as="xs:string">position(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[if(1) then 1 else position()]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[if(1) then 1 else position()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() = 0])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() = 0])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 = position()])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 = position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() eq 0])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() eq 0])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 eq position()])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 eq position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() != 0], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() != 0], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ne 0], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ne 0], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 != position()], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 != position()], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 ne position()], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 ne position()], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() lt 1])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() lt 1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt; 1])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt; 1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() le 0])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() le 0])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt;= 0])</x:label>
-      <x:variable name="expr" as="xs:string">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt;= 0])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() gt 0], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() gt 0], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt;= 1], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt;= 1], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ge 1], (1, 2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ge 1], (1, 2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (0, 1, current-time(), 4)[position() = 2] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (0, 1, current-time(), 4)[position() = 2] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (0, 1, current-time(), 4)[position() eq 2] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (0, 1, current-time(), 4)[position() eq 2] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (0, 1, current-time(), 4)[2 eq position()] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (0, 1, current-time(), 4)[2 eq position()] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (0, 1, current-time(), 4)[2 = position()] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (0, 1, current-time(), 4)[2 = position()] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() != 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() != 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() ne 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() ne 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 ne position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 ne position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 != position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 != position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() lt 4])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() lt 4])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt; 4])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt; 4])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 gt position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 gt position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 &gt; position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 &gt; position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() le 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() le 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt;= 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt;= 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 ge position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 ge position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 &gt;= position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 &gt;= position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 lt position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 lt position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 &lt; position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 &lt; position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() gt 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() gt 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt; 3])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt; 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 le position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 le position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 &lt;= position()])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 &lt;= position()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() ge 4])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() ge 4])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt;= 4])</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt;= 4])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/position.xml"><x:call function="nk:xpath-model"/><x:scenario label="for $h in (/works) return $h/employee[position() = 1]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = 1]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="position()">
+      <x:call>
+        <x:param select="string(.)">position()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = 13]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = 13]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = last()]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = last()]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[last() = position()]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[last() = position()]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $var in 1 return for $h in (/works) return $h/employee[position() = $var]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $var in 1 return for $h in (/works) return $h/employee[position() = $var]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $var in &#34;1&#34; return for $h in (/works) return $h/employee[position() = xs:integer($var)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $var in "1" return for $h in (/works) return $h/employee[position() = xs:integer($var)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]) return $h/overtime[position() = position()]/day/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]) return $h/overtime[position() = position()]/day/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[@name][position() = 1]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[@name][position() = 1]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = 1][@name]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = 1][@name]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]/overtime) return $h/day[not(position() = 1)]/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]/overtime) return $h/day[not(position() = 1)]/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]/overtime) return $h/*[position() = position()]/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]/overtime) return $h/*[position() = position()]/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = (2 + 2)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = (2 + 2)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = (5 - 2)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = (5 - 2)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = (3 * 2)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = (3 * 2)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = (6 div 2)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = (6 div 2)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = (6 idiv 2)]/string(@name)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = (6 idiv 2)]/string(@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]) return ($h/overtime[position() and fn:true()]/*/string())">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]) return ($h/overtime[position() and fn:true()]/*/string())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]) return ($h/overtime[position() and fn:false()])">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]) return ($h/overtime[position() and fn:false()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]) return $h/overtime[position() or fn:true()]/*/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]) return $h/overtime[position() or fn:true()]/*/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[12]) return $h/overtime[position() or fn:false()]/*/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[12]) return $h/overtime[position() or fn:false()]/*/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works) return $h/employee[position() = 12]/overtime/*/string()">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works) return $h/employee[position() = 12]/overtime/*/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="position()">
+      <x:call>
+        <x:param select="string(.)">position()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/works/employee/*/position()">
+      <x:call>
+        <x:param select="string(.)">/works/employee/*/position()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="position(1)">
+      <x:call>
+        <x:param select="string(.)">position(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3)[if(1) then 1 else position()]">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3)[if(1) then 1 else position()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() = 0])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() = 0])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 = position()])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 = position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() eq 0])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() eq 0])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 eq position()])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [0 eq position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() != 0], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() != 0], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ne 0], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ne 0], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 != position()], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 != position()], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 ne position()], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [0 ne position()], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() lt 1])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() lt 1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt; 1])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt; 1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() le 0])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() le 0])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt;= 0])">
+      <x:call>
+        <x:param select="string(.)">empty((1, 2, 3, current-time(), current-date(), 6, 7, 8) [position() &lt;= 0])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt; 0], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() gt 0], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() gt 0], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt;= 1], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() &gt;= 1], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ge 1], (1, 2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal( (1, 2, 3, remove((current-time(), 4), 1)) [position() ge 1], (1, 2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (0, 1, current-time(), 4)[position() = 2] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">1 eq (0, 1, current-time(), 4)[position() = 2] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (0, 1, current-time(), 4)[position() eq 2] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">1 eq (0, 1, current-time(), 4)[position() eq 2] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (0, 1, current-time(), 4)[2 eq position()] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">1 eq (0, 1, current-time(), 4)[2 eq position()] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (0, 1, current-time(), 4)[2 = position()] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">1 eq (0, 1, current-time(), 4)[2 = position()] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() != 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() != 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() ne 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[position() ne 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 ne position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 ne position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 != position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 4), (1, 2, current-time(), 4)[3 != position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() lt 4])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() lt 4])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt; 4])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt; 4])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 gt position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 gt position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 &gt; position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[4 &gt; position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() le 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() le 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt;= 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[position() &lt;= 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 ge position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 ge position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 &gt;= position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3), (1, 2, 3, current-time())[3 &gt;= position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 lt position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 lt position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 &lt; position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[3 &lt; position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() gt 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() gt 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt; 3])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt; 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 le position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 le position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 &lt;= position()])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[4 &lt;= position()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() ge 4])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() ge 4])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt;= 4])">
+      <x:call>
+        <x:param select="string(.)">deep-equal((4, 5), (1, 2, current-time(), 4, 5)[position() &gt;= 4])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

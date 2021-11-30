@@ -1,36 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:default-collation("An Argument")</x:label>
-      <x:variable name="expr" as="xs:string">fn:default-collation("An Argument")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:default-collation()</x:label>
-      <x:variable name="expr" as="xs:string">fn:default-collation()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>default-collation(.)</x:label>
-      <x:variable name="expr" as="xs:string">default-collation(.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>default-collation(1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">default-collation(1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>default-collation() eq "http://www.w3.org/2005/xpath-functions/collation/codepoint"</x:label>
-      <x:variable name="expr" as="xs:string">default-collation() eq "http://www.w3.org/2005/xpath-functions/collation/codepoint"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:default-collation())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:default-collation())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:default-collation())</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:default-collation())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/default-collation.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:default-collation(&#34;An Argument&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:default-collation("An Argument")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:default-collation()">
+      <x:call>
+        <x:param select="string(.)">fn:default-collation()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="default-collation(.)">
+      <x:call>
+        <x:param select="string(.)">default-collation(.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="default-collation(1, 2)">
+      <x:call>
+        <x:param select="string(.)">default-collation(1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="default-collation() eq &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;">
+      <x:call>
+        <x:param select="string(.)">default-collation() eq "http://www.w3.org/2005/xpath-functions/collation/codepoint"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:default-collation())">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:default-collation())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:default-collation())">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:default-collation())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

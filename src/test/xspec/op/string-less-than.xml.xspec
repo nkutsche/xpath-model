@@ -1,48 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>'a' lt 'abc'</x:label>
-      <x:variable name="expr" as="xs:string">'a' lt 'abc'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not('abc' lt 'a')</x:label>
-      <x:variable name="expr" as="xs:string">not('abc' lt 'a')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'a' le 'abc'</x:label>
-      <x:variable name="expr" as="xs:string">'a' le 'abc'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not('abc' le 'a')</x:label>
-      <x:variable name="expr" as="xs:string">not('abc' le 'a')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>'abc' le 'abc'</x:label>
-      <x:variable name="expr" as="xs:string">'abc' le 'abc'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"" lt "𑅰"</x:label>
-      <x:variable name="expr" as="xs:string">"" lt "𑅰"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(string(current-time()) lt "now")</x:label>
-      <x:variable name="expr" as="xs:string">not(string(current-time()) lt "now")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(string(current-time()) ge "now")</x:label>
-      <x:variable name="expr" as="xs:string">not(string(current-time()) ge "now")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:untypedAtomic(current-time()) lt xs:untypedAtomic("now"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:untypedAtomic(current-time()) lt xs:untypedAtomic("now"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:untypedAtomic(current-time()) ge xs:untypedAtomic("now"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:untypedAtomic(current-time()) ge xs:untypedAtomic("now"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/string-less-than.xml"><x:call function="nk:xpath-model"/><x:scenario label="'a' lt 'abc'">
+      <x:call>
+        <x:param select="string(.)">'a' lt 'abc'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not('abc' lt 'a')">
+      <x:call>
+        <x:param select="string(.)">not('abc' lt 'a')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="'a' le 'abc'">
+      <x:call>
+        <x:param select="string(.)">'a' le 'abc'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not('abc' le 'a')">
+      <x:call>
+        <x:param select="string(.)">not('abc' le 'a')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="'abc' le 'abc'">
+      <x:call>
+        <x:param select="string(.)">'abc' le 'abc'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;&#34; lt &#34;𑅰&#34;">
+      <x:call>
+        <x:param select="string(.)">"" lt "𑅰"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(string(current-time()) lt &#34;now&#34;)">
+      <x:call>
+        <x:param select="string(.)">not(string(current-time()) lt "now")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(string(current-time()) ge &#34;now&#34;)">
+      <x:call>
+        <x:param select="string(.)">not(string(current-time()) ge "now")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:untypedAtomic(current-time()) lt xs:untypedAtomic(&#34;now&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:untypedAtomic(current-time()) lt xs:untypedAtomic("now"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:untypedAtomic(current-time()) ge xs:untypedAtomic(&#34;now&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:untypedAtomic(current-time()) ge xs:untypedAtomic("now"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

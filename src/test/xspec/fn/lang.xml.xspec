@@ -1,152 +1,253 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:lang(xs:string("en"),/root[1]/time[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang(xs:string("en"),/root[1]/time[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang(xs:string("EN"),./root[1]/time[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang(xs:string("EN"),./root[1]/time[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang(xs:string("eN"),./root[1]/time[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang(xs:string("eN"),./root[1]/time[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:lang((), ./langs[1]/para[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:lang((), ./langs[1]/para[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[1] return $x/fn:lang("en")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[1] return $x/fn:lang("en")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/div[1]/para return $x/fn:lang("en")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/div[1]/para return $x/fn:lang("en")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[2] return $x/fn:lang("EN")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[2] return $x/fn:lang("EN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[2] return $x/fn:lang("En")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[2] return $x/fn:lang("En")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[2] return $x/fn:lang("eN")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[2] return $x/fn:lang("eN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[2] return $x/fn:lang("en")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[2] return $x/fn:lang("en")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("en-us")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("en-us")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("EN")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("EN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("En")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("En")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("eN")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("eN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("en")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("en")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("en-us")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("en-us")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1[fn:lang("en-us")]</x:label>
-      <x:variable name="expr" as="xs:string">1[fn:lang("en-us")]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[3] return $x/fn:lang("us-us")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[3] return $x/fn:lang("us-us")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in /langs/para[2] return $x/fn:lang("fr")</x:label>
-      <x:variable name="expr" as="xs:string">for $x in /langs/para[2] return $x/fn:lang("fr")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("en",fn:exactly-one(/langs/para[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("en",fn:exactly-one(/langs/para[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("fr",fn:exactly-one(/langs/para[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("fr",fn:exactly-one(/langs/para[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("en",fn:exactly-one(/langs/para[3]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("en",fn:exactly-one(/langs/para[3]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("en",fn:exactly-one(/langs/para[2]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("en",fn:exactly-one(/langs/para[2]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("en",.)</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("en",.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-DE",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-DE",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("DE-de",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("DE-de",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-DE-1996",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-DE-1996",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-DE-1998",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-DE-1998",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-D",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-D",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-DE-",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-DE-",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lang("de-DE-1996-x",fn:exactly-one(/langs/para[4]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lang("de-DE-1996-x",fn:exactly-one(/langs/para[4]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>lang()</x:label>
-      <x:variable name="expr" as="xs:string">lang()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(false()) then lang("en", .) else true()</x:label>
-      <x:variable name="expr" as="xs:string">if(false()) then lang("en", .) else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(false()) then lang("en") else true()</x:label>
-      <x:variable name="expr" as="xs:string">if(false()) then lang("en") else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>lang("en", 2)</x:label>
-      <x:variable name="expr" as="xs:string">lang("en", 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/lang.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:lang(xs:string(&#34;en&#34;),/root[1]/time[1])">
+      <x:call>
+        <x:param select="string(.)">fn:lang(xs:string("en"),/root[1]/time[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(xs:string(&#34;EN&#34;),./root[1]/time[1])">
+      <x:call>
+        <x:param select="string(.)">fn:lang(xs:string("EN"),./root[1]/time[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(xs:string(&#34;eN&#34;),./root[1]/time[1])">
+      <x:call>
+        <x:param select="string(.)">fn:lang(xs:string("eN"),./root[1]/time[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:lang((), ./langs[1]/para[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:lang((), ./langs[1]/para[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[1] return $x/fn:lang(&#34;en&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[1] return $x/fn:lang("en")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/div[1]/para return $x/fn:lang(&#34;en&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/div[1]/para return $x/fn:lang("en")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[2] return $x/fn:lang(&#34;EN&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[2] return $x/fn:lang("EN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[2] return $x/fn:lang(&#34;En&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[2] return $x/fn:lang("En")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[2] return $x/fn:lang(&#34;eN&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[2] return $x/fn:lang("eN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[2] return $x/fn:lang(&#34;en&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[2] return $x/fn:lang("en")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;en-us&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("en-us")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;EN&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("EN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;En&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("En")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;eN&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("eN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;en&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("en")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;en-us&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("en-us")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1[fn:lang(&#34;en-us&#34;)]">
+      <x:call>
+        <x:param select="string(.)">1[fn:lang("en-us")]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[3] return $x/fn:lang(&#34;us-us&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[3] return $x/fn:lang("us-us")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in /langs/para[2] return $x/fn:lang(&#34;fr&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $x in /langs/para[2] return $x/fn:lang("fr")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;en&#34;,fn:exactly-one(/langs/para[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("en",fn:exactly-one(/langs/para[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;fr&#34;,fn:exactly-one(/langs/para[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("fr",fn:exactly-one(/langs/para[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;en&#34;,fn:exactly-one(/langs/para[3]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("en",fn:exactly-one(/langs/para[3]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;en&#34;,fn:exactly-one(/langs/para[2]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("en",fn:exactly-one(/langs/para[2]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;en&#34;,.)">
+      <x:call>
+        <x:param select="string(.)">fn:lang("en",.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-DE&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-DE",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;DE-de&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("DE-de",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-DE-1996&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-DE-1996",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-DE-1998&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-DE-1998",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-D&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-D",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-DE-&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-DE-",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lang(&#34;de-DE-1996-x&#34;,fn:exactly-one(/langs/para[4]))">
+      <x:call>
+        <x:param select="string(.)">fn:lang("de-DE-1996-x",fn:exactly-one(/langs/para[4]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="lang()">
+      <x:call>
+        <x:param select="string(.)">lang()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(false()) then lang(&#34;en&#34;, .) else true()">
+      <x:call>
+        <x:param select="string(.)">if(false()) then lang("en", .) else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(false()) then lang(&#34;en&#34;) else true()">
+      <x:call>
+        <x:param select="string(.)">if(false()) then lang("en") else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="lang(&#34;en&#34;, 2)">
+      <x:call>
+        <x:param select="string(.)">lang("en", 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

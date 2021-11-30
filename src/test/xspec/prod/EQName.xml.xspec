@@ -1,28 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{}*/string()</x:label>
-      <x:variable name="expr" as="xs:string">(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{}*/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{  
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/EQName.xml"><x:call function="nk:xpath-model"/><x:scenario label="(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{}*/string()">
+      <x:call>
+        <x:param select="string(.)">(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{}*/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{  &#xA;         &#xA;         }*/string()">
+      <x:call>
+        <x:param select="string(.)">(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{  
          
-         }*/string()</x:label>
-      <x:variable name="expr" as="xs:string">(//Q{http://www.example.com/AuctionWatch}Start)[1]/namespace::Q{  
-         
-         }*/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>Q{http://www.w3.org/2005/xpath-functions/math}pi()</x:label>
-      <x:variable name="expr" as="xs:string">Q{http://www.w3.org/2005/xpath-functions/math}pi()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>Q{&amp;#x7D;http://www.w3.org/2005/xpath-functions/math}pi()</x:label>
-      <x:variable name="expr" as="xs:string">Q{&amp;#x7D;http://www.w3.org/2005/xpath-functions/math}pi()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+         }*/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="Q{http://www.w3.org/2005/xpath-functions/math}pi()">
+      <x:call>
+        <x:param select="string(.)">Q{http://www.w3.org/2005/xpath-functions/math}pi()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="Q{&amp;#x7D;http://www.w3.org/2005/xpath-functions/math}pi()">
+      <x:call>
+        <x:param select="string(.)">Q{&amp;#x7D;http://www.w3.org/2005/xpath-functions/math}pi()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

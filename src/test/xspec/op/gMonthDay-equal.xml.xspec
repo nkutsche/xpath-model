@@ -1,228 +1,336 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--04-10Z") eq xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--04-10Z") eq xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--12-31Z") eq xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--12-31Z") eq xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--04-10Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--04-10Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--04-10Z") ne xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--04-10Z") ne xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--12-31Z") ne xs:gMonthDay("--01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--12-31Z") ne xs:gMonthDay("--01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--04-10Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--04-10Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--12-25Z") eq xs:gMonthDay("--12-26Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--12-25Z") eq xs:gMonthDay("--12-26Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((xs:gMonthDay("--12-10Z") eq xs:gMonthDay("--12-10Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((xs:gMonthDay("--12-10Z") eq xs:gMonthDay("--12-10Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gMonthDay("--05-01Z") ne xs:gMonthDay("--06-12Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gMonthDay("--05-01Z") ne xs:gMonthDay("--06-12Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gMonthDay("--11-10Z") eq xs:gMonthDay("--10-02Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gMonthDay("--11-10Z") eq xs:gMonthDay("--10-02Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gMonthDay("--05-10Z") ne xs:gMonthDay("--05-10Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gMonthDay("--05-10Z") ne xs:gMonthDay("--05-10Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--04-02Z") eq xs:gMonthDay("--02-03Z")) and (xs:gMonthDay("--01-07Z") eq xs:gMonthDay("--12-10Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--04-02Z") eq xs:gMonthDay("--02-03Z")) and (xs:gMonthDay("--01-07Z") eq xs:gMonthDay("--12-10Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--12-10Z") ne xs:gMonthDay("--03-11Z")) and (xs:gMonthDay("--05-12Z") ne xs:gMonthDay("--08-08Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--12-10Z") ne xs:gMonthDay("--03-11Z")) and (xs:gMonthDay("--05-12Z") ne xs:gMonthDay("--08-08Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--02-01Z") eq xs:gMonthDay("--02-10Z")) or (xs:gMonthDay("--06-02Z") eq xs:gMonthDay("--06-03Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--02-01Z") eq xs:gMonthDay("--02-10Z")) or (xs:gMonthDay("--06-02Z") eq xs:gMonthDay("--06-03Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--06-02Z") ne xs:gMonthDay("--06-09Z")) or (xs:gMonthDay("--08-06Z") ne xs:gMonthDay("--09-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--06-02Z") ne xs:gMonthDay("--06-09Z")) or (xs:gMonthDay("--08-06Z") ne xs:gMonthDay("--09-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--03-04Z") eq xs:gMonthDay("--01-07Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--03-04Z") eq xs:gMonthDay("--01-07Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--08-04Z") ne xs:gMonthDay("--07-12Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--08-04Z") ne xs:gMonthDay("--07-12Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--05-05Z") eq xs:gMonthDay("--05-05Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--05-05Z") eq xs:gMonthDay("--05-05Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gMonthDay("--09-09Z") ne xs:gMonthDay("--09-10Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gMonthDay("--09-09Z") ne xs:gMonthDay("--09-10Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--04-01 ") eq xs:gMonthDay("--04-01")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--04-01 ") eq xs:gMonthDay("--04-01")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gMonthDay("--03-03") eq xs:gMonthDay("--04-03"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gMonthDay("--03-03") eq xs:gMonthDay("--04-03"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--04-12") ne xs:gMonthDay("--04-11")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--04-12") ne xs:gMonthDay("--04-11")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gMonthDay("--04-11") ne xs:gMonthDay("--04-11"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gMonthDay("--04-11") ne xs:gMonthDay("--04-11"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--03-01+00:00") eq xs:gMonthDay("--03-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--03-01+00:00") eq xs:gMonthDay("--03-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--03-01Z") eq xs:gMonthDay("--03-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--03-01Z") eq xs:gMonthDay("--03-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01+00:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01+00:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/gMonthDay-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) eq xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--04-10Z&#34;) eq xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--04-10Z") eq xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--12-31Z&#34;) eq xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--12-31Z") eq xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) eq xs:gMonthDay(&#34;--04-10Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--04-10Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) eq xs:gMonthDay(&#34;--12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") eq xs:gMonthDay("--12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) ne xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--04-10Z&#34;) ne xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--04-10Z") ne xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--12-31Z&#34;) ne xs:gMonthDay(&#34;--01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--12-31Z") ne xs:gMonthDay("--01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) ne xs:gMonthDay(&#34;--04-10Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--04-10Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-01Z&#34;) ne xs:gMonthDay(&#34;--12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-01Z") ne xs:gMonthDay("--12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--12-25Z&#34;) eq xs:gMonthDay(&#34;--12-26Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--12-25Z") eq xs:gMonthDay("--12-26Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((xs:gMonthDay(&#34;--12-10Z&#34;) eq xs:gMonthDay(&#34;--12-10Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not((xs:gMonthDay("--12-10Z") eq xs:gMonthDay("--12-10Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gMonthDay(&#34;--05-01Z&#34;) ne xs:gMonthDay(&#34;--06-12Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gMonthDay("--05-01Z") ne xs:gMonthDay("--06-12Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gMonthDay(&#34;--11-10Z&#34;) eq xs:gMonthDay(&#34;--10-02Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gMonthDay("--11-10Z") eq xs:gMonthDay("--10-02Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gMonthDay(&#34;--05-10Z&#34;) ne xs:gMonthDay(&#34;--05-10Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gMonthDay("--05-10Z") ne xs:gMonthDay("--05-10Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--04-02Z&#34;) eq xs:gMonthDay(&#34;--02-03Z&#34;)) and (xs:gMonthDay(&#34;--01-07Z&#34;) eq xs:gMonthDay(&#34;--12-10Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--04-02Z") eq xs:gMonthDay("--02-03Z")) and (xs:gMonthDay("--01-07Z") eq xs:gMonthDay("--12-10Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--12-10Z&#34;) ne xs:gMonthDay(&#34;--03-11Z&#34;)) and (xs:gMonthDay(&#34;--05-12Z&#34;) ne xs:gMonthDay(&#34;--08-08Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--12-10Z") ne xs:gMonthDay("--03-11Z")) and (xs:gMonthDay("--05-12Z") ne xs:gMonthDay("--08-08Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--02-01Z&#34;) eq xs:gMonthDay(&#34;--02-10Z&#34;)) or (xs:gMonthDay(&#34;--06-02Z&#34;) eq xs:gMonthDay(&#34;--06-03Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--02-01Z") eq xs:gMonthDay("--02-10Z")) or (xs:gMonthDay("--06-02Z") eq xs:gMonthDay("--06-03Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--06-02Z&#34;) ne xs:gMonthDay(&#34;--06-09Z&#34;)) or (xs:gMonthDay(&#34;--08-06Z&#34;) ne xs:gMonthDay(&#34;--09-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--06-02Z") ne xs:gMonthDay("--06-09Z")) or (xs:gMonthDay("--08-06Z") ne xs:gMonthDay("--09-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--03-04Z&#34;) eq xs:gMonthDay(&#34;--01-07Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--03-04Z") eq xs:gMonthDay("--01-07Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--08-04Z&#34;) ne xs:gMonthDay(&#34;--07-12Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--08-04Z") ne xs:gMonthDay("--07-12Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--05-05Z&#34;) eq xs:gMonthDay(&#34;--05-05Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--05-05Z") eq xs:gMonthDay("--05-05Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gMonthDay(&#34;--09-09Z&#34;) ne xs:gMonthDay(&#34;--09-10Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gMonthDay("--09-09Z") ne xs:gMonthDay("--09-10Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--04-01 &#34;) eq xs:gMonthDay(&#34;--04-01&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--04-01 ") eq xs:gMonthDay("--04-01")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gMonthDay(&#34;--03-03&#34;) eq xs:gMonthDay(&#34;--04-03&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gMonthDay("--03-03") eq xs:gMonthDay("--04-03"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--04-12&#34;) ne xs:gMonthDay(&#34;--04-11&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--04-12") ne xs:gMonthDay("--04-11")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gMonthDay(&#34;--04-11&#34;) ne xs:gMonthDay(&#34;--04-11&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gMonthDay("--04-11") ne xs:gMonthDay("--04-11"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--03-01-00:00&#34;) eq xs:gMonthDay(&#34;--03-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--03-01+00:00&#34;) eq xs:gMonthDay(&#34;--03-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--03-01+00:00") eq xs:gMonthDay("--03-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--03-01Z&#34;) eq xs:gMonthDay(&#34;--03-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--03-01Z") eq xs:gMonthDay("--03-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--03-01-00:00&#34;) eq xs:gMonthDay(&#34;--03-01+00:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--03-01-00:00") eq xs:gMonthDay("--03-01+00:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31+09:01&#34;)&#xA;            else xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+09:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+09:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-31+09:01&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)&#xA;            else xs:gMonthDay(&#34;--12-31+09:00&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gMonthDay("--12-31+09:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+09:00") eq xs:gMonthDay("--12-30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gMonthDay("--12-31+09:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+09:00") eq xs:gMonthDay("--12-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gMonthDay("--12-31+09:00") eq xs:gMonthDay("--12-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31-09:01&#34;)&#xA;            else xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31-09:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31-09:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-31-09:01&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)&#xA;            else xs:gMonthDay(&#34;--12-31-09:00&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gMonthDay("--12-31-09:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31-09:00") eq xs:gMonthDay("--12-30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gMonthDay("--12-31-09:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31-09:00") eq xs:gMonthDay("--12-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gMonthDay("--12-31-09:00") eq xs:gMonthDay("--12-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-30&#34;) ne xs:gMonthDay(&#34;--12-31+09:01&#34;)&#xA;            else xs:gMonthDay(&#34;--12-30&#34;) ne xs:gMonthDay(&#34;--12-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31+09:01")
-            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31+09:01")
-            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-31+09:01&#34;) ne xs:gMonthDay(&#34;--12-30&#34;)&#xA;            else xs:gMonthDay(&#34;--12-31+09:00&#34;) ne xs:gMonthDay(&#34;--12-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gMonthDay("--12-31+09:01") ne xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+09:00") ne xs:gMonthDay("--12-30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gMonthDay("--12-31+09:01") ne xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+09:00") ne xs:gMonthDay("--12-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gMonthDay("--12-31+09:00") ne xs:gMonthDay("--12-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-30&#34;) ne xs:gMonthDay(&#34;--12-31-09:01&#34;)&#xA;            else xs:gMonthDay(&#34;--12-30&#34;) ne xs:gMonthDay(&#34;--12-31-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31-09:01")
-            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31-09:01")
-            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gMonthDay("--12-30") ne xs:gMonthDay("--12-31-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gMonthDay(&#34;--12-31-09:01&#34;) ne xs:gMonthDay(&#34;--12-30&#34;)&#xA;            else xs:gMonthDay(&#34;--12-31-09:00&#34;) ne xs:gMonthDay(&#34;--12-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gMonthDay("--12-31-09:01") ne xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31-09:00") ne xs:gMonthDay("--12-30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gMonthDay("--12-31-09:01") ne xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31-09:00") ne xs:gMonthDay("--12-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-30-12:00") eq xs:gMonthDay("--01-31+12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-30-12:00") eq xs:gMonthDay("--01-31+12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-31+12:00") eq xs:gMonthDay("--01-30-12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-31+12:00") eq xs:gMonthDay("--01-30-12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-30-12:00") ne xs:gMonthDay("--01-31+12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-30-12:00") ne xs:gMonthDay("--01-31+12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gMonthDay("--01-31+12:00") ne xs:gMonthDay("--01-30-12:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gMonthDay("--01-31+12:00") ne xs:gMonthDay("--01-30-12:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
+            else xs:gMonthDay("--12-31-09:00") ne xs:gMonthDay("--12-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-30-12:00&#34;) eq xs:gMonthDay(&#34;--01-31+12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-30-12:00") eq xs:gMonthDay("--01-31+12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-31+12:00&#34;) eq xs:gMonthDay(&#34;--01-30-12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-31+12:00") eq xs:gMonthDay("--01-30-12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-30-12:00&#34;) ne xs:gMonthDay(&#34;--01-31+12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-30-12:00") ne xs:gMonthDay("--01-31+12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gMonthDay(&#34;--01-31+12:00&#34;) ne xs:gMonthDay(&#34;--01-30-12:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gMonthDay("--01-31+12:00") ne xs:gMonthDay("--01-30-12:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))&#xA;            then xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31+01:01&#34;)&#xA;            else xs:gMonthDay(&#34;--12-30&#34;) eq xs:gMonthDay(&#34;--12-31+01:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
             then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+01:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+01:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
-            then xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+01:01")
-            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+01:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
+            else xs:gMonthDay("--12-30") eq xs:gMonthDay("--12-31+01:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))&#xA;            then xs:gMonthDay(&#34;--12-31+01:01&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)&#xA;            else xs:gMonthDay(&#34;--12-31+01:00&#34;) eq xs:gMonthDay(&#34;--12-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
             then xs:gMonthDay("--12-31+01:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+01:00") eq xs:gMonthDay("--12-30")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT1M'))
-            then xs:gMonthDay("--12-31+01:01") eq xs:gMonthDay("--12-30")
-            else xs:gMonthDay("--12-31+01:00") eq xs:gMonthDay("--12-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+            else xs:gMonthDay("--12-31+01:00") eq xs:gMonthDay("--12-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

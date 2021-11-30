@@ -1,180 +1,292 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 100)[fn:local-name()]</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 100)[fn:local-name()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name(/*, /*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name(/*, /*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name(())</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name((//text())[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name((//text())[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:local-name(/))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:local-name(/))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name(/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name((//@*:attr)[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name((//@*:attr)[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:local-name(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:local-name(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:local-name(./works[1]/employee[1]))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:local-name(./works[1]/employee[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:local-name(./works[1]/employee[1]/@name))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:local-name(./works[1]/employee[1]/@name))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:local-name(.))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:local-name(.))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:local-name(./works[1]/nonexistent[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:local-name(./works[1]/nonexistent[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in ./works[1]/employee[2] return
-         fn:string-length(fn:local-name($h/child::text()[last()]))</x:label>
-      <x:variable name="expr" as="xs:string">for $h in ./works[1]/employee[2] return
-         fn:string-length(fn:local-name($h/child::text()[last()]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:upper-case(fn:local-name($h))</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:upper-case(fn:local-name($h))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:lower-case(fn:local-name($h))</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:lower-case(fn:local-name($h))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:local-name($h/parent::node())</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:local-name($h/parent::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:local-name($h/descendant::empnum[position() =
-         1])</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:local-name($h/descendant::empnum[position() =
-         1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return
-         fn:local-name($h/descendant-or-self::empnum[position() = 1])</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return
-         fn:local-name($h/descendant-or-self::empnum[position() = 1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:substring(fn:local-name($h),2)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:substring(fn:local-name($h),2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[2]) return fn:concat(fn:local-name($h),"A String")</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[2]) return fn:concat(fn:local-name($h),"A String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:local-name($h/self::employee)</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:local-name($h/self::employee)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (./works/employee[2]) return fn:count(fn:local-name($h/self::div))</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (./works/employee[2]) return fn:count(fn:local-name($h/self::div))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[2]/@name) return fn:local-name($h/parent::node())</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[2]/@name) return fn:local-name($h/parent::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:local-name(./works[1]/employee[2]/@name))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:local-name(./works[1]/employee[2]/@name))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join((fn:local-name(./works[1]/employee[1]),fn:local-name(./works[1]/employee[2])),
-         ' ')</x:label>
-      <x:variable name="expr" as="xs:string">string-join((fn:local-name(./works[1]/employee[1]),fn:local-name(./works[1]/employee[2])),
-         ' ')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(((fn:local-name(/works[1]/employee[1]),fn:local-name(/works[1]/employee[2]))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(((fn:local-name(/works[1]/employee[1]),fn:local-name(/works[1]/employee[2]))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:local-name(.)</x:label>
-      <x:variable name="expr" as="xs:string">fn:local-name(.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name(/*)</x:label>
-      <x:variable name="expr" as="xs:string">name(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//*:Start)[1]/@*)</x:label>
-      <x:variable name="expr" as="xs:string">name((//*:Start)[1]/@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//@xml:*)[1])</x:label>
-      <x:variable name="expr" as="xs:string">name((//@xml:*)[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//namespace::*[.='http://www.w3.org/1999/xlink'])[1])</x:label>
-      <x:variable name="expr" as="xs:string">name((//namespace::*[.='http://www.w3.org/1999/xlink'])[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//processing-instruction())[1])</x:label>
-      <x:variable name="expr" as="xs:string">name((//processing-instruction())[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//*[.='1983'])[1])</x:label>
-      <x:variable name="expr" as="xs:string">name((//*[.='1983'])[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//comment())[1]) = ''</x:label>
-      <x:variable name="expr" as="xs:string">name((//comment())[1]) = ''</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>name((//text())[1]) = ''</x:label>
-      <x:variable name="expr" as="xs:string">name((//text())[1]) = ''</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>local-name((), "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">local-name((), "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if(false()) then local-name() else true()</x:label>
-      <x:variable name="expr" as="xs:string">if(false()) then local-name() else true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>local-name(()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">local-name(()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>local-name(/works/employee[1]/@name)</x:label>
-      <x:variable name="expr" as="xs:string">local-name(/works/employee[1]/@name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/local-name.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 100)[fn:local-name()]">
+      <x:call>
+        <x:param select="string(.)">(1 to 100)[fn:local-name()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name(/*, /*)">
+      <x:call>
+        <x:param select="string(.)">fn:local-name(/*, /*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name(())">
+      <x:call>
+        <x:param select="string(.)">fn:local-name(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name((//text())[1])">
+      <x:call>
+        <x:param select="string(.)">fn:local-name((//text())[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:local-name(/))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:local-name(/))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name(/*)">
+      <x:call>
+        <x:param select="string(.)">fn:local-name(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name((//@*:attr)[1])">
+      <x:call>
+        <x:param select="string(.)">fn:local-name((//@*:attr)[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:local-name(()))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:local-name(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:local-name(./works[1]/employee[1]))">
+      <x:call>
+        <x:param select="string(.)">(fn:local-name(./works[1]/employee[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:local-name(./works[1]/employee[1]/@name))">
+      <x:call>
+        <x:param select="string(.)">(fn:local-name(./works[1]/employee[1]/@name))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:local-name(.))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:local-name(.))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:local-name(./works[1]/nonexistent[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:local-name(./works[1]/nonexistent[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in ./works[1]/employee[2] return&#xA;         fn:string-length(fn:local-name($h/child::text()[last()]))">
+      <x:call>
+        <x:param select="string(.)">for $h in ./works[1]/employee[2] return
+         fn:string-length(fn:local-name($h/child::text()[last()]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:upper-case(fn:local-name($h))">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:upper-case(fn:local-name($h))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:lower-case(fn:local-name($h))">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:lower-case(fn:local-name($h))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:local-name($h/parent::node())">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:local-name($h/parent::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:local-name($h/descendant::empnum[position() =&#xA;         1])">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:local-name($h/descendant::empnum[position() =
+         1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return&#xA;         fn:local-name($h/descendant-or-self::empnum[position() = 1])">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return
+         fn:local-name($h/descendant-or-self::empnum[position() = 1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:substring(fn:local-name($h),2)">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:substring(fn:local-name($h),2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[2]) return fn:concat(fn:local-name($h),&#34;A String&#34;)">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[2]) return fn:concat(fn:local-name($h),"A String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:local-name($h/self::employee)">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:local-name($h/self::employee)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (./works/employee[2]) return fn:count(fn:local-name($h/self::div))">
+      <x:call>
+        <x:param select="string(.)">for $h in (./works/employee[2]) return fn:count(fn:local-name($h/self::div))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[2]/@name) return fn:local-name($h/parent::node())">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[2]/@name) return fn:local-name($h/parent::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:local-name(./works[1]/employee[2]/@name))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:local-name(./works[1]/employee[2]/@name))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join((fn:local-name(./works[1]/employee[1]),fn:local-name(./works[1]/employee[2])),&#xA;         ' ')">
+      <x:call>
+        <x:param select="string(.)">string-join((fn:local-name(./works[1]/employee[1]),fn:local-name(./works[1]/employee[2])),
+         ' ')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(((fn:local-name(/works[1]/employee[1]),fn:local-name(/works[1]/employee[2]))))">
+      <x:call>
+        <x:param select="string(.)">fn:count(((fn:local-name(/works[1]/employee[1]),fn:local-name(/works[1]/employee[2]))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:local-name(.)">
+      <x:call>
+        <x:param select="string(.)">fn:local-name(.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name(/*)">
+      <x:call>
+        <x:param select="string(.)">name(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//*:Start)[1]/@*)">
+      <x:call>
+        <x:param select="string(.)">name((//*:Start)[1]/@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//@xml:*)[1])">
+      <x:call>
+        <x:param select="string(.)">name((//@xml:*)[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//namespace::*[.='http://www.w3.org/1999/xlink'])[1])">
+      <x:call>
+        <x:param select="string(.)">name((//namespace::*[.='http://www.w3.org/1999/xlink'])[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//processing-instruction())[1])">
+      <x:call>
+        <x:param select="string(.)">name((//processing-instruction())[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//*[.='1983'])[1])">
+      <x:call>
+        <x:param select="string(.)">name((//*[.='1983'])[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//comment())[1]) = ''">
+      <x:call>
+        <x:param select="string(.)">name((//comment())[1]) = ''</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="name((//text())[1]) = ''">
+      <x:call>
+        <x:param select="string(.)">name((//text())[1]) = ''</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="local-name((), &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">local-name((), "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if(false()) then local-name() else true()">
+      <x:call>
+        <x:param select="string(.)">if(false()) then local-name() else true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="local-name(()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">local-name(()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="local-name(/works/employee[1]/@name)">
+      <x:call>
+        <x:param select="string(.)">local-name(/works/employee[1]/@name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

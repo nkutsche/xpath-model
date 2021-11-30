@@ -1,400 +1,687 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", "b", "c"), 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", "b", "c"), 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", "b", "c"), 3, 12)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", "b", "c"), 3, 12)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:string(""),"b", "c"), 1, 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:string(""),"b", "c"), 1, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:string("hello"),"b", "c"), 1, 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:string("hello"),"b", "c"), 1, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:anyURI("www.example.com"),"b", "c"), 1, 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:anyURI("www.example.com"),"b", "c"), 1, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", (), (), "b", "c"), 1, 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", (), (), "b", "c"), 1, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:integer("100"), xs:integer("-100"), "b", "c"),2,4)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:integer("100"), xs:integer("-100"), "b", "c"),2,4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:decimal("-1.000000000001"), xs:integer("-100"), "b", "c"), 2,3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:decimal("-1.000000000001"), xs:integer("-100"), "b", "c"), 2,3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence( ("a", xs:float("INF"), "b", "c"),-2,3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence( ("a", xs:float("INF"), "b", "c"),-2,3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:float("-INF"), "b", "c"), 1,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:float("-INF"), "b", "c"), 1,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:float("NaN"), "b", "c"), 0, 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:float("NaN"), "b", "c"), 0, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:float("1.01"), "b", "c"), 2,4)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:float("1.01"), "b", "c"), 2,4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:double("NaN"), "b", "c"), 2, 20)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:double("NaN"), "b", "c"), 2, 20)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:double("1.01"), "b", "c"), 2,3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:double("1.01"), "b", "c"), 2,3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:double("-INF"), "b", "c"), 2,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:double("-INF"), "b", "c"), 2,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:double("INF"), "b", "c"), 2, 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:double("INF"), "b", "c"), 2, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:boolean("1"), "b", "c"), 1,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:boolean("1"), "b", "c"), 1,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:boolean("0"), "b", "c"), 2,1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:boolean("0"), "b", "c"), 2,1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:boolean("true"), "b", "c"), 1,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:boolean("true"), "b", "c"), 1,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:boolean("false"), "b", "c"), 1, 3)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:boolean("false"), "b", "c"), 1, 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:date("1993-03-31"), "b", "c"), 1,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:date("1993-03-31"), "b", "c"), 1,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:dateTime("1972-12-31T00:00:00"), "b", "c"), 0,2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:dateTime("1972-12-31T00:00:00"), "b", "c"), 0,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence ( ("a", xs:time("12:30:00"), "b", "c"), 1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence ( ("a", xs:time("12:30:00"), "b", "c"), 1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence (1 to 10, xs:double('-INF'), xs:double('INF'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence (1 to 10, xs:double('-INF'), xs:double('INF'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence()</x:label>
-      <x:variable name="expr" as="xs:string">subsequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(1, 1, 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(1, 1, 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((), 2, 3))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((), 2, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2, 3), 2, -10))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2, 3), 2, -10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3, "four"), 4, 1)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3, "four"), 4, 1)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3.1, "four"), 4)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3.1, "four"), 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3.1, "four"), 4, 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3.1, "four"), 4, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3.1, "four"), 3, 1) instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3.1, "four"), 3, 1) instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3.1, "four"), 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3.1, "four"), 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2, 3, "four"), 4, -3))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2, 3, "four"), 4, -3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2, 3, "four"), -4, -3))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2, 3, "four"), -4, -3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3), 1, 1) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3), 1, 1) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3), 1, 1) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3), 1, 1) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3), 3) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3), 3) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3), 1, 1)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3), 1, 1)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3), 1, 3)) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3), 1, 3)) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 3, 1, 1)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 3, 1, 1)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2), 4))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((5, 6, 7, 8), 2, 1) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((5, 6, 7, 8), 2, 1) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2), 2)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2), 2)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3, "four"), 2)) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3, "four"), 2)) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 3, "four"), 2, 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 3, "four"), 2, 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3.1, "four"), 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3.1, "four"), 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq "a string"</x:label>
-      <x:variable name="expr" as="xs:string">1 eq "a string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq subsequence(("1", 2, 3.1, "four"), 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">1 eq subsequence(("1", 2, 3.1, "four"), 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(("1", 2, 3.1, "four"), 1, 1) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(("1", 2, 3.1, "four"), 1, 1) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(error(), 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(error(), 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((1, 2, 2, current-time()), 2, 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((1, 2, 2, current-time()), 2, 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(remove(current-time(), 1), 1, 1)) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(remove(current-time(), 1), 1, 1)) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(1, subsequence((1, 2, current-time()), 1, 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(1, subsequence((1, 2, current-time()), 1, 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1)[deep-equal(1, subsequence((1, 2, current-time()), 1, 1))] eq 1</x:label>
-      <x:variable name="expr" as="xs:string">(1)[deep-equal(1, subsequence((1, 2, current-time()), 1, 1))] eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((current-time(), 1), 4))</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((current-time(), 1), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((current-time(), 1), 4)) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((current-time(), 1), 4)) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((current-time(), 2 , 3), 1)) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((current-time(), 2 , 3), 1)) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((current-time(), 2 , 3), 3)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((current-time(), 2 , 3), 3)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence((current-time(), 2 , 3, 4), 2, 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence((current-time(), 2 , 3, 4), 2, 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[1]</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3, current-time(), 5, 6, 9), 7)[last()]</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3, current-time(), 5, 6, 9), 7)[last()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3, current-time(), 5, 6, 7), 4)[last() - 1]</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3, current-time(), 5, 6, 7), 4)[last() - 1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 4, 1)[last() - 10])</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 4, 1)[last() - 10])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[2])</x:label>
-      <x:variable name="expr" as="xs:string">empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[2])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3), 1, 0)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3), 1, 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3, 4, 5), 4, -1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3, 4, 5), 4, -1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence((1,2,3), 1.1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence((1,2,3), 1.1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence((1,2,3), 1.8, 1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence((1,2,3), 1.8, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence((1,2,3), 1.4, 1.4)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence((1,2,3), 1.4, 1.4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:subsequence((1,2,3), 1.5, 1.5)</x:label>
-      <x:variable name="expr" as="xs:string">fn:subsequence((1,2,3), 1.5, 1.5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, 3), 1, "string")</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, 3), 1, "string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 10, xs:double("-INF"), xs:double("INF")))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 10, xs:double("-INF"), xs:double("INF")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 10, 2, xs:double("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 10, 2, xs:double("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 10, xs:double("NaN"), 4))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 10, xs:double("NaN"), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 10, xs:double("-INF")))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 10, xs:double("-INF")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 10, xs:double("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 10, xs:double("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, for $x in 1 to 10 return 2*$x), 2, year-from-date(current-date()))</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, for $x in 1 to 10 return 2*$x), 2, year-from-date(current-date()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1, 2, for $x in 1 to 10 return 2*$x), -1, sum((1 to 10)[. mod 10 = 3]))</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1, 2, for $x in 1 to 10 return 2*$x), -1, sum((1 to 10)[. mod 10 = 3]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(1 to 100, 99, 2147483648)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(1 to 100, 99, 2147483648)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 100, -2147483648, 20))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 100, -2147483648, 20))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 3000000000, -2147483648, 2147483647))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 3000000000, -2147483648, 2147483647))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 3000000000, -2147483649))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 3000000000, -2147483649))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 3000000000, 2147483648))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 3000000000, 2147483648))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(subsequence(1 to 3000000000, 2147483647))</x:label>
-      <x:variable name="expr" as="xs:string">count(subsequence(1 to 3000000000, 2147483647))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(1 to 3000000000, 2147483647, 5)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(1 to 3000000000, 2147483647, 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in (1 to 100) return -$x, 3, 5)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in (1 to 100) return -$x, 3, 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence( for $x in 1 to 10 return 1 to $x, count(for $x in 0 to 10 return 1 to $x), 1)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence( for $x in 1 to 10 return 1 to $x, count(for $x in 0 to 10 return 1 to $x), 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in 1 to 10 return 1 to $x, 1.2, xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in 1 to 10 return 1 to $x, 1.2, xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in 1 to 10 return 1 to $x, 4.2, xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in 1 to 10 return 1 to $x, 4.2, xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2,4)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2,4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1 to 20)[. mod 2 = 0][position() &lt; 5],2)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1 to 20)[. mod 2 = 0][position() &lt; 5],2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(for $x in 1 to 10 return $x * $x,2)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(for $x in 1 to 10 return $x * $x,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1 to 100)[. mod 2 = 0],1,xs:double(string-join(('I','N','F')[position() mod 2 &gt;= 0],'')))</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1 to 100)[. mod 2 = 0],1,xs:double(string-join(('I','N','F')[position() mod 2 &gt;= 0],'')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/subsequence.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:subsequence( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;), 1, 1)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", "b", "c"), 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;), 3, 12)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", "b", "c"), 3, 12)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:string(&#34;&#34;),&#34;b&#34;, &#34;c&#34;), 1, 3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:string(""),"b", "c"), 1, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:string(&#34;hello&#34;),&#34;b&#34;, &#34;c&#34;), 1, 3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:string("hello"),"b", "c"), 1, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:anyURI(&#34;www.example.com&#34;),&#34;b&#34;, &#34;c&#34;), 1, 3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:anyURI("www.example.com"),"b", "c"), 1, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, (), (), &#34;b&#34;, &#34;c&#34;), 1, 3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", (), (), "b", "c"), 1, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:integer(&#34;100&#34;), xs:integer(&#34;-100&#34;), &#34;b&#34;, &#34;c&#34;),2,4)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:integer("100"), xs:integer("-100"), "b", "c"),2,4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:decimal(&#34;-1.000000000001&#34;), xs:integer(&#34;-100&#34;), &#34;b&#34;, &#34;c&#34;), 2,3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:decimal("-1.000000000001"), xs:integer("-100"), "b", "c"), 2,3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence( (&#34;a&#34;, xs:float(&#34;INF&#34;), &#34;b&#34;, &#34;c&#34;),-2,3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence( ("a", xs:float("INF"), "b", "c"),-2,3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:float(&#34;-INF&#34;), &#34;b&#34;, &#34;c&#34;), 1,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:float("-INF"), "b", "c"), 1,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:float(&#34;NaN&#34;), &#34;b&#34;, &#34;c&#34;), 0, 2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:float("NaN"), "b", "c"), 0, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:float(&#34;1.01&#34;), &#34;b&#34;, &#34;c&#34;), 2,4)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:float("1.01"), "b", "c"), 2,4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:double(&#34;NaN&#34;), &#34;b&#34;, &#34;c&#34;), 2, 20)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:double("NaN"), "b", "c"), 2, 20)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:double(&#34;1.01&#34;), &#34;b&#34;, &#34;c&#34;), 2,3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:double("1.01"), "b", "c"), 2,3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:double(&#34;-INF&#34;), &#34;b&#34;, &#34;c&#34;), 2,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:double("-INF"), "b", "c"), 2,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:double(&#34;INF&#34;), &#34;b&#34;, &#34;c&#34;), 2, 1)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:double("INF"), "b", "c"), 2, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:boolean(&#34;1&#34;), &#34;b&#34;, &#34;c&#34;), 1,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:boolean("1"), "b", "c"), 1,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:boolean(&#34;0&#34;), &#34;b&#34;, &#34;c&#34;), 2,1)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:boolean("0"), "b", "c"), 2,1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:boolean(&#34;true&#34;), &#34;b&#34;, &#34;c&#34;), 1,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:boolean("true"), "b", "c"), 1,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:boolean(&#34;false&#34;), &#34;b&#34;, &#34;c&#34;), 1, 3)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:boolean("false"), "b", "c"), 1, 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:date(&#34;1993-03-31&#34;), &#34;b&#34;, &#34;c&#34;), 1,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:date("1993-03-31"), "b", "c"), 1,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:dateTime(&#34;1972-12-31T00:00:00&#34;), &#34;b&#34;, &#34;c&#34;), 0,2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:dateTime("1972-12-31T00:00:00"), "b", "c"), 0,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence ( (&#34;a&#34;, xs:time(&#34;12:30:00&#34;), &#34;b&#34;, &#34;c&#34;), 1, 2)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence ( ("a", xs:time("12:30:00"), "b", "c"), 1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence (1 to 10, xs:double('-INF'), xs:double('INF'))">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence (1 to 10, xs:double('-INF'), xs:double('INF'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence()">
+      <x:call>
+        <x:param select="string(.)">subsequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(1)">
+      <x:call>
+        <x:param select="string(.)">subsequence(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(1, 1, 1, 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence(1, 1, 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((), 2, 3))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((), 2, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2, 3), 2, -10))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2, 3), 2, -10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3, &#34;four&#34;), 4)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3, &#34;four&#34;), 4, 1)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3, "four"), 4, 1)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3.1, &#34;four&#34;), 4)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3.1, "four"), 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3.1, &#34;four&#34;), 4, 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3.1, "four"), 4, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3.1, &#34;four&#34;), 3, 1) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3.1, "four"), 3, 1) instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3.1, &#34;four&#34;), 1, 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3.1, "four"), 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2, 3, &#34;four&#34;), 4, -3))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2, 3, "four"), 4, -3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2, 3, &#34;four&#34;), -4, -3))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2, 3, "four"), -4, -3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3), 1, 1) eq 1">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3), 1, 1) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3), 1, 1) eq 1">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3), 1, 1) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3), 3) eq 3">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3), 3) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3), 1, 1)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3), 1, 1)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3), 1, 3)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3), 1, 3)) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3, &#34;four&#34;), 4)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3, "four"), 4)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 3, 1, 1)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 3, 1, 1)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2), 4))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((5, 6, 7, 8), 2, 1) eq 6">
+      <x:call>
+        <x:param select="string(.)">subsequence((5, 6, 7, 8), 2, 1) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2), 2)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2), 2)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3, &#34;four&#34;), 2)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3, "four"), 2)) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 3, &#34;four&#34;), 2, 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 3, "four"), 2, 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3.1, &#34;four&#34;), 1, 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3.1, "four"), 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq &#34;a string&#34;">
+      <x:call>
+        <x:param select="string(.)">1 eq "a string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq subsequence((&#34;1&#34;, 2, 3.1, &#34;four&#34;), 1, 1)">
+      <x:call>
+        <x:param select="string(.)">1 eq subsequence(("1", 2, 3.1, "four"), 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((&#34;1&#34;, 2, 3.1, &#34;four&#34;), 1, 1) eq 1">
+      <x:call>
+        <x:param select="string(.)">subsequence(("1", 2, 3.1, "four"), 1, 1) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(error(), 1, 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence(error(), 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((1, 2, 2, current-time()), 2, 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((1, 2, 2, current-time()), 2, 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(remove(current-time(), 1), 1, 1)) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(remove(current-time(), 1), 1, 1)) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(1, subsequence((1, 2, current-time()), 1, 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(1, subsequence((1, 2, current-time()), 1, 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1)[deep-equal(1, subsequence((1, 2, current-time()), 1, 1))] eq 1">
+      <x:call>
+        <x:param select="string(.)">(1)[deep-equal(1, subsequence((1, 2, current-time()), 1, 1))] eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((current-time(), 1), 4))">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((current-time(), 1), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((current-time(), 1), 4)) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((current-time(), 1), 4)) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((current-time(), 2 , 3), 1)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((current-time(), 2 , 3), 1)) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((current-time(), 2 , 3), 3)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((current-time(), 2 , 3), 3)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence((current-time(), 2 , 3, 4), 2, 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(subsequence((current-time(), 2 , 3, 4), 2, 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[1]">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3, current-time(), 5, 6, 9), 7)[last()]">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3, current-time(), 5, 6, 9), 7)[last()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3, current-time(), 5, 6, 7), 4)[last() - 1]">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3, current-time(), 5, 6, 7), 4)[last() - 1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 4, 1)[last() - 10])">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 4, 1)[last() - 10])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[2])">
+      <x:call>
+        <x:param select="string(.)">empty(subsequence((1, 2, 3, current-time(), 5, 6, 7), 1, 1)[2])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3), 1, 0)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3), 1, 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3, 4, 5), 4, -1)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3, 4, 5), 4, -1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence((1,2,3), 1.1, 1)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence((1,2,3), 1.1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence((1,2,3), 1.8, 1)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence((1,2,3), 1.8, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence((1,2,3), 1.4, 1.4)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence((1,2,3), 1.4, 1.4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:subsequence((1,2,3), 1.5, 1.5)">
+      <x:call>
+        <x:param select="string(.)">fn:subsequence((1,2,3), 1.5, 1.5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, 3), 1, &#34;string&#34;)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, 3), 1, "string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 10, xs:double(&#34;-INF&#34;), xs:double(&#34;INF&#34;)))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 10, xs:double("-INF"), xs:double("INF")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 10, 2, xs:double(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 10, 2, xs:double("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 10, xs:double(&#34;NaN&#34;), 4))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 10, xs:double("NaN"), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 10, xs:double(&#34;-INF&#34;)))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 10, xs:double("-INF")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 10, xs:double(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 10, xs:double("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, for $x in 1 to 10 return 2*$x), 2, year-from-date(current-date()))">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, for $x in 1 to 10 return 2*$x), 2, year-from-date(current-date()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1, 2, for $x in 1 to 10 return 2*$x), -1, sum((1 to 10)[. mod 10 = 3]))">
+      <x:call>
+        <x:param select="string(.)">subsequence((1, 2, for $x in 1 to 10 return 2*$x), -1, sum((1 to 10)[. mod 10 = 3]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(1 to 100, 99, 2147483648)">
+      <x:call>
+        <x:param select="string(.)">subsequence(1 to 100, 99, 2147483648)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 100, -2147483648, 20))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 100, -2147483648, 20))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 3000000000, -2147483648, 2147483647))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 3000000000, -2147483648, 2147483647))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 3000000000, -2147483649))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 3000000000, -2147483649))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 3000000000, 2147483648))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 3000000000, 2147483648))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(subsequence(1 to 3000000000, 2147483647))">
+      <x:call>
+        <x:param select="string(.)">count(subsequence(1 to 3000000000, 2147483647))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(1 to 3000000000, 2147483647, 5)">
+      <x:call>
+        <x:param select="string(.)">subsequence(1 to 3000000000, 2147483647, 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in (1 to 100) return -$x, 3, 5)">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in (1 to 100) return -$x, 3, 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence( for $x in 1 to 10 return 1 to $x, count(for $x in 0 to 10 return 1 to $x), 1)">
+      <x:call>
+        <x:param select="string(.)">subsequence( for $x in 1 to 10 return 1 to $x, count(for $x in 0 to 10 return 1 to $x), 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in 1 to 10 return 1 to $x, 1.2, xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in 1 to 10 return 1 to $x, 1.2, xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in 1 to 10 return 1 to $x, 4.2, xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in 1 to 10 return 1 to $x, 4.2, xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2,4)">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2,4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2)">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in 1 to 10 return $x[. mod 2 = 0],2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1 to 20)[. mod 2 = 0][position() &lt; 5],2)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1 to 20)[. mod 2 = 0][position() &lt; 5],2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(for $x in 1 to 10 return $x * $x,2)">
+      <x:call>
+        <x:param select="string(.)">subsequence(for $x in 1 to 10 return $x * $x,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1 to 100)[. mod 2 = 0],1,xs:double(string-join(('I','N','F')[position() mod 2 &gt;= 0],'')))">
+      <x:call>
+        <x:param select="string(.)">subsequence((1 to 100)[. mod 2 = 0],1,xs:double(string-join(('I','N','F')[position() mod 2 &gt;= 0],'')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

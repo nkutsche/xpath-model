@@ -1,652 +1,1128 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:int("-2147483648")),(xs:int("-2147483648")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:int("-2147483648")),(xs:int("-2147483648")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:int("-1873914410")),(xs:int("-2147483648")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:int("-1873914410")),(xs:int("-2147483648")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:int("2147483647")),(xs:int("-2147483648")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:int("2147483647")),(xs:int("-2147483648")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:int("-2147483648")),(xs:int("-1873914410")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:int("-2147483648")),(xs:int("-1873914410")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:int("-2147483648")),(xs:int("2147483647")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:int("-2147483648")),(xs:int("2147483647")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:integer("830993497117024304")),(xs:integer("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:integer("830993497117024304")),(xs:integer("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:integer("999999999999999999")),(xs:integer("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:integer("999999999999999999")),(xs:integer("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("830993497117024304")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("830993497117024304")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:decimal("617375191608514839")),(xs:decimal("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:decimal("617375191608514839")),(xs:decimal("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:decimal("999999999999999999")),(xs:decimal("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:decimal("999999999999999999")),(xs:decimal("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("617375191608514839")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("617375191608514839")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:double("0")),(xs:double("-1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:double("0")),(xs:double("-1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:double("1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:double("1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("-3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("-3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:float("0")),(xs:float("-3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:float("0")),(xs:float("-3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:float("3.4028235E38")),(xs:float("-3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:float("3.4028235E38")),(xs:float("-3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:long("-47175562203048468")),(xs:long("-92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:long("-47175562203048468")),(xs:long("-92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:long("92233720368547758")),(xs:long("-92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:long("92233720368547758")),(xs:long("-92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-47175562203048468")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-47175562203048468")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:long("-92233720368547758")),(xs:long("92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedShort("44633")),(xs:unsignedShort("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedShort("44633")),(xs:unsignedShort("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedShort("65535")),(xs:unsignedShort("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedShort("65535")),(xs:unsignedShort("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("44633")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("44633")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("65535")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("65535")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:negativeInteger("-297014075999096793")),(xs:negativeInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:negativeInteger("-297014075999096793")),(xs:negativeInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:negativeInteger("-1")),(xs:negativeInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:negativeInteger("-1")),(xs:negativeInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-297014075999096793")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-297014075999096793")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:positiveInteger("52704602390610033")),(xs:positiveInteger("1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:positiveInteger("52704602390610033")),(xs:positiveInteger("1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:positiveInteger("999999999999999999")),(xs:positiveInteger("1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:positiveInteger("999999999999999999")),(xs:positiveInteger("1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("52704602390610033")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("52704602390610033")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedLong("130747108607674654")),(xs:unsignedLong("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedLong("130747108607674654")),(xs:unsignedLong("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedLong("184467440737095516")),(xs:unsignedLong("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedLong("184467440737095516")),(xs:unsignedLong("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("130747108607674654")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("130747108607674654")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("184467440737095516")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("184467440737095516")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonPositiveInteger("-475688437271870490")),(xs:nonPositiveInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonPositiveInteger("-475688437271870490")),(xs:nonPositiveInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonPositiveInteger("0")),(xs:nonPositiveInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonPositiveInteger("0")),(xs:nonPositiveInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-475688437271870490")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-475688437271870490")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonNegativeInteger("303884545991464527")),(xs:nonNegativeInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonNegativeInteger("303884545991464527")),(xs:nonNegativeInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonNegativeInteger("999999999999999999")),(xs:nonNegativeInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonNegativeInteger("999999999999999999")),(xs:nonNegativeInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("303884545991464527")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("303884545991464527")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:short("-32768")),(xs:short("-32768")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:short("-32768")),(xs:short("-32768")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:short("-5324")),(xs:short("-32768")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:short("-5324")),(xs:short("-32768")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:short("32767")),(xs:short("-32768")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:short("32767")),(xs:short("-32768")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:short("-32768")),(xs:short("-5324")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:short("-32768")),(xs:short("-5324")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal((xs:short("-32768")),(xs:short("32767")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal((xs:short("-32768")),(xs:short("32767")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( (1,2) , (2,1))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( (1,2) , (2,1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( (1,2) , (1,2))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( (1,2) , (1,2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:string("A") , "A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:string("A") , "A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:string("A") , "a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:string("A") , "a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:string("A") , ("A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:string("A") , ("A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:string("") , (""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:string("") , (""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( () , ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( () , ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( (()) , ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( (()) , ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( ( ) , ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( ( ) , ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal(xs:string("abc"), xs:string("cba"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal(xs:string("abc"), xs:string("cba"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:anyURI("www.example.com") , "www.example.com")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:anyURI("www.example.com") , "www.example.com")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:anyURI("www.example.com") , xs:string("www.example.com"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:anyURI("www.example.com") , xs:string("www.example.com"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:integer(1) , xs:decimal(1.0))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:integer(1) , xs:decimal(1.0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:integer(1) , xs:integer(-1))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:integer(1) , xs:integer(-1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:integer(1) , xs:float(1.0))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:integer(1) , xs:float(1.0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:integer(1) , xs:double(1.0))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:integer(1) , xs:double(1.0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:decimal(1.01) , xs:float(1.01))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:decimal(1.01) , xs:float(1.01))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:decimal(1.01) , xs:double(1.01))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:decimal(1.01) , xs:double(1.01))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:float(1.01) , xs:double(1.01))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:float(1.01) , xs:double(1.01))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:float("INF") , xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:float("INF") , xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:float("-INF") , xs:double("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:float("-INF") , xs:double("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:float("NaN") , xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:float("NaN") , xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:boolean("1") , xs:boolean("true"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:boolean("1") , xs:boolean("true"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:boolean("true") , xs:boolean("true"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:boolean("true") , xs:boolean("true"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:boolean("true") , true())</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:boolean("true") , true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:boolean("0") , xs:boolean("false"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:boolean("0") , xs:boolean("false"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:boolean("false") , false())</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:boolean("false") , false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:date("1993-03-31") , "1993-03-31")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:date("1993-03-31") , "1993-03-31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( xs:date("1993-03-31") , xs:string("1993-03-31"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( xs:date("1993-03-31") , xs:string("1993-03-31"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal(xs:dateTime("1972-12-31T00:00:00"), "1972-12-31T00:00:00")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal(xs:dateTime("1972-12-31T00:00:00"), "1972-12-31T00:00:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal(xs:time("12:30:00"), "12:30:00")</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal(xs:time("12:30:00"), "12:30:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal()</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a string")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a string", "a string", ())</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a string", "a string", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((), ()) eq true()</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((), ()) eq true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:float("NaN"), xs:float("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:float("NaN"), xs:float("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:double("NaN"), xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:double("NaN"), xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:float("NaN"), xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:float("NaN"), xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:double("NaN"), xs:float("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:double("NaN"), xs:float("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(xs:float("NaN"), xs:float(0)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(xs:float("NaN"), xs:float(0)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(xs:float(0), xs:float("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(xs:float(0), xs:float("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(xs:double(0), xs:double("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(xs:double(0), xs:double("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(xs:double("NaN"), xs:double(0)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(xs:double("NaN"), xs:double(0)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(xs:decimal("1"), xs:anyURI("example.com")))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(xs:decimal("1"), xs:anyURI("example.com")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(QName("example.com", "ncname"), 3e2))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(QName("example.com", "ncname"), 3e2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 2, xs:anyURI("example.com")), (1, 2, 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 2, xs:anyURI("example.com")), (1, 2, 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, xs:decimal("2.2"), 3), (1, 2, 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, xs:decimal("2.2"), 3), (1, 2, 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((true(), 2, 3), (1, 2, 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((true(), 2, 3), (1, 2, 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 2, 3), (1, 2, QName("example.com", "ncname"))))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 2, 3), (1, 2, QName("example.com", "ncname"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 2, 3), (1, xs:hexBinary("FF"), 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 2, 3), (1, xs:hexBinary("FF"), 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 2, 3), (xs:base64Binary("FFFF"), 2, 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 2, 3), (xs:base64Binary("FFFF"), 2, 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, xs:base64Binary("FFFF")), (1, 2, xs:base64Binary("FFFF")))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, xs:base64Binary("FFFF")), (1, 2, xs:base64Binary("FFFF")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 1, 1), (1, 1, 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 1, 1), (1, 1, 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 3), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 3), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 3, 1), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 3, 1), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((3, 1, 1), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((3, 1, 1), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (3, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (3, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (1, 3, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (1, 3, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (1, 1, 3)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (1, 1, 3)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of(20, 20), (1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of(20, 20), (1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of((20, 40), 20), (1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of((20, 40), 20), (1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of((20, 20), 20), (1, 2))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of((20, 20), 20), (1, 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of((20, 40, 20), 20), (1, 3))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of((20, 40, 20), 20), (1, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 1, "str"), (1, 1, "str"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 1, "str"), (1, 1, "str"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, "str", 1), (1, "str", 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, "str", 1), (1, "str", 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(("str", 1, 1), ("str", 1, 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(("str", 1, 1), ("str", 1, 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 1, ()), (1, 1, ()))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 1, ()), (1, 1, ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, (), 1), (1, (), 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, (), 1), (1, (), 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(((), 1, 1), ((), 1, 1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(((), 1, 1), ((), 1, 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, ()), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, ()), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, (), 1), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, (), 1), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(((), 1, 1), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(((), 1, 1), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (1, 1, ())))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (1, 1, ())))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (1, (), 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (1, (), 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), ((), 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), ((), 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), (1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), (1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((), (1, 1, 1)))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((), (1, 1, 1)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal((1, 1, 1), ()))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal((1, 1, 1), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((), reverse(0 to -5))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((), reverse(0 to -5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((), 0 to -5)</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((), 0 to -5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(reverse(0 to -5), ())</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(reverse(0 to -5), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(0 to -5, ())</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(0 to -5, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(("a", "A"), ("A", "a"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(("a", "A"), ("A", "a"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(("a", "A"), ("A", "b"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(("a", "A"), ("A", "b"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(deep-equal(current-time(), current-date()))</x:label>
-      <x:variable name="expr" as="xs:string">not(deep-equal(current-time(), current-date()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((current-time(), current-time(), current-time()), (current-time(), current-time()))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((current-time(), current-time(), current-time()), (current-time(), current-time()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal()</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal("a", xs:NCName("a"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal("a", xs:NCName("a"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:dateTime('2012-05-30T12:00:00'), xs:dateTime('2012-05-30T12:00:00Z') - implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:dateTime('2012-05-30T12:00:00'), xs:dateTime('2012-05-30T12:00:00Z') - implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(xs:gMonth("--12+03:00"), xs:gMonth("--12")) eq (implicit-timezone() eq xs:dayTimeDuration("PT3H"))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(xs:gMonth("--12+03:00"), xs:gMonth("--12")) eq (implicit-timezone() eq xs:dayTimeDuration("PT3H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((xs:untypedAtomic("a"), xs:untypedAtomic("P1Y"), 2.0), (xs:untypedAtomic("a"), xs:yearMonthDuration("P12M"), xs:untypedAtomic(" 2")))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((xs:untypedAtomic("a"), xs:untypedAtomic("P1Y"), 2.0), (xs:untypedAtomic("a"), xs:yearMonthDuration("P12M"), xs:untypedAtomic(" 2")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/deep-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:deep-equal((xs:int(&#34;-2147483648&#34;)),(xs:int(&#34;-2147483648&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:int("-2147483648")),(xs:int("-2147483648")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:int(&#34;-1873914410&#34;)),(xs:int(&#34;-2147483648&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:int("-1873914410")),(xs:int("-2147483648")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:int(&#34;2147483647&#34;)),(xs:int(&#34;-2147483648&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:int("2147483647")),(xs:int("-2147483648")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:int(&#34;-2147483648&#34;)),(xs:int(&#34;-1873914410&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:int("-2147483648")),(xs:int("-1873914410")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:int(&#34;-2147483648&#34;)),(xs:int(&#34;2147483647&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:int("-2147483648")),(xs:int("2147483647")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:integer(&#34;-999999999999999999&#34;)),(xs:integer(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:integer(&#34;830993497117024304&#34;)),(xs:integer(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:integer("830993497117024304")),(xs:integer("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:integer(&#34;999999999999999999&#34;)),(xs:integer(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:integer("999999999999999999")),(xs:integer("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:integer(&#34;-999999999999999999&#34;)),(xs:integer(&#34;830993497117024304&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("830993497117024304")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:integer(&#34;-999999999999999999&#34;)),(xs:integer(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:integer("-999999999999999999")),(xs:integer("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:decimal(&#34;-999999999999999999&#34;)),(xs:decimal(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:decimal(&#34;617375191608514839&#34;)),(xs:decimal(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:decimal("617375191608514839")),(xs:decimal("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:decimal(&#34;999999999999999999&#34;)),(xs:decimal(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:decimal("999999999999999999")),(xs:decimal("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:decimal(&#34;-999999999999999999&#34;)),(xs:decimal(&#34;617375191608514839&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("617375191608514839")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:decimal(&#34;-999999999999999999&#34;)),(xs:decimal(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:decimal("-999999999999999999")),(xs:decimal("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:double(&#34;-1.7976931348623157E308&#34;)),(xs:double(&#34;-1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:double(&#34;0&#34;)),(xs:double(&#34;-1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:double("0")),(xs:double("-1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:double(&#34;1.7976931348623157E308&#34;)),(xs:double(&#34;-1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:double("1.7976931348623157E308")),(xs:double("-1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:double(&#34;-1.7976931348623157E308&#34;)),(xs:double(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:double(&#34;-1.7976931348623157E308&#34;)),(xs:double(&#34;1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:double("-1.7976931348623157E308")),(xs:double("1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:float(&#34;-3.4028235E38&#34;)),(xs:float(&#34;-3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("-3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:float(&#34;0&#34;)),(xs:float(&#34;-3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:float("0")),(xs:float("-3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:float(&#34;3.4028235E38&#34;)),(xs:float(&#34;-3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:float("3.4028235E38")),(xs:float("-3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:float(&#34;-3.4028235E38&#34;)),(xs:float(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:float(&#34;-3.4028235E38&#34;)),(xs:float(&#34;3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:float("-3.4028235E38")),(xs:float("3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:long(&#34;-92233720368547758&#34;)),(xs:long(&#34;-92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:long(&#34;-47175562203048468&#34;)),(xs:long(&#34;-92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:long("-47175562203048468")),(xs:long("-92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:long(&#34;92233720368547758&#34;)),(xs:long(&#34;-92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:long("92233720368547758")),(xs:long("-92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:long(&#34;-92233720368547758&#34;)),(xs:long(&#34;-47175562203048468&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("-47175562203048468")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:long(&#34;-92233720368547758&#34;)),(xs:long(&#34;92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:long("-92233720368547758")),(xs:long("92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedShort(&#34;0&#34;)),(xs:unsignedShort(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedShort(&#34;44633&#34;)),(xs:unsignedShort(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedShort("44633")),(xs:unsignedShort("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedShort(&#34;65535&#34;)),(xs:unsignedShort(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedShort("65535")),(xs:unsignedShort("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedShort(&#34;0&#34;)),(xs:unsignedShort(&#34;44633&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("44633")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedShort(&#34;0&#34;)),(xs:unsignedShort(&#34;65535&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedShort("0")),(xs:unsignedShort("65535")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:negativeInteger(&#34;-999999999999999999&#34;)),(xs:negativeInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:negativeInteger(&#34;-297014075999096793&#34;)),(xs:negativeInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:negativeInteger("-297014075999096793")),(xs:negativeInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:negativeInteger(&#34;-1&#34;)),(xs:negativeInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:negativeInteger("-1")),(xs:negativeInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:negativeInteger(&#34;-999999999999999999&#34;)),(xs:negativeInteger(&#34;-297014075999096793&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-297014075999096793")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:negativeInteger(&#34;-999999999999999999&#34;)),(xs:negativeInteger(&#34;-1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:negativeInteger("-999999999999999999")),(xs:negativeInteger("-1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:positiveInteger(&#34;1&#34;)),(xs:positiveInteger(&#34;1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:positiveInteger(&#34;52704602390610033&#34;)),(xs:positiveInteger(&#34;1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:positiveInteger("52704602390610033")),(xs:positiveInteger("1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:positiveInteger(&#34;999999999999999999&#34;)),(xs:positiveInteger(&#34;1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:positiveInteger("999999999999999999")),(xs:positiveInteger("1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:positiveInteger(&#34;1&#34;)),(xs:positiveInteger(&#34;52704602390610033&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("52704602390610033")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:positiveInteger(&#34;1&#34;)),(xs:positiveInteger(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:positiveInteger("1")),(xs:positiveInteger("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedLong(&#34;0&#34;)),(xs:unsignedLong(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedLong(&#34;130747108607674654&#34;)),(xs:unsignedLong(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedLong("130747108607674654")),(xs:unsignedLong("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedLong(&#34;184467440737095516&#34;)),(xs:unsignedLong(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedLong("184467440737095516")),(xs:unsignedLong("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedLong(&#34;0&#34;)),(xs:unsignedLong(&#34;130747108607674654&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("130747108607674654")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:unsignedLong(&#34;0&#34;)),(xs:unsignedLong(&#34;184467440737095516&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:unsignedLong("0")),(xs:unsignedLong("184467440737095516")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonPositiveInteger(&#34;-999999999999999999&#34;)),(xs:nonPositiveInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonPositiveInteger(&#34;-475688437271870490&#34;)),(xs:nonPositiveInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonPositiveInteger("-475688437271870490")),(xs:nonPositiveInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonPositiveInteger(&#34;0&#34;)),(xs:nonPositiveInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonPositiveInteger("0")),(xs:nonPositiveInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonPositiveInteger(&#34;-999999999999999999&#34;)),(xs:nonPositiveInteger(&#34;-475688437271870490&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("-475688437271870490")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonPositiveInteger(&#34;-999999999999999999&#34;)),(xs:nonPositiveInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonPositiveInteger("-999999999999999999")),(xs:nonPositiveInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonNegativeInteger(&#34;0&#34;)),(xs:nonNegativeInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonNegativeInteger(&#34;303884545991464527&#34;)),(xs:nonNegativeInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonNegativeInteger("303884545991464527")),(xs:nonNegativeInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonNegativeInteger(&#34;999999999999999999&#34;)),(xs:nonNegativeInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonNegativeInteger("999999999999999999")),(xs:nonNegativeInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonNegativeInteger(&#34;0&#34;)),(xs:nonNegativeInteger(&#34;303884545991464527&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("303884545991464527")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:nonNegativeInteger(&#34;0&#34;)),(xs:nonNegativeInteger(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:nonNegativeInteger("0")),(xs:nonNegativeInteger("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:short(&#34;-32768&#34;)),(xs:short(&#34;-32768&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:short("-32768")),(xs:short("-32768")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:short(&#34;-5324&#34;)),(xs:short(&#34;-32768&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:short("-5324")),(xs:short("-32768")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:short(&#34;32767&#34;)),(xs:short(&#34;-32768&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:short("32767")),(xs:short("-32768")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:short(&#34;-32768&#34;)),(xs:short(&#34;-5324&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:short("-32768")),(xs:short("-5324")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal((xs:short(&#34;-32768&#34;)),(xs:short(&#34;32767&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal((xs:short("-32768")),(xs:short("32767")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( (1,2) , (2,1))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( (1,2) , (2,1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( (1,2) , (1,2))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( (1,2) , (1,2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:string(&#34;A&#34;) , &#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:string("A") , "A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:string(&#34;A&#34;) , &#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:string("A") , "a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:string(&#34;A&#34;) , (&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:string("A") , ("A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:string(&#34;&#34;) , (&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:string("") , (""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( () , ())">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( () , ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( (()) , ())">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( (()) , ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( ( ) , ())">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( ( ) , ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal(xs:string(&#34;abc&#34;), xs:string(&#34;cba&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal(xs:string("abc"), xs:string("cba"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:anyURI(&#34;www.example.com&#34;) , &#34;www.example.com&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:anyURI("www.example.com") , "www.example.com")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:anyURI(&#34;www.example.com&#34;) , xs:string(&#34;www.example.com&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:anyURI("www.example.com") , xs:string("www.example.com"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:integer(1) , xs:decimal(1.0))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:integer(1) , xs:decimal(1.0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:integer(1) , xs:integer(-1))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:integer(1) , xs:integer(-1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:integer(1) , xs:float(1.0))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:integer(1) , xs:float(1.0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:integer(1) , xs:double(1.0))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:integer(1) , xs:double(1.0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:decimal(1.01) , xs:float(1.01))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:decimal(1.01) , xs:float(1.01))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:decimal(1.01) , xs:double(1.01))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:decimal(1.01) , xs:double(1.01))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:float(1.01) , xs:double(1.01))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:float(1.01) , xs:double(1.01))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:float(&#34;INF&#34;) , xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:float("INF") , xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:float(&#34;-INF&#34;) , xs:double(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:float("-INF") , xs:double("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:float(&#34;NaN&#34;) , xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:float("NaN") , xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:boolean(&#34;1&#34;) , xs:boolean(&#34;true&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:boolean("1") , xs:boolean("true"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:boolean(&#34;true&#34;) , xs:boolean(&#34;true&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:boolean("true") , xs:boolean("true"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:boolean(&#34;true&#34;) , true())">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:boolean("true") , true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:boolean(&#34;0&#34;) , xs:boolean(&#34;false&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:boolean("0") , xs:boolean("false"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:boolean(&#34;false&#34;) , false())">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:boolean("false") , false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:date(&#34;1993-03-31&#34;) , &#34;1993-03-31&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:date("1993-03-31") , "1993-03-31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( xs:date(&#34;1993-03-31&#34;) , xs:string(&#34;1993-03-31&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( xs:date("1993-03-31") , xs:string("1993-03-31"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal(xs:dateTime(&#34;1972-12-31T00:00:00&#34;), &#34;1972-12-31T00:00:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal(xs:dateTime("1972-12-31T00:00:00"), "1972-12-31T00:00:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal(xs:time(&#34;12:30:00&#34;), &#34;12:30:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal(xs:time("12:30:00"), "12:30:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal()">
+      <x:call>
+        <x:param select="string(.)">deep-equal()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.example.com/COLLATION/NOT/SUPPORTED&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a string&#34;, &#34;a string&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a string", "a string", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((), ()) eq true()">
+      <x:call>
+        <x:param select="string(.)">deep-equal((), ()) eq true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:float(&#34;NaN&#34;), xs:float(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:float("NaN"), xs:float("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:double(&#34;NaN&#34;), xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:double("NaN"), xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:float(&#34;NaN&#34;), xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:float("NaN"), xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:double(&#34;NaN&#34;), xs:float(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:double("NaN"), xs:float("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(xs:float(&#34;NaN&#34;), xs:float(0)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(xs:float("NaN"), xs:float(0)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(xs:float(0), xs:float(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(xs:float(0), xs:float("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(xs:double(0), xs:double(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(xs:double(0), xs:double("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(xs:double(&#34;NaN&#34;), xs:double(0)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(xs:double("NaN"), xs:double(0)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(xs:decimal(&#34;1&#34;), xs:anyURI(&#34;example.com&#34;)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(xs:decimal("1"), xs:anyURI("example.com")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(QName(&#34;example.com&#34;, &#34;ncname&#34;), 3e2))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(QName("example.com", "ncname"), 3e2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 2, xs:anyURI(&#34;example.com&#34;)), (1, 2, 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 2, xs:anyURI("example.com")), (1, 2, 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, xs:decimal(&#34;2.2&#34;), 3), (1, 2, 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, xs:decimal("2.2"), 3), (1, 2, 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((true(), 2, 3), (1, 2, 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((true(), 2, 3), (1, 2, 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 2, 3), (1, 2, QName(&#34;example.com&#34;, &#34;ncname&#34;))))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 2, 3), (1, 2, QName("example.com", "ncname"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 2, 3), (1, xs:hexBinary(&#34;FF&#34;), 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 2, 3), (1, xs:hexBinary("FF"), 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 2, 3), (xs:base64Binary(&#34;FFFF&#34;), 2, 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 2, 3), (xs:base64Binary("FFFF"), 2, 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, xs:base64Binary(&#34;FFFF&#34;)), (1, 2, xs:base64Binary(&#34;FFFF&#34;)))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, xs:base64Binary("FFFF")), (1, 2, xs:base64Binary("FFFF")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 1, 1), (1, 1, 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 1, 1), (1, 1, 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 3), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 3), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 3, 1), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 3, 1), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((3, 1, 1), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((3, 1, 1), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (3, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (3, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (1, 3, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (1, 3, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (1, 1, 3)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (1, 1, 3)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of(20, 20), (1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of(20, 20), (1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((20, 40), 20), (1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of((20, 40), 20), (1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((20, 20), 20), (1, 2))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of((20, 20), 20), (1, 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((20, 40, 20), 20), (1, 3))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of((20, 40, 20), 20), (1, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 1, &#34;str&#34;), (1, 1, &#34;str&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 1, "str"), (1, 1, "str"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, &#34;str&#34;, 1), (1, &#34;str&#34;, 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, "str", 1), (1, "str", 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((&#34;str&#34;, 1, 1), (&#34;str&#34;, 1, 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(("str", 1, 1), ("str", 1, 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 1, ()), (1, 1, ()))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 1, ()), (1, 1, ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, (), 1), (1, (), 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, (), 1), (1, (), 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(((), 1, 1), ((), 1, 1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(((), 1, 1), ((), 1, 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, ()), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, ()), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, (), 1), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, (), 1), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(((), 1, 1), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(((), 1, 1), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (1, 1, ())))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (1, 1, ())))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (1, (), 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (1, (), 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), ((), 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), ((), 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), (1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), (1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((), (1, 1, 1)))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((), (1, 1, 1)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal((1, 1, 1), ()))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal((1, 1, 1), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((), reverse(0 to -5))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((), reverse(0 to -5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((), 0 to -5)">
+      <x:call>
+        <x:param select="string(.)">deep-equal((), 0 to -5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(reverse(0 to -5), ())">
+      <x:call>
+        <x:param select="string(.)">deep-equal(reverse(0 to -5), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(0 to -5, ())">
+      <x:call>
+        <x:param select="string(.)">deep-equal(0 to -5, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((&#34;a&#34;, &#34;A&#34;), (&#34;A&#34;, &#34;a&#34;), &#34;http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal(("a", "A"), ("A", "a"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((&#34;a&#34;, &#34;A&#34;), (&#34;A&#34;, &#34;b&#34;), &#34;http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal(("a", "A"), ("A", "b"), "http://www.w3.org/2010/09/qt-fots-catalog/collation/caseblind")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(deep-equal(current-time(), current-date()))">
+      <x:call>
+        <x:param select="string(.)">not(deep-equal(current-time(), current-date()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((current-time(), current-time(), current-time()), (current-time(), current-time()))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((current-time(), current-time(), current-time()), (current-time(), current-time()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal()">
+      <x:call>
+        <x:param select="string(.)">deep-equal()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(&#34;a&#34;, xs:NCName(&#34;a&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal("a", xs:NCName("a"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:dateTime('2012-05-30T12:00:00'), xs:dateTime('2012-05-30T12:00:00Z') - implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:dateTime('2012-05-30T12:00:00'), xs:dateTime('2012-05-30T12:00:00Z') - implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(xs:gMonth(&#34;--12+03:00&#34;), xs:gMonth(&#34;--12&#34;)) eq (implicit-timezone() eq xs:dayTimeDuration(&#34;PT3H&#34;))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(xs:gMonth("--12+03:00"), xs:gMonth("--12")) eq (implicit-timezone() eq xs:dayTimeDuration("PT3H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((xs:untypedAtomic(&#34;a&#34;), xs:untypedAtomic(&#34;P1Y&#34;), 2.0), (xs:untypedAtomic(&#34;a&#34;), xs:yearMonthDuration(&#34;P12M&#34;), xs:untypedAtomic(&#34; 2&#34;)))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((xs:untypedAtomic("a"), xs:untypedAtomic("P1Y"), 2.0), (xs:untypedAtomic("a"), xs:yearMonthDuration("P12M"), xs:untypedAtomic(" 2")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

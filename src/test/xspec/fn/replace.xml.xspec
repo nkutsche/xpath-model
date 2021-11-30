@@ -1,330 +1,562 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("This is a characte","This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("This is a characte","This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace(xs:string("This is a characte"),xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace(xs:string("This is a characte"),xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "bra", "*", "p")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "bra", "*", "p")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "bra", "\")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "bra", "\")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "bra", "$y")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "bra", "$y")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "bra", "*")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "bra", "*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "a.*a", "*")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "a.*a", "*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "a.*?a", "*")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "a.*?a", "*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "a", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "a", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "a(.)", "a$1$1")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "a(.)", "a$1$1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", ".*?", "$1")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", ".*?", "$1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("AAAA", "A+", "b")</x:label>
-      <x:variable name="expr" as="xs:string">replace("AAAA", "A+", "b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("AAAA", "A+?", "b")</x:label>
-      <x:variable name="expr" as="xs:string">replace("AAAA", "A+?", "b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("darted", "^(.*?)d(.*)$", "$1c$2")</x:label>
-      <x:variable name="expr" as="xs:string">replace("darted", "^(.*?)d(.*)$", "$1c$2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abcd", "(ab)|(a)", "[1=$1][2=$2]")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abcd", "(ab)|(a)", "[1=$1][2=$2]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:replace((), "bra", "*"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:replace((), "bra", "*"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abracadabra", "bra", "*", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abracadabra", "bra", "*", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra?abracadabra", "\?", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra?abracadabra", "\?", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra*abracadabra", "\*", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra*abracadabra", "\*", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra+abracadabra", "\+", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra+abracadabra", "\+", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra{abracadabra", "\{", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra{abracadabra", "\{", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra}abracadabra", "\}", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra}abracadabra", "\}", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra(abracadabra", "\(", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra(abracadabra", "\(", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra)abracadabra", "\)", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra)abracadabra", "\)", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra[abracadabra", "\[", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra[abracadabra", "\[", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra]abracadabra", "\]", "with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra]abracadabra", "\]", "with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra-abracadabra", "\-","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra-abracadabra", "\-","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra.abracadabra", "\.","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra.abracadabra", "\.","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra|abracadabra", "\|","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra|abracadabra", "\|","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra\abracadabra", "\\","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra\abracadabra", "\\","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra	abracadabra", "\t","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra	abracadabra", "\t","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra
-abracadabra", "\n","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra
-abracadabra", "\n","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabraabracadabra", "aa{1}","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabraabracadabra", "aa{1}","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabraabracadabraabracadabra", "aa{1,}","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabraabracadabraabracadabra", "aa{1,}","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabraabracadabraabracadabra", "aa{1,2}","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabraabracadabraabracadabra", "aa{1,2}","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra^abracadabra", "\^","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra^abracadabra", "\^","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "^a","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "^a","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "ww","with")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "ww","with")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "a", "\$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "a", "\$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "(a)", "\$$1")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "(a)", "\$$1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "a", "\\")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "a", "\\")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "|$1$15|", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "|$1$15|", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1520", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1520", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "((((( ((((( (((((a)(b))))) ))))) )))))", "($14.$15.$16.$17)", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "((((( ((((( (((((a)(b))))) ))))) )))))", "($14.$15.$16.$17)", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones')</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones', 's')</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones', 's')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("Now, let's SEND OUT for QUICHE!!", "[A-Z][A-Z]+", "$0$0")</x:label>
-      <x:variable name="expr" as="xs:string">replace("Now, let's SEND OUT for QUICHE!!", "[A-Z][A-Z]+", "$0$0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("12-34", "^\d+(-(\d+))?$", "$2")</x:label>
-      <x:variable name="expr" as="xs:string">replace("12-34", "^\d+(-(\d+))?$", "$2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('abc', '^.+?(b+)?$', '$1')</x:label>
-      <x:variable name="expr" as="xs:string">replace('abc', '^.+?(b+)?$', '$1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('abcd', '^a(.).$|^a...$', '$1')</x:label>
-      <x:variable name="expr" as="xs:string">replace('abcd', '^a(.).$|^a...$', '$1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1$1", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1$1", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('abcdefghijk', '(a)|(b)|(c)|(d)|(e)|(f)|(g)|(h)|(i)|(j)', '$1')</x:label>
-      <x:variable name="expr" as="xs:string">replace('abcdefghijk', '(a)|(b)|(c)|(d)|(e)|(f)|(g)|(h)|(i)|(j)', '$1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('10%', '^\d*\.?\d+', '')</x:label>
-      <x:variable name="expr" as="xs:string">replace('10%', '^\d*\.?\d+', '')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('987654321A', '^(9)(8)(7)(6)(5)(4)(3)(2)(1)((A*?)|(.+))$', '$9$11$12')</x:label>
-      <x:variable name="expr" as="xs:string">replace('987654321A', '^(9)(8)(7)(6)(5)(4)(3)(2)(1)((A*?)|(.+))$', '$9$11$12')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "pattern", "replacement", " ")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "pattern", "replacement", " ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", (), "replacement")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", (), "replacement")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "pattern", ())</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "pattern", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "pattern", "replacement", "X")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "pattern", "replacement", "X")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "pattern", "replacement", "", ())</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "pattern", "replacement", "", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "in", "thisIsInvalid\")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "in", "thisIsInvalid\")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "(input)", "thisIsInvalid$")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "(input)", "thisIsInvalid$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "in", "thisIsInvalid\ ")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "in", "thisIsInvalid\ ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("input", "in", "thisIsInvalid$ ")</x:label>
-      <x:variable name="expr" as="xs:string">replace("input", "in", "thisIsInvalid$ ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("a a a ", "(a )", "replacment: \1")</x:label>
-      <x:variable name="expr" as="xs:string">replace("a a a ", "(a )", "replacment: \1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("a a a ", "(a )", "replacment: \1")</x:label>
-      <x:variable name="expr" as="xs:string">replace("a a a ", "(a )", "replacment: \1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abcd", "(a)\2(b)", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abcd", "(a)\2(b)", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abcd", "(asd)[\1]", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abcd", "(asd)[\1]", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abcd", "(asd)[asd\1]", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abcd", "(asd)[asd\1]", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abcd", "(asd)[asd\0]", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abcd", "(asd)[asd\0]", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("abcd", "1[asd\0]", "")</x:label>
-      <x:variable name="expr" as="xs:string">replace("abcd", "1[asd\0]", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(replace(if(exists((1 to 10)[. mod 2 = 0])) then "blah" else (),"a","e","m"))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(replace(if(exists((1 to 10)[. mod 2 = 0])) then "blah" else (),"a","e","m"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace("a","","b")</x:label>
-      <x:variable name="expr" as="xs:string">replace("a","","b")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c")</x:label>
-      <x:variable name="expr" as="xs:string">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:label>
-      <x:variable name="expr" as="xs:string">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:label>
-      <x:variable name="expr" as="xs:string">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/replace.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;This is a characte&#34;,&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("This is a characte","This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:replace(xs:string("This is a characte"),xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;*&#34;, &#34;p&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "bra", "*", "p")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;\&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "bra", "\")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;$y&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "bra", "$y")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;*&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "bra", "*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;a.*a&#34;, &#34;*&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "a.*a", "*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;a.*?a&#34;, &#34;*&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "a.*?a", "*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;a&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "a", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;a(.)&#34;, &#34;a$1$1&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "a(.)", "a$1$1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;.*?&#34;, &#34;$1&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", ".*?", "$1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;AAAA&#34;, &#34;A+&#34;, &#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("AAAA", "A+", "b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;AAAA&#34;, &#34;A+?&#34;, &#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("AAAA", "A+?", "b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;darted&#34;, &#34;^(.*?)d(.*)$&#34;, &#34;$1c$2&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("darted", "^(.*?)d(.*)$", "$1c$2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abcd&#34;, &#34;(ab)|(a)&#34;, &#34;[1=$1][2=$2]&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abcd", "(ab)|(a)", "[1=$1][2=$2]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:replace((), &#34;bra&#34;, &#34;*&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:replace((), "bra", "*"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;*&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abracadabra", "bra", "*", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra?abracadabra&#34;, &#34;\?&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra?abracadabra", "\?", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra*abracadabra&#34;, &#34;\*&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra*abracadabra", "\*", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra+abracadabra&#34;, &#34;\+&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra+abracadabra", "\+", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra{abracadabra&#34;, &#34;\{&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra{abracadabra", "\{", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra}abracadabra&#34;, &#34;\}&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra}abracadabra", "\}", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra(abracadabra&#34;, &#34;\(&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra(abracadabra", "\(", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra)abracadabra&#34;, &#34;\)&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra)abracadabra", "\)", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra[abracadabra&#34;, &#34;\[&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra[abracadabra", "\[", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra]abracadabra&#34;, &#34;\]&#34;, &#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra]abracadabra", "\]", "with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra-abracadabra&#34;, &#34;\-&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra-abracadabra", "\-","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra.abracadabra&#34;, &#34;\.&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra.abracadabra", "\.","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra|abracadabra&#34;, &#34;\|&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra|abracadabra", "\|","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra\abracadabra&#34;, &#34;\\&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra\abracadabra", "\\","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#x9;abracadabra&#34;, &#34;\t&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra	abracadabra", "\t","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#xA;abracadabra&#34;, &#34;\n&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra
+abracadabra", "\n","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabraabracadabra&#34;, &#34;aa{1}&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabraabracadabra", "aa{1}","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,}&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabraabracadabraabracadabra", "aa{1,}","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,2}&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabraabracadabraabracadabra", "aa{1,2}","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra^abracadabra&#34;, &#34;\^&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra^abracadabra", "\^","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;^a&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "^a","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;ww&#34;,&#34;with&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "ww","with")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;a&#34;, &#34;\$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "a", "\$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;(a)&#34;, &#34;\$$1&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "(a)", "\$$1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;a&#34;, &#34;\\&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "a", "\\")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;((((( ((((( (((((a))))) ))))) )))))&#34;, &#34;|$1$15|&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "|$1$15|", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;((((( ((((( (((((a))))) ))))) )))))&#34;, &#34;$1520&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1520", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;((((( ((((( (((((a)(b))))) ))))) )))))&#34;, &#34;($14.$15.$16.$17)&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "((((( ((((( (((((a)(b))))) ))))) )))))", "($14.$15.$16.$17)", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones')">
+      <x:call>
+        <x:param select="string(.)">fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones', 's')">
+      <x:call>
+        <x:param select="string(.)">fn:replace(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 'Jacob Jones', 's')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;Now, let's SEND OUT for QUICHE!!&#34;, &#34;[A-Z][A-Z]+&#34;, &#34;$0$0&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("Now, let's SEND OUT for QUICHE!!", "[A-Z][A-Z]+", "$0$0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;12-34&#34;, &#34;^\d+(-(\d+))?$&#34;, &#34;$2&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("12-34", "^\d+(-(\d+))?$", "$2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('abc', '^.+?(b+)?$', '$1')">
+      <x:call>
+        <x:param select="string(.)">replace('abc', '^.+?(b+)?$', '$1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('abcd', '^a(.).$|^a...$', '$1')">
+      <x:call>
+        <x:param select="string(.)">replace('abcd', '^a(.).$|^a...$', '$1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:replace(&#34;abracadabra&#34;, &#34;((((( ((((( (((((a))))) ))))) )))))&#34;, &#34;$1$1&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:replace("abracadabra", "((((( ((((( (((((a))))) ))))) )))))", "$1$1", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('abcdefghijk', '(a)|(b)|(c)|(d)|(e)|(f)|(g)|(h)|(i)|(j)', '$1')">
+      <x:call>
+        <x:param select="string(.)">replace('abcdefghijk', '(a)|(b)|(c)|(d)|(e)|(f)|(g)|(h)|(i)|(j)', '$1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('10%', '^\d*\.?\d+', '')">
+      <x:call>
+        <x:param select="string(.)">replace('10%', '^\d*\.?\d+', '')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('987654321A', '^(9)(8)(7)(6)(5)(4)(3)(2)(1)((A*?)|(.+))$', '$9$11$12')">
+      <x:call>
+        <x:param select="string(.)">replace('987654321A', '^(9)(8)(7)(6)(5)(4)(3)(2)(1)((A*?)|(.+))$', '$9$11$12')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;pattern&#34;, &#34;replacement&#34;, &#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "pattern", "replacement", " ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, (), &#34;replacement&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", (), "replacement")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;pattern&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">replace("input", "pattern", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;pattern&#34;, &#34;replacement&#34;, &#34;X&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "pattern", "replacement", "X")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;pattern&#34;, &#34;replacement&#34;, &#34;&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">replace("input", "pattern", "replacement", "", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;in&#34;, &#34;thisIsInvalid\&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "in", "thisIsInvalid\")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;(input)&#34;, &#34;thisIsInvalid$&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "(input)", "thisIsInvalid$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;in&#34;, &#34;thisIsInvalid\ &#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "in", "thisIsInvalid\ ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;input&#34;, &#34;in&#34;, &#34;thisIsInvalid$ &#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("input", "in", "thisIsInvalid$ ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;a a a &#34;, &#34;(a )&#34;, &#34;replacment: \1&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("a a a ", "(a )", "replacment: \1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;a a a &#34;, &#34;(a )&#34;, &#34;replacment: \1&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("a a a ", "(a )", "replacment: \1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abcd&#34;, &#34;(a)\2(b)&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abcd", "(a)\2(b)", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abcd&#34;, &#34;(asd)[\1]&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abcd", "(asd)[\1]", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abcd&#34;, &#34;(asd)[asd\1]&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abcd", "(asd)[asd\1]", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abcd&#34;, &#34;(asd)[asd\0]&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abcd", "(asd)[asd\0]", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;abcd&#34;, &#34;1[asd\0]&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("abcd", "1[asd\0]", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(replace(if(exists((1 to 10)[. mod 2 = 0])) then &#34;blah&#34; else (),&#34;a&#34;,&#34;e&#34;,&#34;m&#34;))">
+      <x:call>
+        <x:param select="string(.)">boolean(replace(if(exists((1 to 10)[. mod 2 = 0])) then "blah" else (),"a","e","m"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(&#34;a&#34;,&#34;&#34;,&#34;b&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace("a","","b")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),&#34;,&#34;),&#34;&#34;,&#34;c&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),&#34;,&#34;),&#34;&#34;,&#34;c&#34;,&#34;m&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),&#34;,&#34;),&#34;&#34;,&#34;c&#34;,&#34;m&#34;)">
+      <x:call>
+        <x:param select="string(.)">replace(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),","),"","c","m")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

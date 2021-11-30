@@ -1,200 +1,297 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") eq xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") eq xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("2012Z") eq xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("2012Z") eq xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("2030Z") eq xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("2030Z") eq xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") eq xs:gYear("2012Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") eq xs:gYear("2012Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") eq xs:gYear("2030Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") eq xs:gYear("2030Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") ne xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") ne xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("2012Z") ne xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("2012Z") ne xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("2030Z") ne xs:gYear("1970Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("2030Z") ne xs:gYear("1970Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") ne xs:gYear("2012Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") ne xs:gYear("2012Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1970Z") ne xs:gYear("2030Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1970Z") ne xs:gYear("2030Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("2005-12:00") eq xs:gYear("2005+12:00"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("2005-12:00") eq xs:gYear("2005+12:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("1976-05:00") eq xs:gYear("1976-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("1976-05:00") eq xs:gYear("1976-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((xs:gYear("1995Z") eq xs:gYear("1995Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((xs:gYear("1995Z") eq xs:gYear("1995Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gYear("2005Z") ne xs:gYear("2006Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gYear("2005Z") ne xs:gYear("2006Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gYear("2000Z") eq xs:gYear("2001Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gYear("2000Z") eq xs:gYear("2001Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:gYear("2005Z") ne xs:gYear("2005Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:gYear("2005Z") ne xs:gYear("2005Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("2000Z") eq xs:gYear("2000Z")) and (xs:gYear("2001Z") eq xs:gYear("2001Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("2000Z") eq xs:gYear("2000Z")) and (xs:gYear("2001Z") eq xs:gYear("2001Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("2000Z") ne xs:gYear("2000Z")) and (xs:gYear("1975Z") ne xs:gYear("1975Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("2000Z") ne xs:gYear("2000Z")) and (xs:gYear("1975Z") ne xs:gYear("1975Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("2000Z") eq xs:gYear("2000Z")) or (xs:gYear("1976Z") eq xs:gYear("1976Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("2000Z") eq xs:gYear("2000Z")) or (xs:gYear("1976Z") eq xs:gYear("1976Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("1976Z") ne xs:gYear("1976Z")) or (xs:gYear("1980Z") ne xs:gYear("1980Z"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("1976Z") ne xs:gYear("1976Z")) or (xs:gYear("1980Z") ne xs:gYear("1980Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("2000Z") ne xs:gYear("2000Z")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("2000Z") ne xs:gYear("2000Z")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:gYear("1980Z") ne xs:gYear("1980Z")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:gYear("1980Z") ne xs:gYear("1980Z")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear(" 1956 ") eq xs:gYear("1956")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear(" 1956 ") eq xs:gYear("1956")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gYear("1956") eq xs:gYear("1958"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gYear("1956") eq xs:gYear("1958"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1956") ne xs:gYear("1958")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1956") ne xs:gYear("1958")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:gYear("1956") ne xs:gYear("1956"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:gYear("1956") ne xs:gYear("1956"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1956-00:00") eq xs:gYear("1956Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1956-00:00") eq xs:gYear("1956Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1956+00:00") eq xs:gYear("1956Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1956+00:00") eq xs:gYear("1956Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1956Z") eq xs:gYear("1956Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1956Z") eq xs:gYear("1956Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:gYear("1956-00:00") eq xs:gYear("1956+00:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:gYear("1956-00:00") eq xs:gYear("1956+00:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/gYear-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:gYear(&#34;1970Z&#34;) eq xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") eq xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;2012Z&#34;) eq xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("2012Z") eq xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;2030Z&#34;) eq xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("2030Z") eq xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1970Z&#34;) eq xs:gYear(&#34;2012Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") eq xs:gYear("2012Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1970Z&#34;) eq xs:gYear(&#34;2030Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") eq xs:gYear("2030Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1970Z&#34;) ne xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") ne xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;2012Z&#34;) ne xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("2012Z") ne xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;2030Z&#34;) ne xs:gYear(&#34;1970Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("2030Z") ne xs:gYear("1970Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1970Z&#34;) ne xs:gYear(&#34;2012Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") ne xs:gYear("2012Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1970Z&#34;) ne xs:gYear(&#34;2030Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1970Z") ne xs:gYear("2030Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;2005-12:00&#34;) eq xs:gYear(&#34;2005+12:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("2005-12:00") eq xs:gYear("2005+12:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;1976-05:00&#34;) eq xs:gYear(&#34;1976-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("1976-05:00") eq xs:gYear("1976-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((xs:gYear(&#34;1995Z&#34;) eq xs:gYear(&#34;1995Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not((xs:gYear("1995Z") eq xs:gYear("1995Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gYear(&#34;2005Z&#34;) ne xs:gYear(&#34;2006Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gYear("2005Z") ne xs:gYear("2006Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gYear(&#34;2000Z&#34;) eq xs:gYear(&#34;2001Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gYear("2000Z") eq xs:gYear("2001Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:gYear(&#34;2005Z&#34;) ne xs:gYear(&#34;2005Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:gYear("2005Z") ne xs:gYear("2005Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;2000Z&#34;) eq xs:gYear(&#34;2000Z&#34;)) and (xs:gYear(&#34;2001Z&#34;) eq xs:gYear(&#34;2001Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("2000Z") eq xs:gYear("2000Z")) and (xs:gYear("2001Z") eq xs:gYear("2001Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;2000Z&#34;) ne xs:gYear(&#34;2000Z&#34;)) and (xs:gYear(&#34;1975Z&#34;) ne xs:gYear(&#34;1975Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("2000Z") ne xs:gYear("2000Z")) and (xs:gYear("1975Z") ne xs:gYear("1975Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;2000Z&#34;) eq xs:gYear(&#34;2000Z&#34;)) or (xs:gYear(&#34;1976Z&#34;) eq xs:gYear(&#34;1976Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("2000Z") eq xs:gYear("2000Z")) or (xs:gYear("1976Z") eq xs:gYear("1976Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;1976Z&#34;) ne xs:gYear(&#34;1976Z&#34;)) or (xs:gYear(&#34;1980Z&#34;) ne xs:gYear(&#34;1980Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("1976Z") ne xs:gYear("1976Z")) or (xs:gYear("1980Z") ne xs:gYear("1980Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;1980Z&#34;) eq xs:gYear(&#34;1980Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;2000Z&#34;) ne xs:gYear(&#34;2000Z&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("2000Z") ne xs:gYear("2000Z")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;1980Z&#34;) eq xs:gYear(&#34;1980Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("1980Z") eq xs:gYear("1980Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:gYear(&#34;1980Z&#34;) ne xs:gYear(&#34;1980Z&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:gYear("1980Z") ne xs:gYear("1980Z")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34; 1956 &#34;) eq xs:gYear(&#34;1956&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear(" 1956 ") eq xs:gYear("1956")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gYear(&#34;1956&#34;) eq xs:gYear(&#34;1958&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gYear("1956") eq xs:gYear("1958"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1956&#34;) ne xs:gYear(&#34;1958&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1956") ne xs:gYear("1958")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:gYear(&#34;1956&#34;) ne xs:gYear(&#34;1956&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:gYear("1956") ne xs:gYear("1956"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1956-00:00&#34;) eq xs:gYear(&#34;1956Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1956-00:00") eq xs:gYear("1956Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1956+00:00&#34;) eq xs:gYear(&#34;1956Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1956+00:00") eq xs:gYear("1956Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1956Z&#34;) eq xs:gYear(&#34;1956Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1956Z") eq xs:gYear("1956Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:gYear(&#34;1956-00:00&#34;) eq xs:gYear(&#34;1956+00:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:gYear("1956-00:00") eq xs:gYear("1956+00:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gYear(&#34;2008&#34;) eq xs:gYear(&#34;2008+09:01&#34;)&#xA;            else xs:gYear(&#34;2008&#34;) eq xs:gYear(&#34;2008+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gYear("2008") eq xs:gYear("2008+09:01")
-            else xs:gYear("2008") eq xs:gYear("2008+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gYear("2008") eq xs:gYear("2008+09:01")
-            else xs:gYear("2008") eq xs:gYear("2008+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gYear("2008") eq xs:gYear("2008+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gYear(&#34;2008+09:01&#34;) eq xs:gYear(&#34;2008&#34;)&#xA;            else xs:gYear(&#34;2008+09:00&#34;) eq xs:gYear(&#34;2008&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gYear("2008+09:01") eq xs:gYear("2008")
-            else xs:gYear("2008+09:00") eq xs:gYear("2008")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gYear("2008+09:01") eq xs:gYear("2008")
-            else xs:gYear("2008+09:00") eq xs:gYear("2008")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gYear("2008+09:00") eq xs:gYear("2008")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gYear(&#34;2008&#34;) eq xs:gYear(&#34;2008-09:01&#34;)&#xA;            else xs:gYear(&#34;2008&#34;) eq xs:gYear(&#34;2008-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gYear("2008") eq xs:gYear("2008-09:01")
-            else xs:gYear("2008") eq xs:gYear("2008-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gYear("2008") eq xs:gYear("2008-09:01")
-            else xs:gYear("2008") eq xs:gYear("2008-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gYear("2008") eq xs:gYear("2008-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gYear(&#34;2008-09:01&#34;) eq xs:gYear(&#34;2008&#34;)&#xA;            else xs:gYear(&#34;2008-09:00&#34;) eq xs:gYear(&#34;2008&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gYear("2008-09:01") eq xs:gYear("2008")
-            else xs:gYear("2008-09:00") eq xs:gYear("2008")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gYear("2008-09:01") eq xs:gYear("2008")
-            else xs:gYear("2008-09:00") eq xs:gYear("2008")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gYear("2008-09:00") eq xs:gYear("2008")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gYear(&#34;2008&#34;) ne xs:gYear(&#34;2008+09:01&#34;)&#xA;            else xs:gYear(&#34;2008&#34;) ne xs:gYear(&#34;2008+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gYear("2008") ne xs:gYear("2008+09:01")
-            else xs:gYear("2008") ne xs:gYear("2008+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gYear("2008") ne xs:gYear("2008+09:01")
-            else xs:gYear("2008") ne xs:gYear("2008+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
+            else xs:gYear("2008") ne xs:gYear("2008+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))&#xA;            then xs:gYear(&#34;2008+09:01&#34;) ne xs:gYear(&#34;2008&#34;)&#xA;            else xs:gYear(&#34;2008+09:00&#34;) ne xs:gYear(&#34;2008&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
             then xs:gYear("2008+09:01") ne xs:gYear("2008")
-            else xs:gYear("2008+09:00") ne xs:gYear("2008")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('PT9M'))
-            then xs:gYear("2008+09:01") ne xs:gYear("2008")
-            else xs:gYear("2008+09:00") ne xs:gYear("2008")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gYear("2008+09:00") ne xs:gYear("2008")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gYear(&#34;2008&#34;) ne xs:gYear(&#34;2008-09:01&#34;)&#xA;            else xs:gYear(&#34;2008&#34;) ne xs:gYear(&#34;2008-09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gYear("2008") ne xs:gYear("2008-09:01")
-            else xs:gYear("2008") ne xs:gYear("2008-09:00")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gYear("2008") ne xs:gYear("2008-09:01")
-            else xs:gYear("2008") ne xs:gYear("2008-09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
+            else xs:gYear("2008") ne xs:gYear("2008-09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))&#xA;            then xs:gYear(&#34;2008-09:01&#34;) ne xs:gYear(&#34;2008&#34;)&#xA;            else xs:gYear(&#34;2008-09:00&#34;) ne xs:gYear(&#34;2008&#34;)">
+      <x:call>
+        <x:param select="string(.)">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
             then xs:gYear("2008-09:01") ne xs:gYear("2008")
-            else xs:gYear("2008-09:00") ne xs:gYear("2008")</x:label>
-      <x:variable name="expr" as="xs:string">if (implicit-timezone() eq xs:dayTimeDuration('-PT9M'))
-            then xs:gYear("2008-09:01") ne xs:gYear("2008")
-            else xs:gYear("2008-09:00") ne xs:gYear("2008")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+            else xs:gYear("2008-09:00") ne xs:gYear("2008")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

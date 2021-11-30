@@ -1,136 +1,225 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>3 treat as xs:string</x:label>
-      <x:variable name="expr" as="xs:string">3 treat as xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("3") treat as xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("3") treat as xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") treat as xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") treat as xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3.0 treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">3.0 treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer(3) treat as xs:decimal instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer(3) treat as xs:decimal instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"3" treat as xs:string eq '3'</x:label>
-      <x:variable name="expr" as="xs:string">"3" treat as xs:string eq '3'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("3") treat as xs:decimal instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("3") treat as xs:decimal instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 treat as prefixDoesNotExist:integer</x:label>
-      <x:variable name="expr" as="xs:string">3 treat as prefixDoesNotExist:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 treat as xs:doesNotExist</x:label>
-      <x:variable name="expr" as="xs:string">3 treat as xs:doesNotExist</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 treat as empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">1 treat as empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>("asda" treat as xs:string +) eq "asda"</x:label>
-      <x:variable name="expr" as="xs:string">("asda" treat as xs:string +) eq "asda"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>("asda" treat as xs:string *) eq "asda"</x:label>
-      <x:variable name="expr" as="xs:string">("asda" treat as xs:string *) eq "asda"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(3 treat as xs:integer * * 3) eq 9</x:label>
-      <x:variable name="expr" as="xs:string">(3 treat as xs:integer * * 3) eq 9</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(3 treat as xs:integer ? * 3) eq 9</x:label>
-      <x:variable name="expr" as="xs:string">(3 treat as xs:integer ? * 3) eq 9</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(4 treat as item() + - 5) = ((4 treat as item()+) - 5)</x:label>
-      <x:variable name="expr" as="xs:string">(4 treat as item() + - 5) = ((4 treat as item()+) - 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove((5, 1e0), 2) treat as xs:integer) eq 5</x:label>
-      <x:variable name="expr" as="xs:string">(remove((5, 1e0), 2) treat as xs:integer) eq 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal(3) treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal(3) treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 treat as item()+ + +1</x:label>
-      <x:variable name="expr" as="xs:string">3 treat as item()+ + +1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. mod 2 = 0] treat as xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. mod 2 = 0] treat as xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. mod 2 = 0] treat as xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. mod 2 = 0] treat as xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1 to 10)[. mod 2 = 0] treat as xs:integer+)</x:label>
-      <x:variable name="expr" as="xs:string">count((1 to 10)[. mod 2 = 0] treat as xs:integer+)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence((1 to 10)[. mod 2 = 0] treat as xs:integer+,1,2)</x:label>
-      <x:variable name="expr" as="xs:string">subsequence((1 to 10)[. mod 2 = 0] treat as xs:integer+,1,2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. div 2 = 0] treat as xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. div 2 = 0] treat as xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger+</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. mod 2 = 0] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. mod 2 = 0] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger*</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/TreatExpr.xml"><x:call function="nk:xpath-model"/><x:scenario label="3 treat as xs:string">
+      <x:call>
+        <x:param select="string(.)">3 treat as xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;3&#34;) treat as xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:double("3") treat as xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) treat as xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") treat as xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3.0 treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">3.0 treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(3) treat as xs:decimal instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:integer(3) treat as xs:decimal instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;3&#34; treat as xs:string eq '3'">
+      <x:call>
+        <x:param select="string(.)">"3" treat as xs:string eq '3'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;3&#34;) treat as xs:decimal instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:integer("3") treat as xs:decimal instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 treat as prefixDoesNotExist:integer">
+      <x:call>
+        <x:param select="string(.)">3 treat as prefixDoesNotExist:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 treat as xs:doesNotExist">
+      <x:call>
+        <x:param select="string(.)">3 treat as xs:doesNotExist</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 treat as empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">1 treat as empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(&#34;asda&#34; treat as xs:string +) eq &#34;asda&#34;">
+      <x:call>
+        <x:param select="string(.)">("asda" treat as xs:string +) eq "asda"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(&#34;asda&#34; treat as xs:string *) eq &#34;asda&#34;">
+      <x:call>
+        <x:param select="string(.)">("asda" treat as xs:string *) eq "asda"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(3 treat as xs:integer * * 3) eq 9">
+      <x:call>
+        <x:param select="string(.)">(3 treat as xs:integer * * 3) eq 9</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(3 treat as xs:integer ? * 3) eq 9">
+      <x:call>
+        <x:param select="string(.)">(3 treat as xs:integer ? * 3) eq 9</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(4 treat as item() + - 5) = ((4 treat as item()+) - 5)">
+      <x:call>
+        <x:param select="string(.)">(4 treat as item() + - 5) = ((4 treat as item()+) - 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove((5, 1e0), 2) treat as xs:integer) eq 5">
+      <x:call>
+        <x:param select="string(.)">(remove((5, 1e0), 2) treat as xs:integer) eq 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(3) treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:decimal(3) treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 treat as item()+ + +1">
+      <x:call>
+        <x:param select="string(.)">3 treat as item()+ + +1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. mod 2 = 0] treat as xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. mod 2 = 0] treat as xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. mod 2 = 0] treat as xs:integer*">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. mod 2 = 0] treat as xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer+">
+      <x:call>
+        <x:param select="string(.)">zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer*">
+      <x:call>
+        <x:param select="string(.)">zero-or-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer+">
+      <x:call>
+        <x:param select="string(.)">exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer*">
+      <x:call>
+        <x:param select="string(.)">exactly-one((1 to 10)[. div 2 = 1]) treat as xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1 to 10)[. mod 2 = 0] treat as xs:integer+)">
+      <x:call>
+        <x:param select="string(.)">count((1 to 10)[. mod 2 = 0] treat as xs:integer+)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence((1 to 10)[. mod 2 = 0] treat as xs:integer+,1,2)">
+      <x:call>
+        <x:param select="string(.)">subsequence((1 to 10)[. mod 2 = 0] treat as xs:integer+,1,2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. div 2 = 0] treat as xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. div 2 = 0] treat as xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger+">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. mod 2 = 0] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. mod 2 = 0] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger*">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[. mod 2 = 0] treat as xs:negativeInteger*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer+">
+      <x:call>
+        <x:param select="string(.)">zero-or-one((1 to 10)[. div 2 = 0]) treat as xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

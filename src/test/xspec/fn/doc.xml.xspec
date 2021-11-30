@@ -1,160 +1,267 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:doc("http:\\invalid&gt;URI\someURI")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc("http:\\invalid&gt;URI\someURI")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc("argument1","argument2")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc("argument1","argument2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc("thisfileshouldnotexists.xml")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc("thisfileshouldnotexists.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc(())</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri) is fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri) is fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($works) is fn:doc($staff)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($works) is fn:doc($staff)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)//day/string()</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)//day/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:nilled(fn:doc($uri)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:nilled(fn:doc($uri)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:node-name(fn:doc($uri)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:node-name(fn:doc($uri)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc("%gg")</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc("%gg")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:doc($uri) is fn:doc($uri))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:doc($uri) is fn:doc($uri))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:doc($uri) is fn:doc($uri)) and fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">(fn:doc($uri) is fn:doc($uri)) and fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:doc($uri) is fn:doc($uri)) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">(fn:doc($uri) is fn:doc($uri)) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:doc($uri) is fn:doc($uri)) or fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">(fn:doc($uri) is fn:doc($uri)) or fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:doc($uri) is fn:doc($uri)) or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">(fn:doc($uri) is fn:doc($uri)) or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>local-name(fn:doc($uri)/*)</x:label>
-      <x:variable name="expr" as="xs:string">local-name(fn:doc($uri)/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>local-name(fn:doc($uri)/*)</x:label>
-      <x:variable name="expr" as="xs:string">local-name(fn:doc($uri)/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc(':/')</x:label>
-      <x:variable name="expr" as="xs:string">doc(':/')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>normalize-space(string(fn:doc($uri))), normalize-space(string(exactly-one(fn:doc($uri)/*)))</x:label>
-      <x:variable name="expr" as="xs:string">normalize-space(string(fn:doc($uri))), normalize-space(string(exactly-one(fn:doc($uri)/*)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc($uri)</x:label>
-      <x:variable name="expr" as="xs:string">doc($uri)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc('id/badxml.xml')</x:label>
-      <x:variable name="expr" as="xs:string">doc('id/badxml.xml')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(doc($uri)//text())</x:label>
-      <x:variable name="expr" as="xs:string">count(doc($uri)//text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:doc(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:doc(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:doc(xs:untypedAtomic("file:///example.com/does/not/exist/xqts-testing.xml"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:doc(xs:untypedAtomic("file:///example.com/does/not/exist/xqts-testing.xml"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("C:\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:label>
-      <x:variable name="expr" as="xs:string">doc("C:\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("")</x:label>
-      <x:variable name="expr" as="xs:string">doc("")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>doc("")</x:label>
-      <x:variable name="expr" as="xs:string">doc("")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/doc.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:doc(&#34;http:\\invalid&gt;URI\someURI&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc("http:\\invalid&gt;URI\someURI")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc(&#34;argument1&#34;,&#34;argument2&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc("argument1","argument2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc(&#34;thisfileshouldnotexists.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc("thisfileshouldnotexists.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc(())">
+      <x:call>
+        <x:param select="string(.)">fn:doc(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri) is fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri) is fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($works) is fn:doc($staff)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($works) is fn:doc($staff)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)//day/string()">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)//day/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:nilled(fn:doc($uri)))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:nilled(fn:doc($uri)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:node-name(fn:doc($uri)))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:node-name(fn:doc($uri)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc(&#34;%gg&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:doc("%gg")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:doc($uri) is fn:doc($uri))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:doc($uri) is fn:doc($uri))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:doc($uri) is fn:doc($uri)) and fn:true()">
+      <x:call>
+        <x:param select="string(.)">(fn:doc($uri) is fn:doc($uri)) and fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:doc($uri) is fn:doc($uri)) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">(fn:doc($uri) is fn:doc($uri)) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:doc($uri) is fn:doc($uri)) or fn:true()">
+      <x:call>
+        <x:param select="string(.)">(fn:doc($uri) is fn:doc($uri)) or fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:doc($uri) is fn:doc($uri)) or fn:false()">
+      <x:call>
+        <x:param select="string(.)">(fn:doc($uri) is fn:doc($uri)) or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc($uri)">
+      <x:call>
+        <x:param select="string(.)">fn:doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="local-name(fn:doc($uri)/*)">
+      <x:call>
+        <x:param select="string(.)">local-name(fn:doc($uri)/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="local-name(fn:doc($uri)/*)">
+      <x:call>
+        <x:param select="string(.)">local-name(fn:doc($uri)/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(':/')">
+      <x:call>
+        <x:param select="string(.)">doc(':/')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="normalize-space(string(fn:doc($uri))), normalize-space(string(exactly-one(fn:doc($uri)/*)))">
+      <x:call>
+        <x:param select="string(.)">normalize-space(string(fn:doc($uri))), normalize-space(string(exactly-one(fn:doc($uri)/*)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc($uri)">
+      <x:call>
+        <x:param select="string(.)">doc($uri)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc('id/badxml.xml')">
+      <x:call>
+        <x:param select="string(.)">doc('id/badxml.xml')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(doc($uri)//text())">
+      <x:call>
+        <x:param select="string(.)">count(doc($uri)//text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:doc(()))">
+      <x:call>
+        <x:param select="string(.)">empty(fn:doc(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:doc(xs:untypedAtomic(&#34;file:///example.com/does/not/exist/xqts-testing.xml&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:doc(xs:untypedAtomic("file:///example.com/does/not/exist/xqts-testing.xml"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("/example.com/example.org/does/not/exist/doesNotExist/works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;example.com\example.org\does\not\exist\doesNotExist\works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;C:\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("C:\example.com\example.org\does\not\exist\doesNotExist\works-mod.xml")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="doc(&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">doc("")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

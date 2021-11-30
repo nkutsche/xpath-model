@@ -1,180 +1,302 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),1, "z")</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),1, "z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),0, ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),0, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:string(" "))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:string(" "))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:anyURI("www.example.com"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:anyURI("www.example.com"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:integer("100"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:integer("100"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:decimal("1.1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:decimal("1.1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:float("1.1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:float("1.1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:float("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:float("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:float("-0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:float("-0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:float("-INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:float("-INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:double("NaN"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:double("NaN"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:double("INF"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:double("INF"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:boolean("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:boolean("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:boolean("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:boolean("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:boolean("true"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:boolean("true"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),2, xs:boolean("false"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),2, xs:boolean("false"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),4, xs:date("1993-03-31"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),4, xs:date("1993-03-31"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),4, xs:dateTime("1972-12-31T00:00:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),4, xs:dateTime("1972-12-31T00:00:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:insert-before( ("a", "b", "c"),4, xs:time("12:30:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:insert-before( ("a", "b", "c"),4, xs:time("12:30:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before()</x:label>
-      <x:variable name="expr" as="xs:string">insert-before()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before("wrong params", 2)</x:label>
-      <x:variable name="expr" as="xs:string">insert-before("wrong params", 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before("wrong params", 2, 3, 4)</x:label>
-      <x:variable name="expr" as="xs:string">insert-before("wrong params", 2, 3, 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((), (), "a string")</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((), (), "a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((), -31, "a string") eq "a string"</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((), -31, "a string") eq "a string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((1, 2, 3), 1, (4, 5, 6))) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((1, 2, 3), 1, (4, 5, 6))) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((), 1, 3) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((), 1, 3) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((), 1, "a string") eq "a string"</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((), 1, "a string") eq "a string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((), 1, (1, 2, 3))) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((), 1, (1, 2, 3))) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((), 30, 7) eq 7</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((), 30, 7) eq 7</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((1, 2, 3, 4), 30, ())) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((1, 2, 3, 4), 30, ())) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before(9, 30, ()) eq 9</x:label>
-      <x:variable name="expr" as="xs:string">insert-before(9, 30, ()) eq 9</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((1, 2, 3, 4), 1, ())) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((1, 2, 3, 4), 1, ())) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((1, 2, 3), 30, (4, 5, 6))) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((1, 2, 3), 30, (4, 5, 6))) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((), 30, (1, 2, 3))) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((), 30, (1, 2, 3))) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(insert-before((error(), 1), 1, (1, "two", 3))) &gt; 1</x:label>
-      <x:variable name="expr" as="xs:string">count(insert-before((error(), 1), 1, (1, "two", 3))) &gt; 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before((1, current-time(), 3), 1, (4, 5, 6))[last()] treat as xs:integer) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before((1, current-time(), 3), 1, (4, 5, 6))[last()] treat as xs:integer) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last()] treat as xs:integer) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last()] treat as xs:integer) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last() - 3] treat as xs:integer) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last() - 3] treat as xs:integer) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before((1, current-time(), 3), 10, ())[last()] treat as xs:integer) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before((1, current-time(), 3), 10, ())[last()] treat as xs:integer) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(insert-before((1, current-time(), 3), 0, (4, 5, 6))[last() - 10])</x:label>
-      <x:variable name="expr" as="xs:string">empty(insert-before((1, current-time(), 3), 0, (4, 5, 6))[last() - 10])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before(1 to 10,5,20 to 30)</x:label>
-      <x:variable name="expr" as="xs:string">insert-before(1 to 10,5,20 to 30)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>insert-before((1 to 10,(20 to 30)[. mod 2 = 0],30 to 40),12,"blah")</x:label>
-      <x:variable name="expr" as="xs:string">insert-before((1 to 10,(20 to 30)[. mod 2 = 0],30 to 40),12,"blah")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/insert-before.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),1, &#34;z&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),1, "z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),0, ())">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),0, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, ())">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:string(&#34; &#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:string(" "))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:anyURI(&#34;www.example.com&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:anyURI("www.example.com"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:integer(&#34;100&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:integer("100"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:decimal(&#34;1.1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:decimal("1.1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:float(&#34;1.1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:float("1.1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:float(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:float("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:float(&#34;-0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:float("-0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:float(&#34;-INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:float("-INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:double(&#34;NaN&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:double("NaN"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:double(&#34;INF&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:double("INF"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:boolean(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:boolean("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:boolean(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:boolean("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:boolean(&#34;true&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:boolean("true"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),2, xs:boolean(&#34;false&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),2, xs:boolean("false"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),4, xs:date(&#34;1993-03-31&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),4, xs:date("1993-03-31"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),4, xs:dateTime(&#34;1972-12-31T00:00:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),4, xs:dateTime("1972-12-31T00:00:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:insert-before( (&#34;a&#34;, &#34;b&#34;, &#34;c&#34;),4, xs:time(&#34;12:30:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:insert-before( ("a", "b", "c"),4, xs:time("12:30:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before()">
+      <x:call>
+        <x:param select="string(.)">insert-before()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before(&#34;wrong params&#34;, 2)">
+      <x:call>
+        <x:param select="string(.)">insert-before("wrong params", 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before(&#34;wrong params&#34;, 2, 3, 4)">
+      <x:call>
+        <x:param select="string(.)">insert-before("wrong params", 2, 3, 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((), (), &#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">insert-before((), (), "a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((), -31, &#34;a string&#34;) eq &#34;a string&#34;">
+      <x:call>
+        <x:param select="string(.)">insert-before((), -31, "a string") eq "a string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((1, 2, 3), 1, (4, 5, 6))) eq 6">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((1, 2, 3), 1, (4, 5, 6))) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((), 1, 3) eq 3">
+      <x:call>
+        <x:param select="string(.)">insert-before((), 1, 3) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((), 1, &#34;a string&#34;) eq &#34;a string&#34;">
+      <x:call>
+        <x:param select="string(.)">insert-before((), 1, "a string") eq "a string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((), 1, (1, 2, 3))) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((), 1, (1, 2, 3))) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((), 30, 7) eq 7">
+      <x:call>
+        <x:param select="string(.)">insert-before((), 30, 7) eq 7</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((1, 2, 3, 4), 30, ())) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((1, 2, 3, 4), 30, ())) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before(9, 30, ()) eq 9">
+      <x:call>
+        <x:param select="string(.)">insert-before(9, 30, ()) eq 9</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((1, 2, 3, 4), 1, ())) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((1, 2, 3, 4), 1, ())) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((1, 2, 3), 30, (4, 5, 6))) eq 6">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((1, 2, 3), 30, (4, 5, 6))) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((), 30, (1, 2, 3))) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((), 30, (1, 2, 3))) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(insert-before((error(), 1), 1, (1, &#34;two&#34;, 3))) &gt; 1">
+      <x:call>
+        <x:param select="string(.)">count(insert-before((error(), 1), 1, (1, "two", 3))) &gt; 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before((1, current-time(), 3), 1, (4, 5, 6))[last()] treat as xs:integer) eq 3">
+      <x:call>
+        <x:param select="string(.)">(insert-before((1, current-time(), 3), 1, (4, 5, 6))[last()] treat as xs:integer) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last()] treat as xs:integer) eq 6">
+      <x:call>
+        <x:param select="string(.)">(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last()] treat as xs:integer) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last() - 3] treat as xs:integer) eq 3">
+      <x:call>
+        <x:param select="string(.)">(insert-before((1, current-time(), 3), 10, (4, 5, 6))[last() - 3] treat as xs:integer) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before((1, current-time(), 3), 10, ())[last()] treat as xs:integer) eq 3">
+      <x:call>
+        <x:param select="string(.)">(insert-before((1, current-time(), 3), 10, ())[last()] treat as xs:integer) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(insert-before((1, current-time(), 3), 0, (4, 5, 6))[last() - 10])">
+      <x:call>
+        <x:param select="string(.)">empty(insert-before((1, current-time(), 3), 0, (4, 5, 6))[last() - 10])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before(1 to 10,5,20 to 30)">
+      <x:call>
+        <x:param select="string(.)">insert-before(1 to 10,5,20 to 30)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="insert-before((1 to 10,(20 to 30)[. mod 2 = 0],30 to 40),12,&#34;blah&#34;)">
+      <x:call>
+        <x:param select="string(.)">insert-before((1 to 10,(20 to 30)[. mod 2 = 0],30 to 40),12,"blah")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

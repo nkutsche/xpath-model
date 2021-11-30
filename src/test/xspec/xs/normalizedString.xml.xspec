@@ -1,32 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:normalizedString(xs:normalizedString("test"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString(xs:normalizedString("test"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString('	')</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString('	')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString(5)</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString(5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"&amp;#x9;" castable as xs:normalizedString</x:label>
-      <x:variable name="expr" as="xs:string">"&amp;#x9;" castable as xs:normalizedString</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>5 castable as xs:normalizedString</x:label>
-      <x:variable name="expr" as="xs:string">5 castable as xs:normalizedString</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString("test") castable as xs:normalizedString</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString("test") castable as xs:normalizedString</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/normalizedString.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:normalizedString(xs:normalizedString(&#34;test&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString(xs:normalizedString("test"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString('&#x9;')">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString('	')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString(5)">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString(5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;&amp;#x9;&#34; castable as xs:normalizedString">
+      <x:call>
+        <x:param select="string(.)">"&amp;#x9;" castable as xs:normalizedString</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="5 castable as xs:normalizedString">
+      <x:call>
+        <x:param select="string(.)">5 castable as xs:normalizedString</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString(&#34;test&#34;) castable as xs:normalizedString">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString("test") castable as xs:normalizedString</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,202 +1,338 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abba", ".?")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abba", ".?")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("The cat sat on the mat", "\s+", "t")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("The cat sat on the mat", "\s+", "t")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("The cat sat on the mat", "\s+")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("The cat sat on the mat", "\s+")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("1, 15, 24, 50", ",\s*")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("1, 15, 24, 50", ",\s*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "i")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "i")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:tokenize((), "\s+"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:tokenize((), "\s+"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:tokenize("", "\s+"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:tokenize("", "\s+"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join(fn:tokenize("abracadabra", "(ab)|(a)"), '#')</x:label>
-      <x:variable name="expr" as="xs:string">string-join(fn:tokenize("abracadabra", "(ab)|(a)"), '#')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra", "ww")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra", "ww")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra", "^a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra", "^a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra^abracadabra", "\^")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra^abracadabra", "\^")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra?abracadabra", "\?")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra?abracadabra", "\?")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra*abracadabra", "\*")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra*abracadabra", "\*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra+abracadabra", "\+")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra+abracadabra", "\+")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra{abracadabra", "\{")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra{abracadabra", "\{")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra}abracadabra", "\}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra}abracadabra", "\}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra(abracadabra", "\(")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra(abracadabra", "\(")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra)abracadabra", "\)")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra)abracadabra", "\)")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra[abracadabra", "\[")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra[abracadabra", "\[")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra]abracadabra", "\]")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra]abracadabra", "\]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra-abracadabra", "\-")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra-abracadabra", "\-")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra.abracadabra", "\.")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra.abracadabra", "\.")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra|abracadabra", "\|")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra|abracadabra", "\|")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra\abracadabra", "\\")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra\abracadabra", "\\")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra	abracadabra", "\t")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra	abracadabra", "\t")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabra
-abracadabra", "\n")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabra
-abracadabra", "\n")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabraabracadabra", "aa{1}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabraabracadabra", "aa{1}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,2}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,2}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J')</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J', 's')</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J', 's')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^', 'm')</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^', 'm')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '$', 'm')</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '$', 'm')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^[\s]*$', 'm')</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^[\s]*$', 'm')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>tokenize("input", ())</x:label>
-      <x:variable name="expr" as="xs:string">tokenize("input", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>tokenize("input", "pattern", " ")</x:label>
-      <x:variable name="expr" as="xs:string">tokenize("input", "pattern", " ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>tokenize("input", "pattern", "X")</x:label>
-      <x:variable name="expr" as="xs:string">tokenize("input", "pattern", "X")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>tokenize("input", "pattern", "", ())</x:label>
-      <x:variable name="expr" as="xs:string">tokenize("input", "pattern", "", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last()] eq ""</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last()] eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() + 1])</x:label>
-      <x:variable name="expr" as="xs:string">empty(fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() + 1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 1]</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 3]</x:label>
-      <x:variable name="expr" as="xs:string">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 3]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(fn:tokenize("The cat sat on the mat", "\s+"), ("The", "cat", "sat", "on", "the", "mat")), count(fn:tokenize("The cat sat on the mat", "\s+")), count(fn:tokenize(" The cat sat on the mat ", "\s+")), fn:tokenize("The cat sat on the mat", "\s+")</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(fn:tokenize("The cat sat on the mat", "\s+"), ("The", "cat", "sat", "on", "the", "mat")), count(fn:tokenize("The cat sat on the mat", "\s+")), count(fn:tokenize(" The cat sat on the mat ", "\s+")), fn:tokenize("The cat sat on the mat", "\s+")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>replace('APXterms6', '\w{3}\d*([^TKR0-9]+).*$', '$1')</x:label>
-      <x:variable name="expr" as="xs:string">replace('APXterms6', '\w{3}\d*([^TKR0-9]+).*$', '$1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(tokenize("a b", " ")), count(tokenize("a b", "\s")), string-join(tokenize("a b", " "), '|'), string-join(tokenize("a b", "\s"), '|'), tokenize("a b", " "), tokenize("a b", "\s")</x:label>
-      <x:variable name="expr" as="xs:string">count(tokenize("a b", " ")), count(tokenize("a b", "\s")), string-join(tokenize("a b", " "), '|'), string-join(tokenize("a b", "\s"), '|'), tokenize("a b", " "), tokenize("a b", "\s")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in xs:string(zero-or-one((1 to 10)[. mod 2 = -1])) return tokenize($x,',')</x:label>
-      <x:variable name="expr" as="xs:string">for $x in xs:string(zero-or-one((1 to 10)[. mod 2 = -1])) return tokenize($x,',')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>tokenize(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),','),'[')</x:label>
-      <x:variable name="expr" as="xs:string">tokenize(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),','),'[')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/tokenize.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:tokenize(&#34;abba&#34;, &#34;.?&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abba", ".?")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;The cat sat on the mat&#34;, &#34;\s+&#34;, &#34;t&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("The cat sat on the mat", "\s+", "t")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;The cat sat on the mat&#34;, &#34;\s+&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("The cat sat on the mat", "\s+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;1, 15, 24, 50&#34;, &#34;,\s*&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("1, 15, 24, 50", ",\s*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;Some unparsed &lt;br&gt; HTML &lt;BR&gt; text&#34;, &#34;\s*&lt;br&gt;\s*&#34;, &#34;i&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "i")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;Some unparsed &lt;br&gt; HTML &lt;BR&gt; text&#34;, &#34;\s*&lt;br&gt;\s*&#34;, &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("Some unparsed &lt;br&gt; HTML &lt;BR&gt; text", "\s*&lt;br&gt;\s*", "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:tokenize((), &#34;\s+&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:tokenize((), "\s+"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:tokenize(&#34;&#34;, &#34;\s+&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:tokenize("", "\s+"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join(fn:tokenize(&#34;abracadabra&#34;, &#34;(ab)|(a)&#34;), '#')">
+      <x:call>
+        <x:param select="string(.)">string-join(fn:tokenize("abracadabra", "(ab)|(a)"), '#')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra&#34;, &#34;ww&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra", "ww")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra&#34;, &#34;^a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra", "^a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra^abracadabra&#34;, &#34;\^&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra^abracadabra", "\^")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra?abracadabra&#34;, &#34;\?&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra?abracadabra", "\?")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra*abracadabra&#34;, &#34;\*&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra*abracadabra", "\*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra+abracadabra&#34;, &#34;\+&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra+abracadabra", "\+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra{abracadabra&#34;, &#34;\{&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra{abracadabra", "\{")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra}abracadabra&#34;, &#34;\}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra}abracadabra", "\}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra(abracadabra&#34;, &#34;\(&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra(abracadabra", "\(")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra)abracadabra&#34;, &#34;\)&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra)abracadabra", "\)")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra[abracadabra&#34;, &#34;\[&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra[abracadabra", "\[")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra]abracadabra&#34;, &#34;\]&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra]abracadabra", "\]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra-abracadabra&#34;, &#34;\-&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra-abracadabra", "\-")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra.abracadabra&#34;, &#34;\.&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra.abracadabra", "\.")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra|abracadabra&#34;, &#34;\|&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra|abracadabra", "\|")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra\abracadabra&#34;, &#34;\\&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra\abracadabra", "\\")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra&#x9;abracadabra&#34;, &#34;\t&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra	abracadabra", "\t")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabra&#xA;abracadabra&#34;, &#34;\n&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabra
+abracadabra", "\n")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabraabracadabra&#34;, &#34;aa{1}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabraabracadabra", "aa{1}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,2}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize("abracadabraabracadabraabracadabra", "aa{1,2}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J')">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J', 's')">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(concat('Mary', codepoints-to-string(13), 'Jones'), 'y.J', 's')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^', 'm')">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^', 'm')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '$', 'm')">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '$', 'm')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^[\s]*$', 'm')">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(concat('Mary', codepoints-to-string(10), 'Jones'), '^[\s]*$', 'm')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="tokenize(&#34;input&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">tokenize("input", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="tokenize(&#34;input&#34;, &#34;pattern&#34;, &#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">tokenize("input", "pattern", " ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="tokenize(&#34;input&#34;, &#34;pattern&#34;, &#34;X&#34;)">
+      <x:call>
+        <x:param select="string(.)">tokenize("input", "pattern", "X")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="tokenize(&#34;input&#34;, &#34;pattern&#34;, &#34;&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">tokenize("input", "pattern", "", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize((&#34;abracadabra&#34;, current-time())[1] treat as xs:string, &#34;(ab)|(a)&#34;)[last()] eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last()] eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(fn:tokenize((&#34;abracadabra&#34;, current-time())[1] treat as xs:string, &#34;(ab)|(a)&#34;)[last() + 1])">
+      <x:call>
+        <x:param select="string(.)">empty(fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() + 1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize((&#34;abracadabra&#34;, current-time())[1] treat as xs:string, &#34;(ab)|(a)&#34;)[last() - 1]">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:tokenize((&#34;abracadabra&#34;, current-time())[1] treat as xs:string, &#34;(ab)|(a)&#34;)[last() - 3]">
+      <x:call>
+        <x:param select="string(.)">fn:tokenize(("abracadabra", current-time())[1] treat as xs:string, "(ab)|(a)")[last() - 3]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(fn:tokenize(&#34;The cat sat on the mat&#34;, &#34;\s+&#34;), (&#34;The&#34;, &#34;cat&#34;, &#34;sat&#34;, &#34;on&#34;, &#34;the&#34;, &#34;mat&#34;)), count(fn:tokenize(&#34;The cat sat on the mat&#34;, &#34;\s+&#34;)), count(fn:tokenize(&#34; The cat sat on the mat &#34;, &#34;\s+&#34;)), fn:tokenize(&#34;The cat sat on the mat&#34;, &#34;\s+&#34;)">
+      <x:call>
+        <x:param select="string(.)">deep-equal(fn:tokenize("The cat sat on the mat", "\s+"), ("The", "cat", "sat", "on", "the", "mat")), count(fn:tokenize("The cat sat on the mat", "\s+")), count(fn:tokenize(" The cat sat on the mat ", "\s+")), fn:tokenize("The cat sat on the mat", "\s+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="replace('APXterms6', '\w{3}\d*([^TKR0-9]+).*$', '$1')">
+      <x:call>
+        <x:param select="string(.)">replace('APXterms6', '\w{3}\d*([^TKR0-9]+).*$', '$1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(tokenize(&#34;a b&#34;, &#34; &#34;)), count(tokenize(&#34;a b&#34;, &#34;\s&#34;)), string-join(tokenize(&#34;a b&#34;, &#34; &#34;), '|'), string-join(tokenize(&#34;a b&#34;, &#34;\s&#34;), '|'), tokenize(&#34;a b&#34;, &#34; &#34;), tokenize(&#34;a b&#34;, &#34;\s&#34;)">
+      <x:call>
+        <x:param select="string(.)">count(tokenize("a b", " ")), count(tokenize("a b", "\s")), string-join(tokenize("a b", " "), '|'), string-join(tokenize("a b", "\s"), '|'), tokenize("a b", " "), tokenize("a b", "\s")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in xs:string(zero-or-one((1 to 10)[. mod 2 = -1])) return tokenize($x,',')">
+      <x:call>
+        <x:param select="string(.)">for $x in xs:string(zero-or-one((1 to 10)[. mod 2 = -1])) return tokenize($x,',')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="tokenize(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),','),'[')">
+      <x:call>
+        <x:param select="string(.)">tokenize(string-join(for $x in (1 to 10)[. mod 2 = 0] return string($x),','),'[')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

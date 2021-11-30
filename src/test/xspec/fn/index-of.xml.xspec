@@ -1,220 +1,372 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:index-of ((10, 20, 30, 30, 20, 10), 20)</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of ((10, 20, 30, 30, 20, 10), 20)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of ((10, 20, 30, 40), 35)</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of ((10, 20, 30, 40), 35)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of (("a", "sport", "and", "a", "pastime"), "a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of (("a", "sport", "and", "a", "pastime"), "a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((),"")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((),"")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of(("sport"), "")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of(("sport"), "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((),fn:exactly-one(xs:untypedAtomic('')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((),fn:exactly-one(xs:untypedAtomic('')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:float('NaN')), fn:exactly-one(xs:float('NaN')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:float('NaN')), fn:exactly-one(xs:float('NaN')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:double('NaN')), fn:exactly-one(xs:double('NaN')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:double('NaN')), fn:exactly-one(xs:double('NaN')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:double('INF')), fn:exactly-one(xs:double('INF')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:double('INF')), fn:exactly-one(xs:double('INF')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:double('-INF')), fn:exactly-one(xs:double('-INF')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:double('-INF')), fn:exactly-one(xs:double('-INF')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.99999999999999999999999999')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.99999999999999999999999999')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.9999999999999999999999999')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.9999999999999999999999999')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:positiveInteger('1'),xs:positiveInteger('2')), fn:exactly-one(xs:positiveInteger('2')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:positiveInteger('1'),xs:positiveInteger('2')), fn:exactly-one(xs:positiveInteger('2')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((xs:negativeInteger('-2'), xs:negativeInteger('-1')), fn:exactly-one(xs:negativeInteger('-1')))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((xs:negativeInteger('-2'), xs:negativeInteger('-1')), fn:exactly-one(xs:negativeInteger('-1')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((1, (1,2,3)),1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((1, (1,2,3)),1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of(((1),(1), (2,1), (0,1)),1)</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of(((1),(1), (2,1), (0,1)),1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((/bib/book/publisher), "Addison-Wesley")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((/bib/book/publisher), "Addison-Wesley")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((/bib/book/publisher), /bib/book[1]/publisher[1]/text() cast as xs:string)</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((/bib/book/publisher), /bib/book[1]/publisher[1]/text() cast as xs:string)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of( ("", 1, ""), "")</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of( ("", 1, ""), "")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of((1,2,3,4))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of((1,2,3,4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of()</x:label>
-      <x:variable name="expr" as="xs:string">index-of()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(1)</x:label>
-      <x:variable name="expr" as="xs:string">index-of(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of((1, 2, 3), 1, ())</x:label>
-      <x:variable name="expr" as="xs:string">index-of((1, 2, 3), 1, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:label>
-      <x:variable name="expr" as="xs:string">index-of("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(xs:double("NaN"), xs:float("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(xs:double("NaN"), xs:float("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(xs:float("NaN"), xs:double("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(xs:float("NaN"), xs:double("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(xs:float("NaN"), xs:float("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(xs:float("NaN"), xs:float("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(xs:double("NaN"), xs:double("NaN")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(xs:double("NaN"), xs:double("NaN")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(4, "4"))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(4, "4"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(4, 4)</x:label>
-      <x:variable name="expr" as="xs:string">index-of(4, 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of((), 4))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of((), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(4, 4)</x:label>
-      <x:variable name="expr" as="xs:string">index-of(4, 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((1, 2, 3, 4, 5, 6), index-of((4, 4, 4, 4, 4, 4), 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((1, 2, 3, 4, 5, 6), index-of((4, 4, 4, 4, 4, 4), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of(xs:anyURI("example.com/"), xs:hexBinary("FF")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of(xs:anyURI("example.com/"), xs:hexBinary("FF")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(xs:untypedAtomic("example.com/"), xs:anyURI("example.com/"))</x:label>
-      <x:variable name="expr" as="xs:string">index-of(xs:untypedAtomic("example.com/"), xs:anyURI("example.com/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of((1, 2, "three", 5, 5, 6), 5), (4, 5))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of((1, 2, "three", 5, 5, 6), 5), (4, 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(index-of((10, 20, 30, 40), 35))</x:label>
-      <x:variable name="expr" as="xs:string">empty(index-of((10, 20, 30, 40), 35))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of((10, 20, 30, 30, 20, 10), 20), (2, 5))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of((10, 20, 30, 30, 20, 10), 20), (2, 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(index-of(("a", "sport", "and", "a", "pastime"), "a"), (1, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(index-of(("a", "sport", "and", "a", "pastime"), "a"), (1, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(index-of((1, 2, 3, 2, 1), 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(index-of((1, 2, 3, 2, 1), 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(index-of((1, 2, 3, 2, 1), 1)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count(index-of((1, 2, 3, 2, 1), 1)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(index-of((1, 2, 3, 2, 1), 3)) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(index-of((1, 2, 3, 2, 1), 3)) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(index-of((1, 2, 3, 2, 1), 4)) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(index-of((1, 2, 3, 2, 1), 4)) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(1 to 5,4)</x:label>
-      <x:variable name="expr" as="xs:string">index-of(1 to 5,4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(exactly-one((1 to 10)[. div 5 = 1]),5)</x:label>
-      <x:variable name="expr" as="xs:string">index-of(exactly-one((1 to 10)[. div 5 = 1]),5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(index-of((1 to 10)[. mod 2 = 0],4))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(index-of((1 to 10)[. mod 2 = 0],4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(index-of((1 to 10)[. mod 2 = 0],5))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(index-of((1 to 10)[. mod 2 = 0],5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of((1 to 10,(1 to 10)[. mod 2 = 0]),4)</x:label>
-      <x:variable name="expr" as="xs:string">index-of((1 to 10,(1 to 10)[. mod 2 = 0]),4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>index-of(1 to 10,(1 to 10)[. div 2 = 0][1])</x:label>
-      <x:variable name="expr" as="xs:string">index-of(1 to 10,(1 to 10)[. div 2 = 0][1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/index-of.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:index-of ((10, 20, 30, 30, 20, 10), 20)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of ((10, 20, 30, 30, 20, 10), 20)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of ((10, 20, 30, 40), 35)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of ((10, 20, 30, 40), 35)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of ((&#34;a&#34;, &#34;sport&#34;, &#34;and&#34;, &#34;a&#34;, &#34;pastime&#34;), &#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of (("a", "sport", "and", "a", "pastime"), "a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((&#34;sport&#34;, &#34;&#34;, &#34;and&#34;, &#34;&#34;, &#34;&#34;, &#34;pastime&#34;), &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((),&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((),"")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((&#34;sport&#34;), &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of(("sport"), "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((),fn:exactly-one(xs:untypedAtomic('')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((),fn:exactly-one(xs:untypedAtomic('')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:float('NaN')), fn:exactly-one(xs:float('NaN')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:float('NaN')), fn:exactly-one(xs:float('NaN')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:double('NaN')), fn:exactly-one(xs:double('NaN')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:double('NaN')), fn:exactly-one(xs:double('NaN')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:double('INF')), fn:exactly-one(xs:double('INF')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:double('INF')), fn:exactly-one(xs:double('INF')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:double('-INF')), fn:exactly-one(xs:double('-INF')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:double('-INF')), fn:exactly-one(xs:double('-INF')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.99999999999999999999999999')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.99999999999999999999999999')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.9999999999999999999999999')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:decimal('9.99999999999999999999999999')), fn:exactly-one(xs:decimal('9.9999999999999999999999999')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:positiveInteger('1'),xs:positiveInteger('2')), fn:exactly-one(xs:positiveInteger('2')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:positiveInteger('1'),xs:positiveInteger('2')), fn:exactly-one(xs:positiveInteger('2')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((xs:negativeInteger('-2'), xs:negativeInteger('-1')), fn:exactly-one(xs:negativeInteger('-1')))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((xs:negativeInteger('-2'), xs:negativeInteger('-1')), fn:exactly-one(xs:negativeInteger('-1')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((1, (1,2,3)),1)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((1, (1,2,3)),1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of(((1),(1), (2,1), (0,1)),1)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of(((1),(1), (2,1), (0,1)),1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((/bib/book/publisher), &#34;Addison-Wesley&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((/bib/book/publisher), "Addison-Wesley")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((/bib/book/publisher), /bib/book[1]/publisher[1]/text() cast as xs:string)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((/bib/book/publisher), /bib/book[1]/publisher[1]/text() cast as xs:string)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((&#34;sport&#34;, &#34;&#34;, &#34;and&#34;, &#34;&#34;, &#34;&#34;, &#34;pastime&#34;), &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of(("sport", "", "and", "", "", "pastime"), "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of( (&#34;&#34;, 1, &#34;&#34;), &#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:index-of( ("", 1, ""), "")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of((1,2,3,4))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of((1,2,3,4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of()">
+      <x:call>
+        <x:param select="string(.)">index-of()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(1)">
+      <x:call>
+        <x:param select="string(.)">index-of(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of((1, 2, 3), 1, ())">
+      <x:call>
+        <x:param select="string(.)">index-of((1, 2, 3), 1, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.example.com/COLLATION/NOT/SUPPORTED&#34;)">
+      <x:call>
+        <x:param select="string(.)">index-of("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">index-of("a string", "a string", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(xs:double(&#34;NaN&#34;), xs:float(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(xs:double("NaN"), xs:float("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(xs:float(&#34;NaN&#34;), xs:double(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(xs:float("NaN"), xs:double("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(xs:float(&#34;NaN&#34;), xs:float(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(xs:float("NaN"), xs:float("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(xs:double(&#34;NaN&#34;), xs:double(&#34;NaN&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(xs:double("NaN"), xs:double("NaN")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(4, &#34;4&#34;))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(4, "4"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(4, 4)">
+      <x:call>
+        <x:param select="string(.)">index-of(4, 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of((), 4))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of((), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(4, 4)">
+      <x:call>
+        <x:param select="string(.)">index-of(4, 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((1, 2, 3, 4, 5, 6), index-of((4, 4, 4, 4, 4, 4), 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((1, 2, 3, 4, 5, 6), index-of((4, 4, 4, 4, 4, 4), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of(xs:anyURI(&#34;example.com/&#34;), xs:hexBinary(&#34;FF&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of(xs:anyURI("example.com/"), xs:hexBinary("FF")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(xs:untypedAtomic(&#34;example.com/&#34;), xs:anyURI(&#34;example.com/&#34;))">
+      <x:call>
+        <x:param select="string(.)">index-of(xs:untypedAtomic("example.com/"), xs:anyURI("example.com/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((1, 2, &#34;three&#34;, 5, 5, 6), 5), (4, 5))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of((1, 2, "three", 5, 5, 6), 5), (4, 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(index-of((10, 20, 30, 40), 35))">
+      <x:call>
+        <x:param select="string(.)">empty(index-of((10, 20, 30, 40), 35))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((10, 20, 30, 30, 20, 10), 20), (2, 5))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of((10, 20, 30, 30, 20, 10), 20), (2, 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(index-of((&#34;a&#34;, &#34;sport&#34;, &#34;and&#34;, &#34;a&#34;, &#34;pastime&#34;), &#34;a&#34;), (1, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(index-of(("a", "sport", "and", "a", "pastime"), "a"), (1, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(index-of((1, 2, 3, 2, 1), 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(index-of((1, 2, 3, 2, 1), 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(index-of((1, 2, 3, 2, 1), 1)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count(index-of((1, 2, 3, 2, 1), 1)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(index-of((1, 2, 3, 2, 1), 3)) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(index-of((1, 2, 3, 2, 1), 3)) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(index-of((1, 2, 3, 2, 1), 4)) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(index-of((1, 2, 3, 2, 1), 4)) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(1 to 5,4)">
+      <x:call>
+        <x:param select="string(.)">index-of(1 to 5,4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(exactly-one((1 to 10)[. div 5 = 1]),5)">
+      <x:call>
+        <x:param select="string(.)">index-of(exactly-one((1 to 10)[. div 5 = 1]),5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(index-of((1 to 10)[. mod 2 = 0],4))">
+      <x:call>
+        <x:param select="string(.)">boolean(index-of((1 to 10)[. mod 2 = 0],4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(index-of((1 to 10)[. mod 2 = 0],5))">
+      <x:call>
+        <x:param select="string(.)">boolean(index-of((1 to 10)[. mod 2 = 0],5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of((1 to 10,(1 to 10)[. mod 2 = 0]),4)">
+      <x:call>
+        <x:param select="string(.)">index-of((1 to 10,(1 to 10)[. mod 2 = 0]),4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="index-of(1 to 10,(1 to 10)[. div 2 = 0][1])">
+      <x:call>
+        <x:param select="string(.)">index-of(1 to 10,(1 to 10)[. div 2 = 0][1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

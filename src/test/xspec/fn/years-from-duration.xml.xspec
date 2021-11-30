@@ -1,132 +1,218 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P0Y0M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P0Y0M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P1000Y6M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P1000Y6M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P2030Y12M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P2030Y12M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P20Y15M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P20Y15M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("-P15M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("-P15M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P20Y3M")) lt fn:years-from-duration(xs:yearMonthDuration("P21Y2M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P20Y3M")) lt fn:years-from-duration(xs:yearMonthDuration("P21Y2M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) le fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) le fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:years-from-duration(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:years-from-duration(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P01Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P01Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:avg((fn:years-from-duration(xs:yearMonthDuration("P23Y10M")),fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:avg((fn:years-from-duration(xs:yearMonthDuration("P23Y10M")),fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) + fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) + fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P30Y10M")) - fn:years-from-duration(xs:yearMonthDuration("P10Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P30Y10M")) - fn:years-from-duration(xs:yearMonthDuration("P10Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) * fn:years-from-duration(xs:yearMonthDuration("P02Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) * fn:years-from-duration(xs:yearMonthDuration("P02Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) div fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) div fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P25Y10M")) idiv fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P25Y10M")) idiv fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P10Y10M")) mod fn:years-from-duration(xs:yearMonthDuration("P03Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P10Y10M")) mod fn:years-from-duration(xs:yearMonthDuration("P03Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">+fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-fn:years-from-duration(xs:yearMonthDuration("P25Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">-fn:years-from-duration(xs:yearMonthDuration("P25Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) eq fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) eq fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) ne fn:years-from-duration(xs:yearMonthDuration("P23Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) ne fn:years-from-duration(xs:yearMonthDuration("P23Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P21Y01M")) le fn:years-from-duration(xs:yearMonthDuration("P21Y15M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P21Y01M")) le fn:years-from-duration(xs:yearMonthDuration("P21Y15M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) ge fn:years-from-duration(xs:yearMonthDuration("P20Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) ge fn:years-from-duration(xs:yearMonthDuration("P20Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration()</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(years-from-duration(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(years-from-duration(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration(()) instance of xs:integer?</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration(()) instance of xs:integer?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration(xs:yearMonthDuration("P0003Y2M")) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration(xs:yearMonthDuration("P0003Y2M")) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration(xs:yearMonthDuration("-P0003Y2M")) eq -3</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration(xs:yearMonthDuration("-P0003Y2M")) eq -3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>years-from-duration(xs:duration("-P3Y4M4DT1H23M2.34S")) eq -3</x:label>
-      <x:variable name="expr" as="xs:string">years-from-duration(xs:duration("-P3Y4M4DT1H23M2.34S")) eq -3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:years-from-duration(xs:dayTimeDuration('P1D'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:years-from-duration(xs:dayTimeDuration('P1D'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/years-from-duration.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P0Y0M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P0Y0M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P1000Y6M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P1000Y6M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P2030Y12M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P2030Y12M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y15M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P20Y15M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;-P15M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("-P15M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y3M&#34;)) lt fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y2M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P20Y3M")) lt fn:years-from-duration(xs:yearMonthDuration("P21Y2M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y10M&#34;)) le fn:years-from-duration(xs:yearMonthDuration(&#34;P22Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) le fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:years-from-duration(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:years-from-duration(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P01Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P01Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:avg((fn:years-from-duration(xs:yearMonthDuration(&#34;P23Y10M&#34;)),fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y10M&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:avg((fn:years-from-duration(xs:yearMonthDuration("P23Y10M")),fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y10M&#34;)) + fn:years-from-duration(xs:yearMonthDuration(&#34;P22Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P21Y10M")) + fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P30Y10M&#34;)) - fn:years-from-duration(xs:yearMonthDuration(&#34;P10Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P30Y10M")) - fn:years-from-duration(xs:yearMonthDuration("P10Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y10M&#34;)) * fn:years-from-duration(xs:yearMonthDuration(&#34;P02Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) * fn:years-from-duration(xs:yearMonthDuration("P02Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y10M&#34;)) div fn:years-from-duration(xs:yearMonthDuration(&#34;P05Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) div fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P25Y10M&#34;)) idiv fn:years-from-duration(xs:yearMonthDuration(&#34;P05Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P25Y10M")) idiv fn:years-from-duration(xs:yearMonthDuration("P05Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P10Y10M&#34;)) mod fn:years-from-duration(xs:yearMonthDuration(&#34;P03Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P10Y10M")) mod fn:years-from-duration(xs:yearMonthDuration("P03Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="+fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">+fn:years-from-duration(xs:yearMonthDuration("P21Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-fn:years-from-duration(xs:yearMonthDuration(&#34;P25Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">-fn:years-from-duration(xs:yearMonthDuration("P25Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P22Y10M&#34;)) eq fn:years-from-duration(xs:yearMonthDuration(&#34;P22Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) eq fn:years-from-duration(xs:yearMonthDuration("P22Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P22Y10M&#34;)) ne fn:years-from-duration(xs:yearMonthDuration(&#34;P23Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P22Y10M")) ne fn:years-from-duration(xs:yearMonthDuration("P23Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y01M&#34;)) le fn:years-from-duration(xs:yearMonthDuration(&#34;P21Y15M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P21Y01M")) le fn:years-from-duration(xs:yearMonthDuration("P21Y15M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y10M&#34;)) ge fn:years-from-duration(xs:yearMonthDuration(&#34;P20Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:yearMonthDuration("P20Y10M")) ge fn:years-from-duration(xs:yearMonthDuration("P20Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:duration(&#34;P1Y2M3DT10H30M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration()">
+      <x:call>
+        <x:param select="string(.)">years-from-duration()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">years-from-duration((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(years-from-duration(()))">
+      <x:call>
+        <x:param select="string(.)">empty(years-from-duration(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration(()) instance of xs:integer?">
+      <x:call>
+        <x:param select="string(.)">years-from-duration(()) instance of xs:integer?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration(xs:yearMonthDuration(&#34;P0003Y2M&#34;)) eq 3">
+      <x:call>
+        <x:param select="string(.)">years-from-duration(xs:yearMonthDuration("P0003Y2M")) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration(xs:yearMonthDuration(&#34;-P0003Y2M&#34;)) eq -3">
+      <x:call>
+        <x:param select="string(.)">years-from-duration(xs:yearMonthDuration("-P0003Y2M")) eq -3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="years-from-duration(xs:duration(&#34;-P3Y4M4DT1H23M2.34S&#34;)) eq -3">
+      <x:call>
+        <x:param select="string(.)">years-from-duration(xs:duration("-P3Y4M4DT1H23M2.34S")) eq -3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:years-from-duration(xs:dayTimeDuration('P1D'))">
+      <x:call>
+        <x:param select="string(.)">fn:years-from-duration(xs:dayTimeDuration('P1D'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

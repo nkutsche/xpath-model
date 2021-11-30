@@ -1,328 +1,561 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:not(xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:int("-1873914410"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:int("-1873914410"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:int("2147483647"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:int("2147483647"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:integer("830993497117024304"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:integer("830993497117024304"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:integer("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:integer("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:decimal("617375191608514839"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:decimal("617375191608514839"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:decimal("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:decimal("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:double("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:double("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:double("1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:double("1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:float("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:float("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:float("3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:float("3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:long("-47175562203048468"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:long("-47175562203048468"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:long("92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:long("92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedShort("44633"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedShort("44633"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedShort("65535"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedShort("65535"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:negativeInteger("-297014075999096793"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:negativeInteger("-297014075999096793"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:negativeInteger("-1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:negativeInteger("-1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:positiveInteger("52704602390610033"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:positiveInteger("52704602390610033"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:positiveInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:positiveInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedLong("130747108607674654"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedLong("130747108607674654"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:unsignedLong("184467440737095516"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:unsignedLong("184467440737095516"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonPositiveInteger("-475688437271870490"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonPositiveInteger("-475688437271870490"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonPositiveInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonPositiveInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonNegativeInteger("303884545991464527"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonNegativeInteger("303884545991464527"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:nonNegativeInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:nonNegativeInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:short("-5324"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:short("-5324"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:short("32767"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:short("32767"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("fn:not()")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("fn:not()")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") and fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") and fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") or fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") or fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") eq fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") eq fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") ne fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") ne fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") lt fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") lt fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") le fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") le fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") gt fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") gt fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") ge fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") ge fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") = fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") = fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") != fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") != fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") &lt; fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") &lt; fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") &lt;= fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") &lt;= fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") &gt; fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") &gt; fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not("true") &gt;= fn:not("true")</x:label>
-      <x:variable name="expr" as="xs:string">fn:not("true") &gt;= fn:not("true")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean(fn:not("true"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean(fn:not("true"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:not("true"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:not("true"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(xs:string(fn:not("true")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(xs:string(fn:not("true")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(//banana)</x:label>
-      <x:variable name="expr" as="xs:string">not(//banana)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(//*)</x:label>
-      <x:variable name="expr" as="xs:string">not(//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:double('NaN'))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:double('NaN'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:float('NaN'))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:float('NaN'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("")</x:label>
-      <x:variable name="expr" as="xs:string">not("")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((true(), false()))</x:label>
-      <x:variable name="expr" as="xs:string">not((true(), false()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((23, /))</x:label>
-      <x:variable name="expr" as="xs:string">not((23, /))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((/, 23))</x:label>
-      <x:variable name="expr" as="xs:string">not((/, 23))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not()</x:label>
-      <x:variable name="expr" as="xs:string">not()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1, 2, 3, 4, 5, 6)</x:label>
-      <x:variable name="expr" as="xs:string">not(1, 2, 3, 4, 5, 6)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(false() and false())</x:label>
-      <x:variable name="expr" as="xs:string">not(false() and false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(not(true()))</x:label>
-      <x:variable name="expr" as="xs:string">not(not(true()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(false())</x:label>
-      <x:variable name="expr" as="xs:string">not(false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(0)</x:label>
-      <x:variable name="expr" as="xs:string">not(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(())</x:label>
-      <x:variable name="expr" as="xs:string">not(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI(""))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(not(xs:anyURI("example.com/")))</x:label>
-      <x:variable name="expr" as="xs:string">not(not(xs:anyURI("example.com/")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(fn:boolean((1, 2, 3, current-time())[1] treat as xs:integer)) eq false()</x:label>
-      <x:variable name="expr" as="xs:string">not(fn:boolean((1, 2, 3, current-time())[1] treat as xs:integer)) eq false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(())</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(current-date() &gt; xs:date("1997-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(current-date() &gt; xs:date("1997-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/not.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:not(xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:int(&#34;-1873914410&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:int("-1873914410"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:int(&#34;2147483647&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:int("2147483647"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:integer(&#34;830993497117024304&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:integer("830993497117024304"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:integer(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:integer("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:decimal(&#34;617375191608514839&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:decimal("617375191608514839"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:decimal(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:decimal("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:double(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:double("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:double(&#34;1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:double("1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:float(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:float("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:float(&#34;3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:float("3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:long(&#34;-47175562203048468&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:long("-47175562203048468"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:long(&#34;92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:long("92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedShort(&#34;44633&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedShort("44633"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedShort(&#34;65535&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedShort("65535"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:negativeInteger(&#34;-297014075999096793&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:negativeInteger("-297014075999096793"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:negativeInteger(&#34;-1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:negativeInteger("-1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:positiveInteger(&#34;52704602390610033&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:positiveInteger("52704602390610033"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:positiveInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:positiveInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedLong(&#34;130747108607674654&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedLong("130747108607674654"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:unsignedLong(&#34;184467440737095516&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:unsignedLong("184467440737095516"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonPositiveInteger(&#34;-475688437271870490&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonPositiveInteger("-475688437271870490"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonPositiveInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonPositiveInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonNegativeInteger(&#34;303884545991464527&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonNegativeInteger("303884545991464527"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:nonNegativeInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:nonNegativeInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:short(&#34;-5324&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:short("-5324"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:short(&#34;32767&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:short("32767"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;fn:not()&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("fn:not()")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) and fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") and fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) or fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") or fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) eq fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") eq fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) ne fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") ne fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) lt fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") lt fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) le fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") le fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) gt fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") gt fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) ge fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") ge fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) = fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") = fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) != fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") != fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) &lt; fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") &lt; fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) &lt;= fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") &lt;= fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) &gt; fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") &gt; fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(&#34;true&#34;) &gt;= fn:not(&#34;true&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:not("true") &gt;= fn:not("true")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(fn:not(&#34;true&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:boolean(fn:not("true"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:not(&#34;true&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:not("true"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:string(fn:not(&#34;true&#34;)),xs:string(fn:not(&#34;true&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(fn:not(&#34;true&#34;)),xs:string(fn:not(&#34;true&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string(fn:not("true")),xs:string(fn:not("true")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(xs:string(fn:not(&#34;true&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(xs:string(fn:not("true")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(//banana)">
+      <x:call>
+        <x:param select="string(.)">not(//banana)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(//*)">
+      <x:call>
+        <x:param select="string(.)">not(//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:double('NaN'))">
+      <x:call>
+        <x:param select="string(.)">not(xs:double('NaN'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:float('NaN'))">
+      <x:call>
+        <x:param select="string(.)">not(xs:float('NaN'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">not("")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((true(), false()))">
+      <x:call>
+        <x:param select="string(.)">not((true(), false()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((23, /))">
+      <x:call>
+        <x:param select="string(.)">not((23, /))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((/, 23))">
+      <x:call>
+        <x:param select="string(.)">not((/, 23))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not()">
+      <x:call>
+        <x:param select="string(.)">not()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1, 2, 3, 4, 5, 6)">
+      <x:call>
+        <x:param select="string(.)">not(1, 2, 3, 4, 5, 6)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(false() and false())">
+      <x:call>
+        <x:param select="string(.)">not(false() and false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(not(true()))">
+      <x:call>
+        <x:param select="string(.)">not(not(true()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(false())">
+      <x:call>
+        <x:param select="string(.)">not(false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(0)">
+      <x:call>
+        <x:param select="string(.)">not(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(())">
+      <x:call>
+        <x:param select="string(.)">not(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(not(xs:anyURI(&#34;example.com/&#34;)))">
+      <x:call>
+        <x:param select="string(.)">not(not(xs:anyURI("example.com/")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(fn:boolean((1, 2, 3, current-time())[1] treat as xs:integer)) eq false()">
+      <x:call>
+        <x:param select="string(.)">not(fn:boolean((1, 2, 3, current-time())[1] treat as xs:integer)) eq false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(())">
+      <x:call>
+        <x:param select="string(.)">fn:not(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(current-date() &gt; xs:date(&#34;1997-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(current-date() &gt; xs:date("1997-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

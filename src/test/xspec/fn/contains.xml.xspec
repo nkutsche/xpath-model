@@ -1,148 +1,246 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("","A Character String")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("","A Character String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("A Character String","")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("A Character String","")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains((),"")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains((),"")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("",())</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("",())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("A Character String",())</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("A Character String",())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains((),"A Character String")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains((),"A Character String")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("AAAAABBBBBCCCCC","BBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("AAAAABBBBBCCCCC","BBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("AAAAABBBBB"," ")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("AAAAABBBBB"," ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(" ","AAAAABBBBB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(" ","AAAAABBBBB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:contains("A","A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:contains("A","A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:contains("A","B"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:contains("A","B"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string("A"),"A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string("A"),"A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("A",xs:string("A"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("A",xs:string("A"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("A","a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("A","a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains("a","A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains("a","A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains()</x:label>
-      <x:variable name="expr" as="xs:string">contains()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains(())</x:label>
-      <x:variable name="expr" as="xs:string">contains(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">contains((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:label>
-      <x:variable name="expr" as="xs:string">contains("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("foo", "foo", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:label>
-      <x:variable name="expr" as="xs:string">contains("foo", "foo", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("tattoo", "t")</x:label>
-      <x:variable name="expr" as="xs:string">contains("tattoo", "t")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(contains("tattoo", "ttt"))</x:label>
-      <x:variable name="expr" as="xs:string">not(contains("tattoo", "ttt"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("", ())</x:label>
-      <x:variable name="expr" as="xs:string">contains("", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("a string", ())</x:label>
-      <x:variable name="expr" as="xs:string">contains("a string", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>contains("foo", "foo")</x:label>
-      <x:variable name="expr" as="xs:string">contains("foo", "foo")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(contains("", "a string"))</x:label>
-      <x:variable name="expr" as="xs:string">not(contains("", "a string"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:contains('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:contains('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:contains('', 'empty', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:contains('', 'empty', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:index-of( ( fn:true(), fn:false()), fn:contains('input', 'in', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:index-of( ( fn:true(), fn:false()), fn:contains('input', 'in', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/contains.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:contains(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(&#34;This is a characte&#34;),xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("This is a characte"),xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;&#34;,&#34;A Character String&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("","A Character String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;A Character String&#34;,&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("A Character String","")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains((),&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains((),"")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;&#34;,())">
+      <x:call>
+        <x:param select="string(.)">fn:contains("",())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;A Character String&#34;,())">
+      <x:call>
+        <x:param select="string(.)">fn:contains("A Character String",())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains((),&#34;A Character String&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains((),"A Character String")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;AAAAABBBBBCCCCC&#34;,&#34;BBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("AAAAABBBBBCCCCC","BBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;AAAAABBBBB&#34;,&#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("AAAAABBBBB"," ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34; &#34;,&#34;AAAAABBBBB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains(" ","AAAAABBBBB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:contains(&#34;A&#34;,&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:contains("A","A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:contains(&#34;A&#34;,&#34;B&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:contains("A","B"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(&#34;A&#34;),&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string("A"),"A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;A&#34;,xs:string(&#34;A&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:contains("A",xs:string("A"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;A&#34;,&#34;a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("A","a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(&#34;a&#34;,&#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:contains("a","A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains()">
+      <x:call>
+        <x:param select="string(.)">contains()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(())">
+      <x:call>
+        <x:param select="string(.)">contains(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains((), (), &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">contains((), (), "http://www.w3.org/2005/xpath-functions/collation/codepoint", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;a string&#34;, &#34;a string&#34;, &#34;http://www.example.com/COLLATION/NOT/SUPPORTED&#34;)">
+      <x:call>
+        <x:param select="string(.)">contains("a string", "a string", "http://www.example.com/COLLATION/NOT/SUPPORTED")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;foo&#34;, &#34;foo&#34;, &#34;http://www.w3.org/2005/xpath-functions/collation/codepoint&#34;)">
+      <x:call>
+        <x:param select="string(.)">contains("foo", "foo", "http://www.w3.org/2005/xpath-functions/collation/codepoint")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;tattoo&#34;, &#34;t&#34;)">
+      <x:call>
+        <x:param select="string(.)">contains("tattoo", "t")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(contains(&#34;tattoo&#34;, &#34;ttt&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(contains("tattoo", "ttt"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">contains("", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;a string&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">contains("a string", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="contains(&#34;foo&#34;, &#34;foo&#34;)">
+      <x:call>
+        <x:param select="string(.)">contains("foo", "foo")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(contains(&#34;&#34;, &#34;a string&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(contains("", "a string"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:contains('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:contains('input', '', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:contains('', 'empty', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:contains('', 'empty', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:index-of( ( fn:true(), fn:false()), fn:contains('input', 'in', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))">
+      <x:call>
+        <x:param select="string(.)">fn:index-of( ( fn:true(), fn:false()), fn:contains('input', 'in', 'http://www.w3.org/2005/xpath-functions/collation/codepoint'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

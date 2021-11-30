@@ -1,24 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(1 to 100)[fn:base-uri()]</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 100)[fn:base-uri()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:base-uri(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:base-uri(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>base-uri((), "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">base-uri((), "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(base-uri(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(base-uri(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/base-uri.xml"><x:call function="nk:xpath-model"/><x:scenario label="(1 to 100)[fn:base-uri()]">
+      <x:call>
+        <x:param select="string(.)">(1 to 100)[fn:base-uri()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:base-uri(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:base-uri(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="base-uri((), &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">base-uri((), "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(base-uri(()))">
+      <x:call>
+        <x:param select="string(.)">empty(base-uri(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

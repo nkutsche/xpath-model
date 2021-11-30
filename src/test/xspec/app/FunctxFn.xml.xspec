@@ -1,1358 +1,2346 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(abs(3.5))</x:label>
-      <x:variable name="expr" as="xs:string">(abs(3.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(abs(-4))</x:label>
-      <x:variable name="expr" as="xs:string">(abs(-4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(abs(xs:float('-INF')))</x:label>
-      <x:variable name="expr" as="xs:string">(abs(xs:float('-INF')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(abs(3.5), abs(-4), abs(xs:float('-INF')))</x:label>
-      <x:variable name="expr" as="xs:string">(abs(3.5), abs(-4), abs(xs:float('-INF')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-date-to-timezone( xs:date('2006-02-15'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-date-to-timezone( xs:date('2006-02-15'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15'), ()), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15'), ()), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-time-to-timezone( xs:time('17:00:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-time-to-timezone( xs:time('17:00:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00'), ()), adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:label>
-      <x:variable name="expr" as="xs:string">(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00'), ()), adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(avg( (1, 2, 3, 4, 5) ))</x:label>
-      <x:variable name="expr" as="xs:string">(avg( (1, 2, 3, 4, 5) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(avg( (1, 2, 3, (), 4, 5) ))</x:label>
-      <x:variable name="expr" as="xs:string">(avg( (1, 2, 3, (), 4, 5) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(avg( (xs:yearMonthDuration('P4M'), xs:yearMonthDuration('P6M') ) ))</x:label>
-      <x:variable name="expr" as="xs:string">(avg( (xs:yearMonthDuration('P4M'), xs:yearMonthDuration('P6M') ) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(5))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(5.1))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(5.1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(5.5))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(5.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(-5.5))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(-5.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(-5.51))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(-5.51))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ceiling(5), ceiling(5.1), ceiling(5.5), ceiling(-5.5), ceiling(-5.51), ceiling( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(ceiling(5), ceiling(5.1), ceiling(5.5), ceiling(-5.5), ceiling(-5.51), ceiling( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoint-equal('abc', 'abc'))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoint-equal('abc', 'abc'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoint-equal('abc', 'ab c'))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoint-equal('abc', 'ab c'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoint-equal('abc', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoint-equal('abc', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoint-equal('abc', 'abc'), codepoint-equal('abc', 'ab c'), codepoint-equal('abc', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoint-equal('abc', 'abc'), codepoint-equal('abc', 'ab c'), codepoint-equal('abc', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoints-to-string((97, 32, 98, 32, 99)))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoints-to-string((97, 32, 98, 32, 99)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoints-to-string(97))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoints-to-string(97))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoints-to-string(()))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoints-to-string(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(codepoints-to-string((97, 32, 98, 32, 99)), codepoints-to-string(97), codepoints-to-string(()))</x:label>
-      <x:variable name="expr" as="xs:string">(codepoints-to-string((97, 32, 98, 32, 99)), codepoints-to-string(97), codepoints-to-string(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('a', 'b'))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('a', 'b'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('a', 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('a', 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('b', 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('b', 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('ab', 'abc'))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('ab', 'abc'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('a', 'B'))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('a', 'B'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare(upper-case('a'), upper-case('B')))</x:label>
-      <x:variable name="expr" as="xs:string">(compare(upper-case('a'), upper-case('B')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('a', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('a', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(compare('a', 'b'), compare('a', 'a'), compare('b', 'a'), compare('ab', 'abc'), compare('a', 'B'), compare(upper-case('a'), upper-case('B')), compare('a', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(compare('a', 'b'), compare('a', 'a'), compare('b', 'a'), compare('ab', 'abc'), compare('a', 'B'), compare(upper-case('a'), upper-case('B')), compare('a', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(concat('a', 'b'))</x:label>
-      <x:variable name="expr" as="xs:string">(concat('a', 'b'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(concat('a', 'b', 'c'))</x:label>
-      <x:variable name="expr" as="xs:string">(concat('a', 'b', 'c'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(concat('a', (), 'b', '', 'c'))</x:label>
-      <x:variable name="expr" as="xs:string">(concat('a', (), 'b', '', 'c'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', 'e'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', 'e'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', 'ery'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', 'ery'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', 'query'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', 'query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains( (), 'q'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains( (), 'q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(contains('query', 'e'), contains('query', 'ery'), contains('query', 'query'), contains('query', 'x'), contains('query', ''), contains('query', ()), contains( (), 'q'))</x:label>
-      <x:variable name="expr" as="xs:string">(contains('query', 'e'), contains('query', 'ery'), contains('query', 'query'), contains('query', 'x'), contains('query', ''), contains('query', ()), contains( (), 'q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(dateTime(xs:date('2006-08-15'), xs:time('12:30:45-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(dateTime(xs:date('2006-08-15'), xs:time('12:30:45-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(day-from-date(xs:date('2006-08-15')))</x:label>
-      <x:variable name="expr" as="xs:string">(day-from-date(xs:date('2006-08-15')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(day-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(day-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('P5D')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('P5D')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('-PT24H')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('-PT24H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('PT23H')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('PT23H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('P1DT36H')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('P1DT36H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('PT1440M')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('PT1440M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(days-from-duration( xs:dayTimeDuration('P5D')), days-from-duration( xs:dayTimeDuration('-PT24H')), days-from-duration( xs:dayTimeDuration('PT23H')), days-from-duration( xs:dayTimeDuration('P1DT36H')), days-from-duration( xs:dayTimeDuration('PT1440M')))</x:label>
-      <x:variable name="expr" as="xs:string">(days-from-duration( xs:dayTimeDuration('P5D')), days-from-duration( xs:dayTimeDuration('-PT24H')), days-from-duration( xs:dayTimeDuration('PT23H')), days-from-duration( xs:dayTimeDuration('P1DT36H')), days-from-duration( xs:dayTimeDuration('PT1440M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(default-collation())</x:label>
-      <x:variable name="expr" as="xs:string">(default-collation())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(doc-available( document-uri(/) ))</x:label>
-      <x:variable name="expr" as="xs:string">(doc-available( document-uri(/) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(encode-for-uri( 'Sales % Numbers.pdf'))</x:label>
-      <x:variable name="expr" as="xs:string">(encode-for-uri( 'Sales % Numbers.pdf'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:label>
-      <x:variable name="expr" as="xs:string">(encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(encode-for-uri( 'Sales % Numbers.pdf'), encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:label>
-      <x:variable name="expr" as="xs:string">(encode-for-uri( 'Sales % Numbers.pdf'), encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('query', 'y'))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('query', 'y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('query', 'query'))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('query', 'query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('query ', 'y'))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('query ', 'y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('', 'y'))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('', 'y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(ends-with('query', 'y'), ends-with('query', 'query'), ends-with('query', ''), ends-with('query ', 'y'), ends-with('', 'y'))</x:label>
-      <x:variable name="expr" as="xs:string">(ends-with('query', 'y'), ends-with('query', 'query'), ends-with('query', ''), ends-with('query ', 'y'), ends-with('', 'y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(escape-html-uri( 'http://datypic.com/a%20URI#frag'))</x:label>
-      <x:variable name="expr" as="xs:string">(escape-html-uri( 'http://datypic.com/a%20URI#frag'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(escape-html-uri('http://datypic.com'))</x:label>
-      <x:variable name="expr" as="xs:string">(escape-html-uri('http://datypic.com'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(escape-html-uri( 'http://datypic.com/a%20URI#frag'), escape-html-uri('http://datypic.com'))</x:label>
-      <x:variable name="expr" as="xs:string">(escape-html-uri( 'http://datypic.com/a%20URI#frag'), escape-html-uri('http://datypic.com'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exactly-one('a'))</x:label>
-      <x:variable name="expr" as="xs:string">(exactly-one('a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exists( ('a', 'b', 'c') ))</x:label>
-      <x:variable name="expr" as="xs:string">(exists( ('a', 'b', 'c') ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exists( '' ))</x:label>
-      <x:variable name="expr" as="xs:string">(exists( '' ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exists( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(exists( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exists( false() ))</x:label>
-      <x:variable name="expr" as="xs:string">(exists( false() ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(exists( ('a', 'b', 'c') ), exists( '' ), exists( () ), exists( false() ))</x:label>
-      <x:variable name="expr" as="xs:string">(exists( ('a', 'b', 'c') ), exists( '' ), exists( () ), exists( false() ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(false())</x:label>
-      <x:variable name="expr" as="xs:string">(false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(5))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(5.1))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(5.1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(5.7))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(5.7))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(-5.1))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(-5.1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(-5.7))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(-5.7))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(floor( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(floor(5), floor(5.1), floor(5.7), floor(-5.1), floor(-5.7), floor( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(floor(5), floor(5.1), floor(5.7), floor(-5.1), floor(-5.7), floor( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')), hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')), hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('P1DT5H')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('P1DT5H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('-PT36H')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('-PT36H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('PT1H90M')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('PT1H90M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('PT2H59M')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('PT2H59M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-duration( xs:dayTimeDuration('P1DT5H')), hours-from-duration( xs:dayTimeDuration('-PT36H')), hours-from-duration( xs:dayTimeDuration('PT1H90M')), hours-from-duration( xs:dayTimeDuration('PT2H59M')), hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-duration( xs:dayTimeDuration('P1DT5H')), hours-from-duration( xs:dayTimeDuration('-PT36H')), hours-from-duration( xs:dayTimeDuration('PT1H90M')), hours-from-duration( xs:dayTimeDuration('PT2H59M')), hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-time( xs:time('10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-time( xs:time('10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-time( xs:time('10:30:23-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-time( xs:time('10:30:23-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(hours-from-time( xs:time('10:30:23')), hours-from-time( xs:time('10:30:23-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(hours-from-time( xs:time('10:30:23')), hours-from-time( xs:time('10:30:23-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( ('a', 'b', 'c'), 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( ('a', 'b', 'c'), 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( ('a', 'b', 'c'), 'd'))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( ('a', 'b', 'c'), 'd'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( (4, 5, 6, 4), 4))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( (4, 5, 6, 4), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( (4, 5, 6, 4), 04.0))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( (4, 5, 6, 4), 04.0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( ('a', 5, 6), 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( ('a', 5, 6), 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(index-of( (), 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(index-of( (), 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 2, ('x', 'y')))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 2, ('x', 'y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 10, ('x', 'y')))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 10, ('x', 'y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 0, ('x', 'y')))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 0, ('x', 'y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 2, ()))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 2, ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( (), 3, ('a', 'b', 'c') ))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( (), 3, ('a', 'b', 'c') ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ('x', 'y')), insert-before( ('a', 'b', 'c'), 10, ('x', 'y')), insert-before( ('a', 'b', 'c'), 0, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ()), insert-before( (), 3, ('a', 'b', 'c') ))</x:label>
-      <x:variable name="expr" as="xs:string">(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ('x', 'y')), insert-before( ('a', 'b', 'c'), 10, ('x', 'y')), insert-before( ('a', 'b', 'c'), 0, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ()), insert-before( (), 3, ('a', 'b', 'c') ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(iri-to-uri( 'http://datypic.com/Sales Numbers.pdf'))</x:label>
-      <x:variable name="expr" as="xs:string">(iri-to-uri( 'http://datypic.com/Sales Numbers.pdf'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/ catalog/product[last()])</x:label>
-      <x:variable name="expr" as="xs:string">(/ catalog/product[last()])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(local-name-from-QName( QName('http://datypic.com/prod', 'number')))</x:label>
-      <x:variable name="expr" as="xs:string">(local-name-from-QName( QName('http://datypic.com/prod', 'number')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(local-name-from-QName(QName ('', 'number')))</x:label>
-      <x:variable name="expr" as="xs:string">(local-name-from-QName(QName ('', 'number')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(local-name-from-QName( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(local-name-from-QName( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(local-name-from-QName( QName('http://datypic.com/prod', 'number')), local-name-from-QName(QName ('', 'number')), local-name-from-QName( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(local-name-from-QName( QName('http://datypic.com/prod', 'number')), local-name-from-QName(QName ('', 'number')), local-name-from-QName( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(lower-case('QUERY'))</x:label>
-      <x:variable name="expr" as="xs:string">(lower-case('QUERY'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(lower-case('Query'))</x:label>
-      <x:variable name="expr" as="xs:string">(lower-case('Query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(lower-case('QUERY123'))</x:label>
-      <x:variable name="expr" as="xs:string">(lower-case('QUERY123'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(lower-case('QUERY'), lower-case('Query'), lower-case('QUERY123'))</x:label>
-      <x:variable name="expr" as="xs:string">(lower-case('QUERY'), lower-case('Query'), lower-case('QUERY123'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('PT30M')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('PT30M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('-PT90M')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('-PT90M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('PT1M90S')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('PT1M90S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('PT3H')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('PT3H')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-duration( xs:dayTimeDuration('PT30M')), minutes-from-duration( xs:dayTimeDuration('-PT90M')), minutes-from-duration( xs:dayTimeDuration('PT1M90S')), minutes-from-duration( xs:dayTimeDuration('PT3H')), minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-duration( xs:dayTimeDuration('PT30M')), minutes-from-duration( xs:dayTimeDuration('-PT90M')), minutes-from-duration( xs:dayTimeDuration('PT1M90S')), minutes-from-duration( xs:dayTimeDuration('PT3H')), minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(minutes-from-time(xs:time('10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(minutes-from-time(xs:time('10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(month-from-date(xs:date('2006-08-15')))</x:label>
-      <x:variable name="expr" as="xs:string">(month-from-date(xs:date('2006-08-15')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(month-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(month-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(months-from-duration( xs:yearMonthDuration('P3M')))</x:label>
-      <x:variable name="expr" as="xs:string">(months-from-duration( xs:yearMonthDuration('P3M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(months-from-duration( xs:yearMonthDuration('-P18M')))</x:label>
-      <x:variable name="expr" as="xs:string">(months-from-duration( xs:yearMonthDuration('-P18M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(months-from-duration( xs:yearMonthDuration('P1Y')))</x:label>
-      <x:variable name="expr" as="xs:string">(months-from-duration( xs:yearMonthDuration('P1Y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(months-from-duration( xs:yearMonthDuration('P12M')))</x:label>
-      <x:variable name="expr" as="xs:string">(months-from-duration( xs:yearMonthDuration('P12M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(months-from-duration( xs:yearMonthDuration('P3M')), months-from-duration( xs:yearMonthDuration('-P18M')), months-from-duration( xs:yearMonthDuration('P1Y')), months-from-duration( xs:yearMonthDuration('P12M')))</x:label>
-      <x:variable name="expr" as="xs:string">(months-from-duration( xs:yearMonthDuration('P3M')), months-from-duration( xs:yearMonthDuration('-P18M')), months-from-duration( xs:yearMonthDuration('P1Y')), months-from-duration( xs:yearMonthDuration('P12M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')))</x:label>
-      <x:variable name="expr" as="xs:string">(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(namespace-uri-from-QName( QName ('', 'unprefixed')))</x:label>
-      <x:variable name="expr" as="xs:string">(namespace-uri-from-QName( QName ('', 'unprefixed')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(namespace-uri-from-QName( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(namespace-uri-from-QName( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')), namespace-uri-from-QName( QName ('', 'unprefixed')), namespace-uri-from-QName( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')), namespace-uri-from-QName( QName ('', 'unprefixed')), namespace-uri-from-QName( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space('query'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space('query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space(' query '))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space(' query '))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space('xml query'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space('xml query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space('xml query'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space('xml query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space('xml query'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space('xml query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space(''))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space(''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space(' '))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space(' '))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-space(()))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-space(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-unicode('query'))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-unicode('query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-unicode('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-unicode('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(normalize-unicode('query'), normalize-unicode('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(normalize-unicode('query'), normalize-unicode('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not(32 &gt;
-         20))</x:label>
-      <x:variable name="expr" as="xs:string">(not(32 &gt;
-         20))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not((/) //product))</x:label>
-      <x:variable name="expr" as="xs:string">(not((/) //product))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not(true()))</x:label>
-      <x:variable name="expr" as="xs:string">(not(true()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not(()))</x:label>
-      <x:variable name="expr" as="xs:string">(not(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not(''))</x:label>
-      <x:variable name="expr" as="xs:string">(not(''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(not(0))</x:label>
-      <x:variable name="expr" as="xs:string">(not(0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(one-or-more('a'))</x:label>
-      <x:variable name="expr" as="xs:string">(one-or-more('a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(one-or-more( ('a', 'b') ))</x:label>
-      <x:variable name="expr" as="xs:string">(one-or-more( ('a', 'b') ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(one-or-more('a'), one-or-more( ('a', 'b') ))</x:label>
-      <x:variable name="expr" as="xs:string">(one-or-more('a'), one-or-more( ('a', 'b') ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(QName('http://datypic.com/prod','product'))</x:label>
-      <x:variable name="expr" as="xs:string">(QName('http://datypic.com/prod','product'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(QName('http://datypic.com/prod', 'pre:product'))</x:label>
-      <x:variable name="expr" as="xs:string">(QName('http://datypic.com/prod', 'pre:product'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(QName('', 'product'))</x:label>
-      <x:variable name="expr" as="xs:string">(QName('', 'product'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(QName('http://datypic.com/prod','product'), QName('http://datypic.com/prod', 'pre:product'), QName('', 'product'))</x:label>
-      <x:variable name="expr" as="xs:string">(QName('http://datypic.com/prod','product'), QName('http://datypic.com/prod', 'pre:product'), QName('', 'product'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove( ('a', 'b', 'c'), 2) )</x:label>
-      <x:variable name="expr" as="xs:string">(remove( ('a', 'b', 'c'), 2) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove( ('a', 'b', 'c'), 10))</x:label>
-      <x:variable name="expr" as="xs:string">(remove( ('a', 'b', 'c'), 10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove( ('a', 'b', 'c'), 0))</x:label>
-      <x:variable name="expr" as="xs:string">(remove( ('a', 'b', 'c'), 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove( ('a', 'b', 'c'), 2) , remove( ('a', 'b', 'c'), 10), remove( ('a', 'b', 'c'), 0))</x:label>
-      <x:variable name="expr" as="xs:string">(remove( ('a', 'b', 'c'), 2) , remove( ('a', 'b', 'c'), 10), remove( ('a', 'b', 'c'), 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', 'r', 'as'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', 'r', 'as'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', 'qu', 'quack'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', 'qu', 'quack'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', '[ry]', 'l'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', '[ry]', 'l'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', '[ry]+', 'l'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', '[ry]+', 'l'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', 'z', 'a'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', 'z', 'a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', 'query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', 'query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace( (), 'r', 'as'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace( (), 'r', 'as'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('Chapter', '(Chap)|(Chapter)', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('Chapter', '(Chap)|(Chapter)', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('reluctant', 'r.*t', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('reluctant', 'r.*t', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('reluctant', 'r.*?t', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('reluctant', 'r.*?t', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('aaah', 'a{2,3}', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('aaah', 'a{2,3}', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('aaah', 'a{2,3}?', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('aaah', 'a{2,3}?', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('aaaah', 'a{2,3}', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('aaaah', 'a{2,3}', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('aaaah', 'a{2,3}?', 'X'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('aaaah', 'a{2,3}?', 'X'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('abc123', '([a-z])', '$1x'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('abc123', '([a-z])', '$1x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('25', '(\d+)', '\$$1.00'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('25', '(\d+)', '\$$1.00'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(replace('query', 'r', 'as'), replace('query', 'qu', 'quack'), replace('query', '[ry]', 'l'), replace('query', '[ry]+', 'l'), replace('query', 'z', 'a'), replace('query', 'query', ''), replace( (), 'r', 'as'), replace('Chapter', '(Chap)|(Chapter)', 'x'), replace('reluctant', 'r.*t', 'X'), replace('reluctant', 'r.*?t', 'X'), replace('aaah', 'a{2,3}', 'X'), replace('aaah', 'a{2,3}?', 'X'), replace('aaaah', 'a{2,3}', 'X'), replace('aaaah', 'a{2,3}?', 'X'), replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'), replace('abc123', '([a-z])', '$1x'), replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'), replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'), replace('25', '(\d+)', '\$$1.00'))</x:label>
-      <x:variable name="expr" as="xs:string">(replace('query', 'r', 'as'), replace('query', 'qu', 'quack'), replace('query', '[ry]', 'l'), replace('query', '[ry]+', 'l'), replace('query', 'z', 'a'), replace('query', 'query', ''), replace( (), 'r', 'as'), replace('Chapter', '(Chap)|(Chapter)', 'x'), replace('reluctant', 'r.*t', 'X'), replace('reluctant', 'r.*?t', 'X'), replace('aaah', 'a{2,3}', 'X'), replace('aaah', 'a{2,3}?', 'X'), replace('aaaah', 'a{2,3}', 'X'), replace('aaaah', 'a{2,3}?', 'X'), replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'), replace('abc123', '([a-z])', '$1x'), replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'), replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'), replace('25', '(\d+)', '\$$1.00'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri('prod', 'http://datypic.com/'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri('prod', 'http://datypic.com/'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri('prod2', 'http://datypic.com/prod1'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri('prod2', 'http://datypic.com/prod1'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri( 'http://example.org','http://datypic.com'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri( 'http://example.org','http://datypic.com'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri( 'http://datypic.com', '../base'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri( 'http://datypic.com', '../base'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri( '', 'http://datypic.com'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri( '', 'http://datypic.com'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(resolve-uri('prod', 'http://datypic.com/'), resolve-uri('prod2', 'http://datypic.com/prod1'), resolve-uri( 'http://example.org','http://datypic.com'), resolve-uri( 'http://datypic.com', '../base'), resolve-uri( '', 'http://datypic.com'))</x:label>
-      <x:variable name="expr" as="xs:string">(resolve-uri('prod', 'http://datypic.com/'), resolve-uri('prod2', 'http://datypic.com/prod1'), resolve-uri( 'http://example.org','http://datypic.com'), resolve-uri( 'http://datypic.com', '../base'), resolve-uri( '', 'http://datypic.com'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(reverse( (1, 2, 3, 4, 5) ))</x:label>
-      <x:variable name="expr" as="xs:string">(reverse( (1, 2, 3, 4, 5) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(reverse( (6, 2, 4) ))</x:label>
-      <x:variable name="expr" as="xs:string">(reverse( (6, 2, 4) ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(reverse( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(reverse( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(reverse( (1, 2, 3, 4, 5) ), reverse( (6, 2, 4) ), reverse( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(reverse( (1, 2, 3, 4, 5) ), reverse( (6, 2, 4) ), reverse( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(5.5))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(5.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(6.5))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(6.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(9372.253, 2))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(9372.253, 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(9372.253, 0))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(9372.253, 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(9372.253, -3))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(9372.253, -3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round-half-to-even(5.5), round-half-to-even(6.5), round-half-to-even(9372.253, 2), round-half-to-even(9372.253, 0), round-half-to-even(9372.253, -3))</x:label>
-      <x:variable name="expr" as="xs:string">(round-half-to-even(5.5), round-half-to-even(6.5), round-half-to-even(9372.253, 2), round-half-to-even(9372.253, 0), round-half-to-even(9372.253, -3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(5))</x:label>
-      <x:variable name="expr" as="xs:string">(round(5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(5.1))</x:label>
-      <x:variable name="expr" as="xs:string">(round(5.1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(5.5))</x:label>
-      <x:variable name="expr" as="xs:string">(round(5.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(-5.5))</x:label>
-      <x:variable name="expr" as="xs:string">(round(-5.5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(-5.51))</x:label>
-      <x:variable name="expr" as="xs:string">(round(-5.51))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(round(5), round(5.1), round(5.5), round(-5.5), round(-5.51))</x:label>
-      <x:variable name="expr" as="xs:string">(round(5), round(5.1), round(5.5), round(-5.5), round(-5.51))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-dateTime( xs:dateTime('2006-08-15T10:30:23.5')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-dateTime( xs:dateTime('2006-08-15T10:30:23.5')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-duration( xs:dayTimeDuration('PT30.5S')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-duration( xs:dayTimeDuration('PT30.5S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-duration( xs:dayTimeDuration('-PT90.5S')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-duration( xs:dayTimeDuration('-PT90.5S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-duration( xs:dayTimeDuration('PT1M')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-duration( xs:dayTimeDuration('PT1M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-duration( xs:dayTimeDuration('PT30.5S')), seconds-from-duration( xs:dayTimeDuration('-PT90.5S')), seconds-from-duration( xs:dayTimeDuration('PT1M')), seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-duration( xs:dayTimeDuration('PT30.5S')), seconds-from-duration( xs:dayTimeDuration('-PT90.5S')), seconds-from-duration( xs:dayTimeDuration('PT1M')), seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(seconds-from-time(xs:time('10:30:23.5')))</x:label>
-      <x:variable name="expr" as="xs:string">(seconds-from-time(xs:time('10:30:23.5')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', 'que'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', 'que'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', 'query'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', 'query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', 'u'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', 'u'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('', 'query'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('', 'query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with(' query', 'q'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with(' query', 'q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(starts-with('query', 'que'), starts-with('query', 'query'), starts-with('query', 'u'), starts-with('query', ''), starts-with('', 'query'), starts-with('', ''), starts-with('query', ()), starts-with(' query', 'q'))</x:label>
-      <x:variable name="expr" as="xs:string">(starts-with('query', 'que'), starts-with('query', 'query'), starts-with('query', 'u'), starts-with('query', ''), starts-with('', 'query'), starts-with('', ''), starts-with('query', ()), starts-with(' query', 'q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join( ('a', 'b', 'c'), ''))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join( ('a', 'b', 'c'), ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join( ('a', 'b', 'c'), '/*'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join( ('a', 'b', 'c'), '/*'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join( ('a', '', 'c'), '/*'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join( ('a', '', 'c'), '/*'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join( 'a', '/*'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join( 'a', '/*'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join((), '/*'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join((), '/*'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-join( ('a', 'b', 'c'), ''), string-join( ('a', 'b', 'c'), '/*'), string-join( ('a', '', 'c'), '/*'), string-join( 'a', '/*'), string-join((), '/*'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-join( ('a', 'b', 'c'), ''), string-join( ('a', 'b', 'c'), '/*'), string-join( ('a', '', 'c'), '/*'), string-join( 'a', '/*'), string-join((), '/*'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length('query'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length('query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length(' 
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/app/FunctxFn.xml"><x:call function="nk:xpath-model"/><x:scenario label="(abs(3.5))">
+      <x:call>
+        <x:param select="string(.)">(abs(3.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(abs(-4))">
+      <x:call>
+        <x:param select="string(.)">(abs(-4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(abs(xs:float('-INF')))">
+      <x:call>
+        <x:param select="string(.)">(abs(xs:float('-INF')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(abs(3.5), abs(-4), abs(xs:float('-INF')))">
+      <x:call>
+        <x:param select="string(.)">(abs(3.5), abs(-4), abs(xs:float('-INF')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-date-to-timezone( xs:date('2006-02-15'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-date-to-timezone( xs:date('2006-02-15'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15'), ()), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-date-to-timezone( xs:date('2006-02-15'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), xs:dayTimeDuration('-PT8H')), adjust-date-to-timezone( xs:date('2006-02-15'), ()), adjust-date-to-timezone( xs:date('2006-02-15-03:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T17:00:00-03:00'), ()), adjust-dateTime-to-timezone( xs:dateTime('2006-02-15T01:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))">
+      <x:call>
+        <x:param select="string(.)">(adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-time-to-timezone( xs:time('17:00:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-time-to-timezone( xs:time('17:00:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00'), ()), adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))">
+      <x:call>
+        <x:param select="string(.)">(adjust-time-to-timezone( xs:time('17:00:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00-03:00'), xs:dayTimeDuration('-PT7H')), adjust-time-to-timezone( xs:time('17:00:00'), ()), adjust-time-to-timezone( xs:time('17:00:00-03:00'), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(avg( (1, 2, 3, 4, 5) ))">
+      <x:call>
+        <x:param select="string(.)">(avg( (1, 2, 3, 4, 5) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(avg( (1, 2, 3, (), 4, 5) ))">
+      <x:call>
+        <x:param select="string(.)">(avg( (1, 2, 3, (), 4, 5) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(avg( (xs:yearMonthDuration('P4M'), xs:yearMonthDuration('P6M') ) ))">
+      <x:call>
+        <x:param select="string(.)">(avg( (xs:yearMonthDuration('P4M'), xs:yearMonthDuration('P6M') ) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(5))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(5.1))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(5.1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(5.5))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(5.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(-5.5))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(-5.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(-5.51))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(-5.51))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling( () ))">
+      <x:call>
+        <x:param select="string(.)">(ceiling( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ceiling(5), ceiling(5.1), ceiling(5.5), ceiling(-5.5), ceiling(-5.51), ceiling( () ))">
+      <x:call>
+        <x:param select="string(.)">(ceiling(5), ceiling(5.1), ceiling(5.5), ceiling(-5.5), ceiling(-5.51), ceiling( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoint-equal('abc', 'abc'))">
+      <x:call>
+        <x:param select="string(.)">(codepoint-equal('abc', 'abc'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoint-equal('abc', 'ab c'))">
+      <x:call>
+        <x:param select="string(.)">(codepoint-equal('abc', 'ab c'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoint-equal('abc', ()))">
+      <x:call>
+        <x:param select="string(.)">(codepoint-equal('abc', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoint-equal('abc', 'abc'), codepoint-equal('abc', 'ab c'), codepoint-equal('abc', ()))">
+      <x:call>
+        <x:param select="string(.)">(codepoint-equal('abc', 'abc'), codepoint-equal('abc', 'ab c'), codepoint-equal('abc', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoints-to-string((97, 32, 98, 32, 99)))">
+      <x:call>
+        <x:param select="string(.)">(codepoints-to-string((97, 32, 98, 32, 99)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoints-to-string(97))">
+      <x:call>
+        <x:param select="string(.)">(codepoints-to-string(97))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoints-to-string(()))">
+      <x:call>
+        <x:param select="string(.)">(codepoints-to-string(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(codepoints-to-string((97, 32, 98, 32, 99)), codepoints-to-string(97), codepoints-to-string(()))">
+      <x:call>
+        <x:param select="string(.)">(codepoints-to-string((97, 32, 98, 32, 99)), codepoints-to-string(97), codepoints-to-string(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('a', 'b'))">
+      <x:call>
+        <x:param select="string(.)">(compare('a', 'b'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('a', 'a'))">
+      <x:call>
+        <x:param select="string(.)">(compare('a', 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('b', 'a'))">
+      <x:call>
+        <x:param select="string(.)">(compare('b', 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('ab', 'abc'))">
+      <x:call>
+        <x:param select="string(.)">(compare('ab', 'abc'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('a', 'B'))">
+      <x:call>
+        <x:param select="string(.)">(compare('a', 'B'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare(upper-case('a'), upper-case('B')))">
+      <x:call>
+        <x:param select="string(.)">(compare(upper-case('a'), upper-case('B')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('a', ()))">
+      <x:call>
+        <x:param select="string(.)">(compare('a', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(compare('a', 'b'), compare('a', 'a'), compare('b', 'a'), compare('ab', 'abc'), compare('a', 'B'), compare(upper-case('a'), upper-case('B')), compare('a', ()))">
+      <x:call>
+        <x:param select="string(.)">(compare('a', 'b'), compare('a', 'a'), compare('b', 'a'), compare('ab', 'abc'), compare('a', 'B'), compare(upper-case('a'), upper-case('B')), compare('a', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(concat('a', 'b'))">
+      <x:call>
+        <x:param select="string(.)">(concat('a', 'b'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(concat('a', 'b', 'c'))">
+      <x:call>
+        <x:param select="string(.)">(concat('a', 'b', 'c'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(concat('a', (), 'b', '', 'c'))">
+      <x:call>
+        <x:param select="string(.)">(concat('a', (), 'b', '', 'c'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', 'e'))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', 'e'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', 'ery'))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', 'ery'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', 'query'))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', 'query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', ()))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains( (), 'q'))">
+      <x:call>
+        <x:param select="string(.)">(contains( (), 'q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(contains('query', 'e'), contains('query', 'ery'), contains('query', 'query'), contains('query', 'x'), contains('query', ''), contains('query', ()), contains( (), 'q'))">
+      <x:call>
+        <x:param select="string(.)">(contains('query', 'e'), contains('query', 'ery'), contains('query', 'query'), contains('query', 'x'), contains('query', ''), contains('query', ()), contains( (), 'q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(dateTime(xs:date('2006-08-15'), xs:time('12:30:45-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(dateTime(xs:date('2006-08-15'), xs:time('12:30:45-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(day-from-date(xs:date('2006-08-15')))">
+      <x:call>
+        <x:param select="string(.)">(day-from-date(xs:date('2006-08-15')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(day-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(day-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('P5D')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('P5D')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('-PT24H')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('-PT24H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('PT23H')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('PT23H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('P1DT36H')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('P1DT36H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('PT1440M')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('PT1440M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(days-from-duration( xs:dayTimeDuration('P5D')), days-from-duration( xs:dayTimeDuration('-PT24H')), days-from-duration( xs:dayTimeDuration('PT23H')), days-from-duration( xs:dayTimeDuration('P1DT36H')), days-from-duration( xs:dayTimeDuration('PT1440M')))">
+      <x:call>
+        <x:param select="string(.)">(days-from-duration( xs:dayTimeDuration('P5D')), days-from-duration( xs:dayTimeDuration('-PT24H')), days-from-duration( xs:dayTimeDuration('PT23H')), days-from-duration( xs:dayTimeDuration('P1DT36H')), days-from-duration( xs:dayTimeDuration('PT1440M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(default-collation())">
+      <x:call>
+        <x:param select="string(.)">(default-collation())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(doc-available( document-uri(/) ))">
+      <x:call>
+        <x:param select="string(.)">(doc-available( document-uri(/) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(encode-for-uri( 'Sales % Numbers.pdf'))">
+      <x:call>
+        <x:param select="string(.)">(encode-for-uri( 'Sales % Numbers.pdf'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(encode-for-uri( 'http://datypic.com/a%20URI#frag'))">
+      <x:call>
+        <x:param select="string(.)">(encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(encode-for-uri( 'Sales % Numbers.pdf'), encode-for-uri( 'http://datypic.com/a%20URI#frag'))">
+      <x:call>
+        <x:param select="string(.)">(encode-for-uri( 'Sales % Numbers.pdf'), encode-for-uri( 'http://datypic.com/a%20URI#frag'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('query', 'y'))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('query', 'y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('query', 'query'))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('query', 'query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('query ', 'y'))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('query ', 'y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('', 'y'))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('', 'y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(ends-with('query', 'y'), ends-with('query', 'query'), ends-with('query', ''), ends-with('query ', 'y'), ends-with('', 'y'))">
+      <x:call>
+        <x:param select="string(.)">(ends-with('query', 'y'), ends-with('query', 'query'), ends-with('query', ''), ends-with('query ', 'y'), ends-with('', 'y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(escape-html-uri( 'http://datypic.com/a%20URI#frag'))">
+      <x:call>
+        <x:param select="string(.)">(escape-html-uri( 'http://datypic.com/a%20URI#frag'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(escape-html-uri('http://datypic.com'))">
+      <x:call>
+        <x:param select="string(.)">(escape-html-uri('http://datypic.com'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(escape-html-uri( 'http://datypic.com/a%20URI#frag'), escape-html-uri('http://datypic.com'))">
+      <x:call>
+        <x:param select="string(.)">(escape-html-uri( 'http://datypic.com/a%20URI#frag'), escape-html-uri('http://datypic.com'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exactly-one('a'))">
+      <x:call>
+        <x:param select="string(.)">(exactly-one('a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exists( ('a', 'b', 'c') ))">
+      <x:call>
+        <x:param select="string(.)">(exists( ('a', 'b', 'c') ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exists( '' ))">
+      <x:call>
+        <x:param select="string(.)">(exists( '' ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exists( () ))">
+      <x:call>
+        <x:param select="string(.)">(exists( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exists( false() ))">
+      <x:call>
+        <x:param select="string(.)">(exists( false() ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(exists( ('a', 'b', 'c') ), exists( '' ), exists( () ), exists( false() ))">
+      <x:call>
+        <x:param select="string(.)">(exists( ('a', 'b', 'c') ), exists( '' ), exists( () ), exists( false() ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(false())">
+      <x:call>
+        <x:param select="string(.)">(false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(5))">
+      <x:call>
+        <x:param select="string(.)">(floor(5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(5.1))">
+      <x:call>
+        <x:param select="string(.)">(floor(5.1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(5.7))">
+      <x:call>
+        <x:param select="string(.)">(floor(5.7))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(-5.1))">
+      <x:call>
+        <x:param select="string(.)">(floor(-5.1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(-5.7))">
+      <x:call>
+        <x:param select="string(.)">(floor(-5.7))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor( () ))">
+      <x:call>
+        <x:param select="string(.)">(floor( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(floor(5), floor(5.1), floor(5.7), floor(-5.1), floor(-5.7), floor( () ))">
+      <x:call>
+        <x:param select="string(.)">(floor(5), floor(5.1), floor(5.7), floor(-5.1), floor(-5.7), floor( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')), hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23')), hours-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('P1DT5H')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('P1DT5H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('-PT36H')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('-PT36H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('PT1H90M')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('PT1H90M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('PT2H59M')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('PT2H59M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('PT3600S')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-duration( xs:dayTimeDuration('P1DT5H')), hours-from-duration( xs:dayTimeDuration('-PT36H')), hours-from-duration( xs:dayTimeDuration('PT1H90M')), hours-from-duration( xs:dayTimeDuration('PT2H59M')), hours-from-duration( xs:dayTimeDuration('PT3600S')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-duration( xs:dayTimeDuration('P1DT5H')), hours-from-duration( xs:dayTimeDuration('-PT36H')), hours-from-duration( xs:dayTimeDuration('PT1H90M')), hours-from-duration( xs:dayTimeDuration('PT2H59M')), hours-from-duration( xs:dayTimeDuration('PT3600S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-time( xs:time('10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-time( xs:time('10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-time( xs:time('10:30:23-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-time( xs:time('10:30:23-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(hours-from-time( xs:time('10:30:23')), hours-from-time( xs:time('10:30:23-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(hours-from-time( xs:time('10:30:23')), hours-from-time( xs:time('10:30:23-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( ('a', 'b', 'c'), 'a'))">
+      <x:call>
+        <x:param select="string(.)">(index-of( ('a', 'b', 'c'), 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( ('a', 'b', 'c'), 'd'))">
+      <x:call>
+        <x:param select="string(.)">(index-of( ('a', 'b', 'c'), 'd'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( (4, 5, 6, 4), 4))">
+      <x:call>
+        <x:param select="string(.)">(index-of( (4, 5, 6, 4), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( (4, 5, 6, 4), 04.0))">
+      <x:call>
+        <x:param select="string(.)">(index-of( (4, 5, 6, 4), 04.0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( ('a', 5, 6), 'a'))">
+      <x:call>
+        <x:param select="string(.)">(index-of( ('a', 5, 6), 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(index-of( (), 'a'))">
+      <x:call>
+        <x:param select="string(.)">(index-of( (), 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 2, ('x', 'y')))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 2, ('x', 'y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 10, ('x', 'y')))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 10, ('x', 'y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 0, ('x', 'y')))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 0, ('x', 'y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 2, ()))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 2, ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( (), 3, ('a', 'b', 'c') ))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( (), 3, ('a', 'b', 'c') ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ('x', 'y')), insert-before( ('a', 'b', 'c'), 10, ('x', 'y')), insert-before( ('a', 'b', 'c'), 0, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ()), insert-before( (), 3, ('a', 'b', 'c') ))">
+      <x:call>
+        <x:param select="string(.)">(insert-before( ('a', 'b', 'c'), 1, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ('x', 'y')), insert-before( ('a', 'b', 'c'), 10, ('x', 'y')), insert-before( ('a', 'b', 'c'), 0, ('x', 'y')), insert-before( ('a', 'b', 'c'), 2, ()), insert-before( (), 3, ('a', 'b', 'c') ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(iri-to-uri( 'http://datypic.com/Sales Numbers.pdf'))">
+      <x:call>
+        <x:param select="string(.)">(iri-to-uri( 'http://datypic.com/Sales Numbers.pdf'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/ catalog/product[last()])">
+      <x:call>
+        <x:param select="string(.)">(/ catalog/product[last()])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(local-name-from-QName( QName('http://datypic.com/prod', 'number')))">
+      <x:call>
+        <x:param select="string(.)">(local-name-from-QName( QName('http://datypic.com/prod', 'number')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(local-name-from-QName(QName ('', 'number')))">
+      <x:call>
+        <x:param select="string(.)">(local-name-from-QName(QName ('', 'number')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(local-name-from-QName( () ))">
+      <x:call>
+        <x:param select="string(.)">(local-name-from-QName( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(local-name-from-QName( QName('http://datypic.com/prod', 'number')), local-name-from-QName(QName ('', 'number')), local-name-from-QName( () ))">
+      <x:call>
+        <x:param select="string(.)">(local-name-from-QName( QName('http://datypic.com/prod', 'number')), local-name-from-QName(QName ('', 'number')), local-name-from-QName( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(lower-case('QUERY'))">
+      <x:call>
+        <x:param select="string(.)">(lower-case('QUERY'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(lower-case('Query'))">
+      <x:call>
+        <x:param select="string(.)">(lower-case('Query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(lower-case('QUERY123'))">
+      <x:call>
+        <x:param select="string(.)">(lower-case('QUERY123'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(lower-case('QUERY'), lower-case('Query'), lower-case('QUERY123'))">
+      <x:call>
+        <x:param select="string(.)">(lower-case('QUERY'), lower-case('Query'), lower-case('QUERY123'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('PT30M')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('PT30M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('-PT90M')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('-PT90M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('PT1M90S')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('PT1M90S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('PT3H')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('PT3H')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('PT60M')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-duration( xs:dayTimeDuration('PT30M')), minutes-from-duration( xs:dayTimeDuration('-PT90M')), minutes-from-duration( xs:dayTimeDuration('PT1M90S')), minutes-from-duration( xs:dayTimeDuration('PT3H')), minutes-from-duration( xs:dayTimeDuration('PT60M')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-duration( xs:dayTimeDuration('PT30M')), minutes-from-duration( xs:dayTimeDuration('-PT90M')), minutes-from-duration( xs:dayTimeDuration('PT1M90S')), minutes-from-duration( xs:dayTimeDuration('PT3H')), minutes-from-duration( xs:dayTimeDuration('PT60M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(minutes-from-time(xs:time('10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(minutes-from-time(xs:time('10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(month-from-date(xs:date('2006-08-15')))">
+      <x:call>
+        <x:param select="string(.)">(month-from-date(xs:date('2006-08-15')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(month-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(month-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(months-from-duration( xs:yearMonthDuration('P3M')))">
+      <x:call>
+        <x:param select="string(.)">(months-from-duration( xs:yearMonthDuration('P3M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(months-from-duration( xs:yearMonthDuration('-P18M')))">
+      <x:call>
+        <x:param select="string(.)">(months-from-duration( xs:yearMonthDuration('-P18M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(months-from-duration( xs:yearMonthDuration('P1Y')))">
+      <x:call>
+        <x:param select="string(.)">(months-from-duration( xs:yearMonthDuration('P1Y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(months-from-duration( xs:yearMonthDuration('P12M')))">
+      <x:call>
+        <x:param select="string(.)">(months-from-duration( xs:yearMonthDuration('P12M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(months-from-duration( xs:yearMonthDuration('P3M')), months-from-duration( xs:yearMonthDuration('-P18M')), months-from-duration( xs:yearMonthDuration('P1Y')), months-from-duration( xs:yearMonthDuration('P12M')))">
+      <x:call>
+        <x:param select="string(.)">(months-from-duration( xs:yearMonthDuration('P3M')), months-from-duration( xs:yearMonthDuration('-P18M')), months-from-duration( xs:yearMonthDuration('P1Y')), months-from-duration( xs:yearMonthDuration('P12M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')))">
+      <x:call>
+        <x:param select="string(.)">(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(namespace-uri-from-QName( QName ('', 'unprefixed')))">
+      <x:call>
+        <x:param select="string(.)">(namespace-uri-from-QName( QName ('', 'unprefixed')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(namespace-uri-from-QName( () ))">
+      <x:call>
+        <x:param select="string(.)">(namespace-uri-from-QName( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')), namespace-uri-from-QName( QName ('', 'unprefixed')), namespace-uri-from-QName( () ))">
+      <x:call>
+        <x:param select="string(.)">(namespace-uri-from-QName( QName ('http://datypic.com/pre', 'prefixed')), namespace-uri-from-QName( QName ('', 'unprefixed')), namespace-uri-from-QName( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space('query'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space('query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space(' query '))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space(' query '))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space('xml query'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space('xml query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space('xml query'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space('xml query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space('xml query'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space('xml query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space(''))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space(''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space(' '))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space(' '))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-space(()))">
+      <x:call>
+        <x:param select="string(.)">(normalize-space(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-unicode('query'))">
+      <x:call>
+        <x:param select="string(.)">(normalize-unicode('query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-unicode('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(normalize-unicode('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(normalize-unicode('query'), normalize-unicode('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(normalize-unicode('query'), normalize-unicode('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not(32 &gt;&#xA;         20))">
+      <x:call>
+        <x:param select="string(.)">(not(32 &gt;
+         20))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not((/) //product))">
+      <x:call>
+        <x:param select="string(.)">(not((/) //product))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not(true()))">
+      <x:call>
+        <x:param select="string(.)">(not(true()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not(()))">
+      <x:call>
+        <x:param select="string(.)">(not(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not(''))">
+      <x:call>
+        <x:param select="string(.)">(not(''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(not(0))">
+      <x:call>
+        <x:param select="string(.)">(not(0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(one-or-more('a'))">
+      <x:call>
+        <x:param select="string(.)">(one-or-more('a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(one-or-more( ('a', 'b') ))">
+      <x:call>
+        <x:param select="string(.)">(one-or-more( ('a', 'b') ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(one-or-more('a'), one-or-more( ('a', 'b') ))">
+      <x:call>
+        <x:param select="string(.)">(one-or-more('a'), one-or-more( ('a', 'b') ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(QName('http://datypic.com/prod','product'))">
+      <x:call>
+        <x:param select="string(.)">(QName('http://datypic.com/prod','product'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(QName('http://datypic.com/prod', 'pre:product'))">
+      <x:call>
+        <x:param select="string(.)">(QName('http://datypic.com/prod', 'pre:product'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(QName('', 'product'))">
+      <x:call>
+        <x:param select="string(.)">(QName('', 'product'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(QName('http://datypic.com/prod','product'), QName('http://datypic.com/prod', 'pre:product'), QName('', 'product'))">
+      <x:call>
+        <x:param select="string(.)">(QName('http://datypic.com/prod','product'), QName('http://datypic.com/prod', 'pre:product'), QName('', 'product'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove( ('a', 'b', 'c'), 2) )">
+      <x:call>
+        <x:param select="string(.)">(remove( ('a', 'b', 'c'), 2) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove( ('a', 'b', 'c'), 10))">
+      <x:call>
+        <x:param select="string(.)">(remove( ('a', 'b', 'c'), 10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove( ('a', 'b', 'c'), 0))">
+      <x:call>
+        <x:param select="string(.)">(remove( ('a', 'b', 'c'), 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove( ('a', 'b', 'c'), 2) , remove( ('a', 'b', 'c'), 10), remove( ('a', 'b', 'c'), 0))">
+      <x:call>
+        <x:param select="string(.)">(remove( ('a', 'b', 'c'), 2) , remove( ('a', 'b', 'c'), 10), remove( ('a', 'b', 'c'), 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', 'r', 'as'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', 'r', 'as'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', 'qu', 'quack'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', 'qu', 'quack'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', '[ry]', 'l'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', '[ry]', 'l'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', '[ry]+', 'l'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', '[ry]+', 'l'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', 'z', 'a'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', 'z', 'a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', 'query', ''))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', 'query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace( (), 'r', 'as'))">
+      <x:call>
+        <x:param select="string(.)">(replace( (), 'r', 'as'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('Chapter', '(Chap)|(Chapter)', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(replace('Chapter', '(Chap)|(Chapter)', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('reluctant', 'r.*t', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('reluctant', 'r.*t', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('reluctant', 'r.*?t', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('reluctant', 'r.*?t', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('aaah', 'a{2,3}', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('aaah', 'a{2,3}', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('aaah', 'a{2,3}?', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('aaah', 'a{2,3}?', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('aaaah', 'a{2,3}', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('aaaah', 'a{2,3}', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('aaaah', 'a{2,3}?', 'X'))">
+      <x:call>
+        <x:param select="string(.)">(replace('aaaah', 'a{2,3}?', 'X'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'))">
+      <x:call>
+        <x:param select="string(.)">(replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('abc123', '([a-z])', '$1x'))">
+      <x:call>
+        <x:param select="string(.)">(replace('abc123', '([a-z])', '$1x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'))">
+      <x:call>
+        <x:param select="string(.)">(replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'))">
+      <x:call>
+        <x:param select="string(.)">(replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('25', '(\d+)', '\$$1.00'))">
+      <x:call>
+        <x:param select="string(.)">(replace('25', '(\d+)', '\$$1.00'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(replace('query', 'r', 'as'), replace('query', 'qu', 'quack'), replace('query', '[ry]', 'l'), replace('query', '[ry]+', 'l'), replace('query', 'z', 'a'), replace('query', 'query', ''), replace( (), 'r', 'as'), replace('Chapter', '(Chap)|(Chapter)', 'x'), replace('reluctant', 'r.*t', 'X'), replace('reluctant', 'r.*?t', 'X'), replace('aaah', 'a{2,3}', 'X'), replace('aaah', 'a{2,3}?', 'X'), replace('aaaah', 'a{2,3}', 'X'), replace('aaaah', 'a{2,3}?', 'X'), replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'), replace('abc123', '([a-z])', '$1x'), replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'), replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'), replace('25', '(\d+)', '\$$1.00'))">
+      <x:call>
+        <x:param select="string(.)">(replace('query', 'r', 'as'), replace('query', 'qu', 'quack'), replace('query', '[ry]', 'l'), replace('query', '[ry]+', 'l'), replace('query', 'z', 'a'), replace('query', 'query', ''), replace( (), 'r', 'as'), replace('Chapter', '(Chap)|(Chapter)', 'x'), replace('reluctant', 'r.*t', 'X'), replace('reluctant', 'r.*?t', 'X'), replace('aaah', 'a{2,3}', 'X'), replace('aaah', 'a{2,3}?', 'X'), replace('aaaah', 'a{2,3}', 'X'), replace('aaaah', 'a{2,3}?', 'X'), replace('Chap 2...Chap 3...Chap 4...', 'Chap (\d)', 'Sec $1.0'), replace('abc123', '([a-z])', '$1x'), replace('2315551212', '(\d{3})(\d{3})(\d{4})', '($1) $2-$3'), replace('2006-10-18', '\d{2}(\d{2})-(\d{2})-(\d{2})', '$2/$3/$1'), replace('25', '(\d+)', '\$$1.00'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri('prod', 'http://datypic.com/'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri('prod', 'http://datypic.com/'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri('prod2', 'http://datypic.com/prod1'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri('prod2', 'http://datypic.com/prod1'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri( 'http://example.org','http://datypic.com'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri( 'http://example.org','http://datypic.com'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri( 'http://datypic.com', '../base'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri( 'http://datypic.com', '../base'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri( '', 'http://datypic.com'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri( '', 'http://datypic.com'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(resolve-uri('prod', 'http://datypic.com/'), resolve-uri('prod2', 'http://datypic.com/prod1'), resolve-uri( 'http://example.org','http://datypic.com'), resolve-uri( 'http://datypic.com', '../base'), resolve-uri( '', 'http://datypic.com'))">
+      <x:call>
+        <x:param select="string(.)">(resolve-uri('prod', 'http://datypic.com/'), resolve-uri('prod2', 'http://datypic.com/prod1'), resolve-uri( 'http://example.org','http://datypic.com'), resolve-uri( 'http://datypic.com', '../base'), resolve-uri( '', 'http://datypic.com'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(reverse( (1, 2, 3, 4, 5) ))">
+      <x:call>
+        <x:param select="string(.)">(reverse( (1, 2, 3, 4, 5) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(reverse( (6, 2, 4) ))">
+      <x:call>
+        <x:param select="string(.)">(reverse( (6, 2, 4) ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(reverse( () ))">
+      <x:call>
+        <x:param select="string(.)">(reverse( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(reverse( (1, 2, 3, 4, 5) ), reverse( (6, 2, 4) ), reverse( () ))">
+      <x:call>
+        <x:param select="string(.)">(reverse( (1, 2, 3, 4, 5) ), reverse( (6, 2, 4) ), reverse( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(5.5))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(5.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(6.5))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(6.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(9372.253, 2))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(9372.253, 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(9372.253, 0))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(9372.253, 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(9372.253, -3))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(9372.253, -3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round-half-to-even(5.5), round-half-to-even(6.5), round-half-to-even(9372.253, 2), round-half-to-even(9372.253, 0), round-half-to-even(9372.253, -3))">
+      <x:call>
+        <x:param select="string(.)">(round-half-to-even(5.5), round-half-to-even(6.5), round-half-to-even(9372.253, 2), round-half-to-even(9372.253, 0), round-half-to-even(9372.253, -3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(5))">
+      <x:call>
+        <x:param select="string(.)">(round(5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(5.1))">
+      <x:call>
+        <x:param select="string(.)">(round(5.1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(5.5))">
+      <x:call>
+        <x:param select="string(.)">(round(5.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(-5.5))">
+      <x:call>
+        <x:param select="string(.)">(round(-5.5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(-5.51))">
+      <x:call>
+        <x:param select="string(.)">(round(-5.51))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(round(5), round(5.1), round(5.5), round(-5.5), round(-5.51))">
+      <x:call>
+        <x:param select="string(.)">(round(5), round(5.1), round(5.5), round(-5.5), round(-5.51))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-dateTime( xs:dateTime('2006-08-15T10:30:23.5')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-dateTime( xs:dateTime('2006-08-15T10:30:23.5')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-duration( xs:dayTimeDuration('PT30.5S')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-duration( xs:dayTimeDuration('PT30.5S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-duration( xs:dayTimeDuration('-PT90.5S')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-duration( xs:dayTimeDuration('-PT90.5S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-duration( xs:dayTimeDuration('PT1M')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-duration( xs:dayTimeDuration('PT1M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-duration( xs:dayTimeDuration('PT60S')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-duration( xs:dayTimeDuration('PT30.5S')), seconds-from-duration( xs:dayTimeDuration('-PT90.5S')), seconds-from-duration( xs:dayTimeDuration('PT1M')), seconds-from-duration( xs:dayTimeDuration('PT60S')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-duration( xs:dayTimeDuration('PT30.5S')), seconds-from-duration( xs:dayTimeDuration('-PT90.5S')), seconds-from-duration( xs:dayTimeDuration('PT1M')), seconds-from-duration( xs:dayTimeDuration('PT60S')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(seconds-from-time(xs:time('10:30:23.5')))">
+      <x:call>
+        <x:param select="string(.)">(seconds-from-time(xs:time('10:30:23.5')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', 'que'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', 'que'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', 'query'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', 'query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', 'u'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', 'u'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('', 'query'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('', 'query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('', ''))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', ()))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with(' query', 'q'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with(' query', 'q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(starts-with('query', 'que'), starts-with('query', 'query'), starts-with('query', 'u'), starts-with('query', ''), starts-with('', 'query'), starts-with('', ''), starts-with('query', ()), starts-with(' query', 'q'))">
+      <x:call>
+        <x:param select="string(.)">(starts-with('query', 'que'), starts-with('query', 'query'), starts-with('query', 'u'), starts-with('query', ''), starts-with('', 'query'), starts-with('', ''), starts-with('query', ()), starts-with(' query', 'q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join( ('a', 'b', 'c'), ''))">
+      <x:call>
+        <x:param select="string(.)">(string-join( ('a', 'b', 'c'), ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join( ('a', 'b', 'c'), '/*'))">
+      <x:call>
+        <x:param select="string(.)">(string-join( ('a', 'b', 'c'), '/*'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join( ('a', '', 'c'), '/*'))">
+      <x:call>
+        <x:param select="string(.)">(string-join( ('a', '', 'c'), '/*'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join( 'a', '/*'))">
+      <x:call>
+        <x:param select="string(.)">(string-join( 'a', '/*'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join((), '/*'))">
+      <x:call>
+        <x:param select="string(.)">(string-join((), '/*'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-join( ('a', 'b', 'c'), ''), string-join( ('a', 'b', 'c'), '/*'), string-join( ('a', '', 'c'), '/*'), string-join( 'a', '/*'), string-join((), '/*'))">
+      <x:call>
+        <x:param select="string(.)">(string-join( ('a', 'b', 'c'), ''), string-join( ('a', 'b', 'c'), '/*'), string-join( ('a', '', 'c'), '/*'), string-join( 'a', '/*'), string-join((), '/*'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length('query'))">
+      <x:call>
+        <x:param select="string(.)">(string-length('query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length(' &#xA;query&#xA; '))">
+      <x:call>
+        <x:param select="string(.)">(string-length(' 
 query
- '))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length(' 
-query
- '))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length(normalize-space(' query ')))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length(normalize-space(' query ')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length('xml query'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length('xml query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length(''))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length(''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length(()))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-length('query'), string-length(' 
+ '))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length(normalize-space(' query ')))">
+      <x:call>
+        <x:param select="string(.)">(string-length(normalize-space(' query ')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length('xml query'))">
+      <x:call>
+        <x:param select="string(.)">(string-length('xml query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length(''))">
+      <x:call>
+        <x:param select="string(.)">(string-length(''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length(()))">
+      <x:call>
+        <x:param select="string(.)">(string-length(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-length('query'), string-length(' &#xA;query &#xA; '), string-length(normalize-space('  &#xA;query &#xA; ')), string-length('xml query'), string-length(''), string-length(()))">
+      <x:call>
+        <x:param select="string(.)">(string-length('query'), string-length(' 
 query 
  '), string-length(normalize-space('  
 query 
- ')), string-length('xml query'), string-length(''), string-length(()))</x:label>
-      <x:variable name="expr" as="xs:string">(string-length('query'), string-length(' 
-query 
- '), string-length(normalize-space('  
-query 
- ')), string-length('xml query'), string-length(''), string-length(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-to-codepoints('abc'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-to-codepoints('abc'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-to-codepoints('a'))</x:label>
-      <x:variable name="expr" as="xs:string">(string-to-codepoints('a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-to-codepoints(''))</x:label>
-      <x:variable name="expr" as="xs:string">(string-to-codepoints(''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(string-to-codepoints('abc'), string-to-codepoints('a'), string-to-codepoints(''))</x:label>
-      <x:variable name="expr" as="xs:string">(string-to-codepoints('abc'), string-to-codepoints('a'), string-to-codepoints(''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) )</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), 10))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), 10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( (), 3))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( (), 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) , subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2), subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10), subsequence( ('a', 'b', 'c', 'd', 'e'), 10), subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5), subsequence( (), 3))</x:label>
-      <x:variable name="expr" as="xs:string">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) , subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2), subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10), subsequence( ('a', 'b', 'c', 'd', 'e'), 10), subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5), subsequence( (), 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('query', 'u'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('query', 'u'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('queryquery', 'ue'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('queryquery', 'ue'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('query', 'y'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('query', 'y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('query', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('query', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-after('query', 'u'), substring-after('queryquery', 'ue'), substring-after('query', 'y'), substring-after('query', 'x'), substring-after('query', ''), substring-after('', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-after('query', 'u'), substring-after('queryquery', 'ue'), substring-after('query', 'y'), substring-after('query', 'x'), substring-after('query', ''), substring-after('', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', 'r'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', 'r'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', 'ery'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', 'ery'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('queryquery', 'ery'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('queryquery', 'ery'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', 'query'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', 'query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', 'x'))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', 'x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring-before('query', 'r'), substring-before('query', 'ery'), substring-before('queryquery', 'ery'), substring-before('query', 'query'), substring-before('query', 'x'), substring-before('query', ''), substring-before('query', ()))</x:label>
-      <x:variable name="expr" as="xs:string">(substring-before('query', 'r'), substring-before('query', 'ery'), substring-before('queryquery', 'ery'), substring-before('query', 'query'), substring-before('query', 'x'), substring-before('query', ''), substring-before('query', ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 1))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 3))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 1, 1))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 1, 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 2, 3))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 2, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 2, 850))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 2, 850))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 6, 2))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 6, 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', -2))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', -2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', -2, 5))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', -2, 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 1, 0))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 1, 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('', 1))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('', 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring((), 1))</x:label>
-      <x:variable name="expr" as="xs:string">(substring((), 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(substring('query', 1), substring('query', 3), substring('query', 1, 1), substring('query', 2, 3), substring('query', 2, 850), substring('query', 6, 2), substring('query', -2), substring('query', -2, 5), substring('query', 1, 0), substring('', 1), substring((), 1))</x:label>
-      <x:variable name="expr" as="xs:string">(substring('query', 1), substring('query', 3), substring('query', 1, 1), substring('query', 2, 3), substring('query', 2, 850), substring('query', 6, 2), substring('query', -2), substring('query', -2, 5), substring('query', 1, 0), substring('', 1), substring((), 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-date( xs:date('2006-08-15-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-date( xs:date('2006-08-15-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-date( xs:date('2006-08-15')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-date( xs:date('2006-08-15')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-date( xs:date('2006-08-15-05:00')), timezone-from-date( xs:date('2006-08-15')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-date( xs:date('2006-08-15-05:00')), timezone-from-date( xs:date('2006-08-15')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')), timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')), timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-time( xs:time('09:54:00-05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-time( xs:time('09:54:00-05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-time( xs:time('09:54:00+05:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-time( xs:time('09:54:00+05:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-time( xs:time('09:54:00Z')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-time( xs:time('09:54:00Z')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-time( xs:time('09:54:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-time( xs:time('09:54:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(timezone-from-time( xs:time('09:54:00-05:00')), timezone-from-time( xs:time('09:54:00+05:00')), timezone-from-time( xs:time('09:54:00Z')), timezone-from-time( xs:time('09:54:00')))</x:label>
-      <x:variable name="expr" as="xs:string">(timezone-from-time( xs:time('09:54:00-05:00')), timezone-from-time( xs:time('09:54:00+05:00')), timezone-from-time( xs:time('09:54:00Z')), timezone-from-time( xs:time('09:54:00')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a b c', '\s'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a b c', '\s'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join(tokenize( 'a    b c', '\s'), '|')</x:label>
-      <x:variable name="expr" as="xs:string">string-join(tokenize( 'a    b c', '\s'), '|')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a b c', '\s+'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a b c', '\s+'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( ' b c', '\s'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( ' b c', '\s'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a,b,c', ','))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a,b,c', ','))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a,b,,c', ','))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a,b,,c', ','))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a, b, c', '[,\s]+'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a, b, c', '[,\s]+'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( '2006-12-25T12:15:00', '[\-T:]'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( '2006-12-25T12:15:00', '[\-T:]'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'Hello, there.', '\W+'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'Hello, there.', '\W+'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( (), '\s+'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( (), '\s+'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'abc', '\s'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'abc', '\s'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a,xb,xc', ',|,x'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a,xb,xc', ',|,x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s+'), tokenize( ' b c', '\s'), tokenize( 'a,b,c', ','), tokenize( 'a,b,,c', ','), tokenize( 'a, b, c', '[,\s]+'), tokenize( '2006-12-25T12:15:00', '[\-T:]'), tokenize( 'Hello, there.', '\W+'), tokenize( (), '\s+'), tokenize( 'abc', '\s'), tokenize( 'a,xb,xc', ',|,x'))</x:label>
-      <x:variable name="expr" as="xs:string">(tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s+'), tokenize( ' b c', '\s'), tokenize( 'a,b,c', ','), tokenize( 'a,b,,c', ','), tokenize( 'a, b, c', '[,\s]+'), tokenize( '2006-12-25T12:15:00', '[\-T:]'), tokenize( 'Hello, there.', '\W+'), tokenize( (), '\s+'), tokenize( 'abc', '\s'), tokenize( 'a,xb,xc', ',|,x'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('1999/01/02', '/', '-'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('1999/01/02', '/', '-'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('xml query', 'qlmx', 'QLMX'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('xml query', 'qlmx', 'QLMX'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('xml query', 'qlmx ', 'Q'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('xml query', 'qlmx ', 'Q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('xml query', 'qlmx ', ''))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('xml query', 'qlmx ', ''))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('xml query', 'abcd', 'ABCD'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('xml query', 'abcd', 'ABCD'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('', 'qlmx ', 'Q'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('', 'qlmx ', 'Q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate((), 'qlmx ', 'Q'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate((), 'qlmx ', 'Q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(translate('1999/01/02', '/', '-'), translate('xml query', 'qlmx', 'QLMX'), translate('xml query', 'qlmx ', 'Q'), translate('xml query', 'qlmx ', ''), translate('xml query', 'abcd', 'ABCD'), translate('', 'qlmx ', 'Q'), translate((), 'qlmx ', 'Q'))</x:label>
-      <x:variable name="expr" as="xs:string">(translate('1999/01/02', '/', '-'), translate('xml query', 'qlmx', 'QLMX'), translate('xml query', 'qlmx ', 'Q'), translate('xml query', 'qlmx ', ''), translate('xml query', 'abcd', 'ABCD'), translate('', 'qlmx ', 'Q'), translate((), 'qlmx ', 'Q'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(true())</x:label>
-      <x:variable name="expr" as="xs:string">(true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(upper-case('query'))</x:label>
-      <x:variable name="expr" as="xs:string">(upper-case('query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(upper-case('QUERY'))</x:label>
-      <x:variable name="expr" as="xs:string">(upper-case('QUERY'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(upper-case('Query'))</x:label>
-      <x:variable name="expr" as="xs:string">(upper-case('Query'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(upper-case('query-123'))</x:label>
-      <x:variable name="expr" as="xs:string">(upper-case('query-123'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(upper-case('query'), upper-case('QUERY'), upper-case('Query'), upper-case('query-123'))</x:label>
-      <x:variable name="expr" as="xs:string">(upper-case('query'), upper-case('QUERY'), upper-case('Query'), upper-case('query-123'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(year-from-date(xs:date('2006-08-15')))</x:label>
-      <x:variable name="expr" as="xs:string">(year-from-date(xs:date('2006-08-15')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(year-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:label>
-      <x:variable name="expr" as="xs:string">(year-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('P3Y')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('P3Y')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('P3Y11M')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('P3Y11M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('-P18M')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('-P18M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('P1Y18M')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('P1Y18M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('P12M')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('P12M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(years-from-duration( xs:yearMonthDuration('P3Y')), years-from-duration( xs:yearMonthDuration('P3Y11M')), years-from-duration( xs:yearMonthDuration('-P18M')), years-from-duration( xs:yearMonthDuration('P1Y18M')), years-from-duration( xs:yearMonthDuration('P12M')))</x:label>
-      <x:variable name="expr" as="xs:string">(years-from-duration( xs:yearMonthDuration('P3Y')), years-from-duration( xs:yearMonthDuration('P3Y11M')), years-from-duration( xs:yearMonthDuration('-P18M')), years-from-duration( xs:yearMonthDuration('P1Y18M')), years-from-duration( xs:yearMonthDuration('P12M')))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(zero-or-one( () ))</x:label>
-      <x:variable name="expr" as="xs:string">(zero-or-one( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(zero-or-one('a'))</x:label>
-      <x:variable name="expr" as="xs:string">(zero-or-one('a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(zero-or-one( () ), zero-or-one('a'))</x:label>
-      <x:variable name="expr" as="xs:string">(zero-or-one( () ), zero-or-one('a'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+ ')), string-length('xml query'), string-length(''), string-length(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-to-codepoints('abc'))">
+      <x:call>
+        <x:param select="string(.)">(string-to-codepoints('abc'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-to-codepoints('a'))">
+      <x:call>
+        <x:param select="string(.)">(string-to-codepoints('a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-to-codepoints(''))">
+      <x:call>
+        <x:param select="string(.)">(string-to-codepoints(''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(string-to-codepoints('abc'), string-to-codepoints('a'), string-to-codepoints(''))">
+      <x:call>
+        <x:param select="string(.)">(string-to-codepoints('abc'), string-to-codepoints('a'), string-to-codepoints(''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) )">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), 10))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), 10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( (), 3))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( (), 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) , subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2), subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10), subsequence( ('a', 'b', 'c', 'd', 'e'), 10), subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5), subsequence( (), 3))">
+      <x:call>
+        <x:param select="string(.)">(subsequence( ('a', 'b', 'c', 'd', 'e'), 3) , subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 2), subsequence( ('a', 'b', 'c', 'd', 'e'), 3, 10), subsequence( ('a', 'b', 'c', 'd', 'e'), 10), subsequence( ('a', 'b', 'c', 'd', 'e'), -2, 5), subsequence( (), 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('query', 'u'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('query', 'u'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('queryquery', 'ue'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('queryquery', 'ue'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('query', 'y'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('query', 'y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('query', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('query', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-after('query', 'u'), substring-after('queryquery', 'ue'), substring-after('query', 'y'), substring-after('query', 'x'), substring-after('query', ''), substring-after('', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(substring-after('query', 'u'), substring-after('queryquery', 'ue'), substring-after('query', 'y'), substring-after('query', 'x'), substring-after('query', ''), substring-after('', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', 'r'))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', 'r'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', 'ery'))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', 'ery'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('queryquery', 'ery'))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('queryquery', 'ery'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', 'query'))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', 'query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', 'x'))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', 'x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', ''))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', ()))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring-before('query', 'r'), substring-before('query', 'ery'), substring-before('queryquery', 'ery'), substring-before('query', 'query'), substring-before('query', 'x'), substring-before('query', ''), substring-before('query', ()))">
+      <x:call>
+        <x:param select="string(.)">(substring-before('query', 'r'), substring-before('query', 'ery'), substring-before('queryquery', 'ery'), substring-before('query', 'query'), substring-before('query', 'x'), substring-before('query', ''), substring-before('query', ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 1))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 3))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 1, 1))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 1, 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 2, 3))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 2, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 2, 850))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 2, 850))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 6, 2))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 6, 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', -2))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', -2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', -2, 5))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', -2, 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 1, 0))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 1, 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('', 1))">
+      <x:call>
+        <x:param select="string(.)">(substring('', 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring((), 1))">
+      <x:call>
+        <x:param select="string(.)">(substring((), 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(substring('query', 1), substring('query', 3), substring('query', 1, 1), substring('query', 2, 3), substring('query', 2, 850), substring('query', 6, 2), substring('query', -2), substring('query', -2, 5), substring('query', 1, 0), substring('', 1), substring((), 1))">
+      <x:call>
+        <x:param select="string(.)">(substring('query', 1), substring('query', 3), substring('query', 1, 1), substring('query', 2, 3), substring('query', 2, 850), substring('query', 6, 2), substring('query', -2), substring('query', -2, 5), substring('query', 1, 0), substring('', 1), substring((), 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-date( xs:date('2006-08-15-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-date( xs:date('2006-08-15-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-date( xs:date('2006-08-15')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-date( xs:date('2006-08-15')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-date( xs:date('2006-08-15-05:00')), timezone-from-date( xs:date('2006-08-15')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-date( xs:date('2006-08-15-05:00')), timezone-from-date( xs:date('2006-08-15')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')), timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23-05:00')), timezone-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-time( xs:time('09:54:00-05:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-time( xs:time('09:54:00-05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-time( xs:time('09:54:00+05:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-time( xs:time('09:54:00+05:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-time( xs:time('09:54:00Z')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-time( xs:time('09:54:00Z')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-time( xs:time('09:54:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-time( xs:time('09:54:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(timezone-from-time( xs:time('09:54:00-05:00')), timezone-from-time( xs:time('09:54:00+05:00')), timezone-from-time( xs:time('09:54:00Z')), timezone-from-time( xs:time('09:54:00')))">
+      <x:call>
+        <x:param select="string(.)">(timezone-from-time( xs:time('09:54:00-05:00')), timezone-from-time( xs:time('09:54:00+05:00')), timezone-from-time( xs:time('09:54:00Z')), timezone-from-time( xs:time('09:54:00')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a b c', '\s'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a b c', '\s'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join(tokenize( 'a    b c', '\s'), '|')">
+      <x:call>
+        <x:param select="string(.)">string-join(tokenize( 'a    b c', '\s'), '|')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a b c', '\s+'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a b c', '\s+'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( ' b c', '\s'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( ' b c', '\s'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a,b,c', ','))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a,b,c', ','))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a,b,,c', ','))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a,b,,c', ','))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a, b, c', '[,\s]+'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a, b, c', '[,\s]+'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( '2006-12-25T12:15:00', '[\-T:]'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( '2006-12-25T12:15:00', '[\-T:]'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'Hello, there.', '\W+'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'Hello, there.', '\W+'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( (), '\s+'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( (), '\s+'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'abc', '\s'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'abc', '\s'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a,xb,xc', ',|,x'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a,xb,xc', ',|,x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s+'), tokenize( ' b c', '\s'), tokenize( 'a,b,c', ','), tokenize( 'a,b,,c', ','), tokenize( 'a, b, c', '[,\s]+'), tokenize( '2006-12-25T12:15:00', '[\-T:]'), tokenize( 'Hello, there.', '\W+'), tokenize( (), '\s+'), tokenize( 'abc', '\s'), tokenize( 'a,xb,xc', ',|,x'))">
+      <x:call>
+        <x:param select="string(.)">(tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s'), tokenize( 'a b c', '\s+'), tokenize( ' b c', '\s'), tokenize( 'a,b,c', ','), tokenize( 'a,b,,c', ','), tokenize( 'a, b, c', '[,\s]+'), tokenize( '2006-12-25T12:15:00', '[\-T:]'), tokenize( 'Hello, there.', '\W+'), tokenize( (), '\s+'), tokenize( 'abc', '\s'), tokenize( 'a,xb,xc', ',|,x'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('1999/01/02', '/', '-'))">
+      <x:call>
+        <x:param select="string(.)">(translate('1999/01/02', '/', '-'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('xml query', 'qlmx', 'QLMX'))">
+      <x:call>
+        <x:param select="string(.)">(translate('xml query', 'qlmx', 'QLMX'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('xml query', 'qlmx ', 'Q'))">
+      <x:call>
+        <x:param select="string(.)">(translate('xml query', 'qlmx ', 'Q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('xml query', 'qlmx ', ''))">
+      <x:call>
+        <x:param select="string(.)">(translate('xml query', 'qlmx ', ''))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('xml query', 'abcd', 'ABCD'))">
+      <x:call>
+        <x:param select="string(.)">(translate('xml query', 'abcd', 'ABCD'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('', 'qlmx ', 'Q'))">
+      <x:call>
+        <x:param select="string(.)">(translate('', 'qlmx ', 'Q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate((), 'qlmx ', 'Q'))">
+      <x:call>
+        <x:param select="string(.)">(translate((), 'qlmx ', 'Q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(translate('1999/01/02', '/', '-'), translate('xml query', 'qlmx', 'QLMX'), translate('xml query', 'qlmx ', 'Q'), translate('xml query', 'qlmx ', ''), translate('xml query', 'abcd', 'ABCD'), translate('', 'qlmx ', 'Q'), translate((), 'qlmx ', 'Q'))">
+      <x:call>
+        <x:param select="string(.)">(translate('1999/01/02', '/', '-'), translate('xml query', 'qlmx', 'QLMX'), translate('xml query', 'qlmx ', 'Q'), translate('xml query', 'qlmx ', ''), translate('xml query', 'abcd', 'ABCD'), translate('', 'qlmx ', 'Q'), translate((), 'qlmx ', 'Q'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(true())">
+      <x:call>
+        <x:param select="string(.)">(true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(upper-case('query'))">
+      <x:call>
+        <x:param select="string(.)">(upper-case('query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(upper-case('QUERY'))">
+      <x:call>
+        <x:param select="string(.)">(upper-case('QUERY'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(upper-case('Query'))">
+      <x:call>
+        <x:param select="string(.)">(upper-case('Query'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(upper-case('query-123'))">
+      <x:call>
+        <x:param select="string(.)">(upper-case('query-123'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(upper-case('query'), upper-case('QUERY'), upper-case('Query'), upper-case('query-123'))">
+      <x:call>
+        <x:param select="string(.)">(upper-case('query'), upper-case('QUERY'), upper-case('Query'), upper-case('query-123'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(year-from-date(xs:date('2006-08-15')))">
+      <x:call>
+        <x:param select="string(.)">(year-from-date(xs:date('2006-08-15')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(year-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))">
+      <x:call>
+        <x:param select="string(.)">(year-from-dateTime( xs:dateTime('2006-08-15T10:30:23')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('P3Y')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('P3Y')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('P3Y11M')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('P3Y11M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('-P18M')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('-P18M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('P1Y18M')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('P1Y18M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('P12M')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('P12M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(years-from-duration( xs:yearMonthDuration('P3Y')), years-from-duration( xs:yearMonthDuration('P3Y11M')), years-from-duration( xs:yearMonthDuration('-P18M')), years-from-duration( xs:yearMonthDuration('P1Y18M')), years-from-duration( xs:yearMonthDuration('P12M')))">
+      <x:call>
+        <x:param select="string(.)">(years-from-duration( xs:yearMonthDuration('P3Y')), years-from-duration( xs:yearMonthDuration('P3Y11M')), years-from-duration( xs:yearMonthDuration('-P18M')), years-from-duration( xs:yearMonthDuration('P1Y18M')), years-from-duration( xs:yearMonthDuration('P12M')))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(zero-or-one( () ))">
+      <x:call>
+        <x:param select="string(.)">(zero-or-one( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(zero-or-one('a'))">
+      <x:call>
+        <x:param select="string(.)">(zero-or-one('a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(zero-or-one( () ), zero-or-one('a'))">
+      <x:call>
+        <x:param select="string(.)">(zero-or-one( () ), zero-or-one('a'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

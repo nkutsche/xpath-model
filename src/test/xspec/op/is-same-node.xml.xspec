@@ -1,88 +1,141 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>count(() is ())</x:label>
-      <x:variable name="expr" as="xs:string">count(() is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(() is /works[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">count(() is /works[1]/employee[1]/empnum[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(() is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">count(() is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(/works[1]/employee[1]/empnum[1] is ())</x:label>
-      <x:variable name="expr" as="xs:string">count(/works[1]/employee[1]/empnum[1] is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/works[1]/employee[1]/empnum[1] is /works[1]/employee[1]/empnum[1]</x:label>
-      <x:variable name="expr" as="xs:string">/works[1]/employee[1]/empnum[1] is /works[1]/employee[1]/empnum[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$works/works[1]/employee[1]/empnum[1] is $staff/staff[1]/employee[1]/empnum[1]</x:label>
-      <x:variable name="expr" as="xs:string">$works/works[1]/employee[1]/empnum[1] is $staff/staff[1]/employee[1]/empnum[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((/staff[1]/employee[1]/empnum[1]) is ())</x:label>
-      <x:variable name="expr" as="xs:string">count((/staff[1]/employee[1]/empnum[1]) is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($staff/staff[1]/employee[1]/empnum[1]) is $works/works[1]/employee[1]/empnum[1]</x:label>
-      <x:variable name="expr" as="xs:string">($staff/staff[1]/employee[1]/empnum[1]) is $works/works[1]/employee[1]/empnum[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) lt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) lt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) ge ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) ge ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) gt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) gt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) le ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) le ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(() is 100)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(() is 100)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(1 is ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(1 is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() is 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty(() is 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 is 1</x:label>
-      <x:variable name="expr" as="xs:string">1 is 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() is ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() is ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>is ()</x:label>
-      <x:variable name="expr" as="xs:string">is ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/is-same-node.xml"><x:call function="nk:xpath-model"/><x:scenario label="count(() is ())">
+      <x:call>
+        <x:param select="string(.)">count(() is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(() is /works[1]/employee[1]/empnum[1])">
+      <x:call>
+        <x:param select="string(.)">count(() is /works[1]/employee[1]/empnum[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(() is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">count(() is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(/works[1]/employee[1]/empnum[1] is ())">
+      <x:call>
+        <x:param select="string(.)">count(/works[1]/employee[1]/empnum[1] is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/works[1]/employee[1]/empnum[1] is /works[1]/employee[1]/empnum[1]">
+      <x:call>
+        <x:param select="string(.)">/works[1]/employee[1]/empnum[1] is /works[1]/employee[1]/empnum[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$works/works[1]/employee[1]/empnum[1] is $staff/staff[1]/employee[1]/empnum[1]">
+      <x:call>
+        <x:param select="string(.)">$works/works[1]/employee[1]/empnum[1] is $staff/staff[1]/employee[1]/empnum[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((/staff[1]/employee[1]/empnum[1]) is ())">
+      <x:call>
+        <x:param select="string(.)">count((/staff[1]/employee[1]/empnum[1]) is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($staff/staff[1]/employee[1]/empnum[1]) is $works/works[1]/employee[1]/empnum[1]">
+      <x:call>
+        <x:param select="string(.)">($staff/staff[1]/employee[1]/empnum[1]) is $works/works[1]/employee[1]/empnum[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])">
+      <x:call>
+        <x:param select="string(.)">(/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:not((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) lt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) lt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) ge ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) ge ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) gt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) gt ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) le ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1])) le ((/staff[1]/employee[1]/empnum[1]) is (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(() is 100)">
+      <x:call>
+        <x:param select="string(.)">fn:count(() is 100)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(1 is ())">
+      <x:call>
+        <x:param select="string(.)">empty(1 is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() is 1)">
+      <x:call>
+        <x:param select="string(.)">empty(() is 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 is 1">
+      <x:call>
+        <x:param select="string(.)">1 is 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() is ())">
+      <x:call>
+        <x:param select="string(.)">empty(() is ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="is ()">
+      <x:call>
+        <x:param select="string(.)">is ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

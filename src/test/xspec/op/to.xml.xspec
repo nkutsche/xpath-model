@@ -1,648 +1,1121 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(10, 1 to 4)</x:label>
-      <x:variable name="expr" as="xs:string">(10, 1 to 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 to 10</x:label>
-      <x:variable name="expr" as="xs:string">10 to 10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(15 to 10)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(15 to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:reverse(10 to 15)</x:label>
-      <x:variable name="expr" as="xs:string">fn:reverse(10 to 15)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((1, 2 to ()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((1, 2 to ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((1+2) to (2+2))</x:label>
-      <x:variable name="expr" as="xs:string">((1+2) to (2+2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-4,-3 to 2)</x:label>
-      <x:variable name="expr" as="xs:string">(-4,-3 to 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-4, -3 to -1)</x:label>
-      <x:variable name="expr" as="xs:string">(-4, -3 to -1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(1) to 5)</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(1) to 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to xs:integer(5))</x:label>
-      <x:variable name="expr" as="xs:string">(1 to xs:integer(5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(1) to xs:integer(5))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(1) to xs:integer(5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:min((1,2)) to 5)</x:label>
-      <x:variable name="expr" as="xs:string">(fn:min((1,2)) to 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:max((1,2)) to 5)</x:label>
-      <x:variable name="expr" as="xs:string">(fn:max((1,2)) to 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:min((1,2)) to fn:max((6,7)))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:min((1,2)) to fn:max((6,7)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:min((1 to 5))</x:label>
-      <x:variable name="expr" as="xs:string">fn:min((1 to 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:max((1 to 5))</x:label>
-      <x:variable name="expr" as="xs:string">fn:max((1 to 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:avg((1 to 5))</x:label>
-      <x:variable name="expr" as="xs:string">fn:avg((1 to 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((1 to 5))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((1 to 5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((3*2) to 10)</x:label>
-      <x:variable name="expr" as="xs:string">((3*2) to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to (3*2))</x:label>
-      <x:variable name="expr" as="xs:string">(1 to (3*2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((1*2) to (3*2))</x:label>
-      <x:variable name="expr" as="xs:string">((1*2) to (3*2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((3 - 2) to 10)</x:label>
-      <x:variable name="expr" as="xs:string">((3 - 2) to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to (3 - 2))</x:label>
-      <x:variable name="expr" as="xs:string">(1 to (3 - 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((2 - 1) to (7 - 1))</x:label>
-      <x:variable name="expr" as="xs:string">((2 - 1) to (7 - 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((6 idiv 2) to 10)</x:label>
-      <x:variable name="expr" as="xs:string">((6 idiv 2) to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to (10 idiv 2))</x:label>
-      <x:variable name="expr" as="xs:string">(1 to (10 idiv 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((5 idiv 5) to (8 idiv 2))</x:label>
-      <x:variable name="expr" as="xs:string">((5 idiv 5) to (8 idiv 2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>18446744073709551616 to 18446744073709551620</x:label>
-      <x:variable name="expr" as="xs:string">18446744073709551616 to 18446744073709551620</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(18446744073709551616 to 18446744073709551620)</x:label>
-      <x:variable name="expr" as="xs:string">count(18446744073709551616 to 18446744073709551620)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3+1 to 4+1</x:label>
-      <x:variable name="expr" as="xs:string">3+1 to 4+1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) = 1 to 5000</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) = 1 to 5000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) = 5000 to 10000</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) = 5000 to 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) to 4000 = 1500 to 2500</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) to 4000 = 1500 to 2500</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1000 = 1 to year-from-date(current-date())[. gt 3000]</x:label>
-      <x:variable name="expr" as="xs:string">1000 = 1 to year-from-date(current-date())[. gt 3000]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 to 5000 = year-from-date(current-date())[. gt 3000]</x:label>
-      <x:variable name="expr" as="xs:string">1 to 5000 = year-from-date(current-date())[. gt 3000]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 5000)[position() = 2001 to 2020]</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 5000)[position() = 2001 to 2020]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 to 1 eq 1</x:label>
-      <x:variable name="expr" as="xs:string">1 to 1 eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(30 to 3)</x:label>
-      <x:variable name="expr" as="xs:string">empty(30 to 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(0 to -3)</x:label>
-      <x:variable name="expr" as="xs:string">empty(0 to -3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(1 to ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(1 to ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() to 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty(() to 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(-1 to -3)</x:label>
-      <x:variable name="expr" as="xs:string">empty(-1 to -3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(1 to 4) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(1 to 4) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(0 to 4) eq 5</x:label>
-      <x:variable name="expr" as="xs:string">count(0 to 4) eq 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-5 to -0) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">count(-5 to -0) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((10, 1 to 4)) eq 5</x:label>
-      <x:variable name="expr" as="xs:string">count((10, 1 to 4)) eq 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(-3 to -1, 1, 1) eq -3</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(-3 to -1, 1, 1) eq -3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(-3 to -1, 3, 1) eq -1</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(-3 to -1, 3, 1) eq -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(reverse(4 to 1))</x:label>
-      <x:variable name="expr" as="xs:string">empty(reverse(4 to 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(reverse(1 to 3), 1, 1) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(reverse(1 to 3), 1, 1) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(reverse(1 to 3), 3, 1) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(reverse(1 to 3), 3, 1) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(reverse(1 to 4), 2, 1) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(reverse(1 to 4), 2, 1) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(reverse(1 to 4), 3, 1) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(reverse(1 to 4), 3, 1) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>subsequence(reverse(-4 to -1), 2, 1) eq -2</x:label>
-      <x:variable name="expr" as="xs:string">subsequence(reverse(-4 to -1), 2, 1) eq -2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((-1, -2, -3, -4), reverse(-4 to -1))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((-1, -2, -3, -4), reverse(-4 to -1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((), reverse(0 to -5))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((), reverse(0 to -5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((0, -1, -2, -3, -4, -5), reverse(-5 to 0))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((0, -1, -2, -3, -4, -5), reverse(-5 to 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(reverse(-5 to -2)) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(reverse(-5 to -2)) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(reverse(-5 to -0)) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">count(reverse(-5 to -0)) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(reverse(1 to 4)) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(reverse(1 to 4)) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(1 to 0)</x:label>
-      <x:variable name="expr" as="xs:string">empty(1 to 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(0 to -5)</x:label>
-      <x:variable name="expr" as="xs:string">empty(0 to -5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(-4 to -5)</x:label>
-      <x:variable name="expr" as="xs:string">empty(-4 to -5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(reverse(1 to 0))</x:label>
-      <x:variable name="expr" as="xs:string">empty(reverse(1 to 0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(reverse(0 to -5))</x:label>
-      <x:variable name="expr" as="xs:string">empty(reverse(0 to -5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(reverse(-4 to -5))</x:label>
-      <x:variable name="expr" as="xs:string">empty(reverse(-4 to -5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(remove((2.e0, 4), 1) treat as xs:integer to 4)</x:label>
-      <x:variable name="expr" as="xs:string">(remove((2.e0, 4), 1) treat as xs:integer to 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(4 to remove((2e0, 4), 1) treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">(4 to remove((2e0, 4), 1) treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1 to 3</x:label>
-      <x:variable name="expr" as="xs:string">1.1 to 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 to 1.1</x:label>
-      <x:variable name="expr" as="xs:string">3 to 1.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1 to 3.3</x:label>
-      <x:variable name="expr" as="xs:string">1.1 to 3.3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 + 1.1 to 5</x:label>
-      <x:variable name="expr" as="xs:string">1 + 1.1 to 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1e3 to 3</x:label>
-      <x:variable name="expr" as="xs:string">1e3 to 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 to 1e3</x:label>
-      <x:variable name="expr" as="xs:string">3 to 1e3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $i in 1 to 3 return $i</x:label>
-      <x:variable name="expr" as="xs:string">for $i in 1 to 3 return $i</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 to 3</x:label>
-      <x:variable name="expr" as="xs:string">3 to 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(3 to 3)</x:label>
-      <x:variable name="expr" as="xs:string">count(3 to 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(3 to 3)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(3 to 3)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 = 3 to 3</x:label>
-      <x:variable name="expr" as="xs:string">3 = 3 to 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>4 &gt; 3 to 3</x:label>
-      <x:variable name="expr" as="xs:string">4 &gt; 3 to 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-33 to -33</x:label>
-      <x:variable name="expr" as="xs:string">-33 to -33</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-33 to -33)</x:label>
-      <x:variable name="expr" as="xs:string">count(-33 to -33)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-33 to -33)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(-33 to -33)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-33 = -33 to -33</x:label>
-      <x:variable name="expr" as="xs:string">-33 = -33 to -33</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-33 to -33 &gt; -34</x:label>
-      <x:variable name="expr" as="xs:string">-33 to -33 &gt; -34</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 to 0</x:label>
-      <x:variable name="expr" as="xs:string">0 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(0 to 0)</x:label>
-      <x:variable name="expr" as="xs:string">count(0 to 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(0 to 0)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(0 to 0)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 = 0 to 0</x:label>
-      <x:variable name="expr" as="xs:string">1 = 0 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1 &gt; 0 to 0</x:label>
-      <x:variable name="expr" as="xs:string">-1 &gt; 0 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 to 0</x:label>
-      <x:variable name="expr" as="xs:string">10 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(10 to 0)</x:label>
-      <x:variable name="expr" as="xs:string">count(10 to 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10 to 0)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(10 to 0)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 = 10 to 0</x:label>
-      <x:variable name="expr" as="xs:string">10 = 10 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 &gt; 10 to 0</x:label>
-      <x:variable name="expr" as="xs:string">10 &gt; 10 to 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 to -10</x:label>
-      <x:variable name="expr" as="xs:string">0 to -10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(0 to -10)</x:label>
-      <x:variable name="expr" as="xs:string">count(0 to -10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(0 to -10)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(0 to -10)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 to 10</x:label>
-      <x:variable name="expr" as="xs:string">1 to 10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(1 to 10)</x:label>
-      <x:variable name="expr" as="xs:string">count(1 to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[3]</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[3]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>6 = 1 to 10</x:label>
-      <x:variable name="expr" as="xs:string">6 = 1 to 10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>6 &gt; 1 to 10</x:label>
-      <x:variable name="expr" as="xs:string">6 &gt; 1 to 10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 to 10 &gt; 6</x:label>
-      <x:variable name="expr" as="xs:string">1 to 10 &gt; 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(1 to 10)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(1 to 10)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-200000 to -199997</x:label>
-      <x:variable name="expr" as="xs:string">-200000 to -199997</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-200000 to -199997)</x:label>
-      <x:variable name="expr" as="xs:string">count(-200000 to -199997)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-200000 to -199997)[3]</x:label>
-      <x:variable name="expr" as="xs:string">(-200000 to -199997)[3]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12345 &gt; -200000 to -199997</x:label>
-      <x:variable name="expr" as="xs:string">12345 &gt; -200000 to -199997</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-200000 to -199997 &gt; 54321</x:label>
-      <x:variable name="expr" as="xs:string">-200000 to -199997 &gt; 54321</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(-200000 to -199997)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(-200000 to -199997)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>100000000000 to 100000000003</x:label>
-      <x:variable name="expr" as="xs:string">100000000000 to 100000000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(100000000000 to 100000000003)</x:label>
-      <x:variable name="expr" as="xs:string">count(100000000000 to 100000000003)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(100000000000 to 100000000003)[3]</x:label>
-      <x:variable name="expr" as="xs:string">(100000000000 to 100000000003)[3]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>100000000002 = 100000000000 to 100001000003</x:label>
-      <x:variable name="expr" as="xs:string">100000000002 = 100000000000 to 100001000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>100001000002 &lt; 100000000000 to 100001000003</x:label>
-      <x:variable name="expr" as="xs:string">100001000002 &lt; 100000000000 to 100001000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(100000000000 to 100000000003)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(100000000000 to 100000000003)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1000000000000000000000 to 1000000000000000000003</x:label>
-      <x:variable name="expr" as="xs:string">1000000000000000000000 to 1000000000000000000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(1000000000000000000000 to 1000000000000000000003)</x:label>
-      <x:variable name="expr" as="xs:string">count(1000000000000000000000 to 1000000000000000000003)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1000000000000000000000 to 1000000000000000000003)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(1000000000000000000000 to 1000000000000000000003)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1000000000000000020001 = 1000000000000000000000 to 1000000000000010000003</x:label>
-      <x:variable name="expr" as="xs:string">1000000000000000020001 = 1000000000000000000000 to 1000000000000010000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1000000000000000020001 &lt; 1000000000000000000000 to 1000000000000500000003</x:label>
-      <x:variable name="expr" as="xs:string">1000000000000000020001 &lt; 1000000000000000000000 to 1000000000000500000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(1000000000000000000000 to 1000000000000000000003)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(1000000000000000000000 to 1000000000000000000003)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-100000000003 to -100000000000</x:label>
-      <x:variable name="expr" as="xs:string">-100000000003 to -100000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-100000000003 to -100000000000)</x:label>
-      <x:variable name="expr" as="xs:string">count(-100000000003 to -100000000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-100000000003 to -100000000000)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(-100000000003 to -100000000000)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-100000000003 = -100000000003 to -100000000000</x:label>
-      <x:variable name="expr" as="xs:string">-100000000003 = -100000000003 to -100000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-100000000008 &lt; -100000000006 to -100000000003</x:label>
-      <x:variable name="expr" as="xs:string">-100000000008 &lt; -100000000006 to -100000000003</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(-100000000003 to -100000000000)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(-100000000003 to -100000000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1000000000000000000003 to -1000000000000000000000</x:label>
-      <x:variable name="expr" as="xs:string">-1000000000000000000003 to -1000000000000000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-1000000000000000000003 to -1000000000000000000000)</x:label>
-      <x:variable name="expr" as="xs:string">count(-1000000000000000000003 to -1000000000000000000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-1000000000000000000003 to -1000000000000000000000)[4]</x:label>
-      <x:variable name="expr" as="xs:string">(-1000000000000000000003 to -1000000000000000000000)[4]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1000000000000000000000 = -1000000000000000000003 to -1000000000000000000000</x:label>
-      <x:variable name="expr" as="xs:string">-1000000000000000000000 = -1000000000000000000003 to -1000000000000000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1000000000000000000000 &lt; -1000000000000000500003 to -1000000000000000000000</x:label>
-      <x:variable name="expr" as="xs:string">-1000000000000000000000 &lt; -1000000000000000500003 to -1000000000000000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(-1000000000000000000003 to -1000000000000000000000)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(-1000000000000000000003 to -1000000000000000000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-5 to +5</x:label>
-      <x:variable name="expr" as="xs:string">-5 to +5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(-5 to +5)</x:label>
-      <x:variable name="expr" as="xs:string">count(-5 to +5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-5 to +5)[6]</x:label>
-      <x:variable name="expr" as="xs:string">(-5 to +5)[6]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 = -5 to +5</x:label>
-      <x:variable name="expr" as="xs:string">3 = -5 to +5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-5 to +5 &gt; 29</x:label>
-      <x:variable name="expr" as="xs:string">-5 to +5 &gt; 29</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(-5 to +5)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(-5 to +5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 to year-from-date(current-date()) idiv 1000</x:label>
-      <x:variable name="expr" as="xs:string">0 to year-from-date(current-date()) idiv 1000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(0 to year-from-date(current-date()) idiv 1000)</x:label>
-      <x:variable name="expr" as="xs:string">count(0 to year-from-date(current-date()) idiv 1000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(0 to year-from-date(current-date()) idiv 1000)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(0 to year-from-date(current-date()) idiv 1000)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>2 = 0 to year-from-date(current-date()) idiv 1000</x:label>
-      <x:variable name="expr" as="xs:string">2 = 0 to year-from-date(current-date()) idiv 1000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 &gt;= 0 to year-from-date(current-date()) idiv 1000</x:label>
-      <x:variable name="expr" as="xs:string">3 &gt;= 0 to year-from-date(current-date()) idiv 1000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>reverse(0 to year-from-date(current-date()) idiv 1000)</x:label>
-      <x:variable name="expr" as="xs:string">reverse(0 to year-from-date(current-date()) idiv 1000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) idiv 1000 to 5</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) idiv 1000 to 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(year-from-date(current-date()) idiv 1000 to 5)</x:label>
-      <x:variable name="expr" as="xs:string">count(year-from-date(current-date()) idiv 1000 to 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(year-from-date(current-date()) idiv 1000 to 5)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(year-from-date(current-date()) idiv 1000 to 5)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) idiv 1000 to 5 = 4</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) idiv 1000 to 5 = 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) idiv 1000 to 5 &gt; 6</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) idiv 1000 to 5 &gt; 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) idiv 1000 to 2</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) idiv 1000 to 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(year-from-date(current-date()) idiv 1000 to 2)</x:label>
-      <x:variable name="expr" as="xs:string">count(year-from-date(current-date()) idiv 1000 to 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(year-from-date(current-date()) idiv 1000 to 2)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(year-from-date(current-date()) idiv 1000 to 2)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date()) idiv 1000 to -42</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date()) idiv 1000 to -42</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(year-from-date(current-date()) idiv 1000 to -42)</x:label>
-      <x:variable name="expr" as="xs:string">count(year-from-date(current-date()) idiv 1000 to -42)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(year-from-date(current-date()) idiv 1000 to -42)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(year-from-date(current-date()) idiv 1000 to -42)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>year-from-date(current-date())[. lt 0] to 10</x:label>
-      <x:variable name="expr" as="xs:string">year-from-date(current-date())[. lt 0] to 10</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 to year-from-date(current-date())[. lt 0]</x:label>
-      <x:variable name="expr" as="xs:string">1 to year-from-date(current-date())[. lt 0]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/to.xml"><x:call function="nk:xpath-model"/><x:scenario label="(10, 1 to 4)">
+      <x:call>
+        <x:param select="string(.)">(10, 1 to 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 to 10">
+      <x:call>
+        <x:param select="string(.)">10 to 10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(15 to 10)">
+      <x:call>
+        <x:param select="string(.)">fn:count(15 to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:reverse(10 to 15)">
+      <x:call>
+        <x:param select="string(.)">fn:reverse(10 to 15)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((1, 2 to ()))">
+      <x:call>
+        <x:param select="string(.)">fn:count((1, 2 to ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((1+2) to (2+2))">
+      <x:call>
+        <x:param select="string(.)">((1+2) to (2+2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-4,-3 to 2)">
+      <x:call>
+        <x:param select="string(.)">(-4,-3 to 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-4, -3 to -1)">
+      <x:call>
+        <x:param select="string(.)">(-4, -3 to -1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(1) to 5)">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(1) to 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to xs:integer(5))">
+      <x:call>
+        <x:param select="string(.)">(1 to xs:integer(5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(1) to xs:integer(5))">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(1) to xs:integer(5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:min((1,2)) to 5)">
+      <x:call>
+        <x:param select="string(.)">(fn:min((1,2)) to 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:max((1,2)) to 5)">
+      <x:call>
+        <x:param select="string(.)">(fn:max((1,2)) to 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:min((1,2)) to fn:max((6,7)))">
+      <x:call>
+        <x:param select="string(.)">(fn:min((1,2)) to fn:max((6,7)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:min((1 to 5))">
+      <x:call>
+        <x:param select="string(.)">fn:min((1 to 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:max((1 to 5))">
+      <x:call>
+        <x:param select="string(.)">fn:max((1 to 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:avg((1 to 5))">
+      <x:call>
+        <x:param select="string(.)">fn:avg((1 to 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((1 to 5))">
+      <x:call>
+        <x:param select="string(.)">fn:count((1 to 5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((3*2) to 10)">
+      <x:call>
+        <x:param select="string(.)">((3*2) to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to (3*2))">
+      <x:call>
+        <x:param select="string(.)">(1 to (3*2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((1*2) to (3*2))">
+      <x:call>
+        <x:param select="string(.)">((1*2) to (3*2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((3 - 2) to 10)">
+      <x:call>
+        <x:param select="string(.)">((3 - 2) to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to (3 - 2))">
+      <x:call>
+        <x:param select="string(.)">(1 to (3 - 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((2 - 1) to (7 - 1))">
+      <x:call>
+        <x:param select="string(.)">((2 - 1) to (7 - 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((6 idiv 2) to 10)">
+      <x:call>
+        <x:param select="string(.)">((6 idiv 2) to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to (10 idiv 2))">
+      <x:call>
+        <x:param select="string(.)">(1 to (10 idiv 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((5 idiv 5) to (8 idiv 2))">
+      <x:call>
+        <x:param select="string(.)">((5 idiv 5) to (8 idiv 2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="18446744073709551616 to 18446744073709551620">
+      <x:call>
+        <x:param select="string(.)">18446744073709551616 to 18446744073709551620</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(18446744073709551616 to 18446744073709551620)">
+      <x:call>
+        <x:param select="string(.)">count(18446744073709551616 to 18446744073709551620)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3+1 to 4+1">
+      <x:call>
+        <x:param select="string(.)">3+1 to 4+1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) = 1 to 5000">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) = 1 to 5000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) = 5000 to 10000">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) = 5000 to 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) to 4000 = 1500 to 2500">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) to 4000 = 1500 to 2500</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1000 = 1 to year-from-date(current-date())[. gt 3000]">
+      <x:call>
+        <x:param select="string(.)">1000 = 1 to year-from-date(current-date())[. gt 3000]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 to 5000 = year-from-date(current-date())[. gt 3000]">
+      <x:call>
+        <x:param select="string(.)">1 to 5000 = year-from-date(current-date())[. gt 3000]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 5000)[position() = 2001 to 2020]">
+      <x:call>
+        <x:param select="string(.)">(1 to 5000)[position() = 2001 to 2020]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 to 1 eq 1">
+      <x:call>
+        <x:param select="string(.)">1 to 1 eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(30 to 3)">
+      <x:call>
+        <x:param select="string(.)">empty(30 to 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(0 to -3)">
+      <x:call>
+        <x:param select="string(.)">empty(0 to -3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(1 to ())">
+      <x:call>
+        <x:param select="string(.)">empty(1 to ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() to 1)">
+      <x:call>
+        <x:param select="string(.)">empty(() to 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(-1 to -3)">
+      <x:call>
+        <x:param select="string(.)">empty(-1 to -3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(1 to 4) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(1 to 4) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(0 to 4) eq 5">
+      <x:call>
+        <x:param select="string(.)">count(0 to 4) eq 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-5 to -0) eq 6">
+      <x:call>
+        <x:param select="string(.)">count(-5 to -0) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((10, 1 to 4)) eq 5">
+      <x:call>
+        <x:param select="string(.)">count((10, 1 to 4)) eq 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(-3 to -1, 1, 1) eq -3">
+      <x:call>
+        <x:param select="string(.)">subsequence(-3 to -1, 1, 1) eq -3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(-3 to -1, 3, 1) eq -1">
+      <x:call>
+        <x:param select="string(.)">subsequence(-3 to -1, 3, 1) eq -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(reverse(4 to 1))">
+      <x:call>
+        <x:param select="string(.)">empty(reverse(4 to 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(reverse(1 to 3), 1, 1) eq 3">
+      <x:call>
+        <x:param select="string(.)">subsequence(reverse(1 to 3), 1, 1) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(reverse(1 to 3), 3, 1) eq 1">
+      <x:call>
+        <x:param select="string(.)">subsequence(reverse(1 to 3), 3, 1) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(reverse(1 to 4), 2, 1) eq 3">
+      <x:call>
+        <x:param select="string(.)">subsequence(reverse(1 to 4), 2, 1) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(reverse(1 to 4), 3, 1) eq 2">
+      <x:call>
+        <x:param select="string(.)">subsequence(reverse(1 to 4), 3, 1) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="subsequence(reverse(-4 to -1), 2, 1) eq -2">
+      <x:call>
+        <x:param select="string(.)">subsequence(reverse(-4 to -1), 2, 1) eq -2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((-1, -2, -3, -4), reverse(-4 to -1))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((-1, -2, -3, -4), reverse(-4 to -1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((), reverse(0 to -5))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((), reverse(0 to -5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((0, -1, -2, -3, -4, -5), reverse(-5 to 0))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((0, -1, -2, -3, -4, -5), reverse(-5 to 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(reverse(-5 to -2)) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(reverse(-5 to -2)) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(reverse(-5 to -0)) eq 6">
+      <x:call>
+        <x:param select="string(.)">count(reverse(-5 to -0)) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(reverse(1 to 4)) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(reverse(1 to 4)) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(1 to 0)">
+      <x:call>
+        <x:param select="string(.)">empty(1 to 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(0 to -5)">
+      <x:call>
+        <x:param select="string(.)">empty(0 to -5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(-4 to -5)">
+      <x:call>
+        <x:param select="string(.)">empty(-4 to -5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(reverse(1 to 0))">
+      <x:call>
+        <x:param select="string(.)">empty(reverse(1 to 0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(reverse(0 to -5))">
+      <x:call>
+        <x:param select="string(.)">empty(reverse(0 to -5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(reverse(-4 to -5))">
+      <x:call>
+        <x:param select="string(.)">empty(reverse(-4 to -5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(remove((2.e0, 4), 1) treat as xs:integer to 4)">
+      <x:call>
+        <x:param select="string(.)">(remove((2.e0, 4), 1) treat as xs:integer to 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(4 to remove((2e0, 4), 1) treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">(4 to remove((2e0, 4), 1) treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1.1 to 3">
+      <x:call>
+        <x:param select="string(.)">1.1 to 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 to 1.1">
+      <x:call>
+        <x:param select="string(.)">3 to 1.1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1.1 to 3.3">
+      <x:call>
+        <x:param select="string(.)">1.1 to 3.3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 + 1.1 to 5">
+      <x:call>
+        <x:param select="string(.)">1 + 1.1 to 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1e3 to 3">
+      <x:call>
+        <x:param select="string(.)">1e3 to 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 to 1e3">
+      <x:call>
+        <x:param select="string(.)">3 to 1e3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $i in 1 to 3 return $i">
+      <x:call>
+        <x:param select="string(.)">for $i in 1 to 3 return $i</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 to 3">
+      <x:call>
+        <x:param select="string(.)">3 to 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(3 to 3)">
+      <x:call>
+        <x:param select="string(.)">count(3 to 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(3 to 3)[1]">
+      <x:call>
+        <x:param select="string(.)">(3 to 3)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 = 3 to 3">
+      <x:call>
+        <x:param select="string(.)">3 = 3 to 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="4 &gt; 3 to 3">
+      <x:call>
+        <x:param select="string(.)">4 &gt; 3 to 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-33 to -33">
+      <x:call>
+        <x:param select="string(.)">-33 to -33</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-33 to -33)">
+      <x:call>
+        <x:param select="string(.)">count(-33 to -33)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-33 to -33)[1]">
+      <x:call>
+        <x:param select="string(.)">(-33 to -33)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-33 = -33 to -33">
+      <x:call>
+        <x:param select="string(.)">-33 = -33 to -33</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-33 to -33 &gt; -34">
+      <x:call>
+        <x:param select="string(.)">-33 to -33 &gt; -34</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 to 0">
+      <x:call>
+        <x:param select="string(.)">0 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(0 to 0)">
+      <x:call>
+        <x:param select="string(.)">count(0 to 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(0 to 0)[1]">
+      <x:call>
+        <x:param select="string(.)">(0 to 0)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 = 0 to 0">
+      <x:call>
+        <x:param select="string(.)">1 = 0 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1 &gt; 0 to 0">
+      <x:call>
+        <x:param select="string(.)">-1 &gt; 0 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 to 0">
+      <x:call>
+        <x:param select="string(.)">10 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(10 to 0)">
+      <x:call>
+        <x:param select="string(.)">count(10 to 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10 to 0)[1]">
+      <x:call>
+        <x:param select="string(.)">(10 to 0)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 = 10 to 0">
+      <x:call>
+        <x:param select="string(.)">10 = 10 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 &gt; 10 to 0">
+      <x:call>
+        <x:param select="string(.)">10 &gt; 10 to 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 to -10">
+      <x:call>
+        <x:param select="string(.)">0 to -10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(0 to -10)">
+      <x:call>
+        <x:param select="string(.)">count(0 to -10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(0 to -10)[1]">
+      <x:call>
+        <x:param select="string(.)">(0 to -10)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 to 10">
+      <x:call>
+        <x:param select="string(.)">1 to 10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(1 to 10)">
+      <x:call>
+        <x:param select="string(.)">count(1 to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[3]">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[3]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="6 = 1 to 10">
+      <x:call>
+        <x:param select="string(.)">6 = 1 to 10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="6 &gt; 1 to 10">
+      <x:call>
+        <x:param select="string(.)">6 &gt; 1 to 10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 to 10 &gt; 6">
+      <x:call>
+        <x:param select="string(.)">1 to 10 &gt; 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(1 to 10)">
+      <x:call>
+        <x:param select="string(.)">reverse(1 to 10)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-200000 to -199997">
+      <x:call>
+        <x:param select="string(.)">-200000 to -199997</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-200000 to -199997)">
+      <x:call>
+        <x:param select="string(.)">count(-200000 to -199997)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-200000 to -199997)[3]">
+      <x:call>
+        <x:param select="string(.)">(-200000 to -199997)[3]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12345 &gt; -200000 to -199997">
+      <x:call>
+        <x:param select="string(.)">12345 &gt; -200000 to -199997</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-200000 to -199997 &gt; 54321">
+      <x:call>
+        <x:param select="string(.)">-200000 to -199997 &gt; 54321</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(-200000 to -199997)">
+      <x:call>
+        <x:param select="string(.)">reverse(-200000 to -199997)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="100000000000 to 100000000003">
+      <x:call>
+        <x:param select="string(.)">100000000000 to 100000000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(100000000000 to 100000000003)">
+      <x:call>
+        <x:param select="string(.)">count(100000000000 to 100000000003)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(100000000000 to 100000000003)[3]">
+      <x:call>
+        <x:param select="string(.)">(100000000000 to 100000000003)[3]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="100000000002 = 100000000000 to 100001000003">
+      <x:call>
+        <x:param select="string(.)">100000000002 = 100000000000 to 100001000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="100001000002 &lt; 100000000000 to 100001000003">
+      <x:call>
+        <x:param select="string(.)">100001000002 &lt; 100000000000 to 100001000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(100000000000 to 100000000003)">
+      <x:call>
+        <x:param select="string(.)">reverse(100000000000 to 100000000003)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1000000000000000000000 to 1000000000000000000003">
+      <x:call>
+        <x:param select="string(.)">1000000000000000000000 to 1000000000000000000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(1000000000000000000000 to 1000000000000000000003)">
+      <x:call>
+        <x:param select="string(.)">count(1000000000000000000000 to 1000000000000000000003)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1000000000000000000000 to 1000000000000000000003)[2]">
+      <x:call>
+        <x:param select="string(.)">(1000000000000000000000 to 1000000000000000000003)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1000000000000000020001 = 1000000000000000000000 to 1000000000000010000003">
+      <x:call>
+        <x:param select="string(.)">1000000000000000020001 = 1000000000000000000000 to 1000000000000010000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1000000000000000020001 &lt; 1000000000000000000000 to 1000000000000500000003">
+      <x:call>
+        <x:param select="string(.)">1000000000000000020001 &lt; 1000000000000000000000 to 1000000000000500000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(1000000000000000000000 to 1000000000000000000003)">
+      <x:call>
+        <x:param select="string(.)">reverse(1000000000000000000000 to 1000000000000000000003)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-100000000003 to -100000000000">
+      <x:call>
+        <x:param select="string(.)">-100000000003 to -100000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-100000000003 to -100000000000)">
+      <x:call>
+        <x:param select="string(.)">count(-100000000003 to -100000000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-100000000003 to -100000000000)[2]">
+      <x:call>
+        <x:param select="string(.)">(-100000000003 to -100000000000)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-100000000003 = -100000000003 to -100000000000">
+      <x:call>
+        <x:param select="string(.)">-100000000003 = -100000000003 to -100000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-100000000008 &lt; -100000000006 to -100000000003">
+      <x:call>
+        <x:param select="string(.)">-100000000008 &lt; -100000000006 to -100000000003</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(-100000000003 to -100000000000)">
+      <x:call>
+        <x:param select="string(.)">reverse(-100000000003 to -100000000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1000000000000000000003 to -1000000000000000000000">
+      <x:call>
+        <x:param select="string(.)">-1000000000000000000003 to -1000000000000000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-1000000000000000000003 to -1000000000000000000000)">
+      <x:call>
+        <x:param select="string(.)">count(-1000000000000000000003 to -1000000000000000000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-1000000000000000000003 to -1000000000000000000000)[4]">
+      <x:call>
+        <x:param select="string(.)">(-1000000000000000000003 to -1000000000000000000000)[4]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1000000000000000000000 = -1000000000000000000003 to -1000000000000000000000">
+      <x:call>
+        <x:param select="string(.)">-1000000000000000000000 = -1000000000000000000003 to -1000000000000000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1000000000000000000000 &lt; -1000000000000000500003 to -1000000000000000000000">
+      <x:call>
+        <x:param select="string(.)">-1000000000000000000000 &lt; -1000000000000000500003 to -1000000000000000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(-1000000000000000000003 to -1000000000000000000000)">
+      <x:call>
+        <x:param select="string(.)">reverse(-1000000000000000000003 to -1000000000000000000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-5 to +5">
+      <x:call>
+        <x:param select="string(.)">-5 to +5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(-5 to +5)">
+      <x:call>
+        <x:param select="string(.)">count(-5 to +5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-5 to +5)[6]">
+      <x:call>
+        <x:param select="string(.)">(-5 to +5)[6]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 = -5 to +5">
+      <x:call>
+        <x:param select="string(.)">3 = -5 to +5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-5 to +5 &gt; 29">
+      <x:call>
+        <x:param select="string(.)">-5 to +5 &gt; 29</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(-5 to +5)">
+      <x:call>
+        <x:param select="string(.)">reverse(-5 to +5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 to year-from-date(current-date()) idiv 1000">
+      <x:call>
+        <x:param select="string(.)">0 to year-from-date(current-date()) idiv 1000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(0 to year-from-date(current-date()) idiv 1000)">
+      <x:call>
+        <x:param select="string(.)">count(0 to year-from-date(current-date()) idiv 1000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(0 to year-from-date(current-date()) idiv 1000)[2]">
+      <x:call>
+        <x:param select="string(.)">(0 to year-from-date(current-date()) idiv 1000)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="2 = 0 to year-from-date(current-date()) idiv 1000">
+      <x:call>
+        <x:param select="string(.)">2 = 0 to year-from-date(current-date()) idiv 1000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 &gt;= 0 to year-from-date(current-date()) idiv 1000">
+      <x:call>
+        <x:param select="string(.)">3 &gt;= 0 to year-from-date(current-date()) idiv 1000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="reverse(0 to year-from-date(current-date()) idiv 1000)">
+      <x:call>
+        <x:param select="string(.)">reverse(0 to year-from-date(current-date()) idiv 1000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) idiv 1000 to 5">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) idiv 1000 to 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(year-from-date(current-date()) idiv 1000 to 5)">
+      <x:call>
+        <x:param select="string(.)">count(year-from-date(current-date()) idiv 1000 to 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(year-from-date(current-date()) idiv 1000 to 5)[2]">
+      <x:call>
+        <x:param select="string(.)">(year-from-date(current-date()) idiv 1000 to 5)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) idiv 1000 to 5 = 4">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) idiv 1000 to 5 = 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) idiv 1000 to 5 &gt; 6">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) idiv 1000 to 5 &gt; 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) idiv 1000 to 2">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) idiv 1000 to 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(year-from-date(current-date()) idiv 1000 to 2)">
+      <x:call>
+        <x:param select="string(.)">count(year-from-date(current-date()) idiv 1000 to 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(year-from-date(current-date()) idiv 1000 to 2)[1]">
+      <x:call>
+        <x:param select="string(.)">(year-from-date(current-date()) idiv 1000 to 2)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date()) idiv 1000 to -42">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date()) idiv 1000 to -42</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(year-from-date(current-date()) idiv 1000 to -42)">
+      <x:call>
+        <x:param select="string(.)">count(year-from-date(current-date()) idiv 1000 to -42)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(year-from-date(current-date()) idiv 1000 to -42)[2]">
+      <x:call>
+        <x:param select="string(.)">(year-from-date(current-date()) idiv 1000 to -42)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="year-from-date(current-date())[. lt 0] to 10">
+      <x:call>
+        <x:param select="string(.)">year-from-date(current-date())[. lt 0] to 10</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 to year-from-date(current-date())[. lt 0]">
+      <x:call>
+        <x:param select="string(.)">1 to year-from-date(current-date())[. lt 0]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

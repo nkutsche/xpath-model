@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>format-number('foo','#############')</x:label>
-      <x:variable name="expr" as="xs:string">format-number('foo','#############')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>format-number('foo','#############')</x:label>
-      <x:variable name="expr" as="xs:string">format-number('foo','#############')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-join((
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/format-number.xml"><x:call function="nk:xpath-model"/><x:scenario label="format-number('foo','#############')">
+      <x:call>
+        <x:param select="string(.)">format-number('foo','#############')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="format-number('foo','#############')">
+      <x:call>
+        <x:param select="string(.)">format-number('foo','#############')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-join((&#xA;                format-number('NaN','###','foo:decimal1'),&#xA;                format-number(-13.2,'###.0','foo:decimal1'),&#xA;                format-number('NaN','###','baz:decimal1'),&#xA;                format-number(-13.2,'###.0','baz:decimal1')), '|')">
+      <x:call>
+        <x:param select="string(.)">string-join((
                 format-number('NaN','###','foo:decimal1'),
                 format-number(-13.2,'###.0','foo:decimal1'),
                 format-number('NaN','###','baz:decimal1'),
-                format-number(-13.2,'###.0','baz:decimal1')), '|')</x:label>
-      <x:variable name="expr" as="xs:string">string-join((
-                format-number('NaN','###','foo:decimal1'),
-                format-number(-13.2,'###.0','foo:decimal1'),
-                format-number('NaN','###','baz:decimal1'),
-                format-number(-13.2,'###.0','baz:decimal1')), '|')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>concat(format-number('NaN','###','decimal2'), '|',
-                      format-number(3.2,'###.0','decimal2'))</x:label>
-      <x:variable name="expr" as="xs:string">concat(format-number('NaN','###','decimal2'), '|',
-                      format-number(3.2,'###.0','decimal2'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+                format-number(-13.2,'###.0','baz:decimal1')), '|')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="concat(format-number('NaN','###','decimal2'), '|',&#xA;                      format-number(3.2,'###.0','decimal2'))">
+      <x:call>
+        <x:param select="string(.)">concat(format-number('NaN','###','decimal2'), '|',
+                      format-number(3.2,'###.0','decimal2'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

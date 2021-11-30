@@ -1,116 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1983-11-17Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1983-11-17Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("2030-12-31Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("2030-12-31Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1999-05-31-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1999-05-31-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("2000-01-01+05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("2000-01-01+05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1999-12-31Z")) lt fn:month-from-date(xs:date("1999-12-31Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1999-12-31Z")) lt fn:month-from-date(xs:date("1999-12-31Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1999-12-31Z")) le fn:month-from-date(xs:date("1999-12-31Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1999-12-31Z")) le fn:month-from-date(xs:date("1999-12-31Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:month-from-date(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:month-from-date(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-31Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-31Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1999-12-31Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1999-12-31Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) + fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) + fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) - fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) - fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) * fn:month-from-date(xs:date("0002-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) * fn:month-from-date(xs:date("0002-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) div fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) div fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) idiv fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) idiv fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) mod fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) mod fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">+fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">-fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) eq fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) eq fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) ne fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) ne fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) le fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) le fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:month-from-date(xs:date("1970-01-01Z")) ge fn:month-from-date(xs:date("1970-01-01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:month-from-date(xs:date("1970-01-01Z")) ge fn:month-from-date(xs:date("1970-01-01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>month-from-date()</x:label>
-      <x:variable name="expr" as="xs:string">month-from-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>month-from-date((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">month-from-date((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(month-from-date(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(month-from-date(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>month-from-date(()) instance of xs:integer?</x:label>
-      <x:variable name="expr" as="xs:string">month-from-date(()) instance of xs:integer?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>month-from-date(xs:date("2000-02-03")) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">month-from-date(xs:date("2000-02-03")) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/month-from-date.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1983-11-17Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1983-11-17Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;2030-12-31Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("2030-12-31Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1999-05-31-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1999-05-31-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;2000-01-01+05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("2000-01-01+05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1999-12-31Z&#34;)) lt fn:month-from-date(xs:date(&#34;1999-12-31Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1999-12-31Z")) lt fn:month-from-date(xs:date("1999-12-31Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1999-12-31Z&#34;)) le fn:month-from-date(xs:date(&#34;1999-12-31Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1999-12-31Z")) le fn:month-from-date(xs:date("1999-12-31Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:month-from-date(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:month-from-date(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-31Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-31Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1999-12-31Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1999-12-31Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) + fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) + fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) - fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) - fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) * fn:month-from-date(xs:date(&#34;0002-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) * fn:month-from-date(xs:date("0002-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) div fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) div fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) idiv fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) idiv fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) mod fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) mod fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="+fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">+fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">-fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) eq fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) eq fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) ne fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) ne fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) le fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) le fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;)) ge fn:month-from-date(xs:date(&#34;1970-01-01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:month-from-date(xs:date("1970-01-01Z")) ge fn:month-from-date(xs:date("1970-01-01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="month-from-date()">
+      <x:call>
+        <x:param select="string(.)">month-from-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="month-from-date((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">month-from-date((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(month-from-date(()))">
+      <x:call>
+        <x:param select="string(.)">empty(month-from-date(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="month-from-date(()) instance of xs:integer?">
+      <x:call>
+        <x:param select="string(.)">month-from-date(()) instance of xs:integer?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="month-from-date(xs:date(&#34;2000-02-03&#34;)) eq 2">
+      <x:call>
+        <x:param select="string(.)">month-from-date(xs:date("2000-02-03")) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

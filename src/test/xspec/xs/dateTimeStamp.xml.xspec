@@ -1,32 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>exists(fn:timezone-from-dateTime(fn:current-dateTime()))</x:label>
-      <x:variable name="expr" as="xs:string">exists(fn:timezone-from-dateTime(fn:current-dateTime()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exists(fn:timezone-from-dateTime(xs:dateTimeStamp("2011-07-28T12:34:56-08:00")))</x:label>
-      <x:variable name="expr" as="xs:string">exists(fn:timezone-from-dateTime(xs:dateTimeStamp("2011-07-28T12:34:56-08:00")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTimeStamp("2011-07-28T12:34:56")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTimeStamp("2011-07-28T12:34:56")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTimeStamp(xs:dateTime("2011-07-28T12:34:56"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTimeStamp(xs:dateTime("2011-07-28T12:34:56"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTimeStamp(xs:date("2011-07-28+01:00"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTimeStamp(xs:date("2011-07-28+01:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() castable as xs:dateTimeStamp</x:label>
-      <x:variable name="expr" as="xs:string">current-date() castable as xs:dateTimeStamp</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/dateTimeStamp.xml"><x:call function="nk:xpath-model"/><x:scenario label="exists(fn:timezone-from-dateTime(fn:current-dateTime()))">
+      <x:call>
+        <x:param select="string(.)">exists(fn:timezone-from-dateTime(fn:current-dateTime()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exists(fn:timezone-from-dateTime(xs:dateTimeStamp(&#34;2011-07-28T12:34:56-08:00&#34;)))">
+      <x:call>
+        <x:param select="string(.)">exists(fn:timezone-from-dateTime(xs:dateTimeStamp("2011-07-28T12:34:56-08:00")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTimeStamp(&#34;2011-07-28T12:34:56&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dateTimeStamp("2011-07-28T12:34:56")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTimeStamp(xs:dateTime(&#34;2011-07-28T12:34:56&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:dateTimeStamp(xs:dateTime("2011-07-28T12:34:56"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTimeStamp(xs:date(&#34;2011-07-28+01:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:dateTimeStamp(xs:date("2011-07-28+01:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() castable as xs:dateTimeStamp">
+      <x:call>
+        <x:param select="string(.)">current-date() castable as xs:dateTimeStamp</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

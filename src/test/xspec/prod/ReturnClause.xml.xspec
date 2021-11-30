@@ -1,56 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return $file/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return data( $file/FileName )</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return data( $file/FileName )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return $file/parent::Folder/FolderName</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return $file/parent::Folder/FolderName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return (//FileName)[1]</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return (//FileName)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in //Folder, $file in $folder/File return ( $folder/FolderName, $file/FileName )</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in //Folder, $file in $folder/File return ( $folder/FolderName, $file/FileName )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return $undefined</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return $undefined</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in for $folder in (//Folder)[1] return $folder/File return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $file in for $folder in (//Folder)[1] return $folder/File return $file/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] + 1</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] + 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File return xs:string( data( $file/FileName[1] ))</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File return xs:string( data( $file/FileName[1] ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>return 1</x:label>
-      <x:variable name="expr" as="xs:string">return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/ReturnClause.xml"><x:call function="nk:xpath-model"/><x:scenario label="for $file in (//Folder)[1]/File return $file/FileName">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return $file/FileName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return data( $file/FileName )">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return data( $file/FileName )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return $file/parent::Folder/FolderName">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return $file/parent::Folder/FolderName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return 1">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return (//FileName)[1]">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return (//FileName)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $folder in //Folder, $file in $folder/File return ( $folder/FolderName, $file/FileName )">
+      <x:call>
+        <x:param select="string(.)">for $folder in //Folder, $file in $folder/File return ( $folder/FolderName, $file/FileName )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return $undefined">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return $undefined</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in for $folder in (//Folder)[1] return $folder/File return $file/FileName">
+      <x:call>
+        <x:param select="string(.)">for $file in for $folder in (//Folder)[1] return $folder/File return $file/FileName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] + 1">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] + 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return ($file/Stream/StreamSize)[1] &gt; 1004</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File return xs:string( data( $file/FileName[1] ))">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File return xs:string( data( $file/FileName[1] ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

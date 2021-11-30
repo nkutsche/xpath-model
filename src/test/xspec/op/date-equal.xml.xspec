@@ -1,164 +1,274 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") eq xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") eq xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1983-11-17Z") eq xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1983-11-17Z") eq xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2030-12-31Z") eq xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2030-12-31Z") eq xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") eq xs:date("1983-11-17Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") eq xs:date("1983-11-17Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") eq xs:date("2030-12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") eq xs:date("2030-12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ne xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ne xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1983-11-17Z") ne xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1983-11-17Z") ne xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2030-12-31Z") ne xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2030-12-31Z") ne xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ne xs:date("1983-11-17Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ne xs:date("1983-11-17Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ne xs:date("2030-12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ne xs:date("2030-12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") le xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") le xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1983-11-17Z") le xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1983-11-17Z") le xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2030-12-31Z") le xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2030-12-31Z") le xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") le xs:date("1983-11-17Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") le xs:date("1983-11-17Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") le xs:date("2030-12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") le xs:date("2030-12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ge xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ge xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1983-11-17Z") ge xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1983-11-17Z") ge xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2030-12-31Z") ge xs:date("1970-01-01Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2030-12-31Z") ge xs:date("1970-01-01Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ge xs:date("1983-11-17Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ge xs:date("1983-11-17Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1970-01-01Z") ge xs:date("2030-12-31Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1970-01-01Z") ge xs:date("2030-12-31Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2004-08-12") eq xs:date("2004-08-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2004-08-12") eq xs:date("2004-08-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:date("2004-08-12") eq xs:date("2003-08-12"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:date("2004-08-12") eq xs:date("2003-08-12"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2004-08-12") ne xs:date("2004-07-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2004-08-12") ne xs:date("2004-07-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:date("2004-07-12") ne xs:date("2004-07-12"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:date("2004-07-12") ne xs:date("2004-07-12"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-12-04-00:00") eq xs:date("1999-12-04Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-12-04-00:00") eq xs:date("1999-12-04Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-12-04+00:00") eq xs:date("1999-12-04Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-12-04+00:00") eq xs:date("1999-12-04Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-12-04Z") eq xs:date("1999-12-04Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-12-04Z") eq xs:date("1999-12-04Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-12-04-00:00") eq xs:date("1999-12-04+00:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-12-04-00:00") eq xs:date("1999-12-04+00:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("01:01:01-03:00") ne xs:time("01:01:01+03:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("01:01:01-03:00") ne xs:time("01:01:01+03:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("-25252734927766555-06-07+02:00") = xs:date("25252734927766555-07-28")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("-25252734927766555-06-07+02:00") = xs:date("25252734927766555-07-28")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("25252734927766555-07-28") != xs:date("-25252734927766555-06-07+02:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("25252734927766555-07-28") != xs:date("-25252734927766555-06-07+02:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-30") eq xs:date("2008-01-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-30") eq xs:date("2008-01-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31+09:00") eq xs:date("2008-01-30")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31+09:00") eq xs:date("2008-01-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31") eq xs:date("2008-01-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31") eq xs:date("2008-01-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31+09:00") eq xs:date("2008-01-31")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31+09:00") eq xs:date("2008-01-31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-30") ne xs:date("2008-01-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-30") ne xs:date("2008-01-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31+09:00") ne xs:date("2008-01-30")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31+09:00") ne xs:date("2008-01-30")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31") ne xs:date("2008-01-31+09:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31") ne xs:date("2008-01-31+09:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-01-31+09:00") ne xs:date("2008-01-31")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-01-31+09:00") ne xs:date("2008-01-31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/date-equal.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) eq xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") eq xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1983-11-17Z&#34;) eq xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1983-11-17Z") eq xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2030-12-31Z&#34;) eq xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2030-12-31Z") eq xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) eq xs:date(&#34;1983-11-17Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") eq xs:date("1983-11-17Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) eq xs:date(&#34;2030-12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") eq xs:date("2030-12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ne xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ne xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1983-11-17Z&#34;) ne xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1983-11-17Z") ne xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2030-12-31Z&#34;) ne xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2030-12-31Z") ne xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ne xs:date(&#34;1983-11-17Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ne xs:date("1983-11-17Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ne xs:date(&#34;2030-12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ne xs:date("2030-12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) le xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") le xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1983-11-17Z&#34;) le xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1983-11-17Z") le xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2030-12-31Z&#34;) le xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2030-12-31Z") le xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) le xs:date(&#34;1983-11-17Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") le xs:date("1983-11-17Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) le xs:date(&#34;2030-12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") le xs:date("2030-12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ge xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ge xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1983-11-17Z&#34;) ge xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1983-11-17Z") ge xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2030-12-31Z&#34;) ge xs:date(&#34;1970-01-01Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2030-12-31Z") ge xs:date("1970-01-01Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ge xs:date(&#34;1983-11-17Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ge xs:date("1983-11-17Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1970-01-01Z&#34;) ge xs:date(&#34;2030-12-31Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1970-01-01Z") ge xs:date("2030-12-31Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2004-08-12&#34;) eq xs:date(&#34;2004-08-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2004-08-12") eq xs:date("2004-08-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:date(&#34;2004-08-12&#34;) eq xs:date(&#34;2003-08-12&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:date("2004-08-12") eq xs:date("2003-08-12"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2004-08-12&#34;) ne xs:date(&#34;2004-07-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2004-08-12") ne xs:date("2004-07-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:date(&#34;2004-07-12&#34;) ne xs:date(&#34;2004-07-12&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:date("2004-07-12") ne xs:date("2004-07-12"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-12-04-00:00&#34;) eq xs:date(&#34;1999-12-04Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-12-04-00:00") eq xs:date("1999-12-04Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-12-04+00:00&#34;) eq xs:date(&#34;1999-12-04Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-12-04+00:00") eq xs:date("1999-12-04Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-12-04Z&#34;) eq xs:date(&#34;1999-12-04Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-12-04Z") eq xs:date("1999-12-04Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-12-04-00:00&#34;) eq xs:date(&#34;1999-12-04+00:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-12-04-00:00") eq xs:date("1999-12-04+00:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;01:01:01-03:00&#34;) ne xs:time(&#34;01:01:01+03:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:time("01:01:01-03:00") ne xs:time("01:01:01+03:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;-25252734927766555-06-07+02:00&#34;) = xs:date(&#34;25252734927766555-07-28&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("-25252734927766555-06-07+02:00") = xs:date("25252734927766555-07-28")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;25252734927766555-07-28&#34;) != xs:date(&#34;-25252734927766555-06-07+02:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("25252734927766555-07-28") != xs:date("-25252734927766555-06-07+02:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-30&#34;) eq xs:date(&#34;2008-01-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-30") eq xs:date("2008-01-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31+09:00&#34;) eq xs:date(&#34;2008-01-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31+09:00") eq xs:date("2008-01-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31&#34;) eq xs:date(&#34;2008-01-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31") eq xs:date("2008-01-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31+09:00&#34;) eq xs:date(&#34;2008-01-31&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31+09:00") eq xs:date("2008-01-31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-30&#34;) ne xs:date(&#34;2008-01-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-30") ne xs:date("2008-01-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31+09:00&#34;) ne xs:date(&#34;2008-01-30&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31+09:00") ne xs:date("2008-01-30")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31&#34;) ne xs:date(&#34;2008-01-31+09:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31") ne xs:date("2008-01-31+09:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-01-31+09:00&#34;) ne xs:date(&#34;2008-01-31&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-01-31+09:00") ne xs:date("2008-01-31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

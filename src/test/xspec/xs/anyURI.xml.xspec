@@ -1,60 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:anyURI(())</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("odd-scheme+1.://www.example.org/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("odd-scheme+1.://www.example.org/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://%0Ad%E2%9C%90%F0%98%9A%A0/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://%0Ad%E2%9C%90%F0%98%9A%A0/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://!$&amp;'()*+,;=/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://!$&amp;'()*+,;=/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/%0Ad%E2%9C%90%F0%98%9A%A0/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/%0Ad%E2%9C%90%F0%98%9A%A0/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/!/$/&amp;/'/(/)/*/+/,/;/=/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/!/$/&amp;/'/(/)/*/+/,/;/=/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/:/@/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/:/@/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/?%0Ad%E2%9C%90%F0%98%9A%A0/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/?%0Ad%E2%9C%90%F0%98%9A%A0/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/?!$&amp;'()*+,;=")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/?!$&amp;'()*+,;=")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/?:@")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/?:@")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/#%0Ad%E2%9C%90%F0%98%9A%A0/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/#%0Ad%E2%9C%90%F0%98%9A%A0/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/#!$&amp;'()*+,;=")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/#!$&amp;'()*+,;=")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.org/#:@")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.org/#:@")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/anyURI.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:anyURI(())">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;odd-scheme+1.://www.example.org/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("odd-scheme+1.://www.example.org/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://%0Ad%E2%9C%90%F0%98%9A%A0/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://%0Ad%E2%9C%90%F0%98%9A%A0/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://!$&amp;'()*+,;=/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://!$&amp;'()*+,;=/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/%0Ad%E2%9C%90%F0%98%9A%A0/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/%0Ad%E2%9C%90%F0%98%9A%A0/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/!/$/&amp;/'/(/)/*/+/,/;/=/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/!/$/&amp;/'/(/)/*/+/,/;/=/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/:/@/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/:/@/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/?%0Ad%E2%9C%90%F0%98%9A%A0/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/?%0Ad%E2%9C%90%F0%98%9A%A0/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/?!$&amp;'()*+,;=&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/?!$&amp;'()*+,;=")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/?:@&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/?:@")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/#%0Ad%E2%9C%90%F0%98%9A%A0/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/#%0Ad%E2%9C%90%F0%98%9A%A0/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/#!$&amp;'()*+,;=&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/#!$&amp;'()*+,;=")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.org/#:@&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.org/#:@")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

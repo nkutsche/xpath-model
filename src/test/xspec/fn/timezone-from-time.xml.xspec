@@ -1,116 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("13:20:00-05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("13:20:00-05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:timezone-from-time(xs:time("13:20:00")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:timezone-from-time(xs:time("13:20:00")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("01:23:02Z")) gt fn:timezone-from-time(xs:time("01:23:03Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("01:23:02Z")) gt fn:timezone-from-time(xs:time("01:23:03Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("01:10:20Z")) le fn:timezone-from-time(xs:time("01:20:30Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("01:10:20Z")) le fn:timezone-from-time(xs:time("01:20:30Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:timezone-from-time(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:timezone-from-time(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("00:59:00+00:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("00:59:00+00:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("23:20:59-00:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("23:20:59-00:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("02:00:00Z")) + fn:timezone-from-time(xs:time("10:00:10Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("02:00:00Z")) + fn:timezone-from-time(xs:time("10:00:10Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("10:10:10Z")) - fn:timezone-from-time(xs:time("09:02:07Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("10:10:10Z")) - fn:timezone-from-time(xs:time("09:02:07Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:string(fn:timezone-from-time(xs:time("02:02:03Z"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:string(fn:timezone-from-time(xs:time("02:02:03Z"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("22:33:10+10:00")) div fn:timezone-from-time(xs:time("02:11:02+05:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("22:33:10+10:00")) div fn:timezone-from-time(xs:time("02:11:02+05:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:number(fn:timezone-from-time(xs:time("10:12:15Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:number(fn:timezone-from-time(xs:time("10:12:15Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:string(fn:timezone-from-time(xs:time("10:10:20Z"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:string(fn:timezone-from-time(xs:time("10:10:20Z"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:timezone-from-time(xs:time("10:00:01Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:timezone-from-time(xs:time("10:00:01Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:timezone-from-time(xs:time("10:10:01Z"))) and fn:string(fn:timezone-from-time(xs:time("10:10:01Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:timezone-from-time(xs:time("10:10:01Z"))) and fn:string(fn:timezone-from-time(xs:time("10:10:01Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("10:02:01Z")) eq fn:timezone-from-time(xs:time("10:02:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("10:02:01Z")) eq fn:timezone-from-time(xs:time("10:02:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("10:00:01Z")) ne fn:timezone-from-time(xs:time("01:01:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("10:00:01Z")) ne fn:timezone-from-time(xs:time("01:01:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("10:00:00Z")) le fn:timezone-from-time(xs:time("10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("10:00:00Z")) le fn:timezone-from-time(xs:time("10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:timezone-from-time(xs:time("10:03:01Z")) ge fn:timezone-from-time(xs:time("10:04:02Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:timezone-from-time(xs:time("10:03:01Z")) ge fn:timezone-from-time(xs:time("10:04:02Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:timezone-from-time(xs:time("10:03:01Z"))) or fn:string(fn:timezone-from-time(xs:time("10:04:02Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:timezone-from-time(xs:time("10:03:01Z"))) or fn:string(fn:timezone-from-time(xs:time("10:04:02Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>timezone-from-time()</x:label>
-      <x:variable name="expr" as="xs:string">timezone-from-time()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>timezone-from-time((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">timezone-from-time((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(timezone-from-time(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(timezone-from-time(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>timezone-from-time(()) instance of xs:dayTimeDuration?</x:label>
-      <x:variable name="expr" as="xs:string">timezone-from-time(()) instance of xs:dayTimeDuration?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>timezone-from-time(xs:time("23:43:12.765Z")) eq xs:dayTimeDuration("PT0S")</x:label>
-      <x:variable name="expr" as="xs:string">timezone-from-time(xs:time("23:43:12.765Z")) eq xs:dayTimeDuration("PT0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>timezone-from-time(xs:time("23:43:12.765-08:23")) eq xs:dayTimeDuration("-PT8H23M")</x:label>
-      <x:variable name="expr" as="xs:string">timezone-from-time(xs:time("23:43:12.765-08:23")) eq xs:dayTimeDuration("-PT8H23M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(timezone-from-time(xs:time("23:43:12.765")))</x:label>
-      <x:variable name="expr" as="xs:string">empty(timezone-from-time(xs:time("23:43:12.765")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/timezone-from-time.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:timezone-from-time(xs:time(&#34;13:20:00-05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("13:20:00-05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:timezone-from-time(xs:time(&#34;13:20:00&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:timezone-from-time(xs:time("13:20:00")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;01:23:02Z&#34;)) gt fn:timezone-from-time(xs:time(&#34;01:23:03Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("01:23:02Z")) gt fn:timezone-from-time(xs:time("01:23:03Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;01:10:20Z&#34;)) le fn:timezone-from-time(xs:time(&#34;01:20:30Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("01:10:20Z")) le fn:timezone-from-time(xs:time("01:20:30Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:timezone-from-time(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:timezone-from-time(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;00:59:00+00:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("00:59:00+00:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;23:20:59-00:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("23:20:59-00:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;02:00:00Z&#34;)) + fn:timezone-from-time(xs:time(&#34;10:00:10Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("02:00:00Z")) + fn:timezone-from-time(xs:time("10:00:10Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;10:10:10Z&#34;)) - fn:timezone-from-time(xs:time(&#34;09:02:07Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("10:10:10Z")) - fn:timezone-from-time(xs:time("09:02:07Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:string(fn:timezone-from-time(xs:time(&#34;02:02:03Z&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:string(fn:timezone-from-time(xs:time("02:02:03Z"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;22:33:10+10:00&#34;)) div fn:timezone-from-time(xs:time(&#34;02:11:02+05:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("22:33:10+10:00")) div fn:timezone-from-time(xs:time("02:11:02+05:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:number(fn:timezone-from-time(xs:time(&#34;10:12:15Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:number(fn:timezone-from-time(xs:time("10:12:15Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:string(fn:timezone-from-time(xs:time(&#34;10:10:20Z&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:string(fn:timezone-from-time(xs:time("10:10:20Z"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:timezone-from-time(xs:time(&#34;10:00:01Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:timezone-from-time(xs:time("10:00:01Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:timezone-from-time(xs:time(&#34;10:10:01Z&#34;))) and fn:string(fn:timezone-from-time(xs:time(&#34;10:10:01Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:timezone-from-time(xs:time("10:10:01Z"))) and fn:string(fn:timezone-from-time(xs:time("10:10:01Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;10:02:01Z&#34;)) eq fn:timezone-from-time(xs:time(&#34;10:02:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("10:02:01Z")) eq fn:timezone-from-time(xs:time("10:02:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;10:00:01Z&#34;)) ne fn:timezone-from-time(xs:time(&#34;01:01:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("10:00:01Z")) ne fn:timezone-from-time(xs:time("01:01:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;10:00:00Z&#34;)) le fn:timezone-from-time(xs:time(&#34;10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("10:00:00Z")) le fn:timezone-from-time(xs:time("10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:timezone-from-time(xs:time(&#34;10:03:01Z&#34;)) ge fn:timezone-from-time(xs:time(&#34;10:04:02Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:timezone-from-time(xs:time("10:03:01Z")) ge fn:timezone-from-time(xs:time("10:04:02Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:timezone-from-time(xs:time(&#34;10:03:01Z&#34;))) or fn:string(fn:timezone-from-time(xs:time(&#34;10:04:02Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:timezone-from-time(xs:time("10:03:01Z"))) or fn:string(fn:timezone-from-time(xs:time("10:04:02Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="timezone-from-time()">
+      <x:call>
+        <x:param select="string(.)">timezone-from-time()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="timezone-from-time((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">timezone-from-time((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(timezone-from-time(()))">
+      <x:call>
+        <x:param select="string(.)">empty(timezone-from-time(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="timezone-from-time(()) instance of xs:dayTimeDuration?">
+      <x:call>
+        <x:param select="string(.)">timezone-from-time(()) instance of xs:dayTimeDuration?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="timezone-from-time(xs:time(&#34;23:43:12.765Z&#34;)) eq xs:dayTimeDuration(&#34;PT0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">timezone-from-time(xs:time("23:43:12.765Z")) eq xs:dayTimeDuration("PT0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="timezone-from-time(xs:time(&#34;23:43:12.765-08:23&#34;)) eq xs:dayTimeDuration(&#34;-PT8H23M&#34;)">
+      <x:call>
+        <x:param select="string(.)">timezone-from-time(xs:time("23:43:12.765-08:23")) eq xs:dayTimeDuration("-PT8H23M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(timezone-from-time(xs:time(&#34;23:43:12.765&#34;)))">
+      <x:call>
+        <x:param select="string(.)">empty(timezone-from-time(xs:time("23:43:12.765")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

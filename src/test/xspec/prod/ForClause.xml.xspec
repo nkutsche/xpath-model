@@ -1,268 +1,451 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>for $a in ("test", "test1", "test2") return $a</x:label>
-      <x:variable name="expr" as="xs:string">for $a in ("test", "test1", "test2") return $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $f in /MyComputer//File[@creation_date="08/06/00"]/SecurityObject/Denies/Deny[security/right] return $f/../../@name/string()</x:label>
-      <x:variable name="expr" as="xs:string">for $f in /MyComputer//File[@creation_date="08/06/00"]/SecurityObject/Denies/Deny[security/right] return $f/../../@name/string()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $AaBbCc.-_Dd in /MyComputer/Drive1/Folder return $AaBbCc.-_Dd/FolderName</x:label>
-      <x:variable name="expr" as="xs:string">for $AaBbCc.-_Dd in /MyComputer/Drive1/Folder return $AaBbCc.-_Dd/FolderName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in $a/* return $a</x:label>
-      <x:variable name="expr" as="xs:string">for $a in $a/* return $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $fileName in for $file in //Folder/File return $file/FileName return string( $fileName )</x:label>
-      <x:variable name="expr" as="xs:string">for $fileName in for $file in //Folder/File return $file/FileName return string( $fileName )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $fileName in //File/FileName, 
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/ForClause.xml"><x:call function="nk:xpath-model"/><x:scenario label="for $a in (&#34;test&#34;, &#34;test1&#34;, &#34;test2&#34;) return $a">
+      <x:call>
+        <x:param select="string(.)">for $a in ("test", "test1", "test2") return $a</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $f in /MyComputer//File[@creation_date=&#34;08/06/00&#34;]/SecurityObject/Denies/Deny[security/right] return $f/../../@name/string()">
+      <x:call>
+        <x:param select="string(.)">for $f in /MyComputer//File[@creation_date="08/06/00"]/SecurityObject/Denies/Deny[security/right] return $f/../../@name/string()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $AaBbCc.-_Dd in /MyComputer/Drive1/Folder return $AaBbCc.-_Dd/FolderName">
+      <x:call>
+        <x:param select="string(.)">for $AaBbCc.-_Dd in /MyComputer/Drive1/Folder return $AaBbCc.-_Dd/FolderName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in $a/* return $a">
+      <x:call>
+        <x:param select="string(.)">for $a in $a/* return $a</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $fileName in for $file in //Folder/File return $file/FileName return string( $fileName )">
+      <x:call>
+        <x:param select="string(.)">for $fileName in for $file in //Folder/File return $file/FileName return string( $fileName )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $fileName in //File/FileName, &#xA;            $folderName in //Folder[contains(description, 'fren')]/FolderName &#xA;        return ($folderName, $fileName)">
+      <x:call>
+        <x:param select="string(.)">for $fileName in //File/FileName, 
             $folderName in //Folder[contains(description, 'fren')]/FolderName 
-        return ($folderName, $fileName)</x:label>
-      <x:variable name="expr" as="xs:string">for $fileName in //File/FileName, 
-            $folderName in //Folder[contains(description, 'fren')]/FolderName 
-        return ($folderName, $fileName)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $i in (1, 2), $j in (3, 4) return ($i, $j)</x:label>
-      <x:variable name="expr" as="xs:string">for $i in (1, 2), $j in (3, 4) return ($i, $j)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $file in (//Folder)[1]/File, $file in (//Folder)[2]/File return $file/FileName</x:label>
-      <x:variable name="expr" as="xs:string">for $file in (//Folder)[1]/File, $file in (//Folder)[2]/File return $file/FileName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $var in (1,2), $var in (2,2) return $var * $var</x:label>
-      <x:variable name="expr" as="xs:string">for $var in (1,2), $var in (2,2) return $var * $var</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(1 to 5, (for $i in (1,2,3,4,5) return $i))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(1 to 5, (for $i in (1,2,3,4,5) return $i))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 eq (for $foo in 1 return 3)</x:label>
-      <x:variable name="expr" as="xs:string">3 eq (for $foo in 1 return 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (for $foo in 1 return $foo)</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (for $foo in 1 return $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>2 eq (for $foo in 1 return $foo + 1)</x:label>
-      <x:variable name="expr" as="xs:string">2 eq (for $foo in 1 return $foo + 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 eq (for $foo in 1 return for $foo in 3 return $foo)</x:label>
-      <x:variable name="expr" as="xs:string">3 eq (for $foo in 1 return for $foo in 3 return $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((for $var in (1, 2, 3) return $var), (1, 2, 3))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((for $var in (1, 2, 3) return $var), (1, 2, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((2, 2), (for $foo in (1, 1) return 1 + $foo))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((2, 2), (for $foo in (1, 1) return 1 + $foo))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>4 eq (for $foo in 1, $bar in 2, $moo in 3 return 4)</x:label>
-      <x:variable name="expr" as="xs:string">4 eq (for $foo in 1, $bar in 2, $moo in 3 return 4)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:label>
-      <x:variable name="expr" as="xs:string">3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:label>
-      <x:variable name="expr" as="xs:string">3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 eq (for $foo in 1, $foo in 3 return $foo)</x:label>
-      <x:variable name="expr" as="xs:string">3 eq (for $foo in 1, $foo in 3 return $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>8 eq (for $foo in 1, $foo in 3, $moo in 5 return $moo + $foo)</x:label>
-      <x:variable name="expr" as="xs:string">8 eq (for $foo in 1, $foo in 3, $moo in 5 return $moo + $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>6 eq (for $foo in 1, $foo in 3 return $foo + $foo)</x:label>
-      <x:variable name="expr" as="xs:string">6 eq (for $foo in 1, $foo in 3 return $foo + $foo)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(for $var in () return current-time())</x:label>
-      <x:variable name="expr" as="xs:string">empty(for $var in () return current-time())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(for $var in () return 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty(for $var in () return 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((for $var in () return current-time()))</x:label>
-      <x:variable name="expr" as="xs:string">empty((for $var in () return current-time()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty((for $var in () return 1) eq 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty((for $var in () return 1) eq 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(for $var in subsequence((current-time(), 1), 4) return 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty(for $var in subsequence((current-time(), 1), 4) return 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal(remove(for $var in (current-time(), 2, 3, 4) return $var, 1), (2, 3, 4))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal(remove(for $var in (current-time(), 2, 3, 4) return $var, 1), (2, 3, 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(for $fn:name in (1, 1) return $fn:name) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(for $fn:name in (1, 1) return $fn:name) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(for $xs:name in (1, 1) return $xs:name) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(for $xs:name in (1, 1) return $xs:name) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">$NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$PREFIXNOTEXIST:NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">$PREFIXNOTEXIST:NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$xs:NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">$xs:NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 + $NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">1 + $NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 + $prefix:NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">1 + $prefix:NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 + $xs:NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">1 + $xs:NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$NOTEXIST + 1</x:label>
-      <x:variable name="expr" as="xs:string">$NOTEXIST + 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$PREFIXNOTEXIST:NOTEXIST + 1</x:label>
-      <x:variable name="expr" as="xs:string">$PREFIXNOTEXIST:NOTEXIST + 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$xs:NOTEXIST + 1</x:label>
-      <x:variable name="expr" as="xs:string">$xs:NOTEXIST + 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in 1 return $NOTEXIST</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in 1 return $NOTEXIST</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in (1, 2, $foo) return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in (1, 2, $foo) return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in (1, $foo, 3) return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in (1, $foo, 3) return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in ($foo, 2, 3) return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in ($foo, 2, 3) return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in $foo return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in $foo return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in 1 return $bar + (for $bar in 2 return $bar)</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in 1 return $bar + (for $bar in 2 return $bar)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in (1, 2, 3), $b in (1, 2, 3, $b) return $a, $b</x:label>
-      <x:variable name="expr" as="xs:string">for $a in (1, 2, 3), $b in (1, 2, 3, $b) return $a, $b</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $a</x:label>
-      <x:variable name="expr" as="xs:string">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in (1, 2) return 1, $a</x:label>
-      <x:variable name="expr" as="xs:string">for $a in (1, 2) return 1, $a</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $b</x:label>
-      <x:variable name="expr" as="xs:string">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $b</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $c</x:label>
-      <x:variable name="expr" as="xs:string">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $c</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in "foo" return 1 + $foo</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in "foo" return 1 + $foo</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $foo in ("a string", "another one") return 1 + subsequence($foo, 1, 1)</x:label>
-      <x:variable name="expr" as="xs:string">for $foo in ("a string", "another one") return 1 + subsequence($foo, 1, 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (for $a in 1 return $a)</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (for $a in 1 return $a)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal((for $fo in trace((1, 2, 3), "msg") return $fo), (1, 2, 3))</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal((for $fo in trace((1, 2, 3), "msg") return $fo), (1, 2, 3))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (for $a in 1 return $a)</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (for $a in 1 return $a)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 eq (for $xs:a in 1 return $xs:a)</x:label>
-      <x:variable name="expr" as="xs:string">1 eq (for $xs:a in 1 return $xs:a)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(for $i in (1, 2, current-time()) return ($i, $i)) eq 6</x:label>
-      <x:variable name="expr" as="xs:string">count(for $i in (1, 2, current-time()) return ($i, $i)) eq 6</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $d in person return $d</x:label>
-      <x:variable name="expr" as="xs:string">for $d in person return $d</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $n in node return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $n in node return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $n in document return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $n in document return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $n in attribute return 1</x:label>
-      <x:variable name="expr" as="xs:string">for $n in attribute return 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+        return ($folderName, $fileName)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )">
+      <x:call>
+        <x:param select="string(.)">for $folder in //Folder return for $file in $folder/File return string( $file/FileName[1] )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName">
+      <x:call>
+        <x:param select="string(.)">for $folder in //Folder, $index in (1, 2, 3) return $folder/File[$index]/FileName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $i in (1, 2), $j in (3, 4) return ($i, $j)">
+      <x:call>
+        <x:param select="string(.)">for $i in (1, 2), $j in (3, 4) return ($i, $j)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $file in (//Folder)[1]/File, $file in (//Folder)[2]/File return $file/FileName">
+      <x:call>
+        <x:param select="string(.)">for $file in (//Folder)[1]/File, $file in (//Folder)[2]/File return $file/FileName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $var in (1,2), $var in (2,2) return $var * $var">
+      <x:call>
+        <x:param select="string(.)">for $var in (1,2), $var in (2,2) return $var * $var</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(1 to 5, (for $i in (1,2,3,4,5) return $i))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(1 to 5, (for $i in (1,2,3,4,5) return $i))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 eq (for $foo in 1 return 3)">
+      <x:call>
+        <x:param select="string(.)">3 eq (for $foo in 1 return 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (for $foo in 1 return $foo)">
+      <x:call>
+        <x:param select="string(.)">1 eq (for $foo in 1 return $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="2 eq (for $foo in 1 return $foo + 1)">
+      <x:call>
+        <x:param select="string(.)">2 eq (for $foo in 1 return $foo + 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 eq (for $foo in 1 return for $foo in 3 return $foo)">
+      <x:call>
+        <x:param select="string(.)">3 eq (for $foo in 1 return for $foo in 3 return $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((for $var in (1, 2, 3) return $var), (1, 2, 3))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((for $var in (1, 2, 3) return $var), (1, 2, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((2, 2), (for $foo in (1, 1) return 1 + $foo))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((2, 2), (for $foo in (1, 1) return 1 + $foo))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="4 eq (for $foo in 1, $bar in 2, $moo in 3 return 4)">
+      <x:call>
+        <x:param select="string(.)">4 eq (for $foo in 1, $bar in 2, $moo in 3 return 4)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)">
+      <x:call>
+        <x:param select="string(.)">3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)">
+      <x:call>
+        <x:param select="string(.)">3 eq (for $foo in 1 return for $bar in 2 return $bar + $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 eq (for $foo in 1, $foo in 3 return $foo)">
+      <x:call>
+        <x:param select="string(.)">3 eq (for $foo in 1, $foo in 3 return $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="8 eq (for $foo in 1, $foo in 3, $moo in 5 return $moo + $foo)">
+      <x:call>
+        <x:param select="string(.)">8 eq (for $foo in 1, $foo in 3, $moo in 5 return $moo + $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="6 eq (for $foo in 1, $foo in 3 return $foo + $foo)">
+      <x:call>
+        <x:param select="string(.)">6 eq (for $foo in 1, $foo in 3 return $foo + $foo)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(for $var in () return current-time())">
+      <x:call>
+        <x:param select="string(.)">empty(for $var in () return current-time())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(for $var in () return 1)">
+      <x:call>
+        <x:param select="string(.)">empty(for $var in () return 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((for $var in () return current-time()))">
+      <x:call>
+        <x:param select="string(.)">empty((for $var in () return current-time()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty((for $var in () return 1) eq 1)">
+      <x:call>
+        <x:param select="string(.)">empty((for $var in () return 1) eq 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(for $var in subsequence((current-time(), 1), 4) return 1)">
+      <x:call>
+        <x:param select="string(.)">empty(for $var in subsequence((current-time(), 1), 4) return 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal(remove(for $var in (current-time(), 2, 3, 4) return $var, 1), (2, 3, 4))">
+      <x:call>
+        <x:param select="string(.)">deep-equal(remove(for $var in (current-time(), 2, 3, 4) return $var, 1), (2, 3, 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(for $fn:name in (1, 1) return $fn:name) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(for $fn:name in (1, 1) return $fn:name) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(for $xs:name in (1, 1) return $xs:name) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(for $xs:name in (1, 1) return $xs:name) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">$NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$PREFIXNOTEXIST:NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">$PREFIXNOTEXIST:NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$xs:NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">$xs:NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 + $NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">1 + $NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 + $prefix:NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">1 + $prefix:NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 + $xs:NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">1 + $xs:NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$NOTEXIST + 1">
+      <x:call>
+        <x:param select="string(.)">$NOTEXIST + 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$PREFIXNOTEXIST:NOTEXIST + 1">
+      <x:call>
+        <x:param select="string(.)">$PREFIXNOTEXIST:NOTEXIST + 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$xs:NOTEXIST + 1">
+      <x:call>
+        <x:param select="string(.)">$xs:NOTEXIST + 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in 1 return $NOTEXIST">
+      <x:call>
+        <x:param select="string(.)">for $foo in 1 return $NOTEXIST</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in (1, 2, $foo) return 1">
+      <x:call>
+        <x:param select="string(.)">for $foo in (1, 2, $foo) return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in (1, $foo, 3) return 1">
+      <x:call>
+        <x:param select="string(.)">for $foo in (1, $foo, 3) return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in ($foo, 2, 3) return 1">
+      <x:call>
+        <x:param select="string(.)">for $foo in ($foo, 2, 3) return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in $foo return 1">
+      <x:call>
+        <x:param select="string(.)">for $foo in $foo return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in 1 return $bar + (for $bar in 2 return $bar)">
+      <x:call>
+        <x:param select="string(.)">for $foo in 1 return $bar + (for $bar in 2 return $bar)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in (1, 2, 3), $b in (1, 2, 3, $b) return $a, $b">
+      <x:call>
+        <x:param select="string(.)">for $a in (1, 2, 3), $b in (1, 2, 3, $b) return $a, $b</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $a">
+      <x:call>
+        <x:param select="string(.)">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $a</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in (1, 2) return 1, $a">
+      <x:call>
+        <x:param select="string(.)">for $a in (1, 2) return 1, $a</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $b">
+      <x:call>
+        <x:param select="string(.)">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $b</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $c">
+      <x:call>
+        <x:param select="string(.)">for $a in (1, 2), $b in (1, 2), $c in (1, 2) return 1, $c</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in &#34;foo&#34; return 1 + $foo">
+      <x:call>
+        <x:param select="string(.)">for $foo in "foo" return 1 + $foo</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $foo in (&#34;a string&#34;, &#34;another one&#34;) return 1 + subsequence($foo, 1, 1)">
+      <x:call>
+        <x:param select="string(.)">for $foo in ("a string", "another one") return 1 + subsequence($foo, 1, 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (for $a in 1 return $a)">
+      <x:call>
+        <x:param select="string(.)">1 eq (for $a in 1 return $a)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal((for $fo in trace((1, 2, 3), &#34;msg&#34;) return $fo), (1, 2, 3))">
+      <x:call>
+        <x:param select="string(.)">deep-equal((for $fo in trace((1, 2, 3), "msg") return $fo), (1, 2, 3))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (for $a in 1 return $a)">
+      <x:call>
+        <x:param select="string(.)">1 eq (for $a in 1 return $a)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 eq (for $xs:a in 1 return $xs:a)">
+      <x:call>
+        <x:param select="string(.)">1 eq (for $xs:a in 1 return $xs:a)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(for $i in (1, 2, current-time()) return ($i, $i)) eq 6">
+      <x:call>
+        <x:param select="string(.)">count(for $i in (1, 2, current-time()) return ($i, $i)) eq 6</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4">
+      <x:call>
+        <x:param select="string(.)">count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 6 or count(for $i in (1, 2, timezone-from-time(current-time())) return ($i, $i)) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $d in person return $d">
+      <x:call>
+        <x:param select="string(.)">for $d in person return $d</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $n in node return 1">
+      <x:call>
+        <x:param select="string(.)">for $n in node return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $n in document return 1">
+      <x:call>
+        <x:param select="string(.)">for $n in document return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $n in attribute return 1">
+      <x:call>
+        <x:param select="string(.)">for $n in attribute return 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

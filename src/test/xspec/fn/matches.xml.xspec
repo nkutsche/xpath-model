@@ -1,626 +1,1065 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:matches("This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("This is a characte","This is a characte")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("This is a characte","This is a characte")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra", "bra", "p")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra", "bra", "p")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("#abc#1", "^(#)abc[\1]1$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("#abc#1", "^(#)abc[\1]1$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("#abc#1", "^(#)abc\2$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("#abc#1", "^(#)abc\2$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("#abc#1", "^((#)abc\1)$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("#abc#1", "^((#)abc\1)$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abcdefghijklmnopq", "(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)((m)(n)(o)(p)(q)\13)$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abcdefghijklmnopq", "(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)((m)(n)(o)(p)(q)\13)$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra", "bra")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra", "bra")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra", "^a.*a$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra", "^a.*a$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra", "^bra")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra", "^bra")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:matches("abracadabra", "^bra"),fn:matches("abracadabra", "^bra", ""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:matches("abracadabra", "^bra"),fn:matches("abracadabra", "^bra", ""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:matches("()", "^bra"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:matches("()", "^bra"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra^abracadabra", "\^")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra^abracadabra", "\^")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra?abracadabra", "\?")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra?abracadabra", "\?")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra*abracadabra", "\*")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra*abracadabra", "\*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra+abracadabra", "\+")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra+abracadabra", "\+")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra{abracadabra", "\{")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra{abracadabra", "\{")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra}abracadabra", "\}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra}abracadabra", "\}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra(abracadabra", "\(")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra(abracadabra", "\(")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra)abracadabra", "\)")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra)abracadabra", "\)")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra[abracadabra", "\[")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra[abracadabra", "\[")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra]abracadabra", "\]")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra]abracadabra", "\]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra-abracadabra", "\-")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra-abracadabra", "\-")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra.abracadabra", "\.")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra.abracadabra", "\.")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra|abracadabra", "\|")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra|abracadabra", "\|")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra\abracadabra", "\\")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra\abracadabra", "\\")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra	abracadabra", "\t")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra	abracadabra", "\t")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra
-abracadabra", "\n")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra
-abracadabra", "\n")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabraabracadabra", "aa{1}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabraabracadabra", "aa{1}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabraabracadabraabracadabra", "aa{1,}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabraabracadabraabracadabra", "aa{1,}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabraabracadabraabracadabra", "aa{1,2}")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabraabracadabraabracadabra", "aa{1,2}")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra", "**%%")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra", "**%%")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "^$", "m")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "^$", "m")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/matches.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:matches(&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;This is a characte&#34;,&#34;This is a characte&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("This is a characte","This is a characte")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#34;, &#34;bra&#34;, &#34;p&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra", "bra", "p")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;#abc#1&#34;, &#34;^(#)abc[\1]1$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("#abc#1", "^(#)abc[\1]1$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;#abc#1&#34;, &#34;^(#)abc\2$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("#abc#1", "^(#)abc\2$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;#abc#1&#34;, &#34;^((#)abc\1)$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("#abc#1", "^((#)abc\1)$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abcdefghijklmnopq&#34;, &#34;(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)((m)(n)(o)(p)(q)\13)$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abcdefghijklmnopq", "(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)((m)(n)(o)(p)(q)\13)$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#34;, &#34;bra&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra", "bra")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#34;, &#34;^a.*a$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra", "^a.*a$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#34;, &#34;^bra&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra", "^bra")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:matches(&#34;abracadabra&#34;, &#34;^bra&#34;),fn:matches(&#34;abracadabra&#34;, &#34;^bra&#34;, &#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:matches("abracadabra", "^bra"),fn:matches("abracadabra", "^bra", ""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:matches(&#34;()&#34;, &#34;^bra&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:matches("()", "^bra"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra^abracadabra&#34;, &#34;\^&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra^abracadabra", "\^")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra?abracadabra&#34;, &#34;\?&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra?abracadabra", "\?")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra*abracadabra&#34;, &#34;\*&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra*abracadabra", "\*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra+abracadabra&#34;, &#34;\+&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra+abracadabra", "\+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra{abracadabra&#34;, &#34;\{&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra{abracadabra", "\{")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra}abracadabra&#34;, &#34;\}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra}abracadabra", "\}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra(abracadabra&#34;, &#34;\(&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra(abracadabra", "\(")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra)abracadabra&#34;, &#34;\)&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra)abracadabra", "\)")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra[abracadabra&#34;, &#34;\[&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra[abracadabra", "\[")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra]abracadabra&#34;, &#34;\]&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra]abracadabra", "\]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra-abracadabra&#34;, &#34;\-&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra-abracadabra", "\-")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra.abracadabra&#34;, &#34;\.&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra.abracadabra", "\.")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra|abracadabra&#34;, &#34;\|&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra|abracadabra", "\|")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra\abracadabra&#34;, &#34;\\&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra\abracadabra", "\\")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#x9;abracadabra&#34;, &#34;\t&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra	abracadabra", "\t")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#xA;abracadabra&#34;, &#34;\n&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra
+abracadabra", "\n")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabraabracadabra&#34;, &#34;aa{1}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabraabracadabra", "aa{1}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabraabracadabraabracadabra", "aa{1,}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabraabracadabraabracadabra&#34;, &#34;aa{1,2}&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabraabracadabraabracadabra", "aa{1,2}")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra&#34;, &#34;**%%&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra", "**%%")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), &#34;^$&#34;, &#34;m&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "^$", "m")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;&#xA;abcd&#xA;defg&#xA;&#34;, &#34;^$&#34;, &#34;m&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("
 abcd
 defg
-", "^$", "m")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("
-abcd
-defg
-", "^$", "m")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abcd
+", "^$", "m")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abcd&#xA;&#xA;defg&#xA;&#34;, &#34;^$&#34;, &#34;m&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abcd
 
 defg
-", "^$", "m")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abcd
-
-defg
-", "^$", "m")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("#abc#1", "^(#)abc\11$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("#abc#1", "^(#)abc\11$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("#abcdefghijklmnopq#1", "^(#)(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)(n)(o)(p)(q)\11$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("#abcdefghijklmnopq#1", "^(#)(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)(n)(o)(p)(q)\11$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('aA', '(a)\99')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('aA', '(a)\99')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)\10')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)\10')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k\11)')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k\11)')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j\10)')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j\10)')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghii', '(a)(b)(c)(d)(e)(f)(g)(h)(i\9)')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghii', '(a)(b)(c)(d)(e)(f)(g)(h)(i\9)')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('aa', '(a\1)')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('aa', '(a\1)')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$', 's')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$', 's')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones', 's')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones', 's')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 's')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 's')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "g$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "g$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra-abracadabra.", "\.")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra-abracadabra.", "\.")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("abracadabra-abracadabra-3", "(124|864|377|3)")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("abracadabra-abracadabra-3", "(124|864|377|3)")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("ab()cd()ef()gh", "^(ab)([()]*)(cd)([)(]*)ef\4gh$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("ab()cd()ef()gh", "^(ab)([()]*)(cd)([)(]*)ef\4gh$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("aaababaaabaa", "^(a*b?a*){3,3}$")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("aaababaaabaa", "^(a*b?a*){3,3}$")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("A", "([A-Z])\1*")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("A", "([A-Z])\1*")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("kZ", "(^|:)?Z")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("kZ", "(^|:)?Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('abc', 'ABC', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('abc', 'ABC', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('abZ', '[A-Z]*', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('abZ', '[A-Z]*', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('abZ', '[a-z]*', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('abZ', '[a-z]*', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches(codepoints-to-string(8490), '[A-Z]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches(codepoints-to-string(8490), '[A-Z]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches(codepoints-to-string(8490), '[a-z]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches(codepoints-to-string(8490), '[a-z]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches(codepoints-to-string(8490), 'K', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches(codepoints-to-string(8490), 'K', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches(codepoints-to-string(8490), 'k', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches(codepoints-to-string(8490), 'k', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('x', '[A-Z-[OI]]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('x', '[A-Z-[OI]]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('X', '[A-Z-[OI]]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('X', '[A-Z-[OI]]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('O', '[A-Z-[OI]]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('O', '[A-Z-[OI]]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('i', '[A-Z-[OI]]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('i', '[A-Z-[OI]]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('Q', '[^Q]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('Q', '[^Q]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('q', '[^Q]', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('q', '[^Q]', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('m', '\p{Lu}', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('m', '\p{Lu}', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('m', '\P{Lu}', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('m', '\P{Lu}', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", ())</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input")</x:label>
-      <x:variable name="expr" as="xs:string">matches("input")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", "pattern", ())</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", "pattern", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", "pattern", "", ())</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", "pattern", "", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", "pattern", " ")</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", "pattern", " ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", "pattern", "X")</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", "pattern", "X")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "hello\ sworld", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "hello\ sworld", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", " hello[ ]world", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", " hello[ ]world", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "hello[ ]world ", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "hello[ ]world ", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "he ll o[ ]worl d", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "he ll o[ ]worl d", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "\p{ IsBasicLatin}+", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "\p{ IsBasicLatin}+", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "\p{ I s B a s i c L a t i n }+", "x")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "\p{ I s B a s i c L a t i n }+", "x")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("hello world", "\p{ IsBasicLatin}+")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("hello world", "\p{ IsBasicLatin}+")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("h", "(.)\3")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("h", "(.)\3")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("h", "(.)\2")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("h", "(.)\2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("input", "\3")</x:label>
-      <x:variable name="expr" as="xs:string">matches("input", "\3")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("abcd", "(asd)[\1]")</x:label>
-      <x:variable name="expr" as="xs:string">matches("abcd", "(asd)[\1]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("abcd", "(asd)[asd\1]")</x:label>
-      <x:variable name="expr" as="xs:string">matches("abcd", "(asd)[asd\1]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("abcd", "(asd)[asd\0]")</x:label>
-      <x:variable name="expr" as="xs:string">matches("abcd", "(asd)[asd\0]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches("abcd", "1[asd\0]")</x:label>
-      <x:variable name="expr" as="xs:string">matches("abcd", "1[asd\0]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("a", "a[^b]"), fn:matches("a ", "a[^b]")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("a", "a[^b]"), fn:matches("a ", "a[^b]")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("input", "[0-9-.]*/")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("input", "[0-9-.]*/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches("input", "[0-9-.]*/")</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches("input", "[0-9-.]*/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>matches('aA', '(a)\1', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">matches('aA', '(a)\1', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '[^]')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '[^]')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '[a-\b]')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '[a-\b]')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghijkabcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)\1\2\3\4\5\6\7\8\9\10\11')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghijkabcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)\1\2\3\4\5\6\7\8\9\10\11')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('aaa', 'a{99999999999999999999999999}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('aaa', 'a{99999999999999999999999999}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('a', '[a--]')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('a', '[a--]')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('	', '[\t]')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('	', '[\t]')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('-abba-', '[-ab]+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('-abba-', '[-ab]+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{L')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{L')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{M')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{M')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{N')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{N')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{P')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{P')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Z')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Z')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{S')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{S')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{C')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{C')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{L}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{L}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{M}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{M}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{N}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{N}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{P}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{P}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Z}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Z}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{S}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{S}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{C}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{C}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Lu}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Lu}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Me}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Me}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{No}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{No}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Pf}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Pf}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Zs}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Zs}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Sk}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Sk}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Cc}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Cc}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{La}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{La}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Ma}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Ma}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Na}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Na}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Pa}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Pa}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Za}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Za}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Sa}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Sa}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', '\P{Ca}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', '\P{Ca}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('foo', 'a()b')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('foo', 'a()b')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('&amp;#x10000;', '&amp;#x10000;')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('&amp;#x10000;', '&amp;#x10000;')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('aaa', 'a{2147483647}')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('aaa', 'a{2147483647}')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abcdefghiabcdefghia0a1', '(a)(b)(c)(d)(e)(f)(g)(h)(i)\1\2\3\4\5\6\7\8\9\10\11')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abcdefghiabcdefghia0a1', '(a)(b)(c)(d)(e)(f)(g)(h)(i)\1\2\3\4\5\6\7\8\9\10\11')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abc', '\S+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abc', '\S+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('&#xD; 	', '\S+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('&#xD; 	', '\S+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('a_:', '\i+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('a_:', '\i+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('1.0', '\i+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('1.0', '\i+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('1.0', '\I+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('1.0', '\I+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('a_:', '\I+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('a_:', '\I+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abc', '\c+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abc', '\c+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches(' 	&#xD;', '\c+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches(' 	&#xD;', '\c+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('&amp;#x20;&amp;#x9;&amp;#xD;', '\C+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('&amp;#x20;&amp;#x9;&amp;#xD;', '\C+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('abc', '\C+')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('abc', '\C+')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('Mum', '([md])[aeiou]\1', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('Mum', '([md])[aeiou]\1', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('&amp;#x10000;&amp;#x10000;', '(&amp;#x10000;)\1')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('&amp;#x10000;&amp;#x10000;', '(&amp;#x10000;)\1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('&amp;#x10000;&amp;#x10001;', '(&amp;#x10000;)\1')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('&amp;#x10000;&amp;#x10001;', '(&amp;#x10000;)\1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:matches('Mud', '([md])[aeiou]\1', 'i')</x:label>
-      <x:variable name="expr" as="xs:string">fn:matches('Mud', '([md])[aeiou]\1', 'i')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+", "^$", "m")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;#abc#1&#34;, &#34;^(#)abc\11$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("#abc#1", "^(#)abc\11$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;#abcdefghijklmnopq#1&#34;, &#34;^(#)(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)(n)(o)(p)(q)\11$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("#abcdefghijklmnopq#1", "^(#)(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)(n)(o)(p)(q)\11$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('aA', '(a)\99')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('aA', '(a)\99')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)\10')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)\10')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k\11)')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k\11)')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j\10)')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghijj', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j\10)')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghii', '(a)(b)(c)(d)(e)(f)(g)(h)(i\9)')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghii', '(a)(b)(c)(d)(e)(f)(g)(h)(i\9)')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('aa', '(a\1)')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('aa', '(a\1)')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$', 's')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(10)), 'Mary$', 's')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones', 's')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(10), 'Jones'), 'Mary.Jones', 's')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 's')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('Mary', codepoints-to-string(13), 'Jones'), 'Mary.Jones', 's')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), &#34;g$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches(concat('abcd', codepoints-to-string(10), 'defg', codepoints-to-string(10)), "g$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra-abracadabra.&#34;, &#34;\.&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra-abracadabra.", "\.")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;abracadabra-abracadabra-3&#34;, &#34;(124|864|377|3)&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("abracadabra-abracadabra-3", "(124|864|377|3)")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;ab()cd()ef()gh&#34;, &#34;^(ab)([()]*)(cd)([)(]*)ef\4gh$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("ab()cd()ef()gh", "^(ab)([()]*)(cd)([)(]*)ef\4gh$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;aaababaaabaa&#34;, &#34;^(a*b?a*){3,3}$&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("aaababaaabaa", "^(a*b?a*){3,3}$")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;A&#34;, &#34;([A-Z])\1*&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("A", "([A-Z])\1*")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;kZ&#34;, &#34;(^|:)?Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("kZ", "(^|:)?Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('abc', 'ABC', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('abc', 'ABC', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('abZ', '[A-Z]*', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('abZ', '[A-Z]*', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('abZ', '[a-z]*', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('abZ', '[a-z]*', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(codepoints-to-string(8490), '[A-Z]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches(codepoints-to-string(8490), '[A-Z]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(codepoints-to-string(8490), '[a-z]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches(codepoints-to-string(8490), '[a-z]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(codepoints-to-string(8490), 'K', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches(codepoints-to-string(8490), 'K', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(codepoints-to-string(8490), 'k', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches(codepoints-to-string(8490), 'k', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('x', '[A-Z-[OI]]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('x', '[A-Z-[OI]]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('X', '[A-Z-[OI]]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('X', '[A-Z-[OI]]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('O', '[A-Z-[OI]]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('O', '[A-Z-[OI]]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('i', '[A-Z-[OI]]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('i', '[A-Z-[OI]]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('Q', '[^Q]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('Q', '[^Q]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('q', '[^Q]', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('q', '[^Q]', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('m', '\p{Lu}', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('m', '\p{Lu}', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('m', '\P{Lu}', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('m', '\P{Lu}', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">matches("input", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("input")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, &#34;pattern&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">matches("input", "pattern", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, &#34;pattern&#34;, &#34;&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">matches("input", "pattern", "", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, &#34;pattern&#34;, &#34; &#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("input", "pattern", " ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, &#34;pattern&#34;, &#34;X&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("input", "pattern", "X")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;hello\ sworld&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "hello\ sworld", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34; hello[ ]world&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", " hello[ ]world", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;hello[ ]world &#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "hello[ ]world ", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;he ll o[ ]worl d&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "he ll o[ ]worl d", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;\p{ IsBasicLatin}+&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "\p{ IsBasicLatin}+", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;\p{ I s B a s i c L a t i n }+&#34;, &#34;x&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "\p{ I s B a s i c L a t i n }+", "x")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;hello world&#34;, &#34;\p{ IsBasicLatin}+&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("hello world", "\p{ IsBasicLatin}+")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;h&#34;, &#34;(.)\3&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("h", "(.)\3")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;h&#34;, &#34;(.)\2&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("h", "(.)\2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;input&#34;, &#34;\3&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("input", "\3")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;abcd&#34;, &#34;(asd)[\1]&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("abcd", "(asd)[\1]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;abcd&#34;, &#34;(asd)[asd\1]&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("abcd", "(asd)[asd\1]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;abcd&#34;, &#34;(asd)[asd\0]&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("abcd", "(asd)[asd\0]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches(&#34;abcd&#34;, &#34;1[asd\0]&#34;)">
+      <x:call>
+        <x:param select="string(.)">matches("abcd", "1[asd\0]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;a&#34;, &#34;a[^b]&#34;), fn:matches(&#34;a &#34;, &#34;a[^b]&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("a", "a[^b]"), fn:matches("a ", "a[^b]")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;input&#34;, &#34;[0-9-.]*/&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("input", "[0-9-.]*/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(&#34;input&#34;, &#34;[0-9-.]*/&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:matches("input", "[0-9-.]*/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="matches('aA', '(a)\1', 'i')">
+      <x:call>
+        <x:param select="string(.)">matches('aA', '(a)\1', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '[^]')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '[^]')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '[a-\b]')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '[a-\b]')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghijkabcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)\1\2\3\4\5\6\7\8\9\10\11')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghijkabcdefghijk', '(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)\1\2\3\4\5\6\7\8\9\10\11')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('aaa', 'a{99999999999999999999999999}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('aaa', 'a{99999999999999999999999999}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('a', '[a--]')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('a', '[a--]')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&#x9;', '[\t]')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('	', '[\t]')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('-abba-', '[-ab]+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('-abba-', '[-ab]+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{L')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{L')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{M')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{M')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{N')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{N')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{P')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{P')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Z')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Z')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{S')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{S')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{C')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{C')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{L}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{L}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{M}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{M}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{N}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{N}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{P}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{P}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Z}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Z}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{S}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{S}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{C}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{C}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Lu}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Lu}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Me}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Me}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{No}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{No}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Pf}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Pf}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Zs}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Zs}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Sk}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Sk}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Cc}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Cc}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{La}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{La}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Ma}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Ma}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Na}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Na}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Pa}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Pa}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Za}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Za}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Sa}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Sa}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', '\P{Ca}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', '\P{Ca}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('foo', 'a()b')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('foo', 'a()b')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&amp;#x10000;', '&amp;#x10000;')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('&amp;#x10000;', '&amp;#x10000;')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('aaa', 'a{2147483647}')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('aaa', 'a{2147483647}')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abcdefghiabcdefghia0a1', '(a)(b)(c)(d)(e)(f)(g)(h)(i)\1\2\3\4\5\6\7\8\9\10\11')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abcdefghiabcdefghia0a1', '(a)(b)(c)(d)(e)(f)(g)(h)(i)\1\2\3\4\5\6\7\8\9\10\11')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abc', '\S+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abc', '\S+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&#xD; &#x9;', '\S+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('&#xD; 	', '\S+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('a_:', '\i+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('a_:', '\i+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('1.0', '\i+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('1.0', '\i+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('1.0', '\I+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('1.0', '\I+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('a_:', '\I+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('a_:', '\I+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abc', '\c+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abc', '\c+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches(' &#x9;&#xD;', '\c+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches(' 	&#xD;', '\c+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&amp;#x20;&amp;#x9;&amp;#xD;', '\C+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('&amp;#x20;&amp;#x9;&amp;#xD;', '\C+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('abc', '\C+')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('abc', '\C+')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('Mum', '([md])[aeiou]\1', 'i')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('Mum', '([md])[aeiou]\1', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&amp;#x10000;&amp;#x10000;', '(&amp;#x10000;)\1')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('&amp;#x10000;&amp;#x10000;', '(&amp;#x10000;)\1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('&amp;#x10000;&amp;#x10001;', '(&amp;#x10000;)\1')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('&amp;#x10000;&amp;#x10001;', '(&amp;#x10000;)\1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:matches('Mud', '([md])[aeiou]\1', 'i')">
+      <x:call>
+        <x:param select="string(.)">fn:matches('Mud', '([md])[aeiou]\1', 'i')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

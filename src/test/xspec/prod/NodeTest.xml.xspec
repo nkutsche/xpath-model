@@ -1,68 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>/comment()</x:label>
-      <x:variable name="expr" as="xs:string">/comment()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/processing-instruction()</x:label>
-      <x:variable name="expr" as="xs:string">/processing-instruction()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>document(*)</x:label>
-      <x:variable name="expr" as="xs:string">document(*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>document()</x:label>
-      <x:variable name="expr" as="xs:string">document()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>document-node(schema-element(thisTypeIsNotRecognizedExample.Com))</x:label>
-      <x:variable name="expr" as="xs:string">document-node(schema-element(thisTypeIsNotRecognizedExample.Com))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>document-node(element(notBound:ncname))</x:label>
-      <x:variable name="expr" as="xs:string">document-node(element(notBound:ncname))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>element(notBound:ncname)</x:label>
-      <x:variable name="expr" as="xs:string">element(notBound:ncname)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>attribute(notBound:ncname)</x:label>
-      <x:variable name="expr" as="xs:string">attribute(notBound:ncname)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>document-node(schema-element(notBound:ncname))</x:label>
-      <x:variable name="expr" as="xs:string">document-node(schema-element(notBound:ncname))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>schema-element(notBound:ncname)</x:label>
-      <x:variable name="expr" as="xs:string">schema-element(notBound:ncname)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>schema-attribute(notBound:ncname)</x:label>
-      <x:variable name="expr" as="xs:string">schema-attribute(notBound:ncname)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>processing-instruction('ncname')</x:label>
-      <x:variable name="expr" as="xs:string">processing-instruction('ncname')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>element()</x:label>
-      <x:variable name="expr" as="xs:string">element()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(4, 5)[position() = 2][last() = 1]</x:label>
-      <x:variable name="expr" as="xs:string">(4, 5)[position() = 2][last() = 1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(4, 5)[position() = 2][last() = 1][last() = 1][last()]</x:label>
-      <x:variable name="expr" as="xs:string">(4, 5)[position() = 2][last() = 1][last() = 1][last()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/NodeTest.xml"><x:call function="nk:xpath-model"/><x:scenario label="/comment()">
+      <x:call>
+        <x:param select="string(.)">/comment()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/processing-instruction()">
+      <x:call>
+        <x:param select="string(.)">/processing-instruction()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="document(*)">
+      <x:call>
+        <x:param select="string(.)">document(*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="document()">
+      <x:call>
+        <x:param select="string(.)">document()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="document-node(schema-element(thisTypeIsNotRecognizedExample.Com))">
+      <x:call>
+        <x:param select="string(.)">document-node(schema-element(thisTypeIsNotRecognizedExample.Com))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="document-node(element(notBound:ncname))">
+      <x:call>
+        <x:param select="string(.)">document-node(element(notBound:ncname))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="element(notBound:ncname)">
+      <x:call>
+        <x:param select="string(.)">element(notBound:ncname)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="attribute(notBound:ncname)">
+      <x:call>
+        <x:param select="string(.)">attribute(notBound:ncname)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="document-node(schema-element(notBound:ncname))">
+      <x:call>
+        <x:param select="string(.)">document-node(schema-element(notBound:ncname))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="schema-element(notBound:ncname)">
+      <x:call>
+        <x:param select="string(.)">schema-element(notBound:ncname)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="schema-attribute(notBound:ncname)">
+      <x:call>
+        <x:param select="string(.)">schema-attribute(notBound:ncname)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="processing-instruction('ncname')">
+      <x:call>
+        <x:param select="string(.)">processing-instruction('ncname')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="element()">
+      <x:call>
+        <x:param select="string(.)">element()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(4, 5)[position() = 2][last() = 1]">
+      <x:call>
+        <x:param select="string(.)">(4, 5)[position() = 2][last() = 1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(4, 5)[position() = 2][last() = 1][last() = 1][last()]">
+      <x:call>
+        <x:param select="string(.)">(4, 5)[position() = 2][last() = 1][last() = 1][last()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

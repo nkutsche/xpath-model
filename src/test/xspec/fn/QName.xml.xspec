@@ -1,108 +1,176 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:QName("", "ht:person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("", "ht:person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName((), "ht:person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName((), "ht:person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", "1person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", "1person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", "@person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", "@person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", "-person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", "-person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", "&lt;person&gt;")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", "&lt;person&gt;")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", ":person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", ":person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", "person:")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", "person:")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("person")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("person")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example")</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName("http://www.example.com/example", xs:integer("100"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName("http://www.example.com/example", xs:integer("100"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName( xs:integer("100"), "person" )</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName( xs:integer("100"), "person" )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:QName(20)</x:label>
-      <x:variable name="expr" as="xs:string">xs:QName(20)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName()</x:label>
-      <x:variable name="expr" as="xs:string">QName()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("http://www.example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">QName("http://www.example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("http://www.example.com/", "ncname", "error")</x:label>
-      <x:variable name="expr" as="xs:string">QName("http://www.example.com/", "ncname", "error")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("http://www.w3.org/2005/xpath-functions", "prefix:local") eq xs:QName("fn:local")</x:label>
-      <x:variable name="expr" as="xs:string">QName("http://www.w3.org/2005/xpath-functions", "prefix:local") eq xs:QName("fn:local")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("http://www.example.com/", "1asd:error")</x:label>
-      <x:variable name="expr" as="xs:string">QName("http://www.example.com/", "1asd:error")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("", "error:ncname")</x:label>
-      <x:variable name="expr" as="xs:string">QName("", "error:ncname")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName((), "error:ncname")</x:label>
-      <x:variable name="expr" as="xs:string">QName((), "error:ncname")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("my:qName", "http://example.com/MyErrorNS")</x:label>
-      <x:variable name="expr" as="xs:string">QName("my:qName", "http://example.com/MyErrorNS")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName("", "local") eq xs:QName("local")</x:label>
-      <x:variable name="expr" as="xs:string">QName("", "local") eq xs:QName("local")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>QName((), "local") eq xs:QName("local")</x:label>
-      <x:variable name="expr" as="xs:string">QName((), "local") eq xs:QName("local")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName((), ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName((), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:QName('', ' ')</x:label>
-      <x:variable name="expr" as="xs:string">fn:QName('', ' ')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/QName.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:QName(&#34;&#34;, &#34;ht:person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("", "ht:person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName((), &#34;ht:person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName((), "ht:person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;1person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", "1person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;@person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", "@person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;-person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", "-person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;&lt;person&gt;&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", "&lt;person&gt;")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;:person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", ":person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, &#34;person:&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", "person:")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;person&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("person")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName(&#34;http://www.example.com/example&#34;, xs:integer(&#34;100&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:QName("http://www.example.com/example", xs:integer("100"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName( xs:integer(&#34;100&#34;), &#34;person&#34; )">
+      <x:call>
+        <x:param select="string(.)">fn:QName( xs:integer("100"), "person" )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:QName(20)">
+      <x:call>
+        <x:param select="string(.)">xs:QName(20)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName()">
+      <x:call>
+        <x:param select="string(.)">QName()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;http://www.example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("http://www.example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;http://www.example.com/&#34;, &#34;ncname&#34;, &#34;error&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("http://www.example.com/", "ncname", "error")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;http://www.w3.org/2005/xpath-functions&#34;, &#34;prefix:local&#34;) eq xs:QName(&#34;fn:local&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("http://www.w3.org/2005/xpath-functions", "prefix:local") eq xs:QName("fn:local")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;http://www.example.com/&#34;, &#34;1asd:error&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("http://www.example.com/", "1asd:error")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;&#34;, &#34;error:ncname&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("", "error:ncname")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName((), &#34;error:ncname&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName((), "error:ncname")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;my:qName&#34;, &#34;http://example.com/MyErrorNS&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("my:qName", "http://example.com/MyErrorNS")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName(&#34;&#34;, &#34;local&#34;) eq xs:QName(&#34;local&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName("", "local") eq xs:QName("local")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="QName((), &#34;local&#34;) eq xs:QName(&#34;local&#34;)">
+      <x:call>
+        <x:param select="string(.)">QName((), "local") eq xs:QName("local")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName((), ())">
+      <x:call>
+        <x:param select="string(.)">fn:QName((), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:QName('', ' ')">
+      <x:call>
+        <x:param select="string(.)">fn:QName('', ' ')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

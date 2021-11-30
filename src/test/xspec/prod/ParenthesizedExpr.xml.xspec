@@ -1,64 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(1 + 2) * 3</x:label>
-      <x:variable name="expr" as="xs:string">(1 + 2) * 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 + (2 * 3)</x:label>
-      <x:variable name="expr" as="xs:string">1 + (2 * 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-(2 + 5)</x:label>
-      <x:variable name="expr" as="xs:string">-(2 + 5)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(-2) + 5</x:label>
-      <x:variable name="expr" as="xs:string">(-2) + 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>2 + (4 idiv 2)</x:label>
-      <x:variable name="expr" as="xs:string">2 + (4 idiv 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(2 + 4) idiv 2</x:label>
-      <x:variable name="expr" as="xs:string">(2 + 4) idiv 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>2 * (5 mod 3)</x:label>
-      <x:variable name="expr" as="xs:string">2 * (5 mod 3)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(2 * 5) mod 3</x:label>
-      <x:variable name="expr" as="xs:string">(2 * 5) mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:true() or fn:true()) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">(fn:true() or fn:true()) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:true() or (fn:true() and fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">fn:true() or (fn:true() and fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in (1,2) return (if (($x eq 1)) then ($x) else ($x + 1))</x:label>
-      <x:variable name="expr" as="xs:string">for $x in (1,2) return (if (($x eq 1)) then ($x) else ($x + 1))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1)</x:label>
-      <x:variable name="expr" as="xs:string">(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, (2, (3, 4)), (5))</x:label>
-      <x:variable name="expr" as="xs:string">(1, (2, (3, 4)), (5))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(.)</x:label>
-      <x:variable name="expr" as="xs:string">(.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/ParenthesizedExpr.xml"><x:call function="nk:xpath-model"/><x:scenario label="(1 + 2) * 3">
+      <x:call>
+        <x:param select="string(.)">(1 + 2) * 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 + (2 * 3)">
+      <x:call>
+        <x:param select="string(.)">1 + (2 * 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-(2 + 5)">
+      <x:call>
+        <x:param select="string(.)">-(2 + 5)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(-2) + 5">
+      <x:call>
+        <x:param select="string(.)">(-2) + 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="2 + (4 idiv 2)">
+      <x:call>
+        <x:param select="string(.)">2 + (4 idiv 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(2 + 4) idiv 2">
+      <x:call>
+        <x:param select="string(.)">(2 + 4) idiv 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="2 * (5 mod 3)">
+      <x:call>
+        <x:param select="string(.)">2 * (5 mod 3)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(2 * 5) mod 3">
+      <x:call>
+        <x:param select="string(.)">(2 * 5) mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:true() or fn:true()) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">(fn:true() or fn:true()) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:true() or (fn:true() and fn:false())">
+      <x:call>
+        <x:param select="string(.)">fn:true() or (fn:true() and fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in (1,2) return (if (($x eq 1)) then ($x) else ($x + 1))">
+      <x:call>
+        <x:param select="string(.)">for $x in (1,2) return (if (($x eq 1)) then ($x) else ($x + 1))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1)">
+      <x:call>
+        <x:param select="string(.)">(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, (2, (3, 4)), (5))">
+      <x:call>
+        <x:param select="string(.)">(1, (2, (3, 4)), (5))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(.)">
+      <x:call>
+        <x:param select="string(.)">(.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

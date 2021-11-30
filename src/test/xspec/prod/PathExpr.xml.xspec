@@ -1,48 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count(.[5 * /])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[5 * /])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[(/) * 5])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[(/) * 5])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[(/) &lt; 5])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[(/) &lt; 5])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/ &lt; 5])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/ &lt; 5])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[5&lt;/])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[5&lt;/])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/ &lt; a])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/ &lt; a])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/ &lt; /b])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/ &lt; /b])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/&lt;a div 3])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/&lt;a div 3])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[if (doclevel) then / else /*])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[if (doclevel) then / else /*])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(.[/-5])</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(.[/-5])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/PathExpr.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count(.[5 * /])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[5 * /])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[(/) * 5])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[(/) * 5])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[(/) &lt; 5])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[(/) &lt; 5])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[/ &lt; 5])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[/ &lt; 5])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[5&lt;/])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[5&lt;/])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[/ &lt; a])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[/ &lt; a])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[/ &lt; /b])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[/ &lt; /b])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[/&lt;a div 3])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[/&lt;a div 3])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(.[/-5])">
+      <x:call>
+        <x:param select="string(.)">fn:count(.[/-5])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

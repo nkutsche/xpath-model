@@ -1,132 +1,218 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P0DT0H0M0S"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P0DT0H0M0S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P15DT11H59M59S"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P15DT11H59M59S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P31DT23H59M59S"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P31DT23H59M59S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P3DT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P3DT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P3DT55H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P3DT55H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P20DT20H")) lt fn:days-from-duration(xs:dayTimeDuration("P03DT02H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P20DT20H")) lt fn:days-from-duration(xs:dayTimeDuration("P03DT02H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) le fn:days-from-duration(xs:dayTimeDuration("P22DT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) le fn:days-from-duration(xs:dayTimeDuration("P22DT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:days-from-duration(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:days-from-duration(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P01DT01H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P01DT01H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:avg((fn:days-from-duration(xs:dayTimeDuration("P23DT10H")),fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:avg((fn:days-from-duration(xs:dayTimeDuration("P23DT10H")),fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) + fn:days-from-duration(xs:dayTimeDuration("P22DT11H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) + fn:days-from-duration(xs:dayTimeDuration("P22DT11H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P30DT10H")) - fn:days-from-duration(xs:dayTimeDuration("P10DT09H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P30DT10H")) - fn:days-from-duration(xs:dayTimeDuration("P10DT09H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P20DT09H")) * fn:days-from-duration(xs:dayTimeDuration("P03DT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P20DT09H")) * fn:days-from-duration(xs:dayTimeDuration("P03DT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P20DT10H")) div fn:days-from-duration(xs:dayTimeDuration("P05DT05H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P20DT10H")) div fn:days-from-duration(xs:dayTimeDuration("P05DT05H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P25DT10H")) idiv fn:days-from-duration(xs:dayTimeDuration("P05DT02H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P25DT10H")) idiv fn:days-from-duration(xs:dayTimeDuration("P05DT02H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P10DT10H")) mod fn:days-from-duration(xs:dayTimeDuration("P03DT03H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P10DT10H")) mod fn:days-from-duration(xs:dayTimeDuration("P03DT03H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">+fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-fn:days-from-duration(xs:dayTimeDuration("P20DT03H"))</x:label>
-      <x:variable name="expr" as="xs:string">-fn:days-from-duration(xs:dayTimeDuration("P20DT03H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P22DT10H")) eq fn:days-from-duration(xs:dayTimeDuration("P22DT09H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P22DT10H")) eq fn:days-from-duration(xs:dayTimeDuration("P22DT09H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P23DT08H")) ne fn:days-from-duration(xs:dayTimeDuration("P12DT05H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P23DT08H")) ne fn:days-from-duration(xs:dayTimeDuration("P12DT05H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P20DT03H")) le fn:days-from-duration(xs:dayTimeDuration("P21DT15H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P20DT03H")) le fn:days-from-duration(xs:dayTimeDuration("P21DT15H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:dayTimeDuration("P21DT07H")) ge fn:days-from-duration(xs:dayTimeDuration("P20DT01H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:dayTimeDuration("P21DT07H")) ge fn:days-from-duration(xs:dayTimeDuration("P20DT01H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration()</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(days-from-duration(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(days-from-duration(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration(()) instance of xs:integer?</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration(()) instance of xs:integer?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration(xs:dayTimeDuration("P45678DT8H2M1.03S")) eq 45678</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration(xs:dayTimeDuration("P45678DT8H2M1.03S")) eq 45678</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration(xs:dayTimeDuration("-P45678DT8H2M1.03S")) eq -45678</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration(xs:dayTimeDuration("-P45678DT8H2M1.03S")) eq -45678</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>days-from-duration(xs:duration("-P3Y4M8DT1H23M2.34S")) eq -8</x:label>
-      <x:variable name="expr" as="xs:string">days-from-duration(xs:duration("-P3Y4M8DT1H23M2.34S")) eq -8</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:days-from-duration(xs:yearMonthDuration('P1Y'))</x:label>
-      <x:variable name="expr" as="xs:string">fn:days-from-duration(xs:yearMonthDuration('P1Y'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/days-from-duration.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P0DT0H0M0S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P15DT11H59M59S&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P15DT11H59M59S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P31DT23H59M59S&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P31DT23H59M59S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P3DT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P3DT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P3DT55H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P3DT55H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT20H&#34;)) lt fn:days-from-duration(xs:dayTimeDuration(&#34;P03DT02H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P20DT20H")) lt fn:days-from-duration(xs:dayTimeDuration("P03DT02H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT10H&#34;)) le fn:days-from-duration(xs:dayTimeDuration(&#34;P22DT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) le fn:days-from-duration(xs:dayTimeDuration("P22DT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:days-from-duration(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:days-from-duration(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P01DT01H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P01DT01H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:avg((fn:days-from-duration(xs:dayTimeDuration(&#34;P23DT10H&#34;)),fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT10H&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:avg((fn:days-from-duration(xs:dayTimeDuration("P23DT10H")),fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT10H&#34;)) + fn:days-from-duration(xs:dayTimeDuration(&#34;P22DT11H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P21DT10H")) + fn:days-from-duration(xs:dayTimeDuration("P22DT11H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P30DT10H&#34;)) - fn:days-from-duration(xs:dayTimeDuration(&#34;P10DT09H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P30DT10H")) - fn:days-from-duration(xs:dayTimeDuration("P10DT09H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT09H&#34;)) * fn:days-from-duration(xs:dayTimeDuration(&#34;P03DT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P20DT09H")) * fn:days-from-duration(xs:dayTimeDuration("P03DT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT10H&#34;)) div fn:days-from-duration(xs:dayTimeDuration(&#34;P05DT05H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P20DT10H")) div fn:days-from-duration(xs:dayTimeDuration("P05DT05H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P25DT10H&#34;)) idiv fn:days-from-duration(xs:dayTimeDuration(&#34;P05DT02H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P25DT10H")) idiv fn:days-from-duration(xs:dayTimeDuration("P05DT02H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P10DT10H&#34;)) mod fn:days-from-duration(xs:dayTimeDuration(&#34;P03DT03H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P10DT10H")) mod fn:days-from-duration(xs:dayTimeDuration("P03DT03H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="+fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">+fn:days-from-duration(xs:dayTimeDuration("P21DT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT03H&#34;))">
+      <x:call>
+        <x:param select="string(.)">-fn:days-from-duration(xs:dayTimeDuration("P20DT03H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P22DT10H&#34;)) eq fn:days-from-duration(xs:dayTimeDuration(&#34;P22DT09H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P22DT10H")) eq fn:days-from-duration(xs:dayTimeDuration("P22DT09H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P23DT08H&#34;)) ne fn:days-from-duration(xs:dayTimeDuration(&#34;P12DT05H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P23DT08H")) ne fn:days-from-duration(xs:dayTimeDuration("P12DT05H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT03H&#34;)) le fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT15H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P20DT03H")) le fn:days-from-duration(xs:dayTimeDuration("P21DT15H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:dayTimeDuration(&#34;P21DT07H&#34;)) ge fn:days-from-duration(xs:dayTimeDuration(&#34;P20DT01H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:dayTimeDuration("P21DT07H")) ge fn:days-from-duration(xs:dayTimeDuration("P20DT01H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:duration(&#34;P1Y2M3DT10H30M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:duration("P1Y2M3DT10H30M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration()">
+      <x:call>
+        <x:param select="string(.)">days-from-duration()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">days-from-duration((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(days-from-duration(()))">
+      <x:call>
+        <x:param select="string(.)">empty(days-from-duration(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration(()) instance of xs:integer?">
+      <x:call>
+        <x:param select="string(.)">days-from-duration(()) instance of xs:integer?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration(xs:dayTimeDuration(&#34;P45678DT8H2M1.03S&#34;)) eq 45678">
+      <x:call>
+        <x:param select="string(.)">days-from-duration(xs:dayTimeDuration("P45678DT8H2M1.03S")) eq 45678</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration(xs:dayTimeDuration(&#34;-P45678DT8H2M1.03S&#34;)) eq -45678">
+      <x:call>
+        <x:param select="string(.)">days-from-duration(xs:dayTimeDuration("-P45678DT8H2M1.03S")) eq -45678</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="days-from-duration(xs:duration(&#34;-P3Y4M8DT1H23M2.34S&#34;)) eq -8">
+      <x:call>
+        <x:param select="string(.)">days-from-duration(xs:duration("-P3Y4M8DT1H23M2.34S")) eq -8</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:days-from-duration(xs:yearMonthDuration('P1Y'))">
+      <x:call>
+        <x:param select="string(.)">fn:days-from-duration(xs:yearMonthDuration('P1Y'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

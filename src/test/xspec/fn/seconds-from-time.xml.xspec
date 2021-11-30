@@ -1,116 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("00:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("00:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("08:03:35Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("08:03:35Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("23:59:59Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("23:59:59Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("13:20:10.5"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("13:20:10.5"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("21:23:04Z")) lt fn:seconds-from-time(xs:time("21:24:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("21:23:04Z")) lt fn:seconds-from-time(xs:time("21:24:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("01:23:02Z")) gt fn:seconds-from-time(xs:time("01:23:03Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("01:23:02Z")) gt fn:seconds-from-time(xs:time("01:23:03Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:avg((fn:seconds-from-time(xs:time("01:10:20Z")), fn:seconds-from-time(xs:time("01:20:30Z"))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:avg((fn:seconds-from-time(xs:time("01:10:20Z")), fn:seconds-from-time(xs:time("01:20:30Z"))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:seconds-from-time(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:seconds-from-time(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:hours-from-time(xs:time("00:59:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:hours-from-time(xs:time("00:59:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("23:20:59Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("23:20:59Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("02:00:00Z")) + fn:seconds-from-time(xs:time("10:00:10Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("02:00:00Z")) + fn:seconds-from-time(xs:time("10:00:10Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:10:10Z")) - fn:seconds-from-time(xs:time("09:02:07Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:10:10Z")) - fn:seconds-from-time(xs:time("09:02:07Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("02:02:03Z")) * fn:seconds-from-time(xs:time("10:08:09Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("02:02:03Z")) * fn:seconds-from-time(xs:time("10:08:09Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("22:33:10Z")) div fn:seconds-from-time(xs:time("02:11:02Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("22:33:10Z")) div fn:seconds-from-time(xs:time("02:11:02Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:12:15Z")) idiv fn:seconds-from-time(xs:time("02:02:03Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:12:15Z")) idiv fn:seconds-from-time(xs:time("02:02:03Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:10:20Z")) mod fn:seconds-from-time(xs:time("03:03:02Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:10:20Z")) mod fn:seconds-from-time(xs:time("03:03:02Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>+fn:seconds-from-time(xs:time("10:00:01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">+fn:seconds-from-time(xs:time("10:00:01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-fn:seconds-from-time(xs:time("10:10:01Z"))</x:label>
-      <x:variable name="expr" as="xs:string">-fn:seconds-from-time(xs:time("10:10:01Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:02:01Z")) eq fn:seconds-from-time(xs:time("10:02:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:02:01Z")) eq fn:seconds-from-time(xs:time("10:02:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:00:01Z")) ne fn:seconds-from-time(xs:time("01:01:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:00:01Z")) ne fn:seconds-from-time(xs:time("01:01:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:00:00Z")) le fn:seconds-from-time(xs:time("10:00:00Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:00:00Z")) le fn:seconds-from-time(xs:time("10:00:00Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:seconds-from-time(xs:time("10:03:01Z")) ge fn:seconds-from-time(xs:time("10:04:02Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:seconds-from-time(xs:time("10:03:01Z")) ge fn:seconds-from-time(xs:time("10:04:02Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>seconds-from-time()</x:label>
-      <x:variable name="expr" as="xs:string">seconds-from-time()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>seconds-from-time((), "Wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">seconds-from-time((), "Wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(seconds-from-time(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(seconds-from-time(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>seconds-from-time(()) instance of xs:decimal?</x:label>
-      <x:variable name="expr" as="xs:string">seconds-from-time(()) instance of xs:decimal?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>seconds-from-time(xs:time("23:11:12.43")) eq 12.43</x:label>
-      <x:variable name="expr" as="xs:string">seconds-from-time(xs:time("23:11:12.43")) eq 12.43</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/seconds-from-time.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:seconds-from-time(xs:time(&#34;00:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("00:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;08:03:35Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("08:03:35Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;23:59:59Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("23:59:59Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;13:20:10.5&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("13:20:10.5"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;21:23:04Z&#34;)) lt fn:seconds-from-time(xs:time(&#34;21:24:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("21:23:04Z")) lt fn:seconds-from-time(xs:time("21:24:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;01:23:02Z&#34;)) gt fn:seconds-from-time(xs:time(&#34;01:23:03Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("01:23:02Z")) gt fn:seconds-from-time(xs:time("01:23:03Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:avg((fn:seconds-from-time(xs:time(&#34;01:10:20Z&#34;)), fn:seconds-from-time(xs:time(&#34;01:20:30Z&#34;))))">
+      <x:call>
+        <x:param select="string(.)">fn:avg((fn:seconds-from-time(xs:time("01:10:20Z")), fn:seconds-from-time(xs:time("01:20:30Z"))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:seconds-from-time(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:seconds-from-time(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:hours-from-time(xs:time(&#34;00:59:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:hours-from-time(xs:time("00:59:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;23:20:59Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("23:20:59Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;02:00:00Z&#34;)) + fn:seconds-from-time(xs:time(&#34;10:00:10Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("02:00:00Z")) + fn:seconds-from-time(xs:time("10:00:10Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:10:10Z&#34;)) - fn:seconds-from-time(xs:time(&#34;09:02:07Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:10:10Z")) - fn:seconds-from-time(xs:time("09:02:07Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;02:02:03Z&#34;)) * fn:seconds-from-time(xs:time(&#34;10:08:09Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("02:02:03Z")) * fn:seconds-from-time(xs:time("10:08:09Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;22:33:10Z&#34;)) div fn:seconds-from-time(xs:time(&#34;02:11:02Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("22:33:10Z")) div fn:seconds-from-time(xs:time("02:11:02Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:12:15Z&#34;)) idiv fn:seconds-from-time(xs:time(&#34;02:02:03Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:12:15Z")) idiv fn:seconds-from-time(xs:time("02:02:03Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:10:20Z&#34;)) mod fn:seconds-from-time(xs:time(&#34;03:03:02Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:10:20Z")) mod fn:seconds-from-time(xs:time("03:03:02Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="+fn:seconds-from-time(xs:time(&#34;10:00:01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">+fn:seconds-from-time(xs:time("10:00:01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-fn:seconds-from-time(xs:time(&#34;10:10:01Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">-fn:seconds-from-time(xs:time("10:10:01Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:02:01Z&#34;)) eq fn:seconds-from-time(xs:time(&#34;10:02:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:02:01Z")) eq fn:seconds-from-time(xs:time("10:02:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:00:01Z&#34;)) ne fn:seconds-from-time(xs:time(&#34;01:01:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:00:01Z")) ne fn:seconds-from-time(xs:time("01:01:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:00:00Z&#34;)) le fn:seconds-from-time(xs:time(&#34;10:00:00Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:00:00Z")) le fn:seconds-from-time(xs:time("10:00:00Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:seconds-from-time(xs:time(&#34;10:03:01Z&#34;)) ge fn:seconds-from-time(xs:time(&#34;10:04:02Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:seconds-from-time(xs:time("10:03:01Z")) ge fn:seconds-from-time(xs:time("10:04:02Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="seconds-from-time()">
+      <x:call>
+        <x:param select="string(.)">seconds-from-time()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="seconds-from-time((), &#34;Wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">seconds-from-time((), "Wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(seconds-from-time(()))">
+      <x:call>
+        <x:param select="string(.)">empty(seconds-from-time(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="seconds-from-time(()) instance of xs:decimal?">
+      <x:call>
+        <x:param select="string(.)">seconds-from-time(()) instance of xs:decimal?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="seconds-from-time(xs:time(&#34;23:11:12.43&#34;)) eq 12.43">
+      <x:call>
+        <x:param select="string(.)">seconds-from-time(xs:time("23:11:12.43")) eq 12.43</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

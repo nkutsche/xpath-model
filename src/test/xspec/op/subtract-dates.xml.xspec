@@ -1,128 +1,211 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:date("2000-10-30") - xs:date("1999-11-28")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-10-30") - xs:date("1999-11-28")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-10-30+05:00") - xs:date("1999-11-28Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-10-30+05:00") - xs:date("1999-11-28Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-10-15-05:00") - xs:date("2000-10-10+02:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-10-15-05:00") - xs:date("2000-10-10+02:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:string(xs:date("1998-09-12Z") - xs:date("1998-09-21Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:string(xs:date("1998-09-12Z") - xs:date("1998-09-21Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:string(xs:date("1962-03-12Z") - xs:date("1962-03-12Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:string(xs:date("1962-03-12Z") - xs:date("1962-03-12Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:number(xs:date("1988-01-28Z") - xs:date("2001-03-02"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:number(xs:date("1988-01-28Z") - xs:date("2001-03-02"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(xs:date("1989-07-05Z") - xs:date("1962-09-04Z"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(xs:date("1989-07-05Z") - xs:date("1962-09-04Z"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("0001-01-01Z") - xs:date("2005-07-06Z")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("0001-01-01Z") - xs:date("2005-07-06Z")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1993-12-09Z") - xs:date("1992-10-02Z"))) and fn:string((xs:date("1993-12-09Z") - xs:date("1980-10-20Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1993-12-09Z") - xs:date("1992-10-02Z"))) and fn:string((xs:date("1993-12-09Z") - xs:date("1980-10-20Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1985-07-05Z") - xs:date("1977-12-02Z"))) or fn:string((xs:date("1985-07-05Z") - xs:date("1960-11-07Z")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1985-07-05Z") - xs:date("1977-12-02Z"))) or fn:string((xs:date("1985-07-05Z") - xs:date("1960-11-07Z")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:date("1978-12-12Z") - xs:date("1978-12-12Z")) div xs:dayTimeDuration("P17DT10H02M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:date("1978-12-12Z") - xs:date("1978-12-12Z")) div xs:dayTimeDuration("P17DT10H02M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1980-03-02Z") - xs:date("2001-09-11Z"))) and (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1980-03-02Z") - xs:date("2001-09-11Z"))) and (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1980-05-05Z") - xs:date("1981-12-03Z"))) eq xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1980-05-05Z") - xs:date("1981-12-03Z"))) eq xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1979-12-12Z") - xs:date("1979-11-11Z"))) ne xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1979-12-12Z") - xs:date("1979-11-11Z"))) ne xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1978-12-12Z") - xs:date("1977-03-12Z"))) le xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1978-12-12Z") - xs:date("1977-03-12Z"))) le xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1977-12-12Z") - xs:date("1976-12-12Z"))) ge xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1977-12-12Z") - xs:date("1976-12-12Z"))) ge xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(xs:date("2000-12-12Z") - xs:date("2000-11-11Z")) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(xs:date("2000-12-12Z") - xs:date("2000-11-11Z")) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string((xs:date("1999-10-23Z") - xs:date("1998-09-09Z"))) or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string((xs:date("1999-10-23Z") - xs:date("1998-09-09Z"))) or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) * xs:decimal(2.0)</x:label>
-      <x:variable name="expr" as="xs:string">(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) * xs:decimal(2.0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) + xs:dayTimeDuration("P17DT10H02M")</x:label>
-      <x:variable name="expr" as="xs:string">(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) + xs:dayTimeDuration("P17DT10H02M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-07-19") - xs:date("1969-11-30") eq xs:dayTimeDuration("P10823D")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-07-19") - xs:date("1969-11-30") eq xs:dayTimeDuration("P10823D")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-07-19") - xs:date("1999-07-19") eq xs:dayTimeDuration("PT0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-07-19") - xs:date("1999-07-19") eq xs:dayTimeDuration("PT0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-10-12") + xs:date("1999-10-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-10-12") + xs:date("1999-10-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-10-12") div xs:date("1999-10-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-10-12") div xs:date("1999-10-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-10-12") * xs:date("1999-10-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-10-12") * xs:date("1999-10-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("1999-10-12") mod xs:date("1999-10-12")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("1999-10-12") mod xs:date("1999-10-12")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31+01:00")</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31+01:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2008-12-31") - xs:date("2002-12-31+01:00") + implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2008-12-31") - xs:date("2002-12-31+01:00") + implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2002-12-31+01:00") - xs:date("2008-12-31") - implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2002-12-31+01:00") - xs:date("2008-12-31") - implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/subtract-dates.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:date(&#34;2000-10-30&#34;) - xs:date(&#34;1999-11-28&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-10-30") - xs:date("1999-11-28")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-10-30+05:00&#34;) - xs:date(&#34;1999-11-28Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-10-30+05:00") - xs:date("1999-11-28Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-10-15-05:00&#34;) - xs:date(&#34;2000-10-10+02:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-10-15-05:00") - xs:date("2000-10-10+02:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:string(xs:date(&#34;1998-09-12Z&#34;) - xs:date(&#34;1998-09-21Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:string(xs:date("1998-09-12Z") - xs:date("1998-09-21Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:string(xs:date(&#34;1962-03-12Z&#34;) - xs:date(&#34;1962-03-12Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:string(xs:date("1962-03-12Z") - xs:date("1962-03-12Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:number(xs:date(&#34;1988-01-28Z&#34;) - xs:date(&#34;2001-03-02&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:number(xs:date("1988-01-28Z") - xs:date("2001-03-02"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(xs:date(&#34;1989-07-05Z&#34;) - xs:date(&#34;1962-09-04Z&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(xs:date("1989-07-05Z") - xs:date("1962-09-04Z"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;0001-01-01Z&#34;) - xs:date(&#34;2005-07-06Z&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("0001-01-01Z") - xs:date("2005-07-06Z")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1993-12-09Z&#34;) - xs:date(&#34;1992-10-02Z&#34;))) and fn:string((xs:date(&#34;1993-12-09Z&#34;) - xs:date(&#34;1980-10-20Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1993-12-09Z") - xs:date("1992-10-02Z"))) and fn:string((xs:date("1993-12-09Z") - xs:date("1980-10-20Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1985-07-05Z&#34;) - xs:date(&#34;1977-12-02Z&#34;))) or fn:string((xs:date(&#34;1985-07-05Z&#34;) - xs:date(&#34;1960-11-07Z&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1985-07-05Z") - xs:date("1977-12-02Z"))) or fn:string((xs:date("1985-07-05Z") - xs:date("1960-11-07Z")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:date(&#34;1978-12-12Z&#34;) - xs:date(&#34;1978-12-12Z&#34;)) div xs:dayTimeDuration(&#34;P17DT10H02M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:date("1978-12-12Z") - xs:date("1978-12-12Z")) div xs:dayTimeDuration("P17DT10H02M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1980-03-02Z&#34;) - xs:date(&#34;2001-09-11Z&#34;))) and (fn:true())">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1980-03-02Z") - xs:date("2001-09-11Z"))) and (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1980-05-05Z&#34;) - xs:date(&#34;1981-12-03Z&#34;))) eq xs:string(xs:dayTimeDuration(&#34;P17DT10H02M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1980-05-05Z") - xs:date("1981-12-03Z"))) eq xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1979-12-12Z&#34;) - xs:date(&#34;1979-11-11Z&#34;))) ne xs:string(xs:dayTimeDuration(&#34;P17DT10H02M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1979-12-12Z") - xs:date("1979-11-11Z"))) ne xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1978-12-12Z&#34;) - xs:date(&#34;1977-03-12Z&#34;))) le xs:string(xs:dayTimeDuration(&#34;P17DT10H02M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1978-12-12Z") - xs:date("1977-03-12Z"))) le xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1977-12-12Z&#34;) - xs:date(&#34;1976-12-12Z&#34;))) ge xs:string(xs:dayTimeDuration(&#34;P17DT10H02M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1977-12-12Z") - xs:date("1976-12-12Z"))) ge xs:string(xs:dayTimeDuration("P17DT10H02M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(xs:date(&#34;2000-12-12Z&#34;) - xs:date(&#34;2000-11-11Z&#34;)) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string(xs:date("2000-12-12Z") - xs:date("2000-11-11Z")) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string((xs:date(&#34;1999-10-23Z&#34;) - xs:date(&#34;1998-09-09Z&#34;))) or fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string((xs:date("1999-10-23Z") - xs:date("1998-09-09Z"))) or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:date(&#34;1999-10-23Z&#34;) - xs:date(&#34;1998-09-09Z&#34;)) * xs:decimal(2.0)">
+      <x:call>
+        <x:param select="string(.)">(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) * xs:decimal(2.0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:date(&#34;1999-10-23Z&#34;) - xs:date(&#34;1998-09-09Z&#34;)) + xs:dayTimeDuration(&#34;P17DT10H02M&#34;)">
+      <x:call>
+        <x:param select="string(.)">(xs:date("1999-10-23Z") - xs:date("1998-09-09Z")) + xs:dayTimeDuration("P17DT10H02M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-07-19&#34;) - xs:date(&#34;1969-11-30&#34;) eq xs:dayTimeDuration(&#34;P10823D&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-07-19") - xs:date("1969-11-30") eq xs:dayTimeDuration("P10823D")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-07-19&#34;) - xs:date(&#34;1999-07-19&#34;) eq xs:dayTimeDuration(&#34;PT0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-07-19") - xs:date("1999-07-19") eq xs:dayTimeDuration("PT0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-10-12&#34;) + xs:date(&#34;1999-10-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-10-12") + xs:date("1999-10-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-10-12&#34;) div xs:date(&#34;1999-10-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-10-12") div xs:date("1999-10-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-10-12&#34;) * xs:date(&#34;1999-10-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-10-12") * xs:date("1999-10-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;1999-10-12&#34;) mod xs:date(&#34;1999-10-12&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("1999-10-12") mod xs:date("1999-10-12")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;-25252734927766554-12-31&#34;) - xs:date(&#34;25252734927766554-12-31&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;-25252734927766554-12-31&#34;) - xs:date(&#34;25252734927766554-12-31+01:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:date("-25252734927766554-12-31") - xs:date("25252734927766554-12-31+01:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2008-12-31&#34;) - xs:date(&#34;2002-12-31+01:00&#34;) + implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:date("2008-12-31") - xs:date("2002-12-31+01:00") + implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2002-12-31+01:00&#34;) - xs:date(&#34;2008-12-31&#34;) - implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:date("2002-12-31+01:00") - xs:date("2008-12-31") - implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

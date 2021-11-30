@@ -1,192 +1,323 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>not("" or 0)</x:label>
-      <x:variable name="expr" as="xs:string">not("" or 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(0 or 0)</x:label>
-      <x:variable name="expr" as="xs:string">not(0 or 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(0 or 0)</x:label>
-      <x:variable name="expr" as="xs:string">not(0 or 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("" or 0)</x:label>
-      <x:variable name="expr" as="xs:string">not("" or 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 or 1</x:label>
-      <x:variable name="expr" as="xs:string">1 or 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 or 0</x:label>
-      <x:variable name="expr" as="xs:string">1 or 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 or 5</x:label>
-      <x:variable name="expr" as="xs:string">1 or 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") or 0</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") or 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 or xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">0 or xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("") or 0)</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("") or 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(0 or xs:anyURI(""))</x:label>
-      <x:variable name="expr" as="xs:string">not(0 or xs:anyURI(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("a string") or 0</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("a string") or 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 or xs:untypedAtomic("a string")</x:label>
-      <x:variable name="expr" as="xs:string">0 or xs:untypedAtomic("a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() or (0, current-time())[1] treat as xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">true() or (0, current-time())[1] treat as xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(0, current-time())[1] treat as xs:integer or true()</x:label>
-      <x:variable name="expr" as="xs:string">(0, current-time())[1] treat as xs:integer or true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() or 0</x:label>
-      <x:variable name="expr" as="xs:string">current-date() or 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 or current-date()</x:label>
-      <x:variable name="expr" as="xs:string">0 or current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() or current-date()</x:label>
-      <x:variable name="expr" as="xs:string">current-date() or current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() and current-date()</x:label>
-      <x:variable name="expr" as="xs:string">current-date() and current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 and current-date()</x:label>
-      <x:variable name="expr" as="xs:string">1 and current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>current-date() and 1</x:label>
-      <x:variable name="expr" as="xs:string">current-date() and 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, timezone-from-time(current-time()), 4)) or false()</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, timezone-from-time(current-time()), 4)) or false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:label>
-      <x:variable name="expr" as="xs:string">false() or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, timezone-from-time(current-time()), 4)) or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, timezone-from-time(current-time()), 4)) or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean((1, 2, 3, current-time())[1] treat as xs:integer) or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">boolean((1, 2, 3, current-time())[1] treat as xs:integer) or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:label>
-      <x:variable name="expr" as="xs:string">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">true() or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("" and 0)</x:label>
-      <x:variable name="expr" as="xs:string">not("" and 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 and 1</x:label>
-      <x:variable name="expr" as="xs:string">1 and 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10.3 and "non-zero length string"</x:label>
-      <x:variable name="expr" as="xs:string">10.3 and "non-zero length string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 and 5</x:label>
-      <x:variable name="expr" as="xs:string">1 and 5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, current-time())[1] treat as xs:integer and false())</x:label>
-      <x:variable name="expr" as="xs:string">not((1, current-time())[1] treat as xs:integer and false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(false() and (1, current-time())[1] treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">not(false() and (1, current-time())[1] treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("example.com/") and xs:anyURI("example.com/")</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("example.com/") and xs:anyURI("example.com/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("example.com/") and xs:anyURI(""))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("example.com/") and xs:anyURI(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("") and xs:anyURI("example.com/"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("") and xs:anyURI("example.com/"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("a string") and xs:untypedAtomic("a string")</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("a string") and xs:untypedAtomic("a string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:untypedAtomic("a string") and xs:untypedAtomic(""))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:untypedAtomic("a string") and xs:untypedAtomic(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, timezone-from-time(current-time()), 4)) and true()</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, timezone-from-time(current-time()), 4)) and true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:label>
-      <x:variable name="expr" as="xs:string">true() and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, timezone-from-time(current-time()), 4)) and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, timezone-from-time(current-time()), 4)) and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean((1, 2, 3, current-time())[1] treat as xs:integer) and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:label>
-      <x:variable name="expr" as="xs:string">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">true() and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"a string is ok" and QName("", "local")</x:label>
-      <x:variable name="expr" as="xs:string">"a string is ok" and QName("", "local")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"a string is ok" or QName("", "local")</x:label>
-      <x:variable name="expr" as="xs:string">"a string is ok" or QName("", "local")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/OrExpr.xml"><x:call function="nk:xpath-model"/><x:scenario label="not(&#34;&#34; or 0)">
+      <x:call>
+        <x:param select="string(.)">not("" or 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(0 or 0)">
+      <x:call>
+        <x:param select="string(.)">not(0 or 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(0 or 0)">
+      <x:call>
+        <x:param select="string(.)">not(0 or 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;&#34; or 0)">
+      <x:call>
+        <x:param select="string(.)">not("" or 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 or 1">
+      <x:call>
+        <x:param select="string(.)">1 or 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 or 0">
+      <x:call>
+        <x:param select="string(.)">1 or 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 or 5">
+      <x:call>
+        <x:param select="string(.)">1 or 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) or 0">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") or 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 or xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">0 or xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;&#34;) or 0)">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("") or 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(0 or xs:anyURI(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(0 or xs:anyURI(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;a string&#34;) or 0">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("a string") or 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 or xs:untypedAtomic(&#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">0 or xs:untypedAtomic("a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() or (0, current-time())[1] treat as xs:integer">
+      <x:call>
+        <x:param select="string(.)">true() or (0, current-time())[1] treat as xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(0, current-time())[1] treat as xs:integer or true()">
+      <x:call>
+        <x:param select="string(.)">(0, current-time())[1] treat as xs:integer or true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() or 0">
+      <x:call>
+        <x:param select="string(.)">current-date() or 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 or current-date()">
+      <x:call>
+        <x:param select="string(.)">0 or current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() or current-date()">
+      <x:call>
+        <x:param select="string(.)">current-date() or current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() and current-date()">
+      <x:call>
+        <x:param select="string(.)">current-date() and current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 and current-date()">
+      <x:call>
+        <x:param select="string(.)">1 and current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="current-date() and 1">
+      <x:call>
+        <x:param select="string(.)">current-date() and 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, timezone-from-time(current-time()), 4)) or false()">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, timezone-from-time(current-time()), 4)) or false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() or count((1, 2, 3, timezone-from-time(current-time()), 4))">
+      <x:call>
+        <x:param select="string(.)">false() or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, timezone-from-time(current-time()), 4)) or count((1, 2, 3, timezone-from-time(current-time()), 4))">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, timezone-from-time(current-time()), 4)) or count((1, 2, 3, timezone-from-time(current-time()), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean((1, 2, 3, current-time())[1] treat as xs:integer) or boolean((1, 2, 3, current-time())[1] treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">boolean((1, 2, 3, current-time())[1] treat as xs:integer) or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()">
+      <x:call>
+        <x:param select="string(.)">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() or boolean((1, 2, 3, current-time())[1] treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">true() or boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;&#34; and 0)">
+      <x:call>
+        <x:param select="string(.)">not("" and 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 and 1">
+      <x:call>
+        <x:param select="string(.)">1 and 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10.3 and &#34;non-zero length string&#34;">
+      <x:call>
+        <x:param select="string(.)">10.3 and "non-zero length string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 and 5">
+      <x:call>
+        <x:param select="string(.)">1 and 5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, current-time())[1] treat as xs:integer and false())">
+      <x:call>
+        <x:param select="string(.)">not((1, current-time())[1] treat as xs:integer and false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(false() and (1, current-time())[1] treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">not(false() and (1, current-time())[1] treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;example.com/&#34;) and xs:anyURI(&#34;example.com/&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("example.com/") and xs:anyURI("example.com/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;example.com/&#34;) and xs:anyURI(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("example.com/") and xs:anyURI(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;&#34;) and xs:anyURI(&#34;example.com/&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("") and xs:anyURI("example.com/"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;a string&#34;) and xs:untypedAtomic(&#34;a string&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("a string") and xs:untypedAtomic("a string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:untypedAtomic(&#34;a string&#34;) and xs:untypedAtomic(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:untypedAtomic("a string") and xs:untypedAtomic(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, timezone-from-time(current-time()), 4)) and true()">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, timezone-from-time(current-time()), 4)) and true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() and count((1, 2, 3, timezone-from-time(current-time()), 4))">
+      <x:call>
+        <x:param select="string(.)">true() and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, timezone-from-time(current-time()), 4)) and count((1, 2, 3, timezone-from-time(current-time()), 4))">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, timezone-from-time(current-time()), 4)) and count((1, 2, 3, timezone-from-time(current-time()), 4))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean((1, 2, 3, current-time())[1] treat as xs:integer) and boolean((1, 2, 3, current-time())[1] treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()">
+      <x:call>
+        <x:param select="string(.)">boolean((1, 2, 3, current-time())[1] treat as xs:integer) and true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() and boolean((1, 2, 3, current-time())[1] treat as xs:integer)">
+      <x:call>
+        <x:param select="string(.)">true() and boolean((1, 2, 3, current-time())[1] treat as xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;a string is ok&#34; and QName(&#34;&#34;, &#34;local&#34;)">
+      <x:call>
+        <x:param select="string(.)">"a string is ok" and QName("", "local")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;a string is ok&#34; or QName(&#34;&#34;, &#34;local&#34;)">
+      <x:call>
+        <x:param select="string(.)">"a string is ok" or QName("", "local")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,1044 +1,1800 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dateTime("2002-04-02T12:00:00Z") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("13:20:10.5Z") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("13:20:10.5Z") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:date("2000-01-01+05:00") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:date("2000-01-01+05:00") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean("true") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean("true") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1267.43233E12 instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">1267.43233E12 instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"A String Function" instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">"A String Function" instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967.543233 instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">12678967.543233 instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:dateTime</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:dateTime</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:time</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:time</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:date</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:date</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>12678967543233 instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">12678967543233 instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:NMTOKEN('abc') instance of xs:NMTOKENS</x:label>
-      <x:variable name="expr" as="xs:string">xs:NMTOKEN('abc') instance of xs:NMTOKENS</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of item()</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of item()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of item()</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of item()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of xs:integer?</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of xs:integer?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 instance of xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">1 instance of xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() instance of xs:boolean</x:label>
-      <x:variable name="expr" as="xs:string">false() instance of xs:boolean</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() instance of xs:anyAtomicType</x:label>
-      <x:variable name="expr" as="xs:string">false() instance of xs:anyAtomicType</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"a string" instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">"a string" instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("false" instance of xs:boolean)</x:label>
-      <x:variable name="expr" as="xs:string">not("false" instance of xs:boolean)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1 instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">1.1 instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1.1 instance of xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">not(1.1 instance of xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:anyURI("http://www.example.com/") instance of xs:anyURI</x:label>
-      <x:variable name="expr" as="xs:string">xs:anyURI("http://www.example.com/") instance of xs:anyURI</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:anyURI("http://www.example.com/") instance of xs:string)</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:anyURI("http://www.example.com/") instance of xs:string)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("a string" instance of xs:untypedAtomic)</x:label>
-      <x:variable name="expr" as="xs:string">not("a string" instance of xs:untypedAtomic)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3, 4, 5) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3, 4, 5) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, 2, 3, 4, 5) instance of xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">not((1, 2, 3, 4, 5) instance of xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, 2, 3, 4, 5) instance of xs:integer?)</x:label>
-      <x:variable name="expr" as="xs:string">not((1, 2, 3, 4, 5) instance of xs:integer?)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3, 4, 5) instance of xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3, 4, 5) instance of xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3, 4, 5) instance of item()+</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3, 4, 5) instance of item()+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, 2, "a string", 4, 5) instance of xs:integer*)</x:label>
-      <x:variable name="expr" as="xs:string">not((1, 2, "a string", 4, 5) instance of xs:integer*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, 2, 1.1, 4, 5) instance of xs:integer*)</x:label>
-      <x:variable name="expr" as="xs:string">not((1, 2, 1.1, 4, 5) instance of xs:integer*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not((1, 2, "a string", 4, 5) instance of xs:string*)</x:label>
-      <x:variable name="expr" as="xs:string">not((1, 2, "a string", 4, 5) instance of xs:string*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, "a string", 4, 5) instance of xs:anyAtomicType*</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, "a string", 4, 5) instance of xs:anyAtomicType*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, count("one"), 4, 5) instance of xs:integer+</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, count("one"), 4, 5) instance of xs:integer+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of text())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of node())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of element())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of element())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of processing-instruction())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of processing-instruction())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of comment())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of comment())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of text())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of text())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of node())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of element())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of element())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of processing-instruction())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of processing-instruction())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of comment())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of comment())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 instance of empty-sequence())</x:label>
-      <x:variable name="expr" as="xs:string">not(1 instance of empty-sequence())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not( (1, 2, 3) instance of empty-sequence())</x:label>
-      <x:variable name="expr" as="xs:string">not( (1, 2, 3) instance of empty-sequence())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">() instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">() instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(((()))) instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">(((()))) instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((), (), ()) instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">((), (), ()) instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((), "xs:string") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">((), "xs:string") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>("xs:string", (), "xs:string") instance of xs:string+</x:label>
-      <x:variable name="expr" as="xs:string">("xs:string", (), "xs:string") instance of xs:string+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1.1, (), 1) instance of xs:decimal+</x:label>
-      <x:variable name="expr" as="xs:string">(1.1, (), 1) instance of xs:decimal+</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("a string" instance of xs:NOTATION)</x:label>
-      <x:variable name="expr" as="xs:string">not("a string" instance of xs:NOTATION)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not("a string" instance of xs:QName)</x:label>
-      <x:variable name="expr" as="xs:string">not("a string" instance of xs:QName)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.1 instance of xs:decimal and not(1.1 instance of xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">1.1 instance of xs:decimal and not(1.1 instance of xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of prefixDoesNotExist:integer</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of prefixDoesNotExist:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of xs:doesNotExist</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of xs:doesNotExist</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of xs:qname</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of xs:qname</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of none</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of none</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of void</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of void</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of none()</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of none()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 instance of void()</x:label>
-      <x:variable name="expr" as="xs:string">3 instance of void()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error() instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">error() instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error() instance of xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">error() instance of xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>error() instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">error() instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(error(), 1) instance of empty-sequence()</x:label>
-      <x:variable name="expr" as="xs:string">(error(), 1) instance of empty-sequence()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, error()) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(1, error()) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(error(), 1) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(error(), 1) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, error()) instance of xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">(1, error()) instance of xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(error(), 1) instance of xs:integer*</x:label>
-      <x:variable name="expr" as="xs:string">(error(), 1) instance of xs:integer*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(((10)div(3)) instance of xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">not(((10)div(3)) instance of xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((10)idiv(3)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">((10)idiv(3)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((10)mod(3)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">((10)mod(3)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger(0) instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger(0) instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger(-1) instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger(-1) instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long(0) instance of xs:long</x:label>
-      <x:variable name="expr" as="xs:string">xs:long(0) instance of xs:long</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int(0) instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:int(0) instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short(0) instance of xs:short</x:label>
-      <x:variable name="expr" as="xs:string">xs:short(0) instance of xs:short</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:byte(0) instance of xs:byte</x:label>
-      <x:variable name="expr" as="xs:string">xs:byte(0) instance of xs:byte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong(0) instance of xs:unsignedLong</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong(0) instance of xs:unsignedLong</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedInt(0) instance of xs:unsignedInt</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedInt(0) instance of xs:unsignedInt</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort(0) instance of xs:unsignedShort</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort(0) instance of xs:unsignedShort</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedByte(0) instance of xs:unsignedByte</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedByte(0) instance of xs:unsignedByte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger(1) instance of xs:positiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger(1) instance of xs:positiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString("NCName") instance of xs:normalizedString</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString("NCName") instance of xs:normalizedString</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:token("NCName") instance of xs:token</x:label>
-      <x:variable name="expr" as="xs:string">xs:token("NCName") instance of xs:token</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:language("NCName") instance of xs:language</x:label>
-      <x:variable name="expr" as="xs:string">xs:language("NCName") instance of xs:language</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:NMTOKEN("NCName") instance of xs:NMTOKEN</x:label>
-      <x:variable name="expr" as="xs:string">xs:NMTOKEN("NCName") instance of xs:NMTOKEN</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:Name("NCName") instance of xs:Name</x:label>
-      <x:variable name="expr" as="xs:string">xs:Name("NCName") instance of xs:Name</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:NCName("NCName") instance of xs:NCName</x:label>
-      <x:variable name="expr" as="xs:string">xs:NCName("NCName") instance of xs:NCName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ID("NCName") instance of xs:ID</x:label>
-      <x:variable name="expr" as="xs:string">xs:ID("NCName") instance of xs:ID</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:IDREF("NCName") instance of xs:IDREF</x:label>
-      <x:variable name="expr" as="xs:string">xs:IDREF("NCName") instance of xs:IDREF</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ENTITY("NCName") instance of xs:ENTITY</x:label>
-      <x:variable name="expr" as="xs:string">xs:ENTITY("NCName") instance of xs:ENTITY</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString("ncname") instance of xs:string</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString("ncname") instance of xs:string</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:token("ncname") instance of xs:normalizedString</x:label>
-      <x:variable name="expr" as="xs:string">xs:token("ncname") instance of xs:normalizedString</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:language("ncname") instance of xs:token</x:label>
-      <x:variable name="expr" as="xs:string">xs:language("ncname") instance of xs:token</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:NMTOKEN("ncname") instance of xs:token</x:label>
-      <x:variable name="expr" as="xs:string">xs:NMTOKEN("ncname") instance of xs:token</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:Name("ncname") instance of xs:token</x:label>
-      <x:variable name="expr" as="xs:string">xs:Name("ncname") instance of xs:token</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:NCName("ncname") instance of xs:Name</x:label>
-      <x:variable name="expr" as="xs:string">xs:NCName("ncname") instance of xs:Name</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ID("ncname") instance of xs:NCName</x:label>
-      <x:variable name="expr" as="xs:string">xs:ID("ncname") instance of xs:NCName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:IDREF("ncname") instance of xs:NCName</x:label>
-      <x:variable name="expr" as="xs:string">xs:IDREF("ncname") instance of xs:NCName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ENTITY("ncname") instance of xs:NCName</x:label>
-      <x:variable name="expr" as="xs:string">xs:ENTITY("ncname") instance of xs:NCName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger("0") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger("0") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger("-1") instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger("-1") instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("0") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("0") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int("0") instance of xs:long</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("0") instance of xs:long</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("0") instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("0") instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:byte("0") instance of xs:short</x:label>
-      <x:variable name="expr" as="xs:string">xs:byte("0") instance of xs:short</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("0") instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("0") instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong("0") instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong("0") instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedInt("0") instance of xs:unsignedLong</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedInt("0") instance of xs:unsignedLong</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort("0") instance of xs:unsignedInt</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort("0") instance of xs:unsignedInt</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedByte("0") instance of xs:unsignedShort</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedByte("0") instance of xs:unsignedShort</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("1") instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("1") instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("1") instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("1") instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("1") instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("1") instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("1") instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("1") instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("1") instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("1") instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("1") instance of xs:positiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("1") instance of xs:positiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:token("ncname") instance of xs:NCName</x:label>
-      <x:variable name="expr" as="xs:string">xs:token("ncname") instance of xs:NCName</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ID("ncname") instance of xs:IDREF</x:label>
-      <x:variable name="expr" as="xs:string">xs:ID("ncname") instance of xs:IDREF</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:ENTITY("ncname") instance of xs:IDREF</x:label>
-      <x:variable name="expr" as="xs:string">xs:ENTITY("ncname") instance of xs:IDREF</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:language("ncname") instance of xs:NMTOKEN</x:label>
-      <x:variable name="expr" as="xs:string">xs:language("ncname") instance of xs:NMTOKEN</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:Name("ncname") instance of xs:language</x:label>
-      <x:variable name="expr" as="xs:string">xs:Name("ncname") instance of xs:language</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:normalizedString("ncname") instance of xs:token</x:label>
-      <x:variable name="expr" as="xs:string">xs:normalizedString("ncname") instance of xs:token</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:byte(xs:double("1")) instance of xs:byte</x:label>
-      <x:variable name="expr" as="xs:string">xs:byte(xs:double("1")) instance of xs:byte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger(xs:double("0")) instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger(xs:double("0")) instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger(xs:double("-4")) instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger(xs:double("-4")) instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long(xs:double("-4")) instance of xs:long</x:label>
-      <x:variable name="expr" as="xs:string">xs:long(xs:double("-4")) instance of xs:long</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int(xs:double("-4")) instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:int(xs:double("-4")) instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short(xs:double("-4")) instance of xs:short</x:label>
-      <x:variable name="expr" as="xs:string">xs:short(xs:double("-4")) instance of xs:short</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger(xs:double("4")) instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger(xs:double("4")) instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong(xs:double("4")) instance of xs:unsignedLong</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong(xs:double("4")) instance of xs:unsignedLong</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedInt(xs:double("4")) instance of xs:unsignedInt</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedInt(xs:double("4")) instance of xs:unsignedInt</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort(xs:double("4")) instance of xs:unsignedShort</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort(xs:double("4")) instance of xs:unsignedShort</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedByte(xs:double("4")) instance of xs:unsignedByte</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedByte(xs:double("4")) instance of xs:unsignedByte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger(xs:double("4")) instance of xs:positiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger(xs:double("4")) instance of xs:positiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:byte(xs:float("1")) instance of xs:byte</x:label>
-      <x:variable name="expr" as="xs:string">xs:byte(xs:float("1")) instance of xs:byte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonPositiveInteger(xs:float("0")) instance of xs:nonPositiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonPositiveInteger(xs:float("0")) instance of xs:nonPositiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:negativeInteger(xs:float("-4")) instance of xs:negativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:negativeInteger(xs:float("-4")) instance of xs:negativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long(xs:float("-4")) instance of xs:long</x:label>
-      <x:variable name="expr" as="xs:string">xs:long(xs:float("-4")) instance of xs:long</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:int(xs:float("-4")) instance of xs:int</x:label>
-      <x:variable name="expr" as="xs:string">xs:int(xs:float("-4")) instance of xs:int</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short(xs:float("-4")) instance of xs:short</x:label>
-      <x:variable name="expr" as="xs:string">xs:short(xs:float("-4")) instance of xs:short</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger(xs:float("4")) instance of xs:nonNegativeInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger(xs:float("4")) instance of xs:nonNegativeInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong(xs:float("4")) instance of xs:unsignedLong</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong(xs:float("4")) instance of xs:unsignedLong</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedInt(xs:float("4")) instance of xs:unsignedInt</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedInt(xs:float("4")) instance of xs:unsignedInt</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort(xs:float("4")) instance of xs:unsignedShort</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort(xs:float("4")) instance of xs:unsignedShort</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedByte(xs:float("4")) instance of xs:unsignedByte</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedByte(xs:float("4")) instance of xs:unsignedByte</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger(xs:float("4")) instance of xs:positiveInteger</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger(xs:float("4")) instance of xs:positiveInteger</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in (xs:integer(1), xs:decimal(1)) return (((($x + 1) * 2) - 1) instance of xs:integer)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in (xs:integer(1), xs:decimal(1)) return (((($x + 1) * 2) - 1) instance of xs:integer)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/InstanceofExpr.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dateTime(&#34;2002-04-02T12:00:00Z&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:dateTime("2002-04-02T12:00:00Z") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;13:20:10.5Z&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:time("13:20:10.5Z") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:date(&#34;2000-01-01+05:00&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:date("2000-01-01+05:00") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(&#34;true&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:boolean("true") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1267.43233E12 instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">1267.43233E12 instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;A String Function&#34; instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">"A String Function" instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967.543233 instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">12678967.543233 instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:dateTime">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:dateTime</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:time">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:time</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:date">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:date</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="12678967543233 instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">12678967543233 instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:NMTOKEN('abc') instance of xs:NMTOKENS">
+      <x:call>
+        <x:param select="string(.)">xs:NMTOKEN('abc') instance of xs:NMTOKENS</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of item()">
+      <x:call>
+        <x:param select="string(.)">1 instance of item()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of item()">
+      <x:call>
+        <x:param select="string(.)">1 instance of item()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">1 instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">1 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of xs:integer?">
+      <x:call>
+        <x:param select="string(.)">1 instance of xs:integer?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">1 instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 instance of xs:integer*">
+      <x:call>
+        <x:param select="string(.)">1 instance of xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() instance of xs:boolean">
+      <x:call>
+        <x:param select="string(.)">false() instance of xs:boolean</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() instance of xs:anyAtomicType">
+      <x:call>
+        <x:param select="string(.)">false() instance of xs:anyAtomicType</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;a string&#34; instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">"a string" instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;false&#34; instance of xs:boolean)">
+      <x:call>
+        <x:param select="string(.)">not("false" instance of xs:boolean)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1.1 instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">1.1 instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1.1 instance of xs:integer)">
+      <x:call>
+        <x:param select="string(.)">not(1.1 instance of xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:anyURI(&#34;http://www.example.com/&#34;) instance of xs:anyURI">
+      <x:call>
+        <x:param select="string(.)">xs:anyURI("http://www.example.com/") instance of xs:anyURI</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:anyURI(&#34;http://www.example.com/&#34;) instance of xs:string)">
+      <x:call>
+        <x:param select="string(.)">not(xs:anyURI("http://www.example.com/") instance of xs:string)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;a string&#34; instance of xs:untypedAtomic)">
+      <x:call>
+        <x:param select="string(.)">not("a string" instance of xs:untypedAtomic)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3, 4, 5) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3, 4, 5) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, 2, 3, 4, 5) instance of xs:integer)">
+      <x:call>
+        <x:param select="string(.)">not((1, 2, 3, 4, 5) instance of xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, 2, 3, 4, 5) instance of xs:integer?)">
+      <x:call>
+        <x:param select="string(.)">not((1, 2, 3, 4, 5) instance of xs:integer?)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3, 4, 5) instance of xs:integer*">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3, 4, 5) instance of xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3, 4, 5) instance of item()+">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3, 4, 5) instance of item()+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, 2, &#34;a string&#34;, 4, 5) instance of xs:integer*)">
+      <x:call>
+        <x:param select="string(.)">not((1, 2, "a string", 4, 5) instance of xs:integer*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, 2, 1.1, 4, 5) instance of xs:integer*)">
+      <x:call>
+        <x:param select="string(.)">not((1, 2, 1.1, 4, 5) instance of xs:integer*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not((1, 2, &#34;a string&#34;, 4, 5) instance of xs:string*)">
+      <x:call>
+        <x:param select="string(.)">not((1, 2, "a string", 4, 5) instance of xs:string*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, &#34;a string&#34;, 4, 5) instance of xs:anyAtomicType*">
+      <x:call>
+        <x:param select="string(.)">(1, 2, "a string", 4, 5) instance of xs:anyAtomicType*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, count(&#34;one&#34;), 4, 5) instance of xs:integer+">
+      <x:call>
+        <x:param select="string(.)">(1, 2, count("one"), 4, 5) instance of xs:integer+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of text())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of node())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of element())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of element())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of processing-instruction())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of processing-instruction())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of comment())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of comment())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of text())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of text())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of node())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of element())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of element())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of processing-instruction())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of processing-instruction())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of comment())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of comment())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 instance of empty-sequence())">
+      <x:call>
+        <x:param select="string(.)">not(1 instance of empty-sequence())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not( (1, 2, 3) instance of empty-sequence())">
+      <x:call>
+        <x:param select="string(.)">not( (1, 2, 3) instance of empty-sequence())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">() instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">() instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(((()))) instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">(((()))) instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((), (), ()) instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">((), (), ()) instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((), &#34;xs:string&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">((), "xs:string") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(&#34;xs:string&#34;, (), &#34;xs:string&#34;) instance of xs:string+">
+      <x:call>
+        <x:param select="string(.)">("xs:string", (), "xs:string") instance of xs:string+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1.1, (), 1) instance of xs:decimal+">
+      <x:call>
+        <x:param select="string(.)">(1.1, (), 1) instance of xs:decimal+</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;a string&#34; instance of xs:NOTATION)">
+      <x:call>
+        <x:param select="string(.)">not("a string" instance of xs:NOTATION)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(&#34;a string&#34; instance of xs:QName)">
+      <x:call>
+        <x:param select="string(.)">not("a string" instance of xs:QName)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1.1 instance of xs:decimal and not(1.1 instance of xs:integer)">
+      <x:call>
+        <x:param select="string(.)">1.1 instance of xs:decimal and not(1.1 instance of xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 instance of prefixDoesNotExist:integer">
+      <x:call>
+        <x:param select="string(.)">3 instance of prefixDoesNotExist:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 instance of xs:doesNotExist">
+      <x:call>
+        <x:param select="string(.)">3 instance of xs:doesNotExist</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 instance of xs:qname">
+      <x:call>
+        <x:param select="string(.)">3 instance of xs:qname</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 instance of none">
+      <x:call>
+        <x:param select="string(.)">3 instance of none</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 instance of void">
+      <x:call>
+        <x:param select="string(.)">3 instance of void</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error() instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">error() instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error() instance of xs:integer*">
+      <x:call>
+        <x:param select="string(.)">error() instance of xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="error() instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">error() instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(error(), 1) instance of empty-sequence()">
+      <x:call>
+        <x:param select="string(.)">(error(), 1) instance of empty-sequence()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, error()) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(1, error()) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(error(), 1) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(error(), 1) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, error()) instance of xs:integer*">
+      <x:call>
+        <x:param select="string(.)">(1, error()) instance of xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(error(), 1) instance of xs:integer*">
+      <x:call>
+        <x:param select="string(.)">(error(), 1) instance of xs:integer*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(((10)div(3)) instance of xs:integer)">
+      <x:call>
+        <x:param select="string(.)">not(((10)div(3)) instance of xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((10)idiv(3)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">((10)idiv(3)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((10)mod(3)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">((10)mod(3)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(0) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger(0) instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(-1) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger(-1) instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(0) instance of xs:long">
+      <x:call>
+        <x:param select="string(.)">xs:long(0) instance of xs:long</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(0) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:int(0) instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(0) instance of xs:short">
+      <x:call>
+        <x:param select="string(.)">xs:short(0) instance of xs:short</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:byte(0) instance of xs:byte">
+      <x:call>
+        <x:param select="string(.)">xs:byte(0) instance of xs:byte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger(0) instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(0) instance of xs:unsignedLong">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong(0) instance of xs:unsignedLong</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedInt(0) instance of xs:unsignedInt">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedInt(0) instance of xs:unsignedInt</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(0) instance of xs:unsignedShort">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort(0) instance of xs:unsignedShort</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedByte(0) instance of xs:unsignedByte">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedByte(0) instance of xs:unsignedByte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(1) instance of xs:positiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger(1) instance of xs:positiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString(&#34;NCName&#34;) instance of xs:normalizedString">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString("NCName") instance of xs:normalizedString</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:token(&#34;NCName&#34;) instance of xs:token">
+      <x:call>
+        <x:param select="string(.)">xs:token("NCName") instance of xs:token</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:language(&#34;NCName&#34;) instance of xs:language">
+      <x:call>
+        <x:param select="string(.)">xs:language("NCName") instance of xs:language</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:NMTOKEN(&#34;NCName&#34;) instance of xs:NMTOKEN">
+      <x:call>
+        <x:param select="string(.)">xs:NMTOKEN("NCName") instance of xs:NMTOKEN</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:Name(&#34;NCName&#34;) instance of xs:Name">
+      <x:call>
+        <x:param select="string(.)">xs:Name("NCName") instance of xs:Name</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:NCName(&#34;NCName&#34;) instance of xs:NCName">
+      <x:call>
+        <x:param select="string(.)">xs:NCName("NCName") instance of xs:NCName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ID(&#34;NCName&#34;) instance of xs:ID">
+      <x:call>
+        <x:param select="string(.)">xs:ID("NCName") instance of xs:ID</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:IDREF(&#34;NCName&#34;) instance of xs:IDREF">
+      <x:call>
+        <x:param select="string(.)">xs:IDREF("NCName") instance of xs:IDREF</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ENTITY(&#34;NCName&#34;) instance of xs:ENTITY">
+      <x:call>
+        <x:param select="string(.)">xs:ENTITY("NCName") instance of xs:ENTITY</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString(&#34;ncname&#34;) instance of xs:string">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString("ncname") instance of xs:string</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:token(&#34;ncname&#34;) instance of xs:normalizedString">
+      <x:call>
+        <x:param select="string(.)">xs:token("ncname") instance of xs:normalizedString</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:language(&#34;ncname&#34;) instance of xs:token">
+      <x:call>
+        <x:param select="string(.)">xs:language("ncname") instance of xs:token</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:NMTOKEN(&#34;ncname&#34;) instance of xs:token">
+      <x:call>
+        <x:param select="string(.)">xs:NMTOKEN("ncname") instance of xs:token</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:Name(&#34;ncname&#34;) instance of xs:token">
+      <x:call>
+        <x:param select="string(.)">xs:Name("ncname") instance of xs:token</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:NCName(&#34;ncname&#34;) instance of xs:Name">
+      <x:call>
+        <x:param select="string(.)">xs:NCName("ncname") instance of xs:Name</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ID(&#34;ncname&#34;) instance of xs:NCName">
+      <x:call>
+        <x:param select="string(.)">xs:ID("ncname") instance of xs:NCName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:IDREF(&#34;ncname&#34;) instance of xs:NCName">
+      <x:call>
+        <x:param select="string(.)">xs:IDREF("ncname") instance of xs:NCName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ENTITY(&#34;ncname&#34;) instance of xs:NCName">
+      <x:call>
+        <x:param select="string(.)">xs:ENTITY("ncname") instance of xs:NCName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(&#34;0&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger("0") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(&#34;-1&#34;) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger("-1") instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;0&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:long("0") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(&#34;0&#34;) instance of xs:long">
+      <x:call>
+        <x:param select="string(.)">xs:int("0") instance of xs:long</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;0&#34;) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:short("0") instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:byte(&#34;0&#34;) instance of xs:short">
+      <x:call>
+        <x:param select="string(.)">xs:byte("0") instance of xs:short</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;0&#34;) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("0") instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(&#34;0&#34;) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong("0") instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedInt(&#34;0&#34;) instance of xs:unsignedLong">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedInt("0") instance of xs:unsignedLong</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(&#34;0&#34;) instance of xs:unsignedInt">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort("0") instance of xs:unsignedInt</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedByte(&#34;0&#34;) instance of xs:unsignedShort">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedByte("0") instance of xs:unsignedShort</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;1&#34;) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("1") instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;1&#34;) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("1") instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;1&#34;) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:long("1") instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;1&#34;) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:long("1") instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;1&#34;) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:long("1") instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;1&#34;) instance of xs:positiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:long("1") instance of xs:positiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:token(&#34;ncname&#34;) instance of xs:NCName">
+      <x:call>
+        <x:param select="string(.)">xs:token("ncname") instance of xs:NCName</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ID(&#34;ncname&#34;) instance of xs:IDREF">
+      <x:call>
+        <x:param select="string(.)">xs:ID("ncname") instance of xs:IDREF</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:ENTITY(&#34;ncname&#34;) instance of xs:IDREF">
+      <x:call>
+        <x:param select="string(.)">xs:ENTITY("ncname") instance of xs:IDREF</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:language(&#34;ncname&#34;) instance of xs:NMTOKEN">
+      <x:call>
+        <x:param select="string(.)">xs:language("ncname") instance of xs:NMTOKEN</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:Name(&#34;ncname&#34;) instance of xs:language">
+      <x:call>
+        <x:param select="string(.)">xs:Name("ncname") instance of xs:language</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:normalizedString(&#34;ncname&#34;) instance of xs:token">
+      <x:call>
+        <x:param select="string(.)">xs:normalizedString("ncname") instance of xs:token</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:byte(xs:double(&#34;1&#34;)) instance of xs:byte">
+      <x:call>
+        <x:param select="string(.)">xs:byte(xs:double("1")) instance of xs:byte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(xs:double(&#34;0&#34;)) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger(xs:double("0")) instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(xs:double(&#34;-4&#34;)) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger(xs:double("-4")) instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(xs:double(&#34;-4&#34;)) instance of xs:long">
+      <x:call>
+        <x:param select="string(.)">xs:long(xs:double("-4")) instance of xs:long</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(xs:double(&#34;-4&#34;)) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:int(xs:double("-4")) instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(xs:double(&#34;-4&#34;)) instance of xs:short">
+      <x:call>
+        <x:param select="string(.)">xs:short(xs:double("-4")) instance of xs:short</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(xs:double(&#34;4&#34;)) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger(xs:double("4")) instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(xs:double(&#34;4&#34;)) instance of xs:unsignedLong">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong(xs:double("4")) instance of xs:unsignedLong</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedInt(xs:double(&#34;4&#34;)) instance of xs:unsignedInt">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedInt(xs:double("4")) instance of xs:unsignedInt</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(xs:double(&#34;4&#34;)) instance of xs:unsignedShort">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort(xs:double("4")) instance of xs:unsignedShort</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedByte(xs:double(&#34;4&#34;)) instance of xs:unsignedByte">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedByte(xs:double("4")) instance of xs:unsignedByte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(xs:double(&#34;4&#34;)) instance of xs:positiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger(xs:double("4")) instance of xs:positiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:byte(xs:float(&#34;1&#34;)) instance of xs:byte">
+      <x:call>
+        <x:param select="string(.)">xs:byte(xs:float("1")) instance of xs:byte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonPositiveInteger(xs:float(&#34;0&#34;)) instance of xs:nonPositiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonPositiveInteger(xs:float("0")) instance of xs:nonPositiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:negativeInteger(xs:float(&#34;-4&#34;)) instance of xs:negativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:negativeInteger(xs:float("-4")) instance of xs:negativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(xs:float(&#34;-4&#34;)) instance of xs:long">
+      <x:call>
+        <x:param select="string(.)">xs:long(xs:float("-4")) instance of xs:long</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:int(xs:float(&#34;-4&#34;)) instance of xs:int">
+      <x:call>
+        <x:param select="string(.)">xs:int(xs:float("-4")) instance of xs:int</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(xs:float(&#34;-4&#34;)) instance of xs:short">
+      <x:call>
+        <x:param select="string(.)">xs:short(xs:float("-4")) instance of xs:short</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(xs:float(&#34;4&#34;)) instance of xs:nonNegativeInteger">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger(xs:float("4")) instance of xs:nonNegativeInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(xs:float(&#34;4&#34;)) instance of xs:unsignedLong">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong(xs:float("4")) instance of xs:unsignedLong</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedInt(xs:float(&#34;4&#34;)) instance of xs:unsignedInt">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedInt(xs:float("4")) instance of xs:unsignedInt</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(xs:float(&#34;4&#34;)) instance of xs:unsignedShort">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort(xs:float("4")) instance of xs:unsignedShort</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedByte(xs:float(&#34;4&#34;)) instance of xs:unsignedByte">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedByte(xs:float("4")) instance of xs:unsignedByte</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(xs:float(&#34;4&#34;)) instance of xs:positiveInteger">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger(xs:float("4")) instance of xs:positiveInteger</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in (xs:integer(1), xs:decimal(1)) return (((($x + 1) * 2) - 1) instance of xs:integer)">
+      <x:call>
+        <x:param select="string(.)">for $x in (xs:integer(1), xs:decimal(1)) return (((($x + 1) * 2) - 1) instance of xs:integer)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

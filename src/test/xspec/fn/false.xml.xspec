@@ -1,104 +1,169 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() eq fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() eq fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() ne fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() ne fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() lt fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() lt fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() le fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() le fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() gt fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() gt fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() ge fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() ge fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() = fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() = fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() != fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() != fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() &lt; fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() &lt; fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() &lt;= fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() &lt;= fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() &gt; fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() &gt; fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:false() &gt;= fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:false() &gt;= fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:boolean(fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">xs:boolean(fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(xs:string(fn:false()),xs:string(fn:false()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(xs:string(fn:false()),xs:string(fn:false()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:contains(xs:string(fn:false()),xs:string(fn:false()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:contains(xs:string(fn:false()),xs:string(fn:false()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(xs:string(fn:false()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(xs:string(fn:false()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false(1)</x:label>
-      <x:variable name="expr" as="xs:string">false(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() eq false()</x:label>
-      <x:variable name="expr" as="xs:string">false() eq false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(false())</x:label>
-      <x:variable name="expr" as="xs:string">not(false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/false.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:false())">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() and fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() or fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() eq fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() eq fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() ne fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() ne fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() lt fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() lt fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() le fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() le fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() gt fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() gt fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() ge fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() ge fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() = fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() = fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() != fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() != fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() &lt; fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() &lt; fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() &lt;= fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() &lt;= fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() &gt; fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() &gt; fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:false() &gt;= fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:false() &gt;= fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:boolean(fn:false())">
+      <x:call>
+        <x:param select="string(.)">xs:boolean(fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:false())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(xs:string(fn:false()),xs:string(fn:false()))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(xs:string(fn:false()),xs:string(fn:false()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:contains(xs:string(fn:false()),xs:string(fn:false()))">
+      <x:call>
+        <x:param select="string(.)">fn:contains(xs:string(fn:false()),xs:string(fn:false()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(xs:string(fn:false()))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(xs:string(fn:false()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false(1)">
+      <x:call>
+        <x:param select="string(.)">false(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() eq false()">
+      <x:call>
+        <x:param select="string(.)">false() eq false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(false())">
+      <x:call>
+        <x:param select="string(.)">not(false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

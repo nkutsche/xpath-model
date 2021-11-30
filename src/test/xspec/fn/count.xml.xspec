@@ -1,304 +1,519 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count((xs:int("-2147483648")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:int("-2147483648")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:int("-1873914410")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:int("-1873914410")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:int("2147483647")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:int("2147483647")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:integer("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:integer("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:integer("830993497117024304")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:integer("830993497117024304")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:integer("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:integer("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:decimal("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:decimal("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:decimal("617375191608514839")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:decimal("617375191608514839")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:decimal("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:decimal("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:double("-1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:double("-1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:double("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:double("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:double("1.7976931348623157E308")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:double("1.7976931348623157E308")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:float("-3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:float("-3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:float("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:float("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:float("3.4028235E38")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:float("3.4028235E38")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:long("-92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:long("-92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:long("-47175562203048468")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:long("-47175562203048468")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:long("92233720368547758")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:long("92233720368547758")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedShort("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedShort("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedShort("44633")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedShort("44633")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedShort("65535")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedShort("65535")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:negativeInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:negativeInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:negativeInteger("-297014075999096793")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:negativeInteger("-297014075999096793")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:negativeInteger("-1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:negativeInteger("-1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:positiveInteger("1")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:positiveInteger("1")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:positiveInteger("52704602390610033")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:positiveInteger("52704602390610033")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:positiveInteger("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:positiveInteger("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedLong("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedLong("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedLong("130747108607674654")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedLong("130747108607674654")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:unsignedLong("184467440737095516")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:unsignedLong("184467440737095516")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonPositiveInteger("-999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonPositiveInteger("-999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonPositiveInteger("-475688437271870490")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonPositiveInteger("-475688437271870490")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonPositiveInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonPositiveInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonNegativeInteger("0")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonNegativeInteger("0")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonNegativeInteger("303884545991464527")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonNegativeInteger("303884545991464527")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:nonNegativeInteger("999999999999999999")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:nonNegativeInteger("999999999999999999")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:short("-32768")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:short("-32768")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:short("-5324")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:short("-5324")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((xs:short("32767")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((xs:short("32767")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count()</x:label>
-      <x:variable name="expr" as="xs:string">count()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(1, ())</x:label>
-      <x:variable name="expr" as="xs:string">count(1, ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( () ) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count( () ) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( (1, 2, 3) ) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count( (1, 2, 3) ) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( (1, 2, ()) ) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count( (1, 2, ()) ) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(()) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(()) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(((((()))))) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(((((()))))) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( (((), (), ()), (), (), (), ()) ) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count( (((), (), ()), (), (), (), ()) ) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( (1, 2, 3) ) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count( (1, 2, 3) ) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( ((), "one", 2, "three")) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count( ((), "one", 2, "three")) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count( ("one", (2, "three")) ) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count( ("one", (2, "three")) ) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, "four")) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, "four")) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((1, 2, 3, "four")) eq 4</x:label>
-      <x:variable name="expr" as="xs:string">count((1, 2, 3, "four")) eq 4</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(1 to 3) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(1 to 3) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(reverse((1, 2, 3))) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(reverse((1, 2, 3))) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(reverse((1, 2, 3))) eq 3</x:label>
-      <x:variable name="expr" as="xs:string">count(reverse((1, 2, 3))) eq 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(count((1, 2, current-time(), 4))) eq false()</x:label>
-      <x:variable name="expr" as="xs:string">not(count((1, 2, current-time(), 4))) eq false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)/count()</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)/count()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//employee[@name='John Doe 4']) = 1</x:label>
-      <x:variable name="expr" as="xs:string">count(//employee[@name='John Doe 4']) = 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//employee[@name='John Doe 4']) &lt; 2</x:label>
-      <x:variable name="expr" as="xs:string">count(//employee[@name='John Doe 4']) &lt; 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//employee[@name='John Doe 4']) &gt; 0</x:label>
-      <x:variable name="expr" as="xs:string">count(//employee[@name='John Doe 4']) &gt; 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//employee[@name='John Doe 4']/@name) &gt; 0.5</x:label>
-      <x:variable name="expr" as="xs:string">count(//employee[@name='John Doe 4']/@name) &gt; 0.5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 4']) lt 1.5</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 4']) lt 1.5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 4']) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 4']) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 498']) eq 0</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 498']) eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 4']) lt 1000000000000</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 4']) lt 1000000000000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 4']) gt -5</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 4']) gt -5</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//*[@name='John Doe 4']) eq 0.3</x:label>
-      <x:variable name="expr" as="xs:string">count(//*[@name='John Doe 4']) eq 0.3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//node()) gt 40</x:label>
-      <x:variable name="expr" as="xs:string">count(//node()) gt 40</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(//node()) ne -1</x:label>
-      <x:variable name="expr" as="xs:string">count(//node()) ne -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>0 = count(//node())</x:label>
-      <x:variable name="expr" as="xs:string">0 = count(//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>40 gt count(//node())</x:label>
-      <x:variable name="expr" as="xs:string">40 gt count(//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(for $s in ("red", "blue", "green") return string-to-codepoints($s))</x:label>
-      <x:variable name="expr" as="xs:string">count(for $s in ("red", "blue", "green") return string-to-codepoints($s))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(1 to 10000000)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(1 to 10000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/count.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count((xs:int(&#34;-2147483648&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:int("-2147483648")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:int(&#34;-1873914410&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:int("-1873914410")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:int(&#34;2147483647&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:int("2147483647")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:integer(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:integer("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:integer(&#34;830993497117024304&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:integer("830993497117024304")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:integer(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:integer("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:decimal(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:decimal("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:decimal(&#34;617375191608514839&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:decimal("617375191608514839")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:decimal(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:decimal("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:double(&#34;-1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:double("-1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:double(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:double("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:double(&#34;1.7976931348623157E308&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:double("1.7976931348623157E308")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:float(&#34;-3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:float("-3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:float(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:float("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:float(&#34;3.4028235E38&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:float("3.4028235E38")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:long(&#34;-92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:long("-92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:long(&#34;-47175562203048468&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:long("-47175562203048468")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:long(&#34;92233720368547758&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:long("92233720368547758")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedShort(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedShort("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedShort(&#34;44633&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedShort("44633")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedShort(&#34;65535&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedShort("65535")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:negativeInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:negativeInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:negativeInteger(&#34;-297014075999096793&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:negativeInteger("-297014075999096793")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:negativeInteger(&#34;-1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:negativeInteger("-1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:positiveInteger(&#34;1&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:positiveInteger("1")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:positiveInteger(&#34;52704602390610033&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:positiveInteger("52704602390610033")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:positiveInteger(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:positiveInteger("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedLong(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedLong("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedLong(&#34;130747108607674654&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedLong("130747108607674654")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:unsignedLong(&#34;184467440737095516&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:unsignedLong("184467440737095516")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonPositiveInteger(&#34;-999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonPositiveInteger("-999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonPositiveInteger(&#34;-475688437271870490&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonPositiveInteger("-475688437271870490")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonPositiveInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonPositiveInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonNegativeInteger(&#34;0&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonNegativeInteger("0")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonNegativeInteger(&#34;303884545991464527&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonNegativeInteger("303884545991464527")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:nonNegativeInteger(&#34;999999999999999999&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:nonNegativeInteger("999999999999999999")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:short(&#34;-32768&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:short("-32768")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:short(&#34;-5324&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:short("-5324")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((xs:short(&#34;32767&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:count((xs:short("32767")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count()">
+      <x:call>
+        <x:param select="string(.)">count()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(1, ())">
+      <x:call>
+        <x:param select="string(.)">count(1, ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( () ) eq 0">
+      <x:call>
+        <x:param select="string(.)">count( () ) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( (1, 2, 3) ) eq 3">
+      <x:call>
+        <x:param select="string(.)">count( (1, 2, 3) ) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( (1, 2, ()) ) eq 2">
+      <x:call>
+        <x:param select="string(.)">count( (1, 2, ()) ) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(()) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(()) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(((((()))))) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(((((()))))) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( (((), (), ()), (), (), (), ()) ) eq 0">
+      <x:call>
+        <x:param select="string(.)">count( (((), (), ()), (), (), (), ()) ) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( (1, 2, 3) ) eq 3">
+      <x:call>
+        <x:param select="string(.)">count( (1, 2, 3) ) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( ((), &#34;one&#34;, 2, &#34;three&#34;)) eq 3">
+      <x:call>
+        <x:param select="string(.)">count( ((), "one", 2, "three")) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count( (&#34;one&#34;, (2, &#34;three&#34;)) ) eq 3">
+      <x:call>
+        <x:param select="string(.)">count( ("one", (2, "three")) ) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2)) eq 2">
+      <x:call>
+        <x:param select="string(.)">count((1, 2)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, &#34;four&#34;)) eq 4">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, "four")) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((1, 2, 3, &#34;four&#34;)) eq 4">
+      <x:call>
+        <x:param select="string(.)">count((1, 2, 3, "four")) eq 4</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(1 to 3) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(1 to 3) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(reverse((1, 2, 3))) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(reverse((1, 2, 3))) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(reverse((1, 2, 3))) eq 3">
+      <x:call>
+        <x:param select="string(.)">count(reverse((1, 2, 3))) eq 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(count((1, 2, current-time(), 4))) eq false()">
+      <x:call>
+        <x:param select="string(.)">not(count((1, 2, current-time(), 4))) eq false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)/count()">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)/count()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//employee[@name='John Doe 4']) = 1">
+      <x:call>
+        <x:param select="string(.)">count(//employee[@name='John Doe 4']) = 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//employee[@name='John Doe 4']) &lt; 2">
+      <x:call>
+        <x:param select="string(.)">count(//employee[@name='John Doe 4']) &lt; 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//employee[@name='John Doe 4']) &gt; 0">
+      <x:call>
+        <x:param select="string(.)">count(//employee[@name='John Doe 4']) &gt; 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//employee[@name='John Doe 4']/@name) &gt; 0.5">
+      <x:call>
+        <x:param select="string(.)">count(//employee[@name='John Doe 4']/@name) &gt; 0.5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 4']) lt 1.5">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 4']) lt 1.5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 4']) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 4']) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 498']) eq 0">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 498']) eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 4']) lt 1000000000000">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 4']) lt 1000000000000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 4']) gt -5">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 4']) gt -5</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//*[@name='John Doe 4']) eq 0.3">
+      <x:call>
+        <x:param select="string(.)">count(//*[@name='John Doe 4']) eq 0.3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//node()) gt 40">
+      <x:call>
+        <x:param select="string(.)">count(//node()) gt 40</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(//node()) ne -1">
+      <x:call>
+        <x:param select="string(.)">count(//node()) ne -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="0 = count(//node())">
+      <x:call>
+        <x:param select="string(.)">0 = count(//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="40 gt count(//node())">
+      <x:call>
+        <x:param select="string(.)">40 gt count(//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(for $s in (&#34;red&#34;, &#34;blue&#34;, &#34;green&#34;) return string-to-codepoints($s))">
+      <x:call>
+        <x:param select="string(.)">count(for $s in ("red", "blue", "green") return string-to-codepoints($s))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(1 to 10000000)">
+      <x:call>
+        <x:param select="string(.)">fn:count(1 to 10000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

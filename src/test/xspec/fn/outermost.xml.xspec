@@ -1,34 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:outermost( //*/namespace::* )</x:label>
-      <x:variable name="expr" as="xs:string">fn:outermost( //*/namespace::* )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:outermost( //*/namespace::* )[position() le 2] ! local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:outermost( //*/namespace::* )[position() le 2] ! local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:outermost( //*/namespace::* )[position() = (7 to 9)] ! local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:outermost( //*/namespace::* )[position() = (7 to 9)] ! local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:outermost( //*/namespace::* )[position() = (16 to 19)] ! local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:outermost( //*/namespace::* )[position() = (16 to 19)] ! local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:outermost( //*/namespace::* )[position() = (66 to 69)] ! local-name()</x:label>
-      <x:variable name="expr" as="xs:string">fn:outermost( //*/namespace::* )[position() = (66 to 69)] ! local-name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal( fn:outermost( //*/namespace::* ),
-                           //*/namespace::* )</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal( fn:outermost( //*/namespace::* ),
-                           //*/namespace::* )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/outermost.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:outermost( //*/namespace::* )">
+      <x:call>
+        <x:param select="string(.)">fn:outermost( //*/namespace::* )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:outermost( //*/namespace::* )[position() le 2] ! local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:outermost( //*/namespace::* )[position() le 2] ! local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:outermost( //*/namespace::* )[position() = (7 to 9)] ! local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:outermost( //*/namespace::* )[position() = (7 to 9)] ! local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:outermost( //*/namespace::* )[position() = (16 to 19)] ! local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:outermost( //*/namespace::* )[position() = (16 to 19)] ! local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:outermost( //*/namespace::* )[position() = (66 to 69)] ! local-name()">
+      <x:call>
+        <x:param select="string(.)">fn:outermost( //*/namespace::* )[position() = (66 to 69)] ! local-name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal( fn:outermost( //*/namespace::* ),&#xA;                           //*/namespace::* )">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal( fn:outermost( //*/namespace::* ),
+                           //*/namespace::* )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

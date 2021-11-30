@@ -1,166 +1,275 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary(""))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("00"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("01"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("01"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("ff"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("ff"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("0000"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("0000"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("00ff"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("00ff"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("80c0"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("80c0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("aabbcc"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("aabbcc"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("010203"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("010203"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("01020304"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("01020304"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("0102030405"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("0102030405"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("010203040506"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("010203040506"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("01020304050607"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("01020304050607"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(xs:hexBinary("0102030405060708090A0B0C0D0E0F10111213131415161718191A1B1C1D1F202122232425262728292A2B2C2D2E2F"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(xs:hexBinary("0102030405060708090A0B0C0D0E0F10111213131415161718191A1B1C1D1F202122232425262728292A2B2C2D2E2F"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AA=="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AA=="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQ=="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQ=="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("/w=="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("/w=="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AAA="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AAA="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AP8="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AP8="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("gMA="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("gMA="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("qrvM"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("qrvM"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQID"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQID"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQIDBA=="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQIDBA=="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQIDBAU="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQIDBAU="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQIDBAUG"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQIDBAUG"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQIDBAUGBw=="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQIDBAUGBw=="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary("AQIDBAUGBwgJCgsMDQ4PEBESExMUFRYXGBkaGxwdHyAhIiMkJSYnKCkqKywtLi8="))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary("AQIDBAUGBwgJCgsMDQ4PEBESExMUFRYXGBkaGxwdHyAhIiMkJSYnKCkqKywtLi8="))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:hexBinary(xs:base64Binary(" AQIDBAUG BwgJCgsM DQ4PEBES ExMUFRYX 
- GBkaGxwdH yAhIiMkJ SYnKCkqK y w t L i 8 = "))</x:label>
-      <x:variable name="expr" as="xs:string">xs:hexBinary(xs:base64Binary(" AQIDBAUG BwgJCgsM DQ4PEBES ExMUFRYX 
- GBkaGxwdH yAhIiMkJ SYnKCkqK y w t L i 8 = "))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("AQI")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("AQI")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("AQ=I")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("AQ=I")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("=AQI")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("=AQI")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("qrvM====")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("qrvM====")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("gMA-")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("gMA-")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("AP9=")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("AP9=")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary("Ay==")</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary("Ay==")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:base64Binary(codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)))</x:label>
-      <x:variable name="expr" as="xs:string">xs:base64Binary(codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)) castable as xs:base64Binary</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)) castable as xs:base64Binary</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(xs:base64Binary(()))</x:label>
-      <x:variable name="expr" as="xs:string">count(xs:base64Binary(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/base64Binary.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;00&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;01&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("01"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;ff&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("ff"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;0000&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("0000"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;00ff&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("00ff"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;80c0&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("80c0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;aabbcc&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("aabbcc"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;010203&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("010203"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;01020304&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("01020304"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;0102030405&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("0102030405"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;010203040506&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("010203040506"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;01020304050607&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("01020304050607"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(xs:hexBinary(&#34;0102030405060708090A0B0C0D0E0F10111213131415161718191A1B1C1D1F202122232425262728292A2B2C2D2E2F&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(xs:hexBinary("0102030405060708090A0B0C0D0E0F10111213131415161718191A1B1C1D1F202122232425262728292A2B2C2D2E2F"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AA==&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AA=="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQ==&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQ=="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;/w==&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("/w=="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AAA=&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AAA="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AP8=&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AP8="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;gMA=&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("gMA="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;qrvM&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("qrvM"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQID&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQID"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQIDBA==&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQIDBA=="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQIDBAU=&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQIDBAU="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQIDBAUG&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQIDBAUG"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQIDBAUGBw==&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQIDBAUGBw=="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34;AQIDBAUGBwgJCgsMDQ4PEBESExMUFRYXGBkaGxwdHyAhIiMkJSYnKCkqKywtLi8=&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary("AQIDBAUGBwgJCgsMDQ4PEBESExMUFRYXGBkaGxwdHyAhIiMkJSYnKCkqKywtLi8="))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:hexBinary(xs:base64Binary(&#34; AQIDBAUG BwgJCgsM DQ4PEBES ExMUFRYX &#xA; GBkaGxwdH yAhIiMkJ SYnKCkqK y w t L i 8 = &#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:hexBinary(xs:base64Binary(" AQIDBAUG BwgJCgsM DQ4PEBES ExMUFRYX 
+ GBkaGxwdH yAhIiMkJ SYnKCkqK y w t L i 8 = "))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;AQI&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("AQI")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;AQ=I&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("AQ=I")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;=AQI&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("=AQI")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;qrvM====&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("qrvM====")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;gMA-&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("gMA-")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;AP9=&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("AP9=")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(&#34;Ay==&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary("Ay==")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:base64Binary(codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)))">
+      <x:call>
+        <x:param select="string(.)">xs:base64Binary(codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)) castable as xs:base64Binary">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string((119070, 119070, 119070, 119070) (:treble clef:)) castable as xs:base64Binary</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(xs:base64Binary(()))">
+      <x:call>
+        <x:param select="string(.)">count(xs:base64Binary(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,156 +1,260 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("1970-01-01Z"),xs:dayTimeDuration("-PT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("1970-01-01Z"),xs:dayTimeDuration("-PT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("1983-11-17Z"),xs:dayTimeDuration("-PT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("1983-11-17Z"),xs:dayTimeDuration("-PT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2030-12-31Z"),xs:dayTimeDuration("-PT10H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2030-12-31Z"),xs:dayTimeDuration("-PT10H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-05:00"),xs:dayTimeDuration("-PT5H0M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-05:00"),xs:dayTimeDuration("-PT5H0M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"),xs:dayTimeDuration("-PT5H0M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"),xs:dayTimeDuration("-PT5H0M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07"), ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07"), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:adjust-date-to-timezone(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:adjust-date-to-timezone(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2006-03-07-07:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2006-03-07-07:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00")) ge fn:adjust-date-to-timezone(xs:date("2005-03-07-04:00"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00")) ge fn:adjust-date-to-timezone(xs:date("2005-03-07-04:00"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:adjust-date-to-timezone(current-date()[. lt xs:date('2000-01-01')])</x:label>
-      <x:variable name="expr" as="xs:string">fn:adjust-date-to-timezone(current-date()[. lt xs:date('2000-01-01')])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone((), (), "WRONG PARAM")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone((), (), "WRONG PARAM")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(adjust-date-to-timezone(()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(adjust-date-to-timezone(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(adjust-date-to-timezone((), ()))</x:label>
-      <x:variable name="expr" as="xs:string">empty(adjust-date-to-timezone((), ()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(()) instance of xs:date?</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(()) instance of xs:date?</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H1M"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H1M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("-PT14H1M"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("-PT14H1M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H0M0.001S"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H0M0.001S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-07-10:00")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-07-10:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-06-10:00")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-06-10:00")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07"), ()) eq xs:date("2002-03-07")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07"), ()) eq xs:date("2002-03-07")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ()) eq xs:date("2002-03-07")</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ()) eq xs:date("2002-03-07")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(current-date(), implicit-timezone()) eq current-date()</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(current-date(), implicit-timezone()) eq current-date()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("-25252734927766555-06-07+02:00"), xs:dayTimeDuration("PT0S"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("-25252734927766555-06-07+02:00"), xs:dayTimeDuration("PT0S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(xs:date("25252734927766555-07-28-12:00"), xs:dayTimeDuration("PT12H"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(xs:date("25252734927766555-07-28-12:00"), xs:dayTimeDuration("PT12H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>adjust-date-to-timezone(current-date(), xs:dayTimeDuration("PT12H")) eq adjust-date-to-timezone(current-date(), xs:dayTimeDuration("-PT12H"))</x:label>
-      <x:variable name="expr" as="xs:string">adjust-date-to-timezone(current-date(), xs:dayTimeDuration("PT12H")) eq adjust-date-to-timezone(current-date(), xs:dayTimeDuration("-PT12H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/adjust-date-to-timezone.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;1970-01-01Z&#34;),xs:dayTimeDuration(&#34;-PT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("1970-01-01Z"),xs:dayTimeDuration("-PT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;1983-11-17Z&#34;),xs:dayTimeDuration(&#34;-PT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("1983-11-17Z"),xs:dayTimeDuration("-PT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2030-12-31Z&#34;),xs:dayTimeDuration(&#34;-PT10H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2030-12-31Z"),xs:dayTimeDuration("-PT10H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-05:00&#34;),xs:dayTimeDuration(&#34;-PT5H0M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-05:00"),xs:dayTimeDuration("-PT5H0M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;),xs:dayTimeDuration(&#34;-PT5H0M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"),xs:dayTimeDuration("-PT5H0M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07&#34;), ())">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07"), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;), ())">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:adjust-date-to-timezone(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:adjust-date-to-timezone(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;)) - fn:adjust-date-to-timezone(xs:date(&#34;2006-03-07-07:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2006-03-07-07:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;)) - fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00")) - fn:adjust-date-to-timezone(xs:date("2002-03-07-07:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),()))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())) or fn:true()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())) or fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())) and fn:true()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;),())) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00"),())) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(xs:date(&#34;2002-03-07-04:00&#34;)) ge fn:adjust-date-to-timezone(xs:date(&#34;2005-03-07-04:00&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(xs:date("2002-03-07-04:00")) ge fn:adjust-date-to-timezone(xs:date("2005-03-07-04:00"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:adjust-date-to-timezone(current-date()[. lt xs:date('2000-01-01')])">
+      <x:call>
+        <x:param select="string(.)">fn:adjust-date-to-timezone(current-date()[. lt xs:date('2000-01-01')])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone()">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone((), (), &#34;WRONG PARAM&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone((), (), "WRONG PARAM")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(adjust-date-to-timezone(()))">
+      <x:call>
+        <x:param select="string(.)">empty(adjust-date-to-timezone(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(adjust-date-to-timezone((), ()))">
+      <x:call>
+        <x:param select="string(.)">empty(adjust-date-to-timezone((), ()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(()) instance of xs:date?">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(()) instance of xs:date?</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2001-02-03&#34;), xs:dayTimeDuration(&#34;PT14H1M&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H1M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2001-02-03&#34;), xs:dayTimeDuration(&#34;-PT14H1M&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("-PT14H1M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2001-02-03&#34;), xs:dayTimeDuration(&#34;PT14H0M0.001S&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2001-02-03"), xs:dayTimeDuration("PT14H0M0.001S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07&#34;), xs:dayTimeDuration(&#34;-PT5H0M&#34;)) eq xs:date(&#34;2002-03-07-05:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;), xs:dayTimeDuration(&#34;-PT5H0M&#34;)) eq xs:date(&#34;2002-03-07-05:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT5H0M")) eq xs:date("2002-03-07-05:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07&#34;), xs:dayTimeDuration(&#34;-PT10H&#34;)) eq xs:date(&#34;2002-03-07-10:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-07-10:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;), xs:dayTimeDuration(&#34;-PT10H&#34;)) eq xs:date(&#34;2002-03-06-10:00&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), xs:dayTimeDuration("-PT10H")) eq xs:date("2002-03-06-10:00")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07&#34;), ()) eq xs:date(&#34;2002-03-07&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07"), ()) eq xs:date("2002-03-07")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;2002-03-07-07:00&#34;), ()) eq xs:date(&#34;2002-03-07&#34;)">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("2002-03-07-07:00"), ()) eq xs:date("2002-03-07")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(current-date(), implicit-timezone()) eq current-date()">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(current-date(), implicit-timezone()) eq current-date()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;-25252734927766555-06-07+02:00&#34;), xs:dayTimeDuration(&#34;PT0S&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("-25252734927766555-06-07+02:00"), xs:dayTimeDuration("PT0S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(xs:date(&#34;25252734927766555-07-28-12:00&#34;), xs:dayTimeDuration(&#34;PT12H&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(xs:date("25252734927766555-07-28-12:00"), xs:dayTimeDuration("PT12H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="adjust-date-to-timezone(current-date(), xs:dayTimeDuration(&#34;PT12H&#34;)) eq adjust-date-to-timezone(current-date(), xs:dayTimeDuration(&#34;-PT12H&#34;))">
+      <x:call>
+        <x:param select="string(.)">adjust-date-to-timezone(current-date(), xs:dayTimeDuration("PT12H")) eq adjust-date-to-timezone(current-date(), xs:dayTimeDuration("-PT12H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

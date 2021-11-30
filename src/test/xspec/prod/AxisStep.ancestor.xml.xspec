@@ -1,92 +1,148 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>(200)/ancestor::*</x:label>
-      <x:variable name="expr" as="xs:string">(200)/ancestor::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/works/employee[1]/ancestor::noSuchNode)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/works/employee[1]/ancestor::noSuchNode)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works/employee[1])</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works/employee[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1]/ancestor::works)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1]/ancestor::works)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/hours)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/hours)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/*/day/ancestor::overtime) | (/works/employee[12]/*/day/ancestor::overtime)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/*/day/ancestor::overtime) | (/works/employee[12]/*/day/ancestor::overtime)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/*/day[1]/ancestor::overtime) | (/works/employee[12]/*/day[2]/ancestor::overtime)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/*/day[1]/ancestor::overtime) | (/works/employee[12]/*/day[2]/ancestor::overtime)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day/ancestor::employee) intersect (/works/employee[12]/overtime/day/ancestor::employee)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day/ancestor::employee) intersect (/works/employee[12]/overtime/day/ancestor::employee)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count((/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[ancestor::overtime]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count((/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[ancestor::overtime]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:true()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:true()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:false()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:deep-equal(/works/employee[12]/overtime/ancestor::works,/works/employee[12]/overtime/ancestor::works)</x:label>
-      <x:variable name="expr" as="xs:string">fn:deep-equal(/works/employee[12]/overtime/ancestor::works,/works/employee[12]/overtime/ancestor::works)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $h in (/works/employee[1]/hours) return $h/ancestor::employee</x:label>
-      <x:variable name="expr" as="xs:string">for $h in (/works/employee[1]/hours) return $h/ancestor::employee</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/AxisStep.ancestor.xml"><x:call function="nk:xpath-model"/><x:scenario label="(200)/ancestor::*">
+      <x:call>
+        <x:param select="string(.)">(200)/ancestor::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/works/employee[1]/ancestor::noSuchNode)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/works/employee[1]/ancestor::noSuchNode)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works/employee[1])">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) is exactly-one(/works/employee[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1]/ancestor::works)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1]/ancestor::works)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) &lt;&lt; exactly-one(/works/employee[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/ancestor::works)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/hours)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(/works/employee[1]/ancestor::works) &gt;&gt; exactly-one(/works/employee[1]/hours)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/*/day/ancestor::overtime) | (/works/employee[12]/*/day/ancestor::overtime)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/*/day/ancestor::overtime) | (/works/employee[12]/*/day/ancestor::overtime)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/*/day[1]/ancestor::overtime) | (/works/employee[12]/*/day[2]/ancestor::overtime)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/*/day[1]/ancestor::overtime) | (/works/employee[12]/*/day[2]/ancestor::overtime)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day/ancestor::employee) intersect (/works/employee[12]/overtime/day/ancestor::employee)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day/ancestor::employee) intersect (/works/employee[12]/overtime/day/ancestor::employee)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count((/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[ancestor::overtime]))">
+      <x:call>
+        <x:param select="string(.)">fn:count((/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[ancestor::overtime]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[1])">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day[ancestor::overtime]) except (/works/employee[12]/overtime/day[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:true()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:false()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day[ancestor::overtime]) and fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:true()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:true()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:false()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[12]/overtime/day[ancestor::overtime]) or fn:false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:deep-equal(/works/employee[12]/overtime/ancestor::works,/works/employee[12]/overtime/ancestor::works)">
+      <x:call>
+        <x:param select="string(.)">fn:deep-equal(/works/employee[12]/overtime/ancestor::works,/works/employee[12]/overtime/ancestor::works)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $h in (/works/employee[1]/hours) return $h/ancestor::employee">
+      <x:call>
+        <x:param select="string(.)">for $h in (/works/employee[1]/hours) return $h/ancestor::employee</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

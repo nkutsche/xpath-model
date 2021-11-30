@@ -1,50 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>for $string in ("&#xD;
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/CastExpr.derived.xml"><x:call function="nk:xpath-model"/><x:scenario label="for $string in (&#34;&#xD;&#xA;&#x9; foobar &#xA;&#xD;&#x9;&#34; cast as xs:NMTOKEN) return not(contains($string, '&#x9;') or contains($string, '&#xA;') or contains($string, '&#xD;') or string-length($string) ne 6)">
+      <x:call>
+        <x:param select="string(.)">for $string in ("&#xD;
 	 foobar 
 &#xD;	" cast as xs:NMTOKEN) return not(contains($string, '	') or contains($string, '
-') or contains($string, '&#xD;') or string-length($string) ne 6)</x:label>
-      <x:variable name="expr" as="xs:string">for $string in ("&#xD;
-	 foobar 
-&#xD;	" cast as xs:NMTOKEN) return not(contains($string, '	') or contains($string, '
-') or contains($string, '&#xD;') or string-length($string) ne 6)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $string in ("&#xD; foo 	 bar 
+') or contains($string, '&#xD;') or string-length($string) ne 6)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $string in (&#34;&#xD; foo &#x9; bar &#xA;&#34; cast as xs:normalizedString)&#xA;        return not(contains($string, '&#x9;') or &#xA;                   contains($string, '&#xA;') or &#xA;                   contains($string, '&#xD;') or &#xA;                   string-length($string) ne 13)">
+      <x:call>
+        <x:param select="string(.)">for $string in ("&#xD; foo 	 bar 
 " cast as xs:normalizedString)
         return not(contains($string, '	') or 
                    contains($string, '
 ') or 
                    contains($string, '&#xD;') or 
-                   string-length($string) ne 13)</x:label>
-      <x:variable name="expr" as="xs:string">for $string in ("&#xD; foo 	 bar 
-" cast as xs:normalizedString)
-        return not(contains($string, '	') or 
-                   contains($string, '
-') or 
-                   contains($string, '&#xD;') or 
-                   string-length($string) ne 13)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $string in ("&#xD; foo 	 bar 
+                   string-length($string) ne 13)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $string in (&#34;&#xD; foo &#x9; bar &#xA;&#34; cast as xs:token) &#xA;        return not(contains($string, '&#x9;') or &#xA;                   contains($string, '&#xA;') or &#xA;                   contains($string, '&#xD;') or &#xA;                   string-length($string) ne 7)">
+      <x:call>
+        <x:param select="string(.)">for $string in ("&#xD; foo 	 bar 
 " cast as xs:token) 
         return not(contains($string, '	') or 
                    contains($string, '
 ') or 
                    contains($string, '&#xD;') or 
-                   string-length($string) ne 7)</x:label>
-      <x:variable name="expr" as="xs:string">for $string in ("&#xD; foo 	 bar 
-" cast as xs:token) 
-        return not(contains($string, '	') or 
-                   contains($string, '
-') or 
-                   contains($string, '&#xD;') or 
-                   string-length($string) ne 7)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+                   string-length($string) ne 7)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

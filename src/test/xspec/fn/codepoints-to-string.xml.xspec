@@ -1,286 +1,485 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>codepoints-to-string((98,223,1682,12365,63744))</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string((98,223,1682,12365,63744))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(())</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string('hello')</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string('hello')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(0)</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(10000000)</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(10000000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(49)</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(49)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(97)</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(97)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string((49,97))</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string((49,97))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string((35, 42, 94, 36))</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string((35, 42, 94, 36))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string((99,111,100,101,112,111,105,110,116,115,45,116,111,45,115,116,114,105,110,103))</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string((99,111,100,101,112,111,105,110,116,115,45,116,111,45,115,116,114,105,110,103))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:string(fn:codepoints-to-string((65,32,83,116,114,105,110,103)))</x:label>
-      <x:variable name="expr" as="xs:string">xs:string(fn:codepoints-to-string((65,32,83,116,114,105,110,103)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(fn:codepoints-to-string((65,32,83,84,82,73,78,71)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(fn:codepoints-to-string((65,32,83,84,82,73,78,71)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:lower-case(fn:codepoints-to-string((97,32,115,116,114,105,110,103)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:lower-case(fn:codepoints-to-string((97,32,115,116,114,105,110,103)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(xs:integer(97))</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(xs:integer(97))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string(xs:integer(fn:avg((65,32,83,116,114,105,110,103))))</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string(xs:integer(fn:avg((65,32,83,116,114,105,110,103))))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:codepoints-to-string((49,97)),"1a")</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:codepoints-to-string((49,97)),"1a")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:codepoints-to-string((49,97)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:codepoints-to-string((49,97)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:codepoints-to-string((49,97)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:codepoints-to-string((49,97)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-join((fn:codepoints-to-string((49,97)),'ab'),'')</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-join((fn:codepoints-to-string((49,97)),'ab'),'')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string((84, 104), "INVALID")</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string((84, 104), "INVALID")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string((87, 36, 56, 87, 102, 96)) eq "W$8Wf`"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string((87, 36, 56, 87, 102, 96)) eq "W$8Wf`"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(57343)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(57343)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(-500)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(-500)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(0)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(8)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(8)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(8)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(8)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(9) eq "	"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(9) eq "	"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(10) eq "
-"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(10) eq "
-"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(11)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(11)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(codepoints-to-string(11))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(codepoints-to-string(11))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(12)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(12)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(codepoints-to-string(12))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(codepoints-to-string(12))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(codepoints-to-string(14))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(codepoints-to-string(14))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string-to-codepoints(codepoints-to-string(31))</x:label>
-      <x:variable name="expr" as="xs:string">string-to-codepoints(codepoints-to-string(31))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(32) eq " "</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(32) eq " "</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(27637) eq "毵"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(27637) eq "毵"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(55295) eq "퟿"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(55295) eq "퟿"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(55296)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(55296)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(57343)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(57343)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(57344) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(57344) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(61438) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(61438) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(65533) eq "�"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(65533) eq "�"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(65534)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(65534)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(65535)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(65535)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(65536) eq "𐀀"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(65536) eq "𐀀"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(589823) eq "򏿿"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(589823) eq "򏿿"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(1114111) eq "􏿿"</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(1114111) eq "􏿿"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>codepoints-to-string(1114112)</x:label>
-      <x:variable name="expr" as="xs:string">codepoints-to-string(1114112)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string( 65536 to 1114112 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string( 65536 to 1114112 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string( 55295 to 55297 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string( 55295 to 55297 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string( 55296 to 57343 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string( 55296 to 57343 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string( 65535 to 70000 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string( 65535 to 70000 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:codepoints-to-string( 65530 to 70000 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:codepoints-to-string( 65530 to 70000 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:codepoints-to-string( 65 to 76 ))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:codepoints-to-string( 65 to 76 ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:codepoints-to-string( 0 ))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:codepoints-to-string( 0 ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:codepoints-to-string( 999999999 ))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:codepoints-to-string( 999999999 ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:codepoints-to-string( 65 ))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:codepoints-to-string( 65 ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:codepoints-to-string( () ))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:codepoints-to-string( () ))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 66000)), 65536 to 66000 )</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 66000)), 65536 to 66000 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 100000)), 65536 to 100000 )</x:label>
-      <x:variable name="expr" as="xs:string">deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 100000)), 65536 to 100000 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 32 to 64 return boolean(codepoints-to-string($x to $x + 10))</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 32 to 64 return boolean(codepoints-to-string($x to $x + 10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 65 to 75 return string-length(codepoints-to-string($x to $x+10))</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 65 to 75 return string-length(codepoints-to-string($x to $x+10))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 65 to 75 return boolean(codepoints-to-string($x[. mod 2 = 0] to ($x+9)[. mod 2 = 0]))</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 65 to 75 return boolean(codepoints-to-string($x[. mod 2 = 0] to ($x+9)[. mod 2 = 0]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 9 to 15 return codepoints-to-string($x to $x)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 9 to 15 return codepoints-to-string($x to $x)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 13 to 15 return codepoints-to-string($x to $x)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 13 to 15 return codepoints-to-string($x to $x)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 9 to 9 return codepoints-to-string($x to $x+1)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 9 to 9 return codepoints-to-string($x to $x+1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in 13 to 13 return codepoints-to-string($x to $x)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in 13 to 13 return codepoints-to-string($x to $x)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $x in (13), $y in (13,9,10) return codepoints-to-string($x to $y)</x:label>
-      <x:variable name="expr" as="xs:string">for $x in (13), $y in (13,9,10) return codepoints-to-string($x to $y)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/codepoints-to-string.xml"><x:call function="nk:xpath-model"/><x:scenario label="codepoints-to-string((98,223,1682,12365,63744))">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string((98,223,1682,12365,63744))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(())">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string('hello')">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string('hello')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(0)">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(10000000)">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(10000000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(49)">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(49)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(97)">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(97)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string((49,97))">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string((49,97))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string((35, 42, 94, 36))">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string((35, 42, 94, 36))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string((99,111,100,101,112,111,105,110,116,115,45,116,111,45,115,116,114,105,110,103))">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string((99,111,100,101,112,111,105,110,116,115,45,116,111,45,115,116,114,105,110,103))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:string(fn:codepoints-to-string((65,32,83,116,114,105,110,103)))">
+      <x:call>
+        <x:param select="string(.)">xs:string(fn:codepoints-to-string((65,32,83,116,114,105,110,103)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(fn:codepoints-to-string((65,32,83,84,82,73,78,71)))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(fn:codepoints-to-string((65,32,83,84,82,73,78,71)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:lower-case(fn:codepoints-to-string((97,32,115,116,114,105,110,103)))">
+      <x:call>
+        <x:param select="string(.)">fn:lower-case(fn:codepoints-to-string((97,32,115,116,114,105,110,103)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(xs:integer(97))">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(xs:integer(97))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string(xs:integer(fn:avg((65,32,83,116,114,105,110,103))))">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string(xs:integer(fn:avg((65,32,83,116,114,105,110,103))))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:codepoints-to-string((49,97)),&#34;1a&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:codepoints-to-string((49,97)),"1a")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:codepoints-to-string((49,97)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:codepoints-to-string((49,97)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:codepoints-to-string((49,97)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:codepoints-to-string((49,97)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-join((fn:codepoints-to-string((49,97)),'ab'),'')">
+      <x:call>
+        <x:param select="string(.)">fn:string-join((fn:codepoints-to-string((49,97)),'ab'),'')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string((84, 104), &#34;INVALID&#34;)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string((84, 104), "INVALID")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string((87, 36, 56, 87, 102, 96)) eq &#34;W$8Wf`&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string((87, 36, 56, 87, 102, 96)) eq "W$8Wf`"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(57343)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(57343)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(-500)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(-500)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(0)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(8)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(8)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(8)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(8)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(9) eq &#34;&#x9;&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(9) eq "	"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(10) eq &#34;&#xA;&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(10) eq "
+"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(11)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(11)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(codepoints-to-string(11))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(codepoints-to-string(11))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(12)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(12)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(codepoints-to-string(12))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(codepoints-to-string(12))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(codepoints-to-string(14))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(codepoints-to-string(14))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string-to-codepoints(codepoints-to-string(31))">
+      <x:call>
+        <x:param select="string(.)">string-to-codepoints(codepoints-to-string(31))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(32) eq &#34; &#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(32) eq " "</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(27637) eq &#34;毵&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(27637) eq "毵"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(55295) eq &#34;퟿&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(55295) eq "퟿"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(55296)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(55296)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(57343)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(57343)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(57344) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(57344) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(61438) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(61438) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(65533) eq &#34;�&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(65533) eq "�"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(65534)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(65534)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(65535)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(65535)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(65536) eq &#34;𐀀&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(65536) eq "𐀀"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(589823) eq &#34;򏿿&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(589823) eq "򏿿"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(1114111) eq &#34;􏿿&#34;">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(1114111) eq "􏿿"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="codepoints-to-string(1114112)">
+      <x:call>
+        <x:param select="string(.)">codepoints-to-string(1114112)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string( 65536 to 1114112 )">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string( 65536 to 1114112 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string( 55295 to 55297 )">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string( 55295 to 55297 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string( 55296 to 57343 )">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string( 55296 to 57343 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string( 65535 to 70000 )">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string( 65535 to 70000 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:codepoints-to-string( 65530 to 70000 )">
+      <x:call>
+        <x:param select="string(.)">fn:codepoints-to-string( 65530 to 70000 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:codepoints-to-string( 65 to 76 ))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:codepoints-to-string( 65 to 76 ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:codepoints-to-string( 0 ))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:codepoints-to-string( 0 ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:codepoints-to-string( 999999999 ))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:codepoints-to-string( 999999999 ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:codepoints-to-string( 65 ))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:codepoints-to-string( 65 ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:codepoints-to-string( () ))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:codepoints-to-string( () ))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 66000)), 65536 to 66000 )">
+      <x:call>
+        <x:param select="string(.)">deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 66000)), 65536 to 66000 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 100000)), 65536 to 100000 )">
+      <x:call>
+        <x:param select="string(.)">deep-equal( fn:string-to-codepoints(fn:codepoints-to-string(65536 to 100000)), 65536 to 100000 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 32 to 64 return boolean(codepoints-to-string($x to $x + 10))">
+      <x:call>
+        <x:param select="string(.)">for $x in 32 to 64 return boolean(codepoints-to-string($x to $x + 10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 65 to 75 return string-length(codepoints-to-string($x to $x+10))">
+      <x:call>
+        <x:param select="string(.)">for $x in 65 to 75 return string-length(codepoints-to-string($x to $x+10))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 65 to 75 return boolean(codepoints-to-string($x[. mod 2 = 0] to ($x+9)[. mod 2 = 0]))">
+      <x:call>
+        <x:param select="string(.)">for $x in 65 to 75 return boolean(codepoints-to-string($x[. mod 2 = 0] to ($x+9)[. mod 2 = 0]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 9 to 15 return codepoints-to-string($x to $x)">
+      <x:call>
+        <x:param select="string(.)">for $x in 9 to 15 return codepoints-to-string($x to $x)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 13 to 15 return codepoints-to-string($x to $x)">
+      <x:call>
+        <x:param select="string(.)">for $x in 13 to 15 return codepoints-to-string($x to $x)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 9 to 9 return codepoints-to-string($x to $x+1)">
+      <x:call>
+        <x:param select="string(.)">for $x in 9 to 9 return codepoints-to-string($x to $x+1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in 13 to 13 return codepoints-to-string($x to $x)">
+      <x:call>
+        <x:param select="string(.)">for $x in 13 to 13 return codepoints-to-string($x to $x)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $x in (13), $y in (13,9,10) return codepoints-to-string($x to $y)">
+      <x:call>
+        <x:param select="string(.)">for $x in (13), $y in (13,9,10) return codepoints-to-string($x to $y)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

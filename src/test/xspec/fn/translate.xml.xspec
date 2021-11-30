@@ -1,180 +1,297 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>translate('---abcABCxyz---','-abcABCxyz','1ABCabcXYZ')</x:label>
-      <x:variable name="expr" as="xs:string">translate('---abcABCxyz---','-abcABCxyz','1ABCabcXYZ')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate('newline
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/translate.xml"><x:call function="nk:xpath-model"/><x:scenario label="translate('---abcABCxyz---','-abcABCxyz','1ABCabcXYZ')">
+      <x:call>
+        <x:param select="string(.)">translate('---abcABCxyz---','-abcABCxyz','1ABCabcXYZ')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate('newline&#xA;tab&#x9;space ','&#xA;&#x9; ','123')">
+      <x:call>
+        <x:param select="string(.)">translate('newline
 tab	space ','
-	 ','123')</x:label>
-      <x:variable name="expr" as="xs:string">translate('newline
-tab	space ','
-	 ','123')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate('','-','x')</x:label>
-      <x:variable name="expr" as="xs:string">translate('','-','x')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate((),'-','x')</x:label>
-      <x:variable name="expr" as="xs:string">translate((),'-','x')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate(1,'-','x')</x:label>
-      <x:variable name="expr" as="xs:string">translate(1,'-','x')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate('abc',1,'x')</x:label>
-      <x:variable name="expr" as="xs:string">translate('abc',1,'x')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate('abc','x',1)</x:label>
-      <x:variable name="expr" as="xs:string">translate('abc','x',1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate('abc')</x:label>
-      <x:variable name="expr" as="xs:string">translate('abc')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("bar","abc","ABC")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("bar","abc","ABC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("--aaa--","abc-","ABC")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("--aaa--","abc-","ABC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("abcdabc", "abc", "AB")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("abcdabc", "abc", "AB")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("acdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("acdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:translate("","",""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:translate("","",""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("ABC", "ABC", "ABC")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("ABC", "ABC", "ABC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("123", "123", "123")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("123", "123", "123")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("123ABC", "123ABC", "123ABC")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("123ABC", "123ABC", "123ABC")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate(fn:string("ABC"), fn:string("ABC"), fn:string("ABC"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate(fn:string("ABC"), fn:string("ABC"), fn:string("ABC"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:translate("ABC", "ABC", "ABC"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:translate("ABC", "ABC", "ABC"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-length(fn:translate("ABC","ABC","ABC"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-length(fn:translate("ABC","ABC","ABC"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal(fn:translate("123","123","123"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal(fn:translate("123","123","123"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer(fn:translate("123","123","123"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer(fn:translate("123","123","123"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float(fn:translate("123","123","123"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:float(fn:translate("123","123","123"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double(fn:translate("123","123","123"))</x:label>
-      <x:variable name="expr" as="xs:string">xs:double(fn:translate("123","123","123"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("abcd", "𐀁a", "xy")</x:label>
-      <x:variable name="expr" as="xs:string">translate("abcd", "𐀁a", "xy")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("abcd", "xa", "𐀁y")</x:label>
-      <x:variable name="expr" as="xs:string">translate("abcd", "xa", "𐀁y")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("abcd𐀄e", "a𐀄e", "XYZ")</x:label>
-      <x:variable name="expr" as="xs:string">translate("abcd𐀄e", "a𐀄e", "XYZ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("abcd𐀄e", "a𐀄e", "𐀆YZ")</x:label>
-      <x:variable name="expr" as="xs:string">translate("abcd𐀄e", "a𐀄e", "𐀆YZ")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate()</x:label>
-      <x:variable name="expr" as="xs:string">translate()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("string", "map string")</x:label>
-      <x:variable name="expr" as="xs:string">translate("string", "map string")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("arg", "map string", "transString", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">translate("arg", "map string", "transString", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("--aaa--","-","") eq "aaa"</x:label>
-      <x:variable name="expr" as="xs:string">translate("--aaa--","-","") eq "aaa"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("--aaa--","bbb++","") eq "--aaa--"</x:label>
-      <x:variable name="expr" as="xs:string">translate("--aaa--","bbb++","") eq "--aaa--"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("argstr", "", "matrs") eq "argstr"</x:label>
-      <x:variable name="expr" as="xs:string">translate("argstr", "", "matrs") eq "argstr"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate((), "map", "trans") eq ""</x:label>
-      <x:variable name="expr" as="xs:string">translate((), "map", "trans") eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("abcdabc", "abc", "AB") eq "ABdAB"</x:label>
-      <x:variable name="expr" as="xs:string">translate("abcdabc", "abc", "AB") eq "ABdAB"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("bar","abc","ABC") eq "BAr"</x:label>
-      <x:variable name="expr" as="xs:string">translate("bar","abc","ABC") eq "BAr"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate("--aaa--","abc-","ABC") eq "AAA"</x:label>
-      <x:variable name="expr" as="xs:string">translate("--aaa--","abc-","ABC") eq "AAA"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("arg", (), "transString")</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("arg", (), "transString")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:translate("arg", "mapString", ())</x:label>
-      <x:variable name="expr" as="xs:string">fn:translate("arg", "mapString", ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>boolean(translate(string-join(for $x in 1 to 10 return "blah","-"),exactly-one(("--","==")[position() mod 2 = 0]),"__"))</x:label>
-      <x:variable name="expr" as="xs:string">boolean(translate(string-join(for $x in 1 to 10 return "blah","-"),exactly-one(("--","==")[position() mod 2 = 0]),"__"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>translate(codepoints-to-string(65536 to 65537),codepoints-to-string(65536 to 65537),"l")</x:label>
-      <x:variable name="expr" as="xs:string">translate(codepoints-to-string(65536 to 65537),codepoints-to-string(65536 to 65537),"l")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+	 ','123')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate('','-','x')">
+      <x:call>
+        <x:param select="string(.)">translate('','-','x')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate((),'-','x')">
+      <x:call>
+        <x:param select="string(.)">translate((),'-','x')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(1,'-','x')">
+      <x:call>
+        <x:param select="string(.)">translate(1,'-','x')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate('abc',1,'x')">
+      <x:call>
+        <x:param select="string(.)">translate('abc',1,'x')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate('abc','x',1)">
+      <x:call>
+        <x:param select="string(.)">translate('abc','x',1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate('abc')">
+      <x:call>
+        <x:param select="string(.)">translate('abc')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;bar&#34;,&#34;abc&#34;,&#34;ABC&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("bar","abc","ABC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;--aaa--&#34;,&#34;abc-&#34;,&#34;ABC&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("--aaa--","abc-","ABC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;abcdabc&#34;, &#34;abc&#34;, &#34;AB&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("abcdabc", "abc", "AB")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;acdefghijklmnopqrstuvwxyz&#34;, &#34;abcdefghijklmnopqrstuvwxyz&#34;, &#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("acdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;,&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;,&#34;abcdefghijklmnopqrstuvwxyz&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:translate(&#34;&#34;,&#34;&#34;,&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:translate("","",""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;ABC&#34;, &#34;ABC&#34;, &#34;ABC&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("ABC", "ABC", "ABC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;123&#34;, &#34;123&#34;, &#34;123&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("123", "123", "123")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;123ABC&#34;, &#34;123ABC&#34;, &#34;123ABC&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("123ABC", "123ABC", "123ABC")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(fn:string(&#34;ABC&#34;), fn:string(&#34;ABC&#34;), fn:string(&#34;ABC&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:translate(fn:string("ABC"), fn:string("ABC"), fn:string("ABC"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:translate(&#34;ABC&#34;, &#34;ABC&#34;, &#34;ABC&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:translate("ABC", "ABC", "ABC"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-length(fn:translate(&#34;ABC&#34;,&#34;ABC&#34;,&#34;ABC&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string-length(fn:translate("ABC","ABC","ABC"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(fn:translate(&#34;123&#34;,&#34;123&#34;,&#34;123&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:decimal(fn:translate("123","123","123"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(fn:translate(&#34;123&#34;,&#34;123&#34;,&#34;123&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:integer(fn:translate("123","123","123"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(fn:translate(&#34;123&#34;,&#34;123&#34;,&#34;123&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:float(fn:translate("123","123","123"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(fn:translate(&#34;123&#34;,&#34;123&#34;,&#34;123&#34;))">
+      <x:call>
+        <x:param select="string(.)">xs:double(fn:translate("123","123","123"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;abcd&#34;, &#34;𐀁a&#34;, &#34;xy&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("abcd", "𐀁a", "xy")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;abcd&#34;, &#34;xa&#34;, &#34;𐀁y&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("abcd", "xa", "𐀁y")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;abcd𐀄e&#34;, &#34;a𐀄e&#34;, &#34;XYZ&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("abcd𐀄e", "a𐀄e", "XYZ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;abcd𐀄e&#34;, &#34;a𐀄e&#34;, &#34;𐀆YZ&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("abcd𐀄e", "a𐀄e", "𐀆YZ")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate()">
+      <x:call>
+        <x:param select="string(.)">translate()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;string&#34;, &#34;map string&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("string", "map string")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;arg&#34;, &#34;map string&#34;, &#34;transString&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate("arg", "map string", "transString", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;--aaa--&#34;,&#34;-&#34;,&#34;&#34;) eq &#34;aaa&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("--aaa--","-","") eq "aaa"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;--aaa--&#34;,&#34;bbb++&#34;,&#34;&#34;) eq &#34;--aaa--&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("--aaa--","bbb++","") eq "--aaa--"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;argstr&#34;, &#34;&#34;, &#34;matrs&#34;) eq &#34;argstr&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("argstr", "", "matrs") eq "argstr"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate((), &#34;map&#34;, &#34;trans&#34;) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">translate((), "map", "trans") eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;abcdabc&#34;, &#34;abc&#34;, &#34;AB&#34;) eq &#34;ABdAB&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("abcdabc", "abc", "AB") eq "ABdAB"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;bar&#34;,&#34;abc&#34;,&#34;ABC&#34;) eq &#34;BAr&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("bar","abc","ABC") eq "BAr"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(&#34;--aaa--&#34;,&#34;abc-&#34;,&#34;ABC&#34;) eq &#34;AAA&#34;">
+      <x:call>
+        <x:param select="string(.)">translate("--aaa--","abc-","ABC") eq "AAA"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;arg&#34;, (), &#34;transString&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:translate("arg", (), "transString")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:translate(&#34;arg&#34;, &#34;mapString&#34;, ())">
+      <x:call>
+        <x:param select="string(.)">fn:translate("arg", "mapString", ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="boolean(translate(string-join(for $x in 1 to 10 return &#34;blah&#34;,&#34;-&#34;),exactly-one((&#34;--&#34;,&#34;==&#34;)[position() mod 2 = 0]),&#34;__&#34;))">
+      <x:call>
+        <x:param select="string(.)">boolean(translate(string-join(for $x in 1 to 10 return "blah","-"),exactly-one(("--","==")[position() mod 2 = 0]),"__"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="translate(codepoints-to-string(65536 to 65537),codepoints-to-string(65536 to 65537),&#34;l&#34;)">
+      <x:call>
+        <x:param select="string(.)">translate(codepoints-to-string(65536 to 65537),codepoints-to-string(65536 to 65537),"l")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

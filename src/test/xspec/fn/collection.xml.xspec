@@ -1,112 +1,178 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:collection("argument1","argument2")</x:label>
-      <x:variable name="expr" as="xs:string">fn:collection("argument1","argument2")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:collection("thisfileshouldnotexists")</x:label>
-      <x:variable name="expr" as="xs:string">fn:collection("thisfileshouldnotexists")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:collection("invalidURI%gg")</x:label>
-      <x:variable name="expr" as="xs:string">fn:collection("invalidURI%gg")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:collection($collection-uri))</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:collection($collection-uri))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:collection())</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:collection())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:collection($collection-uri))</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:collection($collection-uri))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:collection())</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:collection())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>distinct-values(fn:collection($collection-uri)//*[text()[contains(.,"TCP/IP")]]/normalize-space())</x:label>
-      <x:variable name="expr" as="xs:string">distinct-values(fn:collection($collection-uri)//*[text()[contains(.,"TCP/IP")]]/normalize-space())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>for $d in fn:collection($collection-uri) return ($d//title)[1]</x:label>
-      <x:variable name="expr" as="xs:string">for $d in fn:collection($collection-uri) return ($d//title)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("http:\\invalidURI\someURI%gg")</x:label>
-      <x:variable name="expr" as="xs:string">collection("http:\\invalidURI\someURI%gg")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection(":/")</x:label>
-      <x:variable name="expr" as="xs:string">collection(":/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection()</x:label>
-      <x:variable name="expr" as="xs:string">collection()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection(())</x:label>
-      <x:variable name="expr" as="xs:string">collection(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection() | collection(())</x:label>
-      <x:variable name="expr" as="xs:string">collection() | collection(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection() | collection(())</x:label>
-      <x:variable name="expr" as="xs:string">collection() | collection(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1")</x:label>
-      <x:variable name="expr" as="xs:string">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("collection1")</x:label>
-      <x:variable name="expr" as="xs:string">collection("collection1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
-         collection("collection1")</x:label>
-      <x:variable name="expr" as="xs:string">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
-         collection("collection1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
-         collection("collection1")</x:label>
-      <x:variable name="expr" as="xs:string">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
-         collection("collection1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("collection/one/")</x:label>
-      <x:variable name="expr" as="xs:string">collection("collection/one/")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("nonexistent")</x:label>
-      <x:variable name="expr" as="xs:string">collection("nonexistent")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection()</x:label>
-      <x:variable name="expr" as="xs:string">collection()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection("##invalid")</x:label>
-      <x:variable name="expr" as="xs:string">collection("##invalid")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>collection(())</x:label>
-      <x:variable name="expr" as="xs:string">collection(())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:collection('%gg')</x:label>
-      <x:variable name="expr" as="xs:string">fn:collection('%gg')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/collection.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:collection(&#34;argument1&#34;,&#34;argument2&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:collection("argument1","argument2")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:collection(&#34;thisfileshouldnotexists&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:collection("thisfileshouldnotexists")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:collection(&#34;invalidURI%gg&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:collection("invalidURI%gg")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:collection($collection-uri))">
+      <x:call>
+        <x:param select="string(.)">count(fn:collection($collection-uri))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:collection())">
+      <x:call>
+        <x:param select="string(.)">count(fn:collection())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:collection($collection-uri))">
+      <x:call>
+        <x:param select="string(.)">count(fn:collection($collection-uri))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:collection())">
+      <x:call>
+        <x:param select="string(.)">count(fn:collection())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="distinct-values(fn:collection($collection-uri)//*[text()[contains(.,&#34;TCP/IP&#34;)]]/normalize-space())">
+      <x:call>
+        <x:param select="string(.)">distinct-values(fn:collection($collection-uri)//*[text()[contains(.,"TCP/IP")]]/normalize-space())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="for $d in fn:collection($collection-uri) return ($d//title)[1]">
+      <x:call>
+        <x:param select="string(.)">for $d in fn:collection($collection-uri) return ($d//title)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;http:\\invalidURI\someURI%gg&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("http:\\invalidURI\someURI%gg")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;:/&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection(":/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection()">
+      <x:call>
+        <x:param select="string(.)">collection()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(())">
+      <x:call>
+        <x:param select="string(.)">collection(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection() | collection(())">
+      <x:call>
+        <x:param select="string(.)">collection() | collection(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection() | collection(())">
+      <x:call>
+        <x:param select="string(.)">collection() | collection(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;http://www.w3.org/2010/09/qt-fots-catalog/collection1&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;collection1&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("collection1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;http://www.w3.org/2010/09/qt-fots-catalog/collection1&#34;) |&#xA;         collection(&#34;collection1&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
+         collection("collection1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;http://www.w3.org/2010/09/qt-fots-catalog/collection1&#34;) |&#xA;         collection(&#34;collection1&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("http://www.w3.org/2010/09/qt-fots-catalog/collection1") |
+         collection("collection1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;collection/one/&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("collection/one/")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;nonexistent&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("nonexistent")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection()">
+      <x:call>
+        <x:param select="string(.)">collection()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(&#34;##invalid&#34;)">
+      <x:call>
+        <x:param select="string(.)">collection("##invalid")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="collection(())">
+      <x:call>
+        <x:param select="string(.)">collection(())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:collection('%gg')">
+      <x:call>
+        <x:param select="string(.)">fn:collection('%gg')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

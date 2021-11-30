@@ -1,104 +1,169 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:idref("argument 1", / ,"Argument 3")</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("argument 1", / ,"Argument 3")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1 to 10)[fn:idref("argument1")]</x:label>
-      <x:variable name="expr" as="xs:string">(1 to 10)[fn:idref("argument1")]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("argument1", "A")</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("argument1", "A")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("id1",/IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("id1",/IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("nomatchingid", /IDS[1])</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("nomatchingid", /IDS[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("id4", /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("id4", /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(("id1", "nomatching"), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(("id1", "nomatching"), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:idref("nomatching1 nomatching2", /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:idref("nomatching1 nomatching2", /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:idref("", /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:idref("", /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:node-name(fn:idref("id2", /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:node-name(fn:idref("id2", /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:idref("id1", /IDS[1])) is (fn:idref("id1", /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:idref("id1", /IDS[1])) is (fn:idref("id1", /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:idref("id1", /IDS[1])) is (fn:idref("id2", /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:idref("id1", /IDS[1])) is (fn:idref("id2", /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:idref(("id1","id1"), /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:idref(("id1","id1"), /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(fn:idref(("id1","ID1"), /IDS[1]))</x:label>
-      <x:variable name="expr" as="xs:string">count(fn:idref(("id1","ID1"), /IDS[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(fn:lower-case("ID1"), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(fn:lower-case("ID1"), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(fn:upper-case("id5"), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(fn:upper-case("id5"), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(fn:concat("i","d1"), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(fn:concat("i","d1"), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(xs:string("id1"), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(xs:string("id1"), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref(fn:string-join(("id","1"),""), /IDS[1])/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref(fn:string-join(("id","1"),""), /IDS[1])/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("argument1",.)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("argument1",.)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:idref("id1")/name(..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:idref("id1")/name(..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>idref((), ())</x:label>
-      <x:variable name="expr" as="xs:string">idref((), ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[idref("ncname", .)]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[idref("ncname", .)]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[idref("ncname")]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[idref("ncname")]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/idref.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:idref(&#34;argument 1&#34;, / ,&#34;Argument 3&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("argument 1", / ,"Argument 3")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1 to 10)[fn:idref(&#34;argument1&#34;)]">
+      <x:call>
+        <x:param select="string(.)">(1 to 10)[fn:idref("argument1")]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;argument1&#34;, &#34;A&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("argument1", "A")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;id1&#34;,/IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("id1",/IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;nomatchingid&#34;, /IDS[1])">
+      <x:call>
+        <x:param select="string(.)">fn:idref("nomatchingid", /IDS[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;id4&#34;, /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("id4", /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref((&#34;id1&#34;, &#34;nomatching&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(("id1", "nomatching"), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:idref(&#34;nomatching1 nomatching2&#34;, /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:idref("nomatching1 nomatching2", /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:idref(&#34;&#34;, /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:idref("", /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:node-name(fn:idref(&#34;id2&#34;, /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:node-name(fn:idref("id2", /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:idref(&#34;id1&#34;, /IDS[1])) is (fn:idref(&#34;id1&#34;, /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">(fn:idref("id1", /IDS[1])) is (fn:idref("id1", /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:idref(&#34;id1&#34;, /IDS[1])) is (fn:idref(&#34;id2&#34;, /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">(fn:idref("id1", /IDS[1])) is (fn:idref("id2", /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:idref((&#34;id1&#34;,&#34;id1&#34;), /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">count(fn:idref(("id1","id1"), /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(fn:idref((&#34;id1&#34;,&#34;ID1&#34;), /IDS[1]))">
+      <x:call>
+        <x:param select="string(.)">count(fn:idref(("id1","ID1"), /IDS[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(fn:lower-case(&#34;ID1&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(fn:lower-case("ID1"), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(fn:upper-case(&#34;id5&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(fn:upper-case("id5"), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(fn:concat(&#34;i&#34;,&#34;d1&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(fn:concat("i","d1"), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(xs:string(&#34;id1&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(xs:string("id1"), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(fn:string-join((&#34;id&#34;,&#34;1&#34;),&#34;&#34;), /IDS[1])/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref(fn:string-join(("id","1"),""), /IDS[1])/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;argument1&#34;,.)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("argument1",.)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:idref(&#34;id1&#34;)/name(..)">
+      <x:call>
+        <x:param select="string(.)">fn:idref("id1")/name(..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="idref((), ())">
+      <x:call>
+        <x:param select="string(.)">idref((), ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3)[idref(&#34;ncname&#34;, .)]">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3)[idref("ncname", .)]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3)[idref(&#34;ncname&#34;)]">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3)[idref("ncname")]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

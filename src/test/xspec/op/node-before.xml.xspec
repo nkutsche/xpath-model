@@ -1,106 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>count(() &lt;&lt; ())</x:label>
-      <x:variable name="expr" as="xs:string">count(() &lt;&lt; ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(() &lt;&lt; /works[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">count(() &lt;&lt; /works[1]/employee[1]/empnum[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(() &lt;&lt; /staff[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">count(() &lt;&lt; /staff[1]/employee[1]/empnum[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(/works[1]/employee[1]/empnum[1] &lt;&lt; ())</x:label>
-      <x:variable name="expr" as="xs:string">count(/works[1]/employee[1]/empnum[1] &lt;&lt; ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/works[1]/employee[1]/empnum[1] &lt;&lt; /works[1]/employee[1]/empnum[1]</x:label>
-      <x:variable name="expr" as="xs:string">/works[1]/employee[1]/empnum[1] &lt;&lt; /works[1]/employee[1]/empnum[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>$works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]</x:label>
-      <x:variable name="expr" as="xs:string">$works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((/staff[1]/employee[1]/empnum[1]) &lt;&lt; ())</x:label>
-      <x:variable name="expr" as="xs:string">count((/staff[1]/employee[1]/empnum[1]) &lt;&lt; ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]) 
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/node-before.xml"><x:call function="nk:xpath-model"/><x:scenario label="count(() &lt;&lt; ())">
+      <x:call>
+        <x:param select="string(.)">count(() &lt;&lt; ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(() &lt;&lt; /works[1]/employee[1]/empnum[1])">
+      <x:call>
+        <x:param select="string(.)">count(() &lt;&lt; /works[1]/employee[1]/empnum[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(() &lt;&lt; /staff[1]/employee[1]/empnum[1])">
+      <x:call>
+        <x:param select="string(.)">count(() &lt;&lt; /staff[1]/employee[1]/empnum[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(/works[1]/employee[1]/empnum[1] &lt;&lt; ())">
+      <x:call>
+        <x:param select="string(.)">count(/works[1]/employee[1]/empnum[1] &lt;&lt; ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/works[1]/employee[1]/empnum[1] &lt;&lt; /works[1]/employee[1]/empnum[1]">
+      <x:call>
+        <x:param select="string(.)">/works[1]/employee[1]/empnum[1] &lt;&lt; /works[1]/employee[1]/empnum[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="$works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]">
+      <x:call>
+        <x:param select="string(.)">$works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((/staff[1]/employee[1]/empnum[1]) &lt;&lt; ())">
+      <x:call>
+        <x:param select="string(.)">count((/staff[1]/employee[1]/empnum[1]) &lt;&lt; ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]) &#xA;         and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[2]/empnum[1]) &#xA;         and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[3]/empnum[1])) &#xA;         or (($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[1]/empnum[1]) &#xA;         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[2]/empnum[1]) &#xA;         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[3]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">(($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]) 
          and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[2]/empnum[1]) 
          and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[3]/empnum[1])) 
          or (($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[1]/empnum[1]) 
          and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[2]/empnum[1]) 
-         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[3]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">(($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[1]/empnum[1]) 
-         and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[2]/empnum[1]) 
-         and ($works/works[1]/employee[1]/empnum[1] &lt;&lt; $staff/staff[1]/employee[3]/empnum[1])) 
-         or (($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[1]/empnum[1]) 
-         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[2]/empnum[1]) 
-         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[3]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
+         and ($works/works[1]/employee[1]/empnum[1] &gt;&gt; $staff/staff[1]/employee[3]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])">
+      <x:call>
+        <x:param select="string(.)">(/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">fn:not((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) &#xA;         lt &#xA;         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
          lt 
-         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         lt 
-         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
+         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) &#xA;         ge&#xA;         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
          ge
-         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         ge
-         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         gt ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         gt ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         le ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:label>
-      <x:variable name="expr" as="xs:string">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
-         le ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(() &lt;&lt; 100)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(() &lt;&lt; 100)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(1 &lt;&lt; ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(1 &lt;&lt; ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() &lt;&lt; 1)</x:label>
-      <x:variable name="expr" as="xs:string">empty(() &lt;&lt; 1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 &lt;&lt; 1</x:label>
-      <x:variable name="expr" as="xs:string">1 &lt;&lt; 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() &lt;&lt; ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() &lt;&lt; ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+         ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) &#xA;         gt ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
+         gt ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) &#xA;         le ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))">
+      <x:call>
+        <x:param select="string(.)">((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1])) 
+         le ((/staff[1]/employee[1]/empnum[1]) &lt;&lt; (/staff[1]/employee[1]/empnum[1]))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(() &lt;&lt; 100)">
+      <x:call>
+        <x:param select="string(.)">fn:count(() &lt;&lt; 100)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(1 &lt;&lt; ())">
+      <x:call>
+        <x:param select="string(.)">empty(1 &lt;&lt; ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() &lt;&lt; 1)">
+      <x:call>
+        <x:param select="string(.)">empty(() &lt;&lt; 1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 &lt;&lt; 1">
+      <x:call>
+        <x:param select="string(.)">1 &lt;&lt; 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() &lt;&lt; ())">
+      <x:call>
+        <x:param select="string(.)">empty(() &lt;&lt; ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

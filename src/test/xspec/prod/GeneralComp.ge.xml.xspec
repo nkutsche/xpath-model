@@ -1,236 +1,400 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>() &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">() &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10000 &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">10000 &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">(50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10000,50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">(10000,50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ()</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= 10000</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= 10000</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (50000)</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (10000,50000)</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (10000,50000)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1])</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:label>
-      <x:variable name="expr" as="xs:string">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:anyURI("http://www.example/com")) &gt;= (xs:anyURI("http://www.example/com"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:anyURI("http://www.example/com")) &gt;= (xs:anyURI("http://www.example/com"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(() &gt;= () )</x:label>
-      <x:variable name="expr" as="xs:string">not(() &gt;= () )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(1 &gt;= () )</x:label>
-      <x:variable name="expr" as="xs:string">not(1 &gt;= () )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(() &gt;= 1 )</x:label>
-      <x:variable name="expr" as="xs:string">not(() &gt;= 1 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count((0, timezone-from-time(current-time()))) &gt;= 1</x:label>
-      <x:variable name="expr" as="xs:string">count((0, timezone-from-time(current-time()))) &gt;= 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("false") &gt;= false()</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("false") &gt;= false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>true() &gt;= xs:untypedAtomic("false")</x:label>
-      <x:variable name="expr" as="xs:string">true() &gt;= xs:untypedAtomic("false")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>false() &gt;= xs:untypedAtomic("false")</x:label>
-      <x:variable name="expr" as="xs:string">false() &gt;= xs:untypedAtomic("false")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:untypedAtomic("false") &gt;= false()</x:label>
-      <x:variable name="expr" as="xs:string">xs:untypedAtomic("false") &gt;= false()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/GeneralComp.ge.xml"><x:call function="nk:xpath-model"/><x:scenario label="() &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">() &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">() &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">() &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">() &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">() &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">() &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">() &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10000 &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">10000 &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">(50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10000,50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">(10000,50000) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">(/works/employee[1]/hours[1],/works/employee[6]/hours[1]) &gt;= (/works/employee[1]/hours[1],/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ()">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= 10000">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= 10000</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (50000)">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (10000,50000)">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= (10000,50000)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1])">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$works/works/employee[6]/hours[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])">
+      <x:call>
+        <x:param select="string(.)">($works/works/employee[1]/hours[1],$staff/staff/employee[6]/hours[1]) &gt;= ($works/works/employee[1]/hours[1],$staff/staff/employee[6]/grade[1])</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:anyURI(&#34;http://www.example/com&#34;)) &gt;= (xs:anyURI(&#34;http://www.example/com&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:anyURI("http://www.example/com")) &gt;= (xs:anyURI("http://www.example/com"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(() &gt;= () )">
+      <x:call>
+        <x:param select="string(.)">not(() &gt;= () )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(1 &gt;= () )">
+      <x:call>
+        <x:param select="string(.)">not(1 &gt;= () )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(() &gt;= 1 )">
+      <x:call>
+        <x:param select="string(.)">not(() &gt;= 1 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count((0, timezone-from-time(current-time()))) &gt;= 1">
+      <x:call>
+        <x:param select="string(.)">count((0, timezone-from-time(current-time()))) &gt;= 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;false&#34;) &gt;= false()">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("false") &gt;= false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="true() &gt;= xs:untypedAtomic(&#34;false&#34;)">
+      <x:call>
+        <x:param select="string(.)">true() &gt;= xs:untypedAtomic("false")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="false() &gt;= xs:untypedAtomic(&#34;false&#34;)">
+      <x:call>
+        <x:param select="string(.)">false() &gt;= xs:untypedAtomic("false")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:untypedAtomic(&#34;false&#34;) &gt;= false()">
+      <x:call>
+        <x:param select="string(.)">xs:untypedAtomic("false") &gt;= false()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

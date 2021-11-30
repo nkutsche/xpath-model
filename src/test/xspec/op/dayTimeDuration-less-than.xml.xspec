@@ -1,120 +1,197 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P15DT11H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P15DT11H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P31DT23H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P31DT23H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P15DT11H59M59S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P15DT11H59M59S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P31DT23H59M59S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P31DT23H59M59S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P15DT11H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P15DT11H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P31DT23H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P31DT23H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P15DT11H59M59S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P15DT11H59M59S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P31DT23H59M59S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P31DT23H59M59S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((xs:dayTimeDuration("P13DT12H") lt xs:dayTimeDuration("P14DT11H")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((xs:dayTimeDuration("P13DT12H") lt xs:dayTimeDuration("P14DT11H")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:dayTimeDuration("P10DT110H") le xs:dayTimeDuration("P10DT11H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:dayTimeDuration("P10DT110H") le xs:dayTimeDuration("P10DT11H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:dayTimeDuration("P10DT10H") lt xs:dayTimeDuration("P9DT09H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:dayTimeDuration("P10DT10H") lt xs:dayTimeDuration("P9DT09H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P09DT09H"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P09DT09H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P09DT10H")) and (xs:dayTimeDuration("P10DT01H") lt xs:dayTimeDuration("P08DT06H"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P09DT10H")) and (xs:dayTimeDuration("P10DT01H") lt xs:dayTimeDuration("P08DT06H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P10DT01H")) and (xs:dayTimeDuration("P02DT04H") le xs:dayTimeDuration("P09DT07H"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P10DT01H")) and (xs:dayTimeDuration("P02DT04H") le xs:dayTimeDuration("P09DT07H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT08H") lt xs:dayTimeDuration("P10DT07H")) or (xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P10DT09H"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT08H") lt xs:dayTimeDuration("P10DT07H")) or (xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P10DT09H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT06H")) or (xs:dayTimeDuration("P15DT01H") le xs:dayTimeDuration("P02DT04H"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT06H")) or (xs:dayTimeDuration("P15DT01H") le xs:dayTimeDuration("P02DT04H"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT02H") lt xs:dayTimeDuration("P01DT10H")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT02H") lt xs:dayTimeDuration("P01DT10H")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT05H")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT05H")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P30DT10H") lt xs:dayTimeDuration("P01DT02H")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P30DT10H") lt xs:dayTimeDuration("P01DT02H")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dayTimeDuration("P10DT05H") le xs:dayTimeDuration("P20DT10H")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dayTimeDuration("P10DT05H") le xs:dayTimeDuration("P20DT10H")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P3DT08H34M12.142S") lt xs:dayTimeDuration("P3DT08H34M12.143S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P3DT08H34M12.142S") lt xs:dayTimeDuration("P3DT08H34M12.143S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:dayTimeDuration("P3DT08H34M12.143S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:dayTimeDuration("P3DT08H34M12.143S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:dayTimeDuration("P3DT08H34M12.144S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:dayTimeDuration("P3DT08H34M12.144S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:label>
-      <x:variable name="expr" as="xs:string">xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.142S"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.142S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/dayTimeDuration-less-than.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) lt xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P15DT11H59M59S&#34;) lt xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P15DT11H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P31DT23H59M59S&#34;) lt xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P31DT23H59M59S") lt xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) lt xs:dayTimeDuration(&#34;P15DT11H59M59S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P15DT11H59M59S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) lt xs:dayTimeDuration(&#34;P31DT23H59M59S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") lt xs:dayTimeDuration("P31DT23H59M59S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) ge xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P15DT11H59M59S&#34;) ge xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P15DT11H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P31DT23H59M59S&#34;) ge xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P31DT23H59M59S") ge xs:dayTimeDuration("P0DT0H0M0S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) ge xs:dayTimeDuration(&#34;P15DT11H59M59S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P15DT11H59M59S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P0DT0H0M0S&#34;) ge xs:dayTimeDuration(&#34;P31DT23H59M59S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P0DT0H0M0S") ge xs:dayTimeDuration("P31DT23H59M59S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((xs:dayTimeDuration(&#34;P13DT12H&#34;) lt xs:dayTimeDuration(&#34;P14DT11H&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not((xs:dayTimeDuration("P13DT12H") lt xs:dayTimeDuration("P14DT11H")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:dayTimeDuration(&#34;P10DT110H&#34;) le xs:dayTimeDuration(&#34;P10DT11H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:dayTimeDuration("P10DT110H") le xs:dayTimeDuration("P10DT11H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:dayTimeDuration(&#34;P10DT10H&#34;) lt xs:dayTimeDuration(&#34;P9DT09H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:dayTimeDuration("P10DT10H") lt xs:dayTimeDuration("P9DT09H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:dayTimeDuration(&#34;P10DT09H&#34;) le xs:dayTimeDuration(&#34;P09DT09H&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P09DT09H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT09H&#34;) lt xs:dayTimeDuration(&#34;P09DT10H&#34;)) and (xs:dayTimeDuration(&#34;P10DT01H&#34;) lt xs:dayTimeDuration(&#34;P08DT06H&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P09DT10H")) and (xs:dayTimeDuration("P10DT01H") lt xs:dayTimeDuration("P08DT06H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT09H&#34;) le xs:dayTimeDuration(&#34;P10DT01H&#34;)) and (xs:dayTimeDuration(&#34;P02DT04H&#34;) le xs:dayTimeDuration(&#34;P09DT07H&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT09H") le xs:dayTimeDuration("P10DT01H")) and (xs:dayTimeDuration("P02DT04H") le xs:dayTimeDuration("P09DT07H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT08H&#34;) lt xs:dayTimeDuration(&#34;P10DT07H&#34;)) or (xs:dayTimeDuration(&#34;P10DT09H&#34;) lt xs:dayTimeDuration(&#34;P10DT09H&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT08H") lt xs:dayTimeDuration("P10DT07H")) or (xs:dayTimeDuration("P10DT09H") lt xs:dayTimeDuration("P10DT09H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT01H&#34;) le xs:dayTimeDuration(&#34;P09DT06H&#34;)) or (xs:dayTimeDuration(&#34;P15DT01H&#34;) le xs:dayTimeDuration(&#34;P02DT04H&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT06H")) or (xs:dayTimeDuration("P15DT01H") le xs:dayTimeDuration("P02DT04H"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT02H&#34;) lt xs:dayTimeDuration(&#34;P01DT10H&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT02H") lt xs:dayTimeDuration("P01DT10H")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT01H&#34;) le xs:dayTimeDuration(&#34;P09DT05H&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT01H") le xs:dayTimeDuration("P09DT05H")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P30DT10H&#34;) lt xs:dayTimeDuration(&#34;P01DT02H&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P30DT10H") lt xs:dayTimeDuration("P01DT02H")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dayTimeDuration(&#34;P10DT05H&#34;) le xs:dayTimeDuration(&#34;P20DT10H&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:dayTimeDuration("P10DT05H") le xs:dayTimeDuration("P20DT10H")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P3DT08H34M12.142S&#34;) lt xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P3DT08H34M12.142S") lt xs:dayTimeDuration("P3DT08H34M12.143S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;) lt xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:dayTimeDuration("P3DT08H34M12.143S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:dayTimeDuration(&#34;P3DT08H34M12.144S&#34;) lt xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:dayTimeDuration("P3DT08H34M12.144S") lt xs:dayTimeDuration("P3DT08H34M12.143S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;) le xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;) le xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.143S")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:dayTimeDuration(&#34;P3DT08H34M12.143S&#34;) le xs:dayTimeDuration(&#34;P3DT08H34M12.142S&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:dayTimeDuration("P3DT08H34M12.143S") le xs:dayTimeDuration("P3DT08H34M12.142S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,860 +1,1471 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/south-east)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/south-east)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west/@west-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west/@west-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count( / )</x:label>
-      <x:variable name="expr" as="xs:string">fn:count( / )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/parent::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/parent::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/far-north/parent::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/far-north/parent::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/parent::near-north)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/parent::near-north)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/parent::nowhere)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/parent::nowhere)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/parent::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/parent::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/far-north/parent::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/far-north/parent::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/..)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/..)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/self::center)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/self::center)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-3/self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-3/self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::center)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::center)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::center)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::center)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/@center-attr-3/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/@center-attr-3/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center/text()/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center/text()/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::far-north)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::far-north)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::far-north)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::far-north)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/far-north)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/far-north)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/far-north)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/far-north)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(/descendant-or-self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(/descendant-or-self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//attribute::mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//attribute::mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//@mark)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//@mark)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//self::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//self::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//self::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//self::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//child::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//child::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//south)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//south)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//attribute::center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//attribute::center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//attribute::center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//attribute::center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//attribute::center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//attribute::center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//attribute::center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//attribute::center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//attribute::node())</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//attribute::node())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//west//@*)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//west//@*)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//@center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//@center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//@center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//@center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//@center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//@center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(//center//@center-attr-2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(//center//@center-attr-2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace-node()</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace-node()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::namespace-node()</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::namespace-node()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::*[self::namespace-node()]</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::*[self::namespace-node()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::*</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::*/..</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::*/..</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::*/name()</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::*/name()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>string(/*/namespace::xlink)</x:label>
-      <x:variable name="expr" as="xs:string">string(/*/namespace::xlink)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::xlink is /*/*[1]/namespace::xlink</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::xlink is /*/*[1]/namespace::xlink</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::xlink is /*/namespace::*[. = 'http://www.w3.org/1999/xlink']</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::xlink is /*/namespace::*[. = 'http://www.w3.org/1999/xlink']</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/namespace::*[not(name())]</x:label>
-      <x:variable name="expr" as="xs:string">/*/namespace::*[not(name())]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/*/namespace::*[not(name())]</x:label>
-      <x:variable name="expr" as="xs:string">/*/*/namespace::*[not(name())]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>/*/*/*/namespace::*[not(name())]</x:label>
-      <x:variable name="expr" as="xs:string">/*/*/*/namespace::*[not(name())]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>nametest//</x:label>
-      <x:variable name="expr" as="xs:string">nametest//</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>nametest/</x:label>
-      <x:variable name="expr" as="xs:string">nametest/</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>123[..]</x:label>
-      <x:variable name="expr" as="xs:string">123[..]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1[element()]</x:label>
-      <x:variable name="expr" as="xs:string">1[element()]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 5 * /)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(1, 5 * /)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, /)[1]</x:label>
-      <x:variable name="expr" as="xs:string">(1, /)[1]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(/, 1)[2]</x:label>
-      <x:variable name="expr" as="xs:string">(/, 1)[2]</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1/3</x:label>
-      <x:variable name="expr" as="xs:string">1/3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(1, 2, 3)[1]/(1, 2)[last()]/"a string"</x:label>
-      <x:variable name="expr" as="xs:string">(1, 2, 3)[1]/(1, 2)[last()]/"a string"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(()/@attr)</x:label>
-      <x:variable name="expr" as="xs:string">empty(()/@attr)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(()/name)</x:label>
-      <x:variable name="expr" as="xs:string">empty(()/name)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>declare</x:label>
-      <x:variable name="expr" as="xs:string">declare</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>declare function local:foo() external;</x:label>
-      <x:variable name="expr" as="xs:string">declare function local:foo() external;</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xquery, version, encoding, default, declare, function, option, collation, schema, import</x:label>
-      <x:variable name="expr" as="xs:string">xquery, version, encoding, default, declare, function, option, collation, schema, import</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/child::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/child::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/self::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/self::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/attribute::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/attribute::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/parent::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/parent::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/descendant::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/descendant::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(10)/descendant-or-self::*</x:label>
-      <x:variable name="expr" as="xs:string">(10)/descendant-or-self::*</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/prod/AxisStep.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:count(//center/child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/south-east)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/south-east)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west/@west-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west/@west-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count( / )">
+      <x:call>
+        <x:param select="string(.)">fn:count( / )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/parent::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/parent::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/far-north/parent::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/far-north/parent::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/parent::near-north)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/parent::near-north)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/parent::nowhere)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/parent::nowhere)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/parent::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/parent::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/far-north/parent::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/far-north/parent::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/..)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/..)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/self::center)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/self::center)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-3/self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-3/self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::center)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::center)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::center)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::center)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/@center-attr-3/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/@center-attr-3/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center/text()/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center/text()/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::far-north)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::far-north)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::far-north)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::far-north)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/far-north)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/far-north)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/far-north)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/far-north)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(/descendant-or-self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(/descendant-or-self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//attribute::mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//attribute::mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//@mark)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//@mark)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//self::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//self::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//self::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//self::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//child::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//child::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//south)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//south)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//attribute::center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//attribute::center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//attribute::center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//attribute::center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//attribute::center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//attribute::center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//attribute::center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//attribute::center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//attribute::node())">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//attribute::node())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//west//@*)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//west//@*)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//@center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//@center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//@center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//@center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//@center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//@center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(//center//@center-attr-2)">
+      <x:call>
+        <x:param select="string(.)">fn:count(//center//@center-attr-2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace-node()">
+      <x:call>
+        <x:param select="string(.)">/*/namespace-node()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::namespace-node()">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::namespace-node()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::*[self::namespace-node()]">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::*[self::namespace-node()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::*">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::*/..">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::*/..</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::*/name()">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::*/name()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="string(/*/namespace::xlink)">
+      <x:call>
+        <x:param select="string(.)">string(/*/namespace::xlink)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::xlink is /*/*[1]/namespace::xlink">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::xlink is /*/*[1]/namespace::xlink</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::xlink is /*/namespace::*[. = 'http://www.w3.org/1999/xlink']">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::xlink is /*/namespace::*[. = 'http://www.w3.org/1999/xlink']</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/namespace::*[not(name())]">
+      <x:call>
+        <x:param select="string(.)">/*/namespace::*[not(name())]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/*/namespace::*[not(name())]">
+      <x:call>
+        <x:param select="string(.)">/*/*/namespace::*[not(name())]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="/*/*/*/namespace::*[not(name())]">
+      <x:call>
+        <x:param select="string(.)">/*/*/*/namespace::*[not(name())]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="123[..]">
+      <x:call>
+        <x:param select="string(.)">123[..]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1[element()]">
+      <x:call>
+        <x:param select="string(.)">1[element()]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 5 * /)[1]">
+      <x:call>
+        <x:param select="string(.)">(1, 5 * /)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, /)[1]">
+      <x:call>
+        <x:param select="string(.)">(1, /)[1]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(/, 1)[2]">
+      <x:call>
+        <x:param select="string(.)">(/, 1)[2]</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1/3">
+      <x:call>
+        <x:param select="string(.)">1/3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(1, 2, 3)[1]/(1, 2)[last()]/&#34;a string&#34;">
+      <x:call>
+        <x:param select="string(.)">(1, 2, 3)[1]/(1, 2)[last()]/"a string"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(()/@attr)">
+      <x:call>
+        <x:param select="string(.)">empty(()/@attr)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(()/name)">
+      <x:call>
+        <x:param select="string(.)">empty(()/name)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="declare">
+      <x:call>
+        <x:param select="string(.)">declare</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xquery, version, encoding, default, declare, function, option, collation, schema, import">
+      <x:call>
+        <x:param select="string(.)">xquery, version, encoding, default, declare, function, option, collation, schema, import</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/child::*">
+      <x:call>
+        <x:param select="string(.)">(10)/child::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/self::*">
+      <x:call>
+        <x:param select="string(.)">(10)/self::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/attribute::*">
+      <x:call>
+        <x:param select="string(.)">(10)/attribute::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/parent::*">
+      <x:call>
+        <x:param select="string(.)">(10)/parent::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/descendant::*">
+      <x:call>
+        <x:param select="string(.)">(10)/descendant::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(10)/descendant-or-self::*">
+      <x:call>
+        <x:param select="string(.)">(10)/descendant-or-self::*</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

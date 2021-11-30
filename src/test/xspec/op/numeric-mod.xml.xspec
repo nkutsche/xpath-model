@@ -1,448 +1,771 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:int("-2147483648") mod xs:int("2147483647")</x:label>
-      <x:variable name="expr" as="xs:string">xs:int("-2147483648") mod xs:int("2147483647")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("-999999999999999999") mod xs:integer("830993497117024304")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("-999999999999999999") mod xs:integer("830993497117024304")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:integer("-999999999999999999") mod xs:integer("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:integer("-999999999999999999") mod xs:integer("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("-999999999999999999") mod xs:decimal("617375191608514839")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("-999999999999999999") mod xs:decimal("617375191608514839")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:decimal("-999999999999999999") mod xs:decimal("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:decimal("-999999999999999999") mod xs:decimal("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-1.7976931348623157E308") mod xs:double("1.7976931348623157E308")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-1.7976931348623157E308") mod xs:double("1.7976931348623157E308")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-3.4028235E38") mod xs:float("3.4028235E38")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-3.4028235E38") mod xs:float("3.4028235E38")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:long("-92233720368547758") mod xs:long("92233720368547758")</x:label>
-      <x:variable name="expr" as="xs:string">xs:long("-92233720368547758") mod xs:long("92233720368547758")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort("0") mod xs:unsignedShort("44633")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort("0") mod xs:unsignedShort("44633")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedShort("0") mod xs:unsignedShort("65535")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedShort("0") mod xs:unsignedShort("65535")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") mod xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") mod xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("52704602390610033") mod xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("52704602390610033") mod xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("999999999999999999") mod xs:positiveInteger("1")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("999999999999999999") mod xs:positiveInteger("1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") mod xs:positiveInteger("52704602390610033")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") mod xs:positiveInteger("52704602390610033")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:positiveInteger("1") mod xs:positiveInteger("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:positiveInteger("1") mod xs:positiveInteger("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong("0") mod xs:unsignedLong("130747108607674654")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong("0") mod xs:unsignedLong("130747108607674654")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:unsignedLong("0") mod xs:unsignedLong("184467440737095516")</x:label>
-      <x:variable name="expr" as="xs:string">xs:unsignedLong("0") mod xs:unsignedLong("184467440737095516")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("303884545991464527")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("303884545991464527")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("999999999999999999")</x:label>
-      <x:variable name="expr" as="xs:string">xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("999999999999999999")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:short("-32768") mod xs:short("32767")</x:label>
-      <x:variable name="expr" as="xs:string">xs:short("-32768") mod xs:short("32767")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>() mod 1</x:label>
-      <x:variable name="expr" as="xs:string">() mod 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 mod '1'</x:label>
-      <x:variable name="expr" as="xs:string">1 mod '1'</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1 mod xs:integer('1')</x:label>
-      <x:variable name="expr" as="xs:string">1 mod xs:integer('1')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) mod xs:integer(2)) instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) mod xs:integer(2)) instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) mod xs:decimal(2)) instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) mod xs:decimal(2)) instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) mod xs:integer(2)) instance of xs:integer</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) mod xs:integer(2)) instance of xs:integer</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) mod xs:decimal(2)) instance of xs:decimal</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) mod xs:decimal(2)) instance of xs:decimal</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) mod xs:float(2)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) mod xs:float(2)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) mod xs:decimal(2)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) mod xs:decimal(2)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) mod xs:integer(2)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) mod xs:integer(2)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) mod xs:float(2)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) mod xs:float(2)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) mod xs:float(2)) instance of xs:float</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) mod xs:float(2)) instance of xs:float</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(6) mod xs:double(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(6) mod xs:double(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) mod xs:decimal(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) mod xs:decimal(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) mod xs:float(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) mod xs:float(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:float(6) mod xs:double(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:float(6) mod xs:double(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) mod xs:integer(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) mod xs:integer(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:integer(6) mod xs:double(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:integer(6) mod xs:double(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:double(6) mod xs:double(2)) instance of xs:double</x:label>
-      <x:variable name="expr" as="xs:string">(xs:double(6) mod xs:double(2)) instance of xs:double</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>10 mod 3 eq 1</x:label>
-      <x:variable name="expr" as="xs:string">10 mod 3 eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>6 mod -2 eq 0</x:label>
-      <x:variable name="expr" as="xs:string">6 mod -2 eq 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>4.5 mod 1.2 eq 0.9</x:label>
-      <x:variable name="expr" as="xs:string">4.5 mod 1.2 eq 0.9</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>1.23E2 mod 0.6E1 eq 3.0E0</x:label>
-      <x:variable name="expr" as="xs:string">1.23E2 mod 0.6E1 eq 3.0E0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"3" mod "3"</x:label>
-      <x:variable name="expr" as="xs:string">"3" mod "3"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>"3" mod 1.1</x:label>
-      <x:variable name="expr" as="xs:string">"3" mod 1.1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:untypedAtomic("5") mod xs:double(3)) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">(xs:untypedAtomic("5") mod xs:double(3)) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:decimal(5) mod xs:untypedAtomic("3")) eq 2</x:label>
-      <x:variable name="expr" as="xs:string">(xs:decimal(5) mod xs:untypedAtomic("3")) eq 2</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(() mod ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(() mod ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>empty(xs:float(3) mod ())</x:label>
-      <x:variable name="expr" as="xs:string">empty(xs:float(3) mod ())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1 mod -1</x:label>
-      <x:variable name="expr" as="xs:string">-1 mod -1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1.0 mod -1.0</x:label>
-      <x:variable name="expr" as="xs:string">-1.0 mod -1.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1.0e0 mod -1.0e0</x:label>
-      <x:variable name="expr" as="xs:string">-1.0e0 mod -1.0e0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1.0e0 mod xs:float(-1.0e0)</x:label>
-      <x:variable name="expr" as="xs:string">-1.0e0 mod xs:float(-1.0e0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1 mod -9223372036854775808</x:label>
-      <x:variable name="expr" as="xs:string">-1 mod -9223372036854775808</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1.0 mod -9223372036854775808.0</x:label>
-      <x:variable name="expr" as="xs:string">-1.0 mod -9223372036854775808.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>-1.0e0 mod xs:double(-9223372036854775808)</x:label>
-      <x:variable name="expr" as="xs:string">-1.0e0 mod xs:double(-9223372036854775808)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float(-1.0e0) mod xs:float(-9223372036854775808)</x:label>
-      <x:variable name="expr" as="xs:string">xs:float(-1.0e0) mod xs:float(-9223372036854775808)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("NaN") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("NaN") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:float("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:float("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("NaN") mod xs:float("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("NaN") mod xs:float("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("NaN") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("NaN") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:double("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:double("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("NaN") mod xs:double("NaN")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("NaN") mod xs:double("NaN")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("INF") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("INF") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:double("INF")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:double("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("INF") mod xs:double("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("INF") mod xs:double("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-INF") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-INF") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:double("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:double("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-INF") mod xs:double("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-INF") mod xs:double("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("0") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("0") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:double("0")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:double("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("0") mod xs:double("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("0") mod xs:double("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-0") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-0") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:double("-0")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:double("-0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-0") mod xs:double("-0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-0") mod xs:double("-0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("INF") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("INF") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:float("INF")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:float("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("INF") mod xs:float("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("INF") mod xs:float("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-INF") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-INF") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:float("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:float("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-INF") mod xs:float("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-INF") mod xs:float("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("0") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("0") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:float("0")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:float("0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("0") mod xs:float("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("0") mod xs:float("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-0") mod 3</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-0") mod 3</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod xs:float("-0")</x:label>
-      <x:variable name="expr" as="xs:string">3 mod xs:float("-0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-0") mod xs:float("-0")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-0") mod xs:float("-0")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-0") mod xs:float("4")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-0") mod xs:float("4")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("0") mod xs:float("4")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("0") mod xs:float("4")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-0") mod xs:double("4")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-0") mod xs:double("4")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("0") mod xs:double("4")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("0") mod xs:double("4")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-0") mod xs:float("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-0") mod xs:float("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("0") mod xs:float("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("0") mod xs:float("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-0") mod xs:double("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-0") mod xs:double("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("0") mod xs:double("INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("0") mod xs:double("INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-0") mod xs:float("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-0") mod xs:float("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("0") mod xs:float("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("0") mod xs:float("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-0") mod xs:double("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-0") mod xs:double("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("0") mod xs:double("-INF")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("0") mod xs:double("-INF")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("10000000") mod xs:double("10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("10000000") mod xs:double("10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-10000000") mod xs:double("-10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-10000000") mod xs:double("-10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("10000000") mod xs:double("-10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("10000000") mod xs:double("-10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:double("-10000000") mod xs:double("10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:double("-10000000") mod xs:double("10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("10000000") mod xs:float("10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("10000000") mod xs:float("10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-10000000") mod xs:float("-10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-10000000") mod xs:float("-10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("10000000") mod xs:float("-10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("10000000") mod xs:float("-10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:float("-10000000") mod xs:float("10000000")</x:label>
-      <x:variable name="expr" as="xs:string">xs:float("-10000000") mod xs:float("10000000")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod 0</x:label>
-      <x:variable name="expr" as="xs:string">3 mod 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3.0 mod 0</x:label>
-      <x:variable name="expr" as="xs:string">3.0 mod 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>3 mod 0.0</x:label>
-      <x:variable name="expr" as="xs:string">3 mod 0.0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/numeric-mod.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:int(&#34;-2147483648&#34;) mod xs:int(&#34;2147483647&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:int("-2147483648") mod xs:int("2147483647")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;-999999999999999999&#34;) mod xs:integer(&#34;830993497117024304&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("-999999999999999999") mod xs:integer("830993497117024304")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:integer(&#34;-999999999999999999&#34;) mod xs:integer(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:integer("-999999999999999999") mod xs:integer("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;-999999999999999999&#34;) mod xs:decimal(&#34;617375191608514839&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("-999999999999999999") mod xs:decimal("617375191608514839")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:decimal(&#34;-999999999999999999&#34;) mod xs:decimal(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:decimal("-999999999999999999") mod xs:decimal("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-1.7976931348623157E308&#34;) mod xs:double(&#34;1.7976931348623157E308&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-1.7976931348623157E308") mod xs:double("1.7976931348623157E308")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-3.4028235E38&#34;) mod xs:float(&#34;3.4028235E38&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-3.4028235E38") mod xs:float("3.4028235E38")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:long(&#34;-92233720368547758&#34;) mod xs:long(&#34;92233720368547758&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:long("-92233720368547758") mod xs:long("92233720368547758")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(&#34;0&#34;) mod xs:unsignedShort(&#34;44633&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort("0") mod xs:unsignedShort("44633")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedShort(&#34;0&#34;) mod xs:unsignedShort(&#34;65535&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedShort("0") mod xs:unsignedShort("65535")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) mod xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") mod xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;52704602390610033&#34;) mod xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("52704602390610033") mod xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;999999999999999999&#34;) mod xs:positiveInteger(&#34;1&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("999999999999999999") mod xs:positiveInteger("1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) mod xs:positiveInteger(&#34;52704602390610033&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") mod xs:positiveInteger("52704602390610033")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:positiveInteger(&#34;1&#34;) mod xs:positiveInteger(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:positiveInteger("1") mod xs:positiveInteger("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(&#34;0&#34;) mod xs:unsignedLong(&#34;130747108607674654&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong("0") mod xs:unsignedLong("130747108607674654")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:unsignedLong(&#34;0&#34;) mod xs:unsignedLong(&#34;184467440737095516&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:unsignedLong("0") mod xs:unsignedLong("184467440737095516")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;0&#34;) mod xs:nonNegativeInteger(&#34;303884545991464527&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("303884545991464527")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:nonNegativeInteger(&#34;0&#34;) mod xs:nonNegativeInteger(&#34;999999999999999999&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:nonNegativeInteger("0") mod xs:nonNegativeInteger("999999999999999999")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:short(&#34;-32768&#34;) mod xs:short(&#34;32767&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:short("-32768") mod xs:short("32767")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="() mod 1">
+      <x:call>
+        <x:param select="string(.)">() mod 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 mod '1'">
+      <x:call>
+        <x:param select="string(.)">1 mod '1'</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1 mod xs:integer('1')">
+      <x:call>
+        <x:param select="string(.)">1 mod xs:integer('1')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) mod xs:integer(2)) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) mod xs:integer(2)) instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) mod xs:decimal(2)) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) mod xs:decimal(2)) instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) mod xs:integer(2)) instance of xs:integer">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) mod xs:integer(2)) instance of xs:integer</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) mod xs:decimal(2)) instance of xs:decimal">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) mod xs:decimal(2)) instance of xs:decimal</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) mod xs:float(2)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) mod xs:float(2)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) mod xs:decimal(2)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) mod xs:decimal(2)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) mod xs:integer(2)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) mod xs:integer(2)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) mod xs:float(2)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) mod xs:float(2)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) mod xs:float(2)) instance of xs:float">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) mod xs:float(2)) instance of xs:float</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(6) mod xs:double(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(6) mod xs:double(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) mod xs:decimal(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) mod xs:decimal(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) mod xs:float(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) mod xs:float(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:float(6) mod xs:double(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:float(6) mod xs:double(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) mod xs:integer(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) mod xs:integer(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:integer(6) mod xs:double(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:integer(6) mod xs:double(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:double(6) mod xs:double(2)) instance of xs:double">
+      <x:call>
+        <x:param select="string(.)">(xs:double(6) mod xs:double(2)) instance of xs:double</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="10 mod 3 eq 1">
+      <x:call>
+        <x:param select="string(.)">10 mod 3 eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="6 mod -2 eq 0">
+      <x:call>
+        <x:param select="string(.)">6 mod -2 eq 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="4.5 mod 1.2 eq 0.9">
+      <x:call>
+        <x:param select="string(.)">4.5 mod 1.2 eq 0.9</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="1.23E2 mod 0.6E1 eq 3.0E0">
+      <x:call>
+        <x:param select="string(.)">1.23E2 mod 0.6E1 eq 3.0E0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;3&#34; mod &#34;3&#34;">
+      <x:call>
+        <x:param select="string(.)">"3" mod "3"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="&#34;3&#34; mod 1.1">
+      <x:call>
+        <x:param select="string(.)">"3" mod 1.1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:untypedAtomic(&#34;5&#34;) mod xs:double(3)) eq 2">
+      <x:call>
+        <x:param select="string(.)">(xs:untypedAtomic("5") mod xs:double(3)) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:decimal(5) mod xs:untypedAtomic(&#34;3&#34;)) eq 2">
+      <x:call>
+        <x:param select="string(.)">(xs:decimal(5) mod xs:untypedAtomic("3")) eq 2</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(() mod ())">
+      <x:call>
+        <x:param select="string(.)">empty(() mod ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="empty(xs:float(3) mod ())">
+      <x:call>
+        <x:param select="string(.)">empty(xs:float(3) mod ())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1 mod -1">
+      <x:call>
+        <x:param select="string(.)">-1 mod -1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1.0 mod -1.0">
+      <x:call>
+        <x:param select="string(.)">-1.0 mod -1.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1.0e0 mod -1.0e0">
+      <x:call>
+        <x:param select="string(.)">-1.0e0 mod -1.0e0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1.0e0 mod xs:float(-1.0e0)">
+      <x:call>
+        <x:param select="string(.)">-1.0e0 mod xs:float(-1.0e0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1 mod -9223372036854775808">
+      <x:call>
+        <x:param select="string(.)">-1 mod -9223372036854775808</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1.0 mod -9223372036854775808.0">
+      <x:call>
+        <x:param select="string(.)">-1.0 mod -9223372036854775808.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="-1.0e0 mod xs:double(-9223372036854775808)">
+      <x:call>
+        <x:param select="string(.)">-1.0e0 mod xs:double(-9223372036854775808)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(-1.0e0) mod xs:float(-9223372036854775808)">
+      <x:call>
+        <x:param select="string(.)">xs:float(-1.0e0) mod xs:float(-9223372036854775808)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;NaN&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:float("NaN") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:float(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:float("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;NaN&#34;) mod xs:float(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("NaN") mod xs:float("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;NaN&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:double("NaN") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:double(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:double("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;NaN&#34;) mod xs:double(&#34;NaN&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("NaN") mod xs:double("NaN")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;INF&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:double("INF") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:double(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:double("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;INF&#34;) mod xs:double(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("INF") mod xs:double("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-INF&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:double("-INF") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:double(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:double("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-INF&#34;) mod xs:double(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-INF") mod xs:double("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;0&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:double("0") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:double(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:double("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;0&#34;) mod xs:double(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("0") mod xs:double("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-0&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:double("-0") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:double(&#34;-0&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:double("-0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-0&#34;) mod xs:double(&#34;-0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-0") mod xs:double("-0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;INF&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:float("INF") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:float(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:float("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;INF&#34;) mod xs:float(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("INF") mod xs:float("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-INF&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:float("-INF") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:float(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:float("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-INF&#34;) mod xs:float(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-INF") mod xs:float("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;0&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:float("0") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:float(&#34;0&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:float("0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;0&#34;) mod xs:float(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("0") mod xs:float("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-0&#34;) mod 3">
+      <x:call>
+        <x:param select="string(.)">xs:float("-0") mod 3</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod xs:float(&#34;-0&#34;)">
+      <x:call>
+        <x:param select="string(.)">3 mod xs:float("-0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-0&#34;) mod xs:float(&#34;-0&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-0") mod xs:float("-0")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-0&#34;) mod xs:float(&#34;4&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-0") mod xs:float("4")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;0&#34;) mod xs:float(&#34;4&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("0") mod xs:float("4")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-0&#34;) mod xs:double(&#34;4&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-0") mod xs:double("4")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;0&#34;) mod xs:double(&#34;4&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("0") mod xs:double("4")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-0&#34;) mod xs:float(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-0") mod xs:float("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;0&#34;) mod xs:float(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("0") mod xs:float("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-0&#34;) mod xs:double(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-0") mod xs:double("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;0&#34;) mod xs:double(&#34;INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("0") mod xs:double("INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-0&#34;) mod xs:float(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-0") mod xs:float("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;0&#34;) mod xs:float(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("0") mod xs:float("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-0&#34;) mod xs:double(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-0") mod xs:double("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;0&#34;) mod xs:double(&#34;-INF&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("0") mod xs:double("-INF")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;10000000&#34;) mod xs:double(&#34;10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("10000000") mod xs:double("10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-10000000&#34;) mod xs:double(&#34;-10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-10000000") mod xs:double("-10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;10000000&#34;) mod xs:double(&#34;-10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("10000000") mod xs:double("-10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:double(&#34;-10000000&#34;) mod xs:double(&#34;10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:double("-10000000") mod xs:double("10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;10000000&#34;) mod xs:float(&#34;10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("10000000") mod xs:float("10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-10000000&#34;) mod xs:float(&#34;-10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-10000000") mod xs:float("-10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;10000000&#34;) mod xs:float(&#34;-10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("10000000") mod xs:float("-10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:float(&#34;-10000000&#34;) mod xs:float(&#34;10000000&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:float("-10000000") mod xs:float("10000000")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod 0">
+      <x:call>
+        <x:param select="string(.)">3 mod 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3.0 mod 0">
+      <x:call>
+        <x:param select="string(.)">3.0 mod 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="3 mod 0.0">
+      <x:call>
+        <x:param select="string(.)">3 mod 0.0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

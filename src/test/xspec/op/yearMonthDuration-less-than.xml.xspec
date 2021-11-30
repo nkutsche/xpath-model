@@ -1,120 +1,197 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P1000Y6M") lt xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1000Y6M") lt xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P2030Y12M") lt xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P2030Y12M") lt xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P1000Y6M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P1000Y6M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P2030Y12M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P2030Y12M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P1000Y6M") ge xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1000Y6M") ge xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P2030Y12M") ge xs:yearMonthDuration("P0Y0M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P2030Y12M") ge xs:yearMonthDuration("P0Y0M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P1000Y6M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P1000Y6M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P2030Y12M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P2030Y12M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not((xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y11M")))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not((xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y11M")))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:yearMonthDuration("P20Y10M") le xs:yearMonthDuration("P20Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:yearMonthDuration("P20Y10M") le xs:yearMonthDuration("P20Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y09M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y09M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y07M"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y07M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P09Y10M")) and (xs:yearMonthDuration("P10Y01M") lt xs:yearMonthDuration("P08Y06M"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P09Y10M")) and (xs:yearMonthDuration("P10Y01M") lt xs:yearMonthDuration("P08Y06M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y01M")) and (xs:yearMonthDuration("P02Y04M") le xs:yearMonthDuration("P09Y07M"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y01M")) and (xs:yearMonthDuration("P02Y04M") le xs:yearMonthDuration("P09Y07M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y08M") lt xs:yearMonthDuration("P10Y07M")) or (xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P10Y09M"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y08M") lt xs:yearMonthDuration("P10Y07M")) or (xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P10Y09M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y06M")) or (xs:yearMonthDuration("P15Y01M") le xs:yearMonthDuration("P02Y04M"))</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y06M")) or (xs:yearMonthDuration("P15Y01M") le xs:yearMonthDuration("P02Y04M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y02M") lt xs:yearMonthDuration("P01Y10M")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y02M") lt xs:yearMonthDuration("P01Y10M")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y05M")) or (fn:true())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y05M")) or (fn:true())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P30Y10M") lt xs:yearMonthDuration("P01Y02M")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P30Y10M") lt xs:yearMonthDuration("P01Y02M")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:yearMonthDuration("P10Y05M") le xs:yearMonthDuration("P20Y10M")) or (fn:false())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:yearMonthDuration("P10Y05M") le xs:yearMonthDuration("P20Y10M")) or (fn:false())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P1999Y9M") lt xs:yearMonthDuration("P1999Y10M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1999Y9M") lt xs:yearMonthDuration("P1999Y10M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y10M"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y10M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y9M"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y9M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y10M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y10M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:yearMonthDuration("P1999Y9M") le xs:yearMonthDuration("P1999Y10M")</x:label>
-      <x:variable name="expr" as="xs:string">xs:yearMonthDuration("P1999Y9M") le xs:yearMonthDuration("P1999Y10M")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>not(xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y9M"))</x:label>
-      <x:variable name="expr" as="xs:string">not(xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y9M"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/op/yearMonthDuration-less-than.xml"><x:call function="nk:xpath-model"/><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) lt xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P1000Y6M&#34;) lt xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P1000Y6M") lt xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P2030Y12M&#34;) lt xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P2030Y12M") lt xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) lt xs:yearMonthDuration(&#34;P1000Y6M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P1000Y6M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) lt xs:yearMonthDuration(&#34;P2030Y12M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") lt xs:yearMonthDuration("P2030Y12M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) ge xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P1000Y6M&#34;) ge xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P1000Y6M") ge xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P2030Y12M&#34;) ge xs:yearMonthDuration(&#34;P0Y0M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P2030Y12M") ge xs:yearMonthDuration("P0Y0M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) ge xs:yearMonthDuration(&#34;P1000Y6M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P1000Y6M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P0Y0M&#34;) ge xs:yearMonthDuration(&#34;P2030Y12M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P0Y0M") ge xs:yearMonthDuration("P2030Y12M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not((xs:yearMonthDuration(&#34;P20Y10M&#34;) lt xs:yearMonthDuration(&#34;P20Y11M&#34;)))">
+      <x:call>
+        <x:param select="string(.)">fn:not((xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y11M")))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:yearMonthDuration(&#34;P20Y10M&#34;) le xs:yearMonthDuration(&#34;P20Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:yearMonthDuration("P20Y10M") le xs:yearMonthDuration("P20Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:yearMonthDuration(&#34;P20Y10M&#34;) lt xs:yearMonthDuration(&#34;P20Y09M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:yearMonthDuration("P20Y10M") lt xs:yearMonthDuration("P20Y09M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(xs:yearMonthDuration(&#34;P10Y09M&#34;) le xs:yearMonthDuration(&#34;P10Y07M&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y07M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y09M&#34;) lt xs:yearMonthDuration(&#34;P09Y10M&#34;)) and (xs:yearMonthDuration(&#34;P10Y01M&#34;) lt xs:yearMonthDuration(&#34;P08Y06M&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P09Y10M")) and (xs:yearMonthDuration("P10Y01M") lt xs:yearMonthDuration("P08Y06M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y09M&#34;) le xs:yearMonthDuration(&#34;P10Y01M&#34;)) and (xs:yearMonthDuration(&#34;P02Y04M&#34;) le xs:yearMonthDuration(&#34;P09Y07M&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y09M") le xs:yearMonthDuration("P10Y01M")) and (xs:yearMonthDuration("P02Y04M") le xs:yearMonthDuration("P09Y07M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y08M&#34;) lt xs:yearMonthDuration(&#34;P10Y07M&#34;)) or (xs:yearMonthDuration(&#34;P10Y09M&#34;) lt xs:yearMonthDuration(&#34;P10Y09M&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y08M") lt xs:yearMonthDuration("P10Y07M")) or (xs:yearMonthDuration("P10Y09M") lt xs:yearMonthDuration("P10Y09M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y01M&#34;) le xs:yearMonthDuration(&#34;P09Y06M&#34;)) or (xs:yearMonthDuration(&#34;P15Y01M&#34;) le xs:yearMonthDuration(&#34;P02Y04M&#34;))">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y06M")) or (xs:yearMonthDuration("P15Y01M") le xs:yearMonthDuration("P02Y04M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y02M&#34;) lt xs:yearMonthDuration(&#34;P01Y10M&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y02M") lt xs:yearMonthDuration("P01Y10M")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y01M&#34;) le xs:yearMonthDuration(&#34;P09Y05M&#34;)) or (fn:true())">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y01M") le xs:yearMonthDuration("P09Y05M")) or (fn:true())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P30Y10M&#34;) lt xs:yearMonthDuration(&#34;P01Y02M&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P30Y10M") lt xs:yearMonthDuration("P01Y02M")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:yearMonthDuration(&#34;P10Y05M&#34;) le xs:yearMonthDuration(&#34;P20Y10M&#34;)) or (fn:false())">
+      <x:call>
+        <x:param select="string(.)">(xs:yearMonthDuration("P10Y05M") le xs:yearMonthDuration("P20Y10M")) or (fn:false())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P1999Y9M&#34;) lt xs:yearMonthDuration(&#34;P1999Y10M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P1999Y9M") lt xs:yearMonthDuration("P1999Y10M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:yearMonthDuration(&#34;P1999Y10M&#34;) lt xs:yearMonthDuration(&#34;P1999Y10M&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y10M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:yearMonthDuration(&#34;P1999Y10M&#34;) lt xs:yearMonthDuration(&#34;P1999Y9M&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:yearMonthDuration("P1999Y10M") lt xs:yearMonthDuration("P1999Y9M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P1999Y10M&#34;) le xs:yearMonthDuration(&#34;P1999Y10M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y10M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:yearMonthDuration(&#34;P1999Y9M&#34;) le xs:yearMonthDuration(&#34;P1999Y10M&#34;)">
+      <x:call>
+        <x:param select="string(.)">xs:yearMonthDuration("P1999Y9M") le xs:yearMonthDuration("P1999Y10M")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="not(xs:yearMonthDuration(&#34;P1999Y10M&#34;) le xs:yearMonthDuration(&#34;P1999Y9M&#34;))">
+      <x:call>
+        <x:param select="string(.)">not(xs:yearMonthDuration("P1999Y10M") le xs:yearMonthDuration("P1999Y9M"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,124 +1,204 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:upper-case(xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(xs:string("This is a characte"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(xs:string("This is a characte"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("ABc!D")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("ABc!D")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:upper-case(()))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:upper-case(()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("12345")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("12345")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("12345abcd")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("12345abcd")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("ABCD")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("ABCD")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("abcde")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("abcde")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("ABCDEabcde")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("ABCDEabcde")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:count(fn:upper-case(""))</x:label>
-      <x:variable name="expr" as="xs:string">fn:count(fn:upper-case(""))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(lower-case("AbcDH"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(lower-case("AbcDH"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("*****")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("*****")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case(upper-case("zzzzz"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case(upper-case("zzzzz"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:boolean(fn:upper-case("abcde"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:boolean(fn:upper-case("abcde"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:concat(fn:upper-case("abcde"), fn:upper-case("fghi"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:concat(fn:upper-case("abcde"), fn:upper-case("fghi"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:not(fn:upper-case("abcde"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:not(fn:upper-case("abcde"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("%$#@!")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("%$#@!")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("upper-case")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("upper-case")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:upper-case("abc") and fn:upper-case("abc")</x:label>
-      <x:variable name="expr" as="xs:string">fn:upper-case("abc") and fn:upper-case("abc")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(160 to 256)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(160 to 256)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(880 to 1023)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(880 to 1023)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(459)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(459)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(223)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(223)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(64279)))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(64279)))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>upper-case()</x:label>
-      <x:variable name="expr" as="xs:string">upper-case()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>upper-case("string", "wrong param")</x:label>
-      <x:variable name="expr" as="xs:string">upper-case("string", "wrong param")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>upper-case(()) eq ""</x:label>
-      <x:variable name="expr" as="xs:string">upper-case(()) eq ""</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>lower-case("ABc!D") eq "abc!d"</x:label>
-      <x:variable name="expr" as="xs:string">lower-case("ABc!D") eq "abc!d"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/upper-case.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:upper-case(xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(xs:string(&#34;This is a characte&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(xs:string("This is a characte"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;ABc!D&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("ABc!D")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:upper-case(()))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:upper-case(()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;12345&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("12345")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;12345abcd&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("12345abcd")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;ABCD&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("ABCD")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;abcde&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("abcde")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;ABCDEabcde&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("ABCDEabcde")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:count(fn:upper-case(&#34;&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:count(fn:upper-case(""))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(lower-case(&#34;AbcDH&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(lower-case("AbcDH"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;*****&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("*****")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(upper-case(&#34;zzzzz&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case(upper-case("zzzzz"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:boolean(fn:upper-case(&#34;abcde&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:boolean(fn:upper-case("abcde"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:concat(fn:upper-case(&#34;abcde&#34;), fn:upper-case(&#34;fghi&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:concat(fn:upper-case("abcde"), fn:upper-case("fghi"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:not(fn:upper-case(&#34;abcde&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:not(fn:upper-case("abcde"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;%$#@!&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("%$#@!")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;upper-case&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("upper-case")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:upper-case(&#34;abc&#34;) and fn:upper-case(&#34;abc&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:upper-case("abc") and fn:upper-case("abc")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(160 to 256)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(160 to 256)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(880 to 1023)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(880 to 1023)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(459)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(459)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(223)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(223)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(64279)))">
+      <x:call>
+        <x:param select="string(.)">fn:string-to-codepoints(fn:upper-case(fn:codepoints-to-string(64279)))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="upper-case()">
+      <x:call>
+        <x:param select="string(.)">upper-case()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="upper-case(&#34;string&#34;, &#34;wrong param&#34;)">
+      <x:call>
+        <x:param select="string(.)">upper-case("string", "wrong param")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="upper-case(()) eq &#34;&#34;">
+      <x:call>
+        <x:param select="string(.)">upper-case(()) eq ""</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="lower-case(&#34;ABc!D&#34;) eq &#34;abc!d&#34;">
+      <x:call>
+        <x:param select="string(.)">lower-case("ABc!D") eq "abc!d"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

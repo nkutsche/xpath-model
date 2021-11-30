@@ -1,116 +1,190 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:implicit-timezone("Argument 1")</x:label>
-      <x:variable name="expr" as="xs:string">fn:implicit-timezone("Argument 1")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">fn:implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() + fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() + fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() - fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() - fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:implicit-timezone() * xs:double(2)</x:label>
-      <x:variable name="expr" as="xs:string">fn:implicit-timezone() * xs:double(2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() * (0 div 0E0))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() * (0 div 0E0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() * 0)</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() * 0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() * -0)</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() * -0)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() div xs:double(2))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() div xs:double(2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() div ( 0 div 0E0))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() div ( 0 div 0E0))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() div 0 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() div 0 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() div -0 )</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() div -0 )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(implicit-timezone() + xs:dayTimeDuration('PT1S')) div (implicit-timezone() + xs:dayTimeDuration('PT1S'))</x:label>
-      <x:variable name="expr" as="xs:string">(implicit-timezone() + xs:dayTimeDuration('PT1S')) div (implicit-timezone() + xs:dayTimeDuration('PT1S'))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:string(fn:implicit-timezone() div xs:dayTimeDuration("P0DT60M00S"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:string(fn:implicit-timezone() div xs:dayTimeDuration("P0DT60M00S"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("05:00:00") + fn:implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("05:00:00") + fn:implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>xs:time("05:00:00") - fn:implicit-timezone()</x:label>
-      <x:variable name="expr" as="xs:string">xs:time("05:00:00") - fn:implicit-timezone()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:date("2000-10-30") - fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:date("2000-10-30") - fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:date("2000-10-30") + fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:date("2000-10-30") + fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dateTime("2000-10-30T11:12:00") - fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dateTime("2000-10-30T11:12:00") - fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(xs:dateTime("2000-10-30T11:12:00") + fn:implicit-timezone())</x:label>
-      <x:variable name="expr" as="xs:string">(xs:dateTime("2000-10-30T11:12:00") + fn:implicit-timezone())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:adjust-date-to-timezone(xs:date("2000-10-30"),fn:implicit-timezone()))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:adjust-date-to-timezone(xs:date("2000-10-30"),fn:implicit-timezone()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:adjust-time-to-timezone(xs:time("10:00:00"),fn:implicit-timezone()))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:adjust-time-to-timezone(xs:time("10:00:00"),fn:implicit-timezone()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>(fn:adjust-dateTime-to-timezone(xs:dateTime("2002-03-07T10:00:00"),fn:implicit-timezone()))</x:label>
-      <x:variable name="expr" as="xs:string">(fn:adjust-dateTime-to-timezone(xs:dateTime("2002-03-07T10:00:00"),fn:implicit-timezone()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>implicit-timezone() ge xs:dayTimeDuration('-PT14H') and implicit-timezone() le xs:dayTimeDuration('PT14H')</x:label>
-      <x:variable name="expr" as="xs:string">implicit-timezone() ge xs:dayTimeDuration('-PT14H') and implicit-timezone() le xs:dayTimeDuration('PT14H')</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>implicit-timezone("WRONG PARAM")</x:label>
-      <x:variable name="expr" as="xs:string">implicit-timezone("WRONG PARAM")</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>seconds-from-duration(implicit-timezone()) le 0 or seconds-from-duration(implicit-timezone()) gt 0</x:label>
-      <x:variable name="expr" as="xs:string">seconds-from-duration(implicit-timezone()) le 0 or seconds-from-duration(implicit-timezone()) gt 0</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exists(seconds-from-duration(implicit-timezone()))</x:label>
-      <x:variable name="expr" as="xs:string">exists(seconds-from-duration(implicit-timezone()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/implicit-timezone.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:implicit-timezone(&#34;Argument 1&#34;)">
+      <x:call>
+        <x:param select="string(.)">fn:implicit-timezone("Argument 1")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">fn:implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() + fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() + fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() - fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() - fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:implicit-timezone() * xs:double(2)">
+      <x:call>
+        <x:param select="string(.)">fn:implicit-timezone() * xs:double(2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() * (0 div 0E0))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() * (0 div 0E0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() * 0)">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() * 0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() * -0)">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() * -0)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() div xs:double(2))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() div xs:double(2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() div ( 0 div 0E0))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() div ( 0 div 0E0))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() div 0 )">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() div 0 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() div -0 )">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() div -0 )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(implicit-timezone() + xs:dayTimeDuration('PT1S')) div (implicit-timezone() + xs:dayTimeDuration('PT1S'))">
+      <x:call>
+        <x:param select="string(.)">(implicit-timezone() + xs:dayTimeDuration('PT1S')) div (implicit-timezone() + xs:dayTimeDuration('PT1S'))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:string(fn:implicit-timezone() div xs:dayTimeDuration(&#34;P0DT60M00S&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:string(fn:implicit-timezone() div xs:dayTimeDuration("P0DT60M00S"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;05:00:00&#34;) + fn:implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:time("05:00:00") + fn:implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="xs:time(&#34;05:00:00&#34;) - fn:implicit-timezone()">
+      <x:call>
+        <x:param select="string(.)">xs:time("05:00:00") - fn:implicit-timezone()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:date(&#34;2000-10-30&#34;) - fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">(xs:date("2000-10-30") - fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:date(&#34;2000-10-30&#34;) + fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">(xs:date("2000-10-30") + fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dateTime(&#34;2000-10-30T11:12:00&#34;) - fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">(xs:dateTime("2000-10-30T11:12:00") - fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(xs:dateTime(&#34;2000-10-30T11:12:00&#34;) + fn:implicit-timezone())">
+      <x:call>
+        <x:param select="string(.)">(xs:dateTime("2000-10-30T11:12:00") + fn:implicit-timezone())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:adjust-date-to-timezone(xs:date(&#34;2000-10-30&#34;),fn:implicit-timezone()))">
+      <x:call>
+        <x:param select="string(.)">(fn:adjust-date-to-timezone(xs:date("2000-10-30"),fn:implicit-timezone()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:adjust-time-to-timezone(xs:time(&#34;10:00:00&#34;),fn:implicit-timezone()))">
+      <x:call>
+        <x:param select="string(.)">(fn:adjust-time-to-timezone(xs:time("10:00:00"),fn:implicit-timezone()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="(fn:adjust-dateTime-to-timezone(xs:dateTime(&#34;2002-03-07T10:00:00&#34;),fn:implicit-timezone()))">
+      <x:call>
+        <x:param select="string(.)">(fn:adjust-dateTime-to-timezone(xs:dateTime("2002-03-07T10:00:00"),fn:implicit-timezone()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="implicit-timezone() ge xs:dayTimeDuration('-PT14H') and implicit-timezone() le xs:dayTimeDuration('PT14H')">
+      <x:call>
+        <x:param select="string(.)">implicit-timezone() ge xs:dayTimeDuration('-PT14H') and implicit-timezone() le xs:dayTimeDuration('PT14H')</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="implicit-timezone(&#34;WRONG PARAM&#34;)">
+      <x:call>
+        <x:param select="string(.)">implicit-timezone("WRONG PARAM")</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="seconds-from-duration(implicit-timezone()) le 0 or seconds-from-duration(implicit-timezone()) gt 0">
+      <x:call>
+        <x:param select="string(.)">seconds-from-duration(implicit-timezone()) le 0 or seconds-from-duration(implicit-timezone()) gt 0</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exists(seconds-from-duration(implicit-timezone()))">
+      <x:call>
+        <x:param select="string(.)">exists(seconds-from-duration(implicit-timezone()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>

@@ -1,208 +1,351 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="generic-test" shared="yes">
-    <x:call function="nk:xpath-model">
-      <x:param select="$expr"/>
-    </x:call>
-    <x:expect label="result should be valid">
-      <expr>...</expr>
-    </x:expect>
-  </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:int("-2147483648"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:int("-2147483648"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:int("-1873914410"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:int("-1873914410"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:int("2147483647"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:int("2147483647"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:integer("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:integer("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:integer("830993497117024304"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:integer("830993497117024304"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:integer("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:integer("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:decimal("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:decimal("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:decimal("617375191608514839"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:decimal("617375191608514839"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:decimal("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:decimal("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:double("-1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:double("-1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:double("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:double("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:double("1.7976931348623157E308"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:double("1.7976931348623157E308"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:float("-3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:float("-3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:float("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:float("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:float("3.4028235E38"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:float("3.4028235E38"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:long("-92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:long("-92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:long("-47175562203048468"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:long("-47175562203048468"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:long("92233720368547758"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:long("92233720368547758"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedShort("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedShort("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedShort("44633"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedShort("44633"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedShort("65535"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedShort("65535"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:negativeInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:negativeInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:negativeInteger("-297014075999096793"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:negativeInteger("-297014075999096793"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:negativeInteger("-1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:negativeInteger("-1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:positiveInteger("1"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:positiveInteger("1"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:positiveInteger("52704602390610033"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:positiveInteger("52704602390610033"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:positiveInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:positiveInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedLong("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedLong("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedLong("130747108607674654"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedLong("130747108607674654"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:unsignedLong("184467440737095516"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:unsignedLong("184467440737095516"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonPositiveInteger("-999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonPositiveInteger("-999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonPositiveInteger("-475688437271870490"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonPositiveInteger("-475688437271870490"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonPositiveInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonPositiveInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonNegativeInteger("0"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonNegativeInteger("0"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonNegativeInteger("303884545991464527"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonNegativeInteger("303884545991464527"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:nonNegativeInteger("999999999999999999"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:nonNegativeInteger("999999999999999999"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:short("-32768"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:short("-32768"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:short("-5324"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:short("-5324"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one(xs:short("32767"))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one(xs:short("32767"))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>fn:exactly-one((1,2))</x:label>
-      <x:variable name="expr" as="xs:string">fn:exactly-one((1,2))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(1, 2)</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(1, 2)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one()</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one()</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one( (1, 2, 3) )</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one( (1, 2, 3) )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one("one") eq "one"</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one("one") eq "one"</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>count(exactly-one( "one" )) eq 1</x:label>
-      <x:variable name="expr" as="xs:string">count(exactly-one( "one" )) eq 1</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(error())</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(error())</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one((true(), error()))</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one((true(), error()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one(( error(), true()))</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one(( error(), true()))</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>exactly-one( () )</x:label>
-      <x:variable name="expr" as="xs:string">exactly-one( () )</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario><x:scenario>
-      <x:label>zero-or-more(1)</x:label>
-      <x:variable name="expr" as="xs:string">zero-or-more(1)</x:variable>
-      <x:like label="generic-test"/>
-    </x:scenario></x:description>
+<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/fn/exactly-one.xml"><x:call function="nk:xpath-model"/><x:scenario label="fn:exactly-one(xs:int(&#34;-2147483648&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:int("-2147483648"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:int(&#34;-1873914410&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:int("-1873914410"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:int(&#34;2147483647&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:int("2147483647"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:integer(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:integer("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:integer(&#34;830993497117024304&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:integer("830993497117024304"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:integer(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:integer("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:decimal(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:decimal("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:decimal(&#34;617375191608514839&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:decimal("617375191608514839"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:decimal(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:decimal("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:double(&#34;-1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:double("-1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:double(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:double("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:double(&#34;1.7976931348623157E308&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:double("1.7976931348623157E308"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:float(&#34;-3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:float("-3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:float(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:float("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:float(&#34;3.4028235E38&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:float("3.4028235E38"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:long(&#34;-92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:long("-92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:long(&#34;-47175562203048468&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:long("-47175562203048468"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:long(&#34;92233720368547758&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:long("92233720368547758"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedShort(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedShort("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedShort(&#34;44633&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedShort("44633"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedShort(&#34;65535&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedShort("65535"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:negativeInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:negativeInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:negativeInteger(&#34;-297014075999096793&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:negativeInteger("-297014075999096793"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:negativeInteger(&#34;-1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:negativeInteger("-1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:positiveInteger(&#34;1&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:positiveInteger("1"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:positiveInteger(&#34;52704602390610033&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:positiveInteger("52704602390610033"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:positiveInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:positiveInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedLong(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedLong("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedLong(&#34;130747108607674654&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedLong("130747108607674654"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:unsignedLong(&#34;184467440737095516&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:unsignedLong("184467440737095516"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonPositiveInteger(&#34;-999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonPositiveInteger("-999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonPositiveInteger(&#34;-475688437271870490&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonPositiveInteger("-475688437271870490"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonPositiveInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonPositiveInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonNegativeInteger(&#34;0&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonNegativeInteger("0"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonNegativeInteger(&#34;303884545991464527&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonNegativeInteger("303884545991464527"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:nonNegativeInteger(&#34;999999999999999999&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:nonNegativeInteger("999999999999999999"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:short(&#34;-32768&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:short("-32768"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:short(&#34;-5324&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:short("-5324"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one(xs:short(&#34;32767&#34;))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one(xs:short("32767"))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="fn:exactly-one((1,2))">
+      <x:call>
+        <x:param select="string(.)">fn:exactly-one((1,2))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(1, 2)">
+      <x:call>
+        <x:param select="string(.)">exactly-one(1, 2)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one()">
+      <x:call>
+        <x:param select="string(.)">exactly-one()</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one( (1, 2, 3) )">
+      <x:call>
+        <x:param select="string(.)">exactly-one( (1, 2, 3) )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(&#34;one&#34;) eq &#34;one&#34;">
+      <x:call>
+        <x:param select="string(.)">exactly-one("one") eq "one"</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="count(exactly-one( &#34;one&#34; )) eq 1">
+      <x:call>
+        <x:param select="string(.)">count(exactly-one( "one" )) eq 1</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(error())">
+      <x:call>
+        <x:param select="string(.)">exactly-one(error())</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one((true(), error()))">
+      <x:call>
+        <x:param select="string(.)">exactly-one((true(), error()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one(( error(), true()))">
+      <x:call>
+        <x:param select="string(.)">exactly-one(( error(), true()))</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="exactly-one( () )">
+      <x:call>
+        <x:param select="string(.)">exactly-one( () )</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario><x:scenario label="zero-or-more(1)">
+      <x:call>
+        <x:param select="string(.)">zero-or-more(1)</x:param>
+      </x:call>
+      <x:expect label="result should be valid">
+        <expr>...</expr>
+      </x:expect>
+    </x:scenario></x:scenario></x:description>
