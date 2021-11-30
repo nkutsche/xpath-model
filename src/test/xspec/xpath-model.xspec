@@ -637,6 +637,46 @@
                         </expr>
                     </x:expect>
                 </x:scenario>
+                <x:scenario label="simple double">
+                    <x:call>
+                        <x:param select="string(.)">12.34e2</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double value="1234"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="double with exp 0">
+                    <x:call>
+                        <x:param select="string(.)">12.34e0</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double value="12.34"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="leading zero of double">
+                    <x:call>
+                        <x:param select="string(.)">0012.34e2</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double value="1234"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="simple double with negative exp">
+                    <x:call>
+                        <x:param select="string(.)">1234e-2</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double value="12.34"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
             </x:scenario>
             <x:scenario label="Misc primitives">
                 <x:scenario label="empty sequence">
