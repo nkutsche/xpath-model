@@ -45,7 +45,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                     <xsl:catch>
-                        <ERROR>Invalid result: <xsl:sequence select="$expr"/></ERROR>
+                        <ERROR message="Invalid result:"><xsl:sequence select="$expr"/></ERROR>
                     </xsl:catch>
                 </xsl:try>
             </xsl:otherwise>
