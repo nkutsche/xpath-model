@@ -7,17 +7,6 @@
 
     <xsl:param name="config" as="map(xs:string, item()*)" select="map{}"/>
 
-    <xsl:template match="/">
-        <xsl:variable name="xpath" as="xs:string">foo[1]</xsl:variable>
-        <root>
-            <model>
-                <xsl:sequence select="nk:xpath-model($xpath)"/>
-            </model>
-            <raw>
-                <xsl:sequence select="p:parse-XPath($xpath)"/>
-            </raw>
-        </root>
-    </xsl:template>
 
     <xsl:function name="nk:xpath-model" as="element()">
         <xsl:param name="xpath" as="xs:string"/>

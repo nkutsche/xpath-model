@@ -7,10 +7,6 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:p="http://www.nkutsche.com/xpath-parser">
     
-    <xsl:template match="/">
-        <xsl:variable name="expr">$foo:bar/pfx:foo/pfx:fnct()</xsl:variable>
-        <xsl:sequence select="p:parse-XPath($expr)"/>
-    </xsl:template>
     
   <!--~
    ! The index of the lexer state for accessing the combined
