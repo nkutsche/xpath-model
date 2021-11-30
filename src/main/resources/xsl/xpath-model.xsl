@@ -30,6 +30,7 @@
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:variable name="parsed" select="p:parse-XPath($xpath)"/>
+        <xsl:variable name="parsed" select="nk:pre-parse-comments($parsed)"/>
         <xsl:choose>
             <xsl:when test="$parsed/self::ERROR">
                 <xsl:sequence select="$parsed"/>
@@ -63,6 +64,27 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
+
+    <xsl:function name="nk:pre-parse-comments" as="element()">
+        <xsl:param name="parsed" as="element()"/>
+        <xsl:apply-templates select="$parsed" mode="nk:pre-parse-comments"/>
+    </xsl:function>
+    
+    
+    <xsl:template match="text()[starts-with(normalize-space(.), '(:')]" mode="nk:pre-parse-comments">
+        <xsl:sequence select="nk:parse-comment(.)"/>
+    </xsl:template>
+    
+    <!-- 
+        copies all nodes:
+    -->
+    <xsl:template match="node() | @*" mode="nk:pre-parse-comments">
+        <xsl:copy>
+            <xsl:apply-templates select="@*" mode="#current"/>
+            <xsl:apply-templates select="node()" mode="#current"/>
+        </xsl:copy>
+    </xsl:template>
+    
     
     <xsl:function name="nk:create-namespaces" as="namespace-node()*">
         <xsl:param name="parsed" as="element()"/>
@@ -567,6 +589,51 @@
         <xsl:apply-templates select="* except TOKEN" mode="#current"/>
     </xsl:template>
     
+
+    <xsl:function name="nk:parse-comment" as="element(Comment)*">
+        <xsl:param name="text" as="xs:string"/>
+
+        <xsl:variable name="text" select="replace($text, '^\s+|\s+$', '')"/>
+        <xsl:variable name="split">
+            <xsl:analyze-string select="$text" regex="\(:|:\)">
+                <xsl:matching-substring>
+                    <xsl:element name="{if(. = '(:') then 'start' else 'end'}"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <ph xsl:expand-text="yes">{.}</ph>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
+
+        <xsl:for-each-group select="$split/*" group-ending-with="
+                end[
+                (preceding-sibling::start/1, preceding-sibling::end/(-1)) => sum() eq 1
+                ]
+                ">
+            <xsl:variable name="first.start" select="(current-group()/self::start)[1]"/>
+            <xsl:variable name="last.end" select="(current-group()/self::end)[last()]"/>
+            <xsl:variable name="excl" select="($first.start/(. | preceding-sibling::*), $last.end/(. | following-sibling::*))"/>
+            <xsl:variable name="content" select="current-group() except $excl"/>
+            <xsl:variable name="comment-content" as="xs:string*">
+                <xsl:apply-templates select="$content" mode="nk:parse-comment"/>
+            </xsl:variable>
+            <Comment>
+                <xsl:sequence select="$comment-content => string-join()"/>
+            </Comment>
+        </xsl:for-each-group>
+
+    </xsl:function>
+
+    <xsl:template match="start" mode="nk:parse-comment">
+        <xsl:text>(:</xsl:text>
+    </xsl:template>
+    <xsl:template match="end" mode="nk:parse-comment">
+        <xsl:text>:)</xsl:text>
+    </xsl:template>
+    <xsl:template match="ph" mode="nk:parse-comment">
+        <xsl:value-of select="."/>
+    </xsl:template>
+
 
     <xsl:function name="nk:quote-unesc">
         <xsl:param name="escaped" as="xs:string"/>
