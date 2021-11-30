@@ -451,6 +451,10 @@
         </itemType>
     </xsl:template>
     
+    <xsl:template match="ParenthesizedItemType" mode="nk:xpath-operations">
+        <xsl:apply-templates select="Comment | ItemType/*" mode="#current"/>
+    </xsl:template>
+    
     <xsl:template match="KindTest" mode="nk:xpath-operations">
         <nodeTest>
             <xsl:apply-templates select="*" mode="nk:xpath-model"/>
