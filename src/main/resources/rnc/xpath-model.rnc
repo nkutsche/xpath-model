@@ -132,13 +132,15 @@ arrowOp = element arrow {empty}
 
 primitive = literal | locationStep | emptySequence | varRef | self | contsructors | unaryLookup | root
 
-literal = stringLiteral | integerLiteral | decimalLiteral
+literal = stringLiteral | integerLiteral | decimalLiteral | doubleLiteral
 
 stringLiteral = element string {attribute value {xs:string}}
 
 integerLiteral = element integer {attribute value {xs:integer}}
 
 decimalLiteral = element decimal {attribute value {xs:decimal}}
+
+doubleLiteral = element double {attribute value {xs:double}}
 
 varRef = element varRef {qname}
 

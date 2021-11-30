@@ -414,6 +414,7 @@
       <ref name="stringLiteral"/>
       <ref name="integerLiteral"/>
       <ref name="decimalLiteral"/>
+      <ref name="doubleLiteral"/>
     </choice>
   </define>
   <define name="stringLiteral">
@@ -434,6 +435,13 @@
     <element name="decimal">
       <attribute name="value">
         <data type="decimal"/>
+      </attribute>
+    </element>
+  </define>
+  <define name="doubleLiteral">
+    <element name="double">
+      <attribute name="value">
+        <data type="double"/>
       </attribute>
     </element>
   </define>
