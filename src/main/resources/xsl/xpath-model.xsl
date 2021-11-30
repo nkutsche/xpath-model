@@ -677,7 +677,7 @@
         </function-call>
     </xsl:template>
     
-    <xsl:template match="FunctionEQName" mode="nk:xpath-model">
+    <xsl:template match="FunctionCall/FunctionEQName" mode="nk:xpath-model">
         <function name="{string(.)}"/>
     </xsl:template>
     
@@ -692,9 +692,132 @@
     </xsl:template>
     
 <!--    
-    MISC
+    Constructors
     -->
     
+    <xsl:template match="MapConstructor" mode="nk:xpath-model">
+        <map>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </map>
+    </xsl:template>
+    
+    <xsl:template match="MapConstructorEntry" mode="nk:xpath-model">
+        <entry>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </entry>
+    </xsl:template>
+    
+    <xsl:template match="MapKeyExpr" mode="nk:xpath-model">
+        <arg role="key">
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+    <xsl:template match="MapValueExpr" mode="nk:xpath-model">
+        <arg role="value">
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+    <xsl:template match="ArrayConstructor[CurlyArrayConstructor]" mode="nk:xpath-model">
+        <xsl:variable name="non-tokens" select="CurlyArrayConstructor/(* except TOKEN)"/>
+        <array type="member-per-item">
+            <xsl:apply-templates select="Comment | $non-tokens" mode="#current"/>
+        </array>
+    </xsl:template>
+    
+    <xsl:template match="ArrayConstructor/CurlyArrayConstructor/EnclosedExpr" mode="nk:xpath-model">
+        <xsl:choose>
+            <xsl:when test="Expr">
+                <arg role="value">
+                    <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+                </arg>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="ArrayConstructor[SquareArrayConstructor]" mode="nk:xpath-model">
+        <xsl:variable name="non-tokens" select="SquareArrayConstructor/(* except TOKEN)"/>
+        <array type="member-per-sequence">
+            <xsl:apply-templates select="Comment | $non-tokens" mode="#current"/>
+        </array>
+    </xsl:template>
+    
+    <xsl:template match="ArrayConstructor/SquareArrayConstructor/ExprSingle" mode="nk:xpath-model">
+        <arg role="value">
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+    <xsl:template match="FunctionItemExpr" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="FunctionItemExpr/InlineFunctionExpr" mode="nk:xpath-model">
+        <function-impl>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </function-impl>
+    </xsl:template>
+
+    <xsl:template match="FunctionItemExpr/NamedFunctionRef" mode="nk:xpath-model">
+        <xsl:variable name="non-tokens" select="* except TOKEN"/>
+        <xsl:variable name="attributes" select="FunctionEQName | IntegerLiteral"/>
+        <function>
+            <xsl:apply-templates select="$attributes" mode="nk:xpath-model"/>
+            <xsl:apply-templates select="$non-tokens except $attributes" mode="#current"/>
+        </function>
+    </xsl:template>
+    <xsl:template match="NamedFunctionRef/FunctionEQName" mode="nk:xpath-model">
+        <xsl:attribute name="name" select="string(.)"/>
+    </xsl:template>
+    
+    <xsl:template match="NamedFunctionRef/IntegerLiteral" mode="nk:xpath-model">
+        <xsl:attribute name="arity" select="string(.)"/>
+    </xsl:template>
+    
+    <xsl:template match="FunctionBody" mode="nk:xpath-model">
+        <arg role="return">
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+    <xsl:template match="InlineFunctionExpr/ParamList" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="InlineFunctionExpr/ParamList/Param" mode="nk:xpath-model">
+        <param name="{string(EQName)}">
+            <xsl:apply-templates select="* except (TOKEN | EQName)" mode="#current"/>
+        </param>
+    </xsl:template>
+
+    <xsl:template match="InlineFunctionExpr/SequenceType" mode="nk:xpath-model">
+        <as>
+            <xsl:apply-templates select="." mode="nk:xpath-operations"/>
+        </as>
+    </xsl:template>
+    <xsl:template match="InlineFunctionExpr/ParamList/Param/TypeDeclaration" mode="nk:xpath-model">
+        <as>
+            <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-operations"/>
+        </as>
+    </xsl:template>
+    
+    <xsl:template match="FunctionBody/EnclosedExpr" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="FunctionBody/EnclosedExpr[not(* except TOKEN)]" mode="nk:xpath-model">
+        <empty/>
+    </xsl:template>
+    
+    
+    <!--    
+    MISC
+    -->
+
     <xsl:template match="ParenthesizedExpr" mode="nk:xpath-model">
         <xsl:apply-templates select="* except TOKEN" mode="#current"/>
     </xsl:template>
