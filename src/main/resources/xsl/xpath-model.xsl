@@ -126,6 +126,12 @@
         <decimal value="{$value}"/>
     </xsl:template>
 
+    <xsl:template match="DoubleLiteral" mode="nk:xpath-model">
+        <xsl:variable name="value" select="string(.)"/>
+        <xsl:variable name="value" select="xs:double($value)"/>
+        <double value="{$value}"/>
+    </xsl:template>
+
     <xsl:template match="ParenthesizedExpr[not(* except (TOKEN|Comment))]" mode="nk:xpath-model">
         <empty>
             <xsl:apply-templates select="Comment" mode="#current"/>
