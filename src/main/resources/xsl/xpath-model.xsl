@@ -126,8 +126,10 @@
         <decimal value="{$value}"/>
     </xsl:template>
 
-    <xsl:template match="ParenthesizedExpr[not(* except TOKEN)]" mode="nk:xpath-model">
-        <empty/>
+    <xsl:template match="ParenthesizedExpr[not(* except (TOKEN|Comment))]" mode="nk:xpath-model">
+        <empty>
+            <xsl:apply-templates select="Comment" mode="#current"/>
+        </empty>
     </xsl:template>
 
     <xsl:template match="ContextItemExpr" mode="nk:xpath-model">
@@ -160,20 +162,23 @@
                             'parent'
                         else
                             $step/(ReverseAxis | ForwardAxis)/string(TOKEN[1])" as="xs:string"/>
+        <xsl:variable name="leadingComments" select="Comment[. &lt;&lt; $step]"/>
+        <xsl:apply-templates select="$leadingComments" mode="#current"/>
         <locationStep axis="{$axis}">
-            <xsl:apply-templates select="$step/(NodeTest | AbbrevForwardStep | AbbrevReverseStep)" mode="#current">
+            <xsl:apply-templates select="$step/(Comment | NodeTest | AbbrevForwardStep | AbbrevReverseStep)" mode="#current">
                 <xsl:with-param name="axis" select="$axis" tunnel="yes"/>
             </xsl:apply-templates>
-            <xsl:apply-templates select="PredicateList" mode="#current"/>
+            <xsl:apply-templates select="(Comment except $leadingComments) | PredicateList" mode="#current"/>
         </locationStep>
     </xsl:template>
 
     <xsl:template match="AbbrevReverseStep" mode="nk:xpath-model">
+        <xsl:apply-templates select="Comment" mode="#current"/>
         <nodeTest kind="node"/>
     </xsl:template>
 
     <xsl:template match="AbbrevForwardStep" mode="nk:xpath-model">
-        <xsl:apply-templates select="NodeTest" mode="#current"/>
+        <xsl:apply-templates select="NodeTest | Comment" mode="#current"/>
     </xsl:template>
 
     <xsl:template match="NodeTest[NameTest]" mode="nk:xpath-model">
@@ -190,7 +195,7 @@
                             'namespace-node'
                         else
                             'element'"/>
-
+            <xsl:apply-templates select=".//Comment" mode="#current"/>
         </nodeTest>
     </xsl:template>
     <xsl:template match="NodeTest[KindTest]" mode="nk:xpath-model">
@@ -292,13 +297,13 @@
     <xsl:template match="PredicateList[empty(*)]" mode="nk:xpath-model"/>
 
     <xsl:template match="PredicateList" mode="nk:xpath-model">
-        <xsl:apply-templates select="Predicate" mode="#current"/>
+        <xsl:apply-templates select="Predicate|Comment" mode="#current"/>
     </xsl:template>
 
 
     <xsl:template match="PredicateList/Predicate" mode="nk:xpath-model">
         <predicate>
-            <xsl:apply-templates select="Expr" mode="#current"/>
+            <xsl:apply-templates select="Expr|Comment" mode="#current"/>
         </predicate>
     </xsl:template>
 
@@ -417,11 +422,13 @@
 
 
     <xsl:template match="SequenceType[string-join(TOKEN, '') = 'empty-sequence()']" mode="nk:xpath-operations">
-        <empty/>
+        <empty>
+            <xsl:apply-templates select="Comment" mode="#current"/>
+        </empty>
     </xsl:template>
 
     <xsl:template match="SequenceType" mode="nk:xpath-operations">
-        <xsl:apply-templates select="* except OccurrenceIndicator" mode="#current">
+        <xsl:apply-templates select="* except (OccurrenceIndicator|Comment)" mode="#current">
             <xsl:with-param name="token" select="OccurrenceIndicator/TOKEN"/>
         </xsl:apply-templates>
     </xsl:template>
@@ -429,11 +436,12 @@
     <xsl:template match="SingleType | ItemType" priority="25" mode="nk:xpath-operations">
         <xsl:param name="token" select="TOKEN" as="element(TOKEN)?"/>
         <xsl:variable name="occ" select="nk:itemTypeOcc($token)"/>
+        <xsl:variable name="additionalComments" select="self::ItemType/parent::SequenceType/Comment"/>
         <itemType>
             <xsl:if test="not($occ = 'one')">
                 <xsl:attribute name="occurrence" select="$occ"/>
             </xsl:if>
-            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+            <xsl:apply-templates select="(* except TOKEN) | $additionalComments" mode="#current"/>
         </itemType>
     </xsl:template>
     
@@ -462,14 +470,16 @@
     </xsl:template>
 
     <xsl:template match="TypedMapTest | TypedArrayTest" mode="nk:xpath-operations">
-        <xsl:apply-templates select="AtomicOrUnionType | SequenceType" mode="#current"/>
+        <xsl:apply-templates select="AtomicOrUnionType | SequenceType | Comment" mode="#current"/>
     </xsl:template>
 
     <xsl:template match="TypedFunctionTest" mode="nk:xpath-operations">
         <xsl:variable name="asToken" select="TOKEN[. = 'as']"/>
-        <xsl:apply-templates select="SequenceType except $asToken/following-sibling::SequenceType" mode="#current"/>
+        <xsl:variable name="children" select="SequenceType|Comment"/>
+        <xsl:variable name="followAs" select="$asToken/following-sibling::*"/>
+        <xsl:apply-templates select="$children except $followAs" mode="#current"/>
         <as>
-            <xsl:apply-templates select="$asToken/following-sibling::SequenceType" mode="#current"/>
+            <xsl:apply-templates select="$children intersect $followAs" mode="#current"/>
         </as>
     </xsl:template>
     
@@ -494,15 +504,17 @@
 
     <xsl:template match="ArrowExpr/ArgumentList" priority="50" mode="nk:xpath-operations">
         <xsl:variable name="funct-spec" select="preceding-sibling::ArrowFunctionSpecifier[1]"/>
+        <xsl:variable name="betweenComments" select="$funct-spec/following-sibling::Comment intersect preceding-sibling::*"/>
         <function-call>
-            <xsl:apply-templates select="$funct-spec" mode="nk:xpath-model"/>
+            <xsl:apply-templates select="$funct-spec | $betweenComments" mode="nk:xpath-model"/>
             <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
         </function-call>
     </xsl:template>
 
     <xsl:template match="ArrowExpr/ArrowFunctionSpecifier" mode="nk:xpath-operations"/>
-
-
+        
+    
+    <xsl:template match="ArrowExpr/Comment[preceding-sibling::ArrowFunctionSpecifier][following-sibling::ArgumentList]" mode="nk:xpath-operations"/>
     <xsl:template match="ArrowExpr/ArrowFunctionSpecifier[EQName]" priority="25" mode="nk:xpath-model">
         <function name="{EQName}"/>
     </xsl:template>
@@ -579,7 +591,7 @@
     </xsl:template>
     
     <xsl:template match="ArgumentList" mode="nk:xpath-model">
-        <xsl:apply-templates select="Argument" mode="#current"/>
+        <xsl:apply-templates select="Argument | Comment" mode="#current"/>
     </xsl:template>
     
     <xsl:template match="Argument" priority="25" mode="nk:xpath-model">
@@ -595,6 +607,11 @@
     <xsl:template match="ParenthesizedExpr" mode="nk:xpath-model">
         <xsl:apply-templates select="* except TOKEN" mode="#current"/>
     </xsl:template>
+
+    <xsl:template match="Comment" mode="nk:xpath-model">
+        <xsl:comment select="."/>
+    </xsl:template>
+
     
 
     <xsl:function name="nk:parse-comment" as="element(Comment)*">
