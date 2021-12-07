@@ -802,7 +802,7 @@
                     
                     <x:scenario label="with specific namespace binding">
                         <x:call>
-                            <x:param select="map{'namespaces' : map{
+                            <x:param position="2" select="map{'namespaces' : map{
                                 'pfx' : 'http://www.nkutsche.com/dummy-pfx'
                                 }}"/>
                         </x:call>

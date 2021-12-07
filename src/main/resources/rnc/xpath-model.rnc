@@ -130,7 +130,7 @@ step-operation-type = attribute type {
 "step"
 }
 
-# - Operator Sings / Key Words
+# - Operator Signs / Key Words
 
 operator = arithmeticOp | logicOp | compareOp | otherOp
 

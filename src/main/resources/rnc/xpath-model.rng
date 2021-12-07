@@ -411,7 +411,7 @@
       <value>step</value>
     </attribute>
   </define>
-  <!-- - Operator Sings / Key Words -->
+  <!-- - Operator Signs / Key Words -->
   <define name="operator">
     <choice>
       <ref name="arithmeticOp"/>
