@@ -117,8 +117,9 @@
 
     <xsl:template match="DoubleLiteral" mode="nk:xpath-model">
         <xsl:variable name="value" select="string(.)"/>
-        <xsl:variable name="value" select="xs:double($value)"/>
-        <double value="{$value}"/>
+        <xsl:variable name="factor" select="xs:decimal(replace($value, '[eE].*$', ''))"/>
+        <xsl:variable name="exp" select="xs:integer(replace($value, '^.*[eE]', ''))"/>
+        <double factor="{$factor}" exp="{$exp}"/>
     </xsl:template>
 
     <xsl:template match="ParenthesizedExpr[not(* except (TOKEN|Comment))]" mode="nk:xpath-model">

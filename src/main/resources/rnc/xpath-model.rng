@@ -653,8 +653,11 @@
   </define>
   <define name="doubleLiteral">
     <element name="double">
-      <attribute name="value">
-        <data type="double"/>
+      <attribute name="factor">
+        <data type="decimal"/>
+      </attribute>
+      <attribute name="exp">
+        <data type="integer"/>
       </attribute>
     </element>
   </define>

@@ -670,7 +670,7 @@
                     </x:call>
                     <x:expect label="expected result tree">
                         <expr>
-                            <double value="1234"/>
+                            <double factor="12.34" exp="2"/>
                         </expr>
                     </x:expect>
                 </x:scenario>
@@ -680,7 +680,7 @@
                     </x:call>
                     <x:expect label="expected result tree">
                         <expr>
-                            <double value="12.34"/>
+                            <double factor="12.34" exp="0"/>
                         </expr>
                     </x:expect>
                 </x:scenario>
@@ -690,7 +690,7 @@
                     </x:call>
                     <x:expect label="expected result tree">
                         <expr>
-                            <double value="1234"/>
+                            <double factor="12.34" exp="2"/>
                         </expr>
                     </x:expect>
                 </x:scenario>
@@ -700,7 +700,47 @@
                     </x:call>
                     <x:expect label="expected result tree">
                         <expr>
-                            <double value="12.34"/>
+                            <double factor="1234" exp="-2"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="simple double with expl positive exp">
+                    <x:call>
+                        <x:param select="string(.)">1234e+2</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double factor="1234" exp="2"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="simple double with leading zeros in exp">
+                    <x:call>
+                        <x:param select="string(.)">1234e0002</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double factor="1234" exp="2"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="simple double with large E char">
+                    <x:call>
+                        <x:param select="string(.)">1234E2</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double factor="1234" exp="2"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="very large double">
+                    <x:call>
+                        <x:param select="string(.)">1234567892344566123248937457927495e0</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <double factor="1234567892344566123248937457927495" exp="0"/>
                         </expr>
                     </x:expect>
                 </x:scenario>

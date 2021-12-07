@@ -195,7 +195,7 @@ integerLiteral = element integer {attribute value {xs:integer}}
 
 decimalLiteral = element decimal {attribute value {xs:decimal}}
 
-doubleLiteral = element double {attribute value {xs:double}}
+doubleLiteral = element double {attribute factor {xs:decimal}, attribute exp {xs:integer}}
 
 varRef = element varRef {qname}
 
