@@ -5,5 +5,6 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     <xsl:import href="xpath-model-parser.xsl"/>
+    <xsl:import href="xpath-model-serializer.xsl"/>
     
 </xsl:stylesheet>
