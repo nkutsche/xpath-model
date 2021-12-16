@@ -5,9 +5,30 @@
     
     <xsl:output indent="yes"></xsl:output>
     
+    <xsl:variable name="model" as="element(expr)">
+        <expr>
+            <operation type="node-compare">
+                <arg>
+                    <locationStep axis="child">
+                        <nodeTest kind="element"/>
+                    </locationStep>
+                </arg>
+                <ge/>
+                <arg>
+                    <locationStep axis="child">
+                        <nodeTest name="foo" kind="element"/>
+                    </locationStep>
+                </arg>
+            </operation>
+        </expr>
+    </xsl:variable>
+    
     <xsl:template match="/">
         <xsl:variable name="xpath" as="xs:string">string-join#2('foo', 'bar')</xsl:variable>
         <root>
+            <ser>
+                <xsl:sequence select="nk:xpath-serializer($model)"/>
+            </ser>
             <xpath>
                 <xsl:value-of select="$xpath"/>
             </xpath>
