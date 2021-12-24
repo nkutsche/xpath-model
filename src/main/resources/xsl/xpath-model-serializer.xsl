@@ -170,14 +170,10 @@
     <!--    
     ### Operations ###
     -->
-    
-    <xsl:template match="operation" mode="nk:xpath-serializer">
-        <xsl:apply-templates mode="#current"/>
-    </xsl:template>
 
-    <xsl:template match="operation/arg" mode="nk:xpath-serializer" priority="50">
+    <xsl:template match="operation" mode="nk:xpath-serializer">
         
-        <xsl:variable name="needs-brackets" select="false()"/>
+        <xsl:variable name="needs-brackets" select="nk:needs-brackets(.)"/>
         
         <xsl:choose>
             <xsl:when test="$needs-brackets">
@@ -190,6 +186,141 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
+    
+    
+    <xsl:function name="nk:get-preceding-operator" as="element()?">
+        <xsl:param name="arg" as="element(arg)"/>
+        <xsl:sequence select="
+              if ($arg/preceding-sibling::*) 
+            then ($arg/preceding-sibling::*[1]) 
+            else if ($arg/parent::operation[nk:needs-brackets(.) or not(@type = parent::*/parent::operation/@type)]) 
+               then () 
+               else 
+                    $arg/parent::operation/parent::arg/nk:get-preceding-operator(.)
+            "/>
+    </xsl:function>
+    
+    
+    <xsl:function name="nk:needs-brackets" as="xs:boolean">
+        <xsl:param name="operation" as="element(operation)"/>
+        <xsl:variable name="parent-arg" select="$operation/parent::arg"/>
+        <xsl:variable name="prec-operator" select="
+            $parent-arg/nk:get-preceding-operator(.)
+            "/>
+        <xsl:variable name="logical-parent" select="
+              if ($parent-arg) 
+            then $parent-arg/parent::* 
+            else $operation/parent::*
+            "/>
+        <xsl:variable name="op-type" select="$operation/@type"/>
+        <xsl:variable name="logical-parent-name" select="$logical-parent/name()"/>
+        <xsl:choose>
+            <xsl:when test="$logical-parent-name = 'predicate' or $logical-parent-name = 'function-impl'">
+                <xsl:sequence select="false()"/>
+            </xsl:when>
+            <xsl:when test="$logical-parent-name = 'let' and $op-type = 'sequence'">
+                <xsl:sequence select="true()"/>
+            </xsl:when>
+            <xsl:when test="
+                $logical-parent-name = 'array' and $logical-parent/@type = 'member-per-sequence' 
+                    or 
+                $logical-parent-name = 'function-call'
+                ">
+                <xsl:sequence select="$op-type = 'sequence'"/>
+            </xsl:when>
+            <xsl:when test="$logical-parent-name = 'operation'">
+                <xsl:variable name="parent-op-type" select="$logical-parent/@type"/>
+                
+                <xsl:variable name="op-level" select="nk:op-type-level($op-type)"/>
+                <xsl:variable name="parent-op-level" select="nk:op-type-level($parent-op-type)"/>
+                <xsl:variable name="next-op" select="nk:get-follow-operator($parent-arg)"/>
+                <xsl:choose>
+                    <xsl:when test="$operation/itemType[(@occurrence, 'one')[1] = 'one'] and $next-op/name() = ('plus', 'x')">
+                        <xsl:sequence select="true()"/>
+                    </xsl:when>
+                    <xsl:when test="$op-level lt $parent-op-level">
+                        <xsl:sequence select="true()"/>
+                    </xsl:when>
+                    <xsl:when test="$op-level eq $parent-op-level">
+                        <xsl:choose>
+                            <xsl:when test="$op-type = $symetric-operations">
+                                <xsl:sequence select="false()"/>
+                            </xsl:when>
+                            <xsl:when test="not($prec-operator)">
+                                <xsl:sequence select="false()"/>
+                            </xsl:when>
+                            <xsl:when test="$prec-operator/name() = ('div', 'idiv', 'mod', 'except')">
+                                <xsl:sequence select="true()"/>
+                            </xsl:when>
+                            <xsl:when test="$operation/(* except arg)/name() = ('div', 'idiv', 'mod')">
+                                <xsl:sequence select="true()"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:sequence select="false()"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:sequence select="false()"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="false()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    
+    <xsl:variable name="symetric-operations" select="
+        'condition',
+        'for-loop',
+        'let-binding',
+        'some-satisfies',
+        'every-satisfies',
+        'step',
+        'concat',
+        'union',
+        'arrow',
+        'unary',
+        'map',
+        'postfix'
+        "/>
+    
+    <xsl:variable name="type-levels" select="
+        'sequence',
+        'for-loop|let-binding|some-satisfies|every-satisfies|condition',
+        'or',
+        'and',
+        'compare|value-compare|node-compare',
+        'concat',
+        'range',
+        'additive',
+        'multiplicativ',
+        'union',
+        'intersect-except',
+        'instance-of',
+        'treat-as',
+        'castable',
+        'cast',
+        'arrow',
+        'unary',
+        'map',
+        'step',
+        'postfix'
+        "/>
+    
+    <xsl:variable name="symetric-operators" select="
+        'x',
+        'plus'
+        "/>
+    
+    <xsl:function name="nk:op-type-level" as="xs:integer">
+        <xsl:param name="type" as="xs:string"/>
+        <xsl:variable name="type-id" select="exactly-one($type-levels[tokenize(., '\|') = $type])"/>
+        <xsl:sequence select="index-of($type-levels, $type-id)"/>
+    </xsl:function>
     
 <!--    
     Serializes abbreviation '//' by skipping 'descendant-or-self::node()' between two slashes. 
