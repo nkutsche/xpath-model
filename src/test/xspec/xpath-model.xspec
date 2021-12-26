@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-model href="../edit-xspec.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:nk="http://www.nkutsche.com/xpath-model"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
@@ -51,7 +50,7 @@
     
     <x:scenario label="Scenario testing function call nk:parse-comment">
         <x:call function="nk:parse-comment"/>
-        <x:scenario label="no comment" pending="not sure if we need this...">
+        <x:scenario label="no comment" pending="not sure if we need this">
             <x:call>
                 <x:param select="string(.)">no-comment</x:param>
             </x:call>
@@ -75,7 +74,49 @@
     </x:scenario>
     
     
-    <x:scenario label="Scenario testing function call nk:xpath-serializer" focus="">
+    <x:scenario label="Scenario testing function call nk:needs-brackets">
+        <x:call function="nk:needs-brackets"/>
+        <x:variable name="case" as="element()">
+            <operation type="multiplicativ">
+                <arg>
+                    <integer value="2"/>
+                </arg>
+                <div/>
+                <arg>
+                    <operation type="multiplicativ">
+                        <arg>
+                            <operation type="multiplicativ">
+                                <arg>
+                                    <integer value="3"/>
+                                </arg>
+                                <mod/>
+                                <arg>
+                                    <integer value="4"/>
+                                </arg>
+                            </operation>
+                        </arg>
+                        <x/>
+                        <arg>
+                            <integer value="5"/>
+                        </arg>
+                    </operation>
+                </arg>
+            </operation>
+        </x:variable>
+        <x:scenario label="debug case - outter operation">
+            <x:call>
+                <x:param select="$case/arg/operation"/>
+            </x:call>
+            <x:expect label="expect true" select="true()"/>
+        </x:scenario>
+        <x:scenario label="debug case - inner operation">
+            <x:call>
+                <x:param select="$case/arg/operation/arg/operation"/>
+            </x:call>
+            <x:expect label="expect false" select="false()"/>
+        </x:scenario>
+    </x:scenario>
+    <x:scenario label="Scenario testing function call nk:xpath-serializer">
         <x:call function="nk:xpath-serializer"/>
         <x:scenario label="with primitive expressions">
             <x:scenario label="Location Steps">
@@ -514,6 +555,78 @@
                     </x:scenario>
                     
                 </x:scenario>
+                <x:scenario label="with predicates">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="foo"/>
+                                        <predicate>
+                                            <integer value="1"/>
+                                        </predicate>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">foo[1]</x:expect>
+                    </x:scenario>
+                    <x:scenario label="two predicates">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="foo"/>
+                                        <predicate>
+                                            <integer value="1"/>
+                                        </predicate>
+                                        <predicate>
+                                            <integer value="2"/>
+                                        </predicate>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">foo[1][2]</x:expect>
+                    </x:scenario>
+                    <x:scenario label="two predicates">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="foo"/>
+                                        <predicate>
+                                            <locationStep axis="attribute">
+                                                <nodeTest kind="attribute" name="bar"/>
+                                            </locationStep>
+                                        </predicate>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">foo[@bar]</x:expect>
+                    </x:scenario>
+                    <x:scenario label="nested predicates">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="foo"/>
+                                        <predicate>
+                                            <locationStep axis="attribute">
+                                                <nodeTest kind="attribute" name="bar"/>
+                                                <predicate>
+                                                    <integer value="1"/>
+                                                </predicate>
+                                            </locationStep>
+                                        </predicate>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">foo[@bar[1]]</x:expect>
+                    </x:scenario>
+                </x:scenario>
             </x:scenario>
             <x:scenario label="StringLiteral">
                 <x:scenario label="a simple string">
@@ -925,6 +1038,28 @@
                             </x:param>
                         </x:call>
                         <x:expect label="expected expression" select="string(.)">1 mod 2</x:expect>
+                    </x:scenario>
+                    <x:scenario label="mod and x">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="multiplicativ">
+                                        <arg>
+                                            <integer value="3"/>
+                                        </arg>
+                                        <x/>
+                                        <arg>
+                                            <integer value="11"/>
+                                        </arg>
+                                        <mod/>
+                                        <arg>
+                                            <integer value="2"/>
+                                        </arg>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">3 * 11 mod 2</x:expect>
                     </x:scenario>
                     <x:scenario label="1 + 2 * 3 mod 4 idiv 5 - 6 div 7">
                         <x:call>
@@ -1641,7 +1776,7 @@
                 <x:scenario label="'1' castable as xs:integer">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="castable">
                                     <arg>
                                         <string value="1"/>
@@ -1659,7 +1794,7 @@
                 <x:scenario label="'1' cast as xs:integer?">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="cast">
                                     <arg>
                                         <string value="1"/>
@@ -1677,7 +1812,7 @@
                 <x:scenario label="foo treat as element(foo)*">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="treat-as">
                                     <arg>
                                         <locationStep axis="child">
@@ -1697,7 +1832,7 @@
                 <x:scenario label="foo instance of element(foo)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <locationStep axis="child">
@@ -1719,7 +1854,7 @@
                 <x:scenario label="'5' treat as xs:string">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="treat-as">
                                     <arg>
                                         <string value="5"/>
@@ -1737,7 +1872,7 @@
                 <x:scenario label="'foo' instance of Q{{http://www.w3.org/2001/XMLSchema}}string">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <string value="foo"/>
@@ -1752,10 +1887,10 @@
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">'foo' instance of Q{http://www.w3.org/2001/XMLSchema}string</x:expect>
                 </x:scenario>
-                <x:scenario label="foo instance of empty-sequence  (  )">
+                <x:scenario label="foo instance of empty-sequence()">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <locationStep axis="child">
@@ -1768,12 +1903,12 @@
                             </expr>
                         </x:param>
                     </x:call>
-                    <x:expect label="expected expression" select="string(.)">foo instance of empty-sequence  (  )</x:expect>
+                    <x:expect label="expected expression" select="string(.)">foo instance of empty-sequence()</x:expect>
                 </x:scenario>
                 <x:scenario label="$var instance of item()">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1789,7 +1924,7 @@
                 <x:scenario label="$var instance of item()?">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1806,7 +1941,7 @@
                 <x:scenario label="$var instance of map(*)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1824,7 +1959,7 @@
                 <x:scenario label="$var instance of map(xs:string, node()*)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1844,10 +1979,31 @@
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">$var instance of map(xs:string, node()*)</x:expect>
                 </x:scenario>
+                <x:scenario label="$var instance of map(xs:string, empty-sequence())">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <mapType>
+                                            <atomic name="xs:string"/>
+                                            <empty/>
+                                        </mapType>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of map(xs:string, empty-sequence())</x:expect>
+                </x:scenario>
                 <x:scenario label="$var instance of array(*)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1865,7 +2021,7 @@
                 <x:scenario label="$var instance of array(map(*))">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1887,7 +2043,7 @@
                 <x:scenario label="$var instance of function(*)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1905,7 +2061,7 @@
                 <x:scenario label="$var instance of function(xs:string, node()+, map(*)) as array(*)">
                     <x:call>
                         <x:param>
-                            <expr xmlns:nk="http://www.nkutsche.com/xpath-model">
+                            <expr>
                                 <operation type="instance-of">
                                     <arg>
                                         <varRef name="var"/>
@@ -1936,7 +2092,2105 @@
                     <x:expect label="expected expression" select="string(.)">$var instance of function(xs:string, node()+, map(*)) as array(*)</x:expect>
                 </x:scenario>
             </x:scenario>
+            
+            <x:scenario label="using postfix operators">
+                <x:scenario label="with predicate">
+                    <x:scenario label="$var[1]">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <predicate>
+                                            <integer value="1"/>
+                                        </predicate>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var[1]</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$var[2][1]">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <predicate>
+                                            <integer value="2"/>
+                                        </predicate>
+                                        <predicate>
+                                            <integer value="1"/>
+                                        </predicate>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var[2][1]</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with argument list">
+                    <x:scenario label="$var()">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <function-call/>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var()</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$var(1, 'foo')()">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <function-call>
+                                            <arg>
+                                                <integer value="1"/>
+                                            </arg>
+                                            <arg>
+                                                <string value="foo"/>
+                                            </arg>
+                                        </function-call>
+                                        <function-call/>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var(1, 'foo')()</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with lookup">
+                    <x:scenario label="$var?*">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <lookup/>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var?*</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$var?foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <lookup>
+                                            <field name="foo"/>
+                                        </lookup>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var?foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$var?1">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <lookup>
+                                            <integer value="1"/>
+                                        </lookup>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var?1</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$var?lookup?lookup">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <lookup>
+                                            <field name="lookup"/>
+                                        </lookup>
+                                        <lookup>
+                                            <field name="lookup"/>
+                                        </lookup>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var?lookup?lookup</x:expect>
+                    </x:scenario>
+                    
+                    <x:scenario label="$var?('lookup')">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <operation type="postfix">
+                                        <arg>
+                                            <varRef name="var"/>
+                                        </arg>
+                                        <lookup>
+                                            <arg>
+                                                <string value="lookup"/>
+                                            </arg>
+                                        </lookup>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">$var?('lookup')</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="$var[2](1)?lookup">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <predicate>
+                                        <integer value="2"/>
+                                    </predicate>
+                                    <function-call>
+                                        <arg>
+                                            <integer value="1"/>
+                                        </arg>
+                                    </function-call>
+                                    <lookup>
+                                        <field name="lookup"/>
+                                    </lookup>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var[2](1)?lookup</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="using arrow operators">
+                <x:scenario label="$var => string-join(',')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <arrow/>
+                                    <function-call>
+                                        <function name="string-join"/>
+                                        <arg>
+                                            <string value=","/>
+                                        </arg>
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var =&gt; string-join(',')</x:expect>
+                </x:scenario>
+                <x:scenario label="$var => tokenize(',') => count()">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <arrow/>
+                                    <function-call>
+                                        <function name="tokenize"/>
+                                        <arg>
+                                            <string value=","/>
+                                        </arg>
+                                    </function-call>
+                                    <arrow/>
+                                    <function-call>
+                                        <function name="count"/>
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var =&gt; tokenize(',') =&gt; count()</x:expect>
+                </x:scenario>
+                <x:scenario label="$var => $function(',')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <arrow/>
+                                    <function-call>
+                                        <function>
+                                            <varRef name="function"/>
+                                        </function>
+                                        <arg>
+                                            <string value=","/>
+                                        </arg>
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var =&gt; $function(',')</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="using function calls">
+                <x:scenario label="doc('')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-call>
+                                    <function name="doc"/>
+                                    <arg>
+                                        <string value=""/>
+                                    </arg>
+                                </function-call>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">doc('')</x:expect>
+                </x:scenario>
+                <x:scenario label="string-join($var, ',')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-call>
+                                    <function name="string-join"/>
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <arg>
+                                        <string value=","/>
+                                    </arg>
+                                </function-call>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">string-join($var, ',')</x:expect>
+                </x:scenario>
+                <x:scenario label="string-join(('foo', 'bar', 'baz'), ',')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-call>
+                                    <function name="string-join"/>
+                                    <arg>
+                                        <operation type="sequence">
+                                            <arg>
+                                                <string value="foo"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <string value="bar"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <string value="baz"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <arg>
+                                        <string value=","/>
+                                    </arg>
+                                </function-call>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">string-join(('foo', 'bar', 'baz'), ',')</x:expect>
+                </x:scenario>
+                <x:scenario label="string-join#2(('foo', 'bar', 'baz'), ',')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <function arity="2" name="string-join"/>
+                                    </arg>
+                                    <function-call>
+                                        <arg>
+                                            <operation type="sequence">
+                                                <arg>
+                                                    <string value="foo"/>
+                                                </arg>
+                                                <comma/>
+                                                <arg>
+                                                    <string value="bar"/>
+                                                </arg>
+                                                <comma/>
+                                                <arg>
+                                                    <string value="baz"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                        <arg>
+                                            <string value=","/>
+                                        </arg>
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">string-join#2(('foo', 'bar', 'baz'), ',')</x:expect>
+                </x:scenario>
+                <x:scenario label="string-join#2">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function arity="2" name="string-join"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">string-join#2</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="using conditions">
+                <x:scenario label="if ('true') then 'do' else 'otherwise'">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="condition">
+                                    <arg role="if">
+                                        <string value="true"/>
+                                    </arg>
+                                    <arg role="then">
+                                        <string value="do"/>
+                                    </arg>
+                                    <arg role="else">
+                                        <string value="otherwise"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">if ('true') then 'do' else 'otherwise'</x:expect>
+                </x:scenario>
+                <x:scenario label="if ('true') then ('do') else ('otherwise')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="condition">
+                                    <arg role="if">
+                                        <string value="true"/>
+                                    </arg>
+                                    <arg role="then">
+                                        <string value="do"/>
+                                    </arg>
+                                    <arg role="else">
+                                        <string value="otherwise"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">if ('true') then 'do' else 'otherwise'</x:expect>
+                </x:scenario>
+                <x:scenario label="if ('true') then 'do' else if ('other-if') then 'other-do' else 'otherwise'">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="condition">
+                                    <arg role="if">
+                                        <string value="true"/>
+                                    </arg>
+                                    <arg role="then">
+                                        <string value="do"/>
+                                    </arg>
+                                    <arg role="else">
+                                        <operation type="condition">
+                                            <arg role="if"><string value="other-if"/></arg>
+                                            <arg role="then">
+                                                <string value="other-do"/>
+                                            </arg>
+                                            <arg role="else">
+                                                <string value="otherwise"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">if ('true') then 'do' else if ('other-if') then 'other-do' else 'otherwise'</x:expect>
+                </x:scenario>
+                <x:scenario label="if ('true') then if ('inner-if') then 'then-do' else 'other-do' else 'otherwise'">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="condition">
+                                    <arg role="if">
+                                        <string value="true"/>
+                                    </arg>
+                                    <arg role="then">
+                                        <operation type="condition">
+                                            <arg role="if"><string value="inner-if"/></arg>
+                                            <arg role="then">
+                                                <string value="then-do"/>
+                                            </arg>
+                                            <arg role="else">
+                                                <string value="other-do"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <arg role="else">
+                                        <string value="otherwise"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">if ('true') then if ('inner-if') then 'then-do' else 'other-do' else 'otherwise'</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="using let based operation">
+                <x:scenario label="let $var := 'var-value' return $var">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="let-binding">
+                                    <let name="var">
+                                        <arg>
+                                            <string value="var-value"/>
+                                        </arg>
+                                    </let>
+                                    <arg role="return">
+                                        <varRef name="var"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">let $var := 'var-value' return $var</x:expect>
+                </x:scenario>
+                <x:scenario label="let $var := 'var-value', $var2 := 'var-sec-value' return ($var, $var2)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="let-binding">
+                                    <let name="var">
+                                        <arg>
+                                            <string value="var-value"/>
+                                        </arg>
+                                    </let>
+                                    <let name="var2">
+                                        <arg>
+                                            <string value="var-sec-value"/>
+                                        </arg>
+                                    </let>
+                                    <arg role="return">
+                                        <operation type="sequence">
+                                            <arg>
+                                                <varRef name="var"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <varRef name="var2"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">let $var := 'var-value', $var2 := 'var-sec-value' return ($var, $var2)</x:expect>
+                </x:scenario>
+                <x:scenario label="for $i in ('item1', 'item2') return $i">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="for-loop">
+                                    <let name="i">
+                                        <arg>
+                                            <operation type="sequence">
+                                                <arg>
+                                                    <string value="item1"/>
+                                                </arg>
+                                                <comma/>
+                                                <arg>
+                                                    <string value="item2"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <arg role="return">
+                                        <varRef name="i"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">for $i in ('item1', 'item2') return $i</x:expect>
+                </x:scenario>
+                <x:scenario label="for $x in 1 to 10, $y in 1 to 10 return ($x, $y)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="for-loop">
+                                    <let name="x">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <let name="y">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <arg role="return">
+                                        <operation type="sequence">
+                                            <arg>
+                                                <varRef name="x"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <varRef name="y"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">for $x in 1 to 10, $y in 1 to 10 return ($x, $y)</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="using satisfaction operations">
+                <x:scenario label="some $x in 1 to 10 satisfies $x gt 5">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="some-satisfies">
+                                    <let name="x">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <arg role="satisfies">
+                                        <operation type="value-compare">
+                                            <arg>
+                                                <varRef name="x"/>
+                                            </arg>
+                                            <gt/>
+                                            <arg>
+                                                <integer value="5"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">some $x in 1 to 10 satisfies $x gt 5</x:expect>
+                </x:scenario>
+                <x:scenario label="every $x in 1 to 10 satisfies $x gt 5">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="every-satisfies">
+                                    <let name="x">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <arg role="satisfies">
+                                        <operation type="value-compare">
+                                            <arg>
+                                                <varRef name="x"/>
+                                            </arg>
+                                            <gt/>
+                                            <arg>
+                                                <integer value="5"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">every $x in 1 to 10 satisfies $x gt 5</x:expect>
+                </x:scenario>
+                <x:scenario label="some $x in 1 to 10, $y in 1 to 10 satisfies $x * $y gt 99">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="some-satisfies">
+                                    <let name="x">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <let name="y">
+                                        <arg>
+                                            <operation type="range">
+                                                <arg>
+                                                    <integer value="1"/>
+                                                </arg>
+                                                <to/>
+                                                <arg>
+                                                    <integer value="10"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                    </let>
+                                    <arg role="satisfies">
+                                        <operation type="value-compare">
+                                            <arg>
+                                                <operation type="multiplicativ">
+                                                    <arg>
+                                                        <varRef name="x"/>
+                                                    </arg>
+                                                    <x/>
+                                                    <arg>
+                                                        <varRef name="y"/>
+                                                    </arg>
+                                                </operation>
+                                            </arg>
+                                            <gt/>
+                                            <arg>
+                                                <integer value="99"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">some $x in 1 to 10, $y in 1 to 10 satisfies $x * $y gt 99</x:expect>
+                </x:scenario>
+            </x:scenario>
         
+        </x:scenario>
+        
+        <x:scenario label="with constructors">
+            <x:scenario label="for maps">
+                <x:scenario label="map{ }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <map/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">map{ }</x:expect>
+                </x:scenario>
+                <x:scenario label="map{ 'foo' : 'bar' }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <map>
+                                    <entry>
+                                        <arg role="key">
+                                            <string value="foo"/>
+                                        </arg>
+                                        <arg role="value">
+                                            <string value="bar"/>
+                                        </arg>
+                                    </entry>
+                                </map>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">map{ 'foo' : 'bar' }</x:expect>
+                </x:scenario>
+                <x:scenario label="map{ 'foo' : foo, 'bar' : bar }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <map>
+                                    <entry>
+                                        <arg role="key">
+                                            <string value="foo"/>
+                                        </arg>
+                                        <arg role="value">
+                                            <locationStep axis="child">
+                                                <nodeTest kind="element" name="foo"/>
+                                            </locationStep>
+                                        </arg>
+                                    </entry>
+                                    <entry>
+                                        <arg role="key">
+                                            <string value="bar"/>
+                                        </arg>
+                                        <arg role="value">
+                                            <locationStep axis="child">
+                                                <nodeTest kind="element" name="bar"/>
+                                            </locationStep>
+                                        </arg>
+                                    </entry>
+                                </map>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">map{ 'foo' : foo, 'bar' : bar }</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="for member-per-item array (array{...})">
+                <x:scenario label="array{ }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-item"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">array{ }</x:expect>
+                </x:scenario>
+                <x:scenario label="array{ 'foo' }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-item">
+                                    <arg role="value">
+                                        <string value="foo"/>
+                                    </arg>
+                                </array>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">array{ 'foo' }</x:expect>
+                </x:scenario>
+                <x:scenario label="array{ 'foo', 'bar' }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-item">
+                                    <arg role="value">
+                                        <operation type="sequence">
+                                            <arg>
+                                                <string value="foo"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <string value="bar"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </array>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">array{ 'foo', 'bar' }</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="for member-per-sequence array ([...])">
+                <x:scenario label="[ ]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-sequence"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">[ ]</x:expect>
+                </x:scenario>
+                <x:scenario label="[ 'foo' ]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-sequence">
+                                    <arg role="value">
+                                        <string value="foo"/>
+                                    </arg>
+                                </array>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">[ 'foo' ]</x:expect>
+                </x:scenario>
+                <x:scenario label="[ 'foo', 'bar' ]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-sequence">
+                                    <arg role="value">
+                                        <string value="foo"/>
+                                    </arg>
+                                    <arg role="value">
+                                        <string value="bar"/>
+                                    </arg>
+                                </array>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">[ 'foo', 'bar' ]</x:expect>
+                </x:scenario>
+
+                <x:scenario label="[ ('foo', 'bar') ]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <array type="member-per-sequence">
+                                   <arg role="value">
+                                        <operation type="sequence">
+                                            <arg>
+                                                <string value="foo"/>
+                                            </arg>
+                                            <comma/>
+                                            <arg>
+                                                <string value="bar"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </array>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">[ ('foo', 'bar') ]</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="for functions">
+                <x:scenario label="function( ){ }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-impl><arg role="return"><empty/></arg></function-impl>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">function( ){ }</x:expect>
+                </x:scenario>
+                <x:scenario label="function( $param1, $param2 ) as xs:string { $param1 || $param2 }">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-impl>
+                                    <param name="param1"/>
+                                    <param name="param2"/>
+                                    <as>
+                                        <itemType>
+                                            <atomic name="xs:string"/>
+                                        </itemType>
+                                    </as>
+                                    <arg role="return">
+                                        <operation type="concat">
+                                            <arg>
+                                                <varRef name="param1"/>
+                                            </arg>
+                                            <concat/>
+                                            <arg>
+                                                <varRef name="param2"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </function-impl>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">function( $param1, $param2 ) as xs:string { $param1 || $param2 }</x:expect>
+                </x:scenario>
+                <x:scenario label="function( $param1 as node(), $param2 as xs:integer* ) as xs:string { $param1[position() = $param2 ]}">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-impl>
+                                    <param name="param1">
+                                        <as>
+                                            <itemType>
+                                                <nodeTest kind="node"/>
+                                            </itemType>
+                                        </as>
+                                    </param>
+                                    <param name="param2">
+                                        <as>
+                                            <itemType occurrence="zero-or-more">
+                                                <atomic name="xs:integer"/>
+                                            </itemType>
+                                        </as>
+                                    </param>
+                                    <as>
+                                        <itemType>
+                                            <atomic name="xs:string"/>
+                                        </itemType>
+                                    </as>
+                                    <arg role="return">
+                                        <operation type="postfix">
+                                            <arg>
+                                                <varRef name="param1"/>
+                                            </arg>
+                                            <predicate>
+                                                <operation type="compare">
+                                                    <arg>
+                                                        <function-call>
+                                                            <function name="position"/>
+                                                        </function-call>
+                                                    </arg>
+                                                    <eq/>
+                                                    <arg>
+                                                        <varRef name="param2"/>
+                                                    </arg>
+                                                </operation>
+                                            </predicate>
+                                        </operation>
+                                    </arg>
+                                </function-impl>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">function( $param1 as node(), $param2 as xs:integer* ) as xs:string { $param1[position() = $param2] }</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="brackets or no brackets">
+            <x:scenario label="2 * 3 * 4">
+                <x:scenario label=" as (2 * 3) * 4">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="2"/>
+                                            </arg>
+                                            <x/>
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <x/>
+                                    <arg>
+                                        <integer value="4"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * 3 * 4</x:expect>
+                </x:scenario>
+                <x:scenario label="as 2 * (3 * 4)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                    <x/>
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                            <x/>
+                                            <arg>
+                                                <integer value="4"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * 3 * 4</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="2 * 3 mod 4">
+                <x:scenario label=" as (2 * 3) mod 4">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="2"/>
+                                            </arg>
+                                            <x/>
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <mod/>
+                                    <arg>
+                                        <integer value="4"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * 3 mod 4</x:expect>
+                </x:scenario>
+                <x:scenario label="as 2 * (3 mod 4)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                    <x/>
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                            <mod/>
+                                            <arg>
+                                                <integer value="4"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * (3 mod 4)</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="2 * 3 div 4">
+                <x:scenario label=" as (2 * 3) div 4">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="2"/>
+                                            </arg>
+                                            <x/>
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <mod/>
+                                    <arg>
+                                        <integer value="4"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * 3 mod 4</x:expect>
+                </x:scenario>
+                <x:scenario label="as 2 * (3 div 4)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                    <x/>
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                            <div/>
+                                            <arg>
+                                                <integer value="4"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">2 * (3 div 4)</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="2 * ((3 mod 4) * 5)">
+                <x:call>
+                    <x:param>
+                        <expr>
+                            <operation type="multiplicativ">
+                                <arg>
+                                    <integer value="2"/>
+                                </arg>
+                                <x/>
+                                <arg>
+                                    <operation type="multiplicativ">
+                                        <arg>
+                                            <operation type="multiplicativ">
+                                                <arg>
+                                                    <integer value="3"/>
+                                                </arg>
+                                                <mod/>
+                                                <arg>
+                                                    <integer value="4"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                        <x/>
+                                        <arg>
+                                            <integer value="5"/>
+                                        </arg>
+                                    </operation>
+                                </arg>
+                            </operation>
+                        </expr>
+                    </x:param>
+                </x:call>
+                <x:expect label="expected expression" select="string(.)">2 * (3 mod 4) * 5</x:expect>
+            </x:scenario>
+            <x:scenario label="2 div ((3 mod 4) * 5)">
+                <x:call>
+                    <x:param>
+                        <expr>
+                            <operation type="multiplicativ">
+                                <arg>
+                                    <integer value="2"/>
+                                </arg>
+                                <div/>
+                                <arg>
+                                    <operation type="multiplicativ">
+                                        <arg>
+                                            <operation type="multiplicativ">
+                                                <arg>
+                                                    <integer value="3"/>
+                                                </arg>
+                                                <mod/>
+                                                <arg>
+                                                    <integer value="4"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                        <x/>
+                                        <arg>
+                                            <integer value="5"/>
+                                        </arg>
+                                    </operation>
+                                </arg>
+                            </operation>
+                        </expr>
+                    </x:param>
+                </x:call>
+                <x:expect label="expected expression" select="string(.)">2 div (3 mod 4 * 5)</x:expect>
+                
+            </x:scenario>
+            <x:scenario label="2 + ((3 mod 4) * 5)">
+                <x:call>
+                    <x:param>
+                        <expr>
+                            <operation type="additive">
+                                <arg>
+                                    <integer value="2"/>
+                                </arg>
+                                <plus/>
+                                <arg>
+                                    <operation type="multiplicativ">
+                                        <arg>
+                                            <operation type="multiplicativ">
+                                                <arg>
+                                                    <integer value="3"/>
+                                                </arg>
+                                                <mod/>
+                                                <arg>
+                                                    <integer value="4"/>
+                                                </arg>
+                                            </operation>
+                                        </arg>
+                                        <x/>
+                                        <arg>
+                                            <integer value="5"/>
+                                        </arg>
+                                    </operation>
+                                </arg>
+                            </operation>
+                        </expr>
+                    </x:param>
+                </x:call>
+                <x:expect label="expected expression" select="string(.)">2 + 3 mod 4 * 5</x:expect>
+                
+            </x:scenario>
+            <x:scenario label="$foo intersect $bar except $baz">
+                <x:scenario label="as $foo intersect ($bar except $baz)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <varRef name="foo"/>
+                                    </arg>
+                                    <intersect/>
+                                    <arg>
+                                        <operation type="intersect-except">
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                            <except/>
+                                            <arg>
+                                                <varRef name="baz"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo intersect $bar except $baz</x:expect>
+                </x:scenario>
+                <x:scenario label="as ($foo intersect $bar) except $baz">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <operation type="intersect-except">
+                                            <arg>
+                                                <varRef name="foo"/>
+                                            </arg>
+                                            <intersect/>
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <except/>
+                                    <arg>
+                                        <varRef name="baz"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo intersect $bar except $baz</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="$foo except $bar except $baz">
+                <x:scenario label="as $foo except ($bar except $baz)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <varRef name="foo"/>
+                                    </arg>
+                                    <except/>
+                                    <arg>
+                                        <operation type="intersect-except">
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                            <except/>
+                                            <arg>
+                                                <varRef name="baz"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo except ($bar except $baz)</x:expect>
+                </x:scenario>
+                <x:scenario label="as ($foo except $bar) except $baz">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <operation type="intersect-except">
+                                            <arg>
+                                                <varRef name="foo"/>
+                                            </arg>
+                                            <except/>
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <except/>
+                                    <arg>
+                                        <varRef name="baz"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo except $bar except $baz</x:expect>
+                </x:scenario>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="for special cases">
+            <x:scenario label="an NCName operator after root">
+                <x:scenario label="/ union /*">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="step">
+                                    <slash/>
+                                    <arg>
+                                        <operation type="step">
+                                            <arg>
+                                                <locationStep axis="child">
+                                                    <nodeTest kind="element" name="union"/>
+                                                </locationStep>
+                                            </arg>
+                                            <slash/>
+                                            <arg>
+                                                <locationStep axis="child">
+                                                    <nodeTest kind="element"/>
+                                                </locationStep>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">/union/*</x:expect>
+                </x:scenario>
+                <x:scenario label="(/) except /*">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <root/>
+                                    </arg>
+                                    <except/>
+                                    <arg>
+                                        <operation type="step">
+                                            <slash/>
+                                            <arg>
+                                                <locationStep axis="child">
+                                                    <nodeTest kind="element"/>
+                                                </locationStep>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(/) except /*</x:expect>
+                </x:scenario>
+                <x:scenario label="(/) le /*">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="value-compare">
+                                    <arg>
+                                        <root/>
+                                    </arg>
+                                    <le/>
+                                    <arg>
+                                        <operation type="step">
+                                            <slash/>
+                                            <arg>
+                                                <locationStep axis="child">
+                                                    <nodeTest kind="element"/>
+                                                </locationStep>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(/) le /*</x:expect>
+                </x:scenario>
+                <x:scenario label="(/ intersect /) except /*">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="intersect-except">
+                                    <arg>
+                                        <operation type="intersect-except">
+                                            <arg>
+                                                <root/>
+                                            </arg>
+                                            <intersect/>
+                                            <arg>
+                                                <root/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <except/>
+                                    <arg>
+                                        <operation type="step">
+                                            <slash/>
+                                            <arg>
+                                                <locationStep axis="child">
+                                                    <nodeTest kind="element"/>
+                                                </locationStep>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(/) intersect (/) except /*</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="?,*,+ after itemType operator">
+                <x:scenario label="(1 treat as xs:integer) + 2">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="additive">
+                                    <arg>
+                                        <operation type="treat-as">
+                                            <arg>
+                                                <integer value="1"/>
+                                            </arg>
+                                            <treatAs/>
+                                            <itemType>
+                                                <atomic name="xs:integer"/>
+                                            </itemType>
+                                        </operation>
+                                    </arg>
+                                    <plus/>
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(1 treat as xs:integer) + 2</x:expect>
+                </x:scenario>
+                <x:scenario label="1 treat as xs:integer+ + 2">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="additive">
+                                    <arg>
+                                        <operation type="treat-as">
+                                            <arg>
+                                                <integer value="1"/>
+                                            </arg>
+                                            <treatAs/>
+                                            <itemType occurrence="one-or-more">
+                                                <atomic name="xs:integer"/>
+                                            </itemType>
+                                        </operation>
+                                    </arg>
+                                    <plus/>
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">1 treat as xs:integer+ + 2</x:expect>
+                </x:scenario>
+                <x:scenario label="1 treat as xs:integer+++2">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="additive">
+                                    <arg>
+                                        <operation type="treat-as">
+                                            <arg>
+                                                <integer value="1"/>
+                                            </arg>
+                                            <treatAs/>
+                                            <itemType occurrence="one-or-more">
+                                                <atomic name="xs:integer"/>
+                                            </itemType>
+                                        </operation>
+                                    </arg>
+                                    <plus/>
+                                    <arg>
+                                        <operation type="unary">
+                                            <plus/>
+                                            <arg>
+                                                <integer value="2"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">1 treat as xs:integer+ + +2</x:expect>
+                </x:scenario>
+                <x:scenario label="map{} treat as map(*)?foo">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <operation type="treat-as">
+                                            <arg>
+                                                <map/>
+                                            </arg>
+                                            <treatAs/>
+                                            <itemType>
+                                                <mapType/>
+                                            </itemType>
+                                        </operation>
+                                    </arg>
+                                    <lookup>
+                                        <field name="foo"/>
+                                    </lookup>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(map{ } treat as map(*))?foo</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="function references">
+                <x:scenario label="concat#3('foo', '_', 'bar')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <function arity="3" name="concat"/>
+                                    </arg>
+                                    <function-call>
+                                        <arg>
+                                            <string value="foo"/>
+                                        </arg>
+                                        <arg>
+                                            <string value="_"/>
+                                        </arg>
+                                        <arg>
+                                            <string value="bar"/>
+                                        </arg>
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">concat#3('foo', '_', 'bar')</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="comments">
+                <x:scenario label="(: comments :)()">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <!-- comments -->
+                                <empty/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(: comments :)()</x:expect>
+                </x:scenario>
+                <x:scenario label="((: comments :))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <empty>
+                                    <!-- comments -->
+                                </empty>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">((: comments :))</x:expect>
+                </x:scenario>
+                <x:scenario label="((:comment:)'foo')">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <!--comment-->
+                                <string value="foo"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(:comment:)'foo'</x:expect>
+                </x:scenario>
+                <x:scenario label="foo(:comment:)[bar]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest kind="element" name="foo"/>
+                                    <!--comment-->
+                                    <predicate>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="bar"/>
+                                        </locationStep>
+                                    </predicate>
+                                </locationStep>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">foo(:comment:)[bar]</x:expect>
+                </x:scenario>
+                <x:scenario label="foo[bar](:comment:)[baz]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest kind="element" name="foo"/>
+                                    <predicate>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="bar"/>
+                                        </locationStep>
+                                    </predicate>
+                                    <!--comment-->
+                                    <predicate>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="baz"/>
+                                        </locationStep>
+                                    </predicate>
+                                </locationStep>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">foo[bar](:comment:)[baz]</x:expect>
+                </x:scenario>
+                <x:scenario label="3(:comment:)+5">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="additive">
+                                    <arg>
+                                        <integer value="3"/>
+                                    </arg>
+                                    <!--comment-->
+                                    <plus/>
+                                    <arg>
+                                        <integer value="5"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">3(:comment:) + 5</x:expect>
+                </x:scenario>
+                <x:scenario label="child::(:comment:)foo">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <locationStep axis="parent">
+                                    <!--comment-->
+                                    <nodeTest kind="element" name="foo"/>
+                                </locationStep>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">parent::(:comment:)foo</x:expect>
+                </x:scenario>
+                <x:scenario label="()[(:comment:)/]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <empty/>
+                                    </arg>
+                                    <predicate>
+                                        <!--comment-->
+                                        <root/>
+                                    </predicate>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">()[(:comment:)/]</x:expect>
+                </x:scenario>
+                <x:scenario label="foo[(:comment:)/]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest kind="element" name="foo"/>
+                                    <predicate>
+                                        <!--comment-->
+                                        <root/>
+                                    </predicate>
+                                </locationStep>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">foo[(:comment:)/]</x:expect>
+                </x:scenario>
+                <x:scenario label="$var instance of empty-sequence (:1:) ( (:2:) )">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="var"/></arg>
+                                    <instanceOf/>
+                                    <empty>
+                                        <!--1-->
+                                    </empty>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of empty-sequence((:1:))</x:expect>
+                </x:scenario>
+                <x:scenario label="$foo instance of map(:comment:)(*)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="foo"/></arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <mapType>
+                                            <!--comment-->
+                                        </mapType>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo instance of map(:comment:)(*)</x:expect>
+                </x:scenario>
+                <x:scenario label="$foo instance of (:comment:)map(*)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="foo"/></arg>
+                                    <instanceOf/>
+                                    <!--comment-->
+                                    <itemType>
+                                        <mapType/>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo instance of (:comment:)map(*)</x:expect>
+                </x:scenario>
+                <x:scenario label="$var instance of map((:1:)xs:string, (:2:)node()(:3:)*(:4:))(:5:)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="var"/></arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <mapType>
+                                            <!--1-->
+                                            <atomic name="xs:string"/>
+                                            <!--2-->
+                                            <itemType occurrence="zero-or-more">
+                                                <nodeTest kind="node"/>
+                                                <!--3-->
+                                            </itemType>
+                                            <!--4-->
+                                        </mapType>
+                                        <!--5-->
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of map((:1:)xs:string, (:2:)node()(:3:)*(:4:))(:5:)</x:expect>
+                </x:scenario>
+                <x:scenario label="$var instance of function(:1:)(*)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="var"/></arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <functType>
+                                            <!--1-->
+                                        </functType>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of function(:1:)(*)</x:expect>
+                </x:scenario>
+                <x:scenario label="$var instance of function (:1:) ( (:2:) xs:string (:3:) ,  (:4:) node()+ (:5:) ,  (:6:) map(*) (:7:) ) (:8:)  as  (:9:) array(*)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg><varRef name="var"/></arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <functType>
+                                            <!--1-->
+                                            <itemType>
+                                                <atomic name="xs:string"/>
+                                            </itemType>
+                                            <!--2-->
+                                            <itemType occurrence="one-or-more">
+                                                <nodeTest kind="node"/>
+                                            </itemType>
+                                            <!--3-->
+                                            <itemType>
+                                                <mapType/>
+                                            </itemType>
+                                            <!--4-->
+                                            <as>
+                                                <!--5-->
+                                                <itemType>
+                                                    <arrayType/>
+                                                </itemType>
+                                            </as>
+                                        </functType>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of function((:1:)xs:string, (:2:)node()+, (:3:)map(*))(:4:) as (:5:)array(*)</x:expect>
+                </x:scenario>
+                <x:scenario label="$var(:1:) =&gt; (:2:)sum(:3:)((:4:))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <!--1-->
+                                    <arrow/>
+                                    <!--2-->
+                                    <function-call>
+                                        <function name="sum"/>
+                                        <!--3-->
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var(:1:) =&gt; (:2:)sum((:3:))</x:expect>
+                </x:scenario>
+                <x:scenario label="$var (:1:) => (:2:)  $func (:3:) ((:4:))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <!--1-->
+                                    <arrow/>
+                                    <!--2-->
+                                    <function-call>
+                                        <function>
+                                            <varRef name="func"/>
+                                        </function>
+                                        <!--3-->
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var(:1:) =&gt; (:2:)$func((:3:))</x:expect>
+                </x:scenario>
+                <x:scenario label="$var => sum (:1:) ((:2:) $arg1 (:3:), (:4:) $arg2 (:5:))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <arrow/>
+                                    <function-call>
+                                        <function name="sum"/>
+                                        <!--1-->
+                                        <arg><varRef name="arg1"/></arg>
+                                        <!--2-->
+                                        <arg><varRef name="arg2"/></arg>
+                                        <!--3-->
+                                    </function-call>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var =&gt; sum((:1:)$arg1, (:2:)$arg2(:3:))</x:expect>
+                </x:scenario>
+                <x:scenario label="$var?(:1:)key">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <lookup>
+                                        <!--1-->
+                                        <field name="key"/>
+                                    </lookup>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var?(:1:)key</x:expect>
+                </x:scenario>
+                <x:scenario label="$var?(:1:)((:2:)'key'(:3:))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <lookup>
+                                        <!--1-->
+                                        <arg>
+                                            <!--2-->
+                                            <string value="key"/>
+                                            <!--3-->
+                                        </arg>
+                                    </lookup>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var?(:1:)((:2:)'key'(:3:))</x:expect>
+                </x:scenario>
+                <x:scenario label="tokenize (:1:) ( (:2:) 'foo bar baz' (:3:), (:4:) '\s' (:5:))">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <function-call>
+                                    <function name="tokenize"/>
+                                    <!--1-->
+                                    <arg>
+                                        <string value="foo bar baz"/>
+                                    </arg>
+                                    <!--2-->
+                                    <arg>
+                                        <string value="\s"/>
+                                    </arg>
+                                    <!--3-->
+                                </function-call>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">tokenize((:1:)'foo bar baz', (:2:)'\s'(:3:))</x:expect>
+                </x:scenario>
+                <x:scenario label="child::Q{{d2t.de(:no-comment:)}}foo">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <locationStep axis="parent">
+                                    <nodeTest kind="element" name="Q{{d2t.de(:no-comment:)}}foo"/>
+                                </locationStep>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">parent::Q{d2t.de(:no-comment:)}foo</x:expect>
+                </x:scenario>
+                <x:scenario label="'(:no-comment:)'">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <string value="(:no-comment:)"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">'(:no-comment:)'</x:expect>
+                </x:scenario>
+                <x:scenario label="(:*******************************************************:)(: Test: K-XQueryComment-1 :)(: Written by: Frans Englich :)(: Date: 2007-11-22T11:31:22+01:00 :)(: Purpose: A test whose essence is: `(3(: comment inbetween :)- 1) eq 2`. :)(:*******************************************************:)(3(: comment inbetween :)- 1) eq 2">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <!--*******************************************************-->
+                                <!-- Test: K-XQueryComment-1 -->
+                                <!-- Written by: Frans Englich -->
+                                <!-- Date: 2007-11-22T11:31:22+01:00 -->
+                                <!-- Purpose: A test whose essence is: `(3(: comment inbetween :)- 1) eq 2`. -->
+                                <!--*******************************************************-->
+                                <operation type="value-compare">
+                                    <arg>
+                                        <operation type="additive">
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                            <!-- comment inbetween -->
+                                            <minus/>
+                                            <arg>
+                                                <integer value="1"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <eq/>
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(:*******************************************************:)(: Test: K-XQueryComment-1 :)(: Written by: Frans Englich :)(: Date: 2007-11-22T11:31:22+01:00 :)(: Purpose: A test whose essence is: `(3(: comment inbetween :)- 1) eq 2`. :)(:*******************************************************:)3(: comment inbetween :) - 1 eq 2</x:expect>
+                </x:scenario>
+                
+            </x:scenario>
+            
         </x:scenario>
     </x:scenario>
     
@@ -2829,6 +5083,55 @@
                             </expr>
                         </x:expect>
                     </x:scenario>
+                    <x:scenario label="mod and x">
+                        <x:call>
+                            <x:param select="string(.)">3 * 11 mod 2</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <integer value="3"/>
+                                    </arg>
+                                    <x/>
+                                    <arg>
+                                        <integer value="11"/>
+                                    </arg>
+                                    <mod/>
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:expect>
+                    </x:scenario>
+                    <x:scenario label="mod and x">
+                        <x:call>
+                            <x:param select="string(.)">(3 * 11) mod 2</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <operation type="multiplicativ">
+                                    <arg>
+                                        <operation type="multiplicativ">
+                                            <arg>
+                                                <integer value="3"/>
+                                            </arg>
+                                            <x/>
+                                            <arg>
+                                                <integer value="11"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <mod/>
+                                    <arg>
+                                        <integer value="2"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:expect>
+                    </x:scenario>
+                    
                     <x:scenario label="1 + 2 * 3 mod 4 idiv 5 - 6 div 7">
                         <x:call>
                             <x:param select="string(.)">1 + 2 * 3 mod 4 idiv 5 - 6 div 7</x:param>
@@ -4507,6 +6810,28 @@
                                 </arg>
                                 <arg role="value">
                                     <string value="bar"/>
+                                </arg>
+                            </array>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="[ ('foo', 'bar') ]">
+                    <x:call>
+                        <x:param select="string(.)">[ ('foo', 'bar') ]</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <array type="member-per-sequence">
+                                <arg role="value">
+                                    <operation type="sequence">
+                                        <arg>
+                                            <string value="foo"/>
+                                        </arg>
+                                        <comma/>
+                                        <arg>
+                                            <string value="bar"/>
+                                        </arg>
+                                    </operation>
                                 </arg>
                             </array>
                         </expr>
