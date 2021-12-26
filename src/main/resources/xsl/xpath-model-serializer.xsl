@@ -517,6 +517,36 @@
         <xsl:sequence select="@name"/>
     </xsl:template>
     
+    <!--    
+    ### Function Calls ###
+    -->
+    
+    <xsl:template match="function-call" mode="nk:xpath-serializer">
+        <xsl:variable name="function" select="function/(.|preceding-sibling::node())"/>
+        <xsl:variable name="args" select="node() except $function"/>
+        <xsl:apply-templates select="$function" mode="#current"/>
+        <xsl:sequence select="'('"/>
+        <xsl:apply-templates select="$args" mode="#current"/>
+        <xsl:sequence select="')'"/>
+    </xsl:template>
+    
+    <xsl:template match="function-call/arg" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:if test="following-sibling::arg">
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+    </xsl:template>
+    
+    <xsl:template match="function[@name][@arity]" mode="nk:xpath-serializer" priority="10">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="@name || '#' || @arity"/>
+    </xsl:template>
+    
+    <xsl:template match="function[@name]" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="@name"/>
+    </xsl:template>
+    
     
     
 <!--    
