@@ -547,6 +547,89 @@
         <xsl:sequence select="@name"/>
     </xsl:template>
     
+    <!--    
+    ### Inline Programming ###
+    -->
+
+    <!--    
+    -.-.- Conditions -.-.-
+    -->
+    
+    <xsl:template match="operation[@type = 'condition']/arg[@role = 'if']" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'if ('"/>
+        <xsl:next-match/>
+        <xsl:sequence select="') '"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'condition']/arg[@role = 'then']" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'then '"/>
+        <xsl:next-match/>
+        <xsl:sequence select="' '"/>
+    </xsl:template>
+    <xsl:template match="operation[@type = 'condition']/arg[@role = 'else']" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'else '"/>
+        <xsl:next-match/>
+    </xsl:template>
+    
+    <!--    
+    -.-.- For loops -.-.-
+    -->
+    <xsl:template match="operation[@type = 'for-loop']/let[1]" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'for $' || @name || ' in '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'for-loop']/let" mode="nk:xpath-serializer" priority="90">
+        <xsl:sequence select="', $' || @name || ' in '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    
+    <!--    
+    -.-.- Let variables -.-.-
+    -->
+    
+    <xsl:template match="operation[@type = 'let-binding']/let[1]" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'let $' || @name || ' := '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'let-binding']/let" mode="nk:xpath-serializer" priority="90">
+        <xsl:sequence select="', $' || @name || ' := '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = ('let-binding', 'for-loop')]/arg[@role = 'return']" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="' return '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    
+    <!--    
+    -.-.- Satisfaction operations -.-.-
+    -->
+    
+    
+    <xsl:template match="operation[@type = 'some-satisfies']/let[1]" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'some $' || @name || ' in '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'every-satisfies']/let[1]" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="'every $' || @name || ' in '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = ('some-satisfies', 'every-satisfies')]/let" mode="nk:xpath-serializer" priority="90">
+        <xsl:sequence select="', $' || @name || ' in '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = ('some-satisfies', 'every-satisfies')]/arg[@role = 'satisfies']" mode="nk:xpath-serializer" priority="100">
+        <xsl:sequence select="' satisfies '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
     
     
 <!--    
