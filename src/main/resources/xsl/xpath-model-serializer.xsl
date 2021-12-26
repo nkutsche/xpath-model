@@ -148,9 +148,61 @@
     </xsl:template>
     
     
-    <xsl:template match="itemType/atomic" mode="nk:xpath-serializer">
+    <xsl:template match="itemType//atomic" mode="nk:xpath-serializer">
         <xsl:sequence select="@name/string()"/>
     </xsl:template>
+
+    <xsl:template match="itemType//mapType[not(*)]" mode="nk:xpath-serializer" priority="50">
+        <xsl:sequence select="'map'"/>
+        <xsl:sequence select="'(*)'"/>
+    </xsl:template>
+
+    <xsl:template match="itemType//arrayType[not(*)]" mode="nk:xpath-serializer" priority="50">
+        <xsl:sequence select="'array'"/>
+        <xsl:sequence select="'(*)'"/>
+    </xsl:template>
+    
+    <xsl:template match="itemType//functType[not(*)]" mode="nk:xpath-serializer" priority="50">
+        <xsl:sequence select="'function'"/>
+        <xsl:sequence select="'(*)'"/>
+    </xsl:template>
+
+    <xsl:template match="itemType//mapType" mode="nk:xpath-serializer" priority="40">
+        <xsl:variable name="key-decl" select="atomic" as="element()"/>
+        <xsl:variable name="after-key-decl" select="node() intersect $key-decl/following-sibling::node()"/>
+        
+        <xsl:sequence select="'map('"/>
+        <xsl:apply-templates select="node() except $after-key-decl" mode="#current"/>
+        <xsl:text>, </xsl:text>
+        <xsl:apply-templates select="$after-key-decl" mode="#current"/>
+        <xsl:sequence select="')'"/>
+        
+    </xsl:template>
+
+    <xsl:template match="itemType//arrayType" mode="nk:xpath-serializer" priority="40">
+        <xsl:sequence select="'array('"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="')'"/>
+    </xsl:template>
+
+    <xsl:template match="itemType//functType" mode="nk:xpath-serializer" priority="40">
+        <xsl:sequence select="'function('"/>
+        <xsl:variable name="as" select="itemType[last()]/following-sibling::node()"/>
+        <xsl:for-each-group select="node() except $as" group-ending-with="itemType|empty">
+            <xsl:apply-templates select="current-group()" mode="#current"/>
+            <xsl:if test="position() lt last()">
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+        </xsl:for-each-group> 
+        <xsl:sequence select="')'"/>
+        <xsl:apply-templates select="$as" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="itemType//functType/as" mode="nk:xpath-serializer">
+        <xsl:sequence select="' as '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
     
     <xsl:function name="nk:itemTypeOccSer" as="xs:string">
         <xsl:param name="occurrence" as="attribute(occurrence)?"/>
