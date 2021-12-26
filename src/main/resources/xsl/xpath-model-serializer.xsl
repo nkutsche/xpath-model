@@ -352,7 +352,7 @@
     </xsl:function>
     
     
-    <xsl:variable name="operatorMap" select="map{
+    <xsl:variable name="operatorSerMap" select="map{
         'plus' : '+',
         'minus' : '-',
         'x' : '*',
@@ -367,9 +367,9 @@
         'comma': ',' 
         }"/>
     
-    <xsl:template match="operation/*[$operatorMap(name())]" mode="nk:xpath-serializer" priority="40">
+    <xsl:template match="operation/*[$operatorSerMap(name())]" mode="nk:xpath-serializer" priority="40">
         <xsl:param name="config" as="map(*)" tunnel="yes"/>
-        <xsl:param name="operator-sign" select="$operatorMap(name())"/>
+        <xsl:param name="operator-sign" select="$operatorSerMap(name())"/>
         <xsl:next-match>
             <xsl:with-param name="operator-sign" select="$operator-sign"/>
         </xsl:next-match>
