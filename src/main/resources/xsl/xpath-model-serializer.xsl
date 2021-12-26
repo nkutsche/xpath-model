@@ -477,6 +477,45 @@
         <xsl:sequence select="$space-before || $operator-sign || $space-after"/>
     </xsl:template>
 
+
+
+    <!--    
+    -.-.- Post-fix operations -.-.-
+    -->
+    
+    <xsl:template match="predicate" mode="nk:xpath-serializer">
+        <xsl:sequence select="'['"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="']'"/>
+    </xsl:template>
+
+    <!--<xsl:template match="operation[@type = 'postfix']/function-call" mode="nk:xpath-serializer">
+        <xsl:sequence select="'('"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="')'"/>
+    </xsl:template>-->
+
+    <xsl:template match="operation[@type = 'postfix']/lookup[not(*)]" mode="nk:xpath-serializer" priority="10">
+        <xsl:sequence select="'?'"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="'*'"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'postfix']/lookup" mode="nk:xpath-serializer">
+        <xsl:sequence select="'?'"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="lookup/arg" mode="nk:xpath-serializer">
+        <xsl:sequence select="'('"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="')'"/>
+    </xsl:template>
+
+    <xsl:template match="lookup/field" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="@name"/>
+    </xsl:template>
     
     
     
