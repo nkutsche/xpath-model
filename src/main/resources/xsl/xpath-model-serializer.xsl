@@ -631,6 +631,105 @@
     </xsl:template>
     
     
+    <!--    
+    ### Constructors ###
+    -->
+    
+    <!--    
+    -.-.- Map -.-.-
+    -->
+    
+    <xsl:template match="*[not(self::operation)]/map" mode="nk:xpath-serializer">
+        <xsl:sequence select="'map{ '"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="if (*) then ' }' else '}'"/>
+    </xsl:template>
+
+    <xsl:template match="map/entry[last()]" mode="nk:xpath-serializer" priority="50">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="map/entry" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="', '"/>
+    </xsl:template>
+
+    <xsl:template match="map/entry/arg[@role = 'key']" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="' : '"/>
+    </xsl:template>
+
+    <xsl:template match="map/entry/arg[@role = 'value']" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+    <!--    
+    -.-.- Array -.-.-
+    -->
+    
+    <xsl:template match="array[@type = 'member-per-item']" mode="nk:xpath-serializer">
+        <xsl:sequence select="'array{ '"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="if (*) then ' }' else '}'"/>
+    </xsl:template>
+
+    <xsl:template match="array[@type = 'member-per-sequence']" mode="nk:xpath-serializer">
+        <xsl:sequence select="'[ '"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="if (*) then ' ]' else ']'"/>
+    </xsl:template>
+
+    <xsl:template match="array/arg[last()]" mode="nk:xpath-serializer" priority="50">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="array/arg" mode="nk:xpath-serializer">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="', '"/>
+    </xsl:template>
+    
+    <!--    
+    -.-.- Functions -.-.-
+    -->
+    
+    <xsl:template match="function-impl" mode="nk:xpath-serializer">
+        <xsl:variable name="parameter" select="param/(.|preceding-sibling::node())"/>
+        <xsl:sequence select="'function( '"/>
+        <xsl:apply-templates select="$parameter" mode="#current"/>
+        <xsl:sequence select="if ($parameter) then ' )' else ')'"/>
+        <xsl:apply-templates select="node() except $parameter" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="function-impl/arg[@role = 'return']" mode="nk:xpath-serializer">
+        <xsl:sequence select="'{ '"/>
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="if (.//node() except empty) then ' }' else '}'"/>
+    </xsl:template>
+    
+    <xsl:template match="function-impl/arg[@role = 'return']/empty" mode="nk:xpath-serializer" priority="50">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="function-impl/param" mode="nk:xpath-serializer" priority="40">
+        <xsl:sequence select="'$' || @name"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="function-impl/param[position() lt last()]" mode="nk:xpath-serializer" priority="50">
+        <xsl:next-match/>
+        <xsl:sequence select="', '"/>
+    </xsl:template>
+
+    <xsl:template match="function-impl/as" mode="nk:xpath-serializer" priority="60">
+        <xsl:next-match/>
+        <xsl:sequence select="' '"/>
+    </xsl:template>
+
+    <xsl:template match="function-impl//as" mode="nk:xpath-serializer" priority="50">
+        <xsl:sequence select="' as '"/>
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
     
 <!--    
     ### Helper Functions ###
