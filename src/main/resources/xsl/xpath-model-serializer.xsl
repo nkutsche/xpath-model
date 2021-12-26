@@ -19,7 +19,7 @@
     </xsl:function>
     
     <xsl:template match="expr" mode="nk:xpath-serializer">
-        <xsl:apply-templates select="*" mode="#current"/>
+        <xsl:apply-templates select=" * | comment() " mode="#current"/>
     </xsl:template>
     
 <!--    
@@ -47,15 +47,18 @@
 
     <xsl:template match="locationStep[@axis = 'parent'][nodeTest[@kind = 'node']]" mode="nk:xpath-serializer"
         priority="50">
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'..'"/>
     </xsl:template>
     
     <xsl:template match="locationStep[@axis = 'attribute']/nodeTest[@kind = 'attribute']" mode="nk:xpath-serializer"
         priority="50">
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="string((@name, '*')[1])"/>
     </xsl:template>
 
     <xsl:template match="locationStep[not(@axis = ('attribute', 'namespace'))]/nodeTest[@kind = 'element' or not(@kind)]" mode="nk:xpath-serializer" priority="50">
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="string((@name, '*')[1])"/>
     </xsl:template>
 
@@ -116,19 +119,24 @@
     Misc Primitives
     -->
     <xsl:template match="empty" mode="nk:xpath-serializer">
-        <xsl:sequence select="'()'"/>
+        <xsl:sequence select="'('"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
+        <xsl:sequence select="')'"/>
     </xsl:template>
 
     <xsl:template match="self" mode="nk:xpath-serializer">
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'.'"/>
     </xsl:template>
 
     <xsl:template match="root" mode="nk:xpath-serializer">
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'/'"/>
     </xsl:template>
 
     <xsl:template match="varRef" mode="nk:xpath-serializer">
         <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'$' || (@name => nk:as-qname() => nk:qname($config) )"/>
     </xsl:template>
     
@@ -162,16 +170,19 @@
 
     <xsl:template match="itemType//mapType[not(*)]" mode="nk:xpath-serializer" priority="50">
         <xsl:sequence select="'map'"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'(*)'"/>
     </xsl:template>
 
     <xsl:template match="itemType//arrayType[not(*)]" mode="nk:xpath-serializer" priority="50">
         <xsl:sequence select="'array'"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'(*)'"/>
     </xsl:template>
     
     <xsl:template match="itemType//functType[not(*)]" mode="nk:xpath-serializer" priority="50">
         <xsl:sequence select="'function'"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
         <xsl:sequence select="'(*)'"/>
     </xsl:template>
 
@@ -779,6 +790,13 @@
         <xsl:sequence select="' as '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
+    
+    
+    
+    <xsl:template match="comment()" mode="nk:xpath-serializer">
+        <xsl:sequence select="'(:' || string(.) || ':)'"/>
+    </xsl:template>
+    
     
     
 <!--    
