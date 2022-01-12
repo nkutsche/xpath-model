@@ -1,4 +1,11 @@
-XPath    ::= Expr EOF
+AVT ::= AVTExpr EOF
+
+AVTExpr ::= AVTFix (AVTVar AVTFix)*
+
+AVTVar ::= '{' ( Expr? ) '}'
+
+AVTFix
+          ::= ( AVTFixChar )*
 ParamList
          ::= Param ( ',' Param )*
 Param    ::= '$' EQName TypeDeclaration?
@@ -342,6 +349,13 @@ QName    ::= FunctionName
 
 <?TOKENS?>
 
+AVTFixChar ::= (Char | EscapeOpenCurly | EscapeCloseCurly )* - ('{' | '}' | '(:' | ':)' | S)
+          /* ws: explicit */
+
+EscapeOpenCurly 
+          ::= '{{'
+EscapeCloseCurly 
+          ::= '}}'
 IntegerLiteral
          ::= Digits
 DecimalLiteral
