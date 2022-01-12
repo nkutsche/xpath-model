@@ -2,9 +2,7 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt3"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" xmlns:nk="http://www.nkutsche.com/xpath-model"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    
-    <xsl:import href="../../src/main/resources/xsl/xpath-model.xsl"/>
-    <xsl:import href="../../src/main/resources/xsl/xslt-3-avt.xsl"/>
+    <xsl:import href="lib.xsl"/>
     
     <sch:ns uri="http://purl.oclc.org/dsdl/schematron" prefix="sch"/>
     <sch:ns uri="http://www.w3.org/2005/xpath-functions" prefix="fn"/>
