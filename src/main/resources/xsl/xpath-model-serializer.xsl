@@ -17,6 +17,22 @@
         </xsl:variable>
         <xsl:sequence select="string-join($content)"/>
     </xsl:function>
+
+    <xsl:function name="nk:xpath-serializer-sub" as="xs:string">
+        <xsl:param name="subExpr" as="element()"/>
+        <xsl:sequence select="nk:xpath-serializer-sub($subExpr, map{})"/>
+    </xsl:function>
+    <xsl:function name="nk:xpath-serializer-sub" as="xs:string">
+        <xsl:param name="subExpr" as="element()"/>
+        <xsl:param name="config" as="map(*)"/>
+        
+        <xsl:variable name="expr" as="element(expr)">
+            <expr>
+                <xsl:sequence select="$subExpr"/>
+            </expr>
+        </xsl:variable>
+        <xsl:sequence select="nk:xpath-serializer($expr, $config)"/>
+    </xsl:function>
     
     <xsl:template match="expr" mode="nk:xpath-serializer">
         <xsl:apply-templates select=" * | comment() " mode="#current"/>
