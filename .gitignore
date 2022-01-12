@@ -1,2 +1,4 @@
 src/test/xspec/*-result.html
 target/
+src/test/xspec/**/*-result.html
+src/test/xspec/*-report.html
