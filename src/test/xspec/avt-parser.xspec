@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:nk="http://www.nkutsche.com/xpath-model"
+    xmlns:p="xslt-3-avt"
+    stylesheet="../../main/resources/xsl/xslt-3-avt.xsl">
+    
+    
+    <x:scenario label="Scenario testing function call p:parse-AVT">
+        <x:call function="p:parse-AVT"/>
+        <x:scenario label="single apos">
+            <x:call>
+                <x:param select="string(.)">foo{'bar'}baz</x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                       <AVTFix>
+                          <AVTFixChar>foo</AVTFixChar>
+                       </AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix>
+                           <AVTFixChar>baz</AVTFixChar>
+                       </AVTFix>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+        </x:scenario>
+
+    </x:scenario>
+    
+</x:description>
