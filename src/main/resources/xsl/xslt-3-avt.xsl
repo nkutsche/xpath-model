@@ -5,7 +5,7 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:p="xslt-3-avt">
+                xmlns:p="http://www.nkutsche.com/avt-parser">
   <!--~
    ! The index of the lexer state for accessing the combined
    ! (i.e. level > 1) lookahead code.

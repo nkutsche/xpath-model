@@ -2,7 +2,7 @@
 
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:nk="http://www.nkutsche.com/xpath-model"
-    xmlns:p="xslt-3-avt"
+    xmlns:p="http://www.nkutsche.com/avt-parser"
     stylesheet="../../main/resources/xsl/xslt-3-avt.xsl">
     
     
