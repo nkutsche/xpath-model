@@ -15,6 +15,16 @@
     
     <sch:let name="allowed-namespaces" value="$namespace-decl/@uri, ''[$allow-null-namespace]"/>
     
+    <sch:let name="focus" value="/sch:schema/(sch:pattern|sch:phase)[@nk:focus]/(@id, generate-id())[1]"/>
+    
+    
+    <sch:let name="focusIDs" value=" (/sch:schema/sch:phase[@id = $focus]/sch:active/@pattern/string(), $focus)"/>
+    <sch:let name="ignored-patterns" value="
+        if(exists($focusIDs)) then
+        /sch:schema/(sch:pattern except sch:pattern[(@id, generate-id())[1] = $focusIDs]) 
+        else ()
+        "/>
+    
     <sch:let name="process-namespaces" value="
         'http://purl.oclc.org/dsdl/schematron', 
         'http://www.schematron-quickfix.com/validator/process', 
@@ -22,6 +32,11 @@
         "/>
     
     <sch:pattern id="check-null-namespace">
+        
+<!--        
+        ignore non-focused patterns
+        -->
+        <sch:rule context="sch:pattern[. intersect $ignored-patterns]//@*"/>
         
 <!--        
             ignore standard attributes of XSLT elements
