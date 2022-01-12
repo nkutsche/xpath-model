@@ -4,11 +4,13 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     
     <xsl:import href="../../src/main/resources/xsl/xpath-model.xsl"/>
+    <xsl:import href="../../src/main/resources/xsl/xslt-3-avt.xsl"/>
     
     <sch:ns uri="http://purl.oclc.org/dsdl/schematron" prefix="sch"/>
     <sch:ns uri="http://www.w3.org/2005/xpath-functions" prefix="fn"/>
     <sch:ns uri="http://www.schematron-quickfix.com/validator/process" prefix="sqf"/>
     <sch:ns uri="http://www.nkutsche.com/xpath-model" prefix="nk"/>
+    <sch:ns uri="http://www.nkutsche.com/avt-parser" prefix="avt"/>
     
     <sch:let name="allow-null-namespace" value="not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true'"/>
     <sch:let name="namespace-decl" value="/sch:schema/sch:ns"/>
@@ -84,7 +86,7 @@
             >
             
             
-            <sch:let name="expr" value="analyze-string(., '\{([^}]*)\}')/fn:match/fn:group[@nr = '1']/string()"/>
+            <sch:let name="expr" value="avt:parse-AVT(.)/AVTExpr/AVTVar/Expr/string()"/>
             
             <sch:extends rule="xpath-check"/>
             
