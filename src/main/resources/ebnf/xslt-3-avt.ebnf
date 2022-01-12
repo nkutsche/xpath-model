@@ -349,7 +349,7 @@ QName    ::= FunctionName
 
 <?TOKENS?>
 
-AVTFixChar ::= (Char | EscapeOpenCurly | EscapeCloseCurly )* - ('{' | '}' | '(:' | ':)' | S)
+AVTFixChar ::= ([^{}] | EscapeOpenCurly | EscapeCloseCurly )* - ('(:' | ':)' | S)
           /* ws: explicit */
 
 EscapeOpenCurly 
