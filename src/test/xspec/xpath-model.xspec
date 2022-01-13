@@ -3499,6 +3499,202 @@
                     <x:expect label="expected expression" select="string(.)">$foo except $bar except $baz</x:expect>
                 </x:scenario>
             </x:scenario>
+            <x:scenario label="$foo eq $bar eq $baz">
+                <x:scenario label="as $foo eq ($bar eq $baz)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="value-compare">
+                                    <arg>
+                                        <varRef name="foo"/>
+                                    </arg>
+                                    <eq/>
+                                    <arg>
+                                        <operation type="value-compare">
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                            <eq/>
+                                            <arg>
+                                                <varRef name="baz"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$foo eq ($bar eq $baz)</x:expect>
+                </x:scenario>
+                <x:scenario label="as ($foo eq $bar) eq $baz">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="value-compare">
+                                    <arg>
+                                        <operation type="value-compare">
+                                            <arg>
+                                                <varRef name="foo"/>
+                                            </arg>
+                                            <eq/>
+                                            <arg>
+                                                <varRef name="bar"/>
+                                            </arg>
+                                        </operation>
+                                    </arg>
+                                    <eq/>
+                                    <arg>
+                                        <varRef name="baz"/>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo eq $bar) eq $baz</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="$foo is $bar lt $baz is $qux">
+                <x:scenario label="as ($foo is $bar) lt ($baz is $qux)">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="value-compare">
+                                    <arg>
+                                       <operation type="node-compare">
+                                          <arg>
+                                             <varRef name="foo"/>
+                                          </arg>
+                                          <eq/>
+                                          <arg>
+                                             <varRef name="bar"/>
+                                          </arg>
+                                       </operation>
+                                    </arg>
+                                    <lt/>
+                                    <arg>
+                                       <operation type="node-compare">
+                                          <arg>
+                                             <varRef name="baz"/>
+                                          </arg>
+                                          <eq/>
+                                          <arg>
+                                             <varRef name="qux"/>
+                                          </arg>
+                                       </operation>
+                                    </arg>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo is $bar) lt ($baz is $qux)</x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="item type based operators">
+                <x:scenario label="($foo cast as xs:boolean) cast as xs:string">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="cast">
+                                   <arg>
+                                      <operation type="cast">
+                                         <arg>
+                                            <varRef name="foo"/>
+                                         </arg>
+                                         <castAs/>
+                                         <itemType>
+                                            <atomic name="xs:boolean"/>
+                                         </itemType>
+                                      </operation>
+                                   </arg>
+                                   <castAs/>
+                                   <itemType>
+                                      <atomic name="xs:string"/>
+                                   </itemType>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo cast as xs:boolean) cast as xs:string</x:expect>
+                </x:scenario>
+                <x:scenario label="($foo instance of xs:string) instance of xs:boolean">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                   <arg>
+                                      <operation type="instance-of">
+                                         <arg>
+                                            <varRef name="foo"/>
+                                         </arg>
+                                         <instanceOf/>
+                                         <itemType>
+                                            <atomic name="xs:string"/>
+                                         </itemType>
+                                      </operation>
+                                   </arg>
+                                   <instanceOf/>
+                                   <itemType>
+                                      <atomic name="xs:boolean"/>
+                                   </itemType>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo instance of xs:string) instance of xs:boolean</x:expect>
+                </x:scenario>
+                <x:scenario label="($foo castable as xs:string) castable as xs:boolean">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="castable">
+                                   <arg>
+                                      <operation type="castable">
+                                         <arg>
+                                            <varRef name="foo"/>
+                                         </arg>
+                                         <castableAs/>
+                                         <itemType>
+                                            <atomic name="xs:string"/>
+                                         </itemType>
+                                      </operation>
+                                   </arg>
+                                   <castableAs/>
+                                   <itemType>
+                                      <atomic name="xs:boolean"/>
+                                   </itemType>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo castable as xs:string) castable as xs:boolean</x:expect>
+                </x:scenario>
+                <x:scenario label="($foo treat as xs:string) treat as xs:boolean">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="treat-as">
+                                   <arg>
+                                      <operation type="treat-as">
+                                         <arg>
+                                            <varRef name="foo"/>
+                                         </arg>
+                                         <treatAs/>
+                                         <itemType>
+                                            <atomic name="xs:string"/>
+                                         </itemType>
+                                      </operation>
+                                   </arg>
+                                   <treatAs/>
+                                   <itemType>
+                                      <atomic name="xs:boolean"/>
+                                   </itemType>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">($foo treat as xs:string) treat as xs:boolean</x:expect>
+                </x:scenario>
+            </x:scenario>
             
         </x:scenario>
         
