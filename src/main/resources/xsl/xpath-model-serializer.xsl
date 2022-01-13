@@ -120,7 +120,12 @@
     </xsl:template>
     
     <xsl:template match="decimal" mode="nk:xpath-serializer">
-        <xsl:sequence select="string(@value/xs:decimal(.))"/>
+        <xsl:variable name="decimal" select="string(@value/xs:decimal(.))"/>
+        <xsl:sequence select=" 
+              if (contains($decimal, '.')) 
+            then $decimal 
+            else ($decimal || '.0')
+            "/>
     </xsl:template>
 
     <xsl:template match="double" mode="nk:xpath-serializer">
