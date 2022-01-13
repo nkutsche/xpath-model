@@ -285,7 +285,7 @@
     
     <xsl:template match="operation/arg[root]" mode="nk:xpath-serializer" priority="100">
         <xsl:param name="config" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="need-brackets" select="nk:needs-root-brackets(., $config)"/>
+        <xsl:variable name="need-brackets" select="exists(nk:get-follow-operator(.))"/>
         
         <xsl:sequence select="'('[$need-brackets]"/>
         <xsl:next-match/>
@@ -318,22 +318,6 @@
             "/>
     </xsl:function>
     
-    
-    <xsl:function name="nk:needs-root-brackets" as="xs:boolean">
-        <xsl:param name="arg" as="element(arg)"/>
-        <xsl:param name="config" as="map(*)"/>
-        
-        <xsl:variable name="following-operator" select="nk:get-follow-operator($arg)"/>
-        
-        <xsl:variable name="follow-operator-ser" as="xs:string?">
-            <xsl:apply-templates select="$following-operator" mode="nk:xpath-serializer">
-                <xsl:with-param name="config" select="$config" tunnel="yes"/>
-            </xsl:apply-templates>
-        </xsl:variable>
-        
-        <xsl:sequence select="normalize-space($follow-operator-ser) castable as xs:NCName"/>
-        
-    </xsl:function>
     
     <xsl:function name="nk:needs-brackets" as="xs:boolean">
         <xsl:param name="operation" as="element(operation)"/>
