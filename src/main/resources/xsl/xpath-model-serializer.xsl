@@ -380,6 +380,9 @@
                             <xsl:when test="$op-type = $symetric-operations">
                                 <xsl:sequence select="false()"/>
                             </xsl:when>
+                            <xsl:when test="$op-type = $single-side-operations">
+                                <xsl:sequence select="true()"/>
+                            </xsl:when>
                             <xsl:when test="not($prec-operator)">
                                 <xsl:sequence select="false()"/>
                             </xsl:when>
@@ -419,6 +422,16 @@
         'unary',
         'map',
         'postfix'
+        "/>
+    
+    <xsl:variable name="single-side-operations" select="
+        'compare',
+        'value-compare',
+        'node-compare',
+        'instance-of',
+        'treat-as',
+        'castable',
+        'cast'
         "/>
     
     <xsl:variable name="type-levels" select="
