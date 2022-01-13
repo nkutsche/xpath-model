@@ -4370,6 +4370,14 @@
                             <nodeTest name="*:local" kind="element"/>
                         </x:expect>
                     </x:scenario>
+                    <x:scenario label="@xml:local">
+                        <x:call>
+                            <x:param select="string(.)">@xml:local</x:param>
+                        </x:call>
+                        <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
+                            <nodeTest name="xml:local" kind="attribute"/>
+                        </x:expect>
+                    </x:scenario>
                 </x:scenario>
                 
                 <x:scenario label="several kind tests">
