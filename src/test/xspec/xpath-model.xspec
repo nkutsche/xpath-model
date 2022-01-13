@@ -3810,6 +3810,82 @@
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">(/) intersect (/) except /*</x:expect>
                 </x:scenario>
+                <x:scenario label=".[(/) * 5]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                   <arg>
+                                      <self/>
+                                   </arg>
+                                   <predicate>
+                                      <operation type="multiplicativ">
+                                         <arg>
+                                            <root/>
+                                         </arg>
+                                         <x/>
+                                         <arg>
+                                            <integer value="5"/>
+                                         </arg>
+                                      </operation>
+                                   </predicate>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">.[(/) * 5]</x:expect>
+                </x:scenario>
+                <x:scenario label=".[(/) &lt; 5]">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                   <arg>
+                                      <self/>
+                                   </arg>
+                                   <predicate>
+                                      <operation type="compare">
+                                         <arg>
+                                            <root/>
+                                         </arg>
+                                         <lt/>
+                                         <arg>
+                                            <integer value="5"/>
+                                         </arg>
+                                      </operation>
+                                   </predicate>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">.[(/) &lt; 5]</x:expect>
+                </x:scenario>
+                <x:scenario label="(/) //product">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="step">
+                                   <arg>
+                                      <root/>
+                                   </arg>
+                                   <slash/>
+                                   <arg>
+                                      <locationStep axis="descendant-or-self">
+                                         <nodeTest kind="node"/>
+                                      </locationStep>
+                                   </arg>
+                                   <slash/>
+                                   <arg>
+                                      <locationStep axis="child">
+                                         <nodeTest name="product" kind="element"/>
+                                      </locationStep>
+                                   </arg>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">(/)//product</x:expect>
+                </x:scenario>
             </x:scenario>
             <x:scenario label="?,*,+ after itemType operator">
                 <x:scenario label="(1 treat as xs:integer) + 2">
