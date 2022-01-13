@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" exclude-result-prefixes="#all" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:err="http://www.w3.org/2005/xqt-errors" exclude-result-prefixes="#all" version="3.0">
     <xsl:import href="../rnc-compiler/rng.xsl"/>
     <xsl:import href="xpath-31.xsl"/>
 
@@ -23,29 +23,34 @@
                 <xsl:sequence select="$parsed"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:variable name="expr" as="element(expr)">
-                    <expr>
-                        <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
-                        <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
-                    </expr>
-                </xsl:variable>
                 <xsl:try>
-                    <xsl:variable name="rng-validate" as="xs:boolean">
-                        <xsl:call-template name="r:main">
-                            <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
-                            <xsl:with-param name="instance" select="$expr"/>
-                        </xsl:call-template>
+                    <xsl:variable name="expr" as="element(expr)">
+                        <expr>
+                            <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
+                            <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
+                        </expr>
                     </xsl:variable>
-                    <xsl:choose>
-                        <xsl:when test="$rng-validate">
-                            <xsl:sequence select="$expr"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    <xsl:catch>
-                        <ERROR message="Invalid result:"><xsl:sequence select="$expr"/></ERROR>
+                    <xsl:try>
+                        <xsl:variable name="rng-validate" as="xs:boolean">
+                            <xsl:call-template name="r:main">
+                                <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
+                                <xsl:with-param name="instance" select="$expr"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                            <xsl:when test="$rng-validate">
+                                <xsl:sequence select="$expr"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        <xsl:catch>
+                            <ERROR message="Invalid result:"><xsl:sequence select="$expr"/></ERROR>
+                        </xsl:catch>
+                    </xsl:try>
+                    <xsl:catch errors="*">
+                        <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
                     </xsl:catch>
                 </xsl:try>
             </xsl:otherwise>
