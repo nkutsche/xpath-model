@@ -723,6 +723,16 @@
                     </x:call>
                     <x:expect label="expected result" select="string(.)">12.34</x:expect>
                 </x:scenario>
+                <x:scenario label="integer as decimal">
+                    <x:call>
+                      <x:param>
+                          <expr>
+                              <decimal value="12"/>
+                          </expr>
+                      </x:param>
+                    </x:call>
+                    <x:expect label="expected result" select="string(.)">12.0</x:expect>
+                </x:scenario>
                 <x:scenario label="leading zero decimal">
                     <x:call>
                         <x:param>
@@ -822,6 +832,16 @@
                         </x:param>
                     </x:call>
                     <x:expect label="expected result" select="string(.)">1.2345678923445661e33</x:expect>
+                </x:scenario>
+                <x:scenario label="integer as double">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <double factor="1" exp="0"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected result" select="string(.)">1e0</x:expect>
                 </x:scenario>
             </x:scenario>
             <x:scenario label="Misc primitives">
