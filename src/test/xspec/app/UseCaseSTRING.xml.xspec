@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/app/UseCaseSTRING.xml"><x:call function="nk:xpath-model"/><x:scenario label="//news_item/title[contains(., &#34;Foobar Corporation&#34;)]">
-      <x:call>
-        <x:param select="string(.)">//news_item/title[contains(., "Foobar Corporation")]</x:param>
-      </x:call>
-      <x:expect label="result should be valid">
-        <expr>...</expr>
-      </x:expect>
-    </x:scenario></x:scenario></x:description>

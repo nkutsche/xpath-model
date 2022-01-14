@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../main/resources/xsl/xpath-model.xsl"><x:scenario label="/qt3tests-master/xs/hexBinary.xml"><x:call function="nk:xpath-model"/><x:scenario label="count(xs:hexBinary(()))">
-      <x:call>
-        <x:param select="string(.)">count(xs:hexBinary(()))</x:param>
-      </x:call>
-      <x:expect label="result should be valid">
-        <expr>...</expr>
-      </x:expect>
-    </x:scenario></x:scenario></x:description>
