@@ -9,6 +9,9 @@
     
     <properties>
         <saxon.version>9.9.1-1</saxon.version>
+
+        <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
+
     </properties>
     
     <dependencies>
@@ -47,6 +50,26 @@
                         <exclude>compiled.xspec</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            
+            <!--            
+            [package]: Assemblies to create artifacts
+            -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.3</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptor>${assembly.dir}/assembly.xml</descriptor>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

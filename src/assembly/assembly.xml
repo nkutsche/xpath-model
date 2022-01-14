@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<!-- http://maven.apache.org/plugins/maven-assembly-plugin/ -->
+	<id>bin</id>
+
+	<!-- Package=ZIP -->
+	<formats>
+		<format>zip</format>
+		<format>dir</format>
+	</formats>
+
+	<!-- Do not include Base Directory -->
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<!-- Definition of what to INclude and EXclude  -->
+	<fileSets>
+		<!-- Include everything in /src/main/resources
+			 (except *-compiled.xsl) -->
+		<fileSet>
+		    <directory>${project.basedir}/src/main/resources</directory>
+			<outputDirectory>.</outputDirectory>
+		</fileSet>
+
+		<!-- Include LICENSE and NOTICE from /src
+			 (except README*) -->
+		<fileSet>
+			<directory>${project.basedir}/src</directory>
+			<outputDirectory>.</outputDirectory>
+			<includes>
+				<!--<include>README_CUSTOMER.txt</include>-->
+				<include>LICENSE*</include>
+				<include>NOTICE*</include>
+			</includes>
+			<excludes>
+				<!-- README exluded, as it's filtered
+					 (resolving Maven Property Placeholder will be replaced
+					  when creating a package) -->
+				<exclude>README*</exclude>
+			</excludes>
+		</fileSet>
+		
+		<!-- Include a 'Site' -->
+		<fileSet>
+			<directory>${project.build.directory}/site</directory>
+			<outputDirectory>docs</outputDirectory>
+		</fileSet>
+	</fileSets>
+	
+</assembly>
