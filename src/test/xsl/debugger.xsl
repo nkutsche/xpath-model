@@ -5,6 +5,8 @@
     
     <xsl:output indent="yes"></xsl:output>
     
+    <xsl:param name="xpath" as="xs:string">foo[@bar = 'baz']</xsl:param>
+    
     <xsl:variable name="model" as="element(expr)">
         <expr>
             <operation type="node-compare">
@@ -13,7 +15,7 @@
                         <nodeTest kind="element"/>
                     </locationStep>
                 </arg>
-                <ge/>
+                <eq/>
                 <arg>
                     <locationStep axis="child">
                         <nodeTest name="foo" kind="element"/>
@@ -24,7 +26,7 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <xsl:variable name="xpath" as="xs:string">string-join#2('foo', 'bar')</xsl:variable>
+        <xsl:variable name="xpmodel" select="nk:xpath-model($xpath)"/>
         <root>
             <ser>
                 <xsl:sequence select="nk:xpath-serializer($model)"/>
@@ -33,8 +35,11 @@
                 <xsl:value-of select="$xpath"/>
             </xpath>
             <model>
-                <xsl:sequence select="nk:xpath-model($xpath)"/>
+                <xsl:sequence select="$xpmodel"/>
             </model>
+            <re-ser>
+                <xsl:sequence select="nk:xpath-serializer($xpmodel)"/>
+            </re-ser>
             <raw>
                 <xsl:sequence select="nk:pre-parse-comments(p:parse-XPath($xpath))"/>
             </raw>
