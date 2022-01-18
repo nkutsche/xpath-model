@@ -1,6 +1,6 @@
 # XPath XML Model
 
-This project contains an XPath parser and creates an [XML model](src/main/resources/rnc/xpath-model.rnc) from it. The model can be used to make deeper analyzis, convert or serialize the expression to a normalizes XPath expression.
+This project contains an XPath parser and creates an [XML model](src/main/resources/rnc/xpath-model.rnc) from it. The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.
 
 An XPath normalizer could:
 
@@ -20,6 +20,13 @@ A converter could manipulate given XPath expressions:
 * wrap all location steps by a function call
 * wrap all sub expressions by a function call
 * ...?
+
+## Standard conformance
+
+* The core parser in this project is generated based on the official EBNF file which defines XPath 3.1 using the REx Parser Generator (see [Contribute](#contribute)).
+* There is an extra [testing project](https://github.com/nkutsche/xpath-model-qt3) that ensures that all valid expressions in the [QT3 testsuite](https://github.com/w3c/qt3tests) (~15k test cases):
+    * are parsed to a valid model
+    * can be parsed and re-serialized without any relevant changes.
 
 
 ## Contribute
