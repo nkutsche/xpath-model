@@ -2,12 +2,12 @@
 
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:nk="http://www.nkutsche.com/xpath-model"
-    xmlns:p="http://www.nkutsche.com/avt-parser"
-    stylesheet="../../main/resources/xsl/xslt-3-avt.xsl">
+    xmlns:avt="http://www.nkutsche.com/avt-parser"
+    stylesheet="../../main/resources/xsl/xpath-model-parser.xsl">
     
     
-    <x:scenario label="Scenario testing function call p:parse-AVT">
-        <x:call function="p:parse-AVT"/>
+    <x:scenario label="Scenario testing function call avt:parse-value-template">
+        <x:call function="avt:parse-value-template"/>
         <x:scenario label="simple expression">
             <x:call>
                 <x:param select="string(.)">foo{'bar'}baz</x:param>
@@ -68,6 +68,90 @@
                  </AVT>
             </x:expect>
             <x:expect label="expr-content" test=".//Expr/string()" select="('''foo''', '''bar''')"/>
+        </x:scenario>
+        <x:scenario label="whitespace between expressions">
+            <x:call>
+                <x:param select="string(.)">{'foo'}    {'bar'}</x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix><x:text>    </x:text></AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+            <x:expect label="expr-content" test=".//Expr/string()" select="('''foo''', '''bar''')"/>
+        </x:scenario>
+        <x:scenario label="leading/trailing ws on fix parts">
+            <x:call>
+                <x:param select="string(.)">   fix1{'foo'}   fix2   {'bar'}fix3   </x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                        <AVTFix><x:text>   fix1</x:text></AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix><x:text>   fix2   </x:text></AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix><x:text>fix3   </x:text></AVTFix>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+            <x:expect label="expr-content" test=".//Expr/string()" select="('''foo''', '''bar''')"/>
+        </x:scenario>
+        <x:scenario label="leading/trailing ws on expressions">
+            <x:call>
+                <x:param select="string(.)">   {'foo'}   </x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                        <AVTFix><x:text>   </x:text></AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix><x:text>   </x:text></AVTFix>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+            <x:expect label="expr-content" test=".//Expr/string()" select="('''foo''')"/>
+        </x:scenario>
+        <x:scenario label="whitespace between fix parts">
+            <x:call>
+                <x:param select="string(.)">foo    bar</x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                        <AVTFix>foo    bar</AVTFix>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+            <x:expect label="expr-content" test=".//Expr/string()" select="()"/>
         </x:scenario>
         <x:scenario label="two expressions with between">
             <x:call>
@@ -196,13 +280,33 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>(:foo</AVTFixChar></AVTFix>
+                        <AVTFix >(:foo</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>baz:)</AVTFixChar></AVTFix>
+                        <AVTFix >baz:)</AVTFix>
+                    </AVTExpr>
+                    <EOF />
+                 </AVT>
+            </x:expect>
+            <x:expect label="expr-content" test=".//Expr/string()" select="string(.)">bar</x:expect>
+        </x:scenario>
+        <x:scenario label="surrounding 'comments' outside of expressions">
+            <x:call>
+                <x:param select="string(.)">(:foo:){bar}(:baz:)</x:param>
+            </x:call>
+            <x:expect label="result">
+                <AVT>
+                    <AVTExpr>
+                        <AVTFix >(:foo:)</AVTFix>
+                        <AVTVar>
+                            <TOKEN>{</TOKEN>
+                            <Expr>...</Expr>
+                            <TOKEN>}</TOKEN>
+                        </AVTVar>
+                        <AVTFix >(:baz:)</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
