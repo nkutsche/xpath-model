@@ -120,7 +120,10 @@
     </xsl:function>
     
     
-    <xsl:template match="text()[starts-with(normalize-space(.), '(:')]" mode="nk:pre-parse-comments">
+    <xsl:template match="
+        Expr//text()[starts-with(normalize-space(.), '(:')]
+        | XPath//text()[starts-with(normalize-space(.), '(:')]
+        " mode="nk:pre-parse-comments">
         <xsl:sequence select="nk:parse-comment(.)"/>
     </xsl:template>
     
