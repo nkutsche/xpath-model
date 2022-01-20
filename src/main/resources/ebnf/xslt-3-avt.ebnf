@@ -1,11 +1,11 @@
 AVT ::= AVTExpr EOF
+     /*ws:explicit*/
 
-AVTExpr ::= AVTFix (AVTVar AVTFix)*
+AVTExpr ::= AVTFix? (AVTVar AVTFix?)*
+         /*ws:explicit*/
 
 AVTVar ::= '{' ( Expr? ) '}'
 
-AVTFix
-          ::= ( AVTFixChar )*
 ParamList
          ::= Param ( ',' Param )*
 Param    ::= '$' EQName TypeDeclaration?
@@ -349,9 +349,9 @@ QName    ::= FunctionName
 
 <?TOKENS?>
 
-AVTFixChar ::= ([^{}] | EscapeOpenCurly | EscapeCloseCurly )* - ('(:' | ':)' | S)
+AVTFix ::= ([^{}] | EscapeOpenCurly | EscapeCloseCurly )*
           /* ws: explicit */
-
+          
 EscapeOpenCurly 
           ::= '{{'
 EscapeCloseCurly 
