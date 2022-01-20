@@ -4486,6 +4486,94 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="Scenario testing function call nk:xpath-model-value-template">
+        <x:call function="nk:xpath-model-value-template"/>
+        
+        <x:scenario label="trivial">
+            <x:call>
+                <x:param select="string(.)">foo{$bar}baz</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <string value="foo"/>
+                    <expr>...</expr>
+                    <string value="baz"/>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="two expressions">
+            <x:call>
+                <x:param select="string(.)">foo{$bar}baz{$qux}fux</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <string value="foo"/>
+                    <expr>...</expr>
+                    <string value="baz"/>
+                    <expr>...</expr>
+                    <string value="fux"/>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="two in a row">
+            <x:call>
+                <x:param select="string(.)">{$foo}{$bar}</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <expr>...</expr>
+                    <expr>...</expr>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="whitespace between expressions">
+            <x:call>
+                <x:param select="string(.)">{$foo}   {$bar}</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <expr>...</expr>
+                    <string value="   "/>
+                    <expr>...</expr>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="escaping of brackets">
+            <x:call>
+                <x:param select="string(.)">{{$foo}}</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <string value="{{$foo}}"/>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="empty expr">
+            <x:call>
+                <x:param select="string(.)">foo{}baz</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <string value="foo"/>
+                    <expr/>
+                    <string value="baz"/>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="ws in empty expr">
+            <x:call>
+                <x:param select="string(.)">foo{   }baz</x:param>
+            </x:call>
+            <x:expect label="expected result tree">
+                <value-template>
+                    <string value="foo"/>
+                    <expr/>
+                    <string value="baz"/>
+                </value-template>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+    
     <x:scenario label="Scenario testing function call nk:xpath-model">
         <x:call function="nk:xpath-model"/>
         
