@@ -1,6 +1,17 @@
 datatypes xs = "http://www.w3.org/2001/XMLSchema-datatypes"
 
-start = element expr {expr}
+start = exprRoot | vtRoot
+
+# Root elements
+
+exprRoot = element expr {expr} 
+
+vtRoot = element value-template {(exprVT | stringLiteral)*}
+
+# Value Template TL
+
+exprVT = element expr {expr?}
+
 
 # General Expression / Sub Expressions
 

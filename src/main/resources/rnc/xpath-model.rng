@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+This is just for debugging...
+-->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <start>
+    <choice>
+      <ref name="exprRoot"/>
+      <ref name="vtRoot"/>
+    </choice>
+  </start>
+  <!-- Root elements -->
+  <define name="exprRoot">
     <element name="expr">
       <ref name="expr"/>
     </element>
-  </start>
+  </define>
+  <define name="vtRoot">
+    <element name="value-template">
+      <zeroOrMore>
+        <choice>
+          <ref name="exprVT"/>
+          <ref name="stringLiteral"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- Value Template TL -->
+  <define name="exprVT">
+    <element name="expr">
+      <optional>
+        <ref name="expr"/>
+      </optional>
+    </element>
+  </define>
   <!-- General Expression / Sub Expressions -->
   <define name="expr">
     <choice>
