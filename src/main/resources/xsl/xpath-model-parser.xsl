@@ -1,13 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:err="http://www.w3.org/2005/xqt-errors" exclude-result-prefixes="#all" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:avt="http://www.nkutsche.com/avt-parser" exclude-result-prefixes="#all" version="3.0">
     <xsl:import href="../rnc-compiler/rng.xsl"/>
     <xsl:import href="xpath-31.xsl"/>
+    <xsl:import href="xslt-3-avt.xsl"/>
 
     <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
 
     <xsl:param name="config" as="map(xs:string, item()*)" select="map{}"/>
 
 
+    <xsl:function name="nk:xpath-model-value-template" as="element()">
+        <xsl:param name="value-template" as="xs:string"/>
+        <xsl:sequence select="nk:xpath-model-value-template($value-template, $config)"/>
+    </xsl:function>
+    
+    <xsl:function name="nk:xpath-model-value-template" as="element()">
+        <xsl:param name="value-template" as="xs:string"/>
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:variable name="parsed" select="avt:parse-value-template($value-template)"/>
+        <xsl:variable name="parsed" select="nk:pre-parse-comments($parsed)"/>
+        <xsl:choose>
+            <xsl:when test="$parsed/self::ERROR">
+                <xsl:sequence select="$parsed"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:try>
+                    <xsl:variable name="value-template" as="element(value-template)">
+                        <value-template>
+                            <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
+                            <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
+                        </value-template>
+                    </xsl:variable>
+                    <xsl:try>
+                        <xsl:variable name="rng-validate" as="xs:boolean">
+                            <xsl:call-template name="r:main">
+                                <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
+                                <xsl:with-param name="instance" select="$value-template"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:choose>
+                            <xsl:when test="$rng-validate">
+                                <xsl:sequence select="$value-template"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        <xsl:catch>
+                            <ERROR message="Invalid result:"><xsl:sequence select="$value-template"/></ERROR>
+                        </xsl:catch>
+                    </xsl:try>
+                    <xsl:catch errors="*">
+                        <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
+                    </xsl:catch>
+                </xsl:try>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="avt:parse-value-template" as="element(AVT)">
+        <xsl:param name="value-template" as="xs:string"/>
+        <xsl:variable name="parsed" select="avt:parse-AVT($value-template)"/>
+        <xsl:sequence select="$parsed"/>
+    </xsl:function>
+    
+    
     <xsl:function name="nk:xpath-model" as="element()">
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:sequence select="nk:xpath-model($xpath, $config)"/>
@@ -94,7 +151,26 @@
 
 
     </xsl:function>
+<!--    
+    Value Templates
+    -->
+    <xsl:template match="AVTFix" mode="nk:xpath-model">
+        <!-- unescape curly brackets -->
+        <xsl:variable name="value" select="replace(., '(\{|\})\1', '$1')"/>
+        <string value="{$value}"/>
+    </xsl:template>
+    
+    <xsl:template match="AVTVar" mode="nk:xpath-model">
+        <expr>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </expr>
+    </xsl:template>
 
+    <xsl:template match="AVT | AVTExpr" mode="nk:xpath-model">
+       <xsl:apply-templates mode="#current"/> 
+    </xsl:template>
+    
+    
     <!--    
     Primitives
     -->
