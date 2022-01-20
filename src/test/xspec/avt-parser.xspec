@@ -15,17 +15,13 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                       <AVTFix>
-                          <AVTFixChar>foo</AVTFixChar>
-                       </AVTFix>
+                       <AVTFix>foo</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix>
-                           <AVTFixChar>baz</AVTFixChar>
-                       </AVTFix>
+                        <AVTFix>baz</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -39,13 +35,11 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix />
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix />
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -59,19 +53,16 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix />
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix />
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix />
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -85,19 +76,19 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>fix1</AVTFixChar></AVTFix>
+                        <AVTFix >fix1</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>fix2</AVTFixChar></AVTFix>
+                        <AVTFix >fix2</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>fix3</AVTFixChar></AVTFix>
+                        <AVTFix >fix3</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -111,7 +102,7 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>fix{{with}}brackets</AVTFixChar></AVTFix>
+                        <AVTFix>fix{{with}}brackets</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -125,13 +116,13 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>fix-before</AVTFixChar></AVTFix>
+                        <AVTFix >fix-before</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>fix-after</AVTFixChar></AVTFix>
+                        <AVTFix >fix-after</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -145,13 +136,13 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>fix-before</AVTFixChar></AVTFix>
+                        <AVTFix >fix-before</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>fix-after</AVTFixChar></AVTFix>
+                        <AVTFix >fix-after</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -165,13 +156,13 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>{{</AVTFixChar></AVTFix>
+                        <AVTFix >{{</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>}}</AVTFixChar></AVTFix>
+                        <AVTFix >}}</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
@@ -185,13 +176,13 @@
             <x:expect label="result">
                 <AVT>
                     <AVTExpr>
-                        <AVTFix ><AVTFixChar>(:foo:)</AVTFixChar></AVTFix>
+                        <AVTFix >(:foo:)</AVTFix>
                         <AVTVar>
                             <TOKEN>{</TOKEN>
                             <Expr>...</Expr>
                             <TOKEN>}</TOKEN>
                         </AVTVar>
-                        <AVTFix ><AVTFixChar>(:baz:)</AVTFixChar></AVTFix>
+                        <AVTFix >(:baz:)</AVTFix>
                     </AVTExpr>
                     <EOF />
                  </AVT>
