@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:nk="http://www.nkutsche.com/xpath-model"
+    stylesheet="../../main/resources/xsl/lib.xsl">
+    
+    <x:scenario label="Testing function nk:escape-xpath-comment-content">
+        <x:call function="nk:escape-xpath-comment-content"/>
+
+        <x:scenario label="for special chars: (:  :) :)">
+            <x:call>
+                <x:param select="string(.)">special chars: (:  :) :)</x:param>
+            </x:call>
+            <x:expect label="quoted comment" select="string(.)">special chars: (:  :) :/)</x:expect>
+        </x:scenario>
+        <x:scenario label="for special chars: (: (:  :) :) :)">
+            <x:call>
+                <x:param select="string(.)">special chars: (: (:  :) :) :)</x:param>
+            </x:call>
+            <x:expect label="quoted comment" select="string(.)">special chars: (: (:  :) :) :/)</x:expect>
+        </x:scenario>
+        
+    </x:scenario>
+</x:description>

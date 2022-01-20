@@ -3,6 +3,7 @@
     <xsl:import href="../rnc-compiler/rng.xsl"/>
     <xsl:import href="xpath-31.xsl"/>
     <xsl:import href="xslt-3-avt.xsl"/>
+    <xsl:import href="lib.xsl"/>
 
     <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
 
@@ -177,7 +178,8 @@
     <!--    
     Primitives
     -->
-
+    
+    
     <xsl:template match="Literal" mode="nk:xpath-model">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
@@ -945,16 +947,10 @@
         <xsl:text>:)</xsl:text>
     </xsl:template>
     <xsl:template match="ph" mode="nk:parse-comment">
-        <xsl:value-of select="."/>
+        <xsl:value-of select="nk:xpath-to-xml-comment(.)"/>
     </xsl:template>
-
-
-    <xsl:function name="nk:quote-unesc">
-        <xsl:param name="escaped" as="xs:string"/>
-
-        <xsl:sequence select="replace($escaped, '([''&quot;])\1', '$1')"/>
-
-    </xsl:function>
+    
+    
 
 
     <xsl:template match="

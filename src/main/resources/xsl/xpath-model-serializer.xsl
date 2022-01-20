@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" exclude-result-prefixes="#all" version="3.0">
     
+    <xsl:import href="lib.xsl"/>
+    
     <xsl:function name="nk:xpath-serializer" as="xs:string">
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:sequence select="nk:xpath-serializer($expr, map{})"/>
@@ -812,7 +814,7 @@
     
     
     <xsl:template match="comment()" mode="nk:xpath-serializer">
-        <xsl:sequence select="'(:' || string(.) || ':)'"/>
+        <xsl:sequence select="'(:' || nk:xml-to-xpath-comment(.) || ':)'"/>
     </xsl:template>
     
     
