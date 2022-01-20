@@ -4533,6 +4533,84 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="Scenario testing function call nk:value-template-serializer">
+        <x:call function="nk:value-template-serializer"/>
+        
+        <x:scenario label="trivial">
+            <x:call>
+                <x:param>
+                    <value-template>
+                        <string value="foo"/>
+                        <expr>
+                            <varRef name="bar"/>
+                        </expr>
+                        <string value="baz"/>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">foo{$bar}baz</x:expect>
+        </x:scenario>
+        <x:scenario label="two expressions">
+            <x:call>
+                <x:param>
+                    <value-template xmlns:nk="http://www.nkutsche.com/xpath-model">
+                        <string value="foo"/>
+                        <expr><varRef name="bar"/></expr>
+                        <string value="baz"/>
+                        <expr><varRef name="qux"/></expr>
+                        <string value="fux"/>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">foo{$bar}baz{$qux}fux</x:expect>
+        </x:scenario>
+        <x:scenario label="two in a row">
+            <x:call>
+                <x:param>
+                    <value-template xmlns:nk="http://www.nkutsche.com/xpath-model">
+                        <expr><varRef name="foo"/></expr>
+                        <expr><varRef name="bar"/></expr>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">{$foo}{$bar}</x:expect>
+        </x:scenario>
+        <x:scenario label="whitespace between expressions">
+            <x:call>
+                <x:param>
+                    <value-template xmlns:nk="http://www.nkutsche.com/xpath-model">
+                        <expr><varRef name="foo"/></expr>
+                        <string value="   "/>
+                        <expr><varRef name="bar"/></expr>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">{$foo}   {$bar}</x:expect>
+        </x:scenario>
+        <x:scenario label="escaping of brackets">
+            <x:call>
+                <x:param>
+                    <value-template xmlns:nk="http://www.nkutsche.com/xpath-model">
+                        <string value="{{$foo}}"/>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">{{$foo}}</x:expect>
+        </x:scenario>
+        <x:scenario label="empty expr">
+            <x:call>
+                <x:param>
+                    <value-template xmlns:nk="http://www.nkutsche.com/xpath-model">
+                        <string value="foo"/>
+                        <expr/>
+                        <string value="baz"/>
+                    </value-template>
+                </x:param>
+            </x:call>
+            <x:expect label="expected value template" select="string(.)">foo{}baz</x:expect>
+        </x:scenario>
+    </x:scenario>
+    
     <x:scenario label="Scenario testing function call nk:xpath-model-value-template">
         <x:call function="nk:xpath-model-value-template"/>
         

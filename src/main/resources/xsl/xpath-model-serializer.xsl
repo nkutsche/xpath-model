@@ -3,6 +3,23 @@
     
     <xsl:import href="lib.xsl"/>
     
+    <xsl:function name="nk:value-template-serializer" as="xs:string">
+        <xsl:param name="expr" as="element(value-template)"/>
+        <xsl:sequence select="nk:value-template-serializer($expr, map{})"/>
+    </xsl:function>
+    <xsl:function name="nk:value-template-serializer" as="xs:string">
+        <xsl:param name="expr" as="element(value-template)"/>
+        <xsl:param name="config" as="map(*)"/>
+        
+        <xsl:variable name="content" as="xs:string*">
+            <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
+                <xsl:with-param name="config" select="$config" tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:sequence select="string-join($content)"/>
+    </xsl:function>
+    
+    
     <xsl:function name="nk:xpath-serializer" as="xs:string">
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:sequence select="nk:xpath-serializer($expr, map{})"/>
@@ -38,6 +55,26 @@
     
     <xsl:template match="expr" mode="nk:xpath-serializer">
         <xsl:apply-templates select=" * | comment() " mode="#current"/>
+    </xsl:template>
+    
+<!--    
+    ### Value Template Part ###
+    -->
+    
+    <xsl:template match="/value-template" mode="nk:xpath-serializer">
+        <xsl:apply-templates select="@* | node()" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="/value-template/string" mode="nk:xpath-serializer">
+        <xsl:variable name="value" select="@value/string()"/>
+        <xsl:sequence select="replace($value, '(\{|\})', '$1$1')"/>
+    </xsl:template>
+
+    <xsl:template match="/value-template/expr" mode="nk:xpath-serializer">
+        <xsl:variable name="value" select="@value/string()"/>
+        <xsl:sequence select="'{'"/>
+        <xsl:next-match/>
+        <xsl:sequence select="'}'"/>
     </xsl:template>
     
 <!--    
