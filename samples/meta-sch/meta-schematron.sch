@@ -63,7 +63,8 @@
             xsl:template/@match | xsl:key/@match | xsl:number/@count | xsl:number/@from
             ">
             
-            <sch:let name="expr" value="."/>
+            <sch:let name="parser-funct" value="nk:xpath-model#2"/>
+            <sch:let name="serializer-funct" value="nk:xpath-serializer#1"/>
             
             <sch:extends rule="xpath-check"/>
             
@@ -98,8 +99,8 @@
             "
             >
             
-            
-            <sch:let name="expr" value="avt:parse-AVT(.)/AVTExpr/AVTVar/Expr/string()"/>
+            <sch:let name="parser-funct" value="nk:xpath-model-value-template#2"/>
+            <sch:let name="serializer-funct" value="nk:value-template-serializer#1"/>
             
             <sch:extends rule="xpath-check"/>
             
@@ -107,7 +108,9 @@
         
         <sch:rule abstract="true" id="xpath-check">
             
-            <sch:let name="as-model" value="$expr ! nk:xpath-model(., map{'namespaces' : nk:sch-namespace-binding($namespace-decl)})"/>
+            
+            <sch:let name="as-model" value="$parser-funct(., map{'namespaces' : nk:sch-namespace-binding($namespace-decl)})"/>
+            
             
             <sch:let name="locationStep" value="
                 $as-model//locationStep
