@@ -61,16 +61,16 @@
     ### Value Template Part ###
     -->
     
-    <xsl:template match="/value-template" mode="nk:xpath-serializer">
+    <xsl:template match="value-template" mode="nk:xpath-serializer">
         <xsl:apply-templates select="@* | node()" mode="#current"/>
     </xsl:template>
     
-    <xsl:template match="/value-template/string" mode="nk:xpath-serializer">
+    <xsl:template match="value-template/string" mode="nk:xpath-serializer">
         <xsl:variable name="value" select="@value/string()"/>
         <xsl:sequence select="replace($value, '(\{|\})', '$1$1')"/>
     </xsl:template>
 
-    <xsl:template match="/value-template/expr" mode="nk:xpath-serializer">
+    <xsl:template match="value-template/expr" mode="nk:xpath-serializer">
         <xsl:variable name="value" select="@value/string()"/>
         <xsl:sequence select="'{'"/>
         <xsl:next-match/>
