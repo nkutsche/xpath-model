@@ -10,10 +10,19 @@
     <sch:ns uri="http://www.nkutsche.com/xpath-model" prefix="nk"/>
     <sch:ns uri="http://www.nkutsche.com/avt-parser" prefix="avt"/>
     
-    <sch:let name="allow-null-namespace" value="not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true'"/>
+    <sch:let name="config" value="if(doc-available('config.xml')) then doc('config.xml')/* else ()"/>
+    <sch:let name="namespace-config" value="$config/namespace-maping/map"/>
+    
+    <sch:let name="allow-null-namespace" value="
+        not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true' or ($namespace-config and not($namespace-config[@invalid = '']))
+        "/>
+    
     <sch:let name="namespace-decl" value="/sch:schema/sch:ns"/>
     
-    <sch:let name="allowed-namespaces" value="$namespace-decl/@uri, ''[$allow-null-namespace]"/>
+    
+    <sch:let name="allowed-namespaces" value="
+        $namespace-decl[not(@uri = $namespace-config/@invalid)]/@uri, ''[$allow-null-namespace]
+        "/>
     
     <sch:let name="focus" value="/sch:schema/(sch:pattern|sch:phase)[@nk:focus]/(@id, generate-id())[1]"/>
     
