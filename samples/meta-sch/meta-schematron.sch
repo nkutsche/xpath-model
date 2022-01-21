@@ -103,7 +103,7 @@
             
             xsl:result-document/@*[name() = ('validation', 'type', 'use-character-maps')] |
             
-            xsl:number/@*[name() = 'level'] |
+            xsl:number/@level |
             xsl:sort/@*
             "
             >
@@ -128,7 +128,8 @@
                 [not(nk:as-qname(@name) ! namespace-uri-from-QName(.) = $allowed-namespaces)]
                 ]"/>
             
-            <sch:report test="$locationStep">The location step(s) <sch:value-of select="$locationStep/nk:xpath-serializer-sub(.) => string-join(', ')"/> uses the null namespace or an unknown namespace.</sch:report>
+            <sch:report test="$locationStep" sqf:fix="transfer-prefix" diagnostics="permitted_namespaces">The location step(s) <sch:value-of select="$locationStep/nk:xpath-serializer-sub(.) ! replace(., '^(.{20,20}).+', '$1...') => string-join(', ')"/> uses a non-permitted namespace.</sch:report>
+            
             
             <sch:let name="itemType" value="
                 $as-model//itemType
@@ -137,12 +138,28 @@
                 [not(nk:as-qname(@name) ! namespace-uri-from-QName(.) = $allowed-namespaces)]
                 ]"/>
             
-            <sch:report test="$itemType">The sequence type(s) <sch:value-of select="$itemType/nk:xpath-serializer-sub(.) => string-join(', ')"/> uses the null namespace or an unknown namespace.</sch:report>
+            <sch:report test="$itemType" sqf:fix="transfer-prefix" diagnostics="permitted_namespaces">The sequence type(s) <sch:value-of select="$itemType/nk:xpath-serializer-sub(.) ! replace(., '^(.{20,20}).+', '$1...') => string-join(', ')"/> uses a non-permitted namespace.</sch:report>
+            
+            <sqf:fix id="transfer-prefix" use-when="$namespace-config">
+                <sqf:description>
+                    <sqf:title>Transfer location steps/sequence types namespaces according to the config.</sqf:title>
+                </sqf:description>
+                
+                
+                <sch:let name="fixed-model" value="nk:transfer-namespace($as-model, $namespace-config, $namespace-decl)"/>
+                
+                <sqf:replace match="." target="{name(.)}" node-type="keep" select="$serializer-funct($fixed-model)"/>
+                
+            </sqf:fix>
             
         </sch:rule>
         
         
     </sch:pattern>
+    
+    <sch:diagnostics>
+        <sch:diagnostic id="permitted_namespaces">Permitted namespaces are: <sch:value-of select="$allowed-namespaces ! ('''' || . || '''') => string-join(', ')"/></sch:diagnostic>
+    </sch:diagnostics>
     
     
     
