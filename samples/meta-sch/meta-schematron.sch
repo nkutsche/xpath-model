@@ -103,7 +103,7 @@
             xsl:message/@terminate |
             xsl:for-each-group/@collation |
             
-            xsl:result-document/@*[name() = ('validation', 'type', 'use-character-maps')] |
+            xsl:result-document/@*[not(name() = ('validation', 'type', 'use-character-maps'))] |
             
             xsl:number/@level |
             xsl:sort/@*
