@@ -13,6 +13,8 @@
     <sch:let name="config" value="if(doc-available('config.xml')) then doc('config.xml')/* else ()"/>
     <sch:let name="namespace-config" value="$config/namespace-maping/map"/>
     
+    <sch:let name="schema" value="/sch:schema"/>
+    
     <sch:let name="allow-null-namespace" value="
         (not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true') and not($namespace-config[@invalid = ''])
         "/>
@@ -138,6 +140,7 @@
                 [not(nk:as-qname(@name) ! namespace-uri-from-QName(.) = $allowed-namespaces)]
                 ]"/>
             
+            
             <sch:report test="$itemType" sqf:fix="transfer-prefix" diagnostics="permitted_namespaces">The sequence type(s) <sch:value-of select="$itemType/nk:xpath-serializer-sub(.) ! replace(., '^(.{20,20}).+', '$1...') => string-join(', ')"/> uses a non-permitted namespace.</sch:report>
             
             <sqf:fix id="transfer-prefix" use-when="$namespace-config">
@@ -145,10 +148,30 @@
                     <sqf:title>Transfer location steps/sequence types namespaces according to the config.</sqf:title>
                 </sqf:description>
                 
+                <xsl:variable name="namespace-config" select="
+                    $namespace-config
+                    [@invalid = $as-model//(locationStep|itemType)/nodeTest[@kind = 'element']/@name/nk:as-qname(.) ! namespace-uri-from-QName(.)]
+                    "/>
                 
-                <sch:let name="fixed-model" value="nk:transfer-namespace($as-model, $namespace-config, $namespace-decl)"/>
+                <xsl:variable name="new-namespaces" as="element()*">
+                    <xsl:variable name="maxNsCt" select="($namespace-config/@valid,$namespace-decl/@uri) => distinct-values() => count()"/>
+                    <xsl:variable name="nsIdxs" select="(1 to $maxNsCt)[not('ns' || . = $namespace-decl/@prefix)]"/>
+                    
+                    <xsl:for-each select="$namespace-config/@valid[not(. = $namespace-decl/@uri)]">
+                        <xsl:variable name="pos" select="position()"/>
+                        <xsl:element name="sch:ns">
+                            <xsl:attribute name="uri" select="."/>
+                            <xsl:attribute name="prefix" select="'ns' || $nsIdxs[$pos]"/>
+                        </xsl:element>
+                    </xsl:for-each>
+                </xsl:variable>
+                
+                <sch:let name="fixed-model" value="nk:transfer-namespace($as-model, $namespace-config, ($namespace-decl, $new-namespaces))"/>
                 
                 <sqf:replace match="." target="{name(.)}" node-type="keep" select="$serializer-funct($fixed-model)"/>
+                
+                <sqf:add match="$schema/sch:ns[last()]" position="after" select="$new-namespaces"/>
+                <sqf:add match="$schema" position="first-child" select="$new-namespaces" use-when="not($schema/sch:ns)"/>
                 
             </sqf:fix>
             
