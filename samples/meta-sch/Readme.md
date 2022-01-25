@@ -2,11 +2,11 @@
 
 © Nico Kutscherauer, 2022
 
-This Meta Schematron Schema is a sample project for the usage of the [XPath Model](https://github.com/nkutsche/xpath-model). It provides a [meta-schematron.sch](meta-schematron.sch) which checks for other Schematron schema if they containing XPath expressions with node tests which are asking for nodes in the null namespace or for non-declared namespaces. *Note:* The last case would occur an static error anyway.
+This Meta Schematron Schema is a sample project for the usage of the [XPath Model](https://github.com/nkutsche/xpath-model). It provides a [meta-schematron.sch](meta-schematron.sch) which checks the node test inside of other Schematron schema against a configuration file.
 
 ## Requirements
 
-The [meta-schematron.sch](meta-schematron.sch) is an regular Schematron Schema embedding XSLT stylesheets by `xsl:import`. The used Schematron implementation has to support embeded XSLT. It is tested with Oxygen XML Editor v20.1. 
+The [meta-schematron.sch](meta-schematron.sch) is an regular Schematron Schema embedding XSLT stylesheets by `xsl:import`. The used Schematron implementation has to support embeded XSLT. It is tested with Oxygen XML Editor v20.1 & v24.0.
 
 ## Usage
 
@@ -14,10 +14,36 @@ Download the complete project. Make a regular Schematron validation with your Sc
 
 ## Configuration
 
-### Check For Null-Namespace
+### Check for Namespaces with config file
 
-The check for the null namespace is active if the schema contains at lease one `<sch:ns>` declartion and if it does not have an attribute `nk:allow-null-namespace="true"` (` xmlns:nk="http://www.nkutsche.com/xpath-model"`) at the root element `sch:schema`.
+If parallel to the meta-schematron.sch a file config.xml is available, this config will be used to specify which namespaces are invalid and a possible replacement namespace.
+
+Example config:
+
+```xml
+<meta-sch-config>
+    <namespace-maping>
+        <map invalid="" valid="http://www.nkutsche.com/xpath-model"/>
+        <map invalid="http://www.nkutsche.com/an-old-namespace" valid="http://www.nkutsche.com/a-new-namespace"/>
+    </namespace-maping>
+</meta-sch-config>
+```
+
+* The `null` namespace and the namespace `http://www.nkutsche.com/an-old-namespace` are invalide. Expressions which contains lookups for nodes into these namespaces will occur an validation error.
+* The errors will provide a QuickFix which fixes the invalid node tests by replacing `null` namespace lookups by corresponding lookups into the `http://www.nkutsche.com/xpath-model` namespace and lookups into `http://www.nkutsche.com/an-old-namespace` by `http://www.nkutsche.com/a-new-namespace`.
+    * The replacement works on prefixes and uses the namespace declarations of the source Schematron schema (`sch:ns`).
+    * If no prefix was defined for that namespace a namespace declaration will be added by the QuickFix with a generic prefix (`ns1`, `ns2`, ...).
+
+### Default behavior (no config file)
+
+If the config.xml can not be found or parsed as XML document, the default behavior is applied. That means:
+
+* All namespaces declared by `sch:ns` are valid.
+* The `null` namespace is invalid if any other namespace is declared by `sch:ns` elements and if the root element `sch:schema` does not have an attribute `nk:allow-null-namespace="true"` (` xmlns:nk="http://www.nkutsche.com/xpath-model"`).
+* QuickFixes are not available in this cases.
+
 
 ### Focus Logic for Large Schematron Schemas
 
-For checking large Schematron schemas the performance can be a bit low. For this it is possible to set the focus on specific patterns or phases by adding an attribute `nk:focus=""` to the `sch:pattern` or `sch:phase` element. If there is at least one `nk:focus` attribut in the schema only the patterns are checked which have one or are activated by a phase which have one. 
+For checking large Schematron schemas the performance can be a bit low. For this it is possible to set the focus on specific patterns or phases by adding an attribute `nk:focus=""` to the `sch:pattern` or `sch:phase` element. If there is at least one `nk:focus` attribut in the schema only the patterns are checked which have one or are activated by a phase which have one.
+
