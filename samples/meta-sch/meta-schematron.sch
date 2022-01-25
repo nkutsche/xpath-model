@@ -14,7 +14,7 @@
     <sch:let name="namespace-config" value="$config/namespace-maping/map"/>
     
     <sch:let name="allow-null-namespace" value="
-        not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true' or ($namespace-config and not($namespace-config[@invalid = '']))
+        (not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true') and not($namespace-config[@invalid = ''])
         "/>
     
     <sch:let name="namespace-decl" value="/sch:schema/sch:ns"/>
