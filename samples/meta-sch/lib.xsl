@@ -35,7 +35,7 @@
         <xsl:param name="prefix-binding" as="element(sch:ns)*" tunnel="yes"/>
         
         <xsl:variable name="qname" select="nk:as-qname(.)" as="xs:QName"/>
-        <xsl:variable name="namespace" select="namespace-uri-from-QName($qname)" as="xs:string"/>
+        <xsl:variable name="namespace" select="namespace-uri-from-QName($qname) => string()" as="xs:string"/>
         
         <xsl:choose>
             <xsl:when test="$namespace-mapping/@invalid = $namespace">
