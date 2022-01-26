@@ -2,8 +2,11 @@
 
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:nk="http://www.nkutsche.com/xpath-model"
+    xmlns:p="http://www.nkutsche.com/xpath-parser"
+    xmlns:avt="http://www.nkutsche.com/avt-parser"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
+    <x:param name="default-config" select="map{'validation-mode' : 'strict'}"/>
     
     <x:scenario label="Scenario testing function call nk:quote-unesc">
         <x:call function="nk:quote-unesc"/>
@@ -8088,6 +8091,83 @@
             
         </x:scenario>
         
+        
+    </x:scenario>
+    <x:scenario label="Scenario testing function call nk:xpath-model-internal">
+        <x:call function="nk:xpath-model-internal"/>
+        
+        <x:scenario label="lax validation-mode">
+            <x:call>
+                <x:param position="2" select="map{'validation-mode' : 'lax'}"/>
+            </x:call>
+            <x:scenario label="valid trivial XPath">
+                <x:call>
+                    <x:param position="1" select="p:parse-XPath(string(.))">foo[@bar = 'baz']</x:param>
+                    <x:param position="3" select="'expr'"></x:param>
+                </x:call>
+                <x:expect label="returned correct model - no error occurs"><expr>...</expr></x:expect>
+            </x:scenario>
+            <x:scenario label="valid trivial XPath">
+                <x:call>
+                    <x:param position="1" select="p:parse-XPath(string(.))">foo[@bar = 'baz']</x:param>
+                    <x:param position="3" select="'invalid'"></x:param>
+                </x:call>
+                <x:expect label="returned invalid model - no error occurs"><invalid>...</invalid></x:expect>
+            </x:scenario>
+            <x:scenario label="invalid parsed object">
+                <x:call>
+                    <x:param position="1"><foo><bar><baz></baz></bar></foo></x:param>
+                    <x:param position="3" select="'expr'"/>
+                </x:call>
+                <x:expect label="returned invalid model - no error occurs"><expr>...</expr></x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="strict validation-mode">
+            <x:call>
+                <x:param position="2" select="map{'validation-mode' : 'strict'}"/>
+            </x:call>
+            <x:scenario label="valid trivial XPath">
+                <x:call>
+                    <x:param position="1" select="p:parse-XPath(string(.))">foo[@bar = 'baz']</x:param>
+                    <x:param position="3" select="'expr'"></x:param>
+                </x:call>
+                <x:expect label="returned correct model - no error occurs"><expr>...</expr></x:expect>
+            </x:scenario>
+            <x:scenario label="valid trivial AVT">
+                <x:call>
+                    <x:param position="1" select="avt:parse-AVT(string(.))">bef{foo[@bar = 'baz']}af</x:param>
+                    <x:param position="3" select="'value-template'"></x:param>
+                </x:call>
+                <x:expect label="returned correct model - no error occurs"><value-template>...</value-template></x:expect>
+            </x:scenario>
+            <x:scenario label="invalid XPath">
+                <x:call>
+                    <x:param position="1" select="p:parse-XPath(string(.))">foo[@bar = 'baz']</x:param>
+                    <x:param position="3" select="'invalid'"/>
+                </x:call>
+                <x:expect label="returned invalid model - no error occurs"><ERROR message="Invalid result:">...</ERROR></x:expect>
+            </x:scenario>
+            <x:scenario label="invalid parsed object">
+                <x:call>
+                    <x:param position="1"><foo><bar><baz></baz></bar></foo></x:param>
+                    <x:param position="3" select="'expr'"/>
+                </x:call>
+                <x:expect label="returned invalid model - no error occurs"><ERROR message="Invalid result:">...</ERROR></x:expect>
+            </x:scenario>
+        </x:scenario>
+        
+        <x:scenario label="validation-mode after config merge">
+            <x:call>
+                <x:param position="2" select="map{'namespaces' : map{}}"/>
+            </x:call>
+            <x:scenario label="invalid XPath">
+                <x:call>
+                    <x:param position="1" select="p:parse-XPath(string(.))">foo[@bar = 'baz']</x:param>
+                    <x:param position="3" select="'invalid'"/>
+                </x:call>
+                <x:expect label="returned invalid model - no error occurs"><ERROR message="Invalid result:">...</ERROR></x:expect>
+            </x:scenario>
+        </x:scenario>
         
     </x:scenario>
 </x:description>
