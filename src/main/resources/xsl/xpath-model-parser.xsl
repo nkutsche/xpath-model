@@ -18,45 +18,10 @@
     <xsl:function name="nk:xpath-model-value-template" as="element()">
         <xsl:param name="value-template" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
-        <xsl:variable name="parsed" select="avt:parse-value-template($value-template)"/>
-        <xsl:variable name="parsed" select="nk:pre-parse-comments($parsed)"/>
-        <xsl:choose>
-            <xsl:when test="$parsed/self::ERROR">
-                <xsl:sequence select="$parsed"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:try>
-                    <xsl:variable name="value-template" as="element(value-template)">
-                        <value-template>
-                            <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
-                            <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
-                        </value-template>
-                    </xsl:variable>
-                    <xsl:try>
-                        <xsl:variable name="rng-validate" as="xs:boolean">
-                            <xsl:call-template name="r:main">
-                                <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
-                                <xsl:with-param name="instance" select="$value-template"/>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                            <xsl:when test="$rng-validate">
-                                <xsl:sequence select="$value-template"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                        <xsl:catch>
-                            <ERROR message="Invalid result:"><xsl:sequence select="$value-template"/></ERROR>
-                        </xsl:catch>
-                    </xsl:try>
-                    <xsl:catch errors="*">
-                        <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
-                    </xsl:catch>
-                </xsl:try>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:sequence select="
+            avt:parse-value-template($value-template) 
+            => nk:xpath-model-internal($config, 'value-template')
+            "/>
     </xsl:function>
     
     <xsl:function name="avt:parse-value-template" as="element(AVT)">
@@ -75,40 +40,59 @@
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:variable name="parsed" select="p:parse-XPath($xpath)"/>
+        <xsl:sequence select="
+            p:parse-XPath($xpath)
+            => nk:xpath-model-internal($config, 'expr')
+            "/>
+    </xsl:function>
+    
+    
+    <xsl:function name="nk:xpath-model-internal" as="element()">
+        <xsl:param name="parsed" as="element()"/>
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:param name="root-element" as="xs:string"/>
         <xsl:variable name="parsed" select="nk:pre-parse-comments($parsed)"/>
+        
+        <xsl:variable name="validation-modes" select="('lax', 'strict')"/>
+        <xsl:variable name="valmode" select="($config?validation-mode[. = $validation-modes], 'lax')[1]"/>
+        
+        <xsl:variable name="model" as="element()">
+            <xsl:try>
+                <xsl:element name="{$root-element}">
+                    <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
+                    <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
+                </xsl:element>
+                <xsl:catch errors="*">
+                    <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
+                </xsl:catch>
+            </xsl:try>
+        </xsl:variable>
+        
         <xsl:choose>
             <xsl:when test="$parsed/self::ERROR">
                 <xsl:sequence select="$parsed"/>
             </xsl:when>
+            <xsl:when test="$model/self::ERROR or $valmode = 'lax'">
+                <xsl:sequence select="$model"/>
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:try>
-                    <xsl:variable name="expr" as="element(expr)">
-                        <expr>
-                            <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
-                            <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
-                        </expr>
+                    <xsl:variable name="rng-validate" as="xs:boolean">
+                        <xsl:call-template name="r:main">
+                            <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
+                            <xsl:with-param name="instance" select="$model"/>
+                        </xsl:call-template>
                     </xsl:variable>
-                    <xsl:try>
-                        <xsl:variable name="rng-validate" as="xs:boolean">
-                            <xsl:call-template name="r:main">
-                                <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
-                                <xsl:with-param name="instance" select="$expr"/>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:choose>
-                            <xsl:when test="$rng-validate">
-                                <xsl:sequence select="$expr"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                        <xsl:catch>
-                            <ERROR message="Invalid result:"><xsl:sequence select="$expr"/></ERROR>
-                        </xsl:catch>
-                    </xsl:try>
-                    <xsl:catch errors="*">
-                        <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
+                    <xsl:choose>
+                        <xsl:when test="$rng-validate">
+                            <xsl:sequence select="$model"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="error(xs:QName('Invalid-Result'))"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:catch>
+                        <ERROR message="Invalid result:"><xsl:sequence select="$model"/></ERROR>
                     </xsl:catch>
                 </xsl:try>
             </xsl:otherwise>
