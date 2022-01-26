@@ -19,7 +19,7 @@
 		<!-- Include everything in /src/main/resources
 			 (except *-compiled.xsl) -->
 		<fileSet>
-		    <directory>${project.basedir}/src/main/resources</directory>
+			<directory>${project.build.directory}/classes</directory>
 			<outputDirectory>.</outputDirectory>
 		</fileSet>
 

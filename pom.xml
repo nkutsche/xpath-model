@@ -71,6 +71,28 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+                <groupId>net.sigmalab.trang</groupId>
+                <artifactId>trang-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>trang-convert</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>trang</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <inputFiles>
+                        <inputFile>src/main/resources/rnc/xpath-model.rnc</inputFile>
+                    </inputFiles>
+                    <outputFileName>xpath-model.rng</outputFileName>
+                    <outputDirectory>${project.build.directory}/classes/rnc</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
