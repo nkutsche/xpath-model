@@ -119,8 +119,11 @@
         
         <sch:rule abstract="true" id="xpath-check">
             
-            
-            <sch:let name="as-model" value="$parser-funct(., map{'namespaces' : nk:sch-namespace-binding($namespace-decl)})"/>
+            <sch:let name="pconfig" value="map{
+                'namespaces' : nk:sch-namespace-binding($namespace-decl),
+                'parse-mode' : 'lax'
+                }"/>
+            <sch:let name="as-model" value="$parser-funct(., $pconfig)"/>
             
             
             <sch:let name="locationStep" value="
