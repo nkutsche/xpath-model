@@ -4869,6 +4869,21 @@
                         <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
                             <nodeTest name="pfx:*" kind="element"/>
                         </x:expect>
+                        <x:expect label="expected namespace" test="$x:result/locationStep/nodeTest/namespace::pfx/string(.)"
+                            select="'http://www.nkutsche.com/xpath-model/dummy-namespace/pfx'"
+                        />
+                        
+                        <x:scenario label="with specific namespace binding">
+                            <x:call>
+                                <x:param position="2" select="map{'namespaces' : map{
+                                'pfx' : 'http://www.nkutsche.com/specific-pfx'
+                                }}"/>
+                            </x:call>
+                            <x:expect label="expected result tree" test="$x:result/locationStep/nodeTest/namespace::pfx/string(.)"
+                                select="'http://www.nkutsche.com/specific-pfx'"
+                            />
+                        </x:scenario>
+                        
                     </x:scenario>
                     <x:scenario label="*:local">
                         <x:call>
@@ -5416,7 +5431,7 @@
                         </expr>
                     </x:expect>
                 </x:scenario>
-                <x:scenario label="context item">
+                <x:scenario label="root node">
                     <x:call>
                         <x:param select="string(.)">/</x:param>
                     </x:call>

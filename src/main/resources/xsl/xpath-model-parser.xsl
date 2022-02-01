@@ -133,7 +133,7 @@
         
         <xsl:variable name="namespace-bindings" select="map:put($namespace-bindings, 'xml', 'http://www.w3.org/XML/1998/namespace')"/>
 
-        <xsl:variable name="used-prefixes" as="xs:string*" select="$parsed//QName[contains(., ':')]/substring-before(., ':') => distinct-values()"/>
+        <xsl:variable name="used-prefixes" as="xs:string*" select="$parsed//(QName[contains(., ':')]|NameTest/Wildcard[matches(., '^[^:]+:\*$')])/substring-before(., ':')[. != '*'] => distinct-values()"/>
         <xsl:variable name="base-ns-uri" select="'http://www.nkutsche.com/xpath-model/dummy-namespace/'"/>
         <xsl:for-each select="$used-prefixes">
             <xsl:namespace name="{.}" select="
