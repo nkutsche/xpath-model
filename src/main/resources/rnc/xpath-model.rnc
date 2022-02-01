@@ -196,7 +196,7 @@ arrowOp = element arrow {empty}
 
 # Primitives
 
-primitive = literal | locationStep | emptySequence | varRef | self | contsructors | unaryLookup | root
+primitive = literal | locationStep | emptySequence | varRef | self | unaryLookup | root
 
 literal = stringLiteral | integerLiteral | decimalLiteral | doubleLiteral
 
@@ -215,9 +215,6 @@ emptySequence = element empty {empty}
 self = element self {empty}
 
 root = element root {empty} 
-
-# TDB!!!
-contsructors = element contsructors {empty}
 
 # - Location Steps
 
