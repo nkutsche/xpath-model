@@ -3,308 +3,64 @@
     xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:avt="http://www.nkutsche.com/avt-parser"
-    exclude-result-prefixes="#all" version="3.0">
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron" exclude-result-prefixes="#all" version="3.0">
 
 
-    <xsl:key name="xsdecl-uriqname" match="xs:element[@name] | xs:attribute[@name]"
-        use="
-            @name/nk:xsdqname(.) ! nk:qname-matcher(.)
-            "/>
-
-    <xsl:key name="xsdref-uriqname" match="xs:element[@ref] | xs:attribute[@ref]"
-        use="
-            @ref/xs:QName(.)
-            "/>
-    <xsl:key name="xsd_group_ref-uriqname" match="xs:group[@ref]" use="@ref/xs:QName(.)"/>
-
-    <xsl:key name="xsd_agroup_ref-uriqname" match="xs:attributeGroup[@ref]" use="@ref/xs:QName(.)"/>
-
-    <xsl:key name="xsd_type_ref-uriqname" match="xs:element[@type] | xs:complexContent/xs:extension[@base]"
-        use="(@type/xs:QName(.), @base/xs:QName(.))[1]"/>
-
-
-    <xsl:function name="nk:get-schema-decl" as="element()*">
+    <xsl:function name="nk:get-path-in-expression" as="array(map(xs:string, xs:string))*" visibility="final">
         <xsl:param name="nodeTest" as="element(nodeTest)"/>
-        <xsl:param name="schema" as="element(xs:schema)*"/>
-        <xsl:param name="exprContext" as="node()"/>
-        <xsl:sequence select="nk:get-schema-decl($nodeTest, $schema, $exprContext, nk:xsl-context#2)"/>
-    </xsl:function>
+        <xsl:param name="exprContext" as="map(*)"/>
 
-    <!--
-    Returns all possible XSD declarations for a given $noteTest from a given $schema 
-        Special cases:
-        - If the nodeTest matches on non-declared nodes (text(), comment(), etc.), it returns a <nk:no-decl-needed/>.
-        - If no matching declaration is available it returns an empty sequence.
-        
-        Other parameters:
-        $exprContextNode as node() 
-            => node to provide the context for the XPath expression which contains the nodeTest
-        $contextGenerator as function(node(), element(expr)?)
-            => function which converts context nodes into context object - a map with 
-               the following fields:
-               - 'parent' as function() as map(*)* - function which returns the next parent context object,
-               - 'variable-context' as function($variableName as xs:QName) as map(*)? 
-                    - function which returns the context object for a variable with the name $variableName ,
-               - 'expr' as element()? - parsed XPath expression of the given context node,
-                'node' as node()? - given context node
-        
-    -->
-    <xsl:function name="nk:get-schema-decl" as="element()*">
-        <xsl:param name="nodeTest" as="element(nodeTest)"/>
-        <xsl:param name="schema" as="element(xs:schema)*"/>
-        <xsl:param name="exprContextNode" as="node()"/>
-        <xsl:param name="contextGenerator" as="function(node(), element(expr)?) as map(xs:string, item()*)"/>
+        <xsl:variable name="context-provider" select="nk:get-context-provider($nodeTest, $exprContext)"/>
 
-        <xsl:variable name="name" select="($nodeTest/@name, '*')[1]"/>
-        <xsl:variable name="kind" select="$nodeTest/@kind"/>
-        <xsl:variable name="uriqname"
+        <xsl:variable name="axis" select="($nodeTest/parent::locationStep/@axis, 'self')[1]"/>
+        <xsl:variable name="name-matcher" select="$nodeTest/nk:name-matcher(@name)"/>
+        <xsl:variable name="kind" select="($nodeTest/@kind, 'node')[1]"/>
+
+        <xsl:variable name="step"
             select="
-                if ($name castable as xs:QName)
-                then
-                    nk:uriqname(xs:QName($name))
-                else
-                    (: handles patterns like 'pfx:*' :)
-                    if (matches($name, '^[^\*:]+:\*'))
-                    then
-                        'Q{' || $nodeTest/namespace::*[name() = substring-before($name, ':')] || '}*'
-                    else
-                        $name"/>
-
-        <xsl:variable name="declCandidates" select="$schema/key('xsdecl-uriqname', $uriqname)"/>
-        <xsl:choose>
-            <!-- ToDO: foo/text() -> can foo contain text? -->
-            <xsl:when test="$kind = 'text'">
-                <nk:no-decl-needed kind="{$kind}"/>
-            </xsl:when>
-            <xsl:when
-                test="not($kind = ('element', 'atttribute', 'document-node', 'schema-element', 'schema-attribute'))">
-                <nk:no-decl-needed kind="{$kind}"/>
-            </xsl:when>
-            <xsl:when test="$kind = 'document-node'">
-                <!-- ToDO: document-node(foo) -> does we have to respect this? -->
-                <nk:no-decl-needed kind="{$kind}"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:variable name="declCandidates"
-                    select="
-                        $declCandidates/(if ($kind = ('attribute', 'schema-attribute')) then
-                            self::xs:attribute
-                        else
-                            self::xs:element)
-                        "/>
-                <xsl:choose>
-                    <xsl:when test="count($declCandidates) = 0"/>
-                    <xsl:otherwise>
-                        <xsl:variable name="context-provider"
-                            select="nk:get-context-provider($nodeTest, $contextGenerator($exprContextNode, $nodeTest/ancestor::expr))"/>
-                        <xsl:variable name="globalDecl" select="$declCandidates[parent::xs:schema]"/>
+            map{
+                'axis': string($axis), 
+                'local-name' : $name-matcher?local,
+                'namespace' : $name-matcher?namespace,
+                'kind' : string($kind)
+            }"/>
 
 
-                        <xsl:variable name="locationStep" select="$nodeTest/parent::locationStep"/>
-                        <xsl:choose>
-                            <xsl:when test="empty($context-provider)">
-                                <xsl:sequence select="$declCandidates"/>
-                            </xsl:when>
-                            <xsl:when
-                                test="
-                                    every $cp in $context-provider
-                                        satisfies $cp?root-required">
-                                <xsl:sequence select="$globalDecl"/>
-                            </xsl:when>
-                            <xsl:when test="not($locationStep)">
-                                <xsl:sequence select="$declCandidates"/>
-                            </xsl:when>
-                            <xsl:when
-                                test="
-                                    every $cp in $context-provider
-                                        satisfies exists($cp?nodeTest)
-                                    ">
-                                <xsl:variable name="context-schema-decl"
-                                    select="
-                                        for $cp in
-                                        $context-provider
-                                        return
-                                            $cp?nodeTest ! nk:get-schema-decl(., $schema, $cp?context?node, $contextGenerator)
-                                        "
-                                    as="element()*"/>
-                                <xsl:sequence
-                                    select="
-                                        $declCandidates[
-                                        some $csd in $context-schema-decl
-                                            satisfies
-                                            nk:path-in-xsd-possible($csd, ., $locationStep/@axis)
-                                        ]"
-                                />
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:sequence select="$declCandidates"/>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:for-each select="$context-provider">
+            <xsl:choose>
+                <xsl:when test="?nodeTest">
+                    <xsl:variable name="nodeTest" select="?nodeTest"/>
+                    <xsl:variable name="context" select="?context"/>
+
+                    <xsl:variable name="parent-paths"
+                        select="
+                            nk:get-path-in-expression($nodeTest, $context)
+                            "/>
+                    <xsl:sequence select="$parent-paths ! array:append(., $step)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="start-kind"
+                        select="
+                            if (?root-required) then
+                                ('document-node')
+                            else
+                                ('node')
+                            "/>
+                    <xsl:sequence
+                        select="[map{
+                            'axis': 'start', 
+                            'local-name' : '*',
+                            'namespace' : '*',
+                            'kind' : $start-kind
+                            },
+                            $step]"
+                    />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
+
     </xsl:function>
-
-    <xsl:function name="nk:path-in-xsd-possible" as="xs:boolean">
-        <xsl:param name="from" as="element()"/>
-        <xsl:param name="to" as="element()"/>
-        <xsl:param name="axis" as="xs:string"/>
-        <xsl:sequence select="nk:path-in-xsd-possible($from, $to, $axis, ())"/>
-    </xsl:function>
-
-    <xsl:function name="nk:path-in-xsd-possible" as="xs:boolean">
-        <xsl:param name="from" as="element()"/>
-        <xsl:param name="to" as="element()"/>
-        <xsl:param name="axis" as="xs:string"/>
-        <xsl:param name="ignores" as="element()*"/>
-
-        <xsl:variable name="from-parents" select="
-                $from/nk:get-usages(.)
-                "/>
-        <xsl:variable name="to-parents" select="
-                $to/nk:get-usages(.)
-                "/>
-
-        <xsl:variable name="from-is-parent" select="exists($to-parents intersect $from)" as="xs:boolean"/>
-        <xsl:variable name="to-is-parent" select="exists($from-parents intersect $to)" as="xs:boolean"/>
-        <xsl:choose>
-            <xsl:when test="($from | $to)/nk:no-decl-needed">
-                <xsl:sequence select="true()"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'self'">
-                <xsl:sequence select="$from is $to"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'attribute'">
-                <xsl:sequence select="$to/self::xs:attribute and $from-is-parent"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'child'">
-                <xsl:sequence select="$to/self::xs:element and $from-is-parent"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'parent'">
-                <xsl:sequence select="$to-is-parent"/>
-            </xsl:when>
-            <xsl:when test="$axis = ('preceding-sibling', 'following-sibling')">
-                <xsl:sequence select="exists($from-parents intersect $to-parents)"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'descendant'">
-                <xsl:sequence
-                    select="
-                        $from-is-parent or (
-                        some $tp in ($to-parents except $ignores)
-                            satisfies
-                            nk:path-in-xsd-possible($from, $tp, $axis, ($to-parents, $ignores))
-                        )"
-                />
-            </xsl:when>
-            <xsl:when test="$axis = 'ancestor'">
-                <xsl:sequence select="nk:path-in-xsd-possible($to, $from, 'descendant')"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'descendant-or-self'">
-                <xsl:sequence
-                    select="
-                        nk:path-in-xsd-possible($from, $to, 'descendant')
-                        or
-                        nk:path-in-xsd-possible($from, $to, 'self')
-                        "
-                />
-            </xsl:when>
-            <xsl:when test="$axis = 'ancestor'">
-                <xsl:sequence select="nk:path-in-xsd-possible($to, $from, 'descendant')"/>
-            </xsl:when>
-            <xsl:when test="$axis = 'ancestor-or-self'">
-                <xsl:sequence
-                    select="
-                        nk:path-in-xsd-possible($from, $to, 'ancestor')
-                        or
-                        nk:path-in-xsd-possible($from, $to, 'self')
-                        "
-                />
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:sequence select="true()"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:function>
-
-    <xsl:function name="nk:get-usages" as="element()*">
-        <xsl:param name="decl" as="element()"/>
-        <xsl:variable name="name" select="$decl/nk:xsdqname(@name)"/>
-        <xsl:variable name="next-parent"
-            select="
-                if ($decl/parent::xs:schema) then
-                    $decl/key('xsdref-uriqname', $name)
-                else
-                    $decl/parent::*
-                "/>
-        <xsl:apply-templates select="$next-parent" mode="nk:get-usages"/>
-    </xsl:function>
-
-    <xsl:template match="xs:group[@name]" mode="nk:get-usages">
-        <xsl:apply-templates select="key('xsd_group_ref-uriqname', nk:xsdqname(@name))" mode="#current"/>
-    </xsl:template>
-
-    <xsl:template match="xs:schema/xs:complexType[@name]" mode="nk:get-usages">
-        <xsl:apply-templates select="key('xsd_type_ref-uriqname', nk:xsdqname(@name))" mode="#current"/>
-    </xsl:template>
-
-    <xsl:template match="xs:schema/xs:attributeGroup[@name]" mode="nk:get-usages">
-        <xsl:apply-templates select="key('xsd_agroup_ref-uriqname', nk:xsdqname(@name))" mode="#current"/>
-    </xsl:template>
-
-    <xsl:template match="xs:element[@name]" mode="nk:get-usages">
-        <xsl:sequence select="."/>
-    </xsl:template>
-
-    <xsl:template match="*" mode="nk:get-usages">
-        <xsl:apply-templates select="parent::*" mode="#current"/>
-    </xsl:template>
-
-
-
-    <xsl:function name="nk:xsdqname" as="xs:QName">
-        <xsl:param name="name" as="attribute(name)"/>
-        <xsl:variable name="declEl" select="$name/parent::*"/>
-        <xsl:variable name="schema" select="$declEl/ancestor-or-self::xs:schema"/>
-        <xsl:variable name="formDefault"
-            select="
-                if ($declEl/self::xs:element) then
-                    $schema/@elementFormDefault
-                else
-                    $schema/@attributeFormDefault
-                "/>
-        <xsl:variable name="form"
-            select="
-                if ($declEl/parent::xs:schema) then
-                    'qualified'
-                else
-                    ($declEl/@form, $formDefault, 'unqualified')[1]"/>
-        <xsl:variable name="trgNamespace"
-            select="
-                ($schema/@targetNamespace[$form = 'qualified'], '')[1]
-                "/>
-        <xsl:sequence select="QName($trgNamespace, $name)"/>
-    </xsl:function>
-
-    <xsl:function name="nk:uriqname" as="xs:string">
-        <xsl:param name="qname" as="xs:QName"/>
-        <xsl:sequence
-            select="'Q{' || namespace-uri-from-QName($qname) || '}' || local-name-from-QName($qname)"/>
-    </xsl:function>
-
-    <xsl:function name="nk:qname-matcher" as="xs:string*">
-        <xsl:param name="qname" as="xs:QName"/>
-        <xsl:sequence
-            select="
-                nk:uriqname($qname),
-                'Q{' || namespace-uri-from-QName($qname) || '}*',
-                '*:' || local-name-from-QName($qname),
-                '*'
-                
-                "
-        />
-    </xsl:function>
-
 
     <xsl:function name="nk:get-context-provider" as="map(*)*">
         <xsl:param name="nodeTest" as="element()"/>
@@ -315,190 +71,6 @@
         </xsl:variable>
 
         <xsl:sequence select="$provider/nk:context-provider-handler(., $exprContext)"/>
-
-    </xsl:function>
-
-    <xsl:variable name="unspecified" as="element()">
-        <nk:unspecified/>
-    </xsl:variable>
-
-    <xsl:function name="nk:xsl-context" as="map(xs:string, item()*)" xpath-default-namespace="">
-        <xsl:param name="node" as="node()"/>
-        <xsl:param name="expr" as="element(expr)?"/>
-
-        <xsl:variable name="anc" select="$node/ancestor::xsl:*"/>
-        <xsl:variable name="anc" select="$anc except $anc/ancestor-or-self::xsl:analyze-string"/>
-        <xsl:variable name="context"
-            select="$anc[local-name() = ('for-each', 'for-each-group', 'key', 'template')][last()]"/>
-
-
-        <xsl:variable name="local-variables"
-            select="
-                $node/ancestor-or-self::*/
-                (preceding-sibling::xsl:variable | preceding-sibling::xsl:param)
-                "/>
-        <xsl:variable name="global-variables"
-            select="$anc[not(parent::*)]/(xsl:variable | xsl:param) except $node"/>
-
-        <xsl:variable name="var-scope"
-            select="($global-variables, $local-variables) ! map{xs:QName(@name) : .}"/>
-        <xsl:variable name="var-scope" select="$var-scope => map:merge(map{'duplicates' : 'use-last'})"/>
-
-        <xsl:variable name="xpm-config-gen"
-            select="function($ctx){
-                let $namespaces := $ctx/namespace::*/map{name() : string(.)},
-                $default-ns := ('', $ctx/ancestor-or-self::*/(@xsl:xpath-default-namespace | self::xsl:*/@xpath-default-namespace))[last()]
-                return
-                    map{
-                        'namespaces' : map:put(map:merge($namespaces), '', $default-ns)
-                    }
-            }"/>
-        <!--                
-        variable-context : function(element()) as map(+context-info+)
-        parent : function() as map(+context-info+)
-        expr : element(expr)
-        -->
-        <xsl:sequence
-            select="map{
-                'parent' : function(){
-                    $context/(@select|@match)/nk:xsl-context(., nk:xpath-model(., $xpm-config-gen(.)))
-                },
-                'variable-context' : function($variableName as xs:QName){
-                    $var-scope ! .($variableName)/@select/nk:xsl-context(., nk:xpath-model(., $xpm-config-gen(.)))
-                },
-                'expr' : $expr,
-                'node' : $node
-            
-            }"/>
-
-    </xsl:function>
-
-    <xsl:function name="nk:context-provider-handler" as="map(*)*">
-        <xsl:param name="provider" as="element()"/>
-        <xsl:param name="exprContext" as="map(*)"/>
-
-        <xsl:choose>
-            <xsl:when test="$provider/self::self">
-                <xsl:sequence select="nk:get-context-provider($provider, $exprContext)"/>
-            </xsl:when>
-            <xsl:when test="$provider/self::varRef">
-                <xsl:variable name="varname" select="xs:QName($provider/@name)"/>
-                <xsl:variable name="variable-decl-info" select="$exprContext?variable-context($varname)"/>
-                <xsl:choose>
-                    <xsl:when test="exists($variable-decl-info)">
-                        <xsl:variable name="var-expr" select="$variable-decl-info?expr"/>
-                        <xsl:variable name="var-return" select="$var-expr/nk:get-return-from-expr(.)"/>
-                        <xsl:sequence select="nk:context-provider-handler($var-return, $variable-decl-info)"/>
-                    </xsl:when>
-                    <xsl:otherwise expand-text="true">
-                        <xsl:sequence
-                            select="map{
-                                'nodeTest' : (),
-                                'root-required' : false(),
-                                'reason' : 'variable-' || $varname || '-not-declared',
-                                'context' : $exprContext
-                            }"
-                        />
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:when>
-            <xsl:when test="$provider/self::expr">
-                <xsl:variable name="parentExpr" select="$exprContext?parent()"/>
-                <xsl:variable name="returnedObj" select="$parentExpr?expr/nk:get-return-from-expr(.)"/>
-                <xsl:choose>
-                    <xsl:when test="empty($parentExpr)">
-                        <xsl:sequence
-                            select="map{
-                                'nodeTest' : (),
-                                'root-required' : false(),
-                                'reason' : 'no-parent-expression-provides-a-context',
-                                'context' : $exprContext,
-                                'pathObj' : ()
-                            }"
-                        />
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:for-each select="$returnedObj">
-                            <xsl:choose>
-                                <xsl:when test="self::self">
-                                    <xsl:sequence select="nk:get-context-provider($returnedObj, $parentExpr)"
-                                    />
-                                </xsl:when>
-                                <xsl:when test="self::nodeTest">
-                                    <xsl:sequence
-                                        select="map{
-                                            'nodeTest' : .,
-                                            'root-required' : false(),
-                                            'context' : $exprContext,
-                                            'pathObj' : .
-                                        }"
-                                    />
-                                </xsl:when>
-                                <xsl:when test="self::slash | self::root">
-                                    <xsl:sequence
-                                        select="map{
-                                            'nodeTest' : (),
-                                            'root-required' : true(),
-                                            'reason' : 'root-is-expected',
-                                            'context' : $exprContext,
-                                            'pathObj' : .
-                                        }"
-                                    />
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:variable name="names"
-                                        select="$returnedObj/name() => distinct-values() => string-join('|')"/>
-                                    <xsl:sequence
-                                        select="map{
-                                            'nodeTest' : (),
-                                            'root-required' : false(),
-                                            'reason' : $names || '-is-context-provider',
-                                            'context' : $exprContext,
-                                            'pathObj' : .
-                                        }
-                                        "
-                                    />
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:for-each>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:when>
-            <xsl:when test="$provider/self::nodeTest">
-                <xsl:sequence
-                    select="map{
-                        'nodeTest' : $provider,
-                        'root-required' : false(),
-                        'context' : $exprContext,
-                        'pathObj' : $provider
-                    }"
-                />
-            </xsl:when>
-            <xsl:when test="$provider/self::slash | $provider/self::root">
-                <xsl:sequence
-                    select="map{
-                        'nodeTest' : (),
-                        'root-required' : true(),
-                        'reason' : 'root-is-expected',
-                        'context' : $exprContext,
-                        'pathObj' : $provider
-                    }"
-                />
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:variable name="names" select="$provider/name() => distinct-values() => string-join('|')"/>
-                <xsl:sequence
-                    select="map{
-                        'nodeTest' : (),
-                        'root-required' : false(),
-                        'reason' : $names || '-is-context-provider',
-                        'context' : $exprContext,
-                        'pathObj' : $provider
-                    }
-                    "
-                />
-            </xsl:otherwise>
-        </xsl:choose>
 
     </xsl:function>
 
@@ -542,6 +114,240 @@
     <xsl:template match="expr" mode="nk:get-context-provider">
         <xsl:sequence select="."/>
     </xsl:template>
+
+    <xsl:variable name="unspecified" as="element()">
+        <nk:unspecified/>
+    </xsl:variable>
+
+    <xsl:function name="nk:sch-context" as="map(xs:string, item()*)" visibility="final">
+        <xsl:param name="node" as="node()"/>
+        <xsl:param name="expr" as="element(expr)?"/>
+        <xsl:variable name="local-variables"
+            select="
+                $node/ancestor-or-self::*/
+                preceding-sibling::sch:let
+                "/>
+        <xsl:variable name="anc" select="$node/ancestor::sch:*"/>
+
+        <xsl:variable name="rule" select="$anc[self::sch:rule/@context]"/>
+
+        <xsl:variable name="schema" select="$anc/self::sch:schema"/>
+        <xsl:variable name="namespaces"
+            select="$schema/sch:ns ! map{@prefix/string(.) : @uri/string(.)} => map:merge()"/>
+        <xsl:variable name="global-variables" select="$schema/sch:let"/>
+        <xsl:variable name="var-scope"
+            select="($global-variables, $local-variables) ! 
+            map{
+                QName($namespaces(substring-before(@name, ':')), @name) : .
+            }"/>
+
+        <xsl:variable name="var-scope" select="$var-scope => map:merge(map{'duplicates' : 'use-last'})"/>
+
+        <xsl:variable name="xpm-config" select="map{ 'namespaces' : $namespaces }"/>
+
+        <xsl:sequence
+            select="map{
+                'parent' : function(){
+                    $rule/nk:sch-context(., nk:xpath-model(@context, $xpm-config)/self::expr)
+                },
+                'variable-context' : function($variableName as xs:QName){
+                $var-scope($variableName)/nk:sch-context(., nk:xpath-model(@value, $xpm-config)/self::expr)
+                },
+                'expr' : $expr,
+                'node' : $node
+            }"/>
+
+    </xsl:function>
+    <xsl:function name="nk:xsl-context" as="map(xs:string, item()*)" visibility="final">
+        <xsl:param name="node" as="node()"/>
+        <xsl:param name="expr" as="element(expr)?"/>
+
+        <xsl:variable name="anc" select="$node/ancestor::xsl:*"/>
+        <xsl:variable name="anc" select="$anc except $anc/ancestor-or-self::xsl:analyze-string"/>
+        <xsl:variable name="context"
+            select="$anc[local-name() = ('for-each', 'for-each-group', 'key', 'template')][last()]"/>
+
+
+        <xsl:variable name="local-variables"
+            select="
+                $node/ancestor-or-self::*/
+                (preceding-sibling::xsl:variable | preceding-sibling::xsl:param)
+                "/>
+        <xsl:variable name="global-variables"
+            select="$anc[not(parent::*)]/(xsl:variable | xsl:param) except $node"/>
+
+        <xsl:variable name="var-scope"
+            select="($global-variables, $local-variables) ! map{nk:QName(@name) : .}"/>
+        <xsl:variable name="var-scope" select="$var-scope => map:merge(map{'duplicates' : 'use-last'})"/>
+
+        <xsl:variable name="xpm-config-gen"
+            select="function($ctx){
+                let $namespaces := $ctx/namespace::*/map{name() : string(.)},
+                $default-ns := ('', $ctx/ancestor-or-self::*/(@xsl:xpath-default-namespace | self::xsl:*/@xpath-default-namespace))[last()]
+                return
+                    map{
+                        'namespaces' : map:put(map:merge($namespaces), '', $default-ns)
+                    }
+            }"/>
+        <!--                
+        variable-context : function(element()) as map(+context-info+)
+        parent : function() as map(+context-info+)
+        expr : element(expr)
+        -->
+        <xsl:sequence
+            select="map{
+                'parent' : function(){
+                    $context/(@select|@match)/nk:xsl-context(., nk:xpath-model(., $xpm-config-gen(.)))
+                },
+                'variable-context' : function($variableName as xs:QName){
+                    $var-scope ! .($variableName)[@select]/nk:xsl-context(., nk:xpath-model(@select, $xpm-config-gen(.)))
+                },
+                'expr' : $expr,
+                'node' : $node
+            
+            }"/>
+
+    </xsl:function>
+
+    <xsl:function name="nk:context-provider-handler" as="map(*)*">
+        <xsl:param name="provider" as="element()"/>
+        <xsl:param name="exprContext" as="map(*)"/>
+
+        <xsl:choose>
+            <xsl:when test="$provider/self::self">
+                <xsl:sequence select="nk:get-context-provider($provider, $exprContext)"/>
+            </xsl:when>
+            <xsl:when test="$provider/self::varRef">
+                <xsl:variable name="varname" select="nk:QName($provider/@name)"/>
+                <xsl:variable name="variable-decl-info" select="$exprContext?variable-context($varname)"/>
+                <xsl:choose>
+                    <xsl:when test="exists($variable-decl-info)">
+                        <xsl:variable name="var-expr" select="$variable-decl-info?expr"/>
+                        <xsl:variable name="var-return" select="$var-expr/nk:get-return-from-expr(.)"/>
+
+                        <xsl:sequence
+                            select="
+                                if ($var-return) then
+                                    nk:context-provider-handler($var-return, $variable-decl-info)
+                                else
+                                    map {
+                                        'nodeTest': (),
+                                        'root-required': false(),
+                                        'reason': 'variable-' || $varname || '-returns-nothing',
+                                        'context': $exprContext
+                                    }
+                                "
+                        />
+                    </xsl:when>
+                    <xsl:otherwise expand-text="true">
+                        <xsl:sequence
+                            select="map{
+                                'nodeTest' : (),
+                                'root-required' : false(),
+                                'reason' : 'variable-' || $varname || '-not-declared',
+                                'context' : $exprContext
+                            }"
+                        />
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="$provider/self::expr">
+                <xsl:variable name="parentContext" select="$exprContext?parent()"/>
+                <xsl:variable name="returnedObj" select="$parentContext?expr/nk:get-return-from-expr(.)"/>
+                <xsl:choose>
+                    <xsl:when test="empty($parentContext)">
+                        <xsl:sequence
+                            select="map{
+                                'nodeTest' : (),
+                                'root-required' : false(),
+                                'reason' : 'no-parent-expression-provides-a-context',
+                                'context' : $exprContext,
+                                'pathObj' : ()
+                            }"
+                        />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:for-each select="$returnedObj">
+                            <xsl:choose>
+                                <xsl:when test="self::self">
+                                    <xsl:sequence select="nk:get-context-provider(., $parentContext)"/>
+                                </xsl:when>
+                                <xsl:when test="self::nodeTest">
+                                    <xsl:sequence
+                                        select="map{
+                                            'nodeTest' : .,
+                                            'root-required' : false(),
+                                            'context' : $parentContext,
+                                            'pathObj' : .
+                                        }"
+                                    />
+                                </xsl:when>
+                                <xsl:when test="self::slash | self::root">
+                                    <xsl:sequence
+                                        select="map{
+                                            'nodeTest' : (),
+                                            'root-required' : true(),
+                                            'reason' : 'root-is-expected',
+                                            'context' : $parentContext,
+                                            'pathObj' : .
+                                        }"
+                                    />
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:sequence
+                                        select="map{
+                                            'nodeTest' : (),
+                                            'root-required' : false(),
+                                            'reason' : name() || '-is-context-provider',
+                                            'context' : $parentContext,
+                                            'pathObj' : .
+                                        }
+                                        "
+                                    />
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:for-each>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="$provider/self::nodeTest">
+                <xsl:sequence
+                    select="map{
+                        'nodeTest' : $provider,
+                        'root-required' : false(),
+                        'context' : $exprContext,
+                        'pathObj' : $provider
+                    }"
+                />
+            </xsl:when>
+            <xsl:when test="$provider/self::slash | $provider/self::root">
+                <xsl:sequence
+                    select="map{
+                        'nodeTest' : (),
+                        'root-required' : true(),
+                        'reason' : 'root-is-expected',
+                        'context' : $exprContext,
+                        'pathObj' : $provider
+                    }"
+                />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence
+                    select="map{
+                        'nodeTest' : (),
+                        'root-required' : false(),
+                        'reason' : $provider/name() || '-is-context-provider',
+                        'context' : $exprContext,
+                        'pathObj' : $provider
+                    }
+                    "
+                />
+            </xsl:otherwise>
+        </xsl:choose>
+
+    </xsl:function>
+
+
 
 
 
@@ -639,6 +445,59 @@
 
 
 
+    <xsl:function name="nk:QName" as="xs:QName" visibility="final">
+        <xsl:param name="node" as="node()"/>
+        <xsl:variable name="el"
+            select="
+                if ($node instance of element()) then
+                    $node
+                else
+                    $node/parent::*"/>
+
+        <xsl:variable name="prefix" select="substring-before($node, ':')" as="xs:string"/>
+        <xsl:variable name="namespace" select="$el/namespace::*[name() = $prefix]"/>
+        <xsl:sequence select="QName($namespace, $node)"/>
+    </xsl:function>
+
+    <xsl:function name="nk:name-matcher" as="map(xs:string, xs:string)">
+        <xsl:param name="name" as="attribute(name)?"/>
+        <xsl:variable name="ns-ctx" select="$name/parent::*"/>
+        
+        <xsl:variable name="map" select="map{'local' : '*', 'namespace' : '*'}"/>
+        
+        <xsl:choose>
+            <xsl:when test="not($name)">
+                <xsl:sequence select="$map"/>
+            </xsl:when>
+            <xsl:when test="$name castable as xs:Name">
+                <xsl:variable name="qname" select="nk:QName($name)"/>
+                <xsl:sequence select="
+                    map:put($map, 'local', string(local-name-from-QName($qname)))
+                    => map:put('namespace', string(namespace-uri-from-QName($qname)))
+                    "/>
+            </xsl:when>
+            <xsl:when test="matches($name, '^[^\*:]+:\*')">
+                <xsl:variable name="prefix" select="substring-before($name, ':')"/>
+                <xsl:sequence select="map:put($map, 'namespace', string(namespace-uri-for-prefix($prefix, $ns-ctx)))"/>
+            </xsl:when>
+            <xsl:when test="matches($name, '^\*:[^\*:]+')">
+                <xsl:variable name="local" select="substring-after($name, ':')"/>
+                <xsl:sequence select="map:put($map, 'local', $local)"/>
+            </xsl:when>
+            <xsl:when test="matches($name, '^Q\{[^\}]+\}')">
+                <xsl:variable name="local" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$2')"/>
+                <xsl:variable name="ns" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$1')"/>
+                <xsl:sequence select="
+                    map:put($map, 'local', $local)
+                    => map:put('namespace', $ns)
+                    "/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message terminate="yes" expand-text="yes">Can not handle "{$name}" as node matcher.</xsl:message>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:function>
 
 
 

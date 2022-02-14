@@ -3,7 +3,6 @@
     <xsl:import href="../rnc-compiler/rng.xsl"/>
     <xsl:import href="xpath-31.xsl"/>
     <xsl:import href="xslt-3-avt.xsl"/>
-    <xsl:import href="lib.xsl"/>
 
     <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
 

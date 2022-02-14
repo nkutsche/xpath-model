@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:nk="http://www.nkutsche.com/xpath-model"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" stylesheet="../../main/resources/xsl/xpath-model.xsl" measure-time="true">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" stylesheet="../../main/resources/xsl/xpath-model.xsl" measure-time="true">
 
     <x:scenario label="Testing function nk:get-return-from-expr" catch="true">
         <x:call function="nk:get-return-from-expr"/>
@@ -225,17 +225,42 @@
     </x:scenario>
     
     
-    <!--<x:scenario label="Testing function nk:xsl-context" catch="true">
+    <x:scenario label="Testing function nk:xsl-context" catch="true">
         <x:call function="nk:xsl-context">
-            <x:param name="node" position="1" select="//xsl:variable[@name = 'local-dummy-1']/@select" href="data/varscopes.xsl"/>
+            <x:param name="node" position="1" select="id('template-match')" href="data/xsl-context.xsl"/>
             <x:param name="expr" position="2" select="()"></x:param>
         </x:call>
-        <x:expect label="result" select="()"/>
         <x:expect label="parent" test="$x:result?parent()" select="()"/>
-    </x:scenario>-->
+    </x:scenario>
+
+    <x:scenario label="Testing function nk:sch-context" catch="true">
+        <x:call function="nk:sch-context">
+            <x:param name="expr" position="2" select="()"></x:param>
+        </x:call>
+        <x:scenario label="parent of assert1">
+            <x:call>
+                <x:param name="node" position="1" select="//*[@id = 'assert1']" href="data/sch-context.sch"/>
+            </x:call>
+            <x:expect label="parent" test="$x:result?parent()?node" select="//*[@id = 'rule1']" href="data/sch-context.sch"/>
+            <x:expect label="parent" test="$x:result?parent()?expr"><expr>...</expr></x:expect>
+            <x:expect label="parent" test="$x:result?variable-context(QName('', 'var-local'))?node"
+                href="data/sch-context.sch" select="id('var-local')"/>
+            <x:expect label="parent" test="$x:result?variable-context(QName('', 'var-global'))?node"
+                href="data/sch-context.sch" select="id('var-global')"/>
+        </x:scenario>
+        <x:scenario label="parent of rule1">
+            <x:call>
+                <x:param name="node" position="1" select="//*[@id = 'rule1']" href="data/sch-context.sch"/>
+            </x:call>
+            <x:expect label="parent" test="$x:result?parent()?node" select="()"/>
+            <x:expect label="parent" test="$x:result?parent()?expr" select="()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    
     <x:scenario label="Testing function nk:get-context-provider" catch="true">
         <x:call function="nk:get-context-provider">
-            <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'global-dummy']/@select, ())" href="data/varscopes.xsl"/>
+            <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'global-dummy']/@select, ())" href="data/xsl-context.xsl"/>
         </x:call>
         <x:scenario label="location steps only">
             <x:scenario label="trivial">
@@ -300,6 +325,17 @@
                 <x:expect label="count of results" test="count($x:result)" select="2"/>
                 <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
                 <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
+            </x:scenario>
+
+            <x:scenario label="with descendant-or-self">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest[not(@name)])[last()]">*//*</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest kind="node" />
+                </x:expect>
+                <x:expect label="count of results" test="count($x:result)" select="1"/>
+                <x:expect label="requires not root (1)" test="not($x:result?root-required)"/>
             </x:scenario>
             
             
@@ -436,7 +472,7 @@
             
             <x:scenario label="using local variables">
                 <x:call>
-                    <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-1']/@select, ())" href="data/varscopes.xsl"/>
+                    <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-1']/@select, ())" href="data/xsl-context.xsl"/>
                 </x:call>
                 <x:scenario label="self">
                     <x:call>
@@ -449,7 +485,7 @@
 
                 <x:scenario label="in inner context">
                     <x:call>
-                        <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-2']/@select, ())" href="data/varscopes.xsl"/>
+                        <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-2']/@select, ())" href="data/xsl-context.xsl"/>
                     </x:call>
                     
                     <x:scenario label="using $self">
@@ -489,11 +525,20 @@
                 </x:scenario>
                 
             </x:scenario>
+            <x:scenario label="using variable with content">
+                <x:scenario label="trivial">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var-w-content/check</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                </x:scenario>
+            </x:scenario>
         
         </x:scenario>
         <x:scenario label="with slash as context">
             <x:call function="nk:get-context-provider">
-                <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'root-level-dummy']/@select, ())" href="data/varscopes.xsl"/>
+                <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'root-level-dummy']/@select, ())" href="data/xsl-context.xsl"/>
             </x:call>
             <x:scenario label="trivial">
                 <x:call>
@@ -504,436 +549,237 @@
                 <x:expect label="root required" test="boolean($x:result?root-required) eq true()"/>
             </x:scenario>
         </x:scenario>
+        <x:scenario label="template/@match">
+            <x:call>
+                <x:param name="variableScope" position="2" select="nk:xsl-context(id('template-match'), ())" href="data/xsl-context.xsl"/>
+            </x:call>
+            
+            <x:scenario label="trivial">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+                <x:expect label="count results" test="count($x:result)" select="1"/>
+                <x:expect label="reason" test="$x:result?reason" select="'no-parent-expression-provides-a-context'"/>
+            </x:scenario>
+            <x:scenario label="two steps">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/bar</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest name="foo" kind="element"/>
+                </x:expect>
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="inside of sch:rule/@context">
+            <x:variable name="context" select="nk:sch-context(//*[@id = 'assert1'], ())" href="data/sch-context.sch"/>
+            <x:call>
+                <x:param name="exprContext" position="2" select="$context"/>
+            </x:call>
+            
+            <x:scenario label="trivial">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest name="operation" kind="element"/>
+                </x:expect>
+                
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+                <x:expect label="count results" test="count($x:result)" select="1"/>
+            </x:scenario>
+
+            <x:scenario label="nk:expr inside of rule/@context='nk:expr/nk:operation'">
+                <x:variable name="xpmconfig" select="map{'namespaces' : map{'nk' : 'http://www.nkutsche.com/xpath-model'}}"/>
+                <x:variable name="nodeTest" select="(nk:xpath-model(., $xpmconfig)//nodeTest)[@name = 'nk:expr']">nk:expr</x:variable>
+                <x:call>
+                    <x:param position="1" select="$nodeTest"/>
+                    <x:param name="exprContext" position="2" select="nk:sch-context(//*[@id = 'assert1'], $nodeTest/ancestor::expr)" href="data/sch-context_ns.sch"/>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest name="nk:operation" kind="element"/>
+                </x:expect>
+                <x:expect label="context node" test="$x:result?context?node" select="//*[@id = 'rule1']" href="data/sch-context_ns.sch"/>
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+                <x:expect label="count results" test="count($x:result)" select="1"/>
+            </x:scenario>
+            
+        </x:scenario>
     </x:scenario>
 
-
-    <x:scenario label="Testing function nk:get-schema-decl" catch="true">
-        <x:call function="nk:get-schema-decl">
-            <x:param name="variableScope" position="3" select="//xsl:variable[@name = 'relative-dummy']/@select, ()" href="data/varscopes.xsl"/>
-        </x:call>
-
-
-        <x:scenario label="with a simple schema">
-            <x:variable name="schema" select="*"> 
-                <xs:schema> 
-                    <xs:element name="foo" type="xs:string"/>
-                </xs:schema> 
-            </x:variable>
-            <x:call>
-                <x:param position="2" select="$schema"/>
-            </x:call>
-
-            <x:scenario label="trivial relative xpath">
-                <x:scenario label="with decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest">foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-
-                <x:scenario label="with no decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest">no-decl</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"/>
-                </x:scenario>
-
-                <x:scenario label="no decl needed">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest">comment()</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><nk:no-decl-needed kind="comment"/></x:expect>
-                </x:scenario>
-
-                <x:scenario label="any decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest">*</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-            </x:scenario>
-        </x:scenario>
-        <x:scenario label="with a namespace based simple schema">
-            <x:variable name="schema" select="*"> 
-                <xs:schema targetNamespace="http://www.nkutsche.com/xpath-model"> 
-                    <xs:element name="foo" type="xs:string"/> 
-                </xs:schema> 
-            </x:variable>
-            <x:variable name="xpconfig"
-                select="map{'namespaces' : map{'nk': 'http://www.nkutsche.com/xpath-model'}}"/>
-            <x:call>
-                <x:param position="2" select="$schema"/>
-            </x:call>
-            <x:scenario label="trivial relative xpath">
-                <x:scenario label="with decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">nk:foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-
-                <x:scenario label="with no decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"/>
-                </x:scenario>
-
-
-                <x:scenario label="any decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">*</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-
-                <x:scenario label="any decl in nk namespace">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">nk:*</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-
-                <x:scenario label="foo decl in any namespace">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">*:foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo" type="xs:string"/></x:expect>
-                </x:scenario>
-            </x:scenario>
-
-        </x:scenario>
-        <x:scenario label="with multiple schemas">
-            <x:variable name="schema" select="*"> 
-                <xs:schema targetNamespace="http://www.nkutsche.com/xpath-model"> 
-                    <xs:element name="foo" type="xs:string"/>
-                    <xs:element name="bar" type="xs:string"/> </xs:schema> 
-                <xs:schema targetNamespace="http://www.nkutsche.com/some-other-ns"> 
-                    <xs:element name="foo" type="xs:string"/> 
-                    <xs:element name="bar" type="xs:string"/> 
-                </xs:schema> 
-                <xs:schema>
-                    <xs:element name="foo" type="xs:string"/>
-                    <xs:element name="bar" type="xs:string"/>
-                </xs:schema> 
-            </x:variable>
-            <x:variable name="xpconfig"
-                select="map{'namespaces' : map{
-                'nk': 'http://www.nkutsche.com/xpath-model',
-                'other': 'http://www.nkutsche.com/some-other-ns'
-                }}"/>
-            <x:call>
-                <x:param position="2" select="$schema"/>
-            </x:call>
-            <x:scenario label="trivial relative xpath">
-                <x:scenario label="with decl">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">nk:foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration">
-                        <xs:element name="foo" type="xs:string"/>
-                    </x:expect>
-                    <x:expect label="parent element" test="$x:result/parent::*">
-                        <xs:schema targetNamespace="http://www.nkutsche.com/xpath-model">...</xs:schema>
-                    </x:expect>
-                </x:scenario>
-
-                <x:scenario label="with wildcard">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">*</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration">
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="bar" type="xs:string"/>
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="bar" type="xs:string"/>
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="bar" type="xs:string"/>
-                    </x:expect>
-                    <x:expect label="parent element" test="$x:result/parent::*">
-                        <xs:schema targetNamespace="http://www.nkutsche.com/xpath-model">...</xs:schema>
-                        <xs:schema targetNamespace="http://www.nkutsche.com/some-other-ns">...</xs:schema>
-                        <xs:schema>...</xs:schema>
-                    </x:expect>
-                </x:scenario>
-
-                <x:scenario label="with wildcard other:*">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">other:*</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration">
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="bar" type="xs:string"/>
-                    </x:expect>
-                    <x:expect label="parent element" test="$x:result/parent::*">
-                        <xs:schema targetNamespace="http://www.nkutsche.com/some-other-ns">...</xs:schema>
-                    </x:expect>
-                </x:scenario>
-
-                <x:scenario label="with wildcard *:foo">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(., $xpconfig)//nodeTest">*:foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration">
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="foo" type="xs:string"/>
-                        <xs:element name="foo" type="xs:string"/>
-                    </x:expect>
-                    <x:expect label="parent element" test="$x:result/parent::*">
-                        <xs:schema targetNamespace="http://www.nkutsche.com/xpath-model">...</xs:schema>
-                        <xs:schema targetNamespace="http://www.nkutsche.com/some-other-ns">...</xs:schema>
-                        <xs:schema>...</xs:schema>
-                    </x:expect>
-                </x:scenario>
-
-            </x:scenario>
-            
-            <x:scenario label="step path">
-                
-            </x:scenario>
-
-        </x:scenario>
+    <x:scenario label="Testing function nk:get-path-in-expression" catch="true">
+        <x:call function="nk:get-path-in-expression"/>
         
-        <x:scenario label="with a bit hierarchy schema">
-            <x:variable name="schema" select="*"> 
-                <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-                    <xs:element name="foo">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element ref="bar"/>
-                                <xs:element name="local"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    
-                    <xs:element name="bar">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element ref="baz"/>
-                                <xs:element ref="bar"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    
-                    <xs:element name="baz" type="xs:string"/>
-                </xs:schema>
+        <x:scenario label="simple value-of">
+            <x:variable name="xsl-snippet" select="*">
+                <xsl:value-of select="'dummy-xpath'"/>
             </x:variable>
-            
             <x:call>
-                <x:param position="2" select="$schema"/>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet/@select, ())"/>
             </x:call>
-            <x:scenario label="child path">
-                
-                <x:scenario label="with allowed root element">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest[@name = 'foo']">/foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="foo">...</xs:element></x:expect>
-                </x:scenario>
-
-                <x:scenario label="with not allowed root element">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest[@name = 'local']">/local</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration" select="()"/>
-                </x:scenario>
-                
-                <x:scenario label="with allowed child">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest[@name = 'bar']">/foo/bar</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"><xs:element name="bar">...</xs:element></x:expect>
-                </x:scenario>
-                
-                <x:scenario label="for not allowed child">
-                    <x:call>
-                        <x:param position="1" select="nk:xpath-model(.)//nodeTest[@name = 'foo']">/bar/foo</x:param>
-                    </x:call>
-                    <x:expect label="returned declaration"/>
-                </x:scenario>
-
+            
+            
+            <x:scenario label="trivial one step xpath">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
             </x:scenario>
             
+            <x:scenario label="trivial two step xpath">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/bar</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
+            </x:scenario>
+
+            <x:scenario label="two step xpath with leading slash">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">/foo/bar</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'document-node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
+            </x:scenario>
+
+            <x:scenario label="two step xpath with wildcard">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">foo/*</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', '*'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', '*'"/>
+            </x:scenario>
+            <x:scenario label="two step xpath with attribute kind/axis">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">foo/@bar</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'attribute'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'attribute'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
+            </x:scenario>
+
+            <x:scenario label="three step xpath with different axis">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">ancestor-or-self::foo/following-sibling::bar/descendant::baz</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'ancestor-or-self', 'following-sibling', 'descendant'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar', 'baz'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', '', ''"/>
+            </x:scenario>
+            
+            <x:scenario label="with namespaces">
+                <x:variable name="ns1" select="'www.example.com/ns1'"></x:variable>
+                <x:variable name="ns2" select="'www.example.com/ns2'"></x:variable>
+                <x:variable name="xpmconfig" select="map{'namespaces' : map{'ns1' : $ns1, 'ns2' : $ns2}}"/>
+                
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(., $xpmconfig)//nodeTest)[last()]">ns1:foo/ns2:bar</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $ns1, $ns2"/>
+                <x:expect label="not an error" test="not($x:result instance of map(*) and exists($x:result?err))"/>
+            </x:scenario>
         </x:scenario>
-
-
     </x:scenario>
-    <x:scenario label="Testing function nk:path-in-xsd-possible" catch="true">
-        <x:call function="nk:path-in-xsd-possible"/>
-            
+    
+    <x:scenario label="Testing function nk:name-matcher" catch="true">
+        <x:call function="nk:name-matcher"/>
         
-        <x:scenario label="with a simple schema">
-            <x:variable name="schema" select="*"> 
-                <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-                    <xs:element name="foo">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element ref="bar"/>
-                                <xs:element name="local"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    
-                    <xs:element name="bar">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element ref="baz"/>
-                                <xs:element ref="bar"/>
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
-                    
-                    <xs:element name="baz" type="xs:string"/>
-                </xs:schema>
-            </x:variable>
-            
-            <x:scenario label="foo/bar">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'bar']"/>
-                    <x:param name="axis" select="'child'"/>
-                </x:call>
-                
-                <x:expect label="yes" select="true()"/>
-            </x:scenario>
+        <x:scenario label="trival name">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="foo"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="''"/>
+            <x:expect label="local" test="$x:result?local" select="'foo'"/>
+            <x:expect label="not an error" test="not($x:result instance of map(*) and exists($x:result?err))"/>
+        </x:scenario>
+        <x:scenario label="no name">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'*'"/>
+            <x:expect label="local" test="$x:result?local" select="'*'"/>
+        </x:scenario>
+        <x:scenario label="simple prefixed name">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="ns1:foo" xmlns:ns1="www.example.com/ns1"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/ns1'"/>
+            <x:expect label="local" test="$x:result?local" select="'foo'"/>
+        </x:scenario>
 
-            <x:scenario label="bar/foo">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'bar']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="axis" select="'child'"/>
-                </x:call>
-                
-                <x:expect label="no" select="false()"/>
-            </x:scenario>
-            <x:scenario label="bar//foo">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'bar']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="axis" select="'descendant'"/>
-                </x:call>
-                
-                <x:expect label="no" select="false()"/>
-            </x:scenario>
-            <x:scenario label="foo//baz">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'baz']"/>
-                    <x:param name="axis" select="'descendant'"/>
-                </x:call>
-                
-                <x:expect label="yes" select="true()"/>
-            </x:scenario>
+        <x:scenario label="name with default namespace">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="foo" xmlns="www.example.com/def"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/def'"/>
+            <x:expect label="local" test="$x:result?local" select="'foo'"/>
+        </x:scenario>
+        
+        <x:scenario label="namespace wildcard">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="*:foo"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'*'"/>
+            <x:expect label="local" test="$x:result?local" select="'foo'"/>
+        </x:scenario>
 
-            <x:scenario label="foo/ancestor::baz">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'baz']"/>
-                    <x:param name="axis" select="'ancestor'"/>
-                </x:call>
-                
-                <x:expect label="no" select="false()"/>
-            </x:scenario>
-            <x:scenario label="baz/ancestor::foo">
-                <x:call>
-                    <x:param name="from" select="$schema//xs:element[@name = 'baz']"/>
-                    <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                    <x:param name="axis" select="'ancestor'"/>
-                </x:call>
-                
-                <x:expect label="yes" select="true()"/>
-            </x:scenario>
-            
-            <x:scenario label="or self...">
-                <x:scenario label="foo/ancestor-or-self::foo">
-                    <x:call>
-                        <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="axis" select="'ancestor-or-self'"/>
-                    </x:call>
-                    <x:expect label="yes" select="true()"/>
-                </x:scenario>
+        <x:scenario label="local wildcard">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="ns1:*" xmlns:ns1="www.example.com/ns1"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/ns1'"/>
+            <x:expect label="local" test="$x:result?local" select="'*'"/>
+        </x:scenario>
 
-                <x:scenario label="foo/descendant-or-self::foo">
-                    <x:call>
-                        <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="axis" select="'descendant-or-self'"/>
-                    </x:call>
-                    <x:expect label="yes" select="true()"/>
-                </x:scenario>
-                <x:scenario label="foo/self::foo">
-                    <x:call>
-                        <x:param name="from" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="to" select="$schema//xs:element[@name = 'foo']"/>
-                        <x:param name="axis" select="'self'"/>
-                    </x:call>
-                    <x:expect label="yes" select="true()"/>
-                </x:scenario>
-                
-            </x:scenario>
-            
+        <x:scenario label="uri syntax">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="Q{{www.example.com/ns1}}foo"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/ns1'"/>
+            <x:expect label="local" test="$x:result?local" select="'foo'"/>
+        </x:scenario>
+        <x:scenario label="uri syntax with wildcard">
+            <x:call>
+                <x:param position="1" select="*/@name">
+                    <el name="Q{{www.example.com/ns1}}*"/>
+                </x:param>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/ns1'"/>
+            <x:expect label="local" test="$x:result?local" select="'*'"/>
         </x:scenario>
         
     </x:scenario>
     
-    <x:scenario label="Testing function nk:get-usages">
-        <x:call function="nk:get-usages"/>
-        
-        <x:scenario label="topLevel by salami slice">
-            <x:call>
-                <x:param select="id('topLevel')" href="data/complex.xsd"/>
-            </x:call>
-            <x:expect label="root is parent" select="id('root')" href="data/complex.xsd"/>
-        </x:scenario>
-
-        <x:scenario label="local by venetian blind">
-            <x:call>
-                <x:param select="id('local')" href="data/complex.xsd"/>
-            </x:call>
-            <x:expect label="topLevel is parent" test="$x:result[@name = 'topLevel']" select="id('topLevel')" href="data/complex.xsd"/>
-        </x:scenario>
-
-        <x:scenario label="local by russian doll">
-            <x:call>
-                <x:param select="id('russian-doll')" href="data/complex.xsd"/>
-            </x:call>
-            <x:expect label="container is parent" test="$x:result[@name = 'container']" select="id('container')" href="data/complex.xsd"/>
-        </x:scenario>
-
-        <x:scenario label="inline by groups">
-            <x:call>
-                <x:param select="id('inline')" href="data/complex.xsd"/>
-            </x:call>
-            <x:expect label="local is parent" test="$x:result[@name = 'local']" select="id('local')" href="data/complex.xsd"/>
-        </x:scenario>
-
-        <x:scenario label="local by complexContent">
-            <x:call>
-                <x:param select="id('local')" href="data/complex.xsd"/>
-            </x:call>
-            <x:expect label="complexContent is parent" test="$x:result[@name = 'complexContent']" select="id('complexContent')" href="data/complex.xsd"/>
-        </x:scenario>
-        <x:scenario label="attributes">
-            <x:scenario label="local attr">
-                <x:call>
-                    <x:param select="id('local-attr')" href="data/complex.xsd"/>
-                </x:call>
-                <x:expect label="root is parent" test="$x:result[@name = 'root']" select="id('root')" href="data/complex.xsd"/>
-            </x:scenario>
-            <x:scenario label="global attr">
-                <x:call>
-                    <x:param select="id('global-attr')" href="data/complex.xsd"/>
-                </x:call>
-                <x:expect label="root is parent" test="$x:result[@name = 'root']" select="id('root')" href="data/complex.xsd"/>
-            </x:scenario>
-            <x:scenario label="attr by group">
-                <x:call>
-                    <x:param select="id('group-attr')" href="data/complex.xsd"/>
-                </x:call>
-                <x:expect label="root is parent" test="$x:result[@name = 'root']" select="id('root')" href="data/complex.xsd"/>
-            </x:scenario>
-        </x:scenario>
-        
-    </x:scenario>
+    
 </x:description>
