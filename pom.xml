@@ -8,7 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
     
     <properties>
-        <saxon.version>9.9.1-1</saxon.version>
+        <saxon.version>10.6</saxon.version>
 
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
 
@@ -38,6 +38,11 @@
                     </execution>
                 </executions>
                 <dependencies>
+                    <dependency>
+                        <groupId>io.xspec</groupId>
+                        <artifactId>xspec</artifactId>
+                        <version>1.6.0</version>
+                    </dependency>
                     <dependency>
                         <groupId>net.sf.saxon</groupId>
                         <artifactId>Saxon-HE</artifactId>
