@@ -259,236 +259,226 @@
     
     
     <x:scenario label="Testing function nk:get-context-provider" catch="true">
-        <x:call function="nk:get-context-provider">
-            <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'global-dummy']/@select, ())" href="data/xsl-context.xsl"/>
-        </x:call>
-        <x:scenario label="location steps only">
-            <x:scenario label="trivial">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/bar</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-            <x:scenario label="with predicate">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo[bar]</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-            <x:scenario label="with map operator">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo ! bar</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-
-            <x:scenario label="with union operator">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'baz']">(foo|bar)/baz</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                    <nodeTest name="bar" kind="element"/>
-                </x:expect>
-                <x:expect label="count of results" test="count($x:result)" select="2"/>
-                <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
-                <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
-            </x:scenario>
-
-            <x:scenario label="with self">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/./bar</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-            
-            <x:scenario label="with union operator and self">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'baz']">foo/(.|bar)/baz</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                    <nodeTest name="bar" kind="element"/>
-                </x:expect>
-                <x:expect label="count of results" test="count($x:result)" select="2"/>
-                <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
-                <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
-            </x:scenario>
-
-            <x:scenario label="with descendant-or-self">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest[not(@name)])[last()]">*//*</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest kind="node" />
-                </x:expect>
-                <x:expect label="count of results" test="count($x:result)" select="1"/>
-                <x:expect label="requires not root (1)" test="not($x:result?root-required)"/>
-            </x:scenario>
-            
-            
-            <x:scenario label="as absolute expr">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">/bar</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                <x:expect label="requires root" test="boolean($x:result?root-required)"/>
-            </x:scenario>
-           
-
-            <x:scenario label="as absolute expr inside of other expr">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo[/bar]</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                <x:expect label="requires root" test="boolean($x:result?root-required)"/>
-            </x:scenario>
-
-            <x:scenario label="as absolute expr inside uncommon expr">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo / (/bar)</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                <x:expect label="requires root" test="boolean($x:result?root-required)"/>
-            </x:scenario>
-            
-        </x:scenario>
-        <x:scenario label="as sequence type">
-            <x:scenario label="foo instance of element(bar)">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo instance of element(bar)</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-        </x:scenario>
+        <x:call function="nk:get-context-provider"/>
         
-        <x:scenario label="as postfix operation">
-            <x:scenario label="with predicate only">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">(/foo)[bar]</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root" test="not($x:result?root-required)"/>
-            </x:scenario>
-            <x:scenario label="with two predicates and a constructed sequence">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">(/foo, /bar)[baz][check]</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest">
-                    <nodeTest name="foo" kind="element"/>
-                    <nodeTest name="bar" kind="element"/>
-                </x:expect>
-                <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
-                <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
-            </x:scenario>
-            <x:scenario label="with a function-call">
-                <x:call>
-                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var(check)</x:param>
-                </x:call>
-                <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                <x:expect label="requires root" test="boolean($x:result?root-required) eq false()"/>
-            </x:scenario>
-            <x:scenario label="with function-calls, some predicates and lookups">
-                <x:variable name="node-tests" select="nk:xpath-model(.)//nodeTest">(foo)[check1](check2)[check3]?key[check4]</x:variable>
-                <x:scenario label="check1">
+        <x:scenario label="with a global dummy context">
+            <x:call>
+                <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'global-dummy']/@select, ())" href="data/xsl-context.xsl"/>
+            </x:call>
+            
+            <x:scenario label="location steps only">
+                <x:scenario label="trivial">
                     <x:call>
-                        <x:param position="1" select="$node-tests[@name = 'check1']"/>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/bar</x:param>
                     </x:call>
                     <x:expect label="return object" test="$x:result?nodeTest">
                         <nodeTest name="foo" kind="element"/>
                     </x:expect>
                     <x:expect label="requires not root" test="not($x:result?root-required)"/>
                 </x:scenario>
-                <x:scenario label="check2">
+                <x:scenario label="with predicate">
                     <x:call>
-                        <x:param position="1" select="$node-tests[@name = 'check2']"/>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                    <x:expect label="path object" test="$x:result?pathObj" select="()"/>
-                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
-                </x:scenario>
-                <x:scenario label="check3">
-                    <x:call>
-                        <x:param position="1" select="$node-tests[@name = 'check3']"/>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                    <x:expect label="path object" test="$x:result?pathObj">
-                        <function-call>...</function-call>
-                    </x:expect>
-                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
-                </x:scenario>
-                <x:scenario label="check4">
-                    <x:call>
-                        <x:param position="1" select="$node-tests[@name = 'check4']"/>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                    <x:expect label="path object" test="$x:result?pathObj">
-                        <lookup>...</lookup>
-                    </x:expect>
-                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
-                </x:scenario>
-            </x:scenario>
-        </x:scenario>
-        
-        <x:scenario label="with variable references">
-            
-            <x:scenario label="using global variables only">
-
-                <x:scenario label="trivial">
-                    <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var/check</x:param>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo[bar]</x:param>
                     </x:call>
                     <x:expect label="return object" test="$x:result?nodeTest">
-                        <nodeTest name="global-var-value" kind="element"/>
+                        <nodeTest name="foo" kind="element"/>
                     </x:expect>
-
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                </x:scenario>
+                <x:scenario label="with map operator">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo ! bar</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest">
+                        <nodeTest name="foo" kind="element"/>
+                    </x:expect>
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
                 </x:scenario>
     
-                <x:scenario label="recursive var ref">
+                <x:scenario label="with union operator">
                     <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var_recursive/check</x:param>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'baz']">(foo|bar)/baz</x:param>
                     </x:call>
                     <x:expect label="return object" test="$x:result?nodeTest">
-                        <nodeTest name="global-var-value" kind="element"/>
+                        <nodeTest name="foo" kind="element"/>
+                        <nodeTest name="bar" kind="element"/>
                     </x:expect>
+                    <x:expect label="count of results" test="count($x:result)" select="2"/>
+                    <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
+                    <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
+                </x:scenario>
+    
+                <x:scenario label="with self">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo/./bar</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest">
+                        <nodeTest name="foo" kind="element"/>
+                    </x:expect>
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                </x:scenario>
+                
+                <x:scenario label="with union operator and self">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'baz']">foo/(.|bar)/baz</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest">
+                        <nodeTest name="foo" kind="element"/>
+                        <nodeTest name="bar" kind="element"/>
+                    </x:expect>
+                    <x:expect label="count of results" test="count($x:result)" select="2"/>
+                    <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
+                    <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
+                </x:scenario>
+    
+                <x:scenario label="with descendant-or-self">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest[not(@name)])[last()]">*//*</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest">
+                        <nodeTest kind="node" />
+                    </x:expect>
+                    <x:expect label="count of results" test="count($x:result)" select="1"/>
+                    <x:expect label="requires not root (1)" test="not($x:result?root-required)"/>
+                </x:scenario>
+                
+                
+                <x:scenario label="as absolute expr">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">/bar</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires root" test="boolean($x:result?root-required)"/>
+                </x:scenario>
+               
+    
+                <x:scenario label="as absolute expr inside of other expr">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo[/bar]</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires root" test="boolean($x:result?root-required)"/>
+                </x:scenario>
+    
+                <x:scenario label="as absolute expr inside uncommon expr">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo / (/bar)</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires root" test="boolean($x:result?root-required)"/>
                 </x:scenario>
                 
             </x:scenario>
-            
-            <x:scenario label="using local variables">
-                <x:call>
-                    <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-1']/@select, ())" href="data/xsl-context.xsl"/>
-                </x:call>
-                <x:scenario label="self">
+            <x:scenario label="as sequence type">
+                <x:scenario label="foo instance of element(bar)">
                     <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$self/check</x:param>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">foo instance of element(bar)</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="as postfix operation">
+                <x:scenario label="with predicate only">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'bar']">(/foo)[bar]</x:param>
                     </x:call>
                     <x:expect label="return object" test="$x:result?nodeTest">
-                        <nodeTest name="for-each-context" kind="element"/>
+                        <nodeTest name="foo" kind="element"/>
                     </x:expect>
+                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
                 </x:scenario>
-
-                <x:scenario label="in inner context">
+                <x:scenario label="with two predicates and a constructed sequence">
                     <x:call>
-                        <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-2']/@select, ())" href="data/xsl-context.xsl"/>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">(/foo, /bar)[baz][check]</x:param>
                     </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest">
+                        <nodeTest name="foo" kind="element"/>
+                        <nodeTest name="bar" kind="element"/>
+                    </x:expect>
+                    <x:expect label="requires not root (1)" test="not($x:result[1]?root-required)"/>
+                    <x:expect label="requires not root (2)" test="not($x:result[2]?root-required)"/>
+                </x:scenario>
+                <x:scenario label="with a function-call">
+                    <x:call>
+                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var(check)</x:param>
+                    </x:call>
+                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                    <x:expect label="requires root" test="boolean($x:result?root-required) eq false()"/>
+                </x:scenario>
+                <x:scenario label="with function-calls, some predicates and lookups">
+                    <x:variable name="node-tests" select="nk:xpath-model(.)//nodeTest">(foo)[check1](check2)[check3]?key[check4]</x:variable>
+                    <x:scenario label="check1">
+                        <x:call>
+                            <x:param position="1" select="$node-tests[@name = 'check1']"/>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest">
+                            <nodeTest name="foo" kind="element"/>
+                        </x:expect>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                    </x:scenario>
+                    <x:scenario label="check2">
+                        <x:call>
+                            <x:param position="1" select="$node-tests[@name = 'check2']"/>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="path object" test="$x:result?pathObj" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                    </x:scenario>
+                    <x:scenario label="check3">
+                        <x:call>
+                            <x:param position="1" select="$node-tests[@name = 'check3']"/>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="path object" test="$x:result?pathObj">
+                            <function-call>...</function-call>
+                        </x:expect>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                    </x:scenario>
+                    <x:scenario label="check4">
+                        <x:call>
+                            <x:param position="1" select="$node-tests[@name = 'check4']"/>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="path object" test="$x:result?pathObj">
+                            <lookup>...</lookup>
+                        </x:expect>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                    </x:scenario>
+                </x:scenario>
+            </x:scenario>
+            
+            <x:scenario label="with variable references">
+                
+                <x:scenario label="using global variables only">
+    
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest">
+                            <nodeTest name="global-var-value" kind="element"/>
+                        </x:expect>
+    
+                    </x:scenario>
+        
+                    <x:scenario label="recursive var ref">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var_recursive/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest">
+                            <nodeTest name="global-var-value" kind="element"/>
+                        </x:expect>
+                    </x:scenario>
                     
-                    <x:scenario label="using $self">
+                </x:scenario>
+                
+                <x:scenario label="using local variables">
+                    <x:call>
+                        <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-1']/@select, ())" href="data/xsl-context.xsl"/>
+                    </x:call>
+                    <x:scenario label="self">
                         <x:call>
                             <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$self/check</x:param>
                         </x:call>
@@ -496,46 +486,62 @@
                             <nodeTest name="for-each-context" kind="element"/>
                         </x:expect>
                     </x:scenario>
-                    <x:scenario label="using inner context">
+    
+                    <x:scenario label="in inner context">
                         <x:call>
-                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">check</x:param>
+                            <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'local-dummy-2']/@select, ())" href="data/xsl-context.xsl"/>
+                        </x:call>
+                        
+                        <x:scenario label="using $self">
+                            <x:call>
+                                <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$self/check</x:param>
+                            </x:call>
+                            <x:expect label="return object" test="$x:result?nodeTest">
+                                <nodeTest name="for-each-context" kind="element"/>
+                            </x:expect>
+                        </x:scenario>
+                        <x:scenario label="using inner context">
+                            <x:call>
+                                <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">check</x:param>
+                            </x:call>
+                            <x:expect label="return object" test="$x:result?nodeTest">
+                                <nodeTest name="inner-context" kind="element"/>
+                            </x:expect>
+                        </x:scenario>
+                    </x:scenario>
+    
+                    <x:scenario label="overwrite variables by scope">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var/check</x:param>
                         </x:call>
                         <x:expect label="return object" test="$x:result?nodeTest">
-                            <nodeTest name="inner-context" kind="element"/>
+                            <nodeTest name="local-var-value" kind="element"/>
                         </x:expect>
                     </x:scenario>
+    
+                    <x:scenario label="escape variable scope">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var_recursive/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest">
+                            <nodeTest name="global-var-value" kind="element"/>
+                        </x:expect>
+                    </x:scenario>
+                    
                 </x:scenario>
-
-                <x:scenario label="overwrite variables by scope">
-                    <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var/check</x:param>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest">
-                        <nodeTest name="local-var-value" kind="element"/>
-                    </x:expect>
-                </x:scenario>
-
-                <x:scenario label="escape variable scope">
-                    <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var_recursive/check</x:param>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest">
-                        <nodeTest name="global-var-value" kind="element"/>
-                    </x:expect>
-                </x:scenario>
-                
-            </x:scenario>
-            <x:scenario label="using variable with content">
-                <x:scenario label="trivial">
-                    <x:call>
-                        <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var-w-content/check</x:param>
-                    </x:call>
-                    <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
-                    <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                <x:scenario label="using variable with content">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$var-w-content/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                    </x:scenario>
                 </x:scenario>
             </x:scenario>
-        
         </x:scenario>
+            
+            
         <x:scenario label="with slash as context">
             <x:call function="nk:get-context-provider">
                 <x:param name="variableScope" position="2" select="nk:xsl-context(//xsl:variable[@name = 'root-level-dummy']/@select, ())" href="data/xsl-context.xsl"/>

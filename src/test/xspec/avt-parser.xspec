@@ -3,7 +3,7 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:nk="http://www.nkutsche.com/xpath-model"
     xmlns:avt="http://www.nkutsche.com/avt-parser"
-    stylesheet="../../main/resources/xsl/xpath-model-parser.xsl">
+    stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
     
     <x:scenario label="Scenario testing function call avt:parse-value-template">
