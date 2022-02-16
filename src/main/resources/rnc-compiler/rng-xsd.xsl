@@ -63,7 +63,7 @@
                   </variable>
                   <variable name="valid" select="every $p in $params satisfies $p"/>
                   <choose>
-                     <when test="$valid and except">
+                     <when test="$valid and ./except">
                         <variable name="matching-items" as="item()+">
                            <apply-templates select="except" mode="r:ul">
                               <with-param name="nodes" select="$n"/>

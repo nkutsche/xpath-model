@@ -238,9 +238,9 @@
       <param name="n" as="node()"/>
 
       <choose>
-         <when test="except">
+         <when test="./except">
             <variable name="except-result" as="xs:boolean">
-               <apply-templates select="except" mode="#current">
+               <apply-templates select="./except" mode="#current">
                   <with-param name="n" select="$n"/>
                </apply-templates>
             </variable>
@@ -259,9 +259,9 @@
          and namespace-uri($n) eq @ns"/>
 
       <choose>
-         <when test="except and $ns-matches">
+         <when test="./except and $ns-matches">
             <variable name="except-result" as="xs:boolean">
-               <apply-templates select="except" mode="#current">
+               <apply-templates select="./except" mode="#current">
                   <with-param name="n" select="$n"/>
                </apply-templates>
             </variable>
@@ -337,9 +337,9 @@
       <choose>
          <when test="$n instance of text()">
             <choose>
-               <when test="except">
+               <when test="./except">
                   <variable name="except-result" as="xs:boolean">
-                     <apply-templates select="except" mode="#current">
+                     <apply-templates select="./except" mode="#current">
                         <with-param name="n" select="$n"/>
                      </apply-templates>
                   </variable>
