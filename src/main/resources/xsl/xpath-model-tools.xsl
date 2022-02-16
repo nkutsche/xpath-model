@@ -540,23 +540,26 @@
     <xsl:function name="nk:name-matcher" as="map(xs:string, xs:string)">
         <xsl:param name="name" as="attribute(name)?"/>
         <xsl:variable name="ns-ctx" select="$name/parent::*"/>
-        
+
         <xsl:variable name="map" select="map{'local' : '*', 'namespace' : '*'}"/>
-        
+
         <xsl:choose>
             <xsl:when test="not($name)">
                 <xsl:sequence select="$map"/>
             </xsl:when>
             <xsl:when test="$name castable as xs:Name">
                 <xsl:variable name="qname" select="nk:QName($name)"/>
-                <xsl:sequence select="
-                    map:put($map, 'local', string(local-name-from-QName($qname)))
-                    => map:put('namespace', string(namespace-uri-from-QName($qname)))
-                    "/>
+                <xsl:sequence
+                    select="
+                        map:put($map, 'local', string(local-name-from-QName($qname)))
+                        => map:put('namespace', string(namespace-uri-from-QName($qname)))
+                        "
+                />
             </xsl:when>
             <xsl:when test="matches($name, '^[^\*:]+:\*')">
                 <xsl:variable name="prefix" select="substring-before($name, ':')"/>
-                <xsl:sequence select="map:put($map, 'namespace', string(namespace-uri-for-prefix($prefix, $ns-ctx)))"/>
+                <xsl:sequence
+                    select="map:put($map, 'namespace', string(namespace-uri-for-prefix($prefix, $ns-ctx)))"/>
             </xsl:when>
             <xsl:when test="matches($name, '^\*:[^\*:]+')">
                 <xsl:variable name="local" select="substring-after($name, ':')"/>
@@ -565,16 +568,19 @@
             <xsl:when test="matches($name, '^Q\{[^\}]+\}')">
                 <xsl:variable name="local" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$2')"/>
                 <xsl:variable name="ns" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$1')"/>
-                <xsl:sequence select="
-                    map:put($map, 'local', $local)
-                    => map:put('namespace', $ns)
-                    "/>
+                <xsl:sequence
+                    select="
+                        map:put($map, 'local', $local)
+                        => map:put('namespace', $ns)
+                        "
+                />
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message terminate="yes" expand-text="yes">Can not handle "{$name}" as node matcher.</xsl:message>
+                <xsl:message terminate="yes" expand-text="yes">Can not handle "{$name}" as node
+                    matcher.</xsl:message>
             </xsl:otherwise>
         </xsl:choose>
-        
+
     </xsl:function>
 
 
