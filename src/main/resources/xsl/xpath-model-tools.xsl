@@ -62,6 +62,84 @@
 
     </xsl:function>
 
+
+    <xsl:function name="nk:serialize-steps" as="xs:string">
+        <xsl:param name="steps" as="array(map(xs:string, xs:string))"/>
+        <xsl:sequence select="nk:serialize-steps($steps, map{'' : ''})"/>
+    </xsl:function>
+
+    <xsl:function name="nk:serialize-steps" as="xs:string">
+        <xsl:param name="steps" as="array(map(xs:string, xs:string))"/>
+        <xsl:param name="namespaces" as="map(xs:string, xs:string)"/>
+        <xsl:sequence select="$steps?* ! nk:serialize-step(., $namespaces) => string-join('/')"/>
+    </xsl:function>
+    <xsl:function name="nk:serialize-step" as="xs:string?">
+        <xsl:param name="step" as="map(xs:string, xs:string)"/>
+        <xsl:param name="namespaces" as="map(xs:string, xs:string)"/>
+
+        <xsl:variable name="namespaces"
+            select="
+            map:merge((map{'':''}, $namespaces))
+            "/>
+        <xsl:variable name="kind" select="$step?kind"/>
+        <xsl:variable name="axis" select="$step?axis"/>
+        <xsl:variable name="local-name" select="$step?local-name"/>
+        <xsl:variable name="namespace" select="$step?namespace"/>
+
+        <xsl:variable name="isAttribute" select="distinct-values(($kind, $axis)) = 'attribute'"/>
+
+
+        <xsl:variable name="axis-part"
+            select="
+                if ($step?axis = 'child') then
+                    ''
+                else
+                    if ($isAttribute) then
+                        '@'
+                    else
+                        $step?axis || '::'"/>
+        <xsl:variable name="ns-part"
+            select="
+                if ($namespace = '*') then
+                    ('*:')
+                else
+                    if ($namespaces?* = $namespace)
+                    then
+                        map:keys($namespaces)[$namespaces(.) = $namespace][1] || ':'
+                    else
+                        'Q{' || $namespace || '}'
+                "/>
+        <xsl:variable name="ns-part" select="($ns-part[. != ':'], '')[1]"/>
+        <xsl:variable name="name-part" select="
+                $ns-part || $local-name
+                "/>
+        <xsl:variable name="nodeTest"
+            select="
+                if ($kind = 'element' or $isAttribute) then
+                    $name-part
+                else
+                    $kind || '(' || $name-part || ')'
+                "/>
+        <xsl:variable name="nodeTest"
+            select="
+                if ($nodeTest = '*:*') then
+                    '*'
+                else
+                    $nodeTest
+                "/>
+        <xsl:sequence
+            select="
+                if ($step?axis = 'start') then
+                    if ($kind = 'document-node') then
+                        ''
+                    else
+                        ()
+                else
+                    $axis-part || $nodeTest
+                "
+        />
+    </xsl:function>
+
     <xsl:function name="nk:get-context-provider" as="map(*)*">
         <xsl:param name="nodeTest" as="element()"/>
         <xsl:param name="exprContext" as="map(*)"/>

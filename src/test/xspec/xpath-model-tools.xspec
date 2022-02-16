@@ -787,5 +787,87 @@
         
     </x:scenario>
     
+    <x:scenario label="Testing function nk:serialize-steps" catch="true">
+        <x:call function="nk:serialize-step"/>
+        
+        <x:scenario label="with default ns binding">
+            <x:call>
+                <x:param position="2" select="map{}"/>
+            </x:call>
+            <x:scenario label="foo">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : '',
+                            'axis' : 'child',
+                            'local-name' : 'foo',
+                            'kind' : 'element'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'foo'"/>
+            </x:scenario>
+            <x:scenario label="parent::foo">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : '',
+                            'axis' : 'parent',
+                            'local-name' : 'foo',
+                            'kind' : 'element'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'parent::foo'"/>
+            </x:scenario>
+            <x:scenario label="parent::*">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : '*',
+                            'axis' : 'parent',
+                            'local-name' : '*',
+                            'kind' : 'element'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'parent::*'"/>
+            </x:scenario>
+            <x:scenario label="@bar">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : '',
+                            'axis' : 'attribute',
+                            'local-name' : 'bar',
+                            'kind' : 'attribute'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'@bar'"/>
+            </x:scenario>
+            <x:scenario label="@*">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : '*',
+                            'axis' : 'attribute',
+                            'local-name' : '*',
+                            'kind' : 'attribute'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'@*'"/>
+            </x:scenario>
+            <x:scenario label="ns1:foo">
+                <x:call>
+                    <x:param select="
+                        map{
+                            'namespace' : 'ns1.com',
+                            'axis' : 'child',
+                            'local-name' : 'foo',
+                            'kind' : 'element'
+                        }"/>
+                </x:call>
+                <x:expect label="serialized step" select="'Q{ns1.com}foo'"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>
     
 </x:description>
