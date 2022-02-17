@@ -536,8 +536,52 @@
                         </x:call>
                         <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
                         <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                        <x:expect label="marked as unknown context" test="boolean($x:result?unknown-context)"/>
                     </x:scenario>
                 </x:scenario>
+            </x:scenario>
+            <x:scenario label="with unknown source">
+                <x:scenario label="using variable with content">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">ns1:function-call(.)/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                        <x:expect label="marked as unknown context" test="boolean($x:result?unknown-context)"/>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="using variable with content">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$not-declared/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                        <x:expect label="marked as unknown context" test="boolean($x:result?unknown-context)"/>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="using variable with content">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">$global-param/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                        <x:expect label="marked as unknown context" test="boolean($x:result?unknown-context)"/>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="lookup some nodes in map">
+                    <x:scenario label="trivial">
+                        <x:call>
+                            <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'check']">map{}?foo/check</x:param>
+                        </x:call>
+                        <x:expect label="return object" test="$x:result?nodeTest" select="()"/>
+                        <x:expect label="requires not root" test="not($x:result?root-required)"/>
+                        <x:expect label="marked as unknown context" test="boolean($x:result?unknown-context)"/>
+                    </x:scenario>
+                </x:scenario>
+                
             </x:scenario>
         </x:scenario>
             
@@ -701,6 +745,56 @@
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $ns1, $ns2"/>
                 <x:expect label="not an error" test="not($x:result instance of map(*) and exists($x:result?err))"/>
             </x:scenario>
+        </x:scenario>
+        
+        <x:scenario label="with unknown context">
+            <x:variable name="xsl-snippet" select="xsl:value-of">
+                <xsl:variable name="var-w-content"><some><xml/></some></xsl:variable>
+                <xsl:param name="parameter"/>
+                
+                <xsl:value-of select="'dummy-xpath'"/>
+            </x:variable>
+            <x:call>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet/@select, ())"/>
+            </x:call>
+            
+            <x:scenario label="var with content">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">$var-w-content/check</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'unknown', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'check'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+            </x:scenario>
+            <x:scenario label="undeclared variable">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">$undeclared-variable/check</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'unknown', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'check'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+            </x:scenario>
+            <x:scenario label="parameter">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">$parameter/check</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'unknown', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'check'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+            </x:scenario>
+            <x:scenario label="from map">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">map{}?key/check</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'unknown', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'check'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+            </x:scenario>
+            
         </x:scenario>
     </x:scenario>
     

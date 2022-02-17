@@ -47,9 +47,16 @@
                             else
                                 ('node')
                             "/>
+                    <xsl:variable name="start-axis"
+                        select="
+                            if (?unknown-context) then
+                                'unknown'
+                            else
+                                'start'
+                            "/>
                     <xsl:sequence
                         select="[map{
-                            'axis': 'start', 
+                            'axis': $start-axis, 
                             'local-name' : '*',
                             'namespace' : '*',
                             'kind' : $start-kind
@@ -322,7 +329,8 @@
                             select="map{
                                 'nodeTest' : (),
                                 'root-required' : false(),
-                                'reason' : 'variable-' || $varname || '-not-declared',
+                                'unknown-context' : true(),
+                                'reason' : 'variable-' || $varname || '-not-declared-or-no-select',
                                 'context' : $exprContext
                             }"
                         />
@@ -376,6 +384,7 @@
                                         select="map{
                                             'nodeTest' : (),
                                             'root-required' : false(),
+                                            'unknown-context' : true(),
                                             'reason' : name() || '-is-context-provider',
                                             'context' : $parentContext,
                                             'pathObj' : .
@@ -414,6 +423,7 @@
                     select="map{
                         'nodeTest' : (),
                         'root-required' : false(),
+                        'unknown-context' : true(),
                         'reason' : $provider/name() || '-is-context-provider',
                         'context' : $exprContext,
                         'pathObj' : $provider
