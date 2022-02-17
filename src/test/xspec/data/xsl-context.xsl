@@ -5,6 +5,8 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
+    <xsl:param name="global-param"/>
+    
     <xsl:variable name="var-w-content" xml:id="var-w-content">
         <some>
             <content>

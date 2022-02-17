@@ -4,7 +4,9 @@
     xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:avt="http://www.nkutsche.com/avt-parser"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
-    xmlns:sch="http://purl.oclc.org/dsdl/schematron" exclude-result-prefixes="#all" version="3.0">
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+    xmlns:sqf="http://www.schematron-quickfix.com/validator/process" exclude-result-prefixes="#all"
+    version="3.0">
 
 
     <xsl:function name="nk:get-path-in-expression" as="array(map(xs:string, xs:string))*" visibility="final">
@@ -212,9 +214,10 @@
                 $node/ancestor-or-self::*/
                 preceding-sibling::sch:let
                 "/>
-        <xsl:variable name="anc" select="$node/ancestor::sch:*"/>
+        <xsl:variable name="anc" select="$node/(ancestor::sch:* | ancestor::sqf:*)"/>
 
-        <xsl:variable name="rule" select="$anc[self::sch:rule/@context]"/>
+        <xsl:variable name="context-el"
+            select="$anc[(self::sch:rule/@context | self::sqf:*/@match) except $node][last()]"/>
 
         <xsl:variable name="schema" select="$anc/self::sch:schema"/>
         <xsl:variable name="namespaces"
@@ -233,7 +236,7 @@
         <xsl:sequence
             select="map{
                 'parent' : function(){
-                    $rule/nk:sch-context(., nk:xpath-model(@context, $xpm-config)/self::expr)
+                    $context-el/nk:sch-context(., nk:xpath-model((@context|@match), $xpm-config)/self::expr)
                 },
                 'variable-context' : function($variableName as xs:QName){
                 $var-scope($variableName)/nk:sch-context(., nk:xpath-model(@value, $xpm-config)/self::expr)

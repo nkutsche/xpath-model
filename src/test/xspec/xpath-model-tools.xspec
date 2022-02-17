@@ -255,6 +255,30 @@
             <x:expect label="parent" test="$x:result?parent()?node" select="()"/>
             <x:expect label="parent" test="$x:result?parent()?expr" select="()"/>
         </x:scenario>
+        <x:scenario label="parent of sch:rule/@subject">
+            <x:call>
+                <x:param name="node" position="1" select="//*[@id = 'rule1']/@subject" href="data/sch-context.sch"/>
+            </x:call>
+            <x:expect label="parent" test="$x:result?parent()?node" select="//*[@id = 'rule1']" href="data/sch-context.sch"/>
+            <x:expect label="parent" test="$x:result?parent()?expr"><expr>...</expr></x:expect>
+            <x:expect label="parent" test="nk:xpath-serializer($x:result?parent()?expr)" select="'operation'"/>
+        </x:scenario>
+        <x:scenario label="parent of sqf:replace/@select">
+            <x:call>
+                <x:param name="node" position="1" select="id('sqf-replace')/@select" href="data/sch-context.sch"/>
+            </x:call>
+            <x:expect label="parent" test="$x:result?parent()?node" select="id('sqf-replace')" href="data/sch-context.sch"/>
+            <x:expect label="parent" test="$x:result?parent()?expr"><expr>...</expr></x:expect>
+            <x:expect label="parent" test="nk:xpath-serializer($x:result?parent()?expr)" select="'operation'"/>
+        </x:scenario>
+        <x:scenario label="parent of sqf:replace">
+            <x:call>
+                <x:param name="node" position="1" select="id('sqf-replace2-valueof')/@select" href="data/sch-context.sch"/>
+            </x:call>
+            <x:expect label="parent" test="$x:result?parent()?node" select="id('sqf-replace2')" href="data/sch-context.sch"/>
+            <x:expect label="parent" test="$x:result?parent()?expr"><expr>...</expr></x:expect>
+            <x:expect label="parent" test="nk:xpath-serializer($x:result?parent()?expr)" select="'operation'"/>
+        </x:scenario>
     </x:scenario>
     
     
@@ -658,6 +682,45 @@
             </x:scenario>
             
         </x:scenario>
+        <x:scenario label="inside of sqf:replace/@select">
+            <x:variable name="context" select="nk:sch-context(id('sqf-replace')/@select, ())" href="data/sch-context.sch"/>
+            <x:call>
+                <x:param name="exprContext" position="2" select="$context"/>
+            </x:call>
+            
+            <x:scenario label="trivial">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest name="operation" kind="element"/>
+                </x:expect>
+                
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+                <x:expect label="count results" test="count($x:result)" select="1"/>
+            </x:scenario>
+
+            
+        </x:scenario>
+        <x:scenario label="inside of sqf:replace">
+            <x:variable name="context" select="nk:sch-context(id('sqf-replace2-valueof')/@select, ())" href="data/sch-context.sch"/>
+            <x:call>
+                <x:param name="exprContext" position="2" select="$context"/>
+            </x:call>
+            
+            <x:scenario label="trivial">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+                </x:call>
+                <x:expect label="return object" test="$x:result?nodeTest">
+                    <nodeTest name="operation" kind="element"/>
+                </x:expect>
+                <x:expect label="root required" test="boolean($x:result?root-required) eq false()"/>
+                <x:expect label="count results" test="count($x:result)" select="1"/>
+            </x:scenario>
+
+            
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Testing function nk:get-path-in-expression" catch="true">
@@ -793,6 +856,47 @@
                 <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
                 <x:expect label="local" test="$x:result?*?local-name" select="'*', 'check'"/>
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+            </x:scenario>
+            
+        </x:scenario>
+       
+        <x:scenario label="trivial foo in different context">
+            <x:call>
+                <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[@name = 'foo']">foo</x:param>
+            </x:call>
+            <x:scenario label="in sch:rule/@subject">
+                <x:variable name="sch-context" select="//*[@id = 'rule1']/@subject" href="data/sch-context.sch"/>
+                <x:call>
+                    <x:param position="2" select="nk:sch-context($sch-context, ())"/>
+                </x:call>
+                    
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'operation', 'foo'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
+                
+            </x:scenario>
+            <x:scenario label="in sch:rule/@context">
+                <x:variable name="sch-context" select="//*[@id = 'rule1']/@context" href="data/sch-context.sch"/>
+                <x:call>
+                    <x:param position="2" select="nk:sch-context($sch-context, ())"/>
+                </x:call>
+                    
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', ''"/>
+                
+            </x:scenario>
+            <x:scenario label="in sch:assert/@test">
+                <x:variable name="sch-context" select="//*[@id = 'assert1']/@test" href="data/sch-context.sch"/>
+                <x:call>
+                    <x:param position="2" select="nk:sch-context($sch-context, ())"/>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'operation', 'foo'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
             </x:scenario>
             
         </x:scenario>
