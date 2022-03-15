@@ -89,12 +89,17 @@
 
         <xsl:variable name="validation-modes" select="('lax', 'strict')"/>
         <xsl:variable name="valmode" select="($config?validation-mode[. = $validation-modes], 'lax')[1]"/>
-        
+        <xsl:variable name="target-namespaces"
+            select="nk:create-namespaces($parsed, ($config?namespaces, map {})[1])"/>
+
         <xsl:variable name="model" as="element()">
             <xsl:try>
                 <xsl:element name="{$root-element}">
-                    <xsl:sequence select="nk:create-namespaces($parsed, ($config?namespaces, map{})[1])"/>
-                    <xsl:apply-templates select="$parsed" mode="nk:xpath-model"/>
+                    <xsl:sequence select="$target-namespaces"/>
+                    <xsl:apply-templates select="$parsed" mode="nk:xpath-model">
+                        <xsl:with-param name="config"
+                            select="map:put($config, 'target-namespaces', $target-namespaces)" tunnel="yes"/>
+                    </xsl:apply-templates>
                 </xsl:element>
                 <xsl:catch errors="*">
                     <ERROR message="Invalid result:" code="{$err:code}"><xsl:sequence select="$err:description"/></ERROR>
@@ -160,18 +165,82 @@
     <xsl:function name="nk:create-namespaces" as="namespace-node()*">
         <xsl:param name="parsed" as="element()"/>
         <xsl:param name="namespace-bindings" as="map(xs:string, xs:string)"/>
-        
-        <xsl:variable name="namespace-bindings" select="map:put($namespace-bindings, 'xml', 'http://www.w3.org/XML/1998/namespace')"/>
 
-        <xsl:variable name="used-prefixes" as="xs:string*" select="$parsed//(QName[contains(., ':')]|NameTest/Wildcard[matches(., '^[^:]+:\*$')])/substring-before(., ':')[. != '*'] => distinct-values()"/>
+        <xsl:variable name="namespace-bindings"
+            select="map:put($namespace-bindings, 'xml', 'http://www.w3.org/XML/1998/namespace')"/>
+
+        <xsl:variable name="used-prefixes" as="xs:string*"
+            select="$parsed//(QName[contains(., ':')] | NameTest/Wildcard[matches(., '^[^:]+:\*$')])/substring-before(., ':')[. != '*'] => distinct-values()"/>
+
         <xsl:variable name="base-ns-uri" select="'http://www.nkutsche.com/xpath-model/dummy-namespace/'"/>
+
+        <xsl:variable name="def-prefix" select="nk:get-default-ns-prefix($namespace-bindings)"/>
+
         <xsl:for-each select="$used-prefixes">
             <xsl:namespace name="{.}" select="
                     ($namespace-bindings(.), $base-ns-uri || .)[1]
                     "/>
         </xsl:for-each>
 
+        <xsl:if test="$def-prefix[not(. = $used-prefixes)] and $namespace-bindings('#default') != ''">
+            <xsl:namespace name="{$def-prefix}" select="$namespace-bindings('#default')"/>
+        </xsl:if>
 
+
+    </xsl:function>
+
+    <xsl:function name="nk:get-default-ns-prefix" as="xs:string?">
+        <xsl:param name="namespace-bindings" as="map(xs:string, xs:string)"/>
+
+        <xsl:variable name="dns" select="$namespace-bindings('#default')"/>
+
+        <xsl:variable name="prefixes" select="map:keys($namespace-bindings)[. != '#default']"/>
+        <xsl:variable name="exist-prefix" select="$prefixes[$namespace-bindings(.) = $dns]"/>
+
+        <xsl:if test="exists($dns)">
+            <xsl:variable name="dns-gen-pfx" select="
+                    for $i in 1 to (count($prefixes) + 1)
+                    return
+                        (if ($i = 1) then
+                            ('default')
+                        else
+                            ('default-' || $i))"/>
+
+            <xsl:variable name="dns-gen-pfx" select="$dns-gen-pfx[not(. = $prefixes)][1]"/>
+
+            <xsl:sequence select="($exist-prefix, $dns-gen-pfx)[1]"/>
+
+        </xsl:if>
+
+    </xsl:function>
+
+    <xsl:function name="nk:add-default-ns-prefix">
+        <xsl:param name="name" as="xs:string"/>
+        <xsl:param name="config" as="map(*)"/>
+        <xsl:param name="kind" as="xs:string"/>
+
+        <xsl:variable name="default-namespace" select="$config?namespaces('#default')"/>
+
+        <xsl:variable name="dns-prefix"
+            select="$config?target-namespaces[string(.) = $default-namespace]/name()"/>
+
+        <xsl:variable name="use-def-ns-prefix" select="
+                $name castable as xs:NCName
+                and
+                $default-namespace[. != '']
+                and
+                $kind = ('element', 'type')
+                "/>
+
+        <xsl:variable name="name" select="
+                if ($use-def-ns-prefix)
+                then
+                    $dns-prefix || ':' || $name
+                else
+                    $name
+                "/>
+
+        <xsl:sequence select="$name"/>
     </xsl:function>
 <!--    
     Value Templates
@@ -285,18 +354,27 @@
 
     <xsl:template match="NodeTest[NameTest]" mode="nk:xpath-model">
         <xsl:param name="axis" tunnel="yes" as="xs:string"/>
+        <xsl:param name="config" tunnel="yes" as="map(xs:string, item()*)"/>
+
+
+        <xsl:variable name="kind" select="
+                if ($axis = 'attribute') then
+                    'attribute'
+                else
+                    if ($axis = 'namespace') then
+                        'namespace-node'
+                    else
+                        'element'
+                "/>
+
+        <xsl:variable name="name" select="string(NameTest/(EQName | Wildcard))"/>
+
+
         <nodeTest>
             <xsl:if test="NameTest/EQName or NameTest/Wildcard[not(normalize-space(.) = '*')]">
-                <xsl:attribute name="name" select="string(NameTest/(EQName | Wildcard))"/>
+                <xsl:attribute name="name" select="nk:add-default-ns-prefix($name, $config, $kind)"/>
             </xsl:if>
-            <xsl:attribute name="kind" select="
-                    if ($axis = 'attribute') then
-                        'attribute'
-                    else
-                        if ($axis = 'namespace') then
-                            'namespace-node'
-                        else
-                            'element'"/>
+            <xsl:attribute name="kind" select="$kind"/>
             <xsl:apply-templates select=".//Comment" mode="#current"/>
         </nodeTest>
     </xsl:template>
@@ -377,11 +455,16 @@
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
-    <xsl:template match="ElementName | AttributeName" mode="nk:xpath-model">
+    <xsl:template match="ElementName" mode="nk:xpath-model">
+        <xsl:param name="config" tunnel="yes" as="map(xs:string, item()*)"/>
+        <xsl:attribute name="name" select="nk:add-default-ns-prefix(string(EQName), $config, 'element')"/>
+    </xsl:template>
+    <xsl:template match="AttributeName" mode="nk:xpath-model">
         <xsl:attribute name="name" select="string(EQName)"/>
     </xsl:template>
     <xsl:template match="TypeName" mode="nk:xpath-model">
-        <xsl:attribute name="type" select="string(EQName)"/>
+        <xsl:param name="config" tunnel="yes" as="map(xs:string, item()*)"/>
+        <xsl:attribute name="type" select="nk:add-default-ns-prefix(string(EQName), $config, 'type')"/>
     </xsl:template>
 
     <xsl:template match="PITest/NCName" mode="nk:xpath-model">
@@ -596,7 +679,10 @@
         <xsl:apply-templates select="Comment" mode="#current"/>
     </xsl:template>
     <xsl:template match="SimpleTypeName | AtomicOrUnionType" priority="25" mode="nk:xpath-operations">
-        <atomic name="{string(TypeName/EQName|EQName)}"/>
+        <xsl:param name="config" tunnel="yes" as="map(xs:string, item()*)"/>
+        <xsl:variable name="typeName"
+            select="nk:add-default-ns-prefix(string(TypeName/EQName | EQName), $config, 'type')"/>
+        <atomic name="{$typeName}"/>
     </xsl:template>
 
     <xsl:template match="Predicate" priority="25" mode="nk:xpath-operations">
