@@ -828,6 +828,18 @@
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $ns1, $ns2"/>
                 <x:expect label="not an error" test="not($x:result instance of map(*) and exists($x:result?err))"/>
             </x:scenario>
+            <x:scenario label="with default namespaces">
+                <x:variable name="defns" select="'default-ns.com'"/>
+                <x:variable name="xpmconfig" select="map{'namespaces' : map{'#default' : $defns}}"/>
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(., $xpmconfig)//nodeTest)[last()]">foo/bar</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'foo', 'bar'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $defns, $defns"/>
+                <x:expect label="not an error" test="not($x:result instance of map(*) and exists($x:result?err))"/>
+            </x:scenario>
         </x:scenario>
         
         <x:scenario label="in template/@match">
@@ -879,6 +891,35 @@
                 <x:expect label="local" test="$x:result?*?local-name" select="'*', 'match', 'foo', '*'"/>
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', '', '*'"/>
                 <x:expect label="serialized" test="nk:serialize-steps($x:result)" select="'match/foo/following-sibling::*'"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="xsl:when inside of template/@match with default-namespace">
+            <x:variable name="ns" select="'http://www.nkutsche.com'"/>
+            
+            <x:variable name="xpmconfig" select="map{'namespaces' : map{'#default' : $ns}}"/>
+            
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:template/xsl:choose/xsl:when">
+                <xsl:stylesheet xpath-default-namespace="{$ns}">
+                    <xsl:template match="prolog">
+                        <xsl:choose>
+                            <xsl:when test="dummy">
+                                
+                            </xsl:when>
+                        </xsl:choose>
+                    </xsl:template>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet/@test, ())"/>
+            </x:call>
+            <x:scenario label="parent::notice/@internal">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(., $xpmconfig)//nodeTest)[last()]">parent::notice/@internal</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result?*?axis" select="'start', 'child', 'parent', 'attribute'"/>
+                <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element', 'attribute'"/>
+                <x:expect label="local" test="$x:result?*?local-name" select="'*', 'prolog', 'notice', 'internal'"/>
+                <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $ns, $ns, ''"/>
             </x:scenario>
         </x:scenario>
         <x:scenario label="with unknown context">
@@ -971,6 +1012,7 @@
             </x:scenario>
             
         </x:scenario>
+        
     </x:scenario>
     
     <x:scenario label="Testing function nk:name-matcher" catch="true">
