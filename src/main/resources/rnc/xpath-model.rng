@@ -645,7 +645,6 @@ This is just for debugging...
       <ref name="emptySequence"/>
       <ref name="varRef"/>
       <ref name="self"/>
-      <ref name="contsructors"/>
       <ref name="unaryLookup"/>
       <ref name="root"/>
     </choice>
@@ -706,12 +705,6 @@ This is just for debugging...
   </define>
   <define name="root">
     <element name="root">
-      <empty/>
-    </element>
-  </define>
-  <!-- TDB!!! -->
-  <define name="contsructors">
-    <element name="contsructors">
       <empty/>
     </element>
   </define>
