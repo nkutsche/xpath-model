@@ -6,9 +6,11 @@
 
     <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
 
-    <xsl:param name="default-config" as="map(xs:string, item()*)" select="map{
-        'validation-mode' : 'lax'
-        }"/>
+    <xsl:param name="default-config" as="map(xs:string, item()*)" select="
+            map {
+                'validation-mode': 'lax',
+                'namespaces': map {}
+            }"/>
 
 
     <xsl:function name="nk:xpath-model-value-template" as="element()" visibility="final">
@@ -59,15 +61,32 @@
                 "/>
     </xsl:function>
     
-    
+    <xsl:function name="nk:effective-config" as="map(xs:string, item()*)">
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:sequence select="nk:effective-config($config, $default-config)"/>
+    </xsl:function>
+    <xsl:function name="nk:effective-config" as="map(xs:string, item()*)">
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:param name="default-config" as="map(xs:string, item()*)"/>
+        <xsl:sequence select="(
+            $config,
+            $default-config,
+            map {
+                'validation-mode': 'lax',
+                'namespaces': map {}
+            }
+            ) => map:merge()
+            "/>
+    </xsl:function>
+
     <xsl:function name="nk:xpath-model-internal" as="element()">
         <xsl:param name="parsed" as="element()"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:param name="root-element" as="xs:string"/>
         <xsl:variable name="parsed" select="nk:pre-parse-comments($parsed)"/>
-        
-        <xsl:variable name="config" select="($config, $default-config) => map:merge()"/>
-        
+
+        <xsl:variable name="config" select="nk:effective-config($config)"/>
+
         <xsl:variable name="validation-modes" select="('lax', 'strict')"/>
         <xsl:variable name="valmode" select="($config?validation-mode[. = $validation-modes], 'lax')[1]"/>
         
