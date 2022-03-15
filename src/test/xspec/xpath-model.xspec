@@ -8,6 +8,26 @@
     
     <x:param name="default-config" select="map{'validation-mode' : 'strict'}"/>
     
+    <x:scenario label="Scenario testing function call nk:remove-default-prefix">
+        <x:call function="nk:remove-default-prefix"/>
+        <x:scenario label="with default-namespace config">
+            <x:call>
+                <x:param position="2" select="map{'namespaces' : map{'#default' : 'default-namespace.com'}}"/>
+            </x:call>
+            
+            <x:scenario label="foo">
+                <x:variable name="nodeTest" select="*">
+                    <nodeTest kind="element" name="foo"/>
+                </x:variable>
+                <x:call>
+                    <x:param position="1" select="$nodeTest/@name"/>
+                    <x:param position="3" select="$nodeTest/@kind"/>
+                </x:call>
+                <x:expect label="result nametest" select="'Q{}foo'"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>
     <x:scenario label="Scenario testing function call nk:quote-unesc">
         <x:call function="nk:quote-unesc"/>
         <x:scenario label="single apos">
@@ -4027,6 +4047,213 @@
                     <x:expect label="expected expression" select="string(.)">concat#3('foo', '_', 'bar')</x:expect>
                 </x:scenario>
             </x:scenario>
+            <x:scenario label="default-namesapce">
+                <x:variable name="dns" select="'http://www.nkutsche.com/default-namespace'"/>
+                <x:scenario label="with single namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:default="http://www.nkutsche.com/default-namespace">
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="default:foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="element(foo, type)">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:default="http://www.nkutsche.com/default-namespace">
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="default:foo" type="default:fooType"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">element(foo, fooType)</x:expect>
+                    </x:scenario>
+                    <x:scenario label="attribute(foo)">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="attribute" name="foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">attribute(foo)</x:expect>
+                    </x:scenario>
+                    
+                    <x:scenario label="attribute(foo, fooType)">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:default="http://www.nkutsche.com/default-namespace">
+                                    <locationStep axis="child">
+                                        <nodeTest kind="attribute" name="foo" type="default:fooType"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">attribute(foo, fooType)</x:expect>
+                    </x:scenario>
+                    <x:scenario label="@foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="attribute">
+                                        <nodeTest kind="attribute" name="foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">@foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="Q{{}}foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="Q{{}}foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">Q{}foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="$foo instance of type">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:default="http://www.nkutsche.com/default-namespace">
+                                    <operation type="instance-of">
+                                       <arg>
+                                          <varRef name="foo"/>
+                                       </arg>
+                                       <instanceOf/>
+                                       <itemType>
+                                          <atomic name="default:type"/>
+                                       </itemType>
+                                    </operation>
+                                 </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">$foo instance of type</x:expect>
+                    </x:scenario>
+                    <x:scenario label="Q{}foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)">Q{}foo</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <!--<x:scenario label="with a custom prefix for def namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'def' : $dns
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="def:foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">foo</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a simple prefix conflict for def namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="default-2:foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">foo</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a complex prefix conflict for def namespace (find the gap)">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com',
+                                    'default-2' : 'foo2.com',
+                                    'default-3' : 'foo3.com',
+                                    'default-5' : 'foo5.com',
+                                    'default-7' : 'foo7.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="default-4:foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">foo</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a complex prefix conflict for def namespace (get in the back)">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com',
+                                    'default-2' : 'foo2.com',
+                                    'default-3' : 'foo3.com',
+                                    'default-4' : 'foo4.com',
+                                    'default-5' : 'foo5.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param>
+                                <expr>
+                                    <locationStep axis="child">
+                                        <nodeTest kind="element" name="default-6:foo"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        
+                        <x:expect label="expected expression" select="string(.)">foo</x:expect>
+                    </x:scenario>
+                </x:scenario>-->
+            </x:scenario>
             <x:scenario label="comments">
                 <x:scenario label="(: comments :)()">
                     <x:call>
@@ -7589,6 +7816,227 @@
                             </operation>
                         </expr>
                     </x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="default-namesapce">
+                <x:variable name="dns" select="'http://www.nkutsche.com/default-namespace'"/>
+                <x:scenario label="with single namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param select="string(.)">foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                    <x:scenario label="element(foo)">
+                        <x:call>
+                            <x:param select="string(.)">element(foo)</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                    <x:scenario label="element(foo, type)">
+                        <x:call>
+                            <x:param select="string(.)">element(foo, fooType)</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default:foo" kind="element" type="default:fooType"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                    <x:scenario label="attribute(foo)">
+                        <x:call>
+                            <x:param select="string(.)">attribute(foo)</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="foo" kind="attribute"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                    </x:scenario>
+    
+                    <x:scenario label="attribute(foo, fooType)">
+                        <x:call>
+                            <x:param select="string(.)">attribute(foo, fooType)</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="foo" kind="attribute" type="default:fooType"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                    <x:scenario label="@foo">
+                        <x:call>
+                            <x:param select="string(.)">@foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="attribute">
+                                    <nodeTest name="foo" kind="attribute"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                    </x:scenario>
+                    <x:scenario label="Q{{}}foo">
+                        <x:call>
+                            <x:param select="string(.)">Q{}foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="Q{{}}foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                    </x:scenario>
+                    <x:scenario label="$foo instance of type">
+                        <x:call>
+                            <x:param select="string(.)">$foo instance of type</x:param>
+                        </x:call>
+                        <x:expect label="item type has namespace attribute" test="$x:result/operation/itemType">
+                            <itemType>
+                                <atomic name="default:type"/>
+                             </itemType>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="
+                            $x:result/operation/itemType/atomic/namespace::default/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a custom prefix for def namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'def' : $dns
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param select="string(.)">foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="def:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::def/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a simple prefix conflict for def namespace">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param select="string(.)">foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default-2:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default-2/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a complex prefix conflict for def namespace (find the gap)">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com',
+                                    'default-2' : 'foo2.com',
+                                    'default-3' : 'foo3.com',
+                                    'default-5' : 'foo5.com',
+                                    'default-7' : 'foo7.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param select="string(.)">foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default-4:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default-4/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="with a complex prefix conflict for def namespace (get in the back)">
+                    <x:call>
+                        <x:param position="2" select="map{'namespaces' : map{
+                                    '#default' : $dns,
+                                    'default' : 'foo.com',
+                                    'default-2' : 'foo2.com',
+                                    'default-3' : 'foo3.com',
+                                    'default-4' : 'foo4.com',
+                                    'default-5' : 'foo5.com'
+                                    }}"/>
+                    </x:call>
+                    <x:scenario label="foo">
+                        <x:call>
+                            <x:param select="string(.)">foo</x:param>
+                        </x:call>
+                        <x:expect label="expected result tree">
+                            <expr>
+                                <locationStep axis="child">
+                                    <nodeTest name="default-6:foo" kind="element"/>
+                                </locationStep>
+                            </expr>
+                        </x:expect>
+                        <x:expect label="expected result tree" test="$x:result/*/nodeTest/namespace::default-6/string(.)"
+                            select="$dns"
+                        />
+                    </x:scenario>
                 </x:scenario>
             </x:scenario>
             <x:scenario label="comments">
