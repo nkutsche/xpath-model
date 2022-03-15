@@ -292,7 +292,7 @@
         <xsl:sequence
             select="map{
                 'parent' : function(){
-                    $context/(@select|@match)/nk:xsl-context(., nk:xpath-model(., $xpm-config-gen(.)))
+                    $context/(@select|@match)/nk:xsl-context(., nk:xpath-model(., $xpm-config-gen(.), true()))
                 },
                 'variable-context' : function($variableName as xs:QName){
                     $var-scope ! .($variableName)[@select]/nk:xsl-context(., nk:xpath-model(@select, $xpm-config-gen(.)))

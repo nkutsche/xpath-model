@@ -40,11 +40,23 @@
     <xsl:function name="nk:xpath-model" as="element()" visibility="final">
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:sequence select="nk:xpath-model($xpath, $config, false())"/>
+    </xsl:function>
+    <xsl:function name="nk:xpath-model" as="element()" visibility="final">
+        <xsl:param name="xpath" as="xs:string"/>
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:param name="fail-on-error" as="xs:boolean"/>
+
         <xsl:variable name="parsed" select="p:parse-XPath($xpath)"/>
+        <xsl:variable name="model" select="
+                $parsed
+                => nk:xpath-model-internal($config, 'expr')"/>
         <xsl:sequence select="
-            p:parse-XPath($xpath)
-            => nk:xpath-model-internal($config, 'expr')
-            "/>
+                if ($model/self::ERROR and $fail-on-error) then
+                    error(xs:QName('nk:xp-model-parse-error'), string($model) || ' (on XPath: ' || $xpath || ')')
+                else
+                    $model
+                "/>
     </xsl:function>
     
     
