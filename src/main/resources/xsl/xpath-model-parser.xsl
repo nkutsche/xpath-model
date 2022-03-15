@@ -991,7 +991,7 @@
         <xsl:apply-templates select="* except TOKEN" mode="#current"/>
     </xsl:template>
 
-    <xsl:template match="FunctionBody/EnclosedExpr[not(* except TOKEN)]" mode="nk:xpath-model">
+    <xsl:template match="FunctionBody/EnclosedExpr[not(* except TOKEN)]" mode="nk:xpath-model" priority="10">
         <empty/>
     </xsl:template>
     
