@@ -11,12 +11,12 @@
         }"/>
 
 
-    <xsl:function name="nk:xpath-model-value-template" as="element()">
+    <xsl:function name="nk:xpath-model-value-template" as="element()" visibility="final">
         <xsl:param name="value-template" as="xs:string"/>
         <xsl:sequence select="nk:xpath-model-value-template($value-template, $default-config)"/>
     </xsl:function>
-    
-    <xsl:function name="nk:xpath-model-value-template" as="element()">
+
+    <xsl:function name="nk:xpath-model-value-template" as="element()" visibility="final">
         <xsl:param name="value-template" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:sequence select="
@@ -30,14 +30,14 @@
         <xsl:variable name="parsed" select="avt:parse-AVT($value-template)"/>
         <xsl:sequence select="$parsed"/>
     </xsl:function>
-    
-    
-    <xsl:function name="nk:xpath-model" as="element()">
+
+
+    <xsl:function name="nk:xpath-model" as="element()" visibility="final">
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:sequence select="nk:xpath-model($xpath, $default-config)"/>
     </xsl:function>
 
-    <xsl:function name="nk:xpath-model" as="element()">
+    <xsl:function name="nk:xpath-model" as="element()" visibility="final">
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:variable name="parsed" select="p:parse-XPath($xpath)"/>

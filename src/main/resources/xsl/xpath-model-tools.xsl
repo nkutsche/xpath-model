@@ -72,12 +72,12 @@
     </xsl:function>
 
 
-    <xsl:function name="nk:serialize-steps" as="xs:string">
+    <xsl:function name="nk:serialize-steps" as="xs:string" visibility="final">
         <xsl:param name="steps" as="array(map(xs:string, xs:string))"/>
         <xsl:sequence select="nk:serialize-steps($steps, map{'' : ''})"/>
     </xsl:function>
 
-    <xsl:function name="nk:serialize-steps" as="xs:string">
+    <xsl:function name="nk:serialize-steps" as="xs:string" visibility="final">
         <xsl:param name="steps" as="array(map(xs:string, xs:string))"/>
         <xsl:param name="namespaces" as="map(xs:string, xs:string)"/>
         <xsl:sequence select="$steps?* ! nk:serialize-step(., $namespaces) => string-join('/')"/>
@@ -447,10 +447,7 @@
 
 
 
-
-
-
-    <xsl:function name="nk:get-return-from-expr" as="element()*">
+    <xsl:function name="nk:get-return-from-expr" as="element()*" visibility="final">
         <xsl:param name="expr-content" as="element()"/>
         <xsl:apply-templates select="$expr-content" mode="nk:get-return-from-expr"/>
     </xsl:function>

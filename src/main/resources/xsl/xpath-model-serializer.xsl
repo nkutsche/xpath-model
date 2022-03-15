@@ -2,11 +2,11 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nk="http://www.nkutsche.com/xpath-model" xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl" xmlns:map="http://www.w3.org/2005/xpath-functions/map" exclude-result-prefixes="#all" version="3.0">
     
     
-    <xsl:function name="nk:value-template-serializer" as="xs:string">
+    <xsl:function name="nk:value-template-serializer" as="xs:string" visibility="final">
         <xsl:param name="expr" as="element(value-template)"/>
         <xsl:sequence select="nk:value-template-serializer($expr, map{})"/>
     </xsl:function>
-    <xsl:function name="nk:value-template-serializer" as="xs:string">
+    <xsl:function name="nk:value-template-serializer" as="xs:string" visibility="final">
         <xsl:param name="expr" as="element(value-template)"/>
         <xsl:param name="config" as="map(*)"/>
         
@@ -17,14 +17,14 @@
         </xsl:variable>
         <xsl:sequence select="string-join($content)"/>
     </xsl:function>
-    
-    
-    <xsl:function name="nk:xpath-serializer" as="xs:string">
+
+
+    <xsl:function name="nk:xpath-serializer" as="xs:string" visibility="final">
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:sequence select="nk:xpath-serializer($expr, map{})"/>
     </xsl:function>
-    
-    <xsl:function name="nk:xpath-serializer" as="xs:string">
+
+    <xsl:function name="nk:xpath-serializer" as="xs:string" visibility="final">
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:param name="config" as="map(*)"/>
         
@@ -36,11 +36,12 @@
         <xsl:sequence select="string-join($content)"/>
     </xsl:function>
 
-    <xsl:function name="nk:xpath-serializer-sub" as="xs:string">
+    <xsl:function name="nk:xpath-serializer-sub" as="xs:string" visibility="final">
         <xsl:param name="subExpr" as="element()"/>
         <xsl:sequence select="nk:xpath-serializer-sub($subExpr, map{})"/>
     </xsl:function>
-    <xsl:function name="nk:xpath-serializer-sub" as="xs:string">
+
+    <xsl:function name="nk:xpath-serializer-sub" as="xs:string" visibility="final">
         <xsl:param name="subExpr" as="element()"/>
         <xsl:param name="config" as="map(*)"/>
         
