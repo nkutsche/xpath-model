@@ -7,6 +7,7 @@
     version="3.0"
     package-version="&project.version;"
     name="http://www.nkutsche.com/xpath-model"
+    declared-modes="false"
     >
     <xsl:import href="xpath-model.xsl"/>
     
