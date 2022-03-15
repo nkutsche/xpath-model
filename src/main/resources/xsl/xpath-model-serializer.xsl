@@ -112,14 +112,22 @@
         <xsl:sequence select="string((@name, '*')[1])"/>
     </xsl:template>
 
-    <xsl:template match="locationStep[not(@axis = ('attribute', 'namespace'))]/nodeTest[@kind = 'element' or not(@kind)]" mode="nk:xpath-serializer" priority="50">
+    <xsl:template match="locationStep[not(@axis = ('attribute', 'namespace'))]/nodeTest[@kind = 'element']"
+        mode="nk:xpath-serializer" priority="50">
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+
         <xsl:apply-templates select="comment()" mode="#current"/>
-        <xsl:sequence select="string((@name, '*')[1])"/>
+        <xsl:variable name="name" select="@name/nk:remove-default-prefix(., $config, 'element')"/>
+        <xsl:sequence select="string(($name, '*')[1])"/>
     </xsl:template>
 
     <xsl:template match="nodeTest[@type]" mode="nk:xpath-serializer" priority="100">
-        <xsl:variable name="name" as="xs:string*" select="(@name, '*')[1], @type"/>
-        <xsl:sequence select="@kind || '(' || string-join($name, ', ') || ')'"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="kind" select="@kind"/>
+        <xsl:variable name="name" select="@name/nk:remove-default-prefix(., $config, $kind)"/>
+        <xsl:variable name="type" select="@type/nk:remove-default-prefix(., $config, 'type')"/>
+        <xsl:variable name="name" as="xs:string*" select="($name, '*')[1], $type"/>
+        <xsl:sequence select="$kind || '(' || string-join($name, ', ') || ')'"/>
     </xsl:template>
     
     <xsl:template match="nodeTest" mode="nk:xpath-serializer">
@@ -128,10 +136,50 @@
         </xsl:variable>
         <xsl:sequence select="@kind || '(' || string-join($name) || ')'"/>
     </xsl:template>
-    
-    
-    
-<!--    
+
+    <xsl:template match="nodeTest/@name" mode="nk:xpath-serializer">
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:sequence select="nk:remove-default-prefix(., $config, ../@kind)"/>
+    </xsl:template>
+
+    <xsl:function name="nk:remove-default-prefix" as="xs:string">
+        <xsl:param name="name" as="attribute()"/>
+        <xsl:param name="config" as="map(*)"/>
+        <xsl:param name="kind" as="xs:string"/>
+
+        <xsl:variable name="namespace-map" select="($config?namespaces, map {})[1]"/>
+        <xsl:variable name="default-namespace" select="$namespace-map('#default')"/>
+
+        <xsl:choose>
+            <xsl:when test="$name castable as xs:Name and $default-namespace and $kind = ('element', 'type')">
+                <xsl:variable name="qname" select="nk:as-qname($name)"/>
+                <xsl:variable name="namespace" select="namespace-uri-from-QName($qname)"/>
+                <xsl:variable name="prefix" select="prefix-from-QName($qname) => string()"/>
+                <xsl:variable name="local" select="local-name-from-QName($qname)"/>
+
+                <xsl:sequence
+                    select="
+                        if ($namespace = $default-namespace) then
+                            $local
+                        else
+                            if ($prefix = '') then
+                                ('Q{}' || $local)
+                            else
+                                $name
+                        "
+                />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$name"/>
+            </xsl:otherwise>
+        </xsl:choose>
+
+
+    </xsl:function>
+
+
+
+    <!--    
     Literals
     -->
     
@@ -225,7 +273,8 @@
     
     
     <xsl:template match="itemType//atomic" mode="nk:xpath-serializer">
-        <xsl:sequence select="@name/string()"/>
+        <xsl:param name="config" tunnel="yes"/>
+        <xsl:sequence select="@name/nk:remove-default-prefix(., $config, 'type')"/>
     </xsl:template>
 
     <xsl:template match="itemType//mapType[not(*)]" mode="nk:xpath-serializer" priority="50">
