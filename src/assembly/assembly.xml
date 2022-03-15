@@ -19,7 +19,7 @@
 		<!-- Include everything in /src/main/resources
 			 (except *-compiled.xsl) -->
 		<fileSet>
-			<directory>${project.build.directory}/classes</directory>
+			<directory>${project.build.directory}/classes/${resource.subdir}</directory>
 			<outputDirectory>.</outputDirectory>
 		</fileSet>
 

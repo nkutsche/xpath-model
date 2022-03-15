@@ -11,7 +11,7 @@
         <saxon.version>10.6</saxon.version>
 
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
-
+        <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
     </properties>
     
     <dependencies>
@@ -27,10 +27,12 @@
             <resource>
                 <directory>src/main/resources.rpl</directory>
                 <filtering>true</filtering>
+                <targetPath>${resource.subdir}</targetPath>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
+                <targetPath>${resource.subdir}</targetPath>
             </resource>
         </resources>
         <plugins>
@@ -115,7 +117,7 @@
                         <inputFile>src/main/resources/rnc/xpath-model.rnc</inputFile>
                     </inputFiles>
                     <outputFileName>xpath-model.rng</outputFileName>
-                    <outputDirectory>${project.build.directory}/classes/rnc</outputDirectory>
+                    <outputDirectory>${project.build.directory}/classes/${resource.subdir}/rnc</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
