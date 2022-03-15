@@ -37,6 +37,22 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>com.nkutsche</groupId>
+                <artifactId>xslt-pkg-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package-info</goal>
+                        </goals>
+                        <configuration>
+                            <packagePath>${resource.subdir}/xsl/xpath-model-pkg.xsl</packagePath>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
