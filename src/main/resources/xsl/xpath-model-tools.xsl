@@ -252,15 +252,16 @@
 
         <xsl:variable name="anc" select="$node/ancestor::xsl:*"/>
         <xsl:variable name="anc" select="$anc except $anc/ancestor-or-self::xsl:analyze-string"/>
-        
+
         <xsl:variable name="context"
-            select="$anc
-            [
+            select="
+                $anc
+                [
                 (
-                    (self::xsl:for-each| self::xsl:for-each-group)/@select 
-                    | (self::xsl:key | self::xsl:template)/@match
+                (self::xsl:for-each | self::xsl:for-each-group)/@select
+                | (self::xsl:key | self::xsl:template)/@match
                 ) except $node
-            ][last()]"/>
+                ][last()]"/>
 
 
         <xsl:variable name="local-variables"
