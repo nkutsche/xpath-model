@@ -278,10 +278,11 @@
         <xsl:variable name="xpm-config-gen"
             select="function($ctx){
                 let $namespaces := $ctx/namespace::*/map{name() : string(.)},
-                $default-ns := ('', $ctx/ancestor-or-self::*/(@xsl:xpath-default-namespace | self::xsl:*/@xpath-default-namespace))[last()]
+                $default-ns := ($ctx/ancestor-or-self::*/(@xsl:xpath-default-namespace | self::xsl:*/@xpath-default-namespace))[last()],
+                $default-ns-map := if ($default-ns) then map{'#default' : string($default-ns)} else ()
                 return
                     map{
-                        'namespaces' : map:put(map:merge($namespaces), '', $default-ns)
+                        'namespaces' : ($namespaces, $default-ns-map) => map:merge()
                     }
             }"/>
         <!--                
