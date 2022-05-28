@@ -193,6 +193,34 @@
         
     </sch:pattern>
     
+    <sch:pattern id="check-unused-variables">
+        <sch:rule context="sch:let">
+            <sch:let name="isGlobal" value="exists(parent::sch:schema | parent::sch:pattern | parent::sch:phase)"/>
+            
+            <sch:let name="let" value="."/>
+            <sch:let name="let-name" value="$let/@name"/>
+            
+            <sch:let name="scope" value="
+                if($isGlobal) then (/sch:schema//@*) else (..//*[. >> $let]/@*)
+                "/>
+            
+            <sch:let name="scope-models" value="$scope ! $xpath-models(generate-id(.))"/>
+            
+            
+            <sch:assert test="some $xpm in $scope-models satisfies $xpm//varRef[@name = $let-name]" sqf:fix="delete">
+                The variable $<sch:value-of select="$let-name"/> is never used in the given scope.
+            </sch:assert>
+            
+            <sqf:fix id="delete">
+                <sqf:description>
+                    <sqf:title>Delete this Variable declaration</sqf:title>
+                </sqf:description>
+                <sqf:delete/>
+            </sqf:fix>
+            
+        </sch:rule>
+    </sch:pattern>
+
     <sch:diagnostics>
         <sch:diagnostic id="permitted_namespaces">Permitted namespaces are: <sch:value-of select="$allowed-namespaces ! ('''' || . || '''') => string-join(', ')"/></sch:diagnostic>
     </sch:diagnostics>
