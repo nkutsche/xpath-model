@@ -12,6 +12,8 @@
     
     <sch:let name="schema" value="/sch:schema"/>
     
+    <sch:let name="xpath-models" value="nk:get-xpath-models($schema)"/>
+    
     <sch:let name="configPaths" value="
         resolve-uri('meta-sch-config.xml', base-uri($schema)),
         resolve-uri('config.xml', static-base-uri())
