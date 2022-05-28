@@ -10,10 +10,18 @@
     <sch:ns uri="http://www.nkutsche.com/xpath-model" prefix="nk"/>
     <sch:ns uri="http://www.nkutsche.com/avt-parser" prefix="avt"/>
     
-    <sch:let name="config" value="if(doc-available('config.xml')) then doc('config.xml')/* else ()"/>
-    <sch:let name="namespace-config" value="$config/namespace-maping/map"/>
-    
     <sch:let name="schema" value="/sch:schema"/>
+    
+    <sch:let name="configPaths" value="
+        resolve-uri('meta-sch-config.xml', base-uri($schema)),
+        resolve-uri('config.xml', static-base-uri())
+        "/>
+    
+    <sch:let name="config" value="
+        ($schema/nk:meta-sch-config, $configPaths[doc-available(.)] ! doc(.)/*) => head()
+        "/>
+    <sch:let name="namespace-config" value="$config/nk:namespace-mapping/nk:map"/>
+    
     
     <sch:let name="allow-null-namespace" value="
         (not(/sch:schema/sch:ns) or /sch:schema/@nk:allow-null-namespace = 'true') and not($namespace-config[@invalid = ''])
