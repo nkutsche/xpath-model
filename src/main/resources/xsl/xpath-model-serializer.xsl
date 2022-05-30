@@ -39,6 +39,19 @@
         <xsl:sequence select="string-join($content)"/>
     </xsl:function>
 
+
+    <xsl:function name="nk:xpath-serializer-hl" as="node()*" visibility="final">
+        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:sequence select="nk:xpath-serializer-hl($expr, map{})"/>
+    </xsl:function>
+
+    <xsl:function name="nk:xpath-serializer-hl" as="node()*" visibility="final">
+        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:param name="config" as="map(*)"/>
+        <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
+            <xsl:with-param name="config" select="$config" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:function>
     <xsl:function name="nk:xpath-serializer-sub" as="xs:string" visibility="final">
         <xsl:param name="subExpr" as="element()"/>
         <xsl:sequence select="nk:xpath-serializer-sub($subExpr, map{})"/>
