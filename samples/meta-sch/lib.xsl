@@ -86,27 +86,6 @@
     Checks that a given $nodeTest asks for a node which was declared in a given XSD $schema.
     -->
     
-    <xsl:function name="nk:is-node-declared" as="xs:boolean">
-        <xsl:param name="nodeTest" as="element(nodeTest)"/>
-        <xsl:param name="schema" as="element(xs:schema)"/>
-        
-        <xsl:variable name="kind" select="$nodeTest/@kind"/>
-        <xsl:variable name="name" select="$nodeTest/@name/nk:as-qname(.)" as="xs:QName?"/>
-        
-        <xsl:choose>
-            <xsl:when test="not($kind = ('element', 'atttribute', 'document-node', 'schema-element', 'schema-attribute'))">
-                <xsl:sequence select="true()"/>
-            </xsl:when>
-            <xsl:when test="not($name)">
-                <xsl:sequence select="true()"/>
-            </xsl:when>
-            <xsl:otherwise>
-                
-            </xsl:otherwise>
-        </xsl:choose>
-        
-    </xsl:function>
-    
     <xsl:function name="nk:get-xpath-models" as="map(xs:string, element()?)">
         <xsl:param name="schema" as="element(sch:schema)"/>
         <xsl:variable name="namespace-decl" select="$schema/sch:ns"/>
