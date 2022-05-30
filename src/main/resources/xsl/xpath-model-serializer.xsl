@@ -13,7 +13,7 @@
         <xsl:param name="expr" as="element(value-template)"/>
         <xsl:param name="config" as="map(*)"/>
 
-        <xsl:variable name="content" as="xs:string*">
+        <xsl:variable name="content" as="item()*">
             <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
                 <xsl:with-param name="config" select="$config" tunnel="yes"/>
             </xsl:apply-templates>
@@ -31,7 +31,7 @@
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:param name="config" as="map(*)"/>
 
-        <xsl:variable name="content" as="xs:string*">
+        <xsl:variable name="content" as="item()*">
             <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
                 <xsl:with-param name="config" select="$config" tunnel="yes"/>
             </xsl:apply-templates>
@@ -55,7 +55,24 @@
         </xsl:variable>
         <xsl:sequence select="nk:xpath-serializer($expr, $config)"/>
     </xsl:function>
-
+    
+    <xsl:template match="comment() | * | @*" mode="nk:xpath-serializer" priority="500">
+        <xsl:param name="config" tunnel="yes"/>
+        <xsl:variable name="next-match" as="item()*">
+            <xsl:next-match/>
+        </xsl:variable>
+        <xsl:variable name="syntax-highlighter" select="$config?highlighter" as="function(*)?"/>
+        <xsl:choose>
+            <xsl:when test="empty($syntax-highlighter)">
+                <xsl:value-of select="$next-match" separator=""/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$syntax-highlighter(., $next-match, $config)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:template>
+    
     <xsl:template match="expr" mode="nk:xpath-serializer">
         <xsl:apply-templates select="* | comment()" mode="#current"/>
     </xsl:template>
@@ -761,7 +778,7 @@
 
     <xsl:template match="function[@name]" mode="nk:xpath-serializer">
         <xsl:apply-templates mode="#current"/>
-        <xsl:sequence select="@name"/>
+        <xsl:sequence select="@name/string(.)"/>
     </xsl:template>
 
     <!--    
