@@ -48,10 +48,35 @@
     <xsl:function name="nk:xpath-serializer-hl" as="node()*" visibility="final">
         <xsl:param name="expr" as="element(expr)"/>
         <xsl:param name="config" as="map(*)"/>
+        
+        <xsl:variable name="config" select="
+              if (empty($config?highlighter)) 
+            then map:put($config, 'highlighter', nk:default-highlighter#3) 
+            else $config
+            "/>
         <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
             <xsl:with-param name="config" select="$config" tunnel="yes"/>
         </xsl:apply-templates>
     </xsl:function>
+    
+    <xsl:function name="nk:default-highlighter" as="node()*" visibility="public">
+        <xsl:param name="model-node" as="node()"/>
+        <xsl:param name="serialized" as="item()*"/>
+        <xsl:param name="config" as="map(*)"/>
+        <xsl:variable name="class" select="
+            if ($model-node instance of element() or $model-node instance of attribute()) 
+            then $model-node/name() 
+            else if ($model-node instance of comment()) 
+            then 'comment' 
+            else ''
+            "/>
+        <xsl:if test="exists($serialized[. != ''])">
+            <span class="{$class} xpath-hl">
+                <xsl:sequence select="$serialized"/>
+            </span>
+        </xsl:if>
+    </xsl:function>
+
     <xsl:function name="nk:xpath-serializer-sub" as="xs:string" visibility="final">
         <xsl:param name="subExpr" as="element()"/>
         <xsl:sequence select="nk:xpath-serializer-sub($subExpr, map{})"/>
