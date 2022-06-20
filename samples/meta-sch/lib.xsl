@@ -29,7 +29,7 @@
     
     <xsl:function name="nk:transfer-namespace" as="element()">
         <xsl:param name="expr" as="element()"/>
-        <xsl:param name="namespace-mapping" as="element(map)*"/>
+        <xsl:param name="namespace-mapping" as="element(nk:map)*"/>
         <xsl:param name="prefix-binding" as="element(sch:ns)*"/>
         
         <xsl:apply-templates select="$expr" mode="nk:transfer-namespace">
@@ -39,7 +39,7 @@
     </xsl:function>
     
     <xsl:template match="nodeTest[@kind = 'element']/@name" mode="nk:transfer-namespace">
-        <xsl:param name="namespace-mapping" as="element(map)*" tunnel="yes"/>
+        <xsl:param name="namespace-mapping" as="element(nk:map)*" tunnel="yes"/>
         <xsl:param name="prefix-binding" as="element(sch:ns)*" tunnel="yes"/>
         
         <xsl:variable name="qname" select="nk:as-qname(.)" as="xs:QName"/>
