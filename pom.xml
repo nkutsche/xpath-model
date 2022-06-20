@@ -3,9 +3,30 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>com.nkutsche</groupId>
     <artifactId>xpath-model</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    
+    <name>XPath Model</name>
+    <description>This project contains an XPath parser and creates an XML model from it. The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.</description>
+    
+    <developers>
+        <developer>
+            <id>nkutsche</id>
+            <name>Nico Kutscherauer</name>
+            <email>nico@nkutsche.com</email>
+        </developer>
+    </developers>
+    
+    <url>https://github.com/nkutsche/xpath-model</url>
+    
+    <scm>
+        <connection>scm:git:https://github.com/nkutsche/xpath-model.git</connection>
+        <url>https://github.com/nkutsche/xpath-model</url>
+        <developerConnection>scm:git:https://github.com/nkutsche/xpath-model.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
     
     <properties>
         <saxon.version>10.6</saxon.version>
