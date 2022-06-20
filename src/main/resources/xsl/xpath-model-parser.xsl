@@ -189,6 +189,8 @@
 
         <xsl:variable name="used-prefixes" as="xs:string*"
             select="$parsed//(QName[contains(., ':')] | NameTest/Wildcard[matches(., '^[^:]+:\*$')])/substring-before(., ':')[. != '*'] => distinct-values()"/>
+        
+        <xsl:variable name="used-prefixes" select="$used-prefixes[. != 'xmlns']"/>
 
         <xsl:variable name="base-ns-uri" select="'http://www.nkutsche.com/xpath-model/dummy-namespace/'"/>
 
