@@ -11,6 +11,13 @@
     <name>XPath Model</name>
     <description>This project contains an XPath parser and creates an XML model from it. The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.</description>
     
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>LICENSE</url>
+        </license>
+    </licenses>
+    
     <developers>
         <developer>
             <id>nkutsche</id>
