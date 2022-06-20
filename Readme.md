@@ -1,6 +1,15 @@
 # XPath XML Model
 
-This project contains an XPath parser and creates an [XML model](src/main/resources/rnc/xpath-model.rnc) from it. The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.
+This project contains an XPath parser and creates an [XML model](src/main/resources/rnc/xpath-model.rnc) from it. 
+
+## Documentation Links
+
+* [Release Notes](RELEASE_HISTORY.md)
+* [Wiki](https://github.com/nkutsche/xpath-model/wiki)
+
+## Basic Idea
+
+The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.
 
 An XPath normalizer could:
 
