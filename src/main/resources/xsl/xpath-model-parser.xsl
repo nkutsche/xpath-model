@@ -28,9 +28,28 @@
         <xsl:param name="config" as="map(xs:string, item()*)"/>
         <xsl:sequence
             select="
-                avt:parse-value-template($value-template)
-                => nk:xpath-model-internal($config, 'value-template')
+                nk:xpath-model-value-template($value-template, $config, false())
                 "
+        />
+    </xsl:function>
+
+    <xsl:function name="nk:xpath-model-value-template" as="element()" visibility="final">
+        <xsl:param name="value-template" as="xs:string"/>
+        <xsl:param name="config" as="map(xs:string, item()*)"/>
+        <xsl:param name="fail-on-error" as="xs:boolean"/>
+        
+        <xsl:variable name="model" select="
+            avt:parse-value-template($value-template)
+            => nk:xpath-model-internal($config, 'value-template')
+            "/>
+        
+        <xsl:sequence
+            select="
+                if ($model/self::ERROR and $fail-on-error) then
+                    error(xs:QName('nk:xp-model-parse-error'), string($model) || ' (on value template: ' || $value-template || ')')
+                else
+                    $model
+            "
         />
     </xsl:function>
 

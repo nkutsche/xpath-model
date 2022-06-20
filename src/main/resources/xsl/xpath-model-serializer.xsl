@@ -20,6 +20,27 @@
         </xsl:variable>
         <xsl:sequence select="string-join($content)"/>
     </xsl:function>
+    
+    
+    
+    <xsl:function name="nk:value-template-serializer-hl" as="node()*" visibility="final">
+        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:sequence select="nk:value-template-serializer-hl($expr, map{})"/>
+    </xsl:function>
+    
+    <xsl:function name="nk:value-template-serializer-hl" as="node()*" visibility="final">
+        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:param name="config" as="map(*)"/>
+        
+        <xsl:variable name="config" select="
+            if (empty($config?highlighter)) 
+            then map:put($config, 'highlighter', nk:default-highlighter#3) 
+            else $config
+            "/>
+        <xsl:apply-templates select="$expr" mode="nk:xpath-serializer">
+            <xsl:with-param name="config" select="$config" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:function>
 
 
     <xsl:function name="nk:xpath-serializer" as="xs:string" visibility="final">
