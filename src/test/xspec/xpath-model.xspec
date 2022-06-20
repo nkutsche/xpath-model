@@ -4,6 +4,7 @@
     xmlns:nk="http://www.nkutsche.com/xpath-model"
     xmlns:p="http://www.nkutsche.com/xpath-parser"
     xmlns:avt="http://www.nkutsche.com/avt-parser"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
     <x:param name="default-config" select="map{'validation-mode' : 'strict'}"/>
@@ -4756,6 +4757,283 @@
                         </x:param>
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">(: special chars: (:  :) :/) :)()</x:expect>
+                </x:scenario>
+                
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="with configuration">
+            <x:scenario label="namespace mapping">
+                <x:scenario label="src -> trg prefix mapping">
+                    <x:call>
+                        <x:param position="2" select="map{
+                                'namespaces' : map {'trg': 'foo.com'}
+                            }"/>
+                    </x:call>
+                    <x:scenario label="var reference">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <varRef name="src:foo"/>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >$trg:foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="location step">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <locationStep axis="child">
+                                        <nodeTest name="src:foo" kind="element"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >trg:foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="location step for attributes">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <locationStep axis="attribute">
+                                        <nodeTest name="src:foo" kind="attribute"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >@trg:foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="function call">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <function-call>
+                                        <function name="src:funct"/>
+                                    </function-call>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >trg:funct()</x:expect>
+                    </x:scenario>
+                    <x:scenario label="function reference">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <function name="src:funct" arity="0"/>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >trg:funct#0</x:expect>
+                    </x:scenario>
+                    <x:scenario label="let binding">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <operation type="let-binding">
+                                        <let name="src:foo">
+                                            <arg>
+                                                <string value="value"/>
+                                            </arg>
+                                        </let>
+                                        <arg role="return">
+                                            <varRef name="src:foo"/>
+                                        </arg>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >let $trg:foo := 'value' return $trg:foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="params in function-impl">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <function-impl>
+                                        <param name="src:foo"/>
+                                        <arg role="return">
+                                            <varRef name="src:foo"/>
+                                        </arg>
+                                    </function-impl>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >function( $trg:foo ){ $trg:foo }</x:expect>
+                    </x:scenario>
+                    <x:scenario label="atomic itemType">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <operation type="instance-of">
+                                        <arg>
+                                            <integer value="23"/>
+                                        </arg>
+                                        <instanceOf/>
+                                        <itemType>
+                                            <atomic name="src:type"/>
+                                        </itemType>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >23 instance of trg:type</x:expect>
+                    </x:scenario>
+                    <x:scenario label="node itemType">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <operation type="instance-of">
+                                        <arg>
+                                            <string value="value"/>
+                                        </arg>
+                                        <instanceOf/>
+                                        <itemType>
+                                            <nodeTest kind="element" name="src:foo"/>
+                                        </itemType>
+                                    </operation>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >'value' instance of element(trg:foo)</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                
+                <x:scenario label="src -> trg prefix mapping (target-prefixes)">
+                    <x:call>
+                        <x:param position="2" select="map{
+                                'target-prefixes' : map {'foo.com': 'trg'}
+                            }"/>
+                    </x:call>
+                    <x:scenario label="var reference">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <varRef name="src:foo"/>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >$trg:foo</x:expect>
+                    </x:scenario>
+                    <x:scenario label="location step">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <locationStep axis="child">
+                                        <nodeTest name="src:foo" kind="element"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:expect label="expected expression" select="string(.)"
+                            >trg:foo</x:expect>
+                    </x:scenario>
+                </x:scenario>
+                <x:scenario label="src -> #default prefix mapping">
+                    <x:scenario label="var reference">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <varRef name="src:foo"/>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:scenario label="as #default only">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >$Q{foo.com}foo</x:expect>
+                        </x:scenario>
+                        <x:scenario label="#default and custom prefix">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com', 'trg' : 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >$trg:foo</x:expect>
+                        </x:scenario>
+                    </x:scenario>
+                    <x:scenario label="location step">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <locationStep axis="child">
+                                        <nodeTest name="src:foo" kind="element"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:scenario label="as #default only">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >foo</x:expect>
+                        </x:scenario>
+                        <x:scenario label="#default and custom prefix">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com', 'trg' : 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >foo</x:expect>
+                        </x:scenario>
+                    </x:scenario>
+                    <x:scenario label="location step for attributes">
+                        <x:call>
+                            <x:param>
+                                <expr xmlns:src="foo.com">
+                                    <locationStep axis="attribute">
+                                        <nodeTest name="src:foo" kind="attribute"/>
+                                    </locationStep>
+                                </expr>
+                            </x:param>
+                        </x:call>
+                        <x:scenario label="as #default only">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >@Q{foo.com}foo</x:expect>
+                        </x:scenario>
+                        <x:scenario label="#default and custom prefix">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com', 'trg' : 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >@trg:foo</x:expect>
+                        </x:scenario>
+                        <x:scenario label="#default and two custom prefixes">
+                            <x:call>
+                                <x:param position="2" select="map{
+                                        'namespaces' : map {'#default': 'foo.com', 'trg' : 'foo.com', 'abc' : 'foo.com'}
+                                    }"/>
+                            </x:call>
+                            <x:expect label="expected expression" select="string(.)"
+                                >@abc:foo</x:expect>
+                        </x:scenario>
+                    </x:scenario>
                 </x:scenario>
                 
             </x:scenario>

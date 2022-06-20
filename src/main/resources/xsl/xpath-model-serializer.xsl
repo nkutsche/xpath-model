@@ -188,8 +188,9 @@
 
     <xsl:template match="locationStep[@axis = 'attribute']/nodeTest[@kind = 'attribute']"
         mode="nk:xpath-serializer" priority="50">
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
         <xsl:apply-templates select="comment()" mode="#current"/>
-        <xsl:sequence select="string((@name, '*')[1])"/>
+        <xsl:sequence select="string((@name/nk:namespace-handling(., $config), '*')[1])"/>
     </xsl:template>
 
     <xsl:template match="locationStep[not(@axis = ('attribute', 'namespace'))]/nodeTest[@kind = 'element']"
@@ -251,11 +252,22 @@
                 />
             </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="$name"/>
+                <xsl:sequence select="nk:namespace-handling($name, $config)"/>
             </xsl:otherwise>
         </xsl:choose>
 
-
+    </xsl:function>
+    
+    <xsl:function name="nk:namespace-handling" as="xs:string">
+        <xsl:param name="name" as="attribute()"/>
+        <xsl:param name="config" as="map(*)"/>
+        
+        <xsl:sequence select="
+            if ($name castable as xs:Name) 
+            then nk:qname(nk:as-qname($name), $config) 
+            else string($name)
+            "/>
+        
     </xsl:function>
 
 
@@ -337,7 +349,7 @@
     <xsl:template match="varRef" mode="nk:xpath-serializer">
         <xsl:param name="config" as="map(*)" tunnel="yes"/>
         <xsl:apply-templates select="comment()" mode="#current"/>
-        <xsl:sequence select="'$' || (@name => nk:as-qname() => nk:qname($config))"/>
+        <xsl:sequence select="'$' || (@name/nk:namespace-handling(., $config))"/>
     </xsl:template>
 
 
@@ -831,13 +843,15 @@
     </xsl:template>
 
     <xsl:template match="function[@name][@arity]" mode="nk:xpath-serializer" priority="10">
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
         <xsl:apply-templates mode="#current"/>
-        <xsl:sequence select="@name || '#' || @arity"/>
+        <xsl:sequence select="@name/nk:namespace-handling(., $config) || '#' || @arity"/>
     </xsl:template>
 
     <xsl:template match="function[@name]" mode="nk:xpath-serializer">
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
         <xsl:apply-templates mode="#current"/>
-        <xsl:sequence select="@name/string(.)"/>
+        <xsl:sequence select="@name/nk:namespace-handling(., $config)"/>
     </xsl:template>
 
     <!--    
@@ -871,12 +885,16 @@
     -.-.- For loops -.-.-
     -->
     <xsl:template match="operation[@type = 'for-loop']/let[1]" mode="nk:xpath-serializer" priority="100">
-        <xsl:sequence select="'for $' || @name || ' in '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="'for $' || $name || ' in '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = 'for-loop']/let" mode="nk:xpath-serializer" priority="90">
-        <xsl:sequence select="', $' || @name || ' in '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="', $' || $name || ' in '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
@@ -886,12 +904,16 @@
     -->
 
     <xsl:template match="operation[@type = 'let-binding']/let[1]" mode="nk:xpath-serializer" priority="100">
-        <xsl:sequence select="'let $' || @name || ' := '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="'let $' || $name || ' := '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = 'let-binding']/let" mode="nk:xpath-serializer" priority="90">
-        <xsl:sequence select="', $' || @name || ' := '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="', $' || $name || ' := '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
@@ -908,19 +930,25 @@
 
 
     <xsl:template match="operation[@type = 'some-satisfies']/let[1]" mode="nk:xpath-serializer" priority="100">
-        <xsl:sequence select="'some $' || @name || ' in '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="'some $' || $name || ' in '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = 'every-satisfies']/let[1]" mode="nk:xpath-serializer"
         priority="100">
-        <xsl:sequence select="'every $' || @name || ' in '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="'every $' || $name || ' in '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = ('some-satisfies', 'every-satisfies')]/let"
         mode="nk:xpath-serializer" priority="90">
-        <xsl:sequence select="', $' || @name || ' in '"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="', $' || $name || ' in '"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
@@ -1040,7 +1068,9 @@
     </xsl:template>
 
     <xsl:template match="function-impl/param" mode="nk:xpath-serializer" priority="40">
-        <xsl:sequence select="'$' || @name"/>
+        <xsl:param name="config" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="name" select="@name/nk:namespace-handling(., $config)"/>
+        <xsl:sequence select="'$' || $name"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
@@ -1091,7 +1121,7 @@
         <xsl:variable name="prefixMappingMode"
             select="($config?prefix-mapping-mode, 'use-prefix-mapping'[exists($config?target-prefixes)], 'use-namespace-mapping'[exists($config?namespaces)], 'keep')[1]"/>
 
-        <xsl:variable name="namespace-map" select="($config?namespaces, map{})[1]"/>
+        <xsl:variable name="namespace-map" select="($config?namespaces, map{})[1] => map:remove('#default')"/>
 
         <xsl:variable name="target-prefix"
             select="
@@ -1110,7 +1140,7 @@
                         else
                             if ($prefixMappingMode = 'use-namespace-mapping')
                             then
-                                map:keys($namespace-map)[$namespace-map(.) = $namespace]
+                                sort(map:keys($namespace-map)[$namespace-map(.) = $namespace])[1]
                                 (: default and fallback mode is 'keep' :)
                             else
                                 $prefix
