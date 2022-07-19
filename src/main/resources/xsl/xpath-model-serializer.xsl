@@ -24,12 +24,12 @@
     
     
     <xsl:function name="nk:value-template-serializer-hl" as="node()*" visibility="final">
-        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:param name="expr" as="element(value-template)"/>
         <xsl:sequence select="nk:value-template-serializer-hl($expr, map{})"/>
     </xsl:function>
     
     <xsl:function name="nk:value-template-serializer-hl" as="node()*" visibility="final">
-        <xsl:param name="expr" as="element(expr)"/>
+        <xsl:param name="expr" as="element(value-template)"/>
         <xsl:param name="config" as="map(*)"/>
         
         <xsl:variable name="config" select="
