@@ -334,7 +334,7 @@
                         <xsl:sequence
                             select="
                                 if ($var-return) then
-                                    nk:context-provider-handler($var-return, $variable-decl-info)
+                                    $var-return ! nk:context-provider-handler(., $variable-decl-info)
                                 else
                                     map {
                                         'nodeTest': (),
