@@ -278,7 +278,7 @@
 
         <xsl:variable name="xpm-config-gen"
             select="function($ctx){
-                let $namespaces := $ctx/namespace::*/map{name() : string(.)},
+            let $namespaces := $ctx/nk:parent-or-self-el(.)/namespace::*/map{name() : string(.)},
                 $default-ns := ($ctx/ancestor-or-self::*/(@xsl:xpath-default-namespace | self::xsl:*/@xpath-default-namespace))[last()],
                 $default-ns-map := if ($default-ns) then map{'#default' : string($default-ns)} else ()
                 return
@@ -304,6 +304,15 @@
             
             }"/>
 
+    </xsl:function>
+    
+    <xsl:function name="nk:parent-or-self-el" as="element()?" visibility="final">
+        <xsl:param name="node" as="node()"/>
+        <xsl:sequence select="
+            if ($node/self::element()) 
+            then $node 
+            else $node/parent::element()
+            "/>
     </xsl:function>
 
     <xsl:function name="nk:context-provider-handler" as="map(*)*">
