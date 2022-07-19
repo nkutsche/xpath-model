@@ -250,6 +250,28 @@
             </x:call>
             <x:expect label="parent" test="$x:result?parent()?node" select="$xsl-snippet/parent::*/@match"/>
         </x:scenario>
+
+        <x:scenario label="namespace in parent expression">
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:template/xsl:if">
+                <xsl:stylesheet
+                    xmlns:db="http://docbook.org/ns/docbook"
+                    exclude-result-prefixes="axf f t m db"
+                    version='2.0'>
+                    
+                    <xsl:template match="db:reference|db:refentry">
+                        
+                        <xsl:if test="dummy"/>
+                        
+                    </xsl:template>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param name="node" position="1" select="$xsl-snippet/@test"/>
+                <x:param name="expr" position="2" select="()"/>
+            </x:call>
+            <x:expect label="parent expression has db namespace" test="$x:result?parent()?expr/*/namespace::db/string(.)" 
+                select="'http://docbook.org/ns/docbook'"/>
+        </x:scenario>
         
     </x:scenario>
 
@@ -922,6 +944,40 @@
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', $ns, $ns, ''"/>
             </x:scenario>
         </x:scenario>
+
+        <x:scenario label="prefixed namespace in parent context">
+            <x:variable name="ns" select="'http://www.nkutsche.com'"/>
+            
+            <x:variable name="xpmconfig" select="map{'namespaces' : map{'#default' : $ns, 'ns' : 'http://docbook.org/ns/docbook'}}"/>
+            
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:template/xsl:if">
+                <xsl:stylesheet
+                    xmlns:ns="http://docbook.org/ns/docbook"
+                    exclude-result-prefixes="axf f t m db"
+                    version='2.0'>
+                    
+                    <xsl:template match="ns:reference|ns:refentry">
+                        
+                        <xsl:if test="dummy"/>
+                        
+                    </xsl:template>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet/@test, ())"/>
+            </x:call>
+            <x:scenario label="empty(parent::*)">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(., $xpmconfig)//nodeTest)[last()]">empty(parent::*)</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result[1]?*?axis" select="'start', 'child', 'parent'"/>
+                <x:expect label="kind" test="$x:result[1]?*?kind" select="'node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result[1]?*?local-name" select="'*', 'reference', '*'"/>
+                <x:expect label="namespace" test="$x:result[1]?*?namespace" 
+                    select="'*', 'http://docbook.org/ns/docbook', '*'"/>
+            </x:scenario>
+        </x:scenario>
+        
         <x:scenario label="with unknown context">
             <x:variable name="xsl-snippet" select="xsl:value-of">
                 <xsl:variable name="var-w-content"><some><xml/></some></xsl:variable>
@@ -1009,6 +1065,36 @@
                 <x:expect label="kind" test="$x:result?*?kind" select="'node', 'element', 'element'"/>
                 <x:expect label="local" test="$x:result?*?local-name" select="'*', 'operation', 'foo'"/>
                 <x:expect label="namespace" test="$x:result?*?namespace" select="'*', '', ''"/>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="with variable reference">
+            <x:variable name="xsl-snippet" select="xsl:template/xsl:value-of">
+                <xsl:param name="parameter"/>
+                <xsl:variable name="var" select="/foo | /bar"/>
+                <xsl:template match="foo">
+                    <xsl:value-of select="'dummy-xpath'"/>
+                </xsl:template>
+            </x:variable>
+            <x:call>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet/@select, ())"/>
+            </x:call>
+            
+            <x:scenario label="var with content">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">$var/check</x:param>
+                </x:call>
+                <!-- context /foo -->
+                <x:expect label="axis" test="$x:result[1]?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result[1]?*?kind" select="'document-node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result[1]?*?local-name" select="'*', 'foo', 'check'"/>
+                <x:expect label="namespace" test="$x:result[1]?*?namespace" select="'*', '', ''"/>
+                <!-- context /bar -->
+                <x:expect label="axis" test="$x:result[2]?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result[2]?*?kind" select="'document-node', 'element', 'element'"/>
+                <x:expect label="local" test="$x:result[2]?*?local-name" select="'*', 'bar', 'check'"/>
+                <x:expect label="namespace" test="$x:result[2]?*?namespace" select="'*', '', ''"/>
             </x:scenario>
             
         </x:scenario>
