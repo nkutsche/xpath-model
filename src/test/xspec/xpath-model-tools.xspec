@@ -272,6 +272,42 @@
             <x:expect label="parent expression has db namespace" test="$x:result?parent()?expr/*/namespace::db/string(.)" 
                 select="'http://docbook.org/ns/docbook'"/>
         </x:scenario>
+
+        <x:scenario label="namespace in parent expression default-namespace">
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:template//xsl:apply-templates">
+                <xsl:stylesheet
+                    xpath-default-namespace="http://www.thieme-compliance.de/t0"
+                    version='2.0'>
+                    
+                    <xsl:template match="antwortmatrix">
+                        <xsl:variable name="calsTable">
+                            <table xmlns="http://www.thieme-compliance.de/t0">
+                                <tgroup>
+                                    <xsl:if test="matrix-spalte">
+                                        <thead>
+                                            <row>
+                                                <xsl:for-each select="matrix-spalte">
+                                                    <entry align="left">
+                                                        <xsl:apply-templates/>
+                                                    </entry>
+                                                </xsl:for-each>
+                                            </row>
+                                        </thead>
+                                    </xsl:if>
+                                </tgroup>
+                            </table>
+                        </xsl:variable>
+                        
+                    </xsl:template>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param name="node" position="1" select="$xsl-snippet"/>
+                <x:param name="expr" position="2" select="()"/>
+            </x:call>
+            <x:expect label="parent expression has default namespace" test="$x:result?parent()?expr/*/namespace::default/string(.)" 
+                select="'http://www.thieme-compliance.de/t0'"/>
+        </x:scenario>
         
     </x:scenario>
 
@@ -1098,6 +1134,30 @@
             </x:scenario>
             
         </x:scenario>
+
+        <x:scenario label="problems with default-namespace">
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:for-each/xsl:apply-templates">
+                <xsl:stylesheet  xpath-default-namespace="http://www.thieme-compliance.de/t0">
+                    <xsl:for-each select="matrix-spalte">
+                        <xsl:apply-templates/>
+                    </xsl:for-each>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param position="2" select="nk:xsl-context($xsl-snippet, ())"/>
+            </x:call>
+            
+            <x:scenario label="node()">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[last()]">node()</x:param>
+                </x:call>
+                <x:expect label="axis" test="$x:result[1]?*?axis" select="'start', 'child', 'child'"/>
+                <x:expect label="kind" test="$x:result[1]?*?kind" select="'node', 'element', 'node'"/>
+                <x:expect label="local" test="$x:result[1]?*?local-name" select="'*', 'matrix-spalte', '*'"/>
+                <x:expect label="namespace" test="$x:result[1]?*?namespace" select="'*', 'http://www.thieme-compliance.de/t0', '*'"/>
+            </x:scenario>
+            
+        </x:scenario>
         
     </x:scenario>
     
@@ -1180,6 +1240,21 @@
             </x:call>
             <x:expect label="namespace" test="$x:result?namespace" select="'www.example.com/ns1'"/>
             <x:expect label="local" test="$x:result?local" select="'*'"/>
+        </x:scenario>
+
+        <x:scenario label="from xslt">
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:variable/@select">
+                <xsl:stylesheet xpath-default-namespace="http://www.thieme-compliance.de/t0" xmlns="http://www.thieme-compliance.de/t0">
+                    <xsl:variable name="colCount" select="count(matrix-spalte)"/>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:variable name="model" select="nk:xpath-model($xsl-snippet, map{'namespaces' : map{'#default' : 'http://www.thieme-compliance.de/t0'}})"></x:variable>
+            
+            <x:call>
+                <x:param position="1" select="$model//nodeTest/@name"/>
+            </x:call>
+            <x:expect label="namespace" test="$x:result?namespace" select="'http://www.thieme-compliance.de/t0'"/>
+            <x:expect label="local" test="$x:result?local" select="'matrix-spalte'"/>
         </x:scenario>
         
     </x:scenario>
