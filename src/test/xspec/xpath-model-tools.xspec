@@ -309,6 +309,29 @@
                 select="'http://www.thieme-compliance.de/t0'"/>
         </x:scenario>
         
+        <x:scenario label="unprefixed variable name should not be in default namespace">
+            <x:variable name="xsl-snippet" select="xsl:stylesheet/xsl:template/xsl:if">
+                <xsl:stylesheet
+                    xmlns="http://docbook.org/ns/docbook"
+                    xmlns:db="http://docbook.org/ns/docbook"
+                    exclude-result-prefixes="axf f t m db"
+                    version='2.0'>
+                    <xsl:template match="db:reference|db:refentry">
+                        
+                        <xsl:variable name="foo" select="'foo'"/>
+                        <xsl:if test="dummy"/>
+                        
+                    </xsl:template>
+                </xsl:stylesheet>
+            </x:variable>
+            <x:call>
+                <x:param name="node" position="1" select="$xsl-snippet/@test"/>
+                <x:param name="expr" position="2" select="()"/>
+            </x:call>
+            <x:expect label="parent expression has db namespace" test="count($x:result?variable-context(QName('', 'foo')))" 
+                select="1"/>
+        </x:scenario>
+        
     </x:scenario>
 
     <x:scenario label="Testing function nk:sch-context" catch="true">
@@ -1110,8 +1133,11 @@
                 <xsl:param name="parameter"/>
                 <xsl:variable name="var" select="/foo | /bar"/>
                 <xsl:template match="foo">
+                    <xsl:variable name="local-var" select="bar/baz"/>
                     <xsl:value-of select="'dummy-xpath'"/>
                 </xsl:template>
+                    
+                    
             </x:variable>
             <x:call>
                 <x:param position="2" select="nk:xsl-context($xsl-snippet/@select, ())"/>
@@ -1131,6 +1157,20 @@
                 <x:expect label="kind" test="$x:result[2]?*?kind" select="'document-node', 'element', 'element'"/>
                 <x:expect label="local" test="$x:result[2]?*?local-name" select="'*', 'bar', 'check'"/>
                 <x:expect label="namespace" test="$x:result[2]?*?namespace" select="'*', '', ''"/>
+            </x:scenario>
+
+            <x:scenario label="more complex reference">
+                <x:call>
+                    <x:param position="1" select="(nk:xpath-model(.)//nodeTest)[1]">'text-align:' || $local-var[1]/(if (@align) then
+                        (@align)
+                    else
+                        ('center'))</x:param>
+                </x:call>
+                <!-- context /foo -->
+                <x:expect label="axis" test="$x:result[1]?*?axis" select="'start', 'child', 'child', 'child', 'attribute'"/>
+                <x:expect label="kind" test="$x:result[1]?*?kind" select="'node', 'element', 'element', 'element', 'attribute'"/>
+                <x:expect label="local" test="$x:result[1]?*?local-name" select="'*', 'foo', 'bar', 'baz', 'align'"/>
+                <x:expect label="namespace" test="$x:result[1]?*?namespace" select="'*', '', '', '', ''"/>
             </x:scenario>
             
         </x:scenario>

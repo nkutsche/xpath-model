@@ -273,7 +273,7 @@
             select="$anc[not(parent::*)]/(xsl:variable | xsl:param) except $node"/>
 
         <xsl:variable name="var-scope"
-            select="($global-variables, $local-variables) ! map{nk:QName(@name) : .}"/>
+            select="($global-variables, $local-variables) ! map{nk:varQName(@name) : .}"/>
         <xsl:variable name="var-scope" select="$var-scope => map:merge(map{'duplicates' : 'use-last'})"/>
 
         <xsl:variable name="xpm-config-gen"
@@ -550,7 +550,14 @@
     </xsl:template>
 
 
-
+    <xsl:function name="nk:varQName" as="xs:QName" visibility="final">
+        <xsl:param name="node" as="node()"/>
+        <xsl:variable name="prefixed" select="contains($node, ':')"/>
+        <xsl:sequence select="
+            if ($prefixed) then nk:QName($node) else QName('', $node)
+            "/>
+    </xsl:function>
+    
     <xsl:function name="nk:QName" as="xs:QName" visibility="final">
         <xsl:param name="node" as="node()"/>
         <xsl:variable name="el"
