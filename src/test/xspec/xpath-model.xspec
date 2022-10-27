@@ -8832,7 +8832,17 @@
             
         </x:scenario>
         
-        
+        <x:scenario label="heap-size issue" focus="">
+            
+            <x:scenario label=".[(medikament | wirkstoff) and ((not(text()) or (not(text()[normalize-space() != '']))))]">
+                <x:call>
+                    <x:param select="string(.)">.[(medikament | wirkstoff) and ((not(text()) or (not(text()[normalize-space() != '']))))]</x:param>
+                </x:call>
+                <x:expect label="just check it is no error">
+                    <expr>...</expr>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
     </x:scenario>
     <x:scenario label="Scenario testing function call nk:xpath-model-internal">
         <x:call function="nk:xpath-model-internal"/>
