@@ -1,7 +1,7 @@
 ## Release History
 -------------------------------
 
-### SNAPSHOT-Version
+### Version 1.0.1
 
 * Features:
     * Adds `nk:parent-or-self-el` function to *xpath-model-tools.xsl* for reuse common tasks.
