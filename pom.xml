@@ -58,6 +58,7 @@
 
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
         <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
+        <testsuite.checkoutdir>${project.build.directory}/qt3-testsuite/</testsuite.checkoutdir>
     </properties>
     
     <dependencies>
@@ -270,5 +271,130 @@
                 </plugins>
             </build>
         </profile>
+        
+        <profile>
+            <id>xpath-qt3-testsuite</id>
+            <build>
+                <plugins>
+                    <!--            
+            Checkout QT3Testsuite from Github
+            -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-plugin</artifactId>
+                        <version>1.8.1</version>
+                        <configuration>
+                            <scmVersion>master</scmVersion>
+                            <scmVersionType>branch</scmVersionType>
+                            <basedir>.</basedir>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>checkout-testsuite</id>
+                                <goals>
+                                    <goal>checkout</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <connectionUrl>scm:git:https://github.com/w3c/qt3tests.git</connectionUrl>
+                                    <checkoutDirectory>${testsuite.checkoutdir}</checkoutDirectory>
+                                    <basedir>.</basedir>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>xml-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>create-xspec-from-testsuite</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>transform</goal>
+                                </goals>
+                                <configuration>
+                                    <forceCreation>true</forceCreation>
+                                    <transformationSets>
+                                        <transformationSet>
+                                            <dir>${testsuite.checkoutdir}</dir>
+                                            <outputDir>${project.build.directory}/qt3-testsuite-xspec/</outputDir>
+                                            <includes>
+                                                <include>catalog.xml</include>
+                                            </includes>
+                                            <stylesheet>${project.baseUri}/src/test/xspec/qt3testsuite/qt3ts2xspec.xsl</stylesheet>
+                                            <fileMappers>
+                                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+                                                    <targetExtension>.xspec</targetExtension>
+                                                </fileMapper>
+                                            </fileMappers>
+                                        </transformationSet>
+                                    </transformationSets>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>net.sf.saxon</groupId>
+                                <artifactId>Saxon-HE</artifactId>
+                                <version>${saxon.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.nkutsche</groupId>
+                        <artifactId>xspec-maven-plugin</artifactId>
+                        <version>2.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>run-xspec</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>run-xspec-xpath-qt3</id>
+                                <goals>
+                                    <goal>run-xspec</goal>
+                                </goals>
+                                <phase>test</phase>
+                                <configuration>
+                                    <testDir>${project.build.directory}/qt3-testsuite-xspec/</testDir>
+                                    <!--
+                                    NOTE: to support XML 1.1 test cases of the XMLConf TS, you have to add this:
+                                    <xspecProperties>
+                                        <xspec.xml.version>1.1</xspec.xml.version>
+                                    </xspecProperties>
+                                    --> 
+                                    <addDependenciesToClasspath>true</addDependenciesToClasspath>
+                                    <xspecProperties>
+                                        <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager</saxon.custom.options>
+                                    </xspecProperties>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>io.xspec</groupId>
+                                <artifactId>xspec</artifactId>
+                                <version>2.2.4</version>
+                                <classifier>enduser-files</classifier>
+                                <type>zip</type>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sf.saxon</groupId>
+                                <artifactId>Saxon-HE</artifactId>
+                                <version>${saxon.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>com.nkutsche</groupId>
+                                <artifactId>xslt-pkg-manager100</artifactId>
+                                <version>2.0.0</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
     </profiles>
 </project>
