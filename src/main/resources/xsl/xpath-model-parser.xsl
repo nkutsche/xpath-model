@@ -4,7 +4,7 @@
     xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:r="http://maxtoroq.github.io/rng.xsl"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map" xmlns:err="http://www.w3.org/2005/xqt-errors"
     xmlns:avt="http://www.nkutsche.com/avt-parser" exclude-result-prefixes="#all" version="3.0">
-    <xsl:import href="../rnc-compiler/rng.xsl"/>
+
     <xsl:import href="xpath-31.xsl"/>
     <xsl:import href="xslt-3-avt.xsl"/>
 

@@ -9,6 +9,7 @@
     name="http://www.nkutsche.com/xpath-model"
     declared-modes="false"
     >
+    <xsl:use-package name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
     <xsl:import href="xpath-model.xsl"/>
     
 </xsl:package>

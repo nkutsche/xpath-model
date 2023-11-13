@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:nk="http://www.nkutsche.com/xpath-model"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" stylesheet="../../main/resources/xsl/xpath-model.xsl" measure-time="true">
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" stylesheet="../../main/resources/xsl/xpath-model.xsl">
+    
+    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
 
     <x:scenario label="Testing function nk:get-return-from-expr" catch="true">
         <x:call function="nk:get-return-from-expr"/>
