@@ -149,12 +149,8 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:try>
-                    <xsl:variable name="rng-validate" as="xs:boolean">
-                        <xsl:call-template name="r:main">
-                            <xsl:with-param name="schema" select="doc('../rnc/xpath-model.rng')"/>
-                            <xsl:with-param name="instance" select="$model"/>
-                        </xsl:call-template>
-                    </xsl:variable>
+                    <xsl:variable name="rng-validate" as="xs:boolean" 
+                        select="r:is-valid($model, doc('../rnc/xpath-model.rng'))"/>
                     <xsl:choose>
                         <xsl:when test="$rng-validate">
                             <xsl:sequence select="$model"/>

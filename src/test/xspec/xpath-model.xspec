@@ -7,6 +7,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
+    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
+    
     <x:param name="default-config" select="map{'validation-mode' : 'strict'}"/>
     
     <x:scenario label="Scenario testing function call nk:remove-default-prefix">

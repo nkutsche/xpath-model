@@ -5,6 +5,8 @@
     xmlns:avt="http://www.nkutsche.com/avt-parser"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
+    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
+    
     
     <x:scenario label="Scenario testing function call avt:parse-value-template">
         <x:call function="avt:parse-value-template"/>
