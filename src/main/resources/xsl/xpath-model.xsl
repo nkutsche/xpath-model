@@ -7,6 +7,7 @@
     version="3.0">
     <xsl:import href="lib.xsl"/>
     <xsl:import href="xpath-model-parser.xsl"/>
+    <xsl:import href="xpath-engine.xsl"/>
     <xsl:import href="xpath-model-serializer.xsl"/>
     <xsl:import href="xpath-model-tools.xsl"/>
     
