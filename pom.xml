@@ -168,7 +168,7 @@
             -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
                         <id>make-assembly</id>
@@ -177,7 +177,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <descriptor>${assembly.dir}/assembly.xml</descriptor>
+                            <descriptors>
+                                <descriptor>${assembly.dir}/assembly.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                 </executions>
