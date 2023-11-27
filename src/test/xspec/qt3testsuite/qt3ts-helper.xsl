@@ -217,15 +217,8 @@
                 <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema'"/>
             </xsl:copy>
         </xsl:variable>
-        <xsl:variable name="xpath" select="'. instance of ' || ."/>
-        <xsl:choose>
-            <xsl:when test="empty($result)">
-                <xsl:evaluate xpath="'() instance of ' || ." namespace-context="$context"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:evaluate xpath="$xpath" context-item="$result" namespace-context="$context"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:variable name="xpath" select="'$result instance of ' || ."/>
+        <xsl:evaluate xpath="$xpath" namespace-context="$context" with-params="map{QName('', 'result') : $result}"/>
     </xsl:template>
     
     <xsl:template match="qt:error" mode="xpmt:result-compare">
