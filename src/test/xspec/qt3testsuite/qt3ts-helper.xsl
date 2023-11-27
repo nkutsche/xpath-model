@@ -25,7 +25,49 @@
                     <xsl:apply-templates select="$environment/qt:namespace" mode="xpmt:execution-context"/>
                 </xsl:map>
             </xsl:map-entry>
+            
+            <xsl:if test="$environment/qt:collection">
+                <xsl:map-entry key="'uri-collection-resolver'" 
+                    select="xpmt:env-collection-resolver(?,?, $environment/qt:collection)"/>
+            </xsl:if>
+            <xsl:if test="$environment/qt:source">
+                <xsl:map-entry key="'uri-resolver'" 
+                    select="xpmt:env-uri-resolver(?,?, $environment/qt:source)"/>
+            </xsl:if>
+            <xsl:if test="$environment/qt:param">
+                <xsl:map-entry key="'variable-context'">
+                    <xsl:map>
+                        <xsl:apply-templates select="$environment/qt:param" mode="xpmt:execution-context"/>
+                    </xsl:map>
+                </xsl:map-entry>
+            </xsl:if>
+            
+            <xsl:variable name="base-uri" select="($environment/qt:static-base-uri/@uri, base-uri($environment))[1]"/>
+            <xsl:map-entry key="'base-uri'" select="xs:anyURI($base-uri)"/>
+            
         </xsl:map>
+    </xsl:function>
+    
+    <xsl:function name="xpmt:env-collection-resolver" as="xs:anyURI*">
+        <xsl:param name="relative" as="xs:string"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:param name="collections" as="element(qt:collection)+"/>
+        <xsl:variable name="resolved" select=" if ($relative = '') then '' else resolve-uri($relative, $baseUri)"/>
+        <xsl:variable name="collection" select="$collections[@uri = $resolved]"/>
+        <xsl:sequence select="$collection/qt:source/resolve-uri(@file, base-uri(.))"/>
+    </xsl:function>
+
+    <xsl:function name="xpmt:env-uri-resolver" as="document-node()?">
+        <xsl:param name="relative" as="xs:string?"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:param name="sources" as="element(qt:source)+"/>
+        
+        <xsl:if test="$relative">
+            <xsl:variable name="resolved" select=" if ($relative = '') then '' else resolve-uri($relative, $baseUri)"/>
+            <xsl:variable name="source" select="$sources[resolve-uri(@uri, base-uri(.)) = $resolved]"/>
+            <xsl:sequence select="$source/resolve-uri(@file, base-uri(.)) ! doc(.)"/>
+        </xsl:if>
+        
     </xsl:function>
     
     <xsl:template match="*" mode="xpmt:execution-context"/>
@@ -33,7 +75,18 @@
     <xsl:template match="qt:namespace" mode="xpmt:execution-context">
         <xsl:map-entry key="string(@prefix)" select="string(@uri)"/>
     </xsl:template>
-
+    
+    <xsl:template match="qt:static-base-uri" mode="xpmt:execution-context">
+        <xsl:map-entry key="'base-uri'" select="string(@uri)"/>
+    </xsl:template>
+    
+    <xsl:template match="qt:param[@name][@select]" mode="xpmt:execution-context">
+        <xsl:map-entry key="xs:QName(@name)">
+            <xsl:evaluate xpath="@select"/>
+        </xsl:map-entry>
+    </xsl:template>
+    
+    
     <xsl:function name="xpmt:result-compare" as="xs:boolean">
         <xsl:param name="expected" as="element(qt:result)"/>
         <xsl:param name="result" as="item()*"/>
