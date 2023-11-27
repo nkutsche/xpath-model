@@ -147,10 +147,6 @@
         <xsl:variable name="compare" as="item()*">
             <xsl:evaluate xpath="." namespace-context="$namespace-context"/>
         </xsl:variable>
-        <xsl:if test="not(deep-equal($result, $compare))">
-            <xsl:message select="$compare instance of node()*"/>
-            <xsl:message select="$result instance of node()*"/>
-        </xsl:if>
         <xsl:sequence select="deep-equal($result, $compare)"/>
     </xsl:template>
 
@@ -197,7 +193,13 @@
 
     <xsl:template match="qt:assert-string-value" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
-        <xsl:sequence select="($result ! string()) = ."/>
+        <xsl:sequence select="
+            if ($result instance of function(*)+) 
+            then 
+                false() 
+            else 
+                ($result => string-join(' ')) = .
+                "/>
     </xsl:template>
 
     <xsl:template match="qt:assert-true" mode="xpmt:result-compare">
