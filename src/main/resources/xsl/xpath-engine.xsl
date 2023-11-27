@@ -824,10 +824,6 @@
         
         <xsl:variable name="funct-namespace" select="function-name($function) ! namespace-uri-from-QName(.)"/>
         
-        <xsl:variable name="arg-array" select="
-            xpe:prepare-arguments($arg-array, $execution-context, $funct-namespace)
-            "/>
-        
         <xsl:sequence select="xpe:function-apply($function, $arg-array)"/>
     </xsl:template>
     
@@ -882,19 +878,6 @@
         </xsl:choose>
         
     </xsl:template>
-    
-    <xsl:function name="xpe:prepare-arguments" as="array(item()*)">
-        <xsl:param name="args" as="array(item()*)"/>
-        <xsl:param name="execution-context" as="map(*)"/>
-        <xsl:param name="function-namespace" as="xs:string?"/>
-        <xsl:sequence select="
-            if ($function-namespace = $function-lib-ns) 
-            then array:insert-before($args, 1, $execution-context) 
-            else if ($function-namespace = $fn_namespace-uri) 
-            then xpe:arg-array-atomize($args) 
-            else $args
-            "/>
-    </xsl:function>
     
     <xsl:function name="xpe:function-apply" as="item()*">
         <xsl:param name="function" as="function(*)"/>
