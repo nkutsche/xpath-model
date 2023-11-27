@@ -844,7 +844,14 @@
             "/>
         
         <xsl:variable name="funct-name" select="QName($ns-uri, $local-name)"/>
-        <xsl:sequence select="xpf:function-lookup($execution-context, $funct-name, $arity)"/>
+        <xsl:variable name="function" select="xpf:function-lookup($execution-context, $funct-name, $arity)"/>
+        
+        <xsl:sequence select="
+            if (empty($function)) 
+            then error(xpe:error-code('XPST0017'), 'Can not find a ' || $arity || '-argument function named Q{' || $ns-uri || '}' || $local-name)
+            else 
+                $function
+            "/>
         
     </xsl:template>
     
@@ -987,5 +994,11 @@
         <xsl:sequence select="[$members]"/>
     </xsl:template>
     
+    <xsl:function name="xpe:error-code" as="xs:QName">
+        <xsl:param name="code" as="xs:string"/>
+        
+        <xsl:sequence select="QName('http://www.w3.org/2005/xqt-errors', $code)"/>
+        
+    </xsl:function>
     
 </xsl:stylesheet>
