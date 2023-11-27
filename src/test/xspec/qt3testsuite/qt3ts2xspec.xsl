@@ -19,7 +19,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:param name="focus" as="xs:string">fn-abs.*</xsl:param>
+    <xsl:param name="focus" as="xs:string">.*</xsl:param>
     <xsl:param name="dependency-spec" as="xs:string">^XP\d+\+?$</xsl:param>
     
     <xsl:template match="/catalog">
@@ -99,10 +99,8 @@
             else $envs[@name = $env-ref]
             "/>
         <xsl:if test="$focus = '' or tokenize($focus, ',') = @name or (some $f in $focus satisfies matches(@name, $f))">
+            
             <x:scenario label="{@name}" catch="true">
-                <!--<xsl:if test="tokenize($focus, ',') = @name">
-                    <xsl:attribute name="focus" select="''"/>
-                </xsl:if>-->
                 <xsl:if test="$env/source/@validation = 'strict'">
                     <xsl:attribute name="pending">Ignored as test case seems to be schema-aware.</xsl:attribute>
                 </xsl:if>
@@ -115,7 +113,6 @@
                 <xsl:if test="$env">
                     <x:like label="{$env[last()]/generate-id(.)}"/>
                 </xsl:if>
-                
             </x:scenario>
             
         </xsl:if>
