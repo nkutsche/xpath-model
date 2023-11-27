@@ -287,30 +287,38 @@
     <xsl:function name="xpf:id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
+        <xsl:sequence select="xpf:id($exec-context, $arg, $exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
         <xsl:param name="node" as="node()"/>
+        <xsl:sequence select="id(xpe:atomize($arg), $node)"/>
     </xsl:function>
     <xsl:function name="xpf:element-with-id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
+        <xsl:sequence select="xpf:element-with-id($exec-context, $arg, $exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:element-with-id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
         <xsl:param name="node" as="node()"/>
+        <xsl:sequence select="element-with-id(xpe:atomize($arg), $node)"/>
     </xsl:function>
+    
     <xsl:function name="xpf:idref" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
+        <xsl:sequence select="xpf:idref($exec-context, $arg, $exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:idref" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
         <xsl:param name="node" as="node()"/>
+        <xsl:sequence select="idref(xpe:atomize($arg), $node)"/>
     </xsl:function>
+    
     <xsl:function name="xpf:generate-id" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="xpf:generate-id($exec-context, $exec-context?context)"/>
