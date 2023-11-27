@@ -95,6 +95,47 @@
         <xsl:sequence select="deep-equal($result, $compare)"/>
     </xsl:template>
 
+    <xsl:template match="qt:assert-permutation" mode="xpmt:result-compare">
+        <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:variable name="namespace-context" as="element()">
+            <xsl:copy copy-namespaces="yes">
+                <xsl:namespace name="fn">http://www.w3.org/2005/xpath-functions</xsl:namespace>
+                <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
+            </xsl:copy>
+        </xsl:variable>
+        <xsl:variable name="compare" as="item()*">
+            <xsl:evaluate xpath="." namespace-context="$namespace-context"/>
+        </xsl:variable>
+        <xsl:sequence select="xpmt:assert-permutation($result, $compare)"/>
+    </xsl:template>
+    
+    <xsl:function name="xpmt:assert-permutation" as="xs:boolean">
+        <xsl:param name="result" as="item()*"/>
+        <xsl:param name="compare" as="item()*"/>
+        <xsl:variable name="item-count" select="count($result)"/>
+        <xsl:choose>
+            <xsl:when test="$item-count != count($compare)">
+                <xsl:sequence select="false()"/>
+            </xsl:when>
+            <xsl:when test="$item-count = 0">
+                <xsl:sequence select="true()"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="head" select="head($result)"/>
+                <xsl:variable name="index-of" select="
+                    for $i in (1 to $item-count) 
+                    return if(deep-equal($head, $compare[$i])) then $i else ()
+                    "/>
+                <xsl:variable name="index-of" select="$index-of[1]"/>
+                <xsl:sequence select="
+                    if (empty($index-of)) 
+                    then false() 
+                    else xpmt:assert-permutation(tail($result), $compare[position() != $index-of])
+                    "/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:template match="qt:assert-string-value" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:sequence select="($result ! string()) = ."/>
@@ -144,6 +185,113 @@
         </xsl:choose>
     </xsl:template>
     
+    <xsl:template match="qt:assert-xml" mode="xpmt:result-compare">
+        <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:variable name="xml" select="parse-xml-fragment(.)"/>
+        
+        
+        <xsl:sequence select="
+            if ($result instance of document-node()) 
+            then xpmt:xml-equal($result, $xml, @ignore-prefixes = 'true', false()) 
+            else if ($result instance of node()*) 
+            then xpmt:xml-equal($result, $xml/node(), @ignore-prefixes = 'true', false()) 
+            else false()
+            "/>
+        
+    </xsl:template>
+    
+    <xsl:function name="xpmt:xml-equal" as="xs:boolean">
+        <xsl:param name="result" as="node()*"/>
+        <xsl:param name="compare" as="node()*"/>
+        <xsl:param name="ignore-prefix" as="xs:boolean"/>
+        <xsl:param name="unordered" as="xs:boolean"/>
+        
+        <xsl:variable name="sorts" select="function($n){name($n)}"/>
+        <xsl:variable name="sorting" select="sort(?, (), $sorts)"/>
+        
+        <xsl:variable name="node-count" select="count($result)"/>
+        <xsl:choose>
+            <xsl:when test="$unordered">
+                <xsl:sequence select="xpmt:xml-equal($sorting($result), $sorting($compare), $ignore-prefix, false())"/>
+            </xsl:when>
+            <xsl:when test="$node-count ne count($compare)">
+                <xsl:message select="'Different node count: ' || ($node-count - count($compare))"></xsl:message>
+                <xsl:sequence select="false()"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="
+                    every $i in (1 to $node-count)
+                    satisfies
+                        xpmt:node-equal($result[$i], $compare[$i], $ignore-prefix)
+                    "/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+        
+    </xsl:function>
+    
+    <xsl:function name="xpmt:node-equal" as="xs:boolean">
+        <xsl:param name="result" as="node()"/>
+        <xsl:param name="compare" as="node()"/>
+        <xsl:param name="ignore-prefix" as="xs:boolean"/>
+        <xsl:variable name="result-type" select="xpmt:node-type($result)"/>
+        <xsl:variable name="type-equal" select="$result-type = xpmt:node-type($compare)"/>
+        <xsl:variable name="ln-equal" select="local-name($result) = local-name($compare)"/>
+        <xsl:variable name="ns-equal" select="namespace-uri($result) = namespace-uri($compare)"/>
+        <xsl:variable name="name-equal" select="
+            if ($ignore-prefix) then true() else name($result) = name($compare)
+            "/>
+        
+        <xsl:variable name="content-equal" select="
+            if ($result-type = ('element', 'document-node')) 
+            then (
+                xpmt:xml-equal($result/node(), $compare/node(), $ignore-prefix, true())
+                and 
+                xpmt:xml-equal($result/@*, $compare/@*, $ignore-prefix, false())
+            ) 
+            else if ($result-type = 'document-node') 
+            then (
+                xpmt:xml-equal($result/node(), $compare/node(), $ignore-prefix, true())
+            ) 
+            else true()
+            "/>
+        
+        <xsl:variable name="is-equal" select="$type-equal and $ln-equal and $ns-equal and $name-equal and $content-equal"/>
+        
+        <xsl:if test="not($is-equal)">
+            <xsl:message select="'Unequal at: ' || path($result) || ' vs ' || path($compare)"/>
+        </xsl:if>
+        
+        <xsl:sequence select="$is-equal"/>
+    </xsl:function>
+    
+    <xsl:function name="xpmt:node-type" as="xs:string">
+        <xsl:param name="node" as="node()"/>
+        <xsl:sequence select="
+            if ($node instance of document-node()) 
+            then 'document-node' 
+            else 
+            if ($node instance of element()) 
+            then 'element' 
+            else 
+            if ($node instance of attribute()) 
+            then 'attribute' 
+            else 
+            if ($node instance of text()) 
+            then 'text' 
+            else 
+            if ($node instance of comment()) 
+            then 'comment' 
+            else 
+            if ($node instance of processing-instruction()) 
+            then 'processing-instruction' 
+            else 
+            if ($node instance of namespace-node()) 
+            then 'namespace-node' 
+            else 
+                'unknown'
+            "/>
+    </xsl:function>
     
 
     <xsl:template match="qt:*" mode="xpmt:result-compare">
