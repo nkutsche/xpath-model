@@ -50,7 +50,7 @@
             </x:variable>
             <x:variable name="context" select="$sources ! doc(.)"/>
             <x:variable name="execution-context" select="xpmt:execution-context(*)">
-                <xsl:copy-of select="."/>
+                <xsl:copy-of select="xpmt:copy-for-xspec(.)"/>
             </x:variable>
             <x:call function="xpe:xpath-evaluate">
                 <x:param select="$context"/>
@@ -97,7 +97,7 @@
                     <xsl:value-of select="test"/>
                 </x:variable>
                 <x:variable name="result" select="*">
-                    <xsl:copy-of select="result"/>
+                    <xsl:copy-of select="xpmt:copy-for-xspec(result)"/>
                 </x:variable>
                 
                 <xsl:variable name="env-ref" select="(environment/@ref, 'empty')"/>
@@ -117,7 +117,25 @@
     
     
     <xsl:template match="description"/>
-        
+    
+    <xsl:mode name="xpmt:copy-for-xspec" on-no-match="shallow-copy"/>
+    
+    <xsl:function name="xpmt:copy-for-xspec" as="node()*">
+        <xsl:param name="node" as="node()*"/>
+        <xsl:apply-templates select="$node" mode="xpmt:copy-for-xspec"/>
+    </xsl:function>
+    
+    <xsl:template match="environment" mode="xpmt:copy-for-xspec">
+        <xsl:copy>
+            <xsl:attribute name="xml:base" select="base-uri(.)"/>
+            <xsl:apply-templates select="@*" mode="#current"/>
+            <xsl:apply-templates select="node()" mode="#current"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="@*" mode="xpmt:copy-for-xspec">
+        <xsl:attribute name="{name()}" select="replace(., '(\{|\})', '$1$1')"/>
+    </xsl:template>
     
     
 </xsl:stylesheet>
