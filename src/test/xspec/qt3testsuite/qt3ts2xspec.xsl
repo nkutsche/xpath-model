@@ -88,6 +88,16 @@
     
     <xsl:template match="test-case">
         <xsl:param name="envs" as="element(qt:environment)*" tunnel="yes"/>
+        <xsl:variable name="custom-env" select="environment[not(@ref)]"/>
+        
+        <xsl:apply-templates select="$custom-env"/>
+        
+        <xsl:variable name="env-ref" select="(environment/@ref, 'empty')[1]"/>
+        <xsl:variable name="env" select="
+            if ($custom-env) 
+            then $custom-env 
+            else $envs[@name = $env-ref]
+            "/>
         <xsl:if test="$focus = '' or tokenize($focus, ',') = @name or (some $f in $focus satisfies matches(@name, $f))">
             <x:scenario label="{@name}" catch="true">
                 <!--<xsl:if test="tokenize($focus, ',') = @name">
@@ -99,10 +109,6 @@
                 <x:variable name="result" select="*">
                     <xsl:copy-of select="xpmt:copy-for-xspec(result)"/>
                 </x:variable>
-                
-                <xsl:variable name="env-ref" select="(environment/@ref, 'empty')"/>
-                <xsl:variable name="env" select="$envs[@name = $env-ref]"/>
-                
                 <xsl:if test="$env">
                     <x:like label="{$env[last()]/generate-id(.)}"/>
                 </xsl:if>
