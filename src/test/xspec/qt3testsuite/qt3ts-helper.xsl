@@ -138,8 +138,14 @@
 
     <xsl:template match="qt:assert-eq | qt:assert-deep-eq" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:variable name="namespace-context" as="element()">
+            <xsl:copy copy-namespaces="yes">
+                <xsl:namespace name="fn">http://www.w3.org/2005/xpath-functions</xsl:namespace>
+                <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
+            </xsl:copy>
+        </xsl:variable>
         <xsl:variable name="compare" as="item()*">
-            <xsl:evaluate xpath="."/>
+            <xsl:evaluate xpath="." namespace-context="$namespace-context"/>
         </xsl:variable>
         <xsl:if test="not(deep-equal($result, $compare))">
             <xsl:message select="$compare instance of node()*"/>
