@@ -40,14 +40,9 @@
             <x:variable name="sources">
                 <xsl:attribute name="select">
                     <xsl:text>(</xsl:text>
-                    <xsl:if test="source">
+                    <xsl:if test="source[@role = '.']">
                         <xsl:text>'</xsl:text>
-                        <xsl:for-each select="source">
-                            <xsl:value-of select="resolve-uri(@file, base-uri(.))"/>
-                            <xsl:if test="position() != last()">
-                                <xsl:text>', '</xsl:text>
-                            </xsl:if>
-                        </xsl:for-each>
+                        <xsl:value-of select="source[@role = '.']/resolve-uri(@file, base-uri(.))"/>
                         <xsl:text>'</xsl:text>
                     </xsl:if>
                     <xsl:text>)</xsl:text>
