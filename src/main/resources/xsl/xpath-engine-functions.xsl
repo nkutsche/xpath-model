@@ -460,7 +460,7 @@
         
         <xsl:variable name="function" select="
             if ($ns-uri = $fn_namespace-uri and function-available('xpf:' || $local-name, $arity + 1)) 
-            then function-lookup(xs:QName('xpf:' || $local-name), $arity + 1) 
+            then xpe:apply-static-context($exec-context, function-lookup(xs:QName('xpf:' || $local-name), $arity + 1)) 
             else function-lookup($name, $arity)"/>
         <xsl:if test="empty($function)">
             <xsl:message expand-text="yes">Could not find funciton Q{{{$ns-uri}}}{$local-name}!</xsl:message>
@@ -469,6 +469,59 @@
             $function
             "/>
     </xsl:function>
+    <xsl:function name="xpe:apply-static-context" as="function(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="function" as="function(*)"/>
+        
+        <xsl:variable name="arity" select="function-arity($function)"/>
+        <xsl:choose>
+            <xsl:when test="$arity = 0">
+                <xsl:sequence select="$function"/>
+            </xsl:when>
+            <xsl:when test="$arity = 1">
+                <xsl:sequence select="function(){$function($exec-context)}"/>
+            </xsl:when>
+            <xsl:when test="$arity = 2">
+                <xsl:sequence select="$function($exec-context, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 3">
+                <xsl:sequence select="$function($exec-context, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 4">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 5">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 6">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 7">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 8">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 9">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:when test="$arity = 10">
+                <xsl:sequence select="$function($exec-context, ?, ?, ?, ?, ?, ?, ?, ?, ?)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="param-xpath" select="(1 to $arity) ! ('?') => string-join(', ')"/>
+                <xsl:variable name="xpath" select="'$f($ec,' || $param-xpath || ')'"/>
+                <xsl:evaluate xpath="$xpath" with-params="
+                    map{
+                    QName('','f') : $function,
+                    QName('','ec') : $exec-context
+                    }
+                    "/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:function>
+    
     <xsl:function name="xpf:function-name" as="xs:QName?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="func" as="function(*)"/>
