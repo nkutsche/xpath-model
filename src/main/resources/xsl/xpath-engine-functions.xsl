@@ -6,6 +6,7 @@
     xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
     xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
     xmlns:mlml="http://www.nkutsche.com/xmlml"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:variable name="xpf:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/functions'"/>
@@ -331,21 +332,83 @@
     <xsl:function name="xpf:doc" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="uri" as="xs:string?"/>
+        <xsl:variable name="atomized" select="xpe:atomize($uri)"/>
+        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:choose>
+            <xsl:when test="empty($exec-context?uri-resolver)">
+                <xsl:sequence select="
+                    xpe:default-uri-resolver($atomized, $baseUri)
+                    "/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$exec-context?uri-resolver($atomized, $baseUri)"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="xpf:collection($exec-context, '')"/>
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="arg" as="item()?"/>
+
+        <xsl:sequence select="
+            xpf:uri-collection($exec-context, $arg) ! xpf:doc($exec-context, .)
+            "/>
+        
     </xsl:function>
+    
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
     </xsl:function>
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string?"/>
+        
+        <xsl:variable name="atomized" select="xpe:atomize($arg)"/>
+        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        
+        <xsl:choose>
+            <xsl:when test="empty($exec-context?uri-collection-resolver)">
+                <xsl:sequence select="
+                    xpe:default-collection-resolver($atomized, $baseUri)
+                    "/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$exec-context?uri-collection-resolver($atomized, $baseUri)"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
+    
+    <xsl:function name="xpe:default-uri-resolver" as="document-node()?">
+        <xsl:param name="relative" as="xs:string?"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:variable name="resolved" as="xs:anyURI?">
+            <xsl:try>
+                <xsl:sequence select="resolve-uri($relative, $baseUri)"/>
+                <xsl:catch errors="err:FORG0002">
+                    <xsl:sequence select="error(xpe:error-code('FODC0005'), 'Malformed URI ' || $relative)"/>
+                </xsl:catch>
+            </xsl:try>
+        </xsl:variable>
+        <xsl:sequence select="doc($resolved)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpe:default-collection-resolver" as="xs:anyURI*">
+        <xsl:param name="relative" as="xs:string"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:variable name="resolved" as="xs:anyURI">
+            <xsl:try>
+                <xsl:sequence select="resolve-uri($relative, $baseUri)"/>
+                <xsl:catch errors="err:FORG0002">
+                    <xsl:sequence select="error(xpe:error-code('FODC0004'), 'Malformed URI ' || $relative)"/>
+                </xsl:catch>
+            </xsl:try>
+        </xsl:variable>
+        <xsl:sequence select="uri-collection($resolved)"/>
+    </xsl:function>
+    
     <xsl:function name="xpf:parse-xml" as="document-node(element(*))?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string?"/>
