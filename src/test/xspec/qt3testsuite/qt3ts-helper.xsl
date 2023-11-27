@@ -227,8 +227,12 @@
             <xsl:when test="$result instance of map(*) and $result?err instance of map(*)">
                 <xsl:variable name="code" select="$result?err?code" as="xs:QName"/>
                 <xsl:sequence select="
-                    local-name-from-QName($code) = @code
-                    and namespace-uri-from-QName($code) = 'http://www.w3.org/2005/xqt-errors'
+                    if (@code = '*') 
+                    then 
+                        true() 
+                    else
+                        local-name-from-QName($code) = @code
+                        and namespace-uri-from-QName($code) = 'http://www.w3.org/2005/xqt-errors'
                     "/>
             </xsl:when>
             <xsl:otherwise>
