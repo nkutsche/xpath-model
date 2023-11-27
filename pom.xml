@@ -59,6 +59,7 @@
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
         <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
         <testsuite.checkoutdir>${project.build.directory}/qt3-testsuite/</testsuite.checkoutdir>
+        <testsuite.qt3-id-focus>.*</testsuite.qt3-id-focus>
     </properties>
     
     <dependencies>
@@ -324,6 +325,12 @@
                                                 <include>catalog.xml</include>
                                             </includes>
                                             <stylesheet>${project.baseUri}/src/test/xspec/qt3testsuite/qt3ts2xspec.xsl</stylesheet>
+                                            <parameters>
+                                                <parameter>
+                                                    <name>focus</name>
+                                                    <value>^${testsuite.qt3-id-focus}$</value>
+                                                </parameter>
+                                            </parameters>
                                             <fileMappers>
                                                 <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
                                                     <targetExtension>.xspec</targetExtension>
