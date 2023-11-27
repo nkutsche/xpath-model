@@ -270,12 +270,24 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:template match="operation[@type = 'postfix']" mode="xpe:xpath-evaluate" priority="10">
+    <xsl:template match="operation[@type = 'postfix'][predicate]" mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="content" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
         <xsl:sequence select="xpe:apply-predicate($execution-context, $content, predicate)"/>
+    </xsl:template>
+
+    <xsl:template match="operation[@type = 'postfix'][function-call]" mode="xpe:xpath-evaluate" priority="10">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="function" as="function(*)">
+            <xsl:apply-templates select="arg/*" mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="args" select="xpe:arg-array(function-call/arg, $execution-context)"/>
+        
+        <xsl:variable name="funct-namespace" select="function-name($function) ! namespace-uri-from-QName(.)"/>
+        
+        <xsl:sequence select="xpe:function-apply($function, $args)"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = 'let-binding']" mode="xpe:xpath-evaluate" name="xpe:xpath-let-operation" priority="10">
