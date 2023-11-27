@@ -103,6 +103,9 @@
                 <!--<xsl:if test="tokenize($focus, ',') = @name">
                     <xsl:attribute name="focus" select="''"/>
                 </xsl:if>-->
+                <xsl:if test="$env/source/@validation = 'strict'">
+                    <xsl:attribute name="pending">Ignored as test case seems to be schema-aware.</xsl:attribute>
+                </xsl:if>
                 <x:variable name="xpath" select="string(.)">
                     <xsl:value-of select="test"/>
                 </x:variable>
