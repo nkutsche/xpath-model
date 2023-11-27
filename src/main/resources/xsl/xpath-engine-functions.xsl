@@ -32,6 +32,31 @@
         <xsl:sequence select="compare(xpe:atomize($comparand1), xpe:atomize($comparand2), xpf:default-collation($exec-context))"/>
     </xsl:function>
 
+    <xsl:function name="xpf:string" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="string(xpe:atomize($exec-context?context))"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:node-name" as="xs:QName">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="node-name($exec-context?context)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:nilled" as="xs:boolean">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="nilled($exec-context?context)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:data" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="data($exec-context?context)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:document-uri" as="xs:anyURI?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="document-uri($exec-context?context)"/>
+    </xsl:function>
+
     <xsl:function name="xpf:string-length" as="xs:integer">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="string-length(xpe:atomize($exec-context?context))"/>
@@ -345,6 +370,10 @@
     <xsl:function name="xpf:default-collation" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?default-collation, default-collation())[1]"/>
+    </xsl:function>
+    <xsl:function name="xpf:base-uri" as="xs:anyURI?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="base-uri($exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:static-base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
