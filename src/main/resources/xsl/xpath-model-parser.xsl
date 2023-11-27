@@ -775,7 +775,7 @@
     <xsl:template match="ArrowExpr/ArrowFunctionSpecifier[VarRef | ParenthesizedExpr]" priority="25"
         mode="nk:xpath-model">
         <function>
-            <xsl:apply-templates select="VarRef | ParenthesizedExpr/*" mode="#current"/>
+            <xsl:apply-templates select="VarRef | ParenthesizedExpr/(* except TOKEN)" mode="#current"/>
         </function>
     </xsl:template>
 
@@ -943,6 +943,10 @@
         <arg>
             <xsl:apply-templates select="* except TOKEN" mode="#current"/>
         </arg>
+    </xsl:template>
+
+    <xsl:template match="Argument[ArgumentPlaceholder]" priority="30" mode="nk:xpath-model">
+        <arg role="placeholder"/>
     </xsl:template>
 
     <!--    

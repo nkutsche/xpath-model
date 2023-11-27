@@ -25,6 +25,7 @@ returnArg = element arg {attribute role {"return"}, expr}
 satisfiesArg = element arg {attribute role {"satisfies"}, expr}
 keyArg = element arg {attribute role {"key"}, expr}
 valueArg = element arg {attribute role {"value"}, expr}
+placeholderArg = element arg {attribute role {"placeholder"}}
 
 predicate = element predicate {expr}
 
@@ -38,7 +39,7 @@ function-spec = element function {qname | expr}
 
 function-ref = element function {qname, attribute arity {xs:integer} }
 
-postFixFunction = element function-call {arg*}
+postFixFunction = element function-call {(arg* | (arg*, placeholderArg, arg*))}
 
 # Maps
 

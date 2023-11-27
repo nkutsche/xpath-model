@@ -4050,6 +4050,48 @@
                     <x:expect label="expected expression" select="string(.)">concat#3('foo', '_', 'bar')</x:expect>
                 </x:scenario>
             </x:scenario>
+            <x:scenario label="function references with ?">
+                <x:scenario label="('3', '2', '1') => (string-join#1(?))()">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="arrow">
+                                   <arg>
+                                      <operation type="sequence">
+                                         <arg>
+                                            <string value="3"/>
+                                         </arg>
+                                         <comma/>
+                                         <arg>
+                                            <string value="2"/>
+                                         </arg>
+                                         <comma/>
+                                         <arg>
+                                            <string value="1"/>
+                                         </arg>
+                                      </operation>
+                                   </arg>
+                                   <arrow/>
+                                   <function-call>
+                                      <function>
+                                         <operation type="postfix">
+                                            <arg>
+                                               <function name="string-join" arity="1"/>
+                                            </arg>
+                                            <function-call>
+                                               <arg role="placeholder"/>
+                                            </function-call>
+                                         </operation>
+                                      </function>
+                                   </function-call>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected result tree" select="string(.)"
+                        >('3', '2', '1') => (string-join#1(?))()</x:expect>
+                </x:scenario>
+            </x:scenario>
             <x:scenario label="default-namesapce">
                 <x:variable name="dns" select="'http://www.nkutsche.com/default-namespace'"/>
                 <x:scenario label="with single namespace">
@@ -8095,6 +8137,47 @@
                                 </function-call>
                             </operation>
                         </expr>
+                    </x:expect>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="function references with ?">
+                <x:scenario label="('3', '2', '1') => (string-join#1(?))()">
+                    <x:call>
+                        <x:param select="string(.)">('3', '2', '1') => (string-join#1(?))()</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <operation type="arrow">
+                               <arg>
+                                  <operation type="sequence">
+                                     <arg>
+                                        <string value="3"/>
+                                     </arg>
+                                     <comma/>
+                                     <arg>
+                                        <string value="2"/>
+                                     </arg>
+                                     <comma/>
+                                     <arg>
+                                        <string value="1"/>
+                                     </arg>
+                                  </operation>
+                               </arg>
+                               <arrow/>
+                               <function-call>
+                                  <function>
+                                     <operation type="postfix">
+                                        <arg>
+                                           <function name="string-join" arity="1"/>
+                                        </arg>
+                                        <function-call>
+                                           <arg role="placeholder"/>
+                                        </function-call>
+                                     </operation>
+                                  </function>
+                               </function-call>
+                            </operation>
+                         </expr>
                     </x:expect>
                 </x:scenario>
             </x:scenario>

@@ -108,6 +108,13 @@ This is just for debugging...
       <ref name="expr"/>
     </element>
   </define>
+  <define name="placeholderArg">
+    <element name="arg">
+      <attribute name="role">
+        <value>placeholder</value>
+      </attribute>
+    </element>
+  </define>
   <define name="predicate">
     <element name="predicate">
       <ref name="expr"/>
@@ -140,9 +147,20 @@ This is just for debugging...
   </define>
   <define name="postFixFunction">
     <element name="function-call">
-      <zeroOrMore>
-        <ref name="arg"/>
-      </zeroOrMore>
+      <choice>
+        <zeroOrMore>
+          <ref name="arg"/>
+        </zeroOrMore>
+        <group>
+          <zeroOrMore>
+            <ref name="arg"/>
+          </zeroOrMore>
+          <ref name="placeholderArg"/>
+          <zeroOrMore>
+            <ref name="arg"/>
+          </zeroOrMore>
+        </group>
+      </choice>
     </element>
   </define>
   <!-- Maps -->

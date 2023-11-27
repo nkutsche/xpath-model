@@ -794,11 +794,11 @@
         <xsl:sequence select="']'"/>
     </xsl:template>
 
-    <!--<xsl:template match="operation[@type = 'postfix']/function-call" mode="nk:xpath-serializer">
+    <xsl:template match="function/operation[@type = 'postfix'][function-call]" mode="nk:xpath-serializer">
         <xsl:sequence select="'('"/>
         <xsl:apply-templates mode="#current"/>
         <xsl:sequence select="')'"/>
-    </xsl:template>-->
+    </xsl:template>
 
     <xsl:template match="operation[@type = 'postfix']/lookup[not(*)]" mode="nk:xpath-serializer" priority="10">
         <xsl:sequence select="'?'"/>
@@ -837,6 +837,14 @@
 
     <xsl:template match="function-call/arg" mode="nk:xpath-serializer">
         <xsl:apply-templates mode="#current"/>
+        <xsl:if test="following-sibling::arg">
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="function-call/arg[@role = 'placeholder']" mode="nk:xpath-serializer" priority="10">
+        <xsl:apply-templates mode="#current"/>
+        <xsl:sequence select="'?'"/>
         <xsl:if test="following-sibling::arg">
             <xsl:text>, </xsl:text>
         </xsl:if>
