@@ -542,7 +542,7 @@
     
     <xsl:template match="varRef" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="variables" select="$execution-context?variable-context"/>
+        <xsl:variable name="variables" select="($execution-context?variable-context, map{})[1]"/>
         
         <!--
             TODO: Check for Q{} syntax? 
@@ -774,7 +774,7 @@
     </xsl:function>
     
     <xsl:function name="xpe:node-test-name" as="xs:boolean">
-        <xsl:param name="node" as="element()"/>
+        <xsl:param name="node" as="node()"/>
         <xsl:param name="name-test" as="attribute()?"/>
         <xsl:variable name="name-matcher" select="xpm:name-matcher($name-test)"/>
         
@@ -882,6 +882,7 @@
     <xsl:function name="xpe:function-apply" as="item()*">
         <xsl:param name="function" as="function(*)"/>
         <xsl:param name="params" as="array(item()*)"/>
+        
         <xsl:variable name="arity" select="array:size($params)"/>
         <xsl:choose>
             <xsl:when test="$arity = 0">

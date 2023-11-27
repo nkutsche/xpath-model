@@ -572,7 +572,7 @@
         <xsl:sequence select="QName($namespace, $node)"/>
     </xsl:function>
 
-    <xsl:function name="nk:name-matcher" as="map(xs:string, xs:string)">
+    <xsl:function name="nk:name-matcher" as="map(xs:string, xs:string)" visibility="final">
         <xsl:param name="name" as="attribute(name)?"/>
         <xsl:variable name="ns-ctx" select="$name/parent::*"/>
 
