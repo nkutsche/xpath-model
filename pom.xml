@@ -382,7 +382,7 @@
                                     --> 
                                     <addDependenciesToClasspath>true</addDependenciesToClasspath>
                                     <xspecProperties>
-                                        <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager</saxon.custom.options>
+                                        <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager -config:${project.basedir}/src/test/xspec/qt3testsuite/saxon-config.xml</saxon.custom.options>
                                     </xspecProperties>
                                 </configuration>
                             </execution>
