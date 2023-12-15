@@ -314,8 +314,9 @@
 
     <xsl:template match="StringLiteral" mode="nk:xpath-model">
         <xsl:variable name="value" select="string(.)"/>
+        <xsl:variable name="quote" select="substring($value, 1, 1)"/>
         <xsl:variable name="value" select="substring($value, 2, string-length($value) - 2)"/>
-        <xsl:variable name="value" select="nk:quote-unesc($value)"/>
+        <xsl:variable name="value" select="nk:quote-unesc($value, $quote)"/>
         <string value="{$value}"/>
     </xsl:template>
 

@@ -65,8 +65,9 @@
     
     <xsl:function name="nk:quote-unesc">
         <xsl:param name="escaped" as="xs:string"/>
+        <xsl:param name="quote" as="xs:string"/>
         
-        <xsl:sequence select="replace($escaped, '([''&quot;])\1', '$1')"/>
+        <xsl:sequence select="replace($escaped, '([' || $quote || '])\1', '$1')"/>
         
     </xsl:function>
     

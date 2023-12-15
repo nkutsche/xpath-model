@@ -36,6 +36,7 @@
         <x:scenario label="single apos">
             <x:call>
                 <x:param select="string(.)">''</x:param>
+                <x:param select="string(.)">'</x:param>
             </x:call>
             <x:expect label="result" select="string(.)">'</x:expect>
         </x:scenario>
@@ -43,22 +44,45 @@
         <x:scenario label="single quote">
             <x:call>
                 <x:param select="string(.)">""</x:param>
+                <x:param select="string(.)">"</x:param>
             </x:call>
             <x:expect label="result" select="string(.)">"</x:expect>
         </x:scenario>
 
         <x:scenario label="mix quoted">
             <x:call>
-                <x:param select="string(.)">""foo''</x:param>
+                <x:param select="string(.)" position="1">""foo''</x:param>
             </x:call>
-            <x:expect label="result" select="string(.)">"foo'</x:expect>
+            <x:scenario label="with ' to unescape">
+                <x:call>
+                    <x:param select="string(.)" position="2">'</x:param>
+                </x:call>
+                <x:expect label="result" select="string(.)">""foo'</x:expect>
+            </x:scenario>
+            <x:scenario label="with &quot; to unescape">
+                <x:call>
+                    <x:param select="string(.)" position="2">"</x:param>
+                </x:call>
+                <x:expect label="result" select="string(.)">"foo''</x:expect>
+            </x:scenario>
         </x:scenario>
 
         <x:scenario label="three quotes">
             <x:call>
-                <x:param select="string(.)">"""foo'''</x:param>
+                <x:param select="string(.)" position="1">"""foo'''</x:param>
             </x:call>
-            <x:expect label="result" select="string(.)">""foo''</x:expect>
+            <x:scenario label="with ' to unescape">
+                <x:call>
+                    <x:param select="string(.)" position="2">'</x:param>
+                </x:call>
+                <x:expect label="result" select="string(.)">"""foo''</x:expect>
+            </x:scenario>
+            <x:scenario label="with &quot; to unescape">
+                <x:call>
+                    <x:param select="string(.)" position="2">"</x:param>
+                </x:call>
+                <x:expect label="result" select="string(.)">""foo'''</x:expect>
+            </x:scenario>
         </x:scenario>
     </x:scenario>
     <x:scenario label="Scenario testing function call nk:qname">
@@ -706,6 +730,28 @@
                         </x:call>
                         <x:expect label="expected result" select="string(.)">"f'o""o"</x:expect>
                     </x:scenario>
+                </x:scenario>
+                <x:scenario label="double quotes in value">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <string value='f""o""o'/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <!-- literal-string-quote : auto -->
+                    <x:expect label="expected result tree" select="string(.)">'f""o""o'</x:expect>
+                </x:scenario>
+                <x:scenario label="double quotes in value">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <string value="f''o''o"/>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <!-- literal-string-quote : auto -->
+                    <x:expect label="expected result tree" select="string(.)">"f''o''o"</x:expect>
                 </x:scenario>
                 <x:scenario label="empty string">
                     <x:call>
@@ -5803,6 +5849,26 @@
                     <x:expect label="expected result tree">
                         <expr>
                             <string value="f'o'o"/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="double quotes, but no escaping">
+                    <x:call>
+                        <x:param select="string(.)">'f""o""o'</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <string value='f""o""o'/>
+                        </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="double quotes, but no escaping">
+                    <x:call>
+                        <x:param select="string(.)">"f''o''o"</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <string value="f''o''o"/>
                         </expr>
                     </x:expect>
                 </x:scenario>
