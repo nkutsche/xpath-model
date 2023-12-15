@@ -20,8 +20,28 @@
     </xd:doc>
     
     <xsl:param name="focus" as="xs:string">.*</xsl:param>
-    <xsl:param name="dependency-spec" as="xs:string">^XP\d+\+?$</xsl:param>
     
+    
+    <xsl:variable name="dependency-settings" as="element(xpmt:dependency)*">
+        <xpmt:dependency type="spec" match="^XP([1-3]\.?\d\+|31|3\.1)$" only="true"/>
+        <xpmt:dependency type="feature" value="fn-load-xquery-module" satisfied="false"/>
+        <xpmt:dependency type="feature" value="staticTyping" satisfied="false"/>
+        <xpmt:dependency type="feature" value="advanced-uca-fallback" satisfied="false"/>
+        <xpmt:dependency type="xml-version" value="1.1" satisfied="false"/>
+        <xpmt:dependency type="feature" value="fn-transform-XSLT" satisfied="partial">
+            <xpmt:ignore test="fn-transform-err-9">TODO</xpmt:ignore>
+            <xpmt:ignore test="fn-transform-err-9a">TODO</xpmt:ignore>
+        </xpmt:dependency>
+        <xpmt:dependency type="feature" value="remote_http" satisfied="partial">
+            <xpmt:ignore test="fn-unparsed-text-054">requires: Feature.STABLE_UNPARSED_TEXT which leads to problems with other test cases...</xpmt:ignore>
+            <xpmt:ignore test="fn-unparsed-text-054a">requires: Feature.STABLE_UNPARSED_TEXT which leads to problems with other test cases...</xpmt:ignore>
+        </xpmt:dependency>
+        <xpmt:dependency>
+            <xpmt:ignore test="fn-unparsed-text-056">Saxon-HE throws FOUT1170 instead of FOUT1190!</xpmt:ignore>
+        </xpmt:dependency>
+        
+        
+    </xsl:variable>
     <xsl:template match="/catalog">
         <x:description stylesheet="{resolve-uri('../../../main/resources/xsl/xpath-model.xsl')}">
             <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
@@ -71,20 +91,111 @@
             <xsl:with-param name="envs" select="$envs, environment" tunnel="yes"/>
         </xsl:next-match>
     </xsl:template>
+
+    <xsl:template match="test-set[dependency] | test-case[dependency]" priority="60">
+        <xsl:param name="test-dependencies" tunnel="yes" as="element(dependency)*"/>
+        <xsl:next-match>
+            <xsl:with-param name="test-dependencies" select="$test-dependencies, dependency" tunnel="yes"/>
+        </xsl:next-match>
+    </xsl:template>
     
     <xsl:template match="test-case" priority="50">
-        <xsl:param name="dep-spec" select="dependency[@type = 'spec']" tunnel="yes"/>
-        <xsl:variable name="dep-spec-values" select="$dep-spec/@value/tokenize(., '\s')"/>
+        <xsl:param name="test-dependencies" tunnel="yes" as="element(dependency)*"/>
         <xsl:choose>
+            <xsl:when test="not($test-dependencies)">
+                <xsl:next-match/>
+            </xsl:when>
             <xsl:when test="
-                empty($dep-spec-values) or
-                (every $dsv in  $dep-spec-values satisfies matches($dsv, $dependency-spec))">
+                $test-dependencies => xpmt:merge-dependencies() => xpmt:verify-test-dependencies()">
                 <xsl:next-match/>
             </xsl:when>
             <xsl:otherwise/>
             
         </xsl:choose>
     </xsl:template>
+    
+    
+    <xsl:function name="xpmt:merge-dependencies" as="element(dependency)*">
+        <xsl:param name="test-dependencies" as="element(dependency)*"/>
+        <xsl:for-each-group select="$test-dependencies" group-by=" 
+            if (@type = 'spec') 
+            then ('spec') 
+            else (@type || ';' || @value) ">
+            <xsl:sequence select="current-group()[last()]"/>
+        </xsl:for-each-group> 
+    </xsl:function>
+    
+    <xsl:function name="xpmt:verify-test-dependencies" as="xs:boolean">
+        <xsl:param name="test-dependencies" as="element(dependency)*"/>
+        <xsl:sequence select="xpmt:verify-test-dependencies($test-dependencies, $dependency-settings)"/>
+    </xsl:function>
+    
+    
+    <xsl:function name="xpmt:verify-test-dependencies" as="xs:boolean">
+        <xsl:param name="test-dependencies" as="element(dependency)*"/>
+        <xsl:param name="dependency-settings" as="element(xpmt:dependency)*"/>
+        <xsl:variable name="satisfied" select="every $td in $test-dependencies
+            satisfies xpmt:verify-test-dependency($td, $dependency-settings)"/>
+        <xsl:choose>
+            <xsl:when test="$dependency-settings[@only = 'true']">
+                <xsl:sequence select="
+                    $satisfied and (
+                        every $odps in $dependency-settings[@only = 'true'] 
+                        satisfies exists($test-dependencies[xpmt:verify-test-dependency(., $odps, true())])
+                    )
+                    "/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$satisfied"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:function>
+
+    <xsl:function name="xpmt:verify-test-dependency" as="xs:boolean">
+        <xsl:param name="test-dependency" as="element(dependency)"/>
+        <xsl:param name="dependency-settings" as="element(xpmt:dependency)*"/>
+        <xsl:sequence select="xpmt:verify-test-dependency($test-dependency, $dependency-settings, false())"/>
+    </xsl:function>
+    <xsl:function name="xpmt:verify-test-dependency" as="xs:boolean">
+        <xsl:param name="test-dependency" as="element(dependency)"/>
+        <xsl:param name="dependency-settings" as="element(xpmt:dependency)*"/>
+        <xsl:param name="false-if-no-match" as="xs:boolean"/>
+        <xsl:variable name="type" select="$test-dependency/@type"/>
+        <xsl:variable name="dependency-settings" select="$dependency-settings[@type = $type]"/>
+        <xsl:variable name="values" select="
+            if ($test-dependency/@type = 'spec') 
+            then tokenize($test-dependency/@value, '\s+') 
+            else $test-dependency/@value
+            "/>
+        <xsl:variable name="dependency-settings" select="$dependency-settings[
+            if (@match) 
+            then some $v in $values
+            satisfies matches($v, @match) 
+            else ($values = @value)
+            ]"/>
+        
+        <xsl:variable name="test-dep-satisfied" select="($test-dependency/@satisfied, 'true')[1]"/>
+        <xsl:variable name="test-dep-satisfied" select="
+            if ($test-dep-satisfied = 'true') then ('true', 'partial') else $test-dep-satisfied
+            "/>
+        <xsl:variable name="dep-settings-satisfied" select="($dependency-settings/@satisfied, 'true')[1]"/>
+        
+        <xsl:choose>
+            <xsl:when test="not($dependency-settings) and $false-if-no-match">
+                <xsl:sequence select="false()"/>
+            </xsl:when>
+            <xsl:when test="not($dependency-settings)">
+                <xsl:sequence select="$test-dep-satisfied = 'true'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$dep-settings-satisfied = $test-dep-satisfied"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+            
+        
+    </xsl:function>
     
     <xsl:template match="test-case">
         <xsl:param name="envs" as="element(qt:environment)*" tunnel="yes"/>
@@ -103,6 +214,12 @@
             <x:scenario label="{@name}" catch="true">
                 <xsl:if test="$env/source/@validation = 'strict'">
                     <xsl:attribute name="pending">Ignored as test case seems to be schema-aware.</xsl:attribute>
+                </xsl:if>
+                <xsl:variable name="test-name" select="@name"/>
+                <xsl:variable name="ignore-reaons" select="$dependency-settings//xpmt:ignore[@test = $test-name]"/>
+                <xsl:if test="$ignore-reaons">
+                    <xsl:attribute name="pending" expand-text="yes"
+                        >Ignored by dependency settings. Reason: {$ignore-reaons}</xsl:attribute>
                 </xsl:if>
                 <x:variable name="xpath" select="string(.)">
                     <xsl:value-of select="test"/>
