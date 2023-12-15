@@ -123,7 +123,6 @@
             <plugin>
                 <groupId>com.nkutsche</groupId>
                 <artifactId>xspec-maven-plugin</artifactId>
-                <version>2.0.0</version>
                 <executions>
                     <execution>
                         <id>run-xspec</id>
@@ -131,38 +130,8 @@
                             <goal>run-xspec</goal>
                         </goals>
                         <phase>test</phase>
-                        <configuration>
-                            <addDependenciesToClasspath>true</addDependenciesToClasspath>
-                            <xspecProperties>
-                                <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager</saxon.custom.options>
-                            </xspecProperties>
-                        </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.xspec</groupId>
-                        <artifactId>xspec</artifactId>
-                        <version>2.3.2</version>
-                        <classifier>enduser-files</classifier>
-                        <type>zip</type>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.sf.saxon</groupId>
-                        <artifactId>Saxon-HE</artifactId>
-                        <version>${saxon.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.nkutsche</groupId>
-                        <artifactId>xslt-pkg-manager120</artifactId>
-                        <version>2.1.1-SNAPSHOT</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.nkutsche</groupId>
-                        <artifactId>rng-xsl</artifactId>
-                        <version>1.0.1-SNAPSHOT</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             
             <!--            
@@ -220,6 +189,45 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.nkutsche</groupId>
+                    <artifactId>xspec-maven-plugin</artifactId>
+                    <version>2.0.1</version>
+                    <configuration>
+                        <addDependenciesToClasspath>true</addDependenciesToClasspath>
+                        <xspecProperties>
+                            <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager</saxon.custom.options>
+                        </xspecProperties>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>io.xspec</groupId>
+                            <artifactId>xspec</artifactId>
+                            <version>2.3.2</version>
+                            <classifier>enduser-files</classifier>
+                            <type>zip</type>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sf.saxon</groupId>
+                            <artifactId>Saxon-HE</artifactId>
+                            <version>${saxon.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.nkutsche</groupId>
+                            <artifactId>xslt-pkg-manager120</artifactId>
+                            <version>2.1.1-SNAPSHOT</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.nkutsche</groupId>
+                            <artifactId>rng-xsl</artifactId>
+                            <version>1.1.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
     
     <profiles>
