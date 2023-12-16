@@ -5,6 +5,7 @@
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:xpmt="http://www.nkutsche.com/xpath-model/test-helper"  
     xmlns:qt="http://www.w3.org/2010/09/qt-fots-catalog"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xd:doc scope="stylesheet">
@@ -14,6 +15,16 @@
             <xd:p></xd:p>
         </xd:desc>
     </xd:doc>
+    <xsl:variable name="predef-ns" as="map(*)">
+        <xsl:map>
+            <xsl:map-entry key="'fn'" select="'http://www.w3.org/2005/xpath-functions'"/>
+            <xsl:map-entry key="'xs'" select="'http://www.w3.org/2001/XMLSchema'"/>
+            <xsl:map-entry key="'map'" select="'http://www.w3.org/2005/xpath-functions/map'"/>
+            <xsl:map-entry key="'array'" select="'http://www.w3.org/2005/xpath-functions/array'"/>
+            <xsl:map-entry key="'math'" select="'http://www.w3.org/2005/xpath-functions/math'"/>
+            <xsl:map-entry key="'xpe'" select="'http://www.nkutsche.com/xpath-model/engine'"/>
+        </xsl:map>
+    </xsl:variable>
     
     <xsl:function name="xpmt:execution-context" as="map(*)">
         <xsl:param name="environment" as="element(qt:environment)"/>
@@ -26,11 +37,12 @@
         <xsl:param name="transform-workaround" as="xs:boolean"/>
         <xsl:map>
             <xsl:map-entry key="'namespaces'">
-                <xsl:map>
-                    <xsl:map-entry key="'fn'" select="'http://www.w3.org/2005/xpath-functions'"/>
-                    <xsl:map-entry key="'xs'" select="'http://www.w3.org/2001/XMLSchema'"/>
-                    <xsl:apply-templates select="$environment/qt:namespace" mode="xpmt:execution-context"/>
-                </xsl:map>
+                <xsl:variable name="env-ns" as="map(*)">
+                    <xsl:map>
+                        <xsl:apply-templates select="$environment/qt:namespace" mode="xpmt:execution-context"/>
+                    </xsl:map>
+                </xsl:variable>
+                <xsl:sequence select="($predef-ns, $env-ns) => map:merge(map{'duplicates' : 'use-last'})"/>
             </xsl:map-entry>
             
             <xsl:if test="$environment/qt:collection">
