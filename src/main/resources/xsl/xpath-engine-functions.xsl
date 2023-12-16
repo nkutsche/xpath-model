@@ -94,7 +94,19 @@
 
     <xsl:function name="xpf:data" as="item()*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="data($exec-context?context)"/>
+        <xsl:param name="arg" as="item()*"/>
+        <xsl:choose>
+            <xsl:when test="xpe:is-function($arg)">
+                <xsl:sequence select="error(xpe:error-code('err:FOTY0013'), 'An atomic value is required, but the supplied type is a function ' || $arg?name || '#' || $arg?arity || ', which cannot be atomized')"/>
+            </xsl:when>
+            <xsl:when test="$arg instance of map(*)*">
+                <xsl:sequence select="error(xpe:error-code('err:FOTY0013'), 'An atomic value is required, but the supplied type is a map, which cannot be atomized')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="data($arg)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:function>
 
     <xsl:function name="xpf:document-uri" as="xs:anyURI?">
