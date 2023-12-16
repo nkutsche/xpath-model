@@ -618,7 +618,20 @@
     </xsl:template>
     
 
-    <xsl:template match="lookup" mode="xpe:xpath-evaluate" priority="-10">
+    <xsl:template match="lookup[not(*)]" mode="xpe:xpath-evaluate" priority="-10">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="context" select="$execution-context?context"/>
+        <xsl:choose>
+            <xsl:when test="$context instance of map(*) or $context instance of array(*)">
+                <xsl:sequence select="$context?*"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="error(QName('', 'TODO'), 'Context of an unary lookup must be a map or array!')"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="lookup" mode="xpe:xpath-evaluate" priority="-15">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="context" select="$execution-context?context"/>
         <xsl:variable name="key" as="item()">
