@@ -614,6 +614,25 @@
         <xsl:sequence select="($exec-context?base-uri, static-base-uri())[1]"/>
     </xsl:function>
     
+    <xsl:function name="xpf:load-xquery-module" as="map(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <!-- 
+            TODO: original type of $uri is xs:string  
+            Workaround for https://github.com/w3c/qt3tests/issues/58
+        -->
+        <xsl:param name="uri" as="item()"/>
+        <xsl:sequence select="error(xpe:error-code('FOQM0006'), 'XQuery module is not available in this XPath engine.')"/>
+    </xsl:function>
+    <xsl:function name="xpf:load-xquery-module" as="map(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <!-- 
+            TODO: original type of $uri is xs:string  
+            Workaround for https://github.com/w3c/qt3tests/issues/58
+        -->
+        <xsl:param name="uri" as="item()"/>
+        <xsl:param name="options" as="map(*)"/>
+        <xsl:sequence select="error(xpe:error-code('FOQM0006'), 'XQuery module is not available in this XPath engine.')"/>
+    </xsl:function>
     
     <xsl:variable name="unsupported-functions" select="
         map{
