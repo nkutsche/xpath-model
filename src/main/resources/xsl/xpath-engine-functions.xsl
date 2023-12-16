@@ -337,16 +337,22 @@
         <xsl:param name="uri" as="xs:string?"/>
         <xsl:variable name="atomized" select="xpe:atomize($uri)"/>
         <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
-        <xsl:choose>
-            <xsl:when test="empty($exec-context?uri-resolver)">
-                <xsl:sequence select="
-                    xpe:default-uri-resolver($atomized, $baseUri)
-                    "/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:sequence select="$exec-context?uri-resolver($atomized, $baseUri)"/>
-            </xsl:otherwise>
-        </xsl:choose>
+        <xsl:try>
+            <xsl:choose>
+                <xsl:when test="empty($uri)"/>
+                <xsl:when test="empty($exec-context?uri-resolver)">
+                    <xsl:sequence select="
+                        xpe:default-uri-resolver($exec-context, $atomized, $baseUri)
+                        "/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:sequence select="$exec-context?uri-resolver($atomized, $baseUri)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:catch errors="err:FORG0002">
+                <xsl:sequence select="error(xpe:error-code('FODC0005'), 'Malformed URI ' || $atomized)"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
