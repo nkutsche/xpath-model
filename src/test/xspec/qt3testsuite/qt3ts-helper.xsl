@@ -60,6 +60,10 @@
                 <xsl:map-entry key="'uri-resolver'" 
                     select="xpmt:env-uri-resolver(?,?, $environment/qt:source, $transform-workaround)"/>
             </xsl:if>
+            <xsl:if test="$environment/qt:resource">
+                <xsl:map-entry key="'unparsed-text-resolver'" 
+                    select="xpmt:env-unparsed-text-resolver(?,?, ?, $environment/qt:resource)"/>
+            </xsl:if>
             <xsl:if test="$environment/qt:param | $environment/qt:source[matches(@role, '^\$')]">
                 <xsl:map-entry key="'variable-context'">
                     <xsl:map>
@@ -142,6 +146,26 @@
             })($base-uri)
             "/>
         <xsl:sequence select="$result"/>
+    </xsl:function>
+    
+    <xsl:function name="xpmt:env-unparsed-text-resolver" as="xs:string?">
+        <xsl:param name="relative" as="xs:string?"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:param name="sources" as="element(qt:resource)+"/>
+        
+        <xsl:if test="exists($relative)">
+            <xsl:variable name="resolved" select=" if ($relative = '') then ('', resolve-uri($relative, $baseUri)) else resolve-uri($relative, $baseUri)"/>
+            <xsl:variable name="source" select="$sources[resolve-uri(@uri, base-uri(.)) = $resolved]"/>
+            <xsl:variable name="encoding" select="($source/@encoding, $encoding)[1]"/>
+            <xsl:variable name="resolved" select="($source/resolve-uri(@file, base-uri(.)), $resolved)[1]"/>
+            <xsl:sequence select="
+                if (empty($encoding)) 
+                then unparsed-text($resolved) 
+                else unparsed-text($resolved, $encoding)
+                "/>
+        </xsl:if>
+        
     </xsl:function>
     
     <xsl:template match="*" mode="xpmt:execution-context"/>
