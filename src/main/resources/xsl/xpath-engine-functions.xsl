@@ -544,14 +544,55 @@
             "/>
         <xsl:sequence select="parse-json($json-text, $options)"/>
     </xsl:function>
-    <xsl:function name="xpf:serialize" as="xs:string">
+    
+    <xsl:function name="xpf:transform" as="map(*)">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <!--    TODO:    <xsl:param name="params" as="element(output:serialization-parameters)?"/>-->
-        <xsl:param name="params" as="element()?"/>
-        <!--        TODO-->
-        <xsl:sequence select="''"/>
+        <xsl:param name="options" as="map(*)"/>
+        
+        <!--        
+            $options?post-process is a function
+        -->
+        <xsl:variable name="options" select="
+            if (exists($options?post-process)) 
+            then map:put($options, 'post-process', xpe:raw-function($options?post-process)) 
+            else $options
+            "/>
+
+        <!--        
+            Replace $options?stylesheet-location by $options?stylesheet-node and use URI resolver
+        -->
+        <xsl:variable name="stylesheet-location" select="$options?stylesheet-location"/>
+        <xsl:variable name="replace-style-loc" select="exists($stylesheet-location)"/>
+        <xsl:variable name="options" select="
+            if ($replace-style-loc) 
+            then 
+                xpf:doc($exec-context, $options?stylesheet-location) 
+                ! map:put($options, 'stylesheet-node', .)
+                => map:remove('stylesheet-location')
+            else $options
+            "/>
+        <!--
+            In case of stylesheet location replacement, set the static-base-uri 
+        -->
+        <xsl:variable name="options" select="
+            if ($replace-style-loc and empty($options?stylesheet-base-uri)) 
+            then map:put($options, 'stylesheet-base-uri', $stylesheet-location) 
+            else $options
+            "/>
+
+        <!--        
+            Replace $options?package-location by $options?package-node and use URI resolver
+        -->
+        <xsl:variable name="options" select="
+            if (exists($options?package-location)) 
+            then 
+                map:put($options, 'package-node', xpf:doc($exec-context, $options?package-location))
+                => map:remove('package-location')
+            else $options
+            "/>
+        <xsl:sequence select="transform($options)"/>
     </xsl:function>
+    
     <xsl:function name="xpf:position" as="xs:integer">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?position, 1)[1]"/>
