@@ -155,8 +155,11 @@
     </xsl:template>
     
     <xsl:template match="qt:param[@name][@select]" mode="xpmt:execution-context">
-        <xsl:map-entry key="xs:QName(@name)">
-            <xsl:evaluate xpath="@select"/>
+        <xsl:variable name="name" select="@name"/>
+        <xsl:variable name="prefix" select=" substring-before($name, ':')"/>
+        <xsl:variable name="ns-uri" select="if (contains($name, ':')) then namespace-uri-for-prefix($prefix, .) else ''"/>
+        <xsl:map-entry key="QName($ns-uri, $name)">
+            <xsl:evaluate xpath="@select" namespace-context="$predef-nscontext-for-saxon"/>
         </xsl:map-entry>
     </xsl:template>
 
