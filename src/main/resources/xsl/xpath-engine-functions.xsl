@@ -13,6 +13,8 @@
     
     <xsl:variable name="function-lib-ns" select="$xpf:namespace-uri"/>
     
+    <xsl:variable name="function-signatures" select="doc('xpath-functions/function-signatures.xml')"/>
+    
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Nov 4, 2023</xd:p>

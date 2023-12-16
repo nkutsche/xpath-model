@@ -1,0 +1,2640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fos:functions xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <fos:function name="function-name" prefix="xpf">
+        <fos:signatures>
+            <fos:proto name="function-name" return-type="xs:QName?">
+                <fos:arg name="func" type="map(*)"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="load-xquery-module" prefix="xpf">
+        <fos:signatures>
+            <fos:proto name="load-xquery-module" return-type="map(*)">
+                <fos:arg name="module-uri" type="item()*"/>
+            </fos:proto>
+            <fos:proto name="load-xquery-module" return-type="map(*)">
+                <fos:arg name="module-uri" type="item()*"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="node-name" prefix="fn">
+        <fos:signatures>
+            <fos:proto at="F" name="node-name" return-type="xs:QName?"/>
+            <fos:proto name="node-name" return-type="xs:QName?">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="nilled" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="nilled" return-type="xs:boolean?"/>
+            <fos:proto name="nilled" return-type="xs:boolean?">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="string" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="string" return-type="xs:string"/>
+            <fos:proto name="string" return-type="xs:string">
+                <fos:arg name="arg" type="item()?" default="." usage="absorption"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="data" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="data" return-type="xs:anyAtomicType*"/>
+            <fos:proto name="data" return-type="xs:anyAtomicType*">
+                <fos:arg name="arg" type="item()*" default="." usage="absorption"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="base-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="base-uri" return-type="xs:anyURI?"/>
+            <fos:proto name="base-uri" return-type="xs:anyURI?">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="document-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="document-uri" return-type="xs:anyURI?"/>
+            <fos:proto name="document-uri" return-type="xs:anyURI?">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="error" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="error" return-type="none"/>
+            <fos:proto name="error" return-type="none">
+                <fos:arg name="code" type="xs:QName?"/>
+            </fos:proto>
+            <fos:proto name="error" return-type="none">
+                <fos:arg name="code" type="xs:QName?"/>
+                <fos:arg name="description" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="error" return-type="none">
+                <fos:arg name="code" type="xs:QName?"/>
+                <fos:arg name="description" type="xs:string"/>
+                <fos:arg name="error-object" type="item()*" default="." usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="trace" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="trace" return-type="item()*">
+                <fos:arg name="value" type="item()*"/>
+            </fos:proto>
+            <fos:proto name="trace" return-type="item()*">
+                <fos:arg name="value" type="item()*" usage="transmission"/>
+                <fos:arg name="label" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-add" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-add" return-type="xs:numeric">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-subtract" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-subtract" return-type="xs:numeric">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-multiply" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-multiply" return-type="xs:numeric">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-divide" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-divide" return-type="xs:numeric">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-integer-divide" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-integer-divide" return-type="xs:integer">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-mod" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-mod" return-type="xs:numeric">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-unary-plus" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-unary-plus" return-type="xs:numeric">
+                <fos:arg name="arg" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-unary-minus" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-unary-minus" return-type="xs:numeric">
+                <fos:arg name="arg" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="numeric-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="numeric-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:numeric"/>
+                <fos:arg name="arg2" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="abs" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="abs" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="ceiling" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="ceiling" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="floor" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="floor" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="round" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="round" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+            </fos:proto>
+            <fos:proto name="round" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+                <fos:arg name="precision" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="round-half-to-even" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="round-half-to-even" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+            </fos:proto>
+            <fos:proto name="round-half-to-even" return-type="xs:numeric?">
+                <fos:arg name="arg" type="xs:numeric?"/>
+                <fos:arg name="precision" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="format-integer" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="format-integer" return-type="xs:string">
+                <fos:arg name="value" type="xs:integer?"/>
+                <fos:arg name="picture" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="format-integer" return-type="xs:string">
+                <fos:arg name="value" type="xs:integer?"/>
+                <fos:arg name="picture" type="xs:string"/>
+                <fos:arg name="lang" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="format-number" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="format-number" return-type="xs:string">
+                <fos:arg name="value" type="xs:numeric?"/>
+                <fos:arg name="picture" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="format-number" return-type="xs:string">
+                <fos:arg name="value" type="xs:numeric?"/>
+                <fos:arg name="picture" type="xs:string"/>
+                <fos:arg name="decimal-format-name" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="pi" prefix="math">
+        <fos:signatures>
+            <fos:proto name="pi" return-type="xs:double"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="exp" prefix="math">
+        <fos:signatures>
+            <fos:proto name="exp" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="exp10" prefix="math">
+        <fos:signatures>
+            <fos:proto name="exp10" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="log" prefix="math">
+        <fos:signatures>
+            <fos:proto name="log" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="log10" prefix="math">
+        <fos:signatures>
+            <fos:proto name="log10" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="sqrt" prefix="math">
+        <fos:signatures>
+            <fos:proto name="sqrt" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="pow" prefix="math">
+        <fos:signatures>
+            <fos:proto name="pow" return-type="xs:double?">
+                <fos:arg name="x" type="xs:double?"/>
+                <fos:arg name="y" type="xs:numeric"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="sin" prefix="math">
+        <fos:signatures>
+            <fos:proto name="sin" return-type="xs:double?">
+                <fos:arg name="θ" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="cos" prefix="math">
+        <fos:signatures>
+            <fos:proto name="cos" return-type="xs:double?">
+                <fos:arg name="θ" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="tan" prefix="math">
+        <fos:signatures>
+            <fos:proto name="tan" return-type="xs:double?">
+                <fos:arg name="θ" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="asin" prefix="math">
+        <fos:signatures>
+            <fos:proto name="asin" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="acos" prefix="math">
+        <fos:signatures>
+            <fos:proto name="acos" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="atan" prefix="math">
+        <fos:signatures>
+            <fos:proto name="atan" return-type="xs:double?">
+                <fos:arg name="arg" type="xs:double?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="atan2" prefix="math">
+        <fos:signatures>
+            <fos:proto name="atan2" return-type="xs:double">
+                <fos:arg name="y" type="xs:double"/>
+                <fos:arg name="x" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="codepoints-to-string" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="codepoints-to-string" return-type="xs:string">
+                <fos:arg name="arg" type="xs:integer*"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="string-to-codepoints" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="string-to-codepoints" return-type="xs:integer*">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="compare" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="compare" return-type="xs:integer?">
+                <fos:arg name="comparand1" type="xs:string?"/>
+                <fos:arg name="comparand2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="compare" return-type="xs:integer?">
+                <fos:arg name="comparand1" type="xs:string?"/>
+                <fos:arg name="comparand2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="codepoint-equal" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="codepoint-equal" return-type="xs:boolean?">
+                <fos:arg name="comparand1" type="xs:string?"/>
+                <fos:arg name="comparand2" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="concat" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="concat" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:anyAtomicType?"/>
+                <fos:arg name="arg2" type="xs:anyAtomicType?"/>
+                <fos:arg name="..." type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="string-join" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="string-join" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:anyAtomicType*"/>
+            </fos:proto>
+            <fos:proto name="string-join" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:anyAtomicType*"/>
+                <fos:arg name="arg2" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="substring" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="substring" return-type="xs:string">
+                <fos:arg name="sourceString" type="xs:string?"/>
+                <fos:arg name="start" type="xs:double"/>
+            </fos:proto>
+            <fos:proto name="substring" return-type="xs:string">
+                <fos:arg name="sourceString" type="xs:string?"/>
+                <fos:arg name="start" type="xs:double"/>
+                <fos:arg name="length" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="string-length" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="string-length" return-type="xs:integer"/>
+            <fos:proto name="string-length" return-type="xs:integer">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="normalize-space" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="normalize-space" return-type="xs:string"/>
+            <fos:proto name="normalize-space" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="normalize-unicode" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="normalize-unicode" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="normalize-unicode" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+                <fos:arg name="normalizationForm" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="upper-case" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="upper-case" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="lower-case" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="lower-case" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="translate" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="translate" return-type="xs:string">
+                <fos:arg name="arg" type="xs:string?"/>
+                <fos:arg name="mapString" type="xs:string"/>
+                <fos:arg name="transString" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="encode-for-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="encode-for-uri" return-type="xs:string">
+                <fos:arg name="uri-part" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="iri-to-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="iri-to-uri" return-type="xs:string">
+                <fos:arg name="iri" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="escape-html-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="escape-html-uri" return-type="xs:string">
+                <fos:arg name="uri" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="contains" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="contains" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="contains" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="starts-with" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="starts-with" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="starts-with" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="ends-with" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="ends-with" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="ends-with" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="substring-before" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="substring-before" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="substring-before" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="substring-after" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="substring-after" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="substring-after" return-type="xs:string">
+                <fos:arg name="arg1" type="xs:string?"/>
+                <fos:arg name="arg2" type="xs:string?"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="matches" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="matches" return-type="xs:boolean">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="matches" return-type="xs:boolean">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+                <fos:arg name="flags" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="replace" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="replace" return-type="xs:string">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+                <fos:arg name="replacement" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="replace" return-type="xs:string">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+                <fos:arg name="replacement" type="xs:string"/>
+                <fos:arg name="flags" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="tokenize" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="tokenize" return-type="xs:string*">
+                <fos:arg name="input" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="tokenize" return-type="xs:string*">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="tokenize" return-type="xs:string*">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+                <fos:arg name="flags" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="analyze-string" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="analyze-string" return-type="element(fn:analyze-string-result)">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="analyze-string" return-type="element(fn:analyze-string-result)">
+                <fos:arg name="input" type="xs:string?"/>
+                <fos:arg name="pattern" type="xs:string"/>
+                <fos:arg name="flags" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="contains-token" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="contains-token" return-type="xs:boolean">
+                <fos:arg name="input" type="xs:string*"/>
+                <fos:arg name="token" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="contains-token" return-type="xs:boolean">
+                <fos:arg name="input" type="xs:string*"/>
+                <fos:arg name="token" type="xs:string"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="resolve-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="resolve-uri" return-type="xs:anyURI?">
+                <fos:arg name="relative" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="resolve-uri" return-type="xs:anyURI?">
+                <fos:arg name="relative" type="xs:string?"/>
+                <fos:arg name="base" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="true" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="true" return-type="xs:boolean"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="false" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="false" return-type="xs:boolean"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="boolean-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="boolean-equal" return-type="xs:boolean">
+                <fos:arg name="value1" type="xs:boolean"/>
+                <fos:arg name="value2" type="xs:boolean"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="boolean-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="boolean-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:boolean"/>
+                <fos:arg name="arg2" type="xs:boolean"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="boolean-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="boolean-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:boolean"/>
+                <fos:arg name="arg2" type="xs:boolean"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="boolean" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="boolean" return-type="xs:boolean">
+                <fos:arg name="arg" type="item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="not" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="not" return-type="xs:boolean">
+                <fos:arg name="arg" type="item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="yearMonthDuration-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="yearMonthDuration-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="yearMonthDuration-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="yearMonthDuration-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dayTimeDuration-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="dayTimeDuration-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dayTimeDuration-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="dayTimeDuration-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="duration-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="duration-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:duration"/>
+                <fos:arg name="arg2" type="xs:duration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="years-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="years-from-duration" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="months-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="months-from-duration" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="days-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="days-from-duration" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hours-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="hours-from-duration" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="minutes-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="minutes-from-duration" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="seconds-from-duration" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="seconds-from-duration" return-type="xs:decimal?">
+                <fos:arg name="arg" type="xs:duration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-yearMonthDurations" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-yearMonthDurations" return-type="xs:yearMonthDuration">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-yearMonthDurations" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-yearMonthDurations" return-type="xs:yearMonthDuration">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="multiply-yearMonthDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="multiply-yearMonthDuration" return-type="xs:yearMonthDuration">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="divide-yearMonthDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="divide-yearMonthDuration" return-type="xs:yearMonthDuration">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="divide-yearMonthDuration-by-yearMonthDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="divide-yearMonthDuration-by-yearMonthDuration" return-type="xs:decimal">
+                <fos:arg name="arg1" type="xs:yearMonthDuration"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-dayTimeDurations" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-dayTimeDurations" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dayTimeDurations" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dayTimeDurations" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="multiply-dayTimeDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="multiply-dayTimeDuration" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="divide-dayTimeDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="divide-dayTimeDuration" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="divide-dayTimeDuration-by-dayTimeDuration" prefix="op">
+        <fos:signatures>
+            <fos:proto name="divide-dayTimeDuration-by-dayTimeDuration" return-type="xs:decimal">
+                <fos:arg name="arg1" type="xs:dayTimeDuration"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="dateTime" return-type="xs:dateTime?">
+                <fos:arg name="arg1" type="xs:date?"/>
+                <fos:arg name="arg2" type="xs:time?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dateTime-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="dateTime-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dateTime"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dateTime-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="dateTime-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dateTime"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="dateTime-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="dateTime-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dateTime"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="date-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="date-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:date"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="date-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="date-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:date"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="date-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="date-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:date"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="time-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="time-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:time"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="time-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="time-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:time"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="time-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="time-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:time"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="gYearMonth-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="gYearMonth-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:gYearMonth"/>
+                <fos:arg name="arg2" type="xs:gYearMonth"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="gYear-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="gYear-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:gYear"/>
+                <fos:arg name="arg2" type="xs:gYear"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="gMonthDay-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="gMonthDay-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:gMonthDay"/>
+                <fos:arg name="arg2" type="xs:gMonthDay"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="gMonth-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="gMonth-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:gMonth"/>
+                <fos:arg name="arg2" type="xs:gMonth"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="gDay-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="gDay-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:gDay"/>
+                <fos:arg name="arg2" type="xs:gDay"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="year-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="year-from-dateTime" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="month-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="month-from-dateTime" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="day-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="day-from-dateTime" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hours-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="hours-from-dateTime" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="minutes-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="minutes-from-dateTime" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="seconds-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="seconds-from-dateTime" return-type="xs:decimal?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="timezone-from-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="timezone-from-dateTime" return-type="xs:dayTimeDuration?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="year-from-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="year-from-date" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:date?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="month-from-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="month-from-date" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:date?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="day-from-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="day-from-date" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:date?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="timezone-from-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="timezone-from-date" return-type="xs:dayTimeDuration?">
+                <fos:arg name="arg" type="xs:date?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hours-from-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="hours-from-time" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:time?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="minutes-from-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="minutes-from-time" return-type="xs:integer?">
+                <fos:arg name="arg" type="xs:time?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="seconds-from-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="seconds-from-time" return-type="xs:decimal?">
+                <fos:arg name="arg" type="xs:time?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="timezone-from-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="timezone-from-time" return-type="xs:dayTimeDuration?">
+                <fos:arg name="arg" type="xs:time?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="adjust-dateTime-to-timezone" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="adjust-dateTime-to-timezone" return-type="xs:dateTime?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+            </fos:proto>
+            <fos:proto name="adjust-dateTime-to-timezone" return-type="xs:dateTime?">
+                <fos:arg name="arg" type="xs:dateTime?"/>
+                <fos:arg name="timezone" type="xs:dayTimeDuration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="adjust-date-to-timezone" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="adjust-date-to-timezone" return-type="xs:date?">
+                <fos:arg name="arg" type="xs:date?"/>
+            </fos:proto>
+            <fos:proto name="adjust-date-to-timezone" return-type="xs:date?">
+                <fos:arg name="arg" type="xs:date?"/>
+                <fos:arg name="timezone" type="xs:dayTimeDuration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="adjust-time-to-timezone" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="adjust-time-to-timezone" return-type="xs:time?">
+                <fos:arg name="arg" type="xs:time?"/>
+            </fos:proto>
+            <fos:proto name="adjust-time-to-timezone" return-type="xs:time?">
+                <fos:arg name="arg" type="xs:time?"/>
+                <fos:arg name="timezone" type="xs:dayTimeDuration?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dateTimes" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dateTimes" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dateTime"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dates" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dates" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:date"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-times" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-times" return-type="xs:dayTimeDuration">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:time"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-yearMonthDuration-to-dateTime" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-yearMonthDuration-to-dateTime" return-type="xs:dateTime">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-dayTimeDuration-to-dateTime" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-dayTimeDuration-to-dateTime" return-type="xs:dateTime">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-yearMonthDuration-from-dateTime" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-yearMonthDuration-from-dateTime" return-type="xs:dateTime">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dayTimeDuration-from-dateTime" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dayTimeDuration-from-dateTime" return-type="xs:dateTime">
+                <fos:arg name="arg1" type="xs:dateTime"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-yearMonthDuration-to-date" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-yearMonthDuration-to-date" return-type="xs:date">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-dayTimeDuration-to-date" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-dayTimeDuration-to-date" return-type="xs:date">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-yearMonthDuration-from-date" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-yearMonthDuration-from-date" return-type="xs:date">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:yearMonthDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dayTimeDuration-from-date" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dayTimeDuration-from-date" return-type="xs:date">
+                <fos:arg name="arg1" type="xs:date"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="add-dayTimeDuration-to-time" prefix="op">
+        <fos:signatures>
+            <fos:proto name="add-dayTimeDuration-to-time" return-type="xs:time">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subtract-dayTimeDuration-from-time" prefix="op">
+        <fos:signatures>
+            <fos:proto name="subtract-dayTimeDuration-from-time" return-type="xs:time">
+                <fos:arg name="arg1" type="xs:time"/>
+                <fos:arg name="arg2" type="xs:dayTimeDuration"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="format-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="format-dateTime" return-type="xs:string?">
+                <fos:arg name="value" type="xs:dateTime?"/>
+                <fos:arg name="picture" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="format-dateTime" return-type="xs:string?">
+                <fos:arg name="value" type="xs:dateTime?"/>
+                <fos:arg name="picture" type="xs:string"/>
+                <fos:arg name="language" type="xs:string?"/>
+                <fos:arg name="calendar" type="xs:string?"/>
+                <fos:arg name="place" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="format-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="format-date" return-type="xs:string?">
+                <fos:arg name="value" type="xs:date?"/>
+                <fos:arg name="picture" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="format-date" return-type="xs:string?">
+                <fos:arg name="value" type="xs:date?"/>
+                <fos:arg name="picture" type="xs:string"/>
+                <fos:arg name="language" type="xs:string?"/>
+                <fos:arg name="calendar" type="xs:string?"/>
+                <fos:arg name="place" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="format-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="format-time" return-type="xs:string?">
+                <fos:arg name="value" type="xs:time?"/>
+                <fos:arg name="picture" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="format-time" return-type="xs:string?">
+                <fos:arg name="value" type="xs:time?"/>
+                <fos:arg name="picture" type="xs:string"/>
+                <fos:arg name="language" type="xs:string?"/>
+                <fos:arg name="calendar" type="xs:string?"/>
+                <fos:arg name="place" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="parse-ietf-date" prefix="fn" diff="add" at="A">
+        <fos:signatures>
+            <fos:proto name="parse-ietf-date" return-type="xs:dateTime?">
+                <fos:arg name="value" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="resolve-QName" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="resolve-QName" return-type="xs:QName?">
+                <fos:arg name="qname" type="xs:string?"/>
+                <fos:arg name="element" type="element()" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="QName" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="QName" return-type="xs:QName">
+                <fos:arg name="paramURI" type="xs:string?"/>
+                <fos:arg name="paramQName" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="QName-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="QName-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:QName"/>
+                <fos:arg name="arg2" type="xs:QName"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="prefix-from-QName" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="prefix-from-QName" return-type="xs:NCName?">
+                <fos:arg name="arg" type="xs:QName?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="local-name-from-QName" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="local-name-from-QName" return-type="xs:NCName?">
+                <fos:arg name="arg" type="xs:QName?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="namespace-uri-from-QName" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="namespace-uri-from-QName" return-type="xs:anyURI?">
+                <fos:arg name="arg" type="xs:QName?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="namespace-uri-for-prefix" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="namespace-uri-for-prefix" return-type="xs:anyURI?">
+                <fos:arg name="prefix" type="xs:string?"/>
+                <fos:arg name="element" type="element()" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="in-scope-prefixes" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="in-scope-prefixes" return-type="xs:string*">
+                <fos:arg name="element" type="element()" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hexBinary-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="hexBinary-equal" return-type="xs:boolean">
+                <fos:arg name="value1" type="xs:hexBinary"/>
+                <fos:arg name="value2" type="xs:hexBinary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hexBinary-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="hexBinary-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:hexBinary"/>
+                <fos:arg name="arg2" type="xs:hexBinary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="hexBinary-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="hexBinary-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:hexBinary"/>
+                <fos:arg name="arg2" type="xs:hexBinary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="base64Binary-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="base64Binary-equal" return-type="xs:boolean">
+                <fos:arg name="value1" type="xs:base64Binary"/>
+                <fos:arg name="value2" type="xs:base64Binary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="base64Binary-less-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="base64Binary-less-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:base64Binary"/>
+                <fos:arg name="arg2" type="xs:base64Binary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="base64Binary-greater-than" prefix="op">
+        <fos:signatures>
+            <fos:proto name="base64Binary-greater-than" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:base64Binary"/>
+                <fos:arg name="arg2" type="xs:base64Binary"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="NOTATION-equal" prefix="op">
+        <fos:signatures>
+            <fos:proto name="NOTATION-equal" return-type="xs:boolean">
+                <fos:arg name="arg1" type="xs:NOTATION"/>
+                <fos:arg name="arg2" type="xs:NOTATION"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="name" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="name" return-type="xs:string"/>
+            <fos:proto name="name" return-type="xs:string">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="local-name" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="local-name" return-type="xs:string"/>
+            <fos:proto name="local-name" return-type="xs:string">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="namespace-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="namespace-uri" return-type="xs:anyURI"/>
+            <fos:proto name="namespace-uri" return-type="xs:anyURI">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="number" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="number" return-type="xs:double"/>
+            <fos:proto name="number" return-type="xs:double">
+                <fos:arg name="arg" type="xs:anyAtomicType?" default="."/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="lang" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="lang" return-type="xs:boolean">
+                <fos:arg name="testlang" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="lang" return-type="xs:boolean">
+                <fos:arg name="testlang" type="xs:string?"/>
+                <fos:arg name="node" type="node()" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="path" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="path" return-type="xs:string?"/>
+            <fos:proto name="path" return-type="xs:string?">
+                <fos:arg name="arg" type="node()?" default="." usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="root" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="root" return-type="node()"/>
+            <fos:proto name="root" return-type="node()?">
+                <fos:arg name="arg" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="has-children" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="has-children" return-type="xs:boolean"/>
+            <fos:proto name="has-children" return-type="xs:boolean">
+                <fos:arg name="node" type="node()?" default="." usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="innermost" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="innermost" return-type="node()*">
+                <fos:arg name="nodes" type="node()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="outermost" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="outermost" return-type="node()*">
+                <fos:arg name="nodes" type="node()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="index-of" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="index-of" return-type="xs:integer*">
+                <fos:arg name="seq" type="xs:anyAtomicType*"/>
+                <fos:arg name="search" type="xs:anyAtomicType"/>
+            </fos:proto>
+            <fos:proto name="index-of" return-type="xs:integer*">
+                <fos:arg name="seq" type="xs:anyAtomicType*"/>
+                <fos:arg name="search" type="xs:anyAtomicType"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="empty" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="empty" return-type="xs:boolean">
+                <fos:arg name="arg" type="item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="exists" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="exists" return-type="xs:boolean">
+                <fos:arg name="arg" type="item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="distinct-values" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="distinct-values" return-type="xs:anyAtomicType*">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+            </fos:proto>
+            <fos:proto name="distinct-values" return-type="xs:anyAtomicType*">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="insert-before" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="insert-before" return-type="item()*">
+                <fos:arg name="target" type="item()*" usage="transmission"/>
+                <fos:arg name="position" type="xs:integer"/>
+                <fos:arg name="inserts" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="remove" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="remove" return-type="item()*">
+                <fos:arg name="target" type="item()*" usage="transmission"/>
+                <fos:arg name="position" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="head" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="head" return-type="item()?">
+                <fos:arg name="arg" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="tail" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="tail" return-type="item()*">
+                <fos:arg name="arg" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="reverse" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="reverse" return-type="item()*">
+                <fos:arg name="arg" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subsequence" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="subsequence" return-type="item()*">
+                <fos:arg name="sourceSeq" type="item()*" usage="transmission"/>
+                <fos:arg name="startingLoc" type="xs:double"/>
+            </fos:proto>
+            <fos:proto name="subsequence" return-type="item()*">
+                <fos:arg name="sourceSeq" type="item()*" usage="transmission"/>
+                <fos:arg name="startingLoc" type="xs:double"/>
+                <fos:arg name="length" type="xs:double"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="unordered" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="unordered" return-type="item()*">
+                <fos:arg name="sourceSeq" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="zero-or-one" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="zero-or-one" return-type="item()?">
+                <fos:arg name="arg" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="one-or-more" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="one-or-more" return-type="item()+">
+                <fos:arg name="arg" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="exactly-one" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="exactly-one" return-type="item()">
+                <fos:arg name="arg" type="item()*" usage="transmission"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="deep-equal" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="deep-equal" return-type="xs:boolean">
+                <fos:arg name="parameter1" type="item()*" usage="absorption"/>
+                <fos:arg name="parameter2" type="item()*" usage="absorption"/>
+            </fos:proto>
+            <fos:proto name="deep-equal" return-type="xs:boolean">
+                <fos:arg name="parameter1" type="item()*" usage="absorption"/>
+                <fos:arg name="parameter2" type="item()*" usage="absorption"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="count" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="count" return-type="xs:integer">
+                <fos:arg name="arg" type="item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="avg" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="avg" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*" usage="absorption"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="max" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="max" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+            </fos:proto>
+            <fos:proto name="max" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="min" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="min" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+            </fos:proto>
+            <fos:proto name="min" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="sum" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="sum" return-type="xs:anyAtomicType">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+            </fos:proto>
+            <fos:proto name="sum" return-type="xs:anyAtomicType?">
+                <fos:arg name="arg" type="xs:anyAtomicType*"/>
+                <fos:arg name="zero" type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <!--<fos:function name="to" prefix="op">
+      <fos:signatures>
+         <fos:proto name="to" return-type="xs:integer*">
+            <fos:arg name="firstval" type="xs:integer"/>
+            <fos:arg name="lastval" type="xs:integer"/>
+         </fos:proto>
+      </fos:signatures>
+      <fos:opermap operator="to" types="xs:integer xs:integer">Defines the semantics of the "to"
+         operator when applied to two integer arguments.</fos:opermap>
+      <fos:summary>
+         <p>Returns a sequence of consecutive integers in a given range.</p>
+      </fos:summary>
+      <fos:rules>
+         <p>The function returns the sequence containing every <code>xs:integer</code> whose value
+            is between the value of <code>$firstval</code> (inclusive) and the value of
+               <code>$lastval</code> (inclusive), in monotonic increasing order.</p>
+         <p>If the value of the first operand is greater than the value of the second, the function
+            returns the empty sequence.</p>
+         <p>If the values of the two operands are equal, the function returns a sequence containing
+            a single <code>xs:integer</code> equal to that value.</p>
+      </fos:rules>
+      <fos:examples>
+         <fos:example>
+            <fos:test>
+               <fos:expression>1 to 3</fos:expression>
+               <fos:result>(1, 2, 3)</fos:result>
+            </fos:test>
+         </fos:example>
+         <fos:example>
+            <fos:test>
+               <fos:expression>3 to 1</fos:expression>
+               <fos:result>()</fos:result>
+            </fos:test>
+         </fos:example>
+         <fos:example>
+            <fos:test>
+               <fos:expression>5 to 5</fos:expression>
+               <fos:result>5</fos:result>
+            </fos:test>
+         </fos:example>
+      </fos:examples>
+   </fos:function>-->
+    <fos:function name="id" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="id" return-type="element()*">
+                <fos:arg name="arg" type="xs:string*"/>
+            </fos:proto>
+            <fos:proto name="id" return-type="element()*">
+                <fos:arg name="arg" type="xs:string*"/>
+                <fos:arg name="node" type="node()" default="." usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="element-with-id" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="element-with-id" return-type="element()*">
+                <fos:arg name="arg" type="xs:string*"/>
+            </fos:proto>
+            <fos:proto name="element-with-id" return-type="element()*">
+                <fos:arg name="arg" type="xs:string*"/>
+                <fos:arg name="node" type="node()" default="." usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="idref" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="idref" return-type="node()*">
+                <fos:arg name="arg" type="xs:string*"/>
+            </fos:proto>
+            <fos:proto name="idref" return-type="node()*">
+                <fos:arg name="arg" type="xs:string*"/>
+                <fos:arg name="node" type="node()" default="." usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="doc" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="doc" return-type="document-node()?">
+                <fos:arg name="uri" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="doc-available" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="doc-available" return-type="xs:boolean">
+                <fos:arg name="uri" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="collection" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="collection" return-type="item()*"/>
+            <fos:proto name="collection" return-type="item()*">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="uri-collection" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="uri-collection" return-type="xs:anyURI*"/>
+            <fos:proto name="uri-collection" return-type="xs:anyURI*">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="unparsed-text" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="unparsed-text" return-type="xs:string?">
+                <fos:arg name="href" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="unparsed-text" return-type="xs:string?">
+                <fos:arg name="href" type="xs:string?"/>
+                <fos:arg name="encoding" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+        <!--
+      <imp-def-feature>The set of encodings recognized by the
+         <function>unparsed-text</function> function, other than <code>utf-8</code> and
+         <code>utf-16</code>, is <termref def="implementation-defined"
+            >implementation-defined</termref>.</imp-def-feature>
+      
+      <imp-def-feature>If no encoding is specified on a call to the
+         <function>unparsed-text</function> function, the processor
+         <rfc2119>may</rfc2119> use <termref def="implementation-defined"
+            >implementation-defined</termref> heuristics to determine the likely
+         encoding.</imp-def-feature>-->
+    </fos:function>
+    <fos:function name="unparsed-text-lines" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="unparsed-text-lines" return-type="xs:string*">
+                <fos:arg name="href" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="unparsed-text-lines" return-type="xs:string*">
+                <fos:arg name="href" type="xs:string?"/>
+                <fos:arg name="encoding" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="unparsed-text-available" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="unparsed-text-available" return-type="xs:boolean">
+                <fos:arg name="href" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="unparsed-text-available" return-type="xs:boolean">
+                <fos:arg name="href" type="xs:string?"/>
+                <fos:arg name="encoding" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="environment-variable" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="environment-variable" return-type="xs:string?">
+                <fos:arg name="name" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="available-environment-variables" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="available-environment-variables" return-type="xs:string*"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="generate-id" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="generate-id" return-type="xs:string"/>
+            <fos:proto name="generate-id" return-type="xs:string">
+                <fos:arg name="arg" type="node()?" usage="inspection" default="."/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="parse-xml" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="parse-xml" return-type="document-node(element(*))?">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="parse-xml-fragment" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="parse-xml-fragment" return-type="document-node()?">
+                <fos:arg name="arg" type="xs:string?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="serialize" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="serialize" return-type="xs:string">
+                <fos:arg name="arg" type="item()*" usage="absorption"/>
+            </fos:proto>
+            <fos:proto name="serialize" return-type="xs:string">
+                <fos:arg name="arg" type="item()*" usage="absorption"/>
+                <fos:arg name="params" type="item()?" usage="absorption"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="position" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="position" return-type="xs:integer"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="last" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="last" return-type="xs:integer"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="current-dateTime" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="current-dateTime" return-type="xs:dateTimeStamp"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="current-date" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="current-date" return-type="xs:date"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="current-time" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="current-time" return-type="xs:time"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="implicit-timezone" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="implicit-timezone" return-type="xs:dayTimeDuration"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="default-collation" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="default-collation" return-type="xs:string"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="default-language" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="default-language" return-type="xs:language"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="static-base-uri" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="static-base-uri" return-type="xs:anyURI?"/>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="function-lookup" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="function-lookup" return-type="function(*)?">
+                <fos:arg name="name" type="xs:QName"/>
+                <fos:arg name="arity" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="function-name" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="function-name" return-type="xs:QName?">
+                <fos:arg name="func" type="function(*)"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="function-arity" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="function-arity" return-type="xs:integer">
+                <fos:arg name="func" type="function(*)"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="for-each" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="for-each" return-type="item()*">
+                <fos:arg name="seq" type="item()*" usage="navigation"/>
+                <fos:arg name="action" type="function(item()) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="filter" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="filter" return-type="item()*">
+                <fos:arg name="seq" type="item()*" usage="navigation"/>
+                <fos:arg name="f" type="function(item()) as xs:boolean" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="fold-left" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="fold-left" return-type="item()*">
+                <fos:arg name="seq" type="item()*" usage="navigation"/>
+                <fos:arg name="zero" type="item()*"/>
+                <fos:arg name="f" type="function(item()*, item()) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="fold-right" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="fold-right" return-type="item()*">
+                <fos:arg name="seq" type="item()*" usage="navigation"/>
+                <fos:arg name="zero" type="item()*"/>
+                <fos:arg name="f" type="function(item(), item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="for-each-pair" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="for-each-pair" return-type="item()*">
+                <fos:arg name="seq1" type="item()*" usage="navigation"/>
+                <fos:arg name="seq2" type="item()*" usage="navigation"/>
+                <fos:arg name="action" type="function(item(), item()) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="sort" prefix="fn" diff="chg" at="E">
+        <fos:signatures>
+            <fos:proto name="sort" return-type="item()*">
+                <fos:arg name="input" type="item()*" usage="navigation"/>
+            </fos:proto>
+            <fos:proto name="sort" return-type="item()*">
+                <fos:arg name="input" type="item()*" usage="navigation"/>
+                <fos:arg name="collation" type="xs:string?" usage="absorption"/>
+            </fos:proto>
+            <fos:proto name="sort" return-type="item()*">
+                <fos:arg name="input" type="item()*" usage="navigation"/>
+                <fos:arg name="collation" type="xs:string?" usage="absorption"/>
+                <fos:arg name="key" type="function(item()) as xs:anyAtomicType*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="apply" prefix="fn" diff="add" at="C">
+        <fos:signatures>
+            <fos:proto name="apply" return-type="item()*">
+                <fos:arg name="function" type="function(*)"/>
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="same-key" prefix="op">
+        <fos:signatures>
+            <fos:proto name="same-key" return-type="xs:boolean">
+                <fos:arg name="k1" type="xs:anyAtomicType"/>
+                <fos:arg name="k2" type="xs:anyAtomicType"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="merge" prefix="map" diff="chg" at="E">
+        <fos:signatures>
+            <fos:proto name="merge" return-type="map(*)">
+                <fos:arg name="maps" type="map(*)*" usage="inspection"/>
+            </fos:proto>
+            <fos:proto name="merge" return-type="map(*)">
+                <fos:arg name="maps" type="map(*)*" usage="inspection"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="keys" prefix="map">
+        <fos:signatures>
+            <fos:proto name="keys" return-type="xs:anyAtomicType*">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="contains" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="contains" return-type="xs:boolean">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+                <fos:arg name="key" type="xs:anyAtomicType"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="get" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="get" return-type="item()*">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+                <fos:arg name="key" type="xs:anyAtomicType"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="find" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="find" return-type="array(*)">
+                <fos:arg name="input" type="item()*" usage="inspection"/>
+                <fos:arg name="key" type="xs:anyAtomicType"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="put" prefix="map" diff="add" at="R-bug24726">
+        <fos:signatures>
+            <fos:proto name="put" return-type="map(*)">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+                <fos:arg name="key" type="xs:anyAtomicType"/>
+                <fos:arg name="value" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="entry" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="entry" return-type="map(*)">
+                <fos:arg name="key" type="xs:anyAtomicType"/>
+                <fos:arg name="value" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="remove" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="remove" return-type="map(*)">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+                <fos:arg name="keys" type="xs:anyAtomicType*"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="for-each" prefix="map" diff="chg" at="B">
+        <fos:signatures>
+            <fos:proto name="for-each" return-type="item()*">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+                <fos:arg name="action" type="function(xs:anyAtomicType, item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="size" prefix="map" diff="add" at="MAP">
+        <fos:signatures>
+            <fos:proto name="size" return-type="xs:integer">
+                <fos:arg name="map" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="collation-key" prefix="fn" diff="add" at="A">
+        <fos:signatures>
+            <fos:proto name="collation-key" return-type="xs:base64Binary">
+                <fos:arg name="key" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="collation-key" return-type="xs:base64Binary">
+                <fos:arg name="key" type="xs:string"/>
+                <fos:arg name="collation" type="xs:string"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="json-to-xml" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="json-to-xml" return-type="document-node()?">
+                <fos:arg name="json-text" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="json-to-xml" return-type="document-node()?">
+                <fos:arg name="json-text" type="xs:string?"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="xml-to-json" prefix="fn" diff="add" at="D">
+        <fos:signatures>
+            <fos:proto name="xml-to-json" return-type="xs:string?">
+                <fos:arg name="input" type="node()?" usage="absorption"/>
+            </fos:proto>
+            <fos:proto name="xml-to-json" return-type="xs:string?">
+                <fos:arg name="input" type="node()?" usage="absorption"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="parse-json" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="parse-json" return-type="item()?">
+                <fos:arg name="json-text" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="parse-json" return-type="item()?">
+                <fos:arg name="json-text" type="xs:string?"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="json-doc" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="json-doc" return-type="item()?">
+                <fos:arg name="href" type="xs:string?"/>
+            </fos:proto>
+            <fos:proto name="json-doc" return-type="item()?">
+                <fos:arg name="href" type="xs:string?"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="size" prefix="array">
+        <fos:signatures>
+            <fos:proto name="size" return-type="xs:integer">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="get" prefix="array">
+        <fos:signatures>
+            <fos:proto name="get" return-type="item()*">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="position" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="put" prefix="array" diff="add" at="E">
+        <fos:signatures>
+            <fos:proto name="put" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="position" type="xs:integer" usage="inspection"/>
+                <fos:arg name="member" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="append" prefix="array">
+        <fos:signatures>
+            <fos:proto name="append" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="appendage" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="join" prefix="array">
+        <fos:signatures>
+            <fos:proto name="join" return-type="array(*)">
+                <fos:arg name="arrays" type="array(*)*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="subarray" prefix="array">
+        <fos:signatures>
+            <fos:proto name="subarray" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="start" type="xs:integer"/>
+            </fos:proto>
+            <fos:proto name="subarray" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="start" type="xs:integer"/>
+                <fos:arg name="length" type="xs:integer"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="remove" prefix="array">
+        <fos:signatures>
+            <fos:proto name="remove" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="positions" type="xs:integer*"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="insert-before" prefix="array">
+        <fos:signatures>
+            <fos:proto name="insert-before" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="position" type="xs:integer"/>
+                <fos:arg name="member" type="item()*" usage="navigation"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="head" prefix="array">
+        <fos:signatures>
+            <fos:proto name="head" return-type="item()*">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="tail" prefix="array">
+        <fos:signatures>
+            <fos:proto name="tail" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="reverse" prefix="array">
+        <fos:signatures>
+            <fos:proto name="reverse" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="for-each" prefix="array">
+        <fos:signatures>
+            <fos:proto name="for-each" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="action" type="function(item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="filter" prefix="array">
+        <fos:signatures>
+            <fos:proto name="filter" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="function" type="function(item()*) as xs:boolean" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="fold-left" prefix="array">
+        <fos:signatures>
+            <fos:proto name="fold-left" return-type="item()*">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="zero" type="item()*" usage="navigation"/>
+                <fos:arg name="function" type="function(item()*, item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="fold-right" prefix="array">
+        <fos:signatures>
+            <fos:proto name="fold-right" return-type="item()*">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="zero" type="item()*" usage="navigation"/>
+                <fos:arg name="function" type="function(item()*, item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="for-each-pair" prefix="array">
+        <fos:signatures>
+            <fos:proto name="for-each-pair" return-type="array(*)">
+                <fos:arg name="array1" type="array(*)" usage="inspection"/>
+                <fos:arg name="array2" type="array(*)" usage="inspection"/>
+                <fos:arg name="function" type="function(item()*, item()*) as item()*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="sort" prefix="array" diff="chg" at="E">
+        <fos:signatures>
+            <fos:proto name="sort" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+            </fos:proto>
+            <fos:proto name="sort" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="collation" type="xs:string?" usage="absorption"/>
+            </fos:proto>
+            <fos:proto name="sort" return-type="array(*)">
+                <fos:arg name="array" type="array(*)" usage="inspection"/>
+                <fos:arg name="collation" type="xs:string?" usage="absorption"/>
+                <fos:arg name="key" type="function(item()*) as xs:anyAtomicType*" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="flatten" prefix="array" diff="add" at="C">
+        <fos:signatures>
+            <fos:proto name="flatten" return-type="item()*">
+                <fos:arg name="input" type="item()*"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="load-xquery-module" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="load-xquery-module" return-type="map(*)">
+                <fos:arg name="module-uri" type="xs:string"/>
+            </fos:proto>
+            <fos:proto name="load-xquery-module" return-type="map(*)">
+                <fos:arg name="module-uri" type="xs:string"/>
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="transform" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="transform" return-type="map(*)">
+                <fos:arg name="options" type="map(*)" usage="inspection"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="random-number-generator" prefix="fn">
+        <fos:signatures>
+            <fos:proto name="random-number-generator" return-type="map(xs:string, item())"/>
+            <fos:proto name="random-number-generator" return-type="map(xs:string, item())">
+                <fos:arg name="seed" type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:type-model name="node()?">
+        <itemType occurrence="zero-or-one">
+            <nodeTest kind="node"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="item()?">
+        <itemType occurrence="zero-or-one"/>
+    </fos:type-model>
+    <fos:type-model name="item()*">
+        <itemType occurrence="zero-or-more"/>
+    </fos:type-model>
+    <fos:type-model name="xs:QName?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:QName"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:string">
+        <itemType>
+            <atomic name="xs:string"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:numeric">
+        <itemType>
+            <atomic name="xs:numeric"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:numeric?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:numeric"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:integer">
+        <itemType>
+            <atomic name="xs:integer"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:integer?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:integer"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:string?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:string"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:double?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:double"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:double">
+        <itemType>
+            <atomic name="xs:double"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:integer*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:integer"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:anyAtomicType?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:anyAtomicType"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:anyAtomicType*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:anyAtomicType"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:string*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:string"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:boolean">
+        <itemType>
+            <atomic name="xs:boolean"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:yearMonthDuration">
+        <itemType>
+            <atomic name="xs:yearMonthDuration"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:dayTimeDuration">
+        <itemType>
+            <atomic name="xs:dayTimeDuration"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:duration">
+        <itemType>
+            <atomic name="xs:duration"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:duration?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:duration"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:date?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:date"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:time?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:time"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:dateTime">
+        <itemType>
+            <atomic name="xs:dateTime"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:date">
+        <itemType>
+            <atomic name="xs:date"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:time">
+        <itemType>
+            <atomic name="xs:time"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:gYearMonth">
+        <itemType>
+            <atomic name="xs:gYearMonth"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:gYear">
+        <itemType>
+            <atomic name="xs:gYear"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:gMonthDay">
+        <itemType>
+            <atomic name="xs:gMonthDay"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:gMonth">
+        <itemType>
+            <atomic name="xs:gMonth"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:gDay">
+        <itemType>
+            <atomic name="xs:gDay"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:dateTime?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:dateTime"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:dayTimeDuration?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:dayTimeDuration"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="element()">
+        <itemType>
+            <nodeTest kind="element"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:QName">
+        <itemType>
+            <atomic name="xs:QName"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:hexBinary">
+        <itemType>
+            <atomic name="xs:hexBinary"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:base64Binary">
+        <itemType>
+            <atomic name="xs:base64Binary"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:NOTATION">
+        <itemType>
+            <atomic name="xs:NOTATION"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="node()">
+        <itemType>
+            <nodeTest kind="node"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="node()*">
+        <itemType occurrence="zero-or-more">
+            <nodeTest kind="node"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:anyAtomicType">
+        <itemType>
+            <atomic name="xs:anyAtomicType"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(*)">
+        <itemType>
+            <functType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()) as item()*">
+        <itemType>
+            <functType>
+                <itemType/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()) as xs:boolean">
+        <itemType>
+            <functType>
+                <itemType/>
+                <as>
+                    <itemType>
+                        <atomic name="xs:boolean"/>
+                    </itemType>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()*, item()) as item()*">
+        <itemType>
+            <functType>
+                <itemType occurrence="zero-or-more"/>
+                <itemType/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item(), item()*) as item()*">
+        <itemType>
+            <functType>
+                <itemType/>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item(), item()) as item()*">
+        <itemType>
+            <functType>
+                <itemType/>
+                <itemType/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()) as xs:anyAtomicType*">
+        <itemType>
+            <functType>
+                <itemType/>
+                <as>
+                    <itemType occurrence="zero-or-more">
+                        <atomic name="xs:anyAtomicType"/>
+                    </itemType>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="array(*)">
+        <itemType>
+            <arrayType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="map(*)*">
+        <itemType occurrence="zero-or-more">
+            <mapType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="map(*)">
+        <itemType>
+            <mapType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(xs:anyAtomicType, item()*) as item()*">
+        <itemType>
+            <functType>
+                <itemType>
+                    <atomic name="xs:anyAtomicType"/>
+                </itemType>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="array(*)*">
+        <itemType occurrence="zero-or-more">
+            <arrayType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()*) as item()*">
+        <itemType>
+            <functType>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()*) as xs:boolean">
+        <itemType>
+            <functType>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType>
+                        <atomic name="xs:boolean"/>
+                    </itemType>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()*, item()*) as item()*">
+        <itemType>
+            <functType>
+                <itemType occurrence="zero-or-more"/>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType occurrence="zero-or-more"/>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(item()*) as xs:anyAtomicType*">
+        <itemType>
+            <functType>
+                <itemType occurrence="zero-or-more"/>
+                <as>
+                    <itemType occurrence="zero-or-more">
+                        <atomic name="xs:anyAtomicType"/>
+                    </itemType>
+                </as>
+            </functType>
+        </itemType>
+    </fos:type-model>
+</fos:functions>
+
