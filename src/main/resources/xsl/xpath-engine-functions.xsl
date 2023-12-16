@@ -4,16 +4,32 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
+    xmlns:xpfs="http://www.nkutsche.com/xmlml/xpath-engine/xsd-constructors"
     xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
     xmlns:mlml="http://www.nkutsche.com/xmlml"
+    xmlns:xpm="http://www.nkutsche.com/xpath-model"
     xmlns:err="http://www.w3.org/2005/xqt-errors"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:variable name="xpf:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/functions'"/>
+    <xsl:variable name="xpfs:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/xsd-constructors'"/>
     
     <xsl:variable name="function-lib-ns" select="$xpf:namespace-uri"/>
     
     <xsl:variable name="function-signatures" select="doc('xpath-functions/function-signatures.xml')"/>
+    
+    <xsl:variable name="build-in-namespaces" select="map{
+        'fn' : 'http://www.w3.org/2005/xpath-functions',
+        'xs' : 'http://www.w3.org/2001/XMLSchema',
+        'array' : 'http://www.w3.org/2005/xpath-functions/array',
+        'map' : 'http://www.w3.org/2005/xpath-functions/map',
+        'math' : 'http://www.w3.org/2005/xpath-functions/math',
+        'xpf' : $xpf:namespace-uri
+        }"/>
     
     <xd:doc scope="stylesheet">
         <xd:desc>
