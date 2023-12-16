@@ -93,16 +93,34 @@
     
     <xsl:function name="xpf:substring-before" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg1" as="item()?"/>
-        <xsl:param name="arg2" as="item()?"/>
-        <xsl:sequence select="substring-before(xpe:atomize($arg1), xpe:atomize($arg2), xpf:default-collation($exec-context))"/>
+        <xsl:param name="arg1" as="xs:string?"/>
+        <xsl:param name="arg2" as="xs:string?"/>
+        <xsl:sequence select="xpf:substring-before($exec-context, $arg1, $arg2, xpf:default-collation($exec-context))"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:substring-before" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg1" as="xs:string?"/>
+        <xsl:param name="arg2" as="xs:string?"/>
+        <xsl:param name="collation" as="xs:string"/>
+        <xsl:variable name="collation" select="resolve-uri($collation, xpf:static-base-uri($exec-context))"/>
+        <xsl:sequence select="substring-before($arg1, $arg2, $collation)"/>
     </xsl:function>
     
     <xsl:function name="xpf:substring-after" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg1" as="item()?"/>
-        <xsl:param name="arg2" as="item()?"/>
-        <xsl:sequence select="substring-after(xpe:atomize($arg1), xpe:atomize($arg2), xpf:default-collation($exec-context))"/>
+        <xsl:param name="arg1" as="xs:string?"/>
+        <xsl:param name="arg2" as="xs:string?"/>
+        <xsl:sequence select="xpf:substring-after($exec-context, $arg1, $arg2, xpf:default-collation($exec-context))"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:substring-after" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg1" as="xs:string?"/>
+        <xsl:param name="arg2" as="xs:string?"/>
+        <xsl:param name="collation" as="xs:string"/>
+        <xsl:variable name="collation" select="resolve-uri($collation, xpf:static-base-uri($exec-context))"/>
+        <xsl:sequence select="substring-after($arg1, $arg2, $collation)"/>
     </xsl:function>
     
     <xsl:function name="xpf:resolve-uri" as="xs:anyURI?">
