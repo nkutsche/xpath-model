@@ -321,14 +321,35 @@
 
     <xsl:template match="operation[@type = 'postfix'][function-call]" mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="function" as="function(*)">
+        <xsl:variable name="function" as="item()?">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
         <xsl:variable name="args" select="xpe:arg-array(function-call/arg, $execution-context)"/>
         
-        <xsl:variable name="funct-namespace" select="function-name($function) ! namespace-uri-from-QName(.)"/>
+        <xsl:variable name="function" select="
+            if (xpe:is-function($function)) 
+            then $function 
+            else if (
+                $function instance of function(*) 
+                or $function instance of map(*) 
+                or $function instance of array(*)) 
+            then map {
+                'function' : $function,
+                'type' : QName($xpf:namespace-uri, 'function'),
+                'name' : if ($function instance of function(*)) 
+                then function-name($function) 
+                else (),
+                'arity' : function-arity($function)
+            }
+            else if (empty($function)) 
+            then error(xpe:error-code('XPTY0004'), 'An empty sequence is not allowed as the target of dynamic function call.') 
+            else error(xpe:error-code('XPTY0004'), 'A function call requires a function, map or array.') 
+            "/>
         
-        <xsl:sequence select="xpe:function-apply($function, $args)"/>
+        <xsl:sequence select="
+            if (empty($function)) 
+            then error(xpe:error-code('XPTY0004'), 'An empty sequence is not allowed as the target of dynamic function call.') 
+            else apply($function?function, $args)"/>
     </xsl:template>
 
     <xsl:template match="operation[@type = 'let-binding']" mode="xpe:xpath-evaluate" name="xpe:xpath-let-operation" priority="10">
@@ -857,15 +878,16 @@
             then array:insert-before($arg-array, 1, $first-arg?1) 
             else $arg-array
             "/>
-        <xsl:variable name="function" as="function(*)">
-            <xsl:apply-templates select="function | expr" mode="#current">
+        <xsl:variable name="function" as="item()*">
+            <xsl:apply-templates select="function" mode="#current">
                 <xsl:with-param name="arity" select="array:size($arg-array)" tunnel="yes"/>
             </xsl:apply-templates>
         </xsl:variable>
+        <xsl:if test="not(xpe:is-function($function))">
+            <xsl:sequence select="error(xpe:error-code('TODO'), 'Fail to call function ' || xpm:xpath-serializer-sub(.))"/>
+        </xsl:if>
         
-        <xsl:variable name="funct-namespace" select="function-name($function) ! namespace-uri-from-QName(.)"/>
-        
-        <xsl:sequence select="xpe:function-apply($function, $arg-array)"/>
+        <xsl:sequence select="apply(xpe:raw-function($function), $arg-array)"/>
     </xsl:template>
     
     <xsl:template match="function[@name]" mode="xpe:xpath-evaluate">
