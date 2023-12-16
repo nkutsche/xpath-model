@@ -25,6 +25,13 @@
             <xsl:map-entry key="'xpe'" select="'http://www.nkutsche.com/xpath-model/engine'"/>
         </xsl:map>
     </xsl:variable>
+    <xsl:variable name="predef-nscontext-for-saxon" as="element()">
+        <dummy>
+            <xsl:for-each select="$predef-ns => map:keys()">
+                <xsl:namespace name="{.}" select="$predef-ns(.)"/>
+            </xsl:for-each>
+        </dummy>
+    </xsl:variable>
     
     <xsl:function name="xpmt:execution-context" as="map(*)">
         <xsl:param name="environment" as="element(qt:environment)"/>
@@ -203,28 +210,16 @@
 
     <xsl:template match="qt:assert-eq | qt:assert-deep-eq" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
-        <xsl:variable name="namespace-context" as="element()">
-            <xsl:copy copy-namespaces="yes">
-                <xsl:namespace name="fn">http://www.w3.org/2005/xpath-functions</xsl:namespace>
-                <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
-            </xsl:copy>
-        </xsl:variable>
         <xsl:variable name="compare" as="item()*">
-            <xsl:evaluate xpath="." namespace-context="$namespace-context"/>
+            <xsl:evaluate xpath="." namespace-context="$predef-nscontext-for-saxon"/>
         </xsl:variable>
         <xsl:sequence select="deep-equal($result, $compare)"/>
     </xsl:template>
 
     <xsl:template match="qt:assert-permutation" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
-        <xsl:variable name="namespace-context" as="element()">
-            <xsl:copy copy-namespaces="yes">
-                <xsl:namespace name="fn">http://www.w3.org/2005/xpath-functions</xsl:namespace>
-                <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
-            </xsl:copy>
-        </xsl:variable>
         <xsl:variable name="compare" as="item()*">
-            <xsl:evaluate xpath="." namespace-context="$namespace-context"/>
+            <xsl:evaluate xpath="." namespace-context="$predef-nscontext-for-saxon"/>
         </xsl:variable>
         <xsl:sequence select="xpmt:assert-permutation($result, $compare)"/>
     </xsl:template>
@@ -279,13 +274,8 @@
 
     <xsl:template match="qt:assert-type" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
-        <xsl:variable name="context" as="element()">
-            <xsl:copy copy-namespaces="yes">
-                <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema'"/>
-            </xsl:copy>
-        </xsl:variable>
         <xsl:variable name="xpath" select="'$result instance of ' || ."/>
-        <xsl:evaluate xpath="$xpath" namespace-context="$context" with-params="map{QName('', 'result') : $result}"/>
+        <xsl:evaluate xpath="$xpath" namespace-context="$predef-nscontext-for-saxon" with-params="map{QName('', 'result') : $result}"/>
     </xsl:template>
     
     <xsl:template match="qt:error" mode="xpmt:result-compare">
