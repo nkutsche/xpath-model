@@ -270,6 +270,24 @@
         </xsl:choose>
     </xsl:function>
     
+    <xsl:template match="operation[@type = 'postfix'][count(predicate|function-call|lookup) gt 1]" mode="xpe:xpath-evaluate" priority="50">
+        <xsl:variable name="last" select="(predicate|function-call|lookup)[last()]"/>
+        <xsl:variable name="equivalent" as="element(operation)">
+            <xsl:copy>
+                <xsl:sequence select="@*"/>
+                <arg>
+                    <xsl:copy>
+                        <xsl:sequence select="@*"/>
+                        <xsl:sequence select="* except $last"/>
+                    </xsl:copy>
+                </arg>
+                <xsl:sequence select="$last"/>
+            </xsl:copy>
+        </xsl:variable>
+        
+        <xsl:apply-templates select="$equivalent" mode="#current"/>
+    </xsl:template>
+    
     <xsl:template match="operation[@type = 'postfix'][predicate]" mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="content" as="item()*">
