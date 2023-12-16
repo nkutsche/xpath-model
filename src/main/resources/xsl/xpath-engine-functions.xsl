@@ -378,6 +378,21 @@
         
         <xsl:variable name="atomized" select="xpe:atomize($arg)"/>
         <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:try>
+            <xsl:choose>
+                <xsl:when test="empty($exec-context?uri-collection-resolver)">
+                    <xsl:sequence select="
+                        xpe:default-collection-resolver($exec-context, $atomized, $baseUri)
+                        "/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:sequence select="$exec-context?uri-collection-resolver($atomized, $baseUri)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:catch errors="err:FORG0002">
+                <xsl:sequence select="error(xpe:error-code('FODC0004'), 'Malformed URI ' || $atomized)"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:function>
     
 <!--    
