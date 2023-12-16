@@ -215,15 +215,7 @@
     <xsl:function name="xpf:lang" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="testlang" as="xs:string?"/>
-        <!--   TODO     -->
-        <xsl:sequence select="false()"/>
-    </xsl:function>
-    <xsl:function name="xpf:lang" as="xs:boolean">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="testlang" as="xs:string?"/>
-        <xsl:param name="node" as="node()"/>
-        <!--   TODO     -->
-        <xsl:sequence select="false()"/>
+        <xsl:sequence select="lang($testlang, $exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:root" as="node()?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -235,11 +227,20 @@
     </xsl:function>
     <xsl:function name="xpf:path" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call path()') 
+            else path($context)"/>
     </xsl:function>
     <xsl:function name="xpf:has-children" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
-        <!--   TODO     -->
-        <xsl:sequence select="false()"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call has-children()') 
+            else has-children($context)
+            "/>
     </xsl:function>
     <xsl:function name="xpf:distinct-values" as="xs:anyAtomicType*">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -325,6 +326,7 @@
     
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="xpf:uri-collection($exec-context, '')"/>
     </xsl:function>
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
