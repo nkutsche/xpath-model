@@ -57,6 +57,33 @@
         <xsl:sequence select="$collection/qt:source/resolve-uri(@file, base-uri(.))"/>
     </xsl:function>
 
+    <xsl:function name="xpmt:env-uri-mapper" as="xs:anyURI*">
+        <xsl:param name="relative" as="xs:string?"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:param name="sources" as="element()+"/>
+        
+        
+        <xsl:variable name="resolved" select=" if ($relative = '' or empty($relative)) then '' else resolve-uri($relative, $baseUri)"/>
+        <xsl:variable name="source" select="
+            if ($relative = '' or empty($relative)) 
+            then $sources[@uri = ''] 
+            else (
+                $sources[resolve-uri(@uri, base-uri(.)) = $resolved]
+            )
+            "/>
+        <xsl:variable name="source" select="
+            if ($source/self::qt:collection) 
+            then ($source/qt:source) 
+            else ($source)
+            "/>
+        <xsl:sequence select="
+            if ($source) 
+            then $source/resolve-uri(@file, base-uri(.))
+            else $resolved[. != '']
+            "/>
+        
+    </xsl:function>
+    
     <xsl:function name="xpmt:env-uri-resolver" as="document-node()?">
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
