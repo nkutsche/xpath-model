@@ -183,20 +183,6 @@
         <xsl:sequence select="resolve-uri(xpe:atomize($relative), xpf:static-base-uri($exec-context))"/>
     </xsl:function>
     
-    <xsl:function name="xpf:resolve-QName" as="xs:QName?">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="qname" as="xs:string?"/>
-        <xsl:param name="element" as="element()"/>
-    </xsl:function>
-    <xsl:function name="xpf:namespace-uri-for-prefix" as="xs:anyURI?">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="prefix" as="xs:string?"/>
-        <xsl:param name="element" as="element()"/>
-    </xsl:function>
-    <xsl:function name="xpf:in-scope-prefixes" as="xs:string*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="element" as="element()"/>
-    </xsl:function>
     <xsl:function name="xpf:name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:variable name="context" select="$exec-context?context"/>
@@ -265,47 +251,10 @@
     <xsl:function name="xpf:path" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
     </xsl:function>
-    <xsl:function name="xpf:path" as="xs:string?">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="node()?"/>
-    </xsl:function>
     <xsl:function name="xpf:has-children" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <!--   TODO     -->
         <xsl:sequence select="false()"/>
-    </xsl:function>
-    <xsl:function name="xpf:has-children" as="xs:boolean">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="node" as="node()?"/>
-        <!--   TODO     -->
-        <xsl:sequence select="false()"/>
-    </xsl:function>
-    <xsl:function name="xpf:innermost" as="node()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="nodes" as="node()*"/>
-        <!--   TODO     -->
-    </xsl:function>
-    <xsl:function name="xpf:outermost" as="node()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="nodes" as="node()*"/>
-        <!--   TODO     -->
-    </xsl:function>
-    <xsl:function name="xpf:head" as="item()?">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="head($arg)"/>
-    </xsl:function>
-    <xsl:function name="xpf:tail" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="tail($arg)"/>
-    </xsl:function>
-    <xsl:function name="xpf:insert-before" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="target" as="item()*"/>
-        <xsl:param name="position" as="xs:integer"/>
-        <xsl:param name="inserts" as="item()*"/>
-        <xsl:sequence select="insert-before($target, $position, $inserts)"/>
     </xsl:function>
     <xsl:function name="xpf:remove" as="item()*">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -342,12 +291,6 @@
         <xsl:param name="parameter2" as="item()*"/>
         <xsl:sequence select="deep-equal($parameter1, $parameter2, xpf:default-collation($exec-context))"/>
     </xsl:function>
-    <!--<xsl:function name="xpf:deep-equal" as="xs:boolean">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="parameter1" as="item()*"/>
-        <xsl:param name="parameter2" as="item()*"/>
-        <xsl:param name="collation" as="xs:string"/>
-    </xsl:function>-->
     <xsl:function name="xpf:zero-or-one" as="item()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
