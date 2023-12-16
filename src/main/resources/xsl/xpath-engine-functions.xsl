@@ -41,7 +41,11 @@
     
     <xsl:function name="xpf:number" as="xs:double">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="number(xpe:atomize($exec-context?context))"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call number()') 
+            else number(xpf:data($exec-context, $context))"/>
     </xsl:function>
 
     <xsl:function name="xpf:compare" as="xs:integer?">
@@ -53,17 +57,39 @@
 
     <xsl:function name="xpf:string" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="string(xpe:atomize($exec-context?context))"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call string()') 
+            else string(xpf:data($exec-context, $context))"/>
     </xsl:function>
 
     <xsl:function name="xpf:node-name" as="xs:QName">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="node-name($exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call node-name()') 
+            else node-name($context)"/>
     </xsl:function>
 
-    <xsl:function name="xpf:nilled" as="xs:boolean">
+    <xsl:function name="xpf:nilled" as="xs:boolean?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="nilled($exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call nilled()') 
+            else nilled($context)
+            "/>
+    </xsl:function>
+
+    <xsl:function name="xpf:data" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call data()') 
+            else xpf:data($exec-context, $context)"/>
     </xsl:function>
 
     <xsl:function name="xpf:data" as="item()*">
@@ -73,17 +99,29 @@
 
     <xsl:function name="xpf:document-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="document-uri($exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call document-uri()') 
+            else document-uri($context)"/>
     </xsl:function>
 
     <xsl:function name="xpf:string-length" as="xs:integer">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="string-length(xpe:atomize($exec-context?context))"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call string-length()') 
+            else string-length(xpf:data($exec-context, $context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:normalize-space" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="normalize-space(xpe:atomize($exec-context?context))"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call normalize-space()') 
+            else normalize-space(xpf:data($exec-context, $context))"/>
     </xsl:function>
 
     <xsl:function name="xpf:contains" as="xs:boolean">
@@ -161,7 +199,11 @@
     </xsl:function>
     <xsl:function name="xpf:name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:name($exec-context, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call name()') 
+            else xpf:name($exec-context, $context)"/>
     </xsl:function>
     <xsl:function name="xpf:name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -170,7 +212,11 @@
     </xsl:function>
     <xsl:function name="xpf:local-name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:local-name($exec-context, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call local-name()') 
+            else xpf:local-name($exec-context, $context)"/>
     </xsl:function>
     <xsl:function name="xpf:local-name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -179,7 +225,11 @@
     </xsl:function>
     <xsl:function name="xpf:namespace-uri" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:namespace-uri($exec-context, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call namespace-uri()') 
+            else xpf:namespace-uri($exec-context, $context)"/>
     </xsl:function>
     <xsl:function name="xpf:namespace-uri" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -199,9 +249,13 @@
         <!--   TODO     -->
         <xsl:sequence select="false()"/>
     </xsl:function>
-    <xsl:function name="xpf:root" as="node()">
+    <xsl:function name="xpf:root" as="node()?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:root($exec-context, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            if (empty($context)) 
+            then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call root()') 
+            else xpf:root($exec-context, $context)"/>
     </xsl:function>
     <xsl:function name="xpf:root" as="node()">
         <xsl:param name="exec-context" as="map(*)"/>
