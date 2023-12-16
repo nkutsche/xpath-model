@@ -916,6 +916,26 @@
     </xsl:function>
     
     
+    
+    <xsl:function name="xpe:is-function" as="xs:boolean">
+        <xsl:param name="item" as="item()*"/>
+        <xsl:sequence select="
+            if ($item instance of map(*)) 
+            then ($item?type = QName($xpf:namespace-uri, 'function')) 
+            else false()
+            "/>
+    </xsl:function>
+    
+    <xsl:function name="xpe:raw-function" as="item()">
+        <xsl:param name="item" as="item()"/>
+        <xsl:sequence select="
+            if (xpe:is-function($item)) 
+            then $item?function 
+            else $item
+            "/>
+        
+    </xsl:function>
+    
 
     
 </xsl:stylesheet>
