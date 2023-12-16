@@ -74,7 +74,7 @@
                 </xsl:map-entry>
             </xsl:if>
             
-            <xsl:variable name="base-uri" select="($environment/qt:static-base-uri/@uri, base-uri($environment))[1]"/>
+            <xsl:variable name="base-uri" select="($environment/qt:static-base-uri/@uri, $base-uri)[1]"/>
             <xsl:map-entry key="'base-uri'" select="xs:anyURI($base-uri)"/>
             
         </xsl:map>
@@ -226,7 +226,7 @@
         <xsl:sequence select="some $sr in $sub-results satisfies $sr"/>
     </xsl:template>
     
-    <xsl:template match="qt:assert-count | qt:assert-empty | qt:assert-eq | qt:assert-deep-eq | qt:assert-string-value | qt:assert-true | qt:assert-false | qt:assert-type" priority="100" mode="xpmt:result-compare">
+    <xsl:template match="qt:assert-empty | qt:assert-string-value | qt:assert-true | qt:assert-false" priority="100" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:choose>
             <xsl:when test="$result instance of map(*)">
@@ -330,6 +330,19 @@
 
     <xsl:template match="qt:assert-type" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
+        
+        <!--        
+            Exception for results which are representations of functions, but implemented as map(*)
+        -->
+        <xsl:variable name="result" select="
+            $result ! (
+            if (. instance of map(*) 
+                and .?type = QName('http://www.nkutsche.com/xmlml/xpath-engine/functions', 'function')) 
+                then (.?function)
+                else .
+            )
+            "/>
+        
         <xsl:variable name="xpath" select="'$result instance of ' || ."/>
         <xsl:evaluate xpath="$xpath" namespace-context="$predef-nscontext-for-saxon" with-params="map{QName('', 'result') : $result}"/>
     </xsl:template>
@@ -343,6 +356,11 @@
                     if (@code = '*') 
                     then 
                         true() 
+                    else
+                    if (matches(@code, '^Q\{.*\}'))
+                    then 
+                        local-name-from-QName($code) = replace(@code, '^Q\{(.*)\}(.*)', '$2')
+                        and namespace-uri-from-QName($code) = replace(@code, '^Q\{(.*)\}(.*)', '$1')
                     else
                         local-name-from-QName($code) = @code
                         and namespace-uri-from-QName($code) = 'http://www.w3.org/2005/xqt-errors'

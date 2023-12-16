@@ -38,10 +38,14 @@
         </xpmt:dependency>
         <xpmt:dependency>
             <xpmt:ignore test="fn-unparsed-text-056">Saxon-HE throws FOUT1170 instead of FOUT1190!</xpmt:ignore>
+            <xsl:if test="not(available-environment-variables() = 'QTTEST')">
+                <xpmt:ignore test="fn-available-environment-variables-011">Its hard to ensure that an env variable is set by the calling system...</xpmt:ignore>
+            </xsl:if>
         </xpmt:dependency>
         
         
     </xsl:variable>
+    
     <xsl:template match="/catalog">
         <x:description stylesheet="{resolve-uri('../../../main/resources/xsl/xpath-model.xsl')}">
             <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
@@ -114,8 +118,9 @@
                 $test-dependencies => xpmt:merge-dependencies() => xpmt:verify-test-dependencies()">
                 <xsl:next-match/>
             </xsl:when>
-            <xsl:otherwise/>
-            
+            <xsl:otherwise>
+                <xsl:message expand-text="yes">Skiped test case {@name}</xsl:message>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
@@ -216,7 +221,7 @@
             "/>
         <xsl:if test="$focus = '' or tokenize($focus, ',') = @name or (some $f in $focus satisfies matches(@name, $f))">
             
-            <x:scenario label="{@name}" catch="true">
+            <x:scenario label="{@name}: {description}" catch="true">
                 <xsl:if test="$env/source/@validation = 'strict'">
                     <xsl:attribute name="pending">Ignored as test case seems to be schema-aware.</xsl:attribute>
                 </xsl:if>
