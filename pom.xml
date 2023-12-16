@@ -308,6 +308,7 @@
                                     <connectionUrl>scm:git:https://github.com/w3c/qt3tests.git</connectionUrl>
                                     <checkoutDirectory>${testsuite.checkoutdir}</checkoutDirectory>
                                     <basedir>.</basedir>
+                                    <skipCheckoutIfExists>true</skipCheckoutIfExists>
                                 </configuration>
                             </execution>
                         </executions>

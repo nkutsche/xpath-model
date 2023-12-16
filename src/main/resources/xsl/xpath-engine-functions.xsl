@@ -653,8 +653,8 @@
         map{
             (:
             Add a here a name of an unsupported function and asign a function which 
-            throws an error with a corresponding error message
-            xs:QName('fn:load-xquery-module') : function(){}
+            throws an error with a corresponding error message, e.g.:
+            xs:QName('fn:load-xquery-module') : function(){error(QName('', 'code'), '')}
             :)
         }
         " as="map(xs:QName, function(xs:string) as empty-sequence())"/>
@@ -665,6 +665,12 @@
             @name
         )
         "/>
+    
+    <!--<xsl:function name="xpe:log">
+        <xsl:param name="msg" as="xs:string"/>
+        <xsl:message expand-text="yes">{$msg}</xsl:message>
+    </xsl:function>-->
+    
     <xsl:function name="xpf:function-lookup" as="map(*)?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="name" as="xs:QName"/>

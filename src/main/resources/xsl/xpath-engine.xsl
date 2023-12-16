@@ -247,11 +247,6 @@
                 </xsl:apply-templates>
             </xsl:for-each>
         </xsl:variable>
-        <!--<xsl:if test="empty($result)">
-            <xsl:message expand-text="yes"
-                >Empty result for operation {xpm:xpath-serializer-sub(.)} -> {xpm:xpath-serializer-sub($sub-expr)}</xsl:message>
-            <xsl:message expand-text="yes">Count context nodes: {count($context)} ({xpm:xpath-serializer-sub(arg[1]/*)})</xsl:message>
-        </xsl:if>-->
         <xsl:sequence select="xpe:xpath-step-result-reorder($result)"/>
     </xsl:template>
     
@@ -1070,57 +1065,6 @@
         </xsl:apply-templates>
     </xsl:function>
     
-    <xsl:function name="xpe:function-apply" as="item()*">
-        <xsl:param name="function" as="function(*)"/>
-        <xsl:param name="params" as="array(item()*)"/>
-        
-        <xsl:variable name="arity" select="array:size($params)"/>
-        <xsl:choose>
-            <xsl:when test="$arity = 0">
-                <xsl:sequence select="$function()"/>
-            </xsl:when>
-            <xsl:when test="$arity = 1">
-                <xsl:sequence select="$function($params?1)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 2">
-                <xsl:sequence select="$function($params?1, $params?2)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 3">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 4">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 5">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 6">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5, $params?6)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 7">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5, $params?6, $params?7)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 8">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5, $params?6, $params?7, $params?8)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 9">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5, $params?6, $params?7, $params?8, $params?9)"/>
-            </xsl:when>
-            <xsl:when test="$arity = 10">
-                <xsl:sequence select="$function($params?1, $params?2, $params?3, $params?4, $params?5, $params?6, $params?7, $params?8, $params?9, $params?10)"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:variable name="param-xpath" select="(1 to $arity) ! ('$p?' || .) => string-join(', ')"/>
-                <xsl:variable name="xpath" select="'$f(' || $param-xpath || ')'"/>
-                <xsl:evaluate xpath="$xpath" with-params="
-                    map{
-                        QName('','f') : $function,
-                        QName('','p') : $params
-                    }
-                    "/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:function>
     
     <!-- 
         MAP / ARRAY
