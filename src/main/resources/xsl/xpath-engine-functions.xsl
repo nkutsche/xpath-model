@@ -378,17 +378,124 @@
         
         <xsl:variable name="atomized" select="xpe:atomize($arg)"/>
         <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+    </xsl:function>
+    
+<!--    
+    Unparsed text functions
+    -->
+    <xsl:function name="xpf:unparsed-text-lines" as="xs:string*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:sequence select="xpf:unparsed-text-lines($exec-context, $href, ())"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:unparsed-text-lines" as="xs:string*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:variable name="unparsed-text" select="xpf:unparsed-text($exec-context, $href, $encoding)"/>
+        <xsl:sequence select="tokenize($unparsed-text, '\r\n|\r|\n')[not(position()=last() and .='')]"/>
+    </xsl:function>
+
+    
+    <xsl:function name="xpf:unparsed-text" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:sequence select="xpf:unparsed-text($exec-context, $href, ())"/>
+    </xsl:function>
+    <xsl:function name="xpf:unparsed-text" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string?"/>
         
+        <xsl:variable name="encoding" select="
+            xpe:verify-encoding($encoding)
+            "/>
+        
+        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        
+        <xsl:variable name="atomized" select="xpe:atomize($href)"/>
+        
+        <xsl:try>
+            <xsl:choose>
+                <xsl:when test="empty($exec-context?unparsed-text-resolver)">
+                    <xsl:sequence select="
+                        xpe:default-unparsed-text-resolver($exec-context, $atomized, $baseUri, $encoding)
+                        "/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:sequence select="$exec-context?unparsed-text-resolver($atomized, $baseUri, $encoding)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <xsl:catch errors="err:FORG0002">
+                <xsl:sequence select="error(xpe:error-code('FOUT1170'), 'Malformed URI ' || $atomized)"/>
+            </xsl:catch>
+        </xsl:try>
+        
+        
+    </xsl:function>
+    
+    <xsl:function name="xpe:verify-encoding" as="xs:string?">
+        <xsl:param name="encoding" as="xs:string?"/>
         <xsl:choose>
-            <xsl:when test="empty($exec-context?uri-collection-resolver)">
-                <xsl:sequence select="
-                    xpe:default-collection-resolver($atomized, $baseUri)
-                    "/>
+            <xsl:when test="empty($encoding)">
+                <xsl:sequence select="$encoding"/>
+            </xsl:when>
+            <xsl:when test="matches($encoding, '^utf-(8|16)$', 'i')">
+                <xsl:sequence select="$encoding"/>
+            </xsl:when>
+            <xsl:when test="matches($encoding, '^iso-8859-\d$', 'i')">
+                <xsl:sequence select="$encoding"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="$exec-context?uri-collection-resolver($atomized, $baseUri)"/>
+                <xsl:try>
+                    <xsl:sequence select="
+                        if (exists(unparsed-text('xpath-functions/dummy-for-encoding-verifyer.txt', $encoding))) 
+                        then ($encoding) 
+                        else error(xpe:error-code('FOUT1190'), 'Unsupported encoding ' || $encoding)
+                        "/>
+                    <xsl:catch>
+                        <xsl:sequence select="
+                            error(xpe:error-code('FOUT1190'), 'Unsupported encoding ' || $encoding)
+                            "/>
+                    </xsl:catch>
+                </xsl:try>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="xpf:unparsed-text-available" as="xs:boolean">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:sequence select="xpf:unparsed-text-available($exec-context, $href, ())"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:unparsed-text-available" as="xs:boolean">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:try>
+            <xsl:sequence select="xpf:unparsed-text($exec-context, $href, $encoding) => exists()"/>
+            <xsl:catch>
+                <xsl:sequence select="false()"/>
+            </xsl:catch>
+        </xsl:try>
+    </xsl:function>
+    
+    
+    <xsl:function name="xpe:default-unparsed-text-resolver" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="relative" as="xs:string?"/>
+        <xsl:param name="baseUri" as="xs:string"/>
+        <xsl:param name="encoding" as="xs:string?"/>
+        
+        <xsl:variable name="resolved" as="xs:anyURI?" select="xpe:default-uri-mapper($exec-context, $relative, $baseUri)"/>
+        
+        <xsl:sequence select="
+            if (empty($encoding)) 
+            then unparsed-text($resolved) 
+            else unparsed-text($resolved, $encoding)
+            "/>
     </xsl:function>
     
     <xsl:function name="xpe:default-uri-resolver" as="document-node()?">
