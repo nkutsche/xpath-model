@@ -17,6 +17,13 @@
     
     <xsl:function name="xpmt:execution-context" as="map(*)">
         <xsl:param name="environment" as="element(qt:environment)"/>
+        <xsl:param name="base-uri" as="xs:string"/>
+        <xsl:sequence select="xpmt:execution-context($environment, $base-uri, false())"/>
+    </xsl:function>
+    <xsl:function name="xpmt:execution-context" as="map(*)">
+        <xsl:param name="environment" as="element(qt:environment)"/>
+        <xsl:param name="base-uri" as="xs:string"/>
+        <xsl:param name="transform-workaround" as="xs:boolean"/>
         <xsl:map>
             <xsl:map-entry key="'namespaces'">
                 <xsl:map>
@@ -32,7 +39,7 @@
             </xsl:if>
             <xsl:if test="$environment/qt:source">
                 <xsl:map-entry key="'uri-resolver'" 
-                    select="xpmt:env-uri-resolver(?,?, $environment/qt:source)"/>
+                    select="xpmt:env-uri-resolver(?,?, $environment/qt:source, $transform-workaround)"/>
             </xsl:if>
             <xsl:if test="$environment/qt:param">
                 <xsl:map-entry key="'variable-context'">
@@ -86,13 +93,34 @@
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
         <xsl:param name="sources" as="element(qt:source)+"/>
+        <xsl:param name="transform-workaround" as="xs:boolean"/>
         
-        <xsl:if test="$relative">
-            <xsl:variable name="resolved" select=" if ($relative = '') then '' else resolve-uri($relative, $baseUri)"/>
-            <xsl:variable name="source" select="$sources[resolve-uri(@uri, base-uri(.)) = $resolved]"/>
-            <xsl:sequence select="$source/resolve-uri(@file, base-uri(.)) ! doc(.)"/>
-        </xsl:if>
-        
+        <xsl:variable name="base-uri" select="resolve-uri($relative, $baseUri)"/>
+        <xsl:variable name="uris" select="xpmt:env-uri-mapper($relative, $baseUri, $sources)"/>
+        <xsl:variable name="docs" select="$uris ! (
+            if ($transform-workaround) 
+            then (unparsed-text(.) => parse-xml() => xpmt:attach-base-uri($base-uri)) 
+            else doc(.))"/>
+        <xsl:sequence select="$docs"/>
+    </xsl:function>
+    
+    
+    
+    <xsl:function name="xpmt:attach-base-uri" as="document-node()">
+        <xsl:param name="document" as="document-node()"/>
+        <xsl:param name="base-uri" as="xs:string"/>
+        <xsl:variable name="copysheet" as="xs:string">
+            <![CDATA[
+            <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:mode on-no-match="shallow-copy"/></xsl:stylesheet>
+            ]]>
+        </xsl:variable>
+        <xsl:variable name="result" select="transform(map{
+            'source-node' : $document,
+            'stylesheet-text' : $copysheet,
+            'base-output-uri' : $base-uri
+            })($base-uri)
+            "/>
+        <xsl:sequence select="$result"/>
     </xsl:function>
     
     <xsl:template match="*" mode="xpmt:execution-context"/>

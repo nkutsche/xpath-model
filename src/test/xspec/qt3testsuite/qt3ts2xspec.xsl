@@ -47,6 +47,8 @@
             <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
             <x:helper stylesheet="{resolve-uri('qt3ts-helper.xsl')}"/>
             
+            <x:variable name="fn-transform-workaround" select="false()"/>
+            
             <xsl:apply-templates>
                 <xsl:with-param name="envs" select="environment" tunnel="yes"/>
             </xsl:apply-templates>
@@ -69,7 +71,7 @@
                 </xsl:attribute>
             </x:variable>
             <x:variable name="context" select="$sources ! doc(.)"/>
-            <x:variable name="execution-context" select="xpmt:execution-context(*)">
+            <x:variable name="execution-context" select="xpmt:execution-context(*, $base-uri, $fn-transform-workaround)">
                 <xsl:copy-of select="xpmt:copy-for-xspec(.)"/>
             </x:variable>
             <x:call function="xpe:xpath-evaluate">
@@ -224,12 +226,18 @@
                     <xsl:attribute name="pending" expand-text="yes"
                         >Ignored by dependency settings. Reason: {$ignore-reaons}</xsl:attribute>
                 </xsl:if>
+                <x:variable name="base-uri" select="'{base-uri(.)}'"/>
                 <x:variable name="xpath" select="string(.)">
                     <xsl:value-of select="test"/>
                 </x:variable>
                 <x:variable name="result" select="*">
                     <xsl:copy-of select="xpmt:copy-for-xspec(result)"/>
                 </x:variable>
+                <xsl:if test="
+                    dependency[@type = 'feature'][(@satisfied, 'true')[1]= 'true']/@value = 'fn-transform-XSLT'
+                    ">
+                    <x:variable name="fn-transform-workaround" select="true()"/>
+                </xsl:if>
                 <xsl:if test="$env">
                     <x:like label="{$env[last()]/generate-id(.)}"/>
                 </xsl:if>
