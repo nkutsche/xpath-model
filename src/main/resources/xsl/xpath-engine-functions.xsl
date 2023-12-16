@@ -499,45 +499,50 @@
     </xsl:function>
     
     <xsl:function name="xpe:default-uri-resolver" as="document-node()?">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
         <xsl:variable name="resolved" as="xs:anyURI?">
-            <xsl:try>
-                <xsl:sequence select="resolve-uri($relative, $baseUri)"/>
-                <xsl:catch errors="err:FORG0002">
-                    <xsl:sequence select="error(xpe:error-code('FODC0005'), 'Malformed URI ' || $relative)"/>
-                </xsl:catch>
-            </xsl:try>
+            <xsl:sequence select="xpe:default-uri-mapper($exec-context, $relative, $baseUri)"/>
         </xsl:variable>
         <xsl:sequence select="doc($resolved)"/>
     </xsl:function>
     
     <xsl:function name="xpe:default-collection-resolver" as="xs:anyURI*">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string"/>
         <xsl:param name="baseUri" as="xs:string"/>
         <xsl:variable name="resolved" as="xs:anyURI">
-            <xsl:try>
-                <xsl:sequence select="resolve-uri($relative, $baseUri)"/>
-                <xsl:catch errors="err:FORG0002">
-                    <xsl:sequence select="error(xpe:error-code('FODC0004'), 'Malformed URI ' || $relative)"/>
-                </xsl:catch>
-            </xsl:try>
+            <xsl:sequence select="xpe:default-uri-mapper($exec-context, $relative, $baseUri)"/>
         </xsl:variable>
         <xsl:sequence select="uri-collection($resolved)"/>
     </xsl:function>
     
-    <xsl:function name="xpf:parse-xml" as="document-node(element(*))?">
+    <xsl:function name="xpe:default-uri-mapper" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="relative" as="xs:string"/>
+        <xsl:param name="base-uri" as="xs:string"/>
+        <xsl:choose>
+            <xsl:when test="empty($exec-context?uri-mapper)">
+                <xsl:sequence select="resolve-uri($relative, $base-uri)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="$exec-context?uri-mapper($relative, $base-uri)"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
-    <xsl:function name="xpf:parse-xml-fragment" as="document-node()?">
+    
+    <xsl:function name="xpf:parse-json" as="item()?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string?"/>
-    </xsl:function>
-    <xsl:function name="xpf:serialize" as="xs:string">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="xpf:serialize($exec-context, $arg, ())"/>
+        <xsl:param name="json-text" as="xs:string?"/>
+        <xsl:param name="options" as="map(*)"/>
+        <xsl:variable name="fallback" select="$options?fallback ! xpe:raw-function(.)"/>
+        <xsl:variable name="options" select="
+            if (exists($fallback)) 
+            then map:put($options, 'fallback', $fallback) 
+            else $options
+            "/>
+        <xsl:sequence select="parse-json($json-text, $options)"/>
     </xsl:function>
     <xsl:function name="xpf:serialize" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
