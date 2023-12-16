@@ -521,19 +521,20 @@
         <xsl:variable name="context" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
+        <xsl:variable name="context" select="$context ! xpe:raw-function(.)"/>
         <xsl:variable name="subst-expr" as="element(expr)">
             <expr>
                 <xsl:copy>
                     <xsl:sequence select="@*"/>
                     <arg>
-                        <self/>
+                        <varRef name="context"/>
                     </arg>
                     <xsl:sequence select="* except arg"/>
                 </xsl:copy>
             </expr>
         </xsl:variable>
         <xsl:variable name="subst-xpath" select="xpm:xpath-serializer($subst-expr)"/>
-        <xsl:evaluate xpath="$subst-xpath" context-item="xpe:atomize($context)"/>
+        <xsl:evaluate xpath="$subst-xpath" with-params="map{QName('', 'context') : xpe:atomize($context)}"/>
     </xsl:template>
     
     <xsl:template match="itemType | itemType//*" mode="xpe:xpath-evaluate">
