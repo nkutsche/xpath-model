@@ -49,12 +49,10 @@
     </xsl:function>
     
     <xsl:function name="xpmt:env-collection-resolver" as="xs:anyURI*">
-        <xsl:param name="relative" as="xs:string"/>
+        <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
         <xsl:param name="collections" as="element(qt:collection)+"/>
-        <xsl:variable name="resolved" select=" if ($relative = '') then '' else resolve-uri($relative, $baseUri)"/>
-        <xsl:variable name="collection" select="$collections[@uri = $resolved]"/>
-        <xsl:sequence select="$collection/qt:source/resolve-uri(@file, base-uri(.))"/>
+        <xsl:sequence select="xpmt:env-uri-mapper($relative, $baseUri, $collections)"/>
     </xsl:function>
 
     <xsl:function name="xpmt:env-uri-mapper" as="xs:anyURI*">
