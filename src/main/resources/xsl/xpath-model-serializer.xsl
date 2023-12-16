@@ -861,7 +861,19 @@
         <xsl:apply-templates mode="#current"/>
         <xsl:sequence select="@name/nk:namespace-handling(., $config)"/>
     </xsl:template>
-
+    
+    <xsl:template match="operation[@type = 'arrow']/function-call/function[not(@name)]" mode="nk:xpath-serializer">
+        <xsl:variable name="content">
+            <xsl:apply-templates mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="skip-brackets" select="
+            varRef or starts-with($content, '(') 
+            "/>
+        <xsl:sequence select="'('[not($skip-brackets)]"/>
+        <xsl:sequence select="$content"/>
+        <xsl:sequence select="')'[not($skip-brackets)]"/>
+    </xsl:template>
+    
     <!--    
     ### Inline Programming ###
     -->
