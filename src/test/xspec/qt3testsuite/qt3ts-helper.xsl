@@ -256,6 +256,22 @@
         <xsl:sequence select="deep-equal($result, $compare)"/>
     </xsl:template>
 
+    <xsl:template match="qt:assert" mode="xpmt:result-compare">
+        <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:try>
+            <xsl:variable name="compare" as="item()*">
+                <xsl:evaluate xpath="." namespace-context="$predef-nscontext-for-saxon" with-params="
+                        map{QName('', 'result') : $result}
+                    "/>
+            </xsl:variable>
+            <xsl:sequence select="boolean($compare)"/>
+            <xsl:catch xmlns:err="http://www.w3.org/2005/xqt-errors">
+                <xsl:message select="'MESSAGE: ' || $err:description"/>
+                <xsl:sequence select="false()"/>
+            </xsl:catch>
+        </xsl:try>
+    </xsl:template>
+
     <xsl:template match="qt:assert-permutation" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:variable name="compare" as="item()*">
