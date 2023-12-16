@@ -101,7 +101,10 @@
     
     <xsl:template match="test-case" priority="50">
         <xsl:param name="test-dependencies" tunnel="yes" as="element(dependency)*"/>
+        <xsl:variable name="focus" select="$focus => tokenize(',')"/>
+        <xsl:variable name="focus" select="$focus[. != ''] ! ('^' || . || '$')"/>
         <xsl:choose>
+            <xsl:when test="exists($focus) and (every $f in $focus satisfies not(matches(@name, $f)))"/>
             <xsl:when test="not($test-dependencies)">
                 <xsl:next-match/>
             </xsl:when>

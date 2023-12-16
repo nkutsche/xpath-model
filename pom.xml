@@ -336,7 +336,7 @@
                                             <parameters>
                                                 <parameter>
                                                     <name>focus</name>
-                                                    <value>^${testsuite.qt3-id-focus}$</value>
+                                                    <value>${testsuite.qt3-id-focus}</value>
                                                 </parameter>
                                             </parameters>
                                             <fileMappers>
