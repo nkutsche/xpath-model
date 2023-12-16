@@ -880,6 +880,69 @@
     -->
     
     <xsl:variable name="fn_namespace-uri" select="'http://www.w3.org/2005/xpath-functions'"/>
+    <xsl:variable name="xs_namespace-uri" select="'http://www.w3.org/2001/XMLSchema'"/>
+    
+<!--    
+    Partial Function Applications
+    -->
+    <xsl:template match="operation[@type = 'postfix'][function-call/arg/@role = 'placeholder']" mode="xpe:xpath-evaluate" priority="20">
+        <xsl:apply-templates select="function-call" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="function-call[arg/@role = 'placeholder']" mode="xpe:xpath-evaluate">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:param name="first-arg" as="array(item()*)" select="[]"/>
+
+<!--        
+        Creates equivalent:
+        
+        foo(?, 'bar', ?) -> function($xpe:p1, $xpe:2){foo($xpe:p1, 'bar', $xpe:p2)}
+        -->
+        <xsl:variable name="inline-equivalent" as="element(function-impl)">
+            <function-impl>
+                <xsl:for-each select="arg[@role = 'placeholder']">
+                    <param name="xpe:p{position()}"/>
+                </xsl:for-each>
+                <arg role="return">
+                    <xsl:variable name="args">
+                        <xsl:for-each select="arg">
+                            <xsl:choose>
+                                <xsl:when test="@role = 'placeholder'">
+                                    <xsl:variable name="plchld-idx" select="count(preceding-sibling::arg[@role = 'placeholder']) + 1"/>
+                                    <arg>
+                                        <varRef name="xpe:p{$plchld-idx}"/>
+                                    </arg>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:sequence select="."/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:for-each>
+                    </xsl:variable>
+
+                    
+                    <xsl:choose>
+                        <xsl:when test="function">
+                            <function-call>
+                                <xsl:sequence select="function"/>
+                                <xsl:sequence select="$args"/>
+                            </function-call>
+                        </xsl:when>
+                        <xsl:when test="parent::operation[@type = 'postfix']">
+                            <operation type="postfix">
+                                <xsl:sequence select="preceding-sibling::arg"/>
+                                <function-call>
+                                    <xsl:sequence select="$args"/>
+                                </function-call>
+                            </operation>
+                        </xsl:when>
+                    </xsl:choose>
+                </arg>
+            </function-impl>
+        </xsl:variable>
+        
+        <xsl:apply-templates select="$inline-equivalent" mode="xpe:xpath-evaluate"/>
+    </xsl:template>
     
     <xsl:template match="function-call" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
