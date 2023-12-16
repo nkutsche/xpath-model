@@ -698,39 +698,6 @@
             "/>
         
     </xsl:function>
-    <xsl:function name="xpf:for-each" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="seq" as="item()*"/>
-        <xsl:param name="f" as="function(item()) as item()*"/>
-        <xsl:sequence select="for-each($seq, $f)"/>
-    </xsl:function>
-    <xsl:function name="xpf:filter" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="seq" as="item()*"/>
-        <xsl:param name="f" as="function(item()) as xs:boolean"/>
-        <xsl:sequence select="filter($seq, $f)"/>
-    </xsl:function>
-    <xsl:function name="xpf:fold-left" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="seq" as="item()*"/>
-        <xsl:param name="zero" as="item()*"/>
-        <xsl:param name="f" as="function(item()*, item()) as item()*"/>
-        <xsl:sequence select="fold-left($seq, $zero, $f)"/>
-    </xsl:function>
-    <xsl:function name="xpf:fold-right" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="seq" as="item()*"/>
-        <xsl:param name="zero" as="item()*"/>
-        <xsl:param name="f" as="function(item()*, item()) as item()*"/>
-        <xsl:sequence select="fold-right($seq, $zero, $f)"/>
-    </xsl:function>
-    <xsl:function name="xpf:for-each-pair" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="seq1" as="item()*"/>
-        <xsl:param name="seq2" as="item()*"/>
-        <xsl:param name="f" as="function(item(), item()) as item()*"/>
-        <xsl:sequence select="for-each-pair($seq1, $seq2, $f)"/>
-    </xsl:function>
 
     
 </xsl:stylesheet>
