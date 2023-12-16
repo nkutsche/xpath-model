@@ -192,7 +192,7 @@
     <xsl:function name="xpf:resolve-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="item()?"/>
-        <xsl:sequence select="resolve-uri(xpe:atomize($relative), xpf:static-base-uri($exec-context))"/>
+        <xsl:sequence select="resolve-uri(xpf:data($exec-context, $relative), xpf:static-base-uri($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:name" as="xs:string">
@@ -264,7 +264,7 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="seq" as="item()*"/>
         <xsl:param name="search" as="item()"/>
-        <xsl:sequence select="index-of(xpe:atomize($seq), xpe:atomize($search), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="index-of($seq ! xpf:data($exec-context, .), xpf:data($exec-context, $search), xpf:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:deep-equal" as="xs:boolean">
@@ -276,13 +276,13 @@
     <xsl:function name="xpf:max" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="max(xpe:atomize($arg), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="max(xpf:data($exec-context, $arg), xpf:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:min" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="min(xpe:atomize($arg), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="min(xpf:data($exec-context, $arg), xpf:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:id" as="element()*">
