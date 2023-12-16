@@ -1018,6 +1018,51 @@
         
     </xsl:template>
     
+    <xsl:template match="function-impl" mode="xpe:xpath-evaluate">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        
+        <!--
+            TODO: Check for Q{} syntax? 
+        -->
+        <xsl:variable name="arity" select="count(param)"/>
+        <xsl:variable name="param-names" select="param/xpm:varQName(@name)"/>
+        <xsl:variable name="body" select="arg[@role = 'return']"/>
+
+        
+        <xsl:variable name="function-body" select="xpe:function-inline-exec#4($execution-context, $body, $param-names, ?)"/>
+        
+        <xsl:variable name="function" select="xpe:create-function($function-body, $arity)"/>
+        
+        
+        <xsl:sequence select="
+            map{
+                'type' : QName($xpf:namespace-uri, 'function'),
+                'function' : $function,
+                'name' : (),
+                'arity' : $arity
+            }
+            "/>
+    </xsl:template>
+    
+    <xsl:function name="xpe:function-inline-exec" as="item()*">
+        <xsl:param name="execution-context" as="map(*)"/>
+        <xsl:param name="body" as="element(arg)"/>
+        <xsl:param name="param-names" as="xs:QName*"/>
+        <xsl:param name="arguments" as="array(*)"/>
+        
+        <xsl:variable name="parameter" select="
+            for $i in 1 to array:size($arguments)
+            return map{$param-names[$i] : $arguments($i)}
+            "/>
+        
+        <xsl:variable name="variables" select="($execution-context?variable-context, $parameter) => map:merge(map{'duplicates' : 'use-last'})"/>
+        <xsl:variable name="execution-context" select="map:put($execution-context, 'variable-context', $variables)"/>
+        
+        <xsl:apply-templates select="$body/*" mode="xpe:xpath-evaluate">
+            <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:function>
+    
     <xsl:function name="xpe:function-apply" as="item()*">
         <xsl:param name="function" as="function(*)"/>
         <xsl:param name="params" as="array(item()*)"/>
