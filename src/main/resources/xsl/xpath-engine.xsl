@@ -574,7 +574,11 @@
     </xsl:template>
 
     <xsl:template match="double" mode="xpe:xpath-evaluate">
-        <xsl:sequence select="xs:double(@factor) * math:pow(1E1, @exp)"/>
+        <!--    
+            Note: Calculating with xs:decimal to do not loos fragments for very high numbers
+        -->
+        <xsl:variable name="as-decimal" select="xs:decimal(@factor) * xs:decimal(math:pow(10, @exp))"/>
+        <xsl:sequence select="xs:double($as-decimal)"/>
     </xsl:template>
 
     <xsl:template match="empty" mode="xpe:xpath-evaluate">
@@ -584,7 +588,7 @@
     <xsl:template match="self" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:if test="empty($execution-context?context)">
-            <xsl:sequence select="error(QName('', 'TODO'), 'There is no given context in expression ''.'' ')"/>
+            <xsl:sequence select="error(xpe:error-code('XPDY0002'), 'There is no given context in expression ''.'' ')"/>
         </xsl:if>
         <xsl:sequence select="$execution-context?context"/>
     </xsl:template>
@@ -983,7 +987,9 @@
         <xsl:variable name="function" select="xpf:function-lookup($execution-context, $funct-name, $arity)"/>
         
         <xsl:sequence select="
-            if (empty($function)) 
+            if ($arity > 100000) 
+            then error(xpe:error-code('FOAR0002'), 'Given arity of function look is out of range.') 
+            else if (empty($function)) 
             then error(xpe:error-code('XPST0017'), 'Can not find a ' || $arity || '-argument function named Q{' || $ns-uri || '}' || $local-name)
             else 
                 $function
