@@ -189,12 +189,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call name()') 
-            else xpf:name($exec-context, $context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:name" as="xs:string">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="node()?"/>
-        <xsl:sequence select="name($arg)"/>
+            else name($context)"/>
     </xsl:function>
     <xsl:function name="xpf:local-name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -202,12 +197,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call local-name()') 
-            else xpf:local-name($exec-context, $context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:local-name" as="xs:string">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="node()?"/>
-        <xsl:sequence select="local-name($arg)"/>
+            else local-name($context)"/>
     </xsl:function>
     <xsl:function name="xpf:namespace-uri" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -241,12 +231,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call root()') 
-            else xpf:root($exec-context, $context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:root" as="node()">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="node()?"/>
-        <xsl:sequence select="root($arg)"/>
+            else root($context)"/>
     </xsl:function>
     <xsl:function name="xpf:path" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -255,22 +240,6 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <!--   TODO     -->
         <xsl:sequence select="false()"/>
-    </xsl:function>
-    <xsl:function name="xpf:remove" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="target" as="item()*"/>
-        <xsl:param name="position" as="xs:integer"/>
-        <xsl:sequence select="remove($target, $position)"/>
-    </xsl:function>
-    <xsl:function name="xpf:reverse" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="reverse($arg)"/>
-    </xsl:function>
-    <xsl:function name="xpf:unordered" as="item()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="sourceSeq" as="item()*"/>
-        <xsl:sequence select="unordered($sourceSeq)"/>
     </xsl:function>
     <xsl:function name="xpf:distinct-values" as="xs:anyAtomicType*">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -291,21 +260,6 @@
         <xsl:param name="parameter2" as="item()*"/>
         <xsl:sequence select="deep-equal($parameter1, $parameter2, xpf:default-collation($exec-context))"/>
     </xsl:function>
-    <xsl:function name="xpf:zero-or-one" as="item()?">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="zero-or-one($arg)"/>
-    </xsl:function>
-    <xsl:function name="xpf:one-or-more" as="item()+">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="one-or-more($arg)"/>
-    </xsl:function>
-    <xsl:function name="xpf:exactly-one" as="item()">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="exactly-one($arg)"/>
-    </xsl:function>
     <xsl:function name="xpf:max" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
@@ -321,46 +275,23 @@
     <xsl:function name="xpf:id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="xpf:id($exec-context, $arg, $exec-context?context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:id" as="element()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string*"/>
-        <xsl:param name="node" as="node()"/>
-        <xsl:sequence select="id(xpe:atomize($arg), $node)"/>
+        <xsl:sequence select="id($arg, $exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:element-with-id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="xpf:element-with-id($exec-context, $arg, $exec-context?context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:element-with-id" as="element()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string*"/>
-        <xsl:param name="node" as="node()"/>
-        <xsl:sequence select="element-with-id(xpe:atomize($arg), $node)"/>
+        <xsl:sequence select="element-with-id($arg, $exec-context?context)"/>
     </xsl:function>
     
     <xsl:function name="xpf:idref" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="xpf:idref($exec-context, $arg, $exec-context?context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:idref" as="node()*">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="xs:string*"/>
-        <xsl:param name="node" as="node()"/>
-        <xsl:sequence select="idref(xpe:atomize($arg), $node)"/>
+        <xsl:sequence select="idref($arg, $exec-context?context)"/>
     </xsl:function>
     
     <xsl:function name="xpf:generate-id" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:generate-id($exec-context, $exec-context?context)"/>
-    </xsl:function>
-    <xsl:function name="xpf:generate-id" as="xs:string">
-        <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="arg" as="node()?"/>
-        <xsl:sequence select="generate-id($arg)"/>
+        <xsl:sequence select="generate-id($exec-context?context)"/>
     </xsl:function>
     <xsl:function name="xpf:doc" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
