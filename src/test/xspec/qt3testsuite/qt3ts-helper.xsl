@@ -60,10 +60,12 @@
                 <xsl:map-entry key="'uri-resolver'" 
                     select="xpmt:env-uri-resolver(?,?, $environment/qt:source, $transform-workaround)"/>
             </xsl:if>
-            <xsl:if test="$environment/qt:param">
+            <xsl:if test="$environment/qt:param | $environment/qt:source[matches(@role, '^\$')]">
                 <xsl:map-entry key="'variable-context'">
                     <xsl:map>
-                        <xsl:apply-templates select="$environment/qt:param" mode="xpmt:execution-context"/>
+                        <xsl:apply-templates select="
+                            $environment/qt:param | $environment/qt:source[matches(@role, '^\$')]
+                            " mode="xpmt:execution-context"/>
                     </xsl:map>
                 </xsl:map-entry>
             </xsl:if>
@@ -155,6 +157,17 @@
     <xsl:template match="qt:param[@name][@select]" mode="xpmt:execution-context">
         <xsl:map-entry key="xs:QName(@name)">
             <xsl:evaluate xpath="@select"/>
+        </xsl:map-entry>
+    </xsl:template>
+
+    <xsl:template match="qt:source[matches(@role, '^\$')]" mode="xpmt:execution-context">
+        <xsl:variable name="name" select="replace(@role, '^\$', '')"/>
+        <xsl:variable name="prefix" select=" substring-before($name, ':')"/>
+        <xsl:variable name="ns-uri" select="if (contains($name, ':')) then namespace-uri-for-prefix($prefix, .) else ''"/>
+        <xsl:variable name="location" select="resolve-uri(@file, base-uri(.))"/>
+        <xsl:variable name="base-uri" select="(@uri, $location)[1]"/>
+        <xsl:map-entry key="QName($ns-uri, $name)">
+            <xsl:sequence select="doc($location) => xpmt:attach-base-uri($base-uri)"/>
         </xsl:map-entry>
     </xsl:template>
     
