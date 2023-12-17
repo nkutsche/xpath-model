@@ -20,6 +20,8 @@
     </xd:doc>
     
     <xsl:param name="focus" as="xs:string">.*</xsl:param>
+    <xsl:param name="group-focus" as="xs:string">*</xsl:param>
+    <xsl:param name="output-dir" as="xs:string" required="yes"/>
     
     
     <xsl:variable name="dependency-settings" as="element(xpmt:dependency)*">
@@ -41,23 +43,44 @@
             <xsl:if test="not(available-environment-variables() = 'QTTEST')">
                 <xpmt:ignore test="fn-available-environment-variables-011">Its hard to ensure that an env variable is set by the calling system...</xpmt:ignore>
             </xsl:if>
+            
+            <xpmt:ignore test="cbcl-divide-dayTimeDuration-003">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="RangeExpr-409d">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="K2-SeqExprCast-480">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="cbcl-cast-dayTimeDuration-001">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="cbcl-cast-dayTimeDuration-002">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="K-Literals-29">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="cbcl-avg-002">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="format-date-en117">TODO: crashes the xspec process</xpmt:ignore>
+            <xpmt:ignore test="format-date-en118">TODO: crashes the xspec process</xpmt:ignore>
         </xpmt:dependency>
         
         
     </xsl:variable>
     
     <xsl:template match="/catalog">
-        <x:description stylesheet="{resolve-uri('../../../main/resources/xsl/xpath-model.xsl')}">
-            <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
-            <x:helper stylesheet="{resolve-uri('qt3ts-helper.xsl')}"/>
-            
-            <x:variable name="fn-transform-workaround" select="false()"/>
-            
+        <xsl:variable name="scenarios" as="element(x:scenario)*">
             <xsl:apply-templates>
                 <xsl:with-param name="envs" select="environment" tunnel="yes"/>
             </xsl:apply-templates>
-            
-        </x:description>
+        </xsl:variable>
+        <xsl:for-each-group select="$scenarios[not(@shared = 'true')][(@xpmt:group, '*') = $group-focus]" group-by="@xpmt:group">
+            <xsl:result-document href="{$output-dir}qt3ts-runner-{current-grouping-key()}.xspec">
+                <x:description stylesheet="{resolve-uri('../../../main/resources/xsl/xpath-model.xsl')}">
+                    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
+                    <x:helper stylesheet="{resolve-uri('qt3ts-helper.xsl')}"/>
+                    
+                    <x:variable name="fn-transform-workaround" select="false()"/>
+                    <xsl:sequence select="$scenarios[@label = current-group()//x:like/@label]"/>
+                    <xsl:for-each select="current-group()">
+                        <xsl:copy select=".">
+                            <xsl:sequence select="@* except @xpmt:group"/>
+                            <xsl:sequence select="node()"/>
+                        </xsl:copy>
+                    </xsl:for-each>
+                </x:description>
+            </xsl:result-document>
+        </xsl:for-each-group> 
         
     </xsl:template>
     
@@ -88,7 +111,9 @@
     </xsl:template>
     
     <xsl:template match="test-set[@file]">
-        <xsl:apply-templates select="doc(resolve-uri(@file, base-uri(.)))/*"/>
+        <xsl:apply-templates select="doc(resolve-uri(@file, base-uri(.)))/*">
+            <xsl:with-param name="group" select="(tokenize(@name, '-'), 'default')[1]" tunnel="yes"/>
+        </xsl:apply-templates>
     </xsl:template>
     
     <xsl:template match="test-set[environment]" priority="50">
@@ -209,6 +234,7 @@
     
     <xsl:template match="test-case">
         <xsl:param name="envs" as="element(qt:environment)*" tunnel="yes"/>
+        <xsl:param name="group" as="xs:string" tunnel="yes" select="'default'"/>
         <xsl:variable name="custom-env" select="environment[not(@ref)]"/>
         
         <xsl:apply-templates select="$custom-env"/>
@@ -221,7 +247,7 @@
             "/>
         <xsl:if test="$focus = '' or tokenize($focus, ',') = @name or (some $f in $focus satisfies matches(@name, $f))">
             
-            <x:scenario label="{@name}: {description}" catch="true">
+            <x:scenario label="{@name}: {description}" catch="true" xpmt:group="{$group}">
                 <xsl:if test="$env/source/@validation = 'strict'">
                     <xsl:attribute name="pending">Ignored as test case seems to be schema-aware.</xsl:attribute>
                 </xsl:if>

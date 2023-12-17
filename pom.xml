@@ -60,6 +60,7 @@
         <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
         <testsuite.checkoutdir>${project.build.directory}/qt3-testsuite/</testsuite.checkoutdir>
         <testsuite.qt3-id-focus>.*</testsuite.qt3-id-focus>
+        <testsuite.qt3-id-group-focus>*</testsuite.qt3-id-group-focus>
     </properties>
     
     <dependencies>
@@ -339,12 +340,16 @@
                                                     <name>focus</name>
                                                     <value>${testsuite.qt3-id-focus}</value>
                                                 </parameter>
+                                                <parameter>
+                                                    <name>group-focus</name>
+                                                    <value>${testsuite.qt3-id-group-focus}</value>
+                                                </parameter>
+                                                <parameter>
+                                                    <name>output-dir</name>
+                                                    <value>${project.baseUri}/target/qt3-testsuite-xspec/</value>
+                                                </parameter>
+                                                
                                             </parameters>
-                                            <fileMappers>
-                                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
-                                                    <targetExtension>.xspec</targetExtension>
-                                                </fileMapper>
-                                            </fileMappers>
                                         </transformationSet>
                                     </transformationSets>
                                 </configuration>
@@ -381,6 +386,7 @@
                                         <xspec.xml.version>1.1</xspec.xml.version>
                                     </xspecProperties>
                                     --> 
+                                    <includes>qt3ts-runner-${testsuite.qt3-id-group-focus}.xspec</includes>
                                     <addDependenciesToClasspath>true</addDependenciesToClasspath>
                                     <xspecProperties>
                                         <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager -config:${project.basedir}/src/test/xspec/qt3testsuite/saxon-config.xml</saxon.custom.options>
