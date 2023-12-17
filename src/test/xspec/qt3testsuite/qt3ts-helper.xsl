@@ -307,6 +307,13 @@
         </xsl:choose>
     </xsl:function>
 
+    <xsl:template match="qt:assert-string-value[@normalize-space = 'true']" mode="xpmt:result-compare">
+        <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:next-match>
+            <xsl:with-param name="result" select="trace($result  ! normalize-space(string(.)))" tunnel="yes"/>
+        </xsl:next-match>
+    </xsl:template>
+    
     <xsl:template match="qt:assert-string-value" mode="xpmt:result-compare">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:sequence select="
