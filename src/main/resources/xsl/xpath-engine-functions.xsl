@@ -547,6 +547,19 @@
         </xsl:choose>
     </xsl:function>
     
+    <xsl:function name="xpf:json-doc" as="item()?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:sequence select="xpf:json-doc($exec-context, $href, map{})"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:json-doc" as="item()?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="href" as="xs:string?"/>
+        <xsl:param name="options" as="map(*)"/>
+        <xsl:sequence select="xpf:parse-json($exec-context, xpf:unparsed-text($exec-context, $href), $options)"/>
+    </xsl:function>
+    
     <xsl:function name="xpf:parse-json" as="item()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="json-text" as="xs:string?"/>
