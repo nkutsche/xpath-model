@@ -11,6 +11,7 @@
     xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
     xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:import href="xpath-engine-functions.xsl"/>
@@ -581,7 +582,7 @@
             </expr>
         </xsl:variable>
         <xsl:variable name="subst-xpath" select="xpm:xpath-serializer($subst-expr)"/>
-        <xsl:evaluate xpath="$subst-xpath" with-params="map{QName('', 'context') : xpe:atomize($context)}"/>
+        <xsl:evaluate xpath="$subst-xpath" with-params="map{QName('', 'context') : $context}"/>
     </xsl:template>
     
     <xsl:template match="itemType | itemType//*" mode="xpe:xpath-evaluate">
@@ -927,8 +928,6 @@
     FUNCTIONS
     -->
     
-    <xsl:variable name="fn_namespace-uri" select="'http://www.w3.org/2005/xpath-functions'"/>
-    <xsl:variable name="xs_namespace-uri" select="'http://www.w3.org/2001/XMLSchema'"/>
     
 <!--    
     Partial Function Applications
@@ -1052,14 +1051,14 @@
         <xsl:variable name="ns-uri" select="$qname?namespace"/>
         
         <xsl:variable name="ns-uri" select="
-            if ($ns-uri = '') then $fn_namespace-uri else $ns-uri
+            if ($ns-uri = '') then $build-in-namespaces('fn') else $ns-uri
             "/>
         
         <xsl:variable name="funct-name" select="QName($ns-uri, $local-name)"/>
         <xsl:variable name="function" select="xpf:function-lookup($execution-context, $funct-name, $arity)"/>
         
         <xsl:sequence select="
-            if ($arity > 100000) 
+            if ($arity > 1000000) 
             then error(xpe:error-code('FOAR0002'), 'Given arity of function look is out of range.') 
             else if (empty($function)) 
             then error(xpe:error-code('XPST0017'), 'Can not find a ' || $arity || '-argument function named Q{' || $ns-uri || '}' || $local-name)
@@ -1176,9 +1175,14 @@
     -->
     
     <xsl:template match="map" mode="xpe:xpath-evaluate">
-        <xsl:map>
-            <xsl:apply-templates select="entry" mode="#current"/>
-        </xsl:map>
+        <xsl:try>
+            <xsl:map>
+                <xsl:apply-templates select="entry" mode="#current"/>
+            </xsl:map>
+            <xsl:catch errors="err:XTDE3365">
+                <xsl:sequence select="error(xpe:error-code('XQDY0137'), $err:description)"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:template>
     
     <xsl:template match="map/entry" mode="xpe:xpath-evaluate">

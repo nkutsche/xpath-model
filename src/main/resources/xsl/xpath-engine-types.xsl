@@ -144,7 +144,7 @@
                     <xsl:variable name="anc-type" select="($a-xpt-type/ancestor-or-self::xpt:type intersect $b-xpt-type/ancestor-or-self::xpt:type)[last()]"/>
                     
                     <atomic name="{($anc-type/@name, 'xs:anyAtomicType')[1]}">
-                        <xsl:namespace name="xs" select="$xs_namespace-uri"/>
+                        <xsl:namespace name="xs" select="$build-in-namespaces('xs')"/>
                     </atomic>
                     
                 </xsl:when>
@@ -304,7 +304,7 @@
         <functType>
             <itemType>
                 <atomic name="xs:anyAtomicType">
-                    <xsl:namespace name="xs" select="$xs_namespace-uri"/>
+                    <xsl:namespace name="xs" select="$build-in-namespaces('xs')"/>
                 </atomic>
             </itemType>
             <as>

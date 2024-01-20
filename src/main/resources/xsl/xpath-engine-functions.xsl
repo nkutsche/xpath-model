@@ -999,16 +999,16 @@
         <xsl:variable name="local-name" select="local-name-from-QName($name)"/>
         <xsl:variable name="ns-uri" select="namespace-uri-from-QName($name)"/>
         
-        <xsl:variable name="xsd-constructor" select="$ns-uri = $xs_namespace-uri"/>
+        <xsl:variable name="xsd-constructor" select="$ns-uri = $build-in-namespaces('xs')"/>
         <xsl:variable name="function" select="
             (:if (exists($unsupported-functions($name))) 
             then ($unsupported-functions($name)()) 
             else :)
-            if ($ns-uri = $fn_namespace-uri and function-available('xpf:' || $local-name, $arity + 1)) 
+            if ($ns-uri = $build-in-namespaces('fn') and function-available('xpf:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpf:' || $local-name), $arity + 1) 
-            else if ($ns-uri = $array_namespace-uri and function-available('xpfa:' || $local-name, $arity + 1)) 
+            else if ($ns-uri = $build-in-namespaces('array') and function-available('xpfa:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpfa:' || $local-name), $arity + 1) 
-            else if ($ns-uri = $map_namespace-uri and function-available('xpfm:' || $local-name, $arity + 1)) 
+            else if ($ns-uri = $build-in-namespaces('map') and function-available('xpfm:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpfm:' || $local-name), $arity + 1) 
             else if ($xsd-constructor and function-available('xpfs:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpfs:' || $local-name), $arity + 1) 
@@ -1037,7 +1037,7 @@
                         <xsl:when test="$xsd-constructor and not($funct-sign)">
                             <itemType occurrence="zero-or-one">
                                 <atomic name="xs:anyAtomicType">
-                                    <xsl:namespace name="xs" select="$xs_namespace-uri"/>
+                                    <xsl:namespace name="xs" select="$build-in-namespaces('xs')"/>
                                 </atomic>
                             </itemType>
                         </xsl:when>
