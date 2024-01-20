@@ -2300,6 +2300,9 @@
             </fos:proto>
         </fos:signatures>
     </fos:function>
+    <fos:type-model name="none">
+        <itemType occurrence="zero"/>
+    </fos:type-model>
     <fos:type-model name="node()?">
         <itemType occurrence="zero-or-one">
             <nodeTest kind="node"/>
@@ -2311,6 +2314,12 @@
     <fos:type-model name="item()*">
         <itemType occurrence="zero-or-more"/>
     </fos:type-model>
+    <fos:type-model name="item()+">
+        <itemType occurrence="one-or-more"/>
+    </fos:type-model>
+    <fos:type-model name="item()">
+        <itemType occurrence="one"/>
+    </fos:type-model>
     <fos:type-model name="xs:QName?">
         <itemType occurrence="zero-or-one">
             <atomic name="xs:QName"/>
@@ -2319,6 +2328,11 @@
     <fos:type-model name="xs:string">
         <itemType>
             <atomic name="xs:string"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:language">
+        <itemType>
+            <atomic name="xs:language"/>
         </itemType>
     </fos:type-model>
     <fos:type-model name="xs:numeric">
@@ -2339,6 +2353,16 @@
     <fos:type-model name="xs:integer?">
         <itemType occurrence="zero-or-one">
             <atomic name="xs:integer"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:decimal">
+        <itemType>
+            <atomic name="xs:decimal"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:decimal?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:decimal"/>
         </itemType>
     </fos:type-model>
     <fos:type-model name="xs:string?">
@@ -2371,6 +2395,21 @@
             <atomic name="xs:anyAtomicType"/>
         </itemType>
     </fos:type-model>
+    <fos:type-model name="xs:anyURI">
+        <itemType>
+            <atomic name="xs:anyURI"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:anyURI*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:anyURI"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:anyURI?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:anyURI"/>
+        </itemType>
+    </fos:type-model>
     <fos:type-model name="xs:string*">
         <itemType occurrence="zero-or-more">
             <atomic name="xs:string"/>
@@ -2378,6 +2417,11 @@
     </fos:type-model>
     <fos:type-model name="xs:boolean">
         <itemType>
+            <atomic name="xs:boolean"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:boolean?">
+        <itemType occurrence="zero-or-one">
             <atomic name="xs:boolean"/>
         </itemType>
     </fos:type-model>
@@ -2414,6 +2458,11 @@
     <fos:type-model name="xs:dateTime">
         <itemType>
             <atomic name="xs:dateTime"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:dateTimeStamp">
+        <itemType>
+            <atomic name="xs:dateTimeStamp"/>
         </itemType>
     </fos:type-model>
     <fos:type-model name="xs:date">
@@ -2471,6 +2520,16 @@
             <atomic name="xs:QName"/>
         </itemType>
     </fos:type-model>
+    <fos:type-model name="xs:NCName">
+        <itemType>
+            <atomic name="xs:NCName"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:NCName?">
+        <itemType occurrence="zero-or-one">
+            <atomic name="xs:NCName"/>
+        </itemType>
+    </fos:type-model>
     <fos:type-model name="xs:hexBinary">
         <itemType>
             <atomic name="xs:hexBinary"/>
@@ -2506,9 +2565,31 @@
             <nodeTest kind="node"/>
         </itemType>
     </fos:type-model>
+    <fos:type-model name="document-node()?">
+        <itemType occurrence="zero-or-one">
+            <nodeTest kind="document-node"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="document-node(element(*))?">
+        <itemType occurrence="zero-or-one">
+            <nodeTest kind="document-node">
+                <nodeTest kind="element"/>
+            </nodeTest>
+        </itemType>
+    </fos:type-model>
     <fos:type-model name="node()*">
         <itemType occurrence="zero-or-more">
             <nodeTest kind="node"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="element(fn:analyze-string-result)">
+        <itemType>
+            <nodeTest kind="element" name="fn:analyze-string-result"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="element()*">
+        <itemType occurrence="zero-or-more">
+            <nodeTest kind="element"/>
         </itemType>
     </fos:type-model>
     <fos:type-model name="xs:anyAtomicType">
@@ -2601,6 +2682,19 @@
     <fos:type-model name="map(*)">
         <itemType>
             <mapType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="map(*)?">
+        <itemType occurrence="zero-or-one">
+            <mapType/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="map(xs:string, item())">
+        <itemType>
+            <mapType>
+                <atomic name="xs:string"/>
+                <itemType/>
+            </mapType>
         </itemType>
     </fos:type-model>
     <fos:type-model name="function(xs:anyAtomicType, item()*) as item()*">
