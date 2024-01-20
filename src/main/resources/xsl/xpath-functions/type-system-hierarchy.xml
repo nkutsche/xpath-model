@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xpt:type name="item" test="$n()" 
+    xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xpt:type name="node">
+        <xpt:type name="attribute"/>
+        <xpt:type name="element"/>
+        <xpt:type name="document" test="$n-node()">
+            <!--<xpt:type name="document-with-content-check" test="document-node()" parameters="1"/>-->
+        </xpt:type>
+        <xpt:type name="comment"/>
+        <xpt:type name="namespace" test="$n-node()"/>
+        <xpt:type name="processing-instruction"/>
+        <xpt:type name="text"/>
+    </xpt:type>
+    <xpt:type name="function" test="$n(*)">
+        <xpt:type name="map">
+            <!--<xpt:type name="map-typed" test="map(*)" paremters="2"/>-->
+        </xpt:type>
+        <xpt:type name="array">
+            <!--                    <xpt:type name="array-typed" test="array(*)" paremters="2"/>-->
+        </xpt:type>
+        <!--                <xpt:type name="function-with-signature" test="function(*)" parameters="n"/>-->
+    </xpt:type>
+    <xpt:type name="xs:anyAtomicType" test="$n" simple="true" castable="false">
+        <xpt:type name="xs:untypedAtomic"/>
+        <xpt:type name="xs:duration">
+            <xpt:type name="xs:yearMonthDuration"/>
+            <xpt:type name="xs:dayTimeDuration"/>
+        </xpt:type>
+        <xpt:type name="xs:time"/>
+        <xpt:type name="xs:decimal">
+            <xpt:type name="xs:integer">
+                <xpt:type name="xs:nonPositiveInteger"/>
+                <xpt:type name="xs:negativeInteger"/>
+                <xpt:type name="xs:long">
+                    <xpt:type name="xs:int">
+                        <xpt:type name="xs:short">
+                            <xpt:type name="xs:byte"/>
+                        </xpt:type>
+                    </xpt:type>
+                </xpt:type>
+                <xpt:type name="xs:nonNegativeInteger">
+                    <xpt:type name="xs:unsignedLong">
+                        <xpt:type name="xs:unsignedInt">
+                            <xpt:type name="xs:unsignedShort">
+                                <xpt:type name="xs:unsignedByte"/>
+                            </xpt:type>
+                        </xpt:type>
+                    </xpt:type>
+                    <xpt:type name="xs:positiveInteger"/>
+                </xpt:type>
+            </xpt:type>
+        </xpt:type>
+        <xpt:type name="xs:float"/>
+        <xpt:type name="xs:double"/>
+        <xpt:type name="xs:numeric">
+            <!-- 
+                NOTE: this is just a union type of xs:double, xs:float and xs:decimal
+                See https://www.w3.org/TR/xpath-functions-31/#func-overloading
+            -->
+        </xpt:type>
+        <xpt:type name="xs:gYearMonth"/>
+        <xpt:type name="xs:gYear"/>
+        <xpt:type name="xs:gMonthDay"/>
+        <xpt:type name="xs:gMonth"/>
+        <xpt:type name="xs:gDay"/>
+        <xpt:type name="xs:boolean"/>
+        <xpt:type name="xs:base64Binary"/>
+        <xpt:type name="xs:hexBinary"/>
+        <xpt:type name="xs:anyURI"/>
+        <xpt:type name="xs:QName"/>
+        <xpt:type name="xs:NOTATION" castable="false"/>
+        <xpt:type name="xs:dateTime">
+            <xpt:type name="xs:dateTimeStamp"/>
+        </xpt:type>
+        <xpt:type name="xs:date"/>
+        <xpt:type name="xs:string">
+            <xpt:type name="xs:normalizedString">
+                <xpt:type name="xs:token">
+                    <xpt:type name="xs:language"/>
+                    <xpt:type name="xs:NMTOKEN"/>
+                    <xpt:type name="xs:Name">
+                        <xpt:type name="xs:NCName">
+                            <xpt:type name="xs:ID"/>
+                            <xpt:type name="xs:IDREF"/>
+                            <xpt:type name="xs:ENTITY"/>
+                        </xpt:type>
+                    </xpt:type>
+                </xpt:type>
+            </xpt:type>
+        </xpt:type>
+    </xpt:type>
+</xpt:type>

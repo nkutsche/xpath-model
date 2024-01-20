@@ -9,10 +9,12 @@
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
+    xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:import href="xpath-engine-functions.xsl"/>
+    <xsl:import href="xpath-engine-types.xsl"/>
     
     
     <xsl:function name="xpe:xpath-evaluate">
