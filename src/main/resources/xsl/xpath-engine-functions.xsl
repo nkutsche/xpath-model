@@ -986,16 +986,37 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="apply-static-context" select="
-                    namespace-uri-from-QName(function-name($function)) = ($xpf:namespace-uri, $xpfs:namespace-uri)
+                    namespace-uri-from-QName(function-name($function)) = ($xpf:namespace-uri, $xpfs:namespace-uri, $xpfa:namespace-uri, $xpfm:namespace-uri)
                     "/>
                 
                 <xsl:variable name="funct-sign" select="
                     ((function-name($function), $name) ! key('functSign-qname', ., $function-signatures))[1]"/>
-                <xsl:variable name="funct-sign" select="$funct-sign/fos:signatures/fos:proto[count(fos:arg) = $arity]"/>
+                <xsl:variable name="funct-sign" select="$funct-sign/fos:signatures/fos:proto[
+                    if (fos:arg[@name='...']) 
+                    then (count(fos:arg[@name != '...']) le $arity) 
+                    else count(fos:arg) = $arity
+                    ]"/>
                 
+                <xsl:variable name="arg-types" as="element(itemType)*">
+                    <xsl:choose>
+                        <xsl:when test="$xsd-constructor and not($funct-sign)">
+                            <itemType occurrence="zero-or-one">
+                                <atomic name="xs:anyAtomicType">
+                                    <xsl:namespace name="xs" select="$xs_namespace-uri"/>
+                                </atomic>
+                            </itemType>
+                        </xsl:when>
+                        <xsl:when test="not($funct-sign)">
+                            <xsl:sequence select="error(xpe:error-code('XPST0017'), 'Unsupported function ' || $name || '#' || $arity)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="xpe:arg-types-by-function-sign($funct-sign, $arity)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                 <xsl:variable name="underline-funct-body" select="
                     function($args){
-                        let $args := xpe:prepare-arguments($args, $funct-sign, $name)
+                    let $args := xpe:prepare-arguments($args, $arg-types, $name)
                         return
                         let $args2 := if ($apply-static-context) then array:join(([$exec-context],$args)) else $args
                         return
@@ -1004,13 +1025,29 @@
                         )
                     }
                     "/>
+                
+                <xsl:variable name="return-type" as="element(itemType)">
+                    <xsl:choose>
+                        <xsl:when test="$xsd-constructor and not($funct-sign)">
+                            <itemType occurrence="zero-or-one">
+                                <atomic name="xs:{$local-name}">
+                                    <xsl:namespace name="xs" select="$ns-uri"/>
+                                </atomic>
+                            </itemType>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="$funct-sign/key('fosTypeModel-typeName', @return-type)/itemType"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                
                 <xsl:sequence select="
-                    map{
-                        'type' : QName($xpf:namespace-uri, 'function'),
-                        'function' : xpe:create-function($underline-funct-body, $arity),
-                        'name' : $name,
-                        'arity' : $arity
-                    }
+                    xpe:create-function-wrapper(
+                        xpe:create-function($underline-funct-body, $arity),
+                        $name,
+                        $arg-types,
+                        $return-type
+                    )
                     "/>
             </xsl:otherwise>
         </xsl:choose>
@@ -1020,25 +1057,39 @@
     
     
     
+    <xsl:function name="xpe:arg-types-by-function-sign" as="element(itemType)*">
+        <xsl:param name="funct-sign" as="element(fos:proto)"/>
+        <xsl:param name="arity" as="xs:integer"/>
+        <xsl:sequence select="
+            for $i in 1 to $arity
+            return
+                let $argDef := ($funct-sign/fos:arg[$i], $funct-sign/fos:arg[@name = '...'])[1]
+                return
+                $argDef/key('fosTypeModel-typeName', @type)/itemType
+            "/>
+    </xsl:function>
     <xsl:function name="xpe:prepare-arguments" as="array(*)">
         <xsl:param name="arguments" as="array(*)"/>
-        <xsl:param name="funct-sign" as="element(fos:proto)?"/>
-        <xsl:param name="origin-funct-name" as="xs:QName"/>
+        <xsl:param name="types" as="element(itemType)*"/>
+        <xsl:param name="origin-funct-name" as="xs:QName?"/>
         <xsl:variable name="single-args" as="array(*)*">
             <xsl:for-each select="1 to array:size($arguments)">
                 <xsl:variable name="i" select="."/>
-                <xsl:variable name="argDef" select="($funct-sign/fos:arg[$i], $funct-sign/fos:arg[@name = '...'])[1]"/>
-                <xsl:variable name="typeDef" select="$argDef/key('fosTypeModel-typeName', @type)/itemType"/>
                 <xsl:try>
-                    <xsl:sequence select="[xpe:prepare-argument($arguments($i), $typeDef)]"/>
+                    <xsl:sequence select="[xpe:prepare-argument($arguments($i), $types[$i])]"/>
                     <xsl:catch>
                         <xsl:variable name="arg-no" select="
                             if ($i le 3) 
                             then ('first', 'second', 'third')[$i] 
                             else ($i || 'th')
                             "/>
-                        <xsl:variable name="message-pre" select="'Bad value as ' || $arg-no || ' argument of ' || $origin-funct-name || '(): '"/>
-                        <xsl:sequence select="error($err:code, $message-pre || $err:description)"/>
+                        <xsl:variable name="function-descr" select="
+                            if (exists($origin-funct-name)) 
+                            then $origin-funct-name || '()' 
+                            else 'anonym function call'"/>
+                        <xsl:variable name="message-pre" select="'Bad value as ' || $arg-no || ' argument of ' || $function-descr || ': '"/>
+                        <xsl:variable name="message-suffix" select="'Origin: ' || $err:module || '#' || $err:line-number"/>
+                        <xsl:sequence select="error($err:code, $message-pre || $err:description || '&#xA;' || $message-suffix, $err:value)"/>
                     </xsl:catch>
                 </xsl:try>
             </xsl:for-each>
@@ -1050,23 +1101,19 @@
         <xsl:param name="arg" as="item()*"/>
         <xsl:param name="typeDef" as="element(itemType)?"/>
         <xsl:variable name="occurrence" select="$typeDef/@occurrence"/>
+        <xsl:variable name="arg" select="
+            if ($typeDef/atomic) 
+            then xpf:data(map{}, $arg) 
+            else $arg
+            "/>
         <xsl:choose>
             <xsl:when test="not($typeDef)">
                 <xsl:sequence select="$arg"/>
             </xsl:when>
-            <xsl:when test="$occurrence = 'zero-or-more'">
-                <xsl:variable name="single-type" as="element()">
-                    <xsl:copy select="$typeDef">
-                        <xsl:sequence select="@* except @occurrence"/>
-                        <xsl:sequence select="node()"/>
-                    </xsl:copy>
-                </xsl:variable>
-                <xsl:sequence select="$arg ! xpe:prepare-argument(., $single-type)"/>
-            </xsl:when>
-            <xsl:when test="$occurrence = 'zero-or-one' and empty($arg)">
+            <xsl:when test="matches($occurrence, '^zero') and empty($arg)">
                 <xsl:sequence select="()"/>
             </xsl:when>
-            <xsl:when test="count($arg) = 0">
+            <xsl:when test="empty($arg)">
                 <xsl:variable name="type-serialized" select="
                     $typeDef 
                     => xpm:xpath-serializer-sub(map{'namespaces' : $build-in-namespaces}) 
@@ -1078,6 +1125,16 @@
                         'An empty sequence occurred where type ' || $type-serialized || ' was expected.'
                     )
                     "/>
+            </xsl:when>
+            <xsl:when test="$occurrence = ('zero-or-more', 'one-or-more')">
+                <xsl:variable name="single-type" as="element()">
+                    <xsl:copy select="$typeDef">
+                        <xsl:sequence select="@* except @occurrence"/>
+                        <xsl:sequence select="node()"/>
+                    </xsl:copy>
+                </xsl:variable>
+                
+                <xsl:sequence select="$arg ! xpe:prepare-argument(., $single-type)"/>
             </xsl:when>
             <xsl:when test="count($arg) gt 1">
                 <xsl:variable name="type-serialized" select="
@@ -1092,50 +1149,139 @@
                     )
                     "/>
             </xsl:when>
-            <!-- for type item() -->
-            <xsl:when test="not($typeDef/*)">
-                <xsl:sequence select="$arg"/>
-            </xsl:when>
             <xsl:otherwise>
-                <xsl:variable name="single-type" select="$typeDef/*"/>
-                <xsl:apply-templates select="$single-type" mode="xpe:prepare-argument">
+                <xsl:apply-templates select="$typeDef" mode="xpe:prepare-argument">
                     <xsl:with-param name="arg" select="$arg" tunnel="yes"/>
                 </xsl:apply-templates>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
     
-    <xsl:template match="atomic" mode="xpe:prepare-argument">
-        <xsl:param name="arg" tunnel="yes" as="item()"/>
-        <xsl:sequence select="xpf:data(map{}, $arg)"/>
+    <xsl:template match="itemType" mode="xpe:prepare-argument" priority="100">
+        <xsl:variable name="arg" as="item()">
+            <xsl:next-match/>
+        </xsl:variable>
+        <xsl:sequence select="xpt:treat-as($arg, .)"/>
     </xsl:template>
     
-    <xsl:template match="nodeTest" mode="xpe:prepare-argument">
+    <xsl:template match="itemType" mode="xpe:prepare-argument">
+        <xsl:apply-templates select="*" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="itemType[atomic]" mode="xpe:prepare-argument">
+        <xsl:variable name="arg" as="item()">
+            <xsl:apply-templates select="*" mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="typeName" select="atomic/resolve-QName(@name, .)"/>
+        <xsl:variable name="namespace-sensitive" select="xs:QName('xs:QName'), xs:QName('xs:NOTATION')"/>
+        <xsl:sequence select="
+            if ($arg instance of xs:untypedAtomic) 
+            then 
+            if ($typeName = xs:QName('xs:anyAtomicType')) 
+            then $arg 
+            else if ($typeName = $namespace-sensitive) 
+             then error(xpe:error-code('XPTY0117'), 
+                    'An untyped atomic value cannot be converted to a QName or NOTATION') 
+             else xpt:cast-as($arg, .)
+            else ($arg)
+            "/>
+    </xsl:template>
+    <xsl:variable name="promotion-types" select="
+        map{
+            xs:QName('xs:double') : (xs:QName('xs:float'), xs:QName('xs:decimal')),
+            xs:QName('xs:float') : (xs:QName('xs:decimal')),
+            xs:QName('xs:string') : (xs:QName('xs:anyURI'))
+        }
+        
+        "/>
+    <xsl:template match="itemType[atomic[exists($promotion-types(resolve-QName(@name, .)))]]" mode="xpe:prepare-argument"
+        priority="20">
+        <xsl:variable name="arg" as="item()">
+            <xsl:next-match/>
+        </xsl:variable>
+        <xsl:variable name="typeName" select="atomic/resolve-QName(@name, .)"/>
+        <xsl:variable name="promoteableTypes" select="$promotion-types($typeName)"/>
+        <xsl:variable name="validators" select="
+            $promoteableTypes ! xpe:get-type-validator(.)
+            "/>
+        <xsl:sequence select="
+            if (some $ptv in $validators satisfies $ptv?instance-of($arg)) 
+            then xpt:cast-as($arg, .) 
+            else $arg
+            "/>
+    </xsl:template>
+
+    <xsl:template match="itemType[functType]" mode="xpe:prepare-argument">
+        <xsl:param name="arg" tunnel="yes" as="item()"/>
+        <xsl:apply-templates select="*" mode="#current"/>
+    </xsl:template>
+
+    <xsl:template match="itemType[not(*)]" mode="xpe:prepare-argument">
         <xsl:param name="arg" tunnel="yes" as="item()"/>
         <xsl:sequence select="$arg"/>
     </xsl:template>
 
-    <xsl:template match="arrayType" mode="xpe:prepare-argument">
+    <xsl:template match="itemType/*" mode="xpe:prepare-argument" priority="-10">
         <xsl:param name="arg" tunnel="yes" as="item()"/>
         <xsl:sequence select="$arg"/>
     </xsl:template>
-
+    
     <xsl:template match="mapType" mode="xpe:prepare-argument">
-        <xsl:param name="arg" tunnel="yes" as="item()"/>
-        <xsl:sequence select="$arg"/>
-    </xsl:template>
-    
-    <xsl:template match="functType[count(* except as) le 1]" mode="xpe:prepare-argument">
         <xsl:param name="arg" tunnel="yes" as="item()"/>
         <xsl:choose>
             <xsl:when test="xpe:is-function($arg)">
-                <xsl:sequence select="xpe:raw-function($arg)"/>
+                <xsl:variable name="type" select="xpm:xpath-serializer-sub(parent::*) => normalize-space()"/>
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'The required item type is ' || $type || ' but the received value is a function()')"/>
             </xsl:when>
-            <xsl:when test="$arg instance of map(*)">
+            <xsl:otherwise>
                 <xsl:sequence select="$arg"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="functType[count(itemType) le 1]" mode="xpe:prepare-argument" priority="20">
+        <xsl:param name="arg" tunnel="yes" as="item()"/>
+        <xsl:variable name="anyItemType" as="element(itemType)">
+            <itemType occurrence="zero-or-more"/>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="
+                ($arg instance of map(*) and not(xpe:is-function($arg)))
+                or $arg instance of array(*)
+                ">
+                <xsl:variable name="mapKeyType" as="element(itemType)">
+                    <itemType>
+                        <atomic name="xs:anyAtomicType"/>
+                    </itemType>
+                </xsl:variable>
+                <xsl:next-match>
+                    <xsl:with-param name="arg" select="
+                        xpe:create-function-wrapper(function($p){$arg($p)}, (), $anyItemType, $anyItemType)
+                        " tunnel="yes"/>
+                </xsl:next-match>
             </xsl:when>
-            <xsl:when test="$arg instance of array(*)">
-                <xsl:sequence select="$arg"/>
+            <xsl:otherwise>
+                <xsl:next-match/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    <xsl:template match="functType[itemType | as]" mode="xpe:prepare-argument" priority="10">
+        <xsl:param name="arg" tunnel="yes" as="item()"/>
+        <xsl:variable name="req-arity" select="count(itemType)"/>
+        <xsl:choose>
+            <xsl:when test="xpe:is-function($arg) and $req-arity ne $arg?arity">
+                <xsl:sequence select="
+                    error(xpe:error-code('XPTY0004'), 'Required function arity is ' || $req-arity || 'but the delivered function has the arity ' || $arg?arity)
+                    "/>
+            </xsl:when>
+            <xsl:when test="xpe:is-function($arg)">
+                <xsl:variable name="type" select="."/>
+                <xsl:sequence select="
+                    $arg 
+                    => map:put('return-type', $type/as/itemType)
+                    => map:put('arg-types', $type/itemType)
+                    "/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
@@ -1148,9 +1294,10 @@
         <xsl:sequence select="
             if (xpe:is-function($arg)) 
             then 
-                xpe:raw-function($arg)
+                $arg
             else if ($arg instance of function(*)) 
-            then $arg 
+            then 
+                xpe:create-function-wrapper($arg)
             else 
                 error(
                     xpe:error-code('XPTY0004'),
@@ -1158,6 +1305,35 @@
                 ) 
             "/>
     </xsl:template>
+    
+    <xsl:function name="xpe:create-function-wrapper" as="map(*)">
+        <xsl:param name="raw-function" as="function(*)"/>
+        <xsl:variable name="anyItemType" as="element(itemType)">
+            <itemType occurrence="zero-or-more"/>
+        </xsl:variable>
+        <xsl:variable name="arg-types" select="
+            (1 to function-arity($raw-function)) ! $anyItemType
+            "/>
+        
+        <xsl:sequence select="xpe:create-function-wrapper($raw-function, (), $arg-types, $anyItemType)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpe:create-function-wrapper" as="map(*)">
+        <xsl:param name="raw-function" as="function(*)"/>
+        <xsl:param name="function-name" as="xs:QName?"/>
+        <xsl:param name="arg-types" as="element(itemType)*"/>
+        <xsl:param name="return-type" as="element(itemType)"/>
+        <xsl:sequence select="
+            map{
+            'type' : QName($xpf:namespace-uri, 'function'),
+            'function' : $raw-function,
+            'name' : ($function-name, function-name($raw-function))[1],
+            'arity' : function-arity($raw-function),
+            'arg-types' : $arg-types,
+            'return-type' : $return-type
+            }
+            "/>
+    </xsl:function>
     
     <xsl:function name="xpe:create-function">
         <xsl:param name="function-body" as="function(array(*)) as item()*"/>
