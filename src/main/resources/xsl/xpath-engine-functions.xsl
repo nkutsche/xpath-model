@@ -255,6 +255,188 @@
         <xsl:param name="arg" as="node()?"/>
         <xsl:sequence select="namespace-uri($arg)"/>
     </xsl:function>
+    
+    <xsl:function name="xpf:default-language" as="xs:language">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="($exec-context?default-language ! xs:language(.), default-language())[1]"/>
+    </xsl:function>
+    <xsl:function name="xpf:format-date" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:date?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="xpf:format-date($exec-context, $value, $picture, (), (), ())"/>
+    </xsl:function>
+    <xsl:function name="xpf:format-date" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:date?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:param name="language" as="xs:string?"/>
+        <xsl:param name="calendar" as="xs:string?"/>
+        <xsl:param name="place" as="xs:string?"/>
+        <xsl:variable name="language" select="
+            if (empty($language)) then xpf:default-language($exec-context) else $language
+            "/>
+        <xsl:variable name="calendar" select="
+            if (empty($calendar)) then $exec-context?default-calendar else $calendar
+            "/>
+        <xsl:variable name="place" select="
+            if (empty($place)) then $exec-context?default-place else $place
+            "/>
+        <xsl:sequence select="format-date($value, $picture, $language, $calendar, $place)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:format-dateTime" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:dateTime?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="xpf:format-dateTime($exec-context, $value, $picture, (), (), ())"/>
+    </xsl:function>
+    <xsl:function name="xpf:format-dateTime" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:dateTime?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:param name="language" as="xs:string?"/>
+        <xsl:param name="calendar" as="xs:string?"/>
+        <xsl:param name="place" as="xs:string?"/>
+        <xsl:variable name="language" select="
+            if (empty($language)) then xpf:default-language($exec-context) else $language
+            "/>
+        <xsl:variable name="calendar" select="
+            if (empty($calendar)) then $exec-context?default-calendar else $calendar
+            "/>
+        <xsl:variable name="place" select="
+            if (empty($place)) then $exec-context?default-place else $place
+            "/>
+        <xsl:sequence select="format-dateTime($value, $picture, $language, $calendar, $place)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:format-time" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:time?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="xpf:format-time($exec-context, $value, $picture, (), (), ())"/>
+    </xsl:function>
+    <xsl:function name="xpf:format-time" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:time?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:param name="language" as="xs:string?"/>
+        <xsl:param name="calendar" as="xs:string?"/>
+        <xsl:param name="place" as="xs:string?"/>
+        <xsl:variable name="language" select="
+            if (empty($language)) then xpf:default-language($exec-context) else $language
+            "/>
+        <xsl:variable name="calendar" select="
+            if (empty($calendar)) then $exec-context?default-calendar else $calendar
+            "/>
+        <xsl:variable name="place" select="
+            if (empty($place)) then $exec-context?default-place else $place
+            "/>
+        <xsl:sequence select="format-time($value, $picture, $language, $calendar, $place)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:format-integer" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:integer?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="xpf:format-integer($exec-context, $value, $picture, ())"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:format-integer" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:integer?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:param name="language" as="xs:string?"/>
+        <xsl:variable name="language" select="
+            if (empty($language)) then xpf:default-language($exec-context) else $language
+            "/>
+        <xsl:sequence select="format-integer($value, $picture, $language)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:format-number" xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions" 
+        as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:numeric?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="xpf:format-number($exec-context, $value, $picture, ())"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:format-number" xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions" 
+        as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="value" as="xs:numeric?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:param name="decimal-format-name" as="xs:string?"/>
+        
+        <xsl:variable name="decimal-format-name" select=" $decimal-format-name ! normalize-space(.)"/>
+        
+        <xsl:variable name="decimal-format-qname" as="item()?">
+            <xsl:try>
+                <xsl:sequence select="
+                    if (exists($decimal-format-name)) 
+                    then 
+                        if (xpm:is-eqname($decimal-format-name)) 
+                        then xpm:parse-eqname($decimal-format-name) 
+                        else 
+                            QName(
+                            if (contains($decimal-format-name, ':')) 
+                            then $exec-context?namespaces(substring-before($decimal-format-name, ':')) 
+                            else ''
+                            , $decimal-format-name) 
+                    else ()
+                    "/>
+                <xsl:catch errors="err:FOCA0002">
+                    <xsl:sequence select="error(xpe:error-code('FODF1280'), 
+                        'Invalid decimal format name ' || $decimal-format-name || '.'
+                        )"/>
+                </xsl:catch>
+            </xsl:try>
+        </xsl:variable>
+        
+        
+        
+        <xsl:variable name="decimal-format" select="$exec-context?decimal-formats[
+            if (exists($decimal-format-qname)) 
+            then ?name = $decimal-format-qname 
+            else empty(?name)
+            ]"/>
+        <xsl:choose>
+            <xsl:when test="exists($decimal-format)">
+                <xsl:variable name="stylesheet">
+                    <xsl:element name="xsl:stylesheet">
+                        <xsl:attribute name="version" select="'3.0'"/>
+                        <xsl:element name="xsl:decimal-format">
+                            <xsl:for-each select="map:keys($decimal-format)[. != 'name']">
+                                <xsl:attribute name="{.}" select="$decimal-format(.)"/>
+                            </xsl:for-each>
+                        </xsl:element>
+                        <xsl:copy select="doc(static-base-uri()) ! id('format-number', .)">
+                            <xsl:attribute name="visibility" select="'public'"/>
+                            <xsl:copy-of select="@*"/>
+                            <xsl:copy-of select="node()"/>
+                        </xsl:copy>
+                    </xsl:element>
+                </xsl:variable>
+                <xsl:sequence select="transform(map{
+                    'stylesheet-node' : $stylesheet,
+                    'delivery-format' : 'raw',
+                    'function-params' : [$value, $picture],
+                    'initial-function' : xs:QName('xpe:format-number'),
+                    'cache' : false()
+                    })?output"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="format-number($value, $picture, $decimal-format-name)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="xpe:format-number" as="xs:string" xml:id="format-number">
+        <xsl:param name="value" as="xs:numeric?"/>
+        <xsl:param name="picture" as="xs:string"/>
+        <xsl:sequence select="format-number($value, $picture)"/>
+    </xsl:function>
+    
     <xsl:function name="xpf:lang" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="testlang" as="xs:string?"/>
@@ -577,6 +759,71 @@
             "/>
         <xsl:sequence select="parse-json($json-text, $options)"/>
     </xsl:function>
+
+    <xsl:function name="xpf:json-to-xml" as="document-node()?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="json-text" as="xs:string?"/>
+        <xsl:sequence select="xpf:json-to-xml($exec-context, $json-text, map{})"/>
+    </xsl:function>
+    <xsl:function name="xpf:json-to-xml" as="document-node()?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="json-text" as="xs:string?"/>
+        <xsl:param name="options" as="map(*)"/>
+        <xsl:variable name="fallback" select="$options?fallback ! xpe:raw-function(.)"/>
+        <xsl:variable name="options" select="
+            if (exists($fallback)) 
+            then map:put($options, 'fallback', $fallback) 
+            else $options
+            "/>
+        
+        <xsl:variable name="static-base-uri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:sequence select="transform(map{
+            'stylesheet-node' : $xpe:to-xml-stylesheet,
+            'stylesheet-base-uri' : $static-base-uri,
+            'delivery-format' : 'raw',
+            'function-params' : [$json-text, $options],
+            'initial-function' : xs:QName('xpe:json-to-xml'),
+            'cache' : false()
+            })?output"/>
+    </xsl:function>
+    <xsl:function name="xpe:json-to-xml" as="document-node(element(*))?" xml:id="json-to-xml">
+        <xsl:param name="json-text" as="xs:string?"/>
+        <xsl:param name="options" as="map(*)"/>
+        <xsl:sequence select="json-to-xml($json-text, $options)"/>
+    </xsl:function>
+
+    <xsl:variable name="xpe:to-xml-stylesheet">
+        <xsl:element name="xsl:stylesheet">
+            <xsl:attribute name="version" select="'3.0'"/>
+            <xsl:for-each select="doc(static-base-uri()) ! id(('parse-xml', 'json-to-xml'), .)">
+                <xsl:copy>
+                    <xsl:attribute name="visibility" select="'public'"/>
+                    <xsl:copy-of select="@*"/>
+                    <xsl:copy-of select="node()"/>
+                </xsl:copy>
+            </xsl:for-each>
+        </xsl:element>
+    </xsl:variable>
+    <xsl:function name="xpf:parse-xml" as="document-node(element(*))?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg" as="xs:string?"/>
+        
+        <xsl:variable name="static-base-uri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:sequence select="transform(map{
+            'stylesheet-node' : $xpe:to-xml-stylesheet,
+            'stylesheet-base-uri' : $static-base-uri,
+            'delivery-format' : 'raw',
+            'function-params' : [$arg],
+            'initial-function' : xs:QName('xpe:parse-xml'),
+            'cache' : false()
+            })?output"/>
+        
+    </xsl:function>
+    
+    <xsl:function name="xpe:parse-xml" as="document-node(element(*))?" xml:id="parse-xml">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="parse-xml($arg)"/>
+    </xsl:function>
     
     <xsl:function name="xpf:transform" as="map(*)">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -645,6 +892,26 @@
     <xsl:function name="xpf:static-base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?base-uri, static-base-uri())[1]"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:available-environment-variables" as="xs:string*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="
+            if (map:contains($exec-context, 'environment-variables')) 
+            then map:keys($exec-context?environment-variables) 
+            else available-environment-variables()
+            "/>
+    </xsl:function>
+
+    <xsl:function name="xpf:environment-variable" as="xs:string?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="name" as="xs:string"/>
+        
+        <xsl:sequence select="
+            if (map:contains($exec-context, 'environment-variables')) 
+            then $exec-context?environment-variables($name) 
+            else environment-variable($name)
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:load-xquery-module" as="map(*)">
