@@ -5,6 +5,8 @@
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
     xmlns:xpfs="http://www.nkutsche.com/xmlml/xpath-engine/xsd-constructors"
+    xmlns:xpfa="http://www.nkutsche.com/xmlml/xpath-engine/array"
+    xmlns:xpfm="http://www.nkutsche.com/xmlml/xpath-engine/map"
     xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
     xmlns:mlml="http://www.nkutsche.com/xmlml"
     xmlns:xpm="http://www.nkutsche.com/xpath-model"
@@ -13,9 +15,12 @@
     xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:variable name="xpf:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/functions'"/>
+    <xsl:variable name="xpfm:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/map'"/>
+    <xsl:variable name="xpfa:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/array'"/>
     <xsl:variable name="xpfs:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/xsd-constructors'"/>
     
     <xsl:variable name="function-lib-ns" select="$xpf:namespace-uri"/>
@@ -692,12 +697,18 @@
         <xsl:variable name="local-name" select="local-name-from-QName($name)"/>
         <xsl:variable name="ns-uri" select="namespace-uri-from-QName($name)"/>
         
+        <xsl:variable name="xsd-constructor" select="$ns-uri = $xs_namespace-uri"/>
         <xsl:variable name="function" select="
-            if (exists($unsupported-functions($name))) 
+            (:if (exists($unsupported-functions($name))) 
             then ($unsupported-functions($name)()) 
-            else if ($ns-uri = $fn_namespace-uri and function-available('xpf:' || $local-name, $arity + 1)) 
+            else :)
+            if ($ns-uri = $fn_namespace-uri and function-available('xpf:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpf:' || $local-name), $arity + 1) 
-            else if ($ns-uri = $xs_namespace-uri and function-available('xpfs:' || $local-name, $arity + 1)) 
+            else if ($ns-uri = $array_namespace-uri and function-available('xpfa:' || $local-name, $arity + 1)) 
+            then function-lookup(xs:QName('xpfa:' || $local-name), $arity + 1) 
+            else if ($ns-uri = $map_namespace-uri and function-available('xpfm:' || $local-name, $arity + 1)) 
+            then function-lookup(xs:QName('xpfm:' || $local-name), $arity + 1) 
+            else if ($xsd-constructor and function-available('xpfs:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpfs:' || $local-name), $arity + 1) 
             else function-lookup($name, $arity)"/>
         
