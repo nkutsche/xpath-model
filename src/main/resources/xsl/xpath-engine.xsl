@@ -1107,27 +1107,42 @@
         <xsl:variable name="param-names" select="param/xpm:varQName(@name)"/>
         <xsl:variable name="body" select="arg[@role = 'return']"/>
 
+        <xsl:variable name="any-item-type" as="element(itemType)">
+            <itemType occurrence="zero-or-more"/>
+        </xsl:variable>
+        <xsl:variable name="return-type" select="(./as/*, $any-item-type)[1]"/>
         
-        <xsl:variable name="function-body" select="xpe:function-inline-exec#4($execution-context, $body, $param-names, ?)"/>
+        <xsl:variable name="execution-context" select="map:remove($execution-context, 'context')"/>
+
+        <xsl:variable name="arg-types" select="
+            for $p in param return ($p/as/*, $any-item-type)[1]
+            "/>
+        
+        <xsl:variable name="function-body" select="xpe:function-inline-exec#6($execution-context, $body, $param-names, $arg-types, $return-type, ?)"/>
         
         <xsl:variable name="function" select="xpe:create-function($function-body, $arity)"/>
         
         
-        <xsl:sequence select="
-            map{
-                'type' : QName($xpf:namespace-uri, 'function'),
-                'function' : $function,
-                'name' : (),
-                'arity' : $arity
-            }
-            "/>
+        
+        
+        <xsl:sequence select="xpe:create-function-wrapper(
+            $function,
+            (),
+            $arg-types,
+            $return-type
+            )"/>
+        
     </xsl:template>
     
     <xsl:function name="xpe:function-inline-exec" as="item()*">
         <xsl:param name="execution-context" as="map(*)"/>
         <xsl:param name="body" as="element(arg)"/>
         <xsl:param name="param-names" as="xs:QName*"/>
+        <xsl:param name="arg-types" as="element(itemType)*"/>
+        <xsl:param name="result-type" as="element(itemType)?"/>
         <xsl:param name="arguments" as="array(*)"/>
+        
+        <xsl:variable name="arguments" select="xpe:prepare-arguments($arguments, $arg-types, ())"/>
         
         <xsl:variable name="parameter" select="
             for $i in 1 to array:size($arguments)
@@ -1136,10 +1151,23 @@
         
         <xsl:variable name="variables" select="($execution-context?variable-context, $parameter) => map:merge(map{'duplicates' : 'use-last'})"/>
         <xsl:variable name="execution-context" select="map:put($execution-context, 'variable-context', $variables)"/>
-        
-        <xsl:apply-templates select="$body/*" mode="xpe:xpath-evaluate">
-            <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
-        </xsl:apply-templates>
+        <xsl:variable name="return-value" as="item()*">
+            <xsl:apply-templates select="$body/*" mode="xpe:xpath-evaluate">
+                <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:try>
+            <xsl:sequence select="
+                if ($result-type) 
+                then 
+                    xpt:treat-as($return-value, $result-type)
+                else 
+                    $return-value
+                "/>
+            <xsl:catch errors="err:XPTY0004">
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'The result of a call of an anonym function does not match to the required result type; ' || $err:description)"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:function>
     
     
