@@ -373,7 +373,7 @@
         <xsl:sequence select="nk:itemTypeOccSer(@occurrence)"/>
     </xsl:template>
 
-    <xsl:template match="operation//itemType[not(*)] | function-impl//itemType[not(*)]"
+    <xsl:template match="itemType[not(*)]"
         mode="nk:xpath-serializer" priority="100">
         <xsl:sequence select="'item'"/>
         <xsl:apply-templates select="comment()" mode="#current"/>
