@@ -1990,7 +1990,7 @@
                                         </locationStep>
                                     </arg>
                                     <instanceOf/>
-                                    <empty/>
+                                    <itemType occurrence="zero"/>
                                 </operation>
                             </expr>
                         </x:param>
@@ -2083,7 +2083,7 @@
                                     <itemType>
                                         <mapType>
                                             <atomic name="xs:string"/>
-                                            <empty/>
+                                            <itemType occurrence="zero"/>
                                         </mapType>
                                     </itemType>
                                 </operation>
@@ -4494,9 +4494,9 @@
                                 <operation type="instance-of">
                                     <arg><varRef name="var"/></arg>
                                     <instanceOf/>
-                                    <empty>
+                                    <itemType occurrence="zero">
                                         <!--1-->
-                                    </empty>
+                                    </itemType>
                                 </operation>
                             </expr>
                         </x:param>
@@ -7041,7 +7041,7 @@
                             <operation type="instance-of">
                                 <arg>...</arg>
                                 <instanceOf/>
-                                <empty/>
+                                <itemType occurrence="zero"/>
                             </operation>
                         </expr>
                     </x:expect>
@@ -8607,10 +8607,10 @@
                             <operation type="instance-of">
                                 <arg>...</arg>
                                 <instanceOf/>
-                                <empty>
+                                <itemType occurrence="zero">
                                     <!--1-->
                                     <!--2-->
-                                </empty>
+                                </itemType>
                             </operation>
                         </expr>
                     </x:expect>
