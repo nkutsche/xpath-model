@@ -19,17 +19,39 @@
         </xd:desc>
     </xd:doc>
     
+    <xsl:param name="focus-surefire-report" as="xs:string"/>
     <xsl:param name="focus" as="xs:string">.*</xsl:param>
     <xsl:param name="group-focus" as="xs:string">*</xsl:param>
     <xsl:param name="output-dir" as="xs:string" required="yes"/>
+    
+    <xsl:variable name="focus-eff" select="
+        if ($focus-surefire-report != '' and doc-available($focus-surefire-report)) 
+        then xpmt:focus-surefire-report($focus-surefire-report) 
+        else ($focus => tokenize(','))
+        "/>
+    
+    <xsl:function name="xpmt:focus-surefire-report" as="xs:string*">
+        <xsl:param name="surefire-report" as="xs:string"/>
+        <xsl:variable name="doc" select="doc($surefire-report)"/>
+        <xsl:variable name="failures" select="$doc/testsuites/testsuite[@failures > 0]" xpath-default-namespace=""/>
+        <xsl:sequence select="$failures/@name/substring-before(., ':')"/>
+    </xsl:function>
     
     
     <xsl:variable name="dependency-settings" as="element(xpmt:dependency)*">
         <xpmt:dependency type="spec" match="^XP([1-3]\.?\d\+|31|3\.1)$" only="true"/>
         <xpmt:dependency type="feature" value="fn-load-xquery-module" satisfied="false"/>
         <xpmt:dependency type="feature" value="staticTyping" satisfied="false"/>
+        <xpmt:dependency type="feature" value="schemaValidation" satisfied="false"/>
+        <xpmt:dependency type="feature" value="schemaImport" satisfied="false"/>
         <xpmt:dependency type="feature" value="advanced-uca-fallback" satisfied="false"/>
+        <xpmt:dependency type="feature" value="xpath-1.0-compatibility" satisfied="false"/>
         <xpmt:dependency type="xml-version" value="1.1" satisfied="false"/>
+        <xpmt:dependency type="xsd-version" value="1.0" satisfied="false"/>
+        <xpmt:dependency type="default-language" value="fr-CA" satisfied="false"/>
+        <xpmt:dependency type="language" value="de" satisfied="false"/>
+        <xpmt:dependency type="language" value="fr" satisfied="false"/>
+        <xpmt:dependency type="language" value="it" satisfied="false"/>
         <xpmt:dependency type="feature" value="fn-transform-XSLT" satisfied="partial">
             <xpmt:ignore test="fn-transform-err-9">TODO</xpmt:ignore>
             <xpmt:ignore test="fn-transform-err-9a">TODO</xpmt:ignore>
@@ -43,6 +65,32 @@
             <xsl:if test="not(available-environment-variables() = 'QTTEST')">
                 <xpmt:ignore test="fn-available-environment-variables-011">Its hard to ensure that an env variable is set by the calling system...</xpmt:ignore>
             </xsl:if>
+            <!-- 
+                Reason: "On SaxonJ-HE, Saxon uses the collation facilities available directly from the JDK."
+                see https://www.saxonica.com/html/documentation12/localization/unicode-collation-algorithm/index.html 
+            -->
+            <xpmt:ignore test="fo-test-fn-contains-004">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-contains-005">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-contains-006">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-contains-007">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-starts-with-004">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-starts-with-005">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-starts-with-006">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-starts-with-007">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-starts-with-008">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-ends-with-004">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-ends-with-005">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-ends-with-006">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-ends-with-007">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-ends-with-008">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-before-004">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-before-005">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-before-006">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-before-007">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-after-004">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-after-005">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-after-006">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="fo-test-fn-substring-after-007">Saxon-HE does not support this collation format</xpmt:ignore>
             
             <xpmt:ignore test="cbcl-divide-dayTimeDuration-003">TODO: crashes the xspec process</xpmt:ignore>
             <xpmt:ignore test="RangeExpr-409d">TODO: crashes the xspec process</xpmt:ignore>
@@ -132,7 +180,7 @@
     
     <xsl:template match="test-case" priority="50">
         <xsl:param name="test-dependencies" tunnel="yes" as="element(dependency)*"/>
-        <xsl:variable name="focus" select="$focus => tokenize(',')"/>
+        <xsl:variable name="focus" select="$focus-eff"/>
         <xsl:variable name="focus" select="$focus[. != ''] ! ('^' || . || '$')"/>
         <xsl:choose>
             <xsl:when test="exists($focus) and (every $f in $focus satisfies not(matches(@name, $f)))"/>
@@ -144,10 +192,12 @@
                 <xsl:next-match/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:message expand-text="yes">Skiped test case {@name}</xsl:message>
+<!--                <xsl:message expand-text="yes">Skiped test case {@name}</xsl:message>-->
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
+    
     
     
     <xsl:function name="xpmt:merge-dependencies" as="element(dependency)*">
@@ -245,7 +295,7 @@
             then $custom-env 
             else $envs[@name = $env-ref]
             "/>
-        <xsl:if test="$focus = '' or tokenize($focus, ',') = @name or (some $f in $focus satisfies matches(@name, $f))">
+        <xsl:if test="exists($focus-eff[. = @name]) or (some $f in $focus-eff satisfies matches(@name, $f))">
             
             <x:scenario label="{@name}: {description}" catch="true" xpmt:group="{$group}">
                 <xsl:if test="$env/source/@validation = 'strict'">
@@ -290,9 +340,10 @@
         <xsl:apply-templates select="$node" mode="xpmt:copy-for-xspec"/>
     </xsl:function>
     
-    <xsl:template match="environment" mode="xpmt:copy-for-xspec">
+    <xsl:template match="environment | result" mode="xpmt:copy-for-xspec">
         <xsl:copy>
             <xsl:attribute name="xml:base" select="base-uri(.)"/>
+            <xsl:attribute name="xml:space" select="'preserve'"/>
             <xsl:apply-templates select="@*" mode="#current"/>
             <xsl:apply-templates select="node()" mode="#current"/>
         </xsl:copy>

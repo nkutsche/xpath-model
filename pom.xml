@@ -54,13 +54,16 @@
     </distributionManagement>
     
     <properties>
-        <saxon.version>12.3</saxon.version>
+        <saxon.version>12.4</saxon.version>
 
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
         <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
         <testsuite.checkoutdir>${project.build.directory}/qt3-testsuite/</testsuite.checkoutdir>
         <testsuite.qt3-id-focus>.*</testsuite.qt3-id-focus>
         <testsuite.qt3-id-group-focus>*</testsuite.qt3-id-group-focus>
+        <testsuite.qt3-surefire-focus>#none</testsuite.qt3-surefire-focus>
+        
+        <run.xspecs>*.xspec</run.xspecs>
     </properties>
     
     <dependencies>
@@ -198,6 +201,7 @@
                     <version>2.0.1</version>
                     <configuration>
                         <addDependenciesToClasspath>true</addDependenciesToClasspath>
+                        <includes>${run.xspecs}</includes>
                         <xspecProperties>
                             <saxon.custom.options>-init:com.nkutsche.xslt.pkg.handler.PackageManager</saxon.custom.options>
                         </xspecProperties>
@@ -343,6 +347,10 @@
                                                 <parameter>
                                                     <name>group-focus</name>
                                                     <value>${testsuite.qt3-id-group-focus}</value>
+                                                </parameter>
+                                                <parameter>
+                                                    <name>focus-surefire-report</name>
+                                                    <value>${testsuite.qt3-surefire-focus}</value>
                                                 </parameter>
                                                 <parameter>
                                                     <name>output-dir</name>
