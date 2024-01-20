@@ -5131,6 +5131,26 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="Scenario testing function call nk:xpath-serializer-sub">
+        <x:call function="nk:xpath-serializer-sub"/>
+        <x:scenario label="function(item()) as xs:boolean">
+            <x:call>
+                <x:param>
+                    <itemType>
+                        <functType>
+                            <itemType/>
+                            <as>
+                                <itemType>
+                                    <atomic name="xs:boolean"/>
+                                </itemType>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:expect label="expected expression" select="string(.)">function(item()) as xs:boolean</x:expect>
+        </x:scenario>
+    </x:scenario>
     <x:scenario label="Scenario testing function call nk:value-template-serializer">
         <x:call function="nk:value-template-serializer"/>
         
@@ -6933,6 +6953,9 @@
                 <x:scenario label="'1' instance of (xs:integer)">
                     <x:call>
                         <x:param select="string(.)">'1' instance of (xs:integer)</x:param>
+                        <x:param select="map:put($default-config, 'namespaces', 
+                            map {'xs' : 'http://www.w3.org/2001/XMLSchema'}
+                            )"/>
                     </x:call>
                     <x:expect label="expected result tree">
                         <expr>
@@ -6947,6 +6970,9 @@
                             </operation>
                         </expr>
                     </x:expect>
+                    <x:expect label="QName of atomic type"
+                        test="$x:result//itemType/atomic/resolve-QName(@name, .)"
+                        select="xs:QName('xs:integer')"/>
                 </x:scenario>
                 <x:scenario label="'1' cast as xs:integer?">
                     <x:call>
@@ -7390,6 +7416,34 @@
                                 </lookup>
                             </operation>
                         </expr>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="$var?*[?lookup = 'compare']">
+                    <x:call>
+                        <x:param select="string(.)">$var?*[?lookup = 'compare']</x:param>
+                    </x:call>
+                    <x:expect label="expected result tree">
+                        <expr>
+                            <operation type="postfix">
+                               <arg>
+                                  <varRef name="var" />
+                               </arg>
+                               <lookup />
+                               <predicate>
+                                  <operation type="compare">
+                                     <arg>
+                                         <lookup>
+                                             <field name="lookup"/>
+                                         </lookup>
+                                     </arg>
+                                     <eq />
+                                     <arg>
+                                        <string value="compare" />
+                                     </arg>
+                                  </operation>
+                               </predicate>
+                            </operation>
+                         </expr>
                     </x:expect>
                 </x:scenario>
             </x:scenario>
