@@ -788,7 +788,8 @@
         </function-call>
     </xsl:template>
 
-    <xsl:template match="Lookup" priority="25" mode="nk:xpath-operations">
+    
+    <xsl:template match="Lookup | UnaryLookup" priority="25" mode="nk:xpath-operations">
         <lookup>
             <xsl:apply-templates select="* except TOKEN" mode="#current"/>
         </lookup>
@@ -805,6 +806,26 @@
 
     <xsl:template match="Lookup/KeySpecifier" priority="20" mode="nk:xpath-operations">
         <xsl:apply-templates select="* except TOKEN" mode="nk:xpath-model"/>
+    </xsl:template>
+    
+    <xsl:template match="UnaryLookup" priority="25" mode="nk:xpath-model">
+        <lookup>
+            <xsl:apply-templates select="* except TOKEN" mode="#current"/>
+        </lookup>
+    </xsl:template>
+    
+    <xsl:template match="UnaryLookup/KeySpecifier[ParenthesizedExpr]" priority="25" mode="nk:xpath-model">
+        <arg>
+            <xsl:apply-templates select="ParenthesizedExpr/(* except TOKEN)" mode="#current"/>
+        </arg>
+    </xsl:template>
+    
+    <xsl:template match="UnaryLookup/KeySpecifier[NCName]" priority="25" mode="nk:xpath-model">
+        <field name="{string(NCName)}"/>
+    </xsl:template>
+    
+    <xsl:template match="UnaryLookup/KeySpecifier" priority="20" mode="nk:xpath-model">
+        <xsl:apply-templates select="* except TOKEN" mode="#current"/>
     </xsl:template>
 
     <xsl:function name="nk:itemTypeOcc" as="xs:string">

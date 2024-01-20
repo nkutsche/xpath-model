@@ -810,13 +810,13 @@
         <xsl:sequence select="')'"/>
     </xsl:template>
 
-    <xsl:template match="operation[@type = 'postfix']/lookup[not(*)]" mode="nk:xpath-serializer" priority="10">
+    <xsl:template match="lookup[not(*)]" mode="nk:xpath-serializer" priority="10">
         <xsl:sequence select="'?'"/>
         <xsl:apply-templates mode="#current"/>
         <xsl:sequence select="'*'"/>
     </xsl:template>
 
-    <xsl:template match="operation[@type = 'postfix']/lookup" mode="nk:xpath-serializer">
+    <xsl:template match="lookup" mode="nk:xpath-serializer">
         <xsl:sequence select="'?'"/>
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
