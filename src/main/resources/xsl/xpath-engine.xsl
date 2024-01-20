@@ -1013,22 +1013,34 @@
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:param name="first-arg" as="array(item()*)" select="[]"/>
 
-        <xsl:variable name="arg-array" select="xpe:arg-array(arg, $execution-context)"/>
-        <xsl:variable name="arg-array" select="
-            if (array:size($first-arg) gt 0) 
-            then array:insert-before($arg-array, 1, $first-arg?1) 
-            else $arg-array
-            "/>
+        <xsl:variable name="has-addidtional-arg" select="array:size($first-arg) gt 0"/>
+        <xsl:variable name="arity" select="count(arg)"/>
         <xsl:variable name="function" as="item()*">
             <xsl:apply-templates select="function" mode="#current">
-                <xsl:with-param name="arity" select="array:size($arg-array)" tunnel="yes"/>
+                <xsl:with-param name="arity" select="
+                    if ($has-addidtional-arg) 
+                    then ($arity + 1) 
+                    else $arity
+                    " tunnel="yes"/>
             </xsl:apply-templates>
         </xsl:variable>
         <xsl:if test="not(xpe:is-function($function))">
             <xsl:sequence select="error(xpe:error-code('TODO'), 'Fail to call function ' || xpm:xpath-serializer-sub(.))"/>
         </xsl:if>
+        <xsl:variable name="return-type" select="$function?return-type"/>
+        <xsl:variable name="arg-types" select="$function?arg-types"/>
         
-        <xsl:sequence select="apply(xpe:raw-function($function), $arg-array)"/>
+        <xsl:variable name="arg-array" select="
+            xpe:arg-array(arg, $execution-context) 
+            "/>
+        <xsl:variable name="arg-array" select="
+            if ($has-addidtional-arg) 
+            then array:insert-before($arg-array, 1, $first-arg?1) 
+            else $arg-array
+            "/>
+        
+        <xsl:variable name="return-value" select="apply(xpe:raw-function($function), $arg-array)"/>
+        <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
     </xsl:template>
     
     <xsl:template match="function[@name]" mode="xpe:xpath-evaluate">
