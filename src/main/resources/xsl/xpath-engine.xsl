@@ -621,11 +621,7 @@
     </xsl:template>
 
     <xsl:template match="double" mode="xpe:xpath-evaluate">
-        <!--    
-            Note: Calculating with xs:decimal to do not loos fragments for very high numbers
-        -->
-        <xsl:variable name="as-decimal" select="xs:decimal(@factor) * xs:decimal(math:pow(10, @exp))"/>
-        <xsl:sequence select="xs:double($as-decimal)"/>
+        <xsl:sequence select="xs:double(@factor || 'E' || @exp)"/>
     </xsl:template>
 
     <xsl:template match="empty" mode="xpe:xpath-evaluate">
