@@ -5,6 +5,7 @@
     xmlns:p="http://www.nkutsche.com/xpath-parser"
     xmlns:avt="http://www.nkutsche.com/avt-parser"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
     <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
@@ -2183,6 +2184,32 @@
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">$var instance of function(xs:string, node()+, map(*)) as array(*)</x:expect>
                 </x:scenario>
+
+                <x:scenario label="$var instance of function(item()) as xs:boolean">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="instance-of">
+                                    <arg>
+                                        <varRef name="var"/>
+                                    </arg>
+                                    <instanceOf/>
+                                    <itemType>
+                                        <functType>
+                                            <itemType/>
+                                            <as>
+                                                <itemType>
+                                                    <atomic name="xs:boolean"/>
+                                                </itemType>
+                                            </as>
+                                        </functType>
+                                    </itemType>
+                                </operation>
+                            </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var instance of function(item()) as xs:boolean</x:expect>
+                </x:scenario>
             </x:scenario>
             
             <x:scenario label="using postfix operators">
@@ -2380,6 +2407,34 @@
                         </x:param>
                     </x:call>
                     <x:expect label="expected expression" select="string(.)">$var[2](1)?lookup</x:expect>
+                </x:scenario>
+                <x:scenario label="$var?*[?lookup = 'compare']">
+                    <x:call>
+                        <x:param>
+                            <expr>
+                                <operation type="postfix">
+                                   <arg>
+                                      <varRef name="var" />
+                                   </arg>
+                                   <lookup />
+                                   <predicate>
+                                      <operation type="compare">
+                                         <arg>
+                                             <lookup>
+                                                 <field name="lookup"/>
+                                             </lookup>
+                                         </arg>
+                                         <eq />
+                                         <arg>
+                                            <string value="compare" />
+                                         </arg>
+                                      </operation>
+                                   </predicate>
+                                </operation>
+                             </expr>
+                        </x:param>
+                    </x:call>
+                    <x:expect label="expected expression" select="string(.)">$var?*[?lookup = 'compare']</x:expect>
                 </x:scenario>
             </x:scenario>
             
