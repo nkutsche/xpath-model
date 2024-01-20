@@ -130,7 +130,7 @@
             <xsl:when test="xpe:is-function($arg)">
                 <xsl:sequence select="error(xpe:error-code('err:FOTY0013'), 'An atomic value is required, but the supplied type is a function ' || $arg?name || '#' || $arg?arity || ', which cannot be atomized')"/>
             </xsl:when>
-            <xsl:when test="$arg instance of map(*)*">
+            <xsl:when test="$arg instance of map(*)+">
                 <xsl:sequence select="error(xpe:error-code('err:FOTY0013'), 'An atomic value is required, but the supplied type is a map, which cannot be atomized')"/>
             </xsl:when>
             <xsl:otherwise>
@@ -218,6 +218,20 @@
         <xsl:param name="collation" as="xs:string"/>
         <xsl:variable name="collation" select="resolve-uri($collation, xpf:static-base-uri($exec-context))"/>
         <xsl:sequence select="substring-after($arg1, $arg2, $collation)"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:subsequence" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="sourceSeq" as="item()*"/>
+        <xsl:param name="startingLoc" as="xs:double"/>
+        <xsl:param name="length" as="xs:double"/>
+        <xsl:variable name="input-length" select="count($sourceSeq)"/>
+        <xsl:variable name="length" select="
+            if ($input-length lt $startingLoc + $length -1) 
+            then ($input-length - $startingLoc + 1) 
+            else ($length)
+            "/>
+        <xsl:sequence select="subsequence($sourceSeq, $startingLoc, $length)"/>
     </xsl:function>
     
     <xsl:function name="xpf:resolve-uri" as="xs:anyURI?">
@@ -549,7 +563,7 @@
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:collection($exec-context, '')"/>
+        <xsl:sequence select="xpf:collection($exec-context, ())"/>
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -563,7 +577,7 @@
     
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:uri-collection($exec-context, '')"/>
+        <xsl:sequence select="xpf:uri-collection($exec-context, ())"/>
     </xsl:function>
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -622,21 +636,20 @@
         
         <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
         
-        <xsl:variable name="atomized" select="xpe:atomize($href)"/>
-        
         <xsl:try>
             <xsl:choose>
+                <xsl:when test="empty($href)"/>
                 <xsl:when test="empty($exec-context?unparsed-text-resolver)">
                     <xsl:sequence select="
-                        xpe:default-unparsed-text-resolver($exec-context, $atomized, $baseUri, $encoding)
+                        xpe:default-unparsed-text-resolver($exec-context, $href, $baseUri, $encoding)
                         "/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:sequence select="$exec-context?unparsed-text-resolver($atomized, $baseUri, $encoding)"/>
+                    <xsl:sequence select="$exec-context?unparsed-text-resolver($href, $baseUri, $encoding)"/>
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:catch errors="err:FORG0002">
-                <xsl:sequence select="error(xpe:error-code('FOUT1170'), 'Malformed URI ' || $atomized)"/>
+                <xsl:sequence select="error(xpe:error-code('FOUT1170'), 'Malformed URI ' || $href)"/>
             </xsl:catch>
         </xsl:try>
         
@@ -718,12 +731,19 @@
     
     <xsl:function name="xpe:default-collection-resolver" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:param name="relative" as="xs:string"/>
+        <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
-        <xsl:variable name="resolved" as="xs:anyURI">
-            <xsl:sequence select="xpe:default-uri-mapper($exec-context, $relative, $baseUri)"/>
-        </xsl:variable>
-        <xsl:sequence select="uri-collection($resolved)"/>
+        <xsl:choose>
+            <xsl:when test="empty($relative)">
+                <xsl:sequence select="error(xpe:error-code('FODC0002'), 'No default collection has been defined')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="resolved" as="xs:anyURI">
+                    <xsl:sequence select="xpe:default-uri-mapper($exec-context, $relative, $baseUri)"/>
+                </xsl:variable>
+                <xsl:sequence select="uri-collection($resolved)"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
     
     <xsl:function name="xpe:default-uri-mapper" as="xs:anyURI">
