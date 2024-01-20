@@ -641,7 +641,7 @@
         <xsl:variable name="context" select="$execution-context?context"/>
         <xsl:choose>
             <xsl:when test="empty($context) or not($context instance of node())">
-                <xsl:sequence select="error(QName('', 'TODO'), 'The context must be a node for using ''/'' or ''root(.)''')"/>
+                <xsl:sequence select="error(xpe:error-code('XPDY0002'), 'The context must be a node for using ''/'' or ''root(.)''')"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="xpf:root($execution-context)"/>
@@ -716,9 +716,9 @@
         
         <xsl:variable name="nodes" select="
             if (empty($context)) 
-            then error(QName('', 'TODO'), 'Context of a location step must be a node! Context is empty. (' || $expr || ')') 
+            then error(xpe:error-code('XPDY0002'), 'Context of a location step must be a node! Context is empty. (' || $expr || ')') 
             else if (not($context instance of node()) or empty($context)) 
-            then error(QName('', 'TODO'), 'Context of a location step must be a node! Context: ' || $context) 
+            then error(xpe:error-code('XPDY0002'), 'Context of a location step must be a node! Context: ' || $context) 
             else xpe:tree-walk($context, @axis, $nodeTest)
             "/>
         <xsl:sequence select="$nodes"/>
