@@ -517,7 +517,13 @@
     
     <xsl:function name="xpf:generate-id" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="generate-id($exec-context?context)"/>
+        <xsl:sequence select="
+            if (empty($exec-context?context)) 
+            then 
+                error(xpe:error-code('XPDY0002'), 'There is no context item for the call of the zero-argument function generate-id().') 
+            else 
+                generate-id($exec-context?context)
+                "/>
     </xsl:function>
     <xsl:function name="xpf:doc" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -875,11 +881,20 @@
     
     <xsl:function name="xpf:position" as="xs:integer">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="($exec-context?position, 1)[1]"/>
+        <xsl:sequence select="
+            if (empty($exec-context?context)) 
+            then error(xpe:error-code('XPDY0002'), 'There is no context item for the call of the zero-argument function position().')  
+            else ($exec-context?position, 1)[1]
+            "/>
     </xsl:function>
     <xsl:function name="xpf:last" as="xs:integer">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="($exec-context?last, 1)[1]"/>
+        
+        <xsl:sequence select="
+            if (empty($exec-context?context)) 
+            then error(xpe:error-code('XPDY0002'), 'There is no context item for the call of the zero-argument function last().')  
+            else ($exec-context?last, 1)[1]
+            "/>
     </xsl:function>
     <xsl:function name="xpf:default-collation" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
