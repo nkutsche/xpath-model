@@ -7,6 +7,27 @@
             </fos:proto>
         </fos:signatures>
     </fos:function>
+    <fos:function name="IDREFS" prefix="xs">
+        <fos:signatures>
+            <fos:proto name="IDREFS" return-type="xs:IDREF*">
+                <fos:arg name="value" type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="NMTOKENS" prefix="xs">
+        <fos:signatures>
+            <fos:proto name="NMTOKENS" return-type="xs:NMTOKEN*">
+                <fos:arg name="value" type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
+    <fos:function name="ENTITIES" prefix="xs">
+        <fos:signatures>
+            <fos:proto name="ENTITIES" return-type="xs:ENTITY*">
+                <fos:arg name="value" type="xs:anyAtomicType?"/>
+            </fos:proto>
+        </fos:signatures>
+    </fos:function>
     <fos:function name="load-xquery-module" prefix="xpf">
         <fos:signatures>
             <fos:proto name="load-xquery-module" return-type="map(*)">
@@ -2469,6 +2490,21 @@
     <fos:type-model name="xs:NOTATION">
         <itemType>
             <atomic name="xs:NOTATION"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:IDREF*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:IDREF"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:NMTOKEN*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:NMTOKEN"/>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="xs:ENTITY*">
+        <itemType occurrence="zero-or-more">
+            <atomic name="xs:ENTITY"/>
         </itemType>
     </fos:type-model>
     <fos:type-model name="node()">
