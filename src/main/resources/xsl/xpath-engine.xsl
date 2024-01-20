@@ -324,8 +324,11 @@
         <xsl:variable name="function" as="item()?">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
-        <xsl:variable name="args" select="xpe:arg-array(function-call/arg, $execution-context)"/>
+        <xsl:variable name="args" select="function-call/arg"/>
         
+        <xsl:variable name="itemType" as="element(itemType)">
+            <itemType occurrence="zero-or-more"/>
+        </xsl:variable>
         <xsl:variable name="function" select="
             if (xpe:is-function($function)) 
             then $function 
@@ -337,19 +340,63 @@
                 'function' : $function,
                 'type' : QName($xpf:namespace-uri, 'function'),
                 'name' : if ($function instance of function(*)) 
-                then function-name($function) 
-                else (),
-                'arity' : function-arity($function)
+                        then function-name($function) 
+                        else (),
+                'arity' : function-arity($function),
+                'return-type' : $itemType
             }
             else if (empty($function)) 
             then error(xpe:error-code('XPTY0004'), 'An empty sequence is not allowed as the target of dynamic function call.') 
             else error(xpe:error-code('XPTY0004'), 'A function call requires a function, map or array.') 
             "/>
         
-        <xsl:sequence select="
-            if (empty($function)) 
-            then error(xpe:error-code('XPTY0004'), 'An empty sequence is not allowed as the target of dynamic function call.') 
-            else apply($function?function, $args)"/>
+        <xsl:choose>
+            <xsl:when test="empty($function)">
+                <xsl:sequence select="
+                    error(
+                        xpe:error-code('XPTY0004'), 
+                        'An empty sequence is not allowed as the target of dynamic function call.'
+                        )
+                    "/>
+            </xsl:when>
+            <xsl:when test="function-arity($function?function) ne count($args)">
+                <xsl:sequence select="
+                    error(
+                    xpe:error-code('XPTY0004'), 
+                    'Number of arguments required for function call ' || xpm:xpath-serializer-sub(.) || ' is ' || function-arity($function?function) || '; number supplied is ' || count($args))
+                    "/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="arg-types" select="$function?arg-types"/>
+                <xsl:variable name="args" as="array(*)">
+                    <xsl:try>
+                        <xsl:sequence select="xpe:arg-array($args, $execution-context)"/>
+                        <xsl:catch errors="err:XPTY0004">
+                            <xsl:variable name="descr-prefix" select="
+                                if (empty($function?name)) 
+                                then 'Fail to call anonym function' 
+                                else 'Fail to call function ' || $function?name
+                                "/>
+                            <xsl:sequence select="error($err:code, $descr-prefix || ' - ' || $err:description)"/>
+                        </xsl:catch>
+                    </xsl:try>
+                </xsl:variable>
+                <xsl:variable name="return-type" select="$function?return-type"/>
+                <xsl:variable name="return-value" select="apply($function?function, $args)"/>
+                <xsl:try>
+                    <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
+                    <xsl:catch errors="err:XPTY0004">
+                        <xsl:variable name="descr-prefix" select="
+                            if (empty($function?name)) 
+                            then 'Bad value returned by anonym function call: ' 
+                            else 'Bad value returned by call of function ' || $function?name || ': '
+                            "/>
+                        <xsl:sequence select="error($err:code, $descr-prefix || $err:description)"/>
+                    </xsl:catch>
+                </xsl:try>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
 
     <xsl:template match="operation[@type = 'let-binding']" mode="xpe:xpath-evaluate" name="xpe:xpath-let-operation" priority="10">
