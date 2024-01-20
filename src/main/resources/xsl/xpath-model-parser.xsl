@@ -14,7 +14,8 @@
         select="
             map {
                 'validation-mode': 'lax',
-                'namespaces': map {}
+                'namespaces': map {},
+                'ignore-undeclared-namespaces' : true()
             }"/>
 
 
@@ -103,7 +104,8 @@
             $default-config,
             map {
                 'validation-mode': 'lax',
-                'namespaces': map {}
+                'namespaces': map {},
+                'ignore-undeclared-namespaces' : true()
             }
             ) => map:merge()
             "
@@ -121,7 +123,12 @@
         <xsl:variable name="validation-modes" select="('lax', 'strict')"/>
         <xsl:variable name="valmode" select="($config?validation-mode[. = $validation-modes], 'lax')[1]"/>
         <xsl:variable name="target-namespaces"
-            select="nk:create-namespaces($parsed, ($config?namespaces, map {})[1])"/>
+            select="
+            nk:create-namespaces(
+                $parsed, 
+                ($config?namespaces, map {})[1],
+                $config?ignore-undeclared-namespaces)
+            "/>
 
         <xsl:variable name="model" as="element()">
             <xsl:try>
@@ -198,6 +205,7 @@
     <xsl:function name="nk:create-namespaces" as="namespace-node()*">
         <xsl:param name="parsed" as="element()"/>
         <xsl:param name="namespace-bindings" as="map(xs:string, xs:string)"/>
+        <xsl:param name="allow-undeclared-prefixes" as="xs:boolean"/>
 
         <xsl:variable name="namespace-bindings"
             select="map:put($namespace-bindings, 'xml', 'http://www.w3.org/XML/1998/namespace')"/>
@@ -214,7 +222,11 @@
         <xsl:for-each select="$used-prefixes">
             <xsl:namespace name="{.}"
                 select="
-                    ($namespace-bindings(.), $base-ns-uri || .)[1]
+                    if (map:contains($namespace-bindings, .)) 
+                    then $namespace-bindings(.) 
+                    else if ($allow-undeclared-prefixes) 
+                    then ($base-ns-uri || .) 
+                    else error(xs:QName('nk:xp-model-undeclared-prefix'), 'Undeclared namespace for prefix ' || .)
                     "
             />
         </xsl:for-each>
