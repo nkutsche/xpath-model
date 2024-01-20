@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fos:functions xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <fos:function name="function-name" prefix="xpf">
-        <fos:signatures>
-            <fos:proto name="function-name" return-type="xs:QName?">
-                <fos:arg name="func" type="map(*)"/>
-            </fos:proto>
-        </fos:signatures>
-    </fos:function>
+<fos:functions xmlns:fos="http://www.w3.org/xpath-functions/spec/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions">
     <fos:function name="IDREFS" prefix="xs">
         <fos:signatures>
             <fos:proto name="IDREFS" return-type="xs:IDREF*">
@@ -2670,6 +2664,11 @@
                     </itemType>
                 </as>
             </functType>
+        </itemType>
+    </fos:type-model>
+    <fos:type-model name="function(*)?">
+        <itemType occurrence="zero-or-one">
+            <functType/>
         </itemType>
     </fos:type-model>
 </fos:functions>
