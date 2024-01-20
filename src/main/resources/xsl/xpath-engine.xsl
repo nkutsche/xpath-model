@@ -940,6 +940,20 @@
     <xsl:template match="function-call[arg/@role = 'placeholder']" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:param name="first-arg" as="array(item()*)" select="[]"/>
+        <xsl:variable name="abstract-function" as="map(*)">
+            <xsl:choose>
+                <xsl:when test="function">
+                    <xsl:apply-templates select="function" mode="#current">
+                        <xsl:with-param name="arity" select="count(arg)" tunnel="yes"/>
+                    </xsl:apply-templates>
+                </xsl:when>
+                <xsl:when test="parent::operation[@type = 'postfix']">
+                    <xsl:apply-templates select="preceding-sibling::arg/*" mode="#current"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+        
+        <xsl:variable name="return-type" select="$abstract-function('return-type')"/>
 
 <!--        
         Creates equivalent:
@@ -986,6 +1000,9 @@
                         </xsl:when>
                     </xsl:choose>
                 </arg>
+                <as>
+                    <xsl:copy-of select="$return-type"/>
+                </as>
             </function-impl>
         </xsl:variable>
         
