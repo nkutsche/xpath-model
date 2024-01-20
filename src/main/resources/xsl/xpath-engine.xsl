@@ -22,17 +22,28 @@
         <xsl:param name="context" as="item()?"/>
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="execution-context" as="map(*)"/>
-        
-        <xsl:variable name="namespaces" select="($execution-context?namespaces, map{})[1]"/>
-        <xsl:variable name="model" select="xpm:xpath-model($xpath, map{'namespaces' : $namespaces})"/>
-        <xsl:variable name="execution-context" select="map:put($execution-context, 'context', $context)"/>
-        <xsl:variable name="result" as="item()*">
-            <xsl:apply-templates select="$model" mode="xpe:xpath-evaluate">
-                <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
-            </xsl:apply-templates>
-        </xsl:variable>
-<!--        <xsl:sequence select="$model"/>-->
-        <xsl:sequence select="$result"/>
+        <xsl:try>
+            <xsl:variable name="namespaces" select="($execution-context?namespaces, map{})[1]"/>
+            <xsl:variable name="config" select="
+                map{'namespaces' : $namespaces, 'ignore-undeclared-namespaces' : false()}
+                "/>
+            <xsl:variable name="model" select="
+                xpm:xpath-model($xpath, $config, true())
+                "/>
+            <xsl:variable name="execution-context" select="map:put($execution-context, 'context', $context)"/>
+            <xsl:variable name="result" as="item()*">
+                <xsl:apply-templates select="$model" mode="xpe:xpath-evaluate">
+                    <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
+                </xsl:apply-templates>
+            </xsl:variable>
+            <xsl:sequence select="$result"/>
+            <xsl:catch errors="xpm:xp-model-parse-error">
+                <xsl:sequence select="error(xpe:error-code('XPST0003'), $err:description)"/>
+            </xsl:catch>
+            <xsl:catch errors="xpm:xp-model-undeclared-prefix">
+                <xsl:sequence select="error(xpe:error-code('XPST0081'), $err:description)"/>
+            </xsl:catch>
+        </xsl:try>
         
     </xsl:function>
     
