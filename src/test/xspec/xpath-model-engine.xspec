@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xpm="http://www.nkutsche.com/xpath-model"
+    xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
+    xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
+    xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
+    xmlns:p="http://www.nkutsche.com/xpath-parser"
+    xmlns:avt="http://www.nkutsche.com/avt-parser"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../main/resources/xsl/xpath-model.xsl">
+    
+    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
+    
+    <x:scenario label="Testing function xpe:xpath-evaluate" catch="yes">
+        <x:call function="xpe:xpath-evaluate"/>
+            
+        <x:scenario label="with test config">
+            <x:variable name="namespaces" select="map{
+                'fn' : 'http://www.w3.org/2005/xpath-functions',
+                'xs' : 'http://www.w3.org/2001/XMLSchema',
+                'map' : 'http://www.w3.org/2005/xpath-functions/map',
+                'array' : 'http://www.w3.org/2005/xpath-functions/array'
+                }"/>
+            <x:variable name="test-config" select="map{
+                'namespaces' : $namespaces,
+                'base-uri' : static-base-uri()
+                }"/>
+            <x:call>
+                <x:param position="3" select="$test-config"></x:param>
+            </x:call>
+            
+            <x:scenario label="context: &lt;dummy/&gt;">
+                <x:call>
+                    <x:param position="1" select="*">
+                        <dummy/>
+                    </x:param>
+                </x:call>
+                
+                <x:scenario label="function($c as node()){$c}(*)">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >function($c as node()){$c}(*)</x:param>
+                    </x:call>
+                    <x:expect label="should fail" test="$x:result instance of map(*)"/>
+                </x:scenario>
+                <x:scenario label="function($c as node()){$c}(*)">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >function($c) as node(){$c}(*)</x:param>
+                    </x:call>
+                    <x:expect label="should fail" test="$x:result instance of map(*)"/>
+                </x:scenario>
+                
+            </x:scenario>
+            <x:scenario label="context: empty">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                </x:call>
+                
+                <x:scenario label="format-number(931.45, '000.##0', 'foo:bar')">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >format-number(931.45, '000.##0', 'foo:bar')</x:param>
+                    </x:call>
+                    <x:expect label="should fail" test="$x:result instance of map(*)"/>
+                </x:scenario>
+                
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    
+    
+    
+</x:description>

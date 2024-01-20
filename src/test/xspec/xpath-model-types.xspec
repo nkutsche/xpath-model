@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xpm="http://www.nkutsche.com/xpath-model"
+    xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
+    xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
+    xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions"
+    xmlns:p="http://www.nkutsche.com/xpath-parser"
+    xmlns:avt="http://www.nkutsche.com/avt-parser"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../main/resources/xsl/xpath-model.xsl">
+    
+    <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
+    
+    
+    <x:scenario label="Scenario testing function call xpt:type-of">
+        <x:call function="xpt:type-of"/>
+        <x:scenario label="item = 'foo'">
+            <x:call>
+                <x:param select="'foo'"/>
+            </x:call>f
+            <x:expect label="result type">
+                <itemType>
+                    <atomic name="xs:string"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = 123">
+            <x:call>
+                <x:param select="123"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <atomic name="xs:integer"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = 12.345">
+            <x:call>
+                <x:param select="12.345"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <atomic name="xs:decimal"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = current-date()">
+            <x:call>
+                <x:param select="current-date()"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <atomic name="xs:date"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = QName('', 'foo')">
+            <x:call>
+                <x:param select="QName('', 'foo')"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <atomic name="xs:QName"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = &lt;foo&gt;">
+            <x:call>
+                <x:param select="*">
+                    <foo/>
+                </x:param>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <nodeTest kind="element" name="foo"/>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = document(&lt;foo&gt;)">
+            <x:call>
+                <x:param select="/">
+                    <foo/>
+                </x:param>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <nodeTest kind="document-node">
+                        <nodeTest kind="element" name="foo"/>
+                    </nodeTest>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = map(xs:string, xs:string)">
+            <x:call>
+                <x:param select="map{'foo' : 'bar'}"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <mapType>
+                        <atomic name="xs:string"/>
+                        <itemType>
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </mapType>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = map(xs:string, xs:string+)">
+            <x:call>
+                <x:param select="map{'foo' : ('bar', 'baz')}"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <mapType>
+                        <atomic name="xs:string"/>
+                        <itemType occurrence="one-or-more">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </mapType>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = map(xs:string, xs:string?)">
+            <x:call>
+                <x:param select="map{'foo' : (), 'bar' : 'baz'}"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <mapType>
+                        <atomic name="xs:string"/>
+                        <itemType occurrence="zero-or-one">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </mapType>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item = map(xs:string, empty-sequence())">
+            <x:call>
+                <x:param select="map{'foo' : ()}"/>
+            </x:call>
+            <x:expect label="result type">
+                <itemType>
+                    <mapType>
+                        <atomic name="xs:string"/>
+                        <itemType occurrence="zero"/>
+                    </mapType>
+                </itemType>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+    <x:scenario label="Scenario testing function call xpt:is-type-ancestor-of">
+        <x:call function="xpt:is-type-ancestor-of"/>
+        <x:scenario label="$base = xs:string">
+            <x:call>
+                <x:param position="2">
+                    <itemType>
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$explicit = xs:string">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = xs:string (occurrence = one)">
+                <x:call>
+                    <x:param position="1">
+                        <itemType occurrence="one">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = xs:boolean">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <atomic name="xs:boolean"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: false" select="false()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = xs:token">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <atomic name="xs:token"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = xs:string?">
+                <x:call>
+                    <x:param position="1">
+                        <itemType occurrence="zero-or-one">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: false" select="false()"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$base = item()+">
+            <x:call>
+                <x:param position="2">
+                    <itemType occurrence="one-or-more"/>
+                </x:param>
+            </x:call>
+            <x:scenario label="$explicit = xs:string">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = node()+">
+                <x:call>
+                    <x:param position="1">
+                        <itemType occurrence="one-or-more">
+                            <nodeTest kind="node"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = item()?">
+                <x:call>
+                    <x:param position="1">
+                        <itemType occurrence="zero-or-one"/>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: false" select="false()"/>
+            </x:scenario>
+            <x:scenario label="$explicit = map(*)*">
+                <x:call>
+                    <x:param position="1">
+                        <itemType occurrence="zero-or-more">
+                            <mapType/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: false" select="false()"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    <x:scenario label="Scenario testing function call xpt:ancestor-type">
+        <x:call function="xpt:ancestor-type"/>
+        
+        <x:scenario label="type a = empty-sequence()">
+            <x:call>
+                <x:param position="1">
+                    <itemType occurrence="zero"/>
+                </x:param>
+            </x:call>
+            <x:scenario label="type b = xs:string">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string?">
+                    <itemType occurrence="zero-or-one">
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:string+">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="one-or-more">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string*">
+                    <itemType occurrence="zero-or-more">
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = item()">
+                <x:call>
+                    <x:param position="2">
+                        <itemType/>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = item()?">
+                    <itemType occurrence="zero-or-one"/>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = item()*">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="zero-or-more"/>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = item()*">
+                        <itemType occurrence="zero-or-more"/>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = empty-sequence()">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="zero"/>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = item()*">
+                    <itemType occurrence="zero"/>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type a = xs:string">
+            <x:call>
+                <x:param position="1">
+                    <itemType>
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="type b = xs:string">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string">
+                    <itemType>
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:string*">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="zero-or-more">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string*">
+                    <itemType occurrence="zero-or-more">
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:string+">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="one-or-more">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string*">
+                    <itemType occurrence="one-or-more">
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:string?">
+                <x:call>
+                    <x:param position="2">
+                        <itemType occurrence="zero-or-one">
+                            <atomic name="xs:string"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string*">
+                    <itemType occurrence="zero-or-one">
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:normalizedString">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <atomic name="xs:normalizedString"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:string">
+                    <itemType>
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:anyAtomicType">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <atomic name="xs:anyAtomicType"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:anyAtomicType">
+                    <itemType>
+                        <atomic name="xs:anyAtomicType"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = xs:integer">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <atomic name="xs:integer"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = xs:anyAtomicType">
+                    <itemType>
+                        <atomic name="xs:anyAtomicType"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = node()">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <nodeTest kind="node"/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = item()">
+                    <itemType/>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(xs:string, xs:string)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:string"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = item()">
+                    <itemType/>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type a = map(xs:string, xs:string)">
+            <x:call>
+                <x:param position="1">
+                    <itemType>
+                        <mapType>
+                            <atomic name="xs:string"/>
+                            <itemType>
+                                <atomic name="xs:string"/>
+                            </itemType>
+                        </mapType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="type b = map(xs:string, xs:string)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:string"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(xs:string, xs:string)">
+                    <itemType>
+                        <mapType>
+                            <atomic name="xs:string"/>
+                            <itemType>
+                                <atomic name="xs:string"/>
+                            </itemType>
+                        </mapType>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(*)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(*)">
+                    <itemType>
+                        <mapType/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(xs:string, xs:token)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:string"/>
+                                <itemType>
+                                    <atomic name="xs:token"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(*)">
+                    <itemType>
+                            <mapType>
+                                <atomic name="xs:string"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(xs:token, xs:string)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:token"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(*)">
+                    <itemType>
+                            <mapType>
+                                <atomic name="xs:string"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(xs:anyAtomicType, xs:string)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:anyAtomicType"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(*)">
+                    <itemType>
+                            <mapType>
+                                <atomic name="xs:anyAtomicType"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = map(xs:integer, xs:string)">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <mapType>
+                                <atomic name="xs:integer"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = map(*)">
+                    <itemType>
+                            <mapType>
+                                <atomic name="xs:anyAtomicType"/>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </mapType>
+                        </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = function(xs:anyAtomicType) as item()*">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <functType>
+                                <itemType>
+                                    <atomic name="xs:anyAtomicType"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="zero-or-more"/>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = function(xs:anyAtomicType) as item()*">
+                    <itemType>
+                        <functType>
+                            <itemType>
+                                <atomic name="xs:anyAtomicType"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="zero-or-more"/>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = function(xs:integer) as item()*">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <functType>
+                                <itemType>
+                                    <atomic name="xs:integer"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="zero-or-more"/>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = function(xs:integer) as item()*">
+                    <itemType>
+                        <functType>
+                            <itemType>
+                                <atomic name="xs:integer"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="zero-or-more"/>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type a = function(xs:string) as xs:string+">
+            <x:call>
+                <x:param position="1">
+                    <itemType>
+                        <functType>
+                            <itemType>
+                                <atomic name="xs:string"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="one-or-more">
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="type b = function(xs:integer) as xs:string+">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <functType>
+                                <itemType>
+                                    <atomic name="xs:integer"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="one-or-more">
+                                        <atomic name="xs:string"/>
+                                    </itemType>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = function(*)">
+                    <itemType>
+                        <functType/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = function(xs:string, xs:string) as xs:string+">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <functType>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="one-or-more">
+                                        <atomic name="xs:string"/>
+                                    </itemType>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = function(*)">
+                    <itemType>
+                        <functType/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type b = function(xs:token) as xs:string+">
+                <x:call>
+                    <x:param position="2">
+                        <itemType>
+                            <functType>
+                                <itemType>
+                                    <atomic name="xs:token"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="one-or-more">
+                                        <atomic name="xs:string"/>
+                                    </itemType>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result = function(xs:token) as xs:string+">
+                    <itemType>
+                        <functType>
+                            <itemType>
+                                <atomic name="xs:token"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="one-or-more">
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="xpt:instance-of" shared="yes">
+        <x:variable name="config" select="
+            map{'namespaces' : map{
+                   'xs' : 'http://www.w3.org/2001/XMLSchema', 
+                   'array' : 'http://www.w3.org/2005/xpath-functions/array'
+                }
+            }
+            "/>
+        <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
+        <x:call function="xpt:instance-of">
+            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <x:param 
+                    position="2"
+                    select="$type-model/operation/itemType"
+                    />
+        </x:call>
+        <x:expect label="boolean result" select="$result"/>
+    </x:scenario>
+
+    <x:scenario label="xpt:treat-as" shared="yes">
+        <x:variable name="config" select="
+            map{'namespaces' : map{
+                   'xs' : 'http://www.w3.org/2001/XMLSchema', 
+                   'array' : 'http://www.w3.org/2005/xpath-functions/array'
+                }
+            }
+            "/>
+        <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
+        <x:call function="xpt:treat-as">
+            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <x:param 
+                    position="2"
+                    select="$type-model/operation/itemType"
+                    />
+        </x:call>
+        <x:expect label="result" select="$result"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario testing function call xpt:instance-of">
+        <x:call function="xpt:instance-of"/>
+        <x:variable name="context" select="()"/>
+        <x:scenario label="type = empty-sequence()">
+            <x:variable name="type">empty-sequence()</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = 1">
+                <x:variable name="xpath">1</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+        </x:scenario>
+
+        <x:scenario label="type = item()*">
+            <x:variable name="type">item()*</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 1">
+                <x:variable name="xpath">1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo', 'bar'">
+                <x:variable name="xpath">'foo', 'bar'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = ['foo', 'bar'], 1, false()">
+                <x:variable name="xpath">['foo', 'bar'], 1, false()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+        </x:scenario>
+
+        <x:scenario label="type = item()+">
+            <x:variable name="type">item()+</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 1">
+                <x:variable name="xpath">1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo', 'bar'">
+                <x:variable name="xpath">'foo', 'bar'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = ['foo', 'bar'], 1, false()">
+                <x:variable name="xpath">['foo', 'bar'], 1, false()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+        </x:scenario>
+
+        <x:scenario label="type = item()?">
+            <x:variable name="type">item()?</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 1">
+                <x:variable name="xpath">1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = 'foo', 'bar'">
+                <x:variable name="xpath">'foo', 'bar'</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = ['foo', 'bar'], 1, false()">
+                <x:variable name="xpath">['foo', 'bar'], 1, false()</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = ['foo', 'bar']">
+                <x:variable name="xpath">['foo', 'bar']</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = map{{'foo' : 'bar', 'baz' : 'que'}}">
+                <x:variable name="xpath">map{'foo' : 'bar', 'baz' : 'que'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="type = xs:numeric?">
+            <x:variable name="type">xs:numeric?</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = 3.5">
+                <x:variable name="xpath">3.5</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = xs:anyAtomicType">
+            <x:variable name="type">xs:anyAtomicType</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = 1">
+                <x:variable name="xpath">1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = current-date()">
+                <x:variable name="xpath">current-date()</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = node()">
+                <x:variable name="context" select="*"><foo/></x:variable>
+                <x:variable name="xpath">.</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{'foo' : 'bar'}">
+                <x:variable name="xpath">map{'foo' : 'bar'}</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = map(*)">
+            <x:variable name="type">map(*)</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{'foo' : 'bar'}">
+                <x:variable name="xpath">map{'foo' : 'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{'foo' : 'bar', 1 : 'baz'}">
+                <x:variable name="xpath">map{'foo' : 'bar', 1 : 'baz'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = ['foo', 'bar']">
+                <x:variable name="xpath">['foo', 'bar']</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo){'bar'}">
+                <x:variable name="xpath">function($foo){'bar'}</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:string) as item()* {'bar'}">
+                <x:variable name="xpath">function($foo as xs:string) as item()* {'bar'}</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = map(xs:string, xs:token)">
+            <x:variable name="type">map(xs:string, xs:token)</x:variable>
+            
+            <x:scenario label="input = map{'foo' : xs:token('bar')}">
+                <x:variable name="xpath">map{'foo' : xs:token('bar')}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{xs:token('foo') : 'bar'}">
+                <x:variable name="xpath">map{xs:token('foo') : 'bar'}</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{xs:token('foo') : xs:token('bar')}">
+                <x:variable name="xpath">map{xs:token('foo') : xs:token('bar')}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{xs:token('foo') : xs:NCName('bar')}">
+                <x:variable name="xpath">map{xs:token('foo') : xs:NCName('bar')}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+
+        <x:scenario label="type = function(*)">
+            <x:variable name="type">function(*)</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = function($foo){'bar'}">
+                <x:variable name="xpath">function($foo){'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:token) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:token) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:string) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:string) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:anyAtomicType) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:anyAtomicType) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = map{'foo' : 'bar'}">
+                <x:variable name="xpath">map{'foo' : 'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+            <x:scenario label="input = ['foo', 1, true()]">
+                <x:variable name="xpath">['foo', 1, true()]</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+        </x:scenario>
+        
+        <x:scenario label="type = function(xs:string) as item()*">
+            <x:variable name="type">function(xs:string) as item()*</x:variable>
+            
+            <x:scenario label="input = function($foo){'bar'}">
+                <x:variable name="xpath">function($foo){'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:token) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:token) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:string) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:string) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:anyAtomicType) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo as xs:anyAtomicType) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = function($foo as xs:string){'bar'}">
+                <x:variable name="xpath">function($foo as xs:string){'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = function($foo) as item()*{'bar'}">
+                <x:variable name="xpath">function($foo) as item()*{'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            
+            <x:scenario label="input = map{'foo' : 'bar'}">
+                <x:variable name="xpath">map{'foo' : 'bar'}</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+
+        </x:scenario>
+        <x:scenario label="Build in function signatures">
+            <x:scenario label="string-join#1 instance of function(xs:string) as item()*">
+                <x:variable name="type">function(xs:string) as item()*</x:variable>
+                <x:variable name="xpath">string-join#1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="load-xquery-module#1 instance of function(xs:string) as map(*)">
+                <x:variable name="type">function(xs:string) as map(*)</x:variable>
+                <x:variable name="xpath">load-xquery-module#1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="array:size#1 instance of function(array(*)) as xs:integer">
+                <x:variable name="type">function(array(*)) as xs:integer</x:variable>
+                <x:variable name="xpath">array:size#1</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Scenario testing function call xpt:treat-as">
+        <x:variable name="context" select="()"/>
+        <x:scenario label="type = empty-sequence()">
+            <x:variable name="type">empty-sequence()</x:variable>
+            
+            <x:scenario label="input = ()">
+                <x:variable name="xpath">()</x:variable>
+                <x:variable name="result" select="()"/>
+                <x:like label="xpt:treat-as"/>
+            </x:scenario>
+            
+        </x:scenario>
+
+        <x:scenario label="type = empty-sequence()">
+            <x:variable name="type">item()</x:variable>
+            
+            <x:scenario label="input = 'foo'">
+                <x:variable name="xpath">'foo'</x:variable>
+                <x:variable name="result" select="'foo'"/>
+                <x:like label="xpt:treat-as"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>
+</x:description>
