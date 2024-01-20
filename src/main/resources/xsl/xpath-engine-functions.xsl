@@ -1388,6 +1388,137 @@
         <xsl:sequence select="$func?name"/>
     </xsl:function>
     
+
+    <xsl:function name="xpf:function-arity" as="xs:integer">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="func" as="map(*)"/>
+        <xsl:sequence select="$func?arity"/>
+    </xsl:function>
+
+    <xsl:function name="xpf:for-each" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seq" as="item()*"/>
+        <!-- function(item()) as item()* -->
+        <xsl:param name="action" as="map(*)"/>
+        <xsl:variable name="action" select="xpe:raw-function($action)"/>
+        <xsl:sequence select="for-each($seq, $action)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:filter" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seq" as="item()*"/>
+        <!--    function(item()) as xs:boolean    -->
+        <xsl:param name="f" as="map(*)"/>
+        <xsl:variable name="f" select="xpe:raw-function($f)"/>
+        <xsl:sequence select="filter($seq, $f)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:fold-left" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seq" as="item()*"/>
+        <xsl:param name="zero" as="item()*"/>
+        <!-- function(item()*, item()) as item()* -->
+        <xsl:param name="f" as="map(*)"/>
+        <xsl:variable name="f" select="xpe:raw-function($f)"/>
+        <xsl:sequence select="fold-left($seq, $zero, $f)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:fold-right" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seq" as="item()*"/>
+        <xsl:param name="zero" as="item()*"/>
+        <!-- function(item(), item()*) as item()* -->
+        <xsl:param name="f" as="map(*)"/>
+        <xsl:variable name="f" select="xpe:raw-function($f)"/>
+        <xsl:sequence select="fold-right($seq, $zero, $f)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:for-each-pair" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seq1" as="item()*"/>
+        <xsl:param name="seq2" as="item()*"/>
+        <!-- function(item(), item()) as item()* -->
+        <xsl:param name="action" as="map(*)"/>
+        <xsl:variable name="action" select="xpe:raw-function($action)"/>
+        <xsl:sequence select="for-each-pair($seq1, $seq2, $action)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:sort" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="input" as="item()*"/>
+        <xsl:param name="collation" as="xs:string?"/>
+        <!-- function(item()) as xs:anyAtomicType* -->
+        <xsl:param name="key" as="map(*)"/>
+        <xsl:variable name="key" select="xpe:raw-function($key)"/>
+        <xsl:sequence select="sort($input, $collation, $key)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpf:apply" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <!-- function(*) -->
+        <xsl:param name="function" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <xsl:variable name="function" select="xpe:raw-function($function)"/>
+        <xsl:sequence select="apply($function, $array)"/>
+    </xsl:function>
+    
+<!--    
+    Array/Map high-order-functions 
+    -->
+    <xsl:function name="xpfa:for-each" as="array(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <!-- function(item()*) as item()* -->
+        <xsl:param name="action" as="map(*)"/>
+        <xsl:sequence select="array:for-each($array, xpe:raw-function($action))"/>
+    </xsl:function>
+    <xsl:function name="xpfa:filter" as="array(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <!-- function(item()*) as xs:boolean -->
+        <xsl:param name="function" as="map(*)"/>
+        <xsl:sequence select="array:filter($array, xpe:raw-function($function))"/>
+    </xsl:function>
+    <xsl:function name="xpfa:fold-left" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <xsl:param name="zero" as="item()*"/>
+        <!-- function(item()*, item()*) as item()* -->
+        <xsl:param name="function" as="map(*)"/>
+        <xsl:sequence select="array:fold-left($array, $zero, xpe:raw-function($function))"/>
+    </xsl:function>
+    <xsl:function name="xpfa:fold-right" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <xsl:param name="zero" as="item()*"/>
+        <!-- function(item()*, item()*) as item()* -->
+        <xsl:param name="function" as="map(*)"/>
+        <xsl:sequence select="array:fold-right($array, $zero, xpe:raw-function($function))"/>
+    </xsl:function>
+    <xsl:function name="xpfa:for-each-pair" as="array(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array1" as="array(*)"/>
+        <xsl:param name="array2" as="array(*)"/>
+        <!-- function(item()*, item()*) as item()* -->
+        <xsl:param name="function" as="map(*)"/>
+        <xsl:sequence select="array:for-each-pair($array1, $array2, xpe:raw-function($function))"/>
+    </xsl:function>
+    <xsl:function name="xpfa:sort" as="array(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="array" as="array(*)"/>
+        <xsl:param name="collation" as="xs:string?"/>
+        <!-- function(item()*) as xs:anyAtomicType* -->
+        <xsl:param name="key" as="map(*)"/>
+        <xsl:sequence select="array:sort($array, $collation, xpe:raw-function($key))"/>
+    </xsl:function>
+    
+    <xsl:function name="xpfm:for-each" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="map" as="map(*)"/>
+        <!-- function(xs:anyAtomicType, item()*) as item()* -->
+        <xsl:param name="action" as="map(*)"/>
+        <xsl:sequence select="map:for-each($map, xpe:raw-function($action))"/>
+    </xsl:function>
     
     
     <xsl:function name="xpe:is-function" as="xs:boolean">
