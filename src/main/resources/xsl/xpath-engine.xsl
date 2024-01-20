@@ -214,28 +214,31 @@
         <xsl:sequence select="xpe:xpath-step-result-reorder($result)"/>
     </xsl:template>
 
-    <xsl:template match="operation[@type = 'step']" mode="xpe:xpath-evaluate" priority="10">
+    <xsl:template match="operation[@type = 'step']" 
+        mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" tunnel="yes"/>
-        <xsl:variable name="context" as="item()*">
-            <xsl:apply-templates select="arg[1]/*" mode="#current">
-                <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
-            </xsl:apply-templates>
-        </xsl:variable>
-        <xsl:variable name="sub-expr" as="element(expr)">
+        <xsl:variable name="last-arg" select="arg[last()]"/>
+        <xsl:variable name="context-expr" as="element(expr)">
             <expr>
                 <xsl:choose>
                     <xsl:when test="slash[2]">
                         <xsl:copy>
-                            <xsl:sequence select="@*"/>
-                            <xsl:sequence select="slash[1]/following-sibling::*"/>
+                            <xsl:copy-of select="@*"/>
+                            <xsl:copy-of select="slash[last()]/preceding-sibling::*"/>
                         </xsl:copy>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:sequence select="arg[2]/*"/>
+                        <xsl:sequence select="arg[1]/*"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </expr>
         </xsl:variable>
+        <xsl:variable name="context" as="item()*">
+            <xsl:apply-templates select="$context-expr" mode="#current">
+                <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        <xsl:variable name="last-arg" select="arg[last()]"/>
         <xsl:variable name="result" as="item()*">
             <xsl:for-each select="$context">
                 <xsl:variable name="sub-context" select="map{
@@ -244,7 +247,7 @@
                     'last' : last()
                     }"/>
                 <xsl:variable name="execution-context" select="($execution-context, $sub-context) => map:merge(map{'duplicates' : 'use-last'})"/>
-                <xsl:apply-templates select="$sub-expr" mode="#current">
+                <xsl:apply-templates select="$last-arg/*" mode="#current">
                     <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
                 </xsl:apply-templates>
             </xsl:for-each>
