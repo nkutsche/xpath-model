@@ -752,7 +752,9 @@
         <xsl:param name="base-uri" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="empty($exec-context?uri-mapper)">
-                <xsl:sequence select="resolve-uri($relative, $base-uri)"/>
+                <xsl:sequence select="
+                    resolve-uri($relative, $base-uri)
+                    "/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="$exec-context?uri-mapper($relative, $base-uri)"/>

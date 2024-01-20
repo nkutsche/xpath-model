@@ -806,12 +806,13 @@
             <xsl:apply-templates select="* except TOKEN" mode="#current"/>
         </lookup>
     </xsl:template>
+    
     <xsl:template match="Lookup/KeySpecifier[ParenthesizedExpr]" priority="25" mode="nk:xpath-operations">
         <arg>
             <xsl:apply-templates select="ParenthesizedExpr/(* except TOKEN)" mode="nk:xpath-model"/>
         </arg>
     </xsl:template>
-
+    
     <xsl:template match="Lookup/KeySpecifier[NCName]" priority="25" mode="nk:xpath-operations">
         <field name="{string(NCName)}"/>
     </xsl:template>

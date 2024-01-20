@@ -1645,48 +1645,6 @@
             </fos:proto>
         </fos:signatures>
     </fos:function>
-    <!--<fos:function name="to" prefix="op">
-      <fos:signatures>
-         <fos:proto name="to" return-type="xs:integer*">
-            <fos:arg name="firstval" type="xs:integer"/>
-            <fos:arg name="lastval" type="xs:integer"/>
-         </fos:proto>
-      </fos:signatures>
-      <fos:opermap operator="to" types="xs:integer xs:integer">Defines the semantics of the "to"
-         operator when applied to two integer arguments.</fos:opermap>
-      <fos:summary>
-         <p>Returns a sequence of consecutive integers in a given range.</p>
-      </fos:summary>
-      <fos:rules>
-         <p>The function returns the sequence containing every <code>xs:integer</code> whose value
-            is between the value of <code>$firstval</code> (inclusive) and the value of
-               <code>$lastval</code> (inclusive), in monotonic increasing order.</p>
-         <p>If the value of the first operand is greater than the value of the second, the function
-            returns the empty sequence.</p>
-         <p>If the values of the two operands are equal, the function returns a sequence containing
-            a single <code>xs:integer</code> equal to that value.</p>
-      </fos:rules>
-      <fos:examples>
-         <fos:example>
-            <fos:test>
-               <fos:expression>1 to 3</fos:expression>
-               <fos:result>(1, 2, 3)</fos:result>
-            </fos:test>
-         </fos:example>
-         <fos:example>
-            <fos:test>
-               <fos:expression>3 to 1</fos:expression>
-               <fos:result>()</fos:result>
-            </fos:test>
-         </fos:example>
-         <fos:example>
-            <fos:test>
-               <fos:expression>5 to 5</fos:expression>
-               <fos:result>5</fos:result>
-            </fos:test>
-         </fos:example>
-      </fos:examples>
-   </fos:function>-->
     <fos:function name="id" prefix="fn">
         <fos:signatures>
             <fos:proto name="id" return-type="element()*">
@@ -1760,17 +1718,6 @@
                 <fos:arg name="encoding" type="xs:string"/>
             </fos:proto>
         </fos:signatures>
-        <!--
-      <imp-def-feature>The set of encodings recognized by the
-         <function>unparsed-text</function> function, other than <code>utf-8</code> and
-         <code>utf-16</code>, is <termref def="implementation-defined"
-            >implementation-defined</termref>.</imp-def-feature>
-      
-      <imp-def-feature>If no encoding is specified on a call to the
-         <function>unparsed-text</function> function, the processor
-         <rfc2119>may</rfc2119> use <termref def="implementation-defined"
-            >implementation-defined</termref> heuristics to determine the likely
-         encoding.</imp-def-feature>-->
     </fos:function>
     <fos:function name="unparsed-text-lines" prefix="fn">
         <fos:signatures>

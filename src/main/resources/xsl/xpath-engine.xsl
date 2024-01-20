@@ -98,7 +98,8 @@
     Operations
     -->
     
-    <xsl:function name="xpe:arg-array" as="array(*)" >
+    
+    <xsl:function name="xpe:arg-array" as="array(*)">
         <xsl:param name="args" as="element(arg)*"/>
         <xsl:param name="execution-context" as="map(*)"/>
         <xsl:variable name="single-arrs" as="array(*)*">
