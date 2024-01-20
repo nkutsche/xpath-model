@@ -804,9 +804,16 @@ This is just for debugging...
   <!-- - Type Tests -->
   <define name="seqType">
     <choice>
-      <ref name="emptySequence"/>
       <ref name="itemType"/>
+      <ref name="emptyType"/>
     </choice>
+  </define>
+  <define name="emptyType">
+    <element name="itemType">
+      <attribute name="occurrence">
+        <value>zero</value>
+      </attribute>
+    </element>
   </define>
   <define name="itemType">
     <element name="itemType">

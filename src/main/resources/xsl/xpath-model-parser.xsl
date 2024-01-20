@@ -666,9 +666,9 @@
 
 
     <xsl:template match="SequenceType[string-join(TOKEN, '') = 'empty-sequence()']" mode="nk:xpath-operations">
-        <empty>
+        <itemType occurrence="zero">
             <xsl:apply-templates select="Comment" mode="#current"/>
-        </empty>
+        </itemType>
     </xsl:template>
 
     <xsl:template match="SequenceType" mode="nk:xpath-operations">

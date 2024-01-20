@@ -358,7 +358,16 @@
     ### ItemTypes ###
     -->
 
-    <xsl:template match="operation//itemType | function-impl//itemType" mode="nk:xpath-serializer"
+    <xsl:template match="
+        itemType[@occurrence = 'zero']
+        " mode="nk:xpath-serializer"
+        priority="200">
+        <xsl:sequence select="'empty-sequence('"/>
+        <xsl:apply-templates select="comment()" mode="#current"/>
+        <xsl:sequence select="')'"/>
+    </xsl:template>
+    
+    <xsl:template match="itemType" mode="nk:xpath-serializer"
         priority="90">
         <xsl:apply-templates select="* | comment()" mode="#current"/>
         <xsl:sequence select="nk:itemTypeOccSer(@occurrence)"/>
@@ -448,7 +457,8 @@
                     'zero-or-more': '*',
                     'one-or-more': '+',
                     'zero-or-one': '?',
-                    'one': ''
+                    'one': '',
+                    'zero': '' (: this is just for completness, should be handled above:)
                 }"/>
         <xsl:variable name="token" select="($occurrence, 'one')[1]"/>
         <xsl:sequence select="

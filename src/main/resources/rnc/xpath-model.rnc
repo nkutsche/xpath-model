@@ -236,7 +236,9 @@ kindTest = attribute kind {"element" | "attribute" | "document-node" | "comment"
 
 # - Type Tests
 
-seqType = emptySequence | itemType
+seqType = itemType | emptyType
+
+emptyType = element itemType {attribute occurrence {"zero"}}
 
 itemType = element itemType {typeOccurrence?, (nodeTestGr | atomicType | mapType | arrayType | functType)? }
 
