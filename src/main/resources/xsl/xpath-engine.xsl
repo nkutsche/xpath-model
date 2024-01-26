@@ -572,24 +572,17 @@
     </xsl:template>
     
     
-    <xsl:template match="operation[@type = ('castable', 'cast', 'instance-of', 'treat-as')]" mode="xpe:xpath-evaluate" priority="10">
+    <xsl:template match="operation[@type = ('instance-of')]" mode="xpe:xpath-evaluate" priority="25">
         <xsl:variable name="context" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
-        <xsl:variable name="context" select="$context ! xpe:raw-function(.)"/>
-        <xsl:variable name="subst-expr" as="element(expr)">
-            <expr>
-                <xsl:copy>
-                    <xsl:sequence select="@*"/>
-                    <arg>
-                        <varRef name="context"/>
-                    </arg>
-                    <xsl:sequence select="* except arg"/>
-                </xsl:copy>
-            </expr>
+        <xsl:sequence select="xpt:instance-of($context, itemType)"/>
+    </xsl:template>
+    <xsl:template match="operation[@type = ('castable')]" mode="xpe:xpath-evaluate" priority="25">
+        <xsl:variable name="context" as="item()*">
+            <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
-        <xsl:variable name="subst-xpath" select="xpm:xpath-serializer($subst-expr)"/>
-        <xsl:evaluate xpath="$subst-xpath" with-params="map{QName('', 'context') : $context}"/>
+        <xsl:sequence select="xpt:castable-as($context, itemType)"/>
     </xsl:template>
     
     <xsl:template match="operation[@type = ('cast')]
@@ -630,6 +623,20 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    
+    <xsl:template match="operation[@type = ('cast')]" mode="xpe:xpath-evaluate" priority="25">
+        <xsl:variable name="context" as="item()*">
+            <xsl:apply-templates select="arg/*" mode="#current"/>
+        </xsl:variable>
+        <xsl:sequence select="xpt:cast-as($context, itemType)"/>
+    </xsl:template>
+    <xsl:template match="operation[@type = ('treat-as')]" mode="xpe:xpath-evaluate" priority="25">
+        <xsl:variable name="context" as="item()*">
+            <xsl:apply-templates select="arg/*" mode="#current"/>
+        </xsl:variable>
+        <xsl:sequence select="xpt:treat-as($context, itemType)"/>
+    </xsl:template>
+    
     <xsl:template match="itemType | itemType//*" mode="xpe:xpath-evaluate">
         <xsl:copy>
             <xsl:apply-templates select="@*" mode="#current"/>
