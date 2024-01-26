@@ -32,6 +32,7 @@
                 xpm:xpath-model($xpath, $config, true())
                 "/>
             <xsl:variable name="execution-context" select="map:put($execution-context, 'context', $context)"/>
+            <xsl:variable name="model" select="$model => xpe:xpath-static-checks($execution-context)"/>
             <xsl:variable name="result" as="item()*">
                 <xsl:apply-templates select="$model" mode="xpe:xpath-evaluate">
                     <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
@@ -47,6 +48,60 @@
         </xsl:try>
         
     </xsl:function>
+    
+    <xsl:function name="xpe:xpath-static-checks" as="element(expr)">
+        <xsl:param name="model" as="element(expr)"/>
+        <xsl:param name="execution-context" as="map(*)"/>
+        <xsl:apply-templates select="$model" mode="xpe:xpath-static-checks">
+            <xsl:with-param name="execution-context" select="$execution-context" tunnel="yes"/>
+        </xsl:apply-templates>
+    </xsl:function>
+    
+    <xsl:mode name="xpe:xpath-static-checks" on-no-match="shallow-copy"/>
+    
+    <xsl:template match="function[@name]" mode="xpe:xpath-static-checks">
+        <xsl:param name="arity" select="@arity"/>
+        <xsl:variable name="qname" select="xpm:name-matcher(@name)"/>
+        
+        <xsl:variable name="function" as="function(*)">
+            <xsl:apply-templates select="." mode="xpe:xpath-evaluate">
+                <xsl:with-param name="arity" select="$arity" tunnel="yes"/>
+            </xsl:apply-templates>
+        </xsl:variable>
+        
+        <xsl:if test="exists($function)">
+            <xsl:next-match/>
+        </xsl:if>
+        
+    </xsl:template>
+    
+    <xsl:template match="function-call[function]" mode="xpe:xpath-static-checks">
+        <xsl:variable name="arity" select="count(arg)"/>
+        <xsl:variable name="arity" select="
+            if (parent::operation[@type = 'arrow']) 
+            then $arity + 1 
+            else $arity
+            "/>
+        <xsl:copy>
+            <xsl:apply-templates select="@*" mode="#current"/>
+            <xsl:apply-templates select="node()" mode="#current">
+                <xsl:with-param name="arity" select="$arity"/>
+            </xsl:apply-templates>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="function-call/*" mode="xpe:xpath-static-checks" priority="-10">
+        <xsl:copy>
+            <xsl:apply-templates select="@*" mode="#current"/>
+            <xsl:apply-templates select="node()" mode="#current"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="nodeTest[@kind = ('schema-element', 'schema-attribute')]" mode="xpe:xpath-static-checks" priority="10">
+        <xsl:sequence select="error(xpe:error-code('XPST0008'), 
+            'Node tests with ''' || @kind || '()'' are not supported!'
+            )"/>
+    </xsl:template>
     
     
     <xsl:variable name="xpe:operations" select="
