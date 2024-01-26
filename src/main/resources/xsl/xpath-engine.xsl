@@ -254,6 +254,11 @@
         <xsl:variable name="last-arg" select="arg[last()]"/>
         <xsl:variable name="result" as="item()*">
             <xsl:for-each select="$context">
+                <xsl:if test="not(. instance of node())">
+                    
+                    <xsl:sequence select="error(xpe:error-code('XPTY0019'), 
+                        'The required item type of the first operand of ''/'' is node()! The supplied value has the type ' || (xpt:type-of(.) => xpm:xpath-serializer-sub()))"/>
+                </xsl:if>
                 <xsl:variable name="sub-context" select="map{
                     'context' : .,
                     'position' : position(),
