@@ -58,6 +58,7 @@
                 "/>
             <xsl:variable name="map-body" select="
                 '''is-simple'' : ' || $is-simple || '()',
+                '''is-castable'' : ' || $castable || '()',
                 '''parent-type'' : ' || $parent-type || '()', (: trick: if $parent-type does not exists, this will be an empty sequence otherwise a function call :)
                 '''instance-of'' : function($item){$item instance of ' || $test || '}',
                 '''treat-as'' : function($item){$item treat as ' || $test || '}',

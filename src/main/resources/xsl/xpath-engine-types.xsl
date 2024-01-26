@@ -358,6 +358,10 @@
         <xsl:variable name="validator" select="xpt:get-type-validator($qname)"/>
         
         <xsl:choose>
+            <xsl:when test="not($validator?is-castable)">
+                <!-- If the type is not castable, this will throwing always an error:-->
+                <xsl:sequence select="$validator?castable-as(())"/>
+            </xsl:when>
             <xsl:when test="empty($input) and $type/@occurrence = 'zero-or-one'">
                 <xsl:sequence select="true()"/>
             </xsl:when>
@@ -379,6 +383,10 @@
         <xsl:variable name="req-type" select="xpm:xpath-serializer-sub($type) => normalize-space()"/>
         
         <xsl:choose>
+            <xsl:when test="not($validator?is-castable)">
+                <!-- If the type is not castable, this will throwing always an error:-->
+                <xsl:sequence select="$validator?cast-as(())"/>
+            </xsl:when>
             <xsl:when test="empty($input) and $type/@occurrence = 'zero-or-one'">
                 <xsl:sequence select="()"/>
             </xsl:when>
