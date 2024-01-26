@@ -6,6 +6,7 @@
     xmlns:xpmt="http://www.nkutsche.com/xpath-model/test-helper"  
     xmlns:qt="http://www.w3.org/2010/09/qt-fots-catalog"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xd:doc scope="stylesheet">
@@ -445,23 +446,22 @@
         </xsl:variable>
         <xsl:sequence select="not($content)"/>
     </xsl:template>
+    
     <xsl:template match="qt:assert-type" mode="xpmt:result-compare" as="xs:boolean">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         
         <!--        
             Exception for results which are representations of functions, but implemented as map(*)
         -->
-        <xsl:variable name="result" select="
-            $result ! (
-            if (. instance of map(*) 
-                and .?type = QName('http://www.nkutsche.com/xmlml/xpath-engine/functions', 'function')) 
-                then (.?function)
-                else .
-            )
-            "/>
+        
+        <xsl:variable name="context" select="map{
+            'variable-context' : map{QName('', 'result') : $result},
+            'namespaces' : $predef-ns
+            }"/>
         
         <xsl:variable name="xpath" select="'$result instance of ' || ."/>
-        <xsl:evaluate xpath="$xpath" namespace-context="$predef-nscontext-for-saxon" with-params="map{QName('', 'result') : $result}"/>
+        <xsl:sequence select="xpe:xpath-evaluate((), $xpath, $context)"/>
+        
     </xsl:template>
     
     <xsl:template match="qt:error" mode="xpmt:result-compare" as="xs:boolean">
