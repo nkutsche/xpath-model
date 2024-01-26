@@ -4,6 +4,7 @@
     xmlns:p="http://www.nkutsche.com/xpath-parser" xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:err="http://www.w3.org/2005/xqt-errors" xmlns:avt="http://www.nkutsche.com/avt-parser"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
+    xmlns:xpe="http://www.nkutsche.com/xpath-model/engine"
     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process" exclude-result-prefixes="#all"
     version="3.0">
@@ -593,6 +594,9 @@
             </xsl:when>
             <xsl:when test="matches($name, '^[^\*:]+:\*')">
                 <xsl:variable name="prefix" select="substring-before($name, ':')"/>
+                <xsl:if test="not(in-scope-prefixes($ns-ctx) = $prefix)">
+                    <xsl:sequence select="error(xpe:error-code('XPST0081'), 'Undeclared prefix ' || $prefix)"/>
+                </xsl:if>
                 <xsl:sequence
                     select="map:put($map, 'namespace', string(namespace-uri-for-prefix($prefix, $ns-ctx)))"/>
             </xsl:when>
