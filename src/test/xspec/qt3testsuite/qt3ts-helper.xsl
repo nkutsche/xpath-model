@@ -351,12 +351,27 @@
         <xsl:sequence select="empty($result)"/>
     </xsl:template>
 
-    <xsl:template match="qt:assert-eq | qt:assert-deep-eq" mode="xpmt:result-compare" as="xs:boolean">
+    <xsl:template match="qt:assert-deep-eq" mode="xpmt:result-compare" as="xs:boolean">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:variable name="compare" as="item()*">
             <xsl:evaluate xpath="." namespace-context="$predef-nscontext-for-saxon"/>
         </xsl:variable>
-        <xsl:sequence select="deep-equal($result, $compare)"/>
+        <xsl:sequence select="
+            deep-equal($result, $compare)"/>
+    </xsl:template>
+
+    <xsl:template match="qt:assert-eq" mode="xpmt:result-compare" as="xs:boolean">
+        <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:variable name="compare" as="item()*">
+            <xsl:evaluate xpath="." namespace-context="$predef-nscontext-for-saxon"/>
+        </xsl:variable>
+        <xsl:try>
+            <xsl:sequence select="$result = $compare"/>
+            <xsl:catch xmlns:err="http://www.w3.org/2005/xqt-errors">
+                <xsl:message select="$err:description"/>
+                <xsl:sequence select="false()"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:template>
 
     <xsl:template match="qt:assert" mode="xpmt:result-compare" as="xs:boolean">
@@ -412,8 +427,10 @@
 
     <xsl:template match="qt:assert-string-value[@normalize-space = 'true']" mode="xpmt:result-compare" as="xs:boolean">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
+        <xsl:variable name="result" select="$result"/>
+        <xsl:variable name="result" select="$result  ! normalize-space(string(.))[. != '']"/>
         <xsl:next-match>
-            <xsl:with-param name="result" select="$result  ! normalize-space(string(.))" tunnel="yes"/>
+            <xsl:with-param name="result" select="$result" tunnel="yes"/>
             <xsl:with-param name="expected" select="normalize-space(.)" tunnel="yes"/>
         </xsl:next-match>
     </xsl:template>
