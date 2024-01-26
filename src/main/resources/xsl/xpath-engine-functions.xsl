@@ -1205,7 +1205,12 @@
         <xsl:variable name="arg" as="item()">
             <xsl:next-match/>
         </xsl:variable>
-        <xsl:sequence select="xpt:treat-as($arg, .)"/>
+        <xsl:try>
+            <xsl:sequence select="xpt:treat-as($arg, .)"/>
+            <xsl:catch errors="err:XPDY0050">
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), $err:description)"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:template>
     
     <xsl:template match="itemType" mode="xpe:prepare-argument">

@@ -715,8 +715,8 @@
         -->
         <xsl:variable name="varName" select="xpm:varQName(@name)" as="xs:QName"/>
         <xsl:if test="not(map:contains($variables, $varName))">
-            <xsl:message expand-text="yes" terminate="yes"
-                >Variable Q{{{namespace-uri-from-QName($varName)}}}{local-name-from-QName($varName)} not declared in this scope.</xsl:message>
+            <xsl:variable name="msg" expand-text="yes">Variable Q{{{namespace-uri-from-QName($varName)}}}{local-name-from-QName($varName)} not declared in this scope.</xsl:variable>
+            <xsl:sequence select="error(xpe:error-code('XPST0008'),  $msg)"/>
         </xsl:if>
         <xsl:sequence select="$variables($varName)"/>
     </xsl:template>
@@ -784,6 +784,13 @@
     -->
     
     
+    
+    
+    <xsl:template match="locationStep[nodeTest/@kind = ('schema-element', 'schema-attribute')]" mode="xpe:xpath-evaluate" priority="10">
+        <xsl:sequence select="error(xpe:error-code('XPST0008'), 
+            'Node tests with ''' || nodeTest/@kind || '()'' are not supported!'
+            )"/>
+    </xsl:template>
     <xsl:template match="locationStep" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         
@@ -796,8 +803,8 @@
         <xsl:variable name="nodes" select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context of a location step must be a node! Context is empty. (' || $expr || ')') 
-            else if (not($context instance of node()) or empty($context)) 
-            then error(xpe:error-code('XPDY0002'), 'Context of a location step must be a node! Context: ' || $context) 
+            else if (not($context instance of node())) 
+            then error(xpe:error-code('XPTY0019'), 'Context of a location step must be a node! Context is from type ' || (xpt:type-of($context) => xpm:xpath-serializer-sub())) 
             else xpe:tree-walk($context, @axis, $nodeTest)
             "/>
         <xsl:sequence select="$nodes"/>
@@ -966,7 +973,11 @@
         <xsl:variable name="kind-test" select="($node-test/@kind, 'node')[1]"/>
         
         <xsl:sequence select="
-            if (not(($node-kind, 'node') = $kind-test))
+            if ($kind-test = ('schema-element', 'schema-attribute')) 
+            then error(xpe:error-code('XPST0008'), 
+            'Node tests with ''' || $kind-test || '()'' are not supported!'
+            ) 
+            else if (not(($node-kind, 'node') = $kind-test))
             then false()
             else 
             if ($node-kind = 'document-node' and $node-test/nodeTest) 
@@ -984,6 +995,11 @@
         <xsl:variable name="node-ns" select="($node/namespace-uri(.), '*')"/>
         
         <xsl:choose>
+            <xsl:when test="$name-matcher?namespace = 'http://www.w3.org/2000/xmlns/'">
+                <xsl:sequence select="error(xpe:error-code('XQST0070'), 
+                    'The string ''http://www.w3.org/2000/xmlns/'' cannot be used as a namespace URI.'
+                    )"/>
+            </xsl:when>
             <xsl:when test="not($name-test)">
                 <xsl:sequence select="true()"/>
             </xsl:when>
@@ -1141,9 +1157,14 @@
                     " tunnel="yes"/>
             </xsl:apply-templates>
         </xsl:variable>
-        <xsl:if test="not(xpe:is-function($function))">
-            <xsl:sequence select="error(xpe:error-code('TODO'), 'Fail to call function ' || xpm:xpath-serializer-sub(.))"/>
-        </xsl:if>
+        <xsl:variable name="function" select="
+            if (xpe:is-function($function)) 
+            then ($function) 
+            else if ($function instance of map(*) or $function instance of array(*)) 
+            then xpe:create-function-wrapper($function) 
+            else error(xpe:error-code('XPTY0004'), 'Fail to make a dynamic function call in ' || xpm:xpath-serializer-sub(.) || '. Item seems to be from type ' || xpm:xpath-serializer-sub(xpt:type-of($function)) || '. Required type is function(*).')
+            "/>
+        
         <xsl:variable name="return-type" select="$function?return-type"/>
         <xsl:variable name="arg-types" select="$function?arg-types"/>
         
@@ -1237,6 +1258,16 @@
             for $p in param return ($p/as/*, $any-item-type)[1]
             "/>
         
+        <xsl:for-each-group select="$param-names" group-by=".">
+            <xsl:if test="count(current-group()) gt 1">
+                <xsl:variable name="ns" select="namespace-uri-from-QName(current-grouping-key())"/>
+                <xsl:variable name="local" select="local-name-from-QName(current-grouping-key())"/>
+                <xsl:sequence select="error(xpe:error-code('XQST0039'), 
+                    'Duplicate parameter name ' || xpe:eqname(current-grouping-key()) || ' for inline function.'
+                    )"/>
+            </xsl:if>
+        </xsl:for-each-group> 
+        
         <xsl:variable name="function-body" select="xpe:function-inline-exec#6($execution-context, $body, $param-names, $arg-types, $return-type, ?)"/>
         
         <xsl:variable name="function" select="xpe:create-function($function-body, $arity)"/>
@@ -1283,7 +1314,7 @@
                 else 
                     $return-value
                 "/>
-            <xsl:catch errors="err:XPTY0004">
+            <xsl:catch errors="err:XPTY0004 err:XPDY0050">
                 <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'The result of a call of an anonym function does not match to the required result type; ' || $err:description)"/>
             </xsl:catch>
         </xsl:try>
