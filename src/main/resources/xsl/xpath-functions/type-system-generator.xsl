@@ -11,6 +11,8 @@
     version="3.0">
     <xsl:namespace-alias result-prefix="xsl" stylesheet-prefix="axsl"/>
     
+    <xsl:output indent="yes"/>
+    
     <xsl:variable name="this.stylesheet" select="document('')"/>
     <xsl:variable name="namespace-uris" select="$this.stylesheet/*/namespace::*/map{name() : .} => map:merge()"/>
     
