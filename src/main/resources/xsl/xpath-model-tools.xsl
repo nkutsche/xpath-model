@@ -555,7 +555,11 @@
         <xsl:param name="node" as="node()"/>
         <xsl:variable name="prefixed" select="contains($node, ':')"/>
         <xsl:sequence select="
-            if ($prefixed) then nk:QName($node) else QName('', $node)
+            if (nk:is-eqname($node)) 
+            then (nk:parse-eqname($node)) 
+            else if ($prefixed) 
+            then nk:QName($node) 
+            else QName('', $node)
             "/>
     </xsl:function>
     
