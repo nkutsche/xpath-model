@@ -315,24 +315,13 @@
     </xsl:template>
 
     <xsl:template match="operation[@type = 'postfix'][lookup]" mode="xpe:xpath-evaluate" priority="10">
-        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="context" as="item()*">
+        <xsl:variable name="target" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
         <xsl:variable name="lookup" select="lookup"/>
-        <xsl:for-each select="$context">
-            <xsl:variable name="sub-context" select="
-                map{
-                    'context' : .,
-                    'position' : 1,
-                    'last' : 1
-                }
-                "/>
-            
+        <xsl:for-each select="$target">
             <xsl:apply-templates select="$lookup" mode="#current">
-                <xsl:with-param name="execution-context" select="
-                    ($execution-context, $sub-context) => map:merge(map{'duplicates' : 'use-last'})
-                    " tunnel="yes"/>
+                <xsl:with-param name="target" select="."/>
             </xsl:apply-templates>
         </xsl:for-each>
     </xsl:template>
