@@ -44,29 +44,35 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:function name="xpfs:QName">
+    <xsl:function name="xpfs:QName" as="xs:QName">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()?"/>
         
         <xsl:variable name="namespaces" select="($exec-context?namespaces, map{})[1]"/>
         
-        <xsl:variable name="arg" select="xpe:atomize($arg)"/>
+        <xsl:variable name="arg" select="xpf:data($exec-context, $arg)"/>
+        
+        <xsl:variable name="arg" select="normalize-space($arg)"/>
+        
         <xsl:variable name="prefix" select=" 
             if (contains($arg, ':')) 
             then substring-before($arg, ':') 
             else '' "/>
         
         <xsl:variable name="namespace-uri" select="
-            if ($prefix = '') 
-            then '' 
-            else if (map:contains($namespaces, $prefix)) 
+            if (map:contains($namespaces, $prefix)) 
             then $namespaces($prefix) 
+            else if ($prefix = '') 
+            then '' 
             else error(xpe:error-code('FONS0004'), 'Undeclared prefix ' || $prefix || '.') 
             "/>
-        
-        
-        <xsl:sequence select="
-            QName($namespace-uri,  $arg)"/>
+        <xsl:try>
+            <xsl:sequence select="
+                QName($namespace-uri,  $arg)"/>
+            <xsl:catch errors="err:FOCA0002">
+                <xsl:sequence select="error(xpe:error-code('FORG0001'), $err:description, $err:value)"/>
+            </xsl:catch>
+        </xsl:try>
         
     </xsl:function>
     
