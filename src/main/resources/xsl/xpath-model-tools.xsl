@@ -600,9 +600,9 @@
                 <xsl:variable name="local" select="substring-after($name, ':')"/>
                 <xsl:sequence select="map:put($map, 'local', $local)"/>
             </xsl:when>
-            <xsl:when test="matches($name, '^Q\{[^\}]+\}')">
-                <xsl:variable name="local" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$2')"/>
-                <xsl:variable name="ns" select="replace($name, '^Q\{([^\}]+)\}(.*)', '$1')"/>
+            <xsl:when test="matches($name, '^Q\{[^\}]*\}')">
+                <xsl:variable name="local" select="replace($name, '^Q\{([^\}]*)\}(.*)', '$2')"/>
+                <xsl:variable name="ns" select="replace($name, '^Q\{\s*([^\}\s]*)\s*\}(.*)', '$1')"/>
                 <xsl:sequence
                     select="
                         map:put($map, 'local', $local)
