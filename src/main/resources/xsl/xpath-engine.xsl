@@ -1014,11 +1014,18 @@
     <xsl:template match="function-call[arg/@role = 'placeholder']" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:param name="first-arg" as="array(item()*)" select="[]"/>
+        
+        <xsl:variable name="has-addidtional-arg" select="array:size($first-arg) gt 0"/>
+        
         <xsl:variable name="abstract-function" as="map(*)">
             <xsl:choose>
                 <xsl:when test="function">
                     <xsl:apply-templates select="function" mode="#current">
-                        <xsl:with-param name="arity" select="count(arg)" tunnel="yes"/>
+                        <xsl:with-param name="arity" select="
+                            if ($has-addidtional-arg) 
+                            then (count(arg) + 1) 
+                            else count(arg)
+                            " tunnel="yes"/>
                     </xsl:apply-templates>
                 </xsl:when>
                 <xsl:when test="parent::operation[@type = 'postfix']">
@@ -1039,8 +1046,13 @@
                 <xsl:for-each select="arg[@role = 'placeholder']">
                     <param name="xpe:p{position()}"/>
                 </xsl:for-each>
-                <arg role="return">
+                <xsl:variable name="return-content">
                     <xsl:variable name="args">
+                        <xsl:if test="$has-addidtional-arg">
+                            <arg>
+                                <varRef name="xpe:p0"/>
+                            </arg>
+                        </xsl:if>
                         <xsl:for-each select="arg">
                             <xsl:choose>
                                 <xsl:when test="@role = 'placeholder'">
@@ -1073,14 +1085,42 @@
                             </operation>
                         </xsl:when>
                     </xsl:choose>
+                </xsl:variable>
+                <arg role="return">
+                    <xsl:choose>
+                        <xsl:when test="empty($execution-context?context)">
+                            <xsl:sequence select="$return-content"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <operation type="map">
+                                <arg>
+                                    <varRef name="xpe:context"/>
+                                </arg>
+                                <map/>
+                                <arg>
+                                    <xsl:sequence select="$return-content"/>
+                                </arg>
+                            </operation>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </arg>
                 <as>
                     <xsl:copy-of select="$return-type"/>
                 </as>
             </function-impl>
         </xsl:variable>
-        
-        <xsl:apply-templates select="$inline-equivalent" mode="xpe:xpath-evaluate"/>
+        <xsl:variable name="first-arg" select="
+            if ($has-addidtional-arg) 
+            then map{xs:QName('xpe:p0') : $first-arg?1} 
+            else ()
+            "/>
+        <xsl:variable name="context" select="map{xs:QName('xpe:context') : $execution-context?context}"/>
+        <xsl:variable name="variables" select="($execution-context?variable-context, $first-arg, $context) => map:merge(map{'duplicates' : 'use-last'})"/>
+        <xsl:apply-templates select="$inline-equivalent" mode="xpe:xpath-evaluate">
+            <xsl:with-param name="execution-context" select="
+                map:put($execution-context, 'variable-context', $variables)
+                " tunnel="yes"/>
+        </xsl:apply-templates>
     </xsl:template>
     
     <xsl:template match="function-call" mode="xpe:xpath-evaluate">
