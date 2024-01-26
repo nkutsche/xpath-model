@@ -1534,6 +1534,55 @@
         <xsl:sequence select="apply($function, $array)"/>
     </xsl:function>
     
+    <xsl:function name="xpf:random-number-generator" as="map(xs:string, item())">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="xpf:random-number-generator($exec-context, ())"/>
+    </xsl:function>
+    <xsl:function name="xpf:random-number-generator" as="map(xs:string, item())">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="seed" as="xs:anyAtomicType?"/>
+        <xsl:variable name="underline-rng" select="random-number-generator($seed)"/>
+        <xsl:sequence select="xpe:random-nr-gen-wrapper($underline-rng)"/>
+    </xsl:function>
+    
+    <xsl:function name="xpe:random-nr-gen-wrapper" as="map(xs:string, item())">
+        <xsl:param name="underline-random-gen" as="map(xs:string, item())"/>
+        <xsl:variable name="next-funct" select="
+            function(){xpe:random-nr-gen-wrapper($underline-random-gen?next())}
+            "/>
+        <!--        map(xs:string, item())-->
+        <xsl:variable name="next-funct-return-type" as="element(itemType)">
+            <itemType>
+                <mapType>
+                    <atomic name="xs:string">
+                        <xsl:namespace name="xs" select="$build-in-namespaces('xs')"/>
+                    </atomic>
+                    <itemType/>
+                </mapType>
+            </itemType>
+        </xsl:variable>
+        <xsl:variable name="any-seq-type" as="element(itemType)">
+            <itemType occurrence="zero-or-more"/>
+        </xsl:variable>
+        <xsl:variable name="next-funct" select="
+            xpe:create-function-wrapper($next-funct, (), (), $next-funct-return-type)
+            "/>
+        <xsl:variable name="permute-funct" select="
+            function($seq){$underline-random-gen?permute($seq)}
+            "/>
+        <xsl:variable name="permute-funct" select="
+            xpe:create-function-wrapper($permute-funct, (), $any-seq-type, $any-seq-type)
+            "/>
+        
+        <xsl:sequence select="
+            map{
+                'number' : $underline-random-gen?number,
+                'next' : $next-funct,
+                'permute' : $permute-funct
+            }
+            "/>
+    </xsl:function>
+    
 <!--    
     Array/Map high-order-functions 
     -->
