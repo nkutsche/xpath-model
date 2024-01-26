@@ -381,13 +381,17 @@
                 then
                     ('attribute')
                 else
-                    if ($step/AbbrevForwardStep) then
-                        ('child')
+                    if ($step/AbbrevForwardStep/NodeTest/KindTest/NamespaceNodeTest)
+                    then
+                        ('namespace')
                     else
-                        if ($step/AbbrevReverseStep) then
-                            'parent'
+                        if ($step/AbbrevForwardStep) then
+                            ('child')
                         else
-                            $step/(ReverseAxis | ForwardAxis)/string(TOKEN[1])"
+                            if ($step/AbbrevReverseStep) then
+                                'parent'
+                            else
+                                $step/(ReverseAxis | ForwardAxis)/string(TOKEN[1])"
             as="xs:string"/>
         <xsl:variable name="leadingComments" select="Comment[. &lt;&lt; $step]"/>
         <xsl:apply-templates select="$leadingComments" mode="#current"/>
