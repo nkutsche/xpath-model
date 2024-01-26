@@ -824,12 +824,14 @@
         
         <mapType>
             <xsl:variable name="keys" select="map:keys($item)"/>
-            <xsl:variable name="keyItemTypes" select="$keys ! xpt:type-of(.) => xpt:ancestor-type()"/>
-            <xsl:copy-of select="$keyItemTypes/atomic"/>
-            <xsl:variable name="value-types" select="
-                $keys ! xpt:type-of-sequence($item(.))
-                "/>
-            <xsl:sequence select="xpt:ancestor-type($value-types)"/>
+            <xsl:if test="exists($keys)">
+                <xsl:variable name="keyItemTypes" select="$keys ! xpt:type-of(.) => xpt:ancestor-type()"/>
+                <xsl:copy-of select="$keyItemTypes/atomic"/>
+                <xsl:variable name="value-types" select="
+                    $keys ! xpt:type-of-sequence($item(.))
+                    "/>
+                <xsl:sequence select="xpt:ancestor-type($value-types)"/>
+            </xsl:if>
         </mapType>
             
         
@@ -841,7 +843,9 @@
         <xsl:variable name="item" select="xpe:raw-function($item)"/>
         <arrayType>
             <xsl:variable name="value-types" select="$item?* ! xpt:type-of(.)"/>
-            <xsl:sequence select="xpt:ancestor-type($value-types)"/>
+            <xsl:if test="exists($value-types)">
+                <xsl:sequence select="xpt:ancestor-type($value-types)"/>
+            </xsl:if>
         </arrayType>
         
     </xsl:template>
