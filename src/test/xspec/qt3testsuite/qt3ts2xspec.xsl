@@ -61,6 +61,10 @@
             <xpmt:ignore test="fn-unparsed-text-054a">requires: Feature.STABLE_UNPARSED_TEXT which leads to problems with other test cases...</xpmt:ignore>
         </xpmt:dependency>
         <xpmt:dependency>
+            <xpmt:ignore test="K2-FunctionCallExpr-2"
+                >This test case rules only for XQuery.</xpmt:ignore>
+            <xpmt:ignore test="K-XQueryComment-15"
+                >Comment nested in comments are ignored by the XPM parser...</xpmt:ignore>
             <xpmt:ignore test="fn-unparsed-text-056">Saxon-HE throws FOUT1170 instead of FOUT1190!</xpmt:ignore>
             <xsl:if test="not(available-environment-variables() = 'QTTEST')">
                 <xpmt:ignore test="fn-available-environment-variables-011">Its hard to ensure that an env variable is set by the calling system...</xpmt:ignore>
