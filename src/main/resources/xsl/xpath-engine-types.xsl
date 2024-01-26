@@ -351,7 +351,7 @@
     </xsl:function>
 
     <xsl:function name="xpt:castable-as" as="xs:boolean">
-        <xsl:param name="input" as="item()?"/>
+        <xsl:param name="input" as="item()*"/>
         <xsl:param name="type" as="element(itemType)"/>
         
         <xsl:variable name="qname" select="$type/atomic/resolve-QName(@name, .)"/>
@@ -484,13 +484,13 @@
         <xsl:param name="input" tunnel="yes" as="array(*)"/>
         <xsl:variable name="memberType" select="*"/>
         <xsl:variable name="sub-arrays" select="
-            for $i in array:size($input)
+            for $i in 1 to array:size($input)
             return [xpt:treat-as($input($i), $memberType)]
             "/>
         <xsl:sequence select="array:join($sub-arrays)"/>
     </xsl:template>
     
-    <xsl:template match="itemType/*" mode="xpt:treat-as">
+    <xsl:template match="itemType/*" mode="xpt:treat-as" priority="-10">
         <xsl:param name="input" tunnel="yes" as="item()"/>
         <xsl:sequence select="$input"/>
     </xsl:template>
@@ -653,7 +653,7 @@
         <xsl:variable name="member-valids" as="xs:boolean*">
             <xsl:for-each select="1 to array:size($input)">
                 <xsl:variable name="i" select="."/>
-                <xsl:apply-templates select="$this/itemType">
+                <xsl:apply-templates select="$this/itemType" mode="#current">
                     <xsl:with-param name="input" select="$input($i)" tunnel="yes"/>
                 </xsl:apply-templates>
             </xsl:for-each>
