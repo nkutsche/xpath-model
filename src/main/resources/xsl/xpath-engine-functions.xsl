@@ -1246,7 +1246,7 @@
         <xsl:variable name="typeName" select="atomic/resolve-QName(@name, .)"/>
         <xsl:variable name="promoteableTypes" select="$promotion-types($typeName)"/>
         <xsl:variable name="validators" select="
-            $promoteableTypes ! xpe:get-type-validator(.)
+            $promoteableTypes ! xpt:get-type-validator(.)
             "/>
         <xsl:sequence select="
             if (some $ptv in $validators satisfies $ptv?instance-of($arg)) 

@@ -355,7 +355,7 @@
         <xsl:param name="type" as="element(itemType)"/>
         
         <xsl:variable name="qname" select="$type/atomic/resolve-QName(@name, .)"/>
-        <xsl:variable name="validator" select="function-lookup(xpe:get-function-name-by-type-name($qname), 0)()"/>
+        <xsl:variable name="validator" select="xpt:get-type-validator($qname)"/>
         
         <xsl:choose>
             <xsl:when test="empty($input) and $type/@occurrence = 'zero-or-one'">
@@ -375,7 +375,7 @@
         <xsl:param name="type" as="element(itemType)"/>
         
         <xsl:variable name="qname" select="$type/atomic/resolve-QName(@name, .)"/>
-        <xsl:variable name="validator" select="xpe:get-type-validator($qname)"/>
+        <xsl:variable name="validator" select="xpt:get-type-validator($qname)"/>
         <xsl:variable name="req-type" select="xpm:xpath-serializer-sub($type) => normalize-space()"/>
         
         <xsl:choose>
@@ -538,7 +538,7 @@
     <xsl:template match="atomic[@name]" mode="xpt:instance-of">
         <xsl:param name="input" as="item()" tunnel="yes"/>
         <xsl:variable name="qname" select="resolve-QName(@name, .)"/>
-        <xsl:variable name="validator" select="function-lookup(xpe:get-function-name-by-type-name($qname), 0)()"/>
+        <xsl:variable name="validator" select="xpt:get-type-validator($qname)"/>
         <xsl:sequence select="$validator?instance-of($input)"/>
     </xsl:template>
     
@@ -548,7 +548,7 @@
         <!--  Mapping: document-node -> document, namespace-node -> namespace     -->
         <xsl:variable name="basic-type" select="replace($kind, '-node$', '')"/>
         <xsl:variable name="qname" select="QName('', $basic-type)"/>
-        <xsl:variable name="validator" select="function-lookup(xpe:get-function-name-by-type-name($qname), 0)()"/>
+        <xsl:variable name="validator" select="xpt:get-type-validator($qname)"/>
         <xsl:choose>
             <xsl:when test="not($validator?instance-of($input))">
                 <xsl:sequence select="false()"/>
@@ -786,6 +786,17 @@
         </arrayType>
         
     </xsl:template>
+    
+    <xsl:function name="xpt:get-type-validator" as="map(*)">
+        <xsl:param name="qname" as="xs:QName"/>
+        <xsl:variable name="validator-constructor"
+            select="function-lookup(xpe:get-function-name-by-type-name($qname), 0)"/>
+        <xsl:sequence select="
+            if (empty($validator-constructor)) 
+            then error(xpe:error-code('XPST0051'), 'Unknown atomic type ' || $qname || '.') 
+            else $validator-constructor()
+            "/>
+    </xsl:function>
     
     
 </xsl:stylesheet>

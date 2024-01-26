@@ -100,9 +100,6 @@
             "/>
     </xsl:function>
     
-    <xsl:function name="xpe:get-type-validator" as="map(*)">
-        <xsl:param name="qname" as="xs:QName"/>
-        <xsl:sequence select="function-lookup(xpe:get-function-name-by-type-name($qname), 0)()"/>
-    </xsl:function>
+    
     
 </xsl:stylesheet>
