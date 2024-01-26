@@ -984,8 +984,9 @@
             throws an error with a corresponding error message, e.g.:
             xs:QName('fn:load-xquery-module') : function(){error(QName('', 'code'), '')}
             :)
+            xs:QName('xs:NOTATION') : function(){error(xpe:error-code('XPST0017'), 'xs:NOTATION can not be constructed.')}
         }
-        " as="map(xs:QName, function(xs:string) as empty-sequence())"/>
+        " as="map(xs:QName, function(*))"/>
     
     <xsl:key name="functSign-qname" match="fos:function" use="
         QName(
@@ -1009,9 +1010,9 @@
         
         <xsl:variable name="xsd-constructor" select="$ns-uri = $build-in-namespaces('xs')"/>
         <xsl:variable name="function" select="
-            (:if (exists($unsupported-functions($name))) 
+            if (exists($unsupported-functions($name))) 
             then ($unsupported-functions($name)()) 
-            else :)
+            else 
             if ($ns-uri = $build-in-namespaces('fn') and function-available('xpf:' || $local-name, $arity + 1)) 
             then function-lookup(xs:QName('xpf:' || $local-name), $arity + 1) 
             else if ($ns-uri = $build-in-namespaces('array') and function-available('xpfa:' || $local-name, $arity + 1)) 
