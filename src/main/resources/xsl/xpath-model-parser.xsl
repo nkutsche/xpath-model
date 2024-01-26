@@ -213,7 +213,11 @@
         <xsl:variable name="used-prefixes" as="xs:string*"
             select="$parsed//(QName[contains(., ':')] | NameTest/Wildcard[matches(., '^[^:]+:\*$')])/substring-before(., ':')[. != '*'] => distinct-values()"/>
         
-        <xsl:variable name="used-prefixes" select="$used-prefixes[. != 'xmlns']"/>
+        <xsl:if test="$used-prefixes = 'xmlns'">
+            <xsl:sequence select="error(xs:QName('nk:xp-model-undeclared-prefix'), 'Don''t use prefix xmlns as it is reserved for namespace declarations.')"/>
+        </xsl:if>
+        
+        <xsl:variable name="used-prefixes" select="$used-prefixes"/>
 
         <xsl:variable name="base-ns-uri" select="'http://www.nkutsche.com/xpath-model/dummy-namespace/'"/>
 
