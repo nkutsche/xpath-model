@@ -8,6 +8,7 @@
     xmlns:p="http://www.nkutsche.com/xpath-parser"
     xmlns:avt="http://www.nkutsche.com/avt-parser"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     stylesheet="../../main/resources/xsl/xpath-model.xsl">
     
     <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
@@ -15,17 +16,17 @@
     <x:scenario label="Testing function xpe:xpath-evaluate" catch="yes">
         <x:call function="xpe:xpath-evaluate"/>
             
+        <x:variable name="namespaces" select="map{
+            'fn' : 'http://www.w3.org/2005/xpath-functions',
+            'xs' : 'http://www.w3.org/2001/XMLSchema',
+            'map' : 'http://www.w3.org/2005/xpath-functions/map',
+            'array' : 'http://www.w3.org/2005/xpath-functions/array'
+            }"/>
+        <x:variable name="test-config" select="map{
+            'namespaces' : $namespaces,
+            'base-uri' : static-base-uri()
+            }"/>
         <x:scenario label="with test config">
-            <x:variable name="namespaces" select="map{
-                'fn' : 'http://www.w3.org/2005/xpath-functions',
-                'xs' : 'http://www.w3.org/2001/XMLSchema',
-                'map' : 'http://www.w3.org/2005/xpath-functions/map',
-                'array' : 'http://www.w3.org/2005/xpath-functions/array'
-                }"/>
-            <x:variable name="test-config" select="map{
-                'namespaces' : $namespaces,
-                'base-uri' : static-base-uri()
-                }"/>
             <x:call>
                 <x:param position="3" select="$test-config"></x:param>
             </x:call>
@@ -65,7 +66,201 @@
                     </x:call>
                     <x:expect label="should fail" test="$x:result instance of map(*)"/>
                 </x:scenario>
-                
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Testsuite test cases">
+            <x:scenario label="fn-apply-06">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        >apply(substring('flower', ?, ?), [ 3, 2 ])</x:param>
+                    <x:param position="3" select="$test-config"></x:param>
+                </x:call>
+                <x:expect label="Should return 'ow'" select="'ow'"/>
+            </x:scenario>
+            <x:scenario label="ArrayTest-035">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        >[("A", "B"), "C"] instance of array(xs:string)</x:param>
+                    <x:param position="3" select="$test-config"></x:param>
+                </x:call>
+                <x:expect label="Should be false" select="false()"/>
+            </x:scenario>
+            <x:scenario label="ArrayTest-076">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        let $f := function($a as array(xs:string+)) as xs:boolean 
+                        {array:size($a) eq 6},
+                        $array:= ['a','b','c','d','e', ('f', 'g')]
+                        return $f($array)
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"></x:param>
+                </x:call>
+                <x:expect label="Should be true" select="true()"/>
+            </x:scenario>
+            <x:scenario label="CastAs011">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        xs:untypedAtomic("true") cast as xs:float
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Error code should be FORG0001" 
+                    test="$x:result ! ?err ! ?code" select="xs:QName('err:FORG0001')"/>
+            </x:scenario>
+            <x:scenario label="Lookup-007">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        (['a', 'b', 'c'], ['b', 'c', 'd'], ['e', 'f', 'b'])[ .?(1 to 2) = 'b']
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Result should be (['a', 'b', 'c'], ['b', 'c', 'd'])"  
+                    select="['a', 'b', 'c'], ['b', 'c', 'd']"/>
+            </x:scenario>
+            <x:scenario label="Lookup-016">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        (['a', 'b', 'c'], ['b', 'c', 'd'], ['e', 'f', 'b'])
+                        [contains(.?1, ?, 'http://www.w3.org/2005/xpath-functions/collation/codepoint')('a')]
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Result should be ['a', 'b', 'c']"  select="['a', 'b', 'c']"/>
+            </x:scenario>
+            
+            <x:scenario label="Lookup-101 (adjusted)">
+                <x:call>
+                    <x:param position="1" select="item">
+                        <item>1</item>
+                    </x:param>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        (['a', 'b'], ['c', 'd'])?(.)
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Result should be ('a', 'c')"  select="'a', 'c'"/>
+            </x:scenario>
+            
+            <x:scenario label="Lookup-101">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        (['a', 'b'], ['c', 'd'])?1
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Result should be ('a', 'c')"  select="'a', 'c'"/>
+            </x:scenario>
+            <x:scenario label="Lookup-166">
+                <x:call>
+                    <x:param position="1" select="()"/>
+                    <x:param position="2" select="string()"
+                        ><![CDATA[
+                        let $x := map{"else":18} return exists($x[?else = 18])
+                        ]]></x:param>
+                    <x:param position="3" select="$test-config"/>
+                </x:call>
+                <x:expect label="Result should be true()"  select="true()"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>
+    <x:scenario label="Testing function xpe:prepare-argument" catch="yes">
+        <x:call function="xpe:prepare-argument"/>
+        
+        <x:scenario label="$typeDef = array(*)">
+            <x:call>
+                <x:param position="2" name="typeDef">
+                    <itemType>
+                        <arrayType/>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                <x:call>
+                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:call>
+                <x:expect label="argument should returned unchanged" 
+                    select="['a','b','c','d','e', 'f', 'g']"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$typeDef = array(xs:string)">
+            <x:call>
+                <x:param position="2" name="typeDef">
+                    <itemType>
+                        <arrayType>
+                            <itemType>
+                                <atomic name="xs:string"/>
+                            </itemType>
+                        </arrayType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                <x:call>
+                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:call>
+                <x:expect label="argument should returned unchanged" 
+                    select="['a','b','c','d','e', 'f', 'g']"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$typeDef = array(xs:string+)">
+            <x:call>
+                <x:param position="2" name="typeDef">
+                    <itemType>
+                        <arrayType>
+                            <itemType occurrence="one-or-more">
+                                <atomic name="xs:string"/>
+                            </itemType>
+                        </arrayType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                <x:call>
+                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:call>
+                <x:expect label="argument should returned unchanged" 
+                    select="['a','b','c','d','e', 'f', 'g']"/>
+            </x:scenario>
+            <x:scenario label="$arg = ['a','b','c','d','e', ('f', 'g')]">
+                <x:call>
+                    <x:param position="1" select="['a','b','c','d','e', ('f', 'g')]"/>
+                </x:call>
+                <x:expect label="argument should returned unchanged" 
+                    select="['a','b','c','d','e', ('f', 'g')]"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$typeDef = array(xs:integer)">
+            <x:call>
+                <x:param position="2" name="typeDef">
+                    <itemType>
+                        <arrayType>
+                            <itemType>
+                                <atomic name="xs:integer"/>
+                            </itemType>
+                        </arrayType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$arg = [1, 2, 3, 4, 5, 6, 7]">
+                <x:call>
+                    <x:param position="1" select="[1, 2, 3, 4, 5, 6, 7]"/>
+                </x:call>
+                <x:expect label="argument should returned unchanged" 
+                    select="[1, 2, 3, 4, 5, 6, 7]"/>
             </x:scenario>
         </x:scenario>
     </x:scenario>

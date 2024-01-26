@@ -5597,6 +5597,9 @@
                         <x:expect label="node test of the location step" test="(expr/locationStep/nodeTest|ERROR)">
                             <nodeTest kind="namespace-node"/>
                         </x:expect>
+                        <x:expect label="node test of the location step" test="expr/locationStep">
+                            <locationStep axis="namespace">...</locationStep>
+                        </x:expect>
                     </x:scenario>
                     <x:scenario label="node">
                         <x:call>

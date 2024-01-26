@@ -803,8 +803,46 @@
         </x:call>
         <x:expect label="result" select="$result"/>
     </x:scenario>
+
+    <x:scenario label="xpt:cast-as" shared="yes">
+        <x:variable name="config" select="
+            map{'namespaces' : map{
+                   'xs' : 'http://www.w3.org/2001/XMLSchema', 
+                   'array' : 'http://www.w3.org/2005/xpath-functions/array'
+                }
+            }
+            "/>
+        <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
+        <x:call function="xpt:cast-as">
+            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <x:param 
+                    position="2"
+                    select="$type-model/operation/itemType"
+                    />
+        </x:call>
+        <x:expect label="result" select="$result"/>
+    </x:scenario>
+
+    <x:scenario label="xpt:castable-as" shared="yes">
+        <x:variable name="config" select="
+            map{'namespaces' : map{
+                   'xs' : 'http://www.w3.org/2001/XMLSchema', 
+                   'array' : 'http://www.w3.org/2005/xpath-functions/array'
+                }
+            }
+            "/>
+        <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
+        <x:call function="xpt:castable-as">
+            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <x:param 
+                    position="2"
+                    select="$type-model/operation/itemType"
+                    />
+        </x:call>
+        <x:expect label="result" select="$result"/>
+    </x:scenario>
     
-    <x:scenario label="Scenario testing function call xpt:instance-of">
+    <x:scenario label="Scenario testing function call xpt:instance-of" catch="true">
         <x:call function="xpt:instance-of"/>
         <x:variable name="context" select="()"/>
         <x:scenario label="type = empty-sequence()">
@@ -1151,6 +1189,89 @@
             </x:scenario>
 
         </x:scenario>
+        <x:scenario label="type = function(xs:string) as xs:string?">
+            <x:variable name="type">function(xs:string) as xs:string?</x:variable>
+            
+            <x:scenario label="input = map{'foo':'bar'}">
+                <x:variable name="xpath">map{ 'foo' : 'bar' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 'foo' : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 'foo' : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 0 : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 0 : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = function(xs:string) as xs:string">
+            <x:variable name="type">function(xs:string) as xs:string</x:variable>
+            
+            <x:scenario label="input = map{'foo':'bar'}">
+                <x:variable name="xpath">map{ 'foo' : 'bar' }</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 'foo' : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 'foo' : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 0 : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 0 : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = function(xs:string) as item()*">
+            <x:variable name="type">function(xs:string) as item()*</x:variable>
+            <x:scenario label="input = map{'foo':'bar'}">
+                <x:variable name="xpath">map{ 'foo' : 'bar' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 'foo' : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 'foo' : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+            <x:scenario label="input = map{ 0 : 'bar', 1 : 'baz' }">
+                <x:variable name="xpath">map{ 0 : 'bar', 1 : 'baz' }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = function(xs:integer) as empty-sequence()" focus="">
+            <x:variable name="type">function(xs:integer) as empty-sequence()</x:variable>
+            <x:scenario label="input = map{ }">
+                <x:variable name="xpath">map{ }</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        
+        <x:scenario label="type = array(xs:string)">
+            <x:variable name="type">array(xs:string)</x:variable>
+            
+            <x:scenario label="input = [('foo', 'bar'), 'baz']">
+                <x:variable name="xpath">[('foo', 'bar'), 'baz']</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="type = function(xs:integer) as item()*">
+            <x:variable name="type">function(xs:integer) as item()*</x:variable>
+            
+            <x:scenario label="input = [['A'], ['B']]">
+                <x:variable name="xpath">[['A'], ['B']]</x:variable>
+                <x:variable name="result" select="true()"/>
+                <x:like label="xpt:instance-of"/>
+            </x:scenario>
+        </x:scenario>
         <x:scenario label="Build in function signatures">
             <x:scenario label="string-join#1 instance of function(xs:string) as item()*">
                 <x:variable name="type">function(xs:string) as item()*</x:variable>
@@ -1173,6 +1294,31 @@
         </x:scenario>
     </x:scenario>
     
+    <!--<x:scenario label="Scenario testing function call xpt:treat-as">
+        <x:variable name="context" select="()"/>
+        <x:scenario label="type = xs:float">
+            <x:variable name="type">xs:float</x:variable>
+            <x:scenario label="input = xs:untypedAtomic('true')">
+                <x:variable name="xpath">xs:untypedAtomic('true')</x:variable>
+                <x:variable name="result" select="map{}"/>
+                <x:like label="xpt:cast-as"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>-->
+    <x:scenario label="Scenario testing function call xpt:castable-as">
+        <x:variable name="context" select="()"/>
+        <x:scenario label="type = xs:integer">
+            <x:variable name="type">xs:integer</x:variable>
+            
+            <x:scenario label="input = (1 to 5)">
+                <x:variable name="xpath">(1 to 5)</x:variable>
+                <x:variable name="result" select="false()"/>
+                <x:like label="xpt:castable-as"/>
+            </x:scenario>
+            
+        </x:scenario>
+    </x:scenario>
     <x:scenario label="Scenario testing function call xpt:treat-as">
         <x:variable name="context" select="()"/>
         <x:scenario label="type = empty-sequence()">
@@ -1186,12 +1332,23 @@
             
         </x:scenario>
 
-        <x:scenario label="type = empty-sequence()">
+        <x:scenario label="type = item()">
             <x:variable name="type">item()</x:variable>
             
             <x:scenario label="input = 'foo'">
                 <x:variable name="xpath">'foo'</x:variable>
                 <x:variable name="result" select="'foo'"/>
+                <x:like label="xpt:treat-as"/>
+            </x:scenario>
+            
+        </x:scenario>
+
+        <x:scenario label="type = empty-sequence()">
+            <x:variable name="type">array(xs:string)</x:variable>
+            
+            <x:scenario label="input = ['foo', 'bar']">
+                <x:variable name="xpath">['foo', 'bar']</x:variable>
+                <x:variable name="result" select="['foo', 'bar']"/>
                 <x:like label="xpt:treat-as"/>
             </x:scenario>
             
