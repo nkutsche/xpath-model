@@ -669,9 +669,51 @@
         <xsl:param name="input" as="item()" tunnel="yes"/>
         <xsl:variable name="is-map" select="$input instance of map(*)"/>
         <xsl:variable name="is-array" select="$input instance of array(*)"/>
+        <xsl:variable name="is-function" select="xpe:is-function($input)"/>
         <xsl:choose>
-            <xsl:when test="not(xpe:is-function($input) or $is-map or $is-array)">
+            <xsl:when test="not($is-function or $is-map or $is-array)">
                 <xsl:sequence select="false()"/>
+            </xsl:when>
+            <xsl:when test="$is-function">
+                <xsl:next-match/>
+            </xsl:when>
+            <xsl:when test="$is-map or $is-array">
+                <xsl:choose>
+                    <xsl:when test="not(./as)">
+                        <xsl:sequence select="true()"/>
+                    </xsl:when>
+                    <xsl:when test="count(itemType) ne 1">
+                        <xsl:sequence select="false()"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:variable name="as" select="./as/itemType"/>
+                        <xsl:variable name="type-of" select="xpt:type-of($input)"/>
+                        <xsl:variable name="valueType" select="$type-of/(mapType|arrayType)/itemType"/>
+                        <xsl:variable name="valueType" as="element(itemType)">
+                            <xsl:choose>
+                                <xsl:when test="$valueType">
+                                    <xsl:copy select="$valueType">
+                                        <xsl:variable name="occurrence" select="@occurrence"/>
+                                        <xsl:attribute name="occurrence" select="
+                                            if ($occurrence = 'one-or-more') 
+                                            then 'zero-or-more' 
+                                            else if (matches($occurrence, '^zero')) 
+                                            then $occurrence 
+                                            else 'zero-or-one'
+                                            "/>
+                                        <xsl:copy-of select="@* | namespace::*"/>
+                                        <xsl:copy-of select="node()"/>
+                                    </xsl:copy>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <itemType occurrence="zero"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:variable>
+                        <xsl:sequence select="xpt:is-type-ancestor-of($valueType, $as)"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <xsl:sequence select="true()"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:next-match/>
