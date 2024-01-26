@@ -718,32 +718,55 @@
         <xsl:sequence select="$variables($varName)"/>
     </xsl:template>
     
-
-    <xsl:template match="lookup[not(*)]" mode="xpe:xpath-evaluate" priority="-10">
+    <xsl:template match="*[not(self::operation[@type = 'postfix'])]/lookup" 
+        mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="context" select="$execution-context?context"/>
         <xsl:choose>
-            <xsl:when test="$context instance of map(*) or $context instance of array(*)">
-                <xsl:sequence select="$context?*"/>
+            <xsl:when test="empty($context)">
+                <xsl:sequence select="error(xpe:error-code('XPDY0002'), 'Context of an unary lookup is absent!')"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="error(QName('', 'TODO'), 'Context of an unary lookup must be a map or array!')"/>
+                <xsl:next-match>
+                    <xsl:with-param name="target" select="$context"/>
+                </xsl:next-match>
+            </xsl:otherwise>
+        </xsl:choose>
+        
+    </xsl:template>
+    
+
+    <xsl:template match="lookup[not(*)]" mode="xpe:xpath-evaluate" priority="-10">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:param name="target" as="item()"/>
+        <xsl:choose>
+            <xsl:when test="xpe:is-function($target)">
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Target of a lookup must be a map or array, not a function!')"/>
+            </xsl:when>
+            <xsl:when test="$target instance of map(*) or $target instance of array(*)">
+                <xsl:sequence select="$target?*"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Target of a lookup must be a map or array!')"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     
     <xsl:template match="lookup" mode="xpe:xpath-evaluate" priority="-15">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="context" select="$execution-context?context"/>
-        <xsl:variable name="key" as="item()">
+        <xsl:param name="target" as="item()"/>
+        <xsl:variable name="key" as="item()*">
             <xsl:apply-templates select="integer | field | arg" mode="#current"/>
         </xsl:variable>
         <xsl:choose>
-            <xsl:when test="$context instance of map(*) or $context instance of array(*)">
-                <xsl:sequence select="$context($key)"/>
+            <xsl:when test="xpe:is-function($target)">
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Target of a lookup must be a map or array, not a function!')"/>
+            </xsl:when>
+            <xsl:when test="$target instance of map(*) or $target instance of array(*)">
+                <xsl:sequence select="$key ! $target(.)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="error(QName('', 'TODO'), 'Context of an unary lookup must be a map or array!')"/>
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Target of a lookup must be a map or array!')"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
