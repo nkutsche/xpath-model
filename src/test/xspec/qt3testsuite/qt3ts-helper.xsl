@@ -438,7 +438,13 @@
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         <xsl:sequence select="$result instance of xs:boolean and not($result)"/>
     </xsl:template>
-
+    
+    <xsl:template match="qt:not" mode="xpmt:result-compare" as="xs:boolean">
+        <xsl:variable name="content" as="xs:boolean">
+            <xsl:apply-templates select="*" mode="#current"/>
+        </xsl:variable>
+        <xsl:sequence select="not($content)"/>
+    </xsl:template>
     <xsl:template match="qt:assert-type" mode="xpmt:result-compare" as="xs:boolean">
         <xsl:param name="result" as="item()*" tunnel="yes"/>
         
