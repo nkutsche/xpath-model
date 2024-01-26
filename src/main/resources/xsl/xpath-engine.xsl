@@ -392,6 +392,9 @@
                 <xsl:variable name="return-type" select="$function?return-type"/>
                 <xsl:variable name="return-value" select="apply($function?function, $args)"/>
                 <xsl:try>
+                    <xsl:variable name="return-value" select="
+                        xpe:type-promotion($return-value, $return-type/atomic)
+                        "/>
                     <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
                     <xsl:catch errors="err:XPTY0004">
                         <xsl:variable name="descr-prefix" select="
@@ -1153,7 +1156,9 @@
             else $arg-array
             "/>
         
-        <xsl:variable name="return-value" select="apply(xpe:raw-function($function), $arg-array)"/>
+        <xsl:variable name="raw-function" select="xpe:raw-function($function)"/>
+        <xsl:variable name="return-value" select="apply($raw-function, $arg-array)"/>
+        <xsl:variable name="return-value" select="xpe:type-promotion($return-value, $return-type/atomic)"/>
         <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
     </xsl:template>
     
@@ -1274,7 +1279,7 @@
             <xsl:sequence select="
                 if ($result-type) 
                 then 
-                    xpt:treat-as($return-value, $result-type)
+                    xpt:treat-as(xpe:type-promotion($return-value, $result-type/atomic), $result-type)
                 else 
                     $return-value
                 "/>
