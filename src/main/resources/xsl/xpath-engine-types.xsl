@@ -9,6 +9,7 @@
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:xpm="http://www.nkutsche.com/xpath-model"
+    xmlns:err="http://www.w3.org/2005/xqt-errors"
     exclude-result-prefixes="math"
     version="3.0">
     <xsl:import href="xpath-functions/type-system.xsl"/>
@@ -393,14 +394,22 @@
             <xsl:when test="empty($input)">
                 <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Can not cast empty sequence to ' || $req-type || '.')"/>
             </xsl:when>
-            <xsl:when test="not($validator?castable-as($input))">
-                <xsl:variable name="deliverded-type" select="
-                    xpt:type-of($input) => xpm:xpath-serializer-sub() => normalize-space()
-                    "/>
-                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Can not cast delivered type ' || $deliverded-type || ' to ' || $req-type || '.')"/>
-            </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="$validator?cast-as($input)"/>
+                <xsl:try>
+                    <xsl:sequence select="$validator?cast-as($input)"/>
+                    <xsl:catch errors="err:XPTY0004">
+                        <xsl:variable name="deliverded-type" select="
+                            xpt:type-of($input) => xpm:xpath-serializer-sub() => normalize-space()
+                            "/>
+                        <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Can not cast delivered type ' || $deliverded-type || ' to ' || $req-type || '.')"/>
+                    </xsl:catch>
+                    <xsl:catch errors="err:FORG0001">
+                        <xsl:variable name="deliverded-type" select="
+                            xpt:type-of($input) => xpm:xpath-serializer-sub() => normalize-space()
+                            "/>
+                        <xsl:sequence select="error(xpe:error-code('FORG0001'), 'Can not cast delivered type ' || $deliverded-type || ' to ' || $req-type || '.')"/>
+                    </xsl:catch>
+                </xsl:try>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -415,7 +424,7 @@
                 <xsl:variable name="deliverded-type" select="
                     xpt:type-of-sequence($input) => xpm:xpath-serializer-sub() => normalize-space()
                     "/>
-                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 'Required type was ' || $req-type || ' but delivered was ' || $deliverded-type)"/>
+                <xsl:sequence select="error(xpe:error-code('XPDY0050'), 'Required type was ' || $req-type || ' but delivered was ' || $deliverded-type)"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates select="$type" mode="xpt:treat-as">
