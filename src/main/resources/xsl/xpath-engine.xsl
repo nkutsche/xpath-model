@@ -206,7 +206,6 @@
         <xsl:variable name="op-functions" as="(function(item()*, item()*) as item()*)*">
             <xsl:apply-templates select="$operators" mode="xpe:xpath-operator"/>
         </xsl:variable>
-        
         <xsl:sequence select="xpe:fold-left-wizzard($arg-array, array{$op-functions})"/>
         
     </xsl:template>
@@ -219,7 +218,7 @@
         <xsl:sequence select="$xpe:operations(local-name())"/>
     </xsl:template>
     
-    <xsl:template match="operation/div[@type = 'integer']" mode="xpe:xpath-operator">
+    <xsl:template match="operation/div[@type = 'integer']" mode="xpe:xpath-operator" priority="10">
         <xsl:variable name="type" select="@type"/>
         <xsl:sequence select="$xpe:operations('idiv')"/>
     </xsl:template>
@@ -941,7 +940,7 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:variable>
         <xsl:sequence select="
-            if ($content instance of xs:integer) 
+            if ($content instance of xs:numeric) 
             then ($execution-context?position = $content) 
             else boolean($content)
            "/>
@@ -1241,7 +1240,6 @@
     <xsl:template match="function[@name]" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:param name="arity" select="@arity" as="xs:integer" tunnel="yes"/>
-        
         <xsl:variable name="qname" select="xpm:name-matcher(@name)"/>
         <xsl:variable name="local-name" select="$qname?local"/>
         <xsl:variable name="ns-uri" select="$qname?namespace"/>
@@ -1346,7 +1344,6 @@
         <xsl:param name="arg-types" as="element(itemType)*"/>
         <xsl:param name="result-type" as="element(itemType)?"/>
         <xsl:param name="arguments" as="array(*)"/>
-        
         <xsl:variable name="arguments" select="xpe:prepare-arguments($arguments, $arg-types, ())"/>
         
         <xsl:variable name="parameter" select="
