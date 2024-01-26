@@ -1254,6 +1254,29 @@
             else $arg
             "/>
     </xsl:template>
+    
+    <xsl:function name="xpe:type-promotion" as="item()*">
+        <xsl:param name="values" as="item()*"/>
+        <xsl:param name="atomic" as="element(atomic)?"/>
+        <xsl:variable name="typeName" select="$atomic/resolve-QName(@name, .)"/>
+        <xsl:variable name="allowed-src-typeNames" select="$typeName ! $promotion-types(.)"/>
+        <xsl:variable name="validators" select="
+            $allowed-src-typeNames ! xpt:get-type-validator(.)
+            "/>
+        <xsl:variable name="target-type" as="element(itemType)">
+            <itemType>
+                <xsl:copy-of select="$atomic"/>
+            </itemType>
+        </xsl:variable>
+        <xsl:for-each select="$values">
+            <xsl:variable name="value" select="."/>
+            <xsl:sequence select="
+                if (some $ptv in $validators satisfies $ptv?instance-of($value)) 
+                then xpt:cast-as($value, $target-type) 
+                else $value
+                "/>
+        </xsl:for-each>
+    </xsl:function>
 
     <xsl:template match="itemType[functType]" mode="xpe:prepare-argument">
         <xsl:param name="arg" tunnel="yes" as="item()"/>
