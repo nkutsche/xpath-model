@@ -12,6 +12,7 @@
     xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:err="http://www.w3.org/2005/xqt-errors"
+    xmlns:xpfs="http://www.nkutsche.com/xmlml/xpath-engine/xsd-constructors"
     exclude-result-prefixes="xs math xd"
     version="3.0">
     <xsl:import href="xpath-engine-functions.xsl"/>
@@ -591,6 +592,44 @@
         <xsl:evaluate xpath="$subst-xpath" with-params="map{QName('', 'context') : $context}"/>
     </xsl:template>
     
+    <xsl:template match="operation[@type = ('cast')]
+        [itemType/atomic/resolve-QName(@name, .) = xs:QName('xs:QName')]" mode="xpe:xpath-evaluate" priority="30">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="context" as="item()*">
+            <xsl:apply-templates select="arg/*" mode="#current"/>
+        </xsl:variable>
+        <xsl:choose>
+            <!-- 
+                ensures that wrong cardinality throws the correct error code
+                or is accepted in case of '() cast as xs:QName?' 
+            -->
+            <xsl:when test="count($context) ne 1">
+                <xsl:sequence select="xpt:cast-as($context, itemType)"/>
+            </xsl:when>
+            <!-- xs:QName can be casted to xs:QName-->
+            <xsl:when test="$context instance of xs:QName">
+                <xsl:sequence select="$context"/>
+            </xsl:when>
+            <xsl:when test="$context instance of xs:NOTATION">
+                <xsl:sequence select="$context cast as xs:QName"/>
+            </xsl:when>
+            <xsl:when test="
+                $context instance of xs:untypedAtomic 
+                or $context instance of xs:string
+                or $context instance of node()
+                ">
+                <xsl:sequence select="xpfs:QName($execution-context, $context)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="curType" select="
+                    xpt:type-of($context) => xpm:xpath-serializer-sub() => normalize-space()
+                    "/>
+                <xsl:sequence select="error(xpe:error-code('XPTY0004'), 
+                    'Can not cast ' || $curType || ' to xs:QName.'
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     <xsl:template match="itemType | itemType//*" mode="xpe:xpath-evaluate">
         <xsl:copy>
             <xsl:apply-templates select="@*" mode="#current"/>
