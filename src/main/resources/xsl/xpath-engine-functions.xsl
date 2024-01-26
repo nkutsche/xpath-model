@@ -1123,8 +1123,8 @@
                     <xsl:sequence select="[xpe:prepare-argument($arguments($i), $types[$i])]"/>
                     <xsl:catch>
                         <xsl:variable name="arg-no" select="
-                            if ($i le 3) 
-                            then ('first', 'second', 'third')[$i] 
+                            if ($i le 10) 
+                            then format-integer($i, 'w;o') 
                             else ($i || 'th')
                             "/>
                         <xsl:variable name="function-descr" select="
