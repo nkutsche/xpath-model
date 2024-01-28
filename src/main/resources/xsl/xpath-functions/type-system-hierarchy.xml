@@ -23,6 +23,7 @@
         <!--                <xpt:type name="function-with-signature" test="function(*)" parameters="n"/>-->
     </xpt:type>
     <xpt:type name="xs:anyAtomicType" test="$n" simple="true" castable="false">
+        <xpt:type name="xs:error"/>
         <xpt:type name="xs:untypedAtomic"/>
         <xpt:type name="xs:duration">
             <xpt:type name="xs:yearMonthDuration"/>

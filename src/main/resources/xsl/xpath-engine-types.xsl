@@ -735,7 +735,7 @@
         <xsl:variable name="function-type" select="xpt:type-of($input)"/>
         <xsl:variable name="this-type" as="element(itemType)">
             <itemType>
-                <xsl:sequence select="."/>
+                <xsl:copy-of select="."/>
             </itemType>
         </xsl:variable>
         <xsl:sequence select="xpt:is-type-ancestor-of($function-type, $this-type)"/>

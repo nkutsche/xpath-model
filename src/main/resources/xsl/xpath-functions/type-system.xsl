@@ -37,6 +37,7 @@
                    test="$n"
                    simple="true"
                    castable="false">
+            <xpt:type name="xs:error"/>
             <xpt:type name="xs:untypedAtomic"/>
             <xpt:type name="xs:duration">
                <xpt:type name="xs:yearMonthDuration"/>
@@ -154,6 +155,9 @@
     
     <xsl:function name="xpts:anyAtomicType" as="map(*)">
       <xsl:sequence select="                 map{                     'is-simple' : true(),'is-castable' : false(),'parent-type' : Q{http://www.nkutsche.com/xmlml/xpath-engine/types}item(),'instance-of' : function($item){$item instance of Q{http://www.w3.org/2001/XMLSchema}anyAtomicType},'treat-as' : function($item){$item treat as Q{http://www.w3.org/2001/XMLSchema}anyAtomicType},'cast-as' : function($item){error(xpe:error-code('XPST0080'), 'No value is castable to xs:anyAtomicType')},'castable-as' : function($item){error(xpe:error-code('XPST0080'), 'No value is castable to xs:anyAtomicType')}                 }                 "/>
+   </xsl:function>
+        <xsl:function name="xpts:error" as="map(*)">
+      <xsl:sequence select="                 map{                     'is-simple' : true(),'is-castable' : true(),'parent-type' : Q{http://www.nkutsche.com/xmlml/xpath-engine/types-schema}anyAtomicType(),'instance-of' : function($item){$item instance of Q{http://www.w3.org/2001/XMLSchema}error},'treat-as' : function($item){$item treat as Q{http://www.w3.org/2001/XMLSchema}error},'cast-as' : function($item){$item cast as Q{http://www.w3.org/2001/XMLSchema}error},'castable-as' : function($item){$item castable as Q{http://www.w3.org/2001/XMLSchema}error}                 }                 "/>
    </xsl:function>
         <xsl:function name="xpts:untypedAtomic" as="map(*)">
       <xsl:sequence select="                 map{                     'is-simple' : true(),'is-castable' : true(),'parent-type' : Q{http://www.nkutsche.com/xmlml/xpath-engine/types-schema}anyAtomicType(),'instance-of' : function($item){$item instance of Q{http://www.w3.org/2001/XMLSchema}untypedAtomic},'treat-as' : function($item){$item treat as Q{http://www.w3.org/2001/XMLSchema}untypedAtomic},'cast-as' : function($item){$item cast as Q{http://www.w3.org/2001/XMLSchema}untypedAtomic},'castable-as' : function($item){$item castable as Q{http://www.w3.org/2001/XMLSchema}untypedAtomic}                 }                 "/>

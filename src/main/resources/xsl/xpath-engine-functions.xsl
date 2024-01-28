@@ -44,6 +44,16 @@
         </xd:desc>
     </xd:doc>
     
+    <xsl:function name="xpfs:error" as="xs:error?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg" as="item()?"/>
+        <xsl:sequence select="
+            if (empty($arg)) 
+            then () 
+            else error(xpe:error-code('FORG0001'), 
+                    'Can not cast any value except of an empty sequence to xs:error')
+            "/>
+    </xsl:function>
     <xsl:function name="xpfs:QName" as="xs:QName">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()?"/>
