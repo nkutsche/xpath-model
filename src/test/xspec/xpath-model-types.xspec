@@ -211,6 +211,7 @@
                 <x:expect label="result: false" select="false()"/>
             </x:scenario>
         </x:scenario>
+        
         <x:scenario label="$base = item()+">
             <x:call>
                 <x:param position="2">
@@ -250,6 +251,78 @@
                     <x:param position="1">
                         <itemType occurrence="zero-or-more">
                             <mapType/>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: false" select="false()"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$base = function(xs:anyAtomicType?) as xs:error?">
+            <x:call>
+                <x:param position="2">
+                    <itemType>
+                        <functType>
+                            <itemType occurrence="zero-or-one">
+                                <atomic name="xs:anyAtomicType"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="zero-or-one">
+                                    <atomic name="xs:error"/>
+                                </itemType>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$explicit = function(xs:anyAtomicType?) as xs:error?">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <functType>
+                                <itemType occurrence="zero-or-one">
+                                    <atomic name="xs:anyAtomicType"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="zero-or-one">
+                                        <atomic name="xs:error"/>
+                                    </itemType>
+                                </as>
+                            </functType>
+                        </itemType>
+                    </x:param>
+                </x:call>
+                <x:expect label="result: true" select="true()"/>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="$base = function(xs:anyAtomicType?) as empty-sequence()">
+            <x:call>
+                <x:param position="2">
+                    <itemType>
+                        <functType>
+                            <itemType occurrence="zero-or-one">
+                                <atomic name="xs:anyAtomicType"/>
+                            </itemType>
+                            <as>
+                                <itemType occurrence="zero"/>
+                            </as>
+                        </functType>
+                    </itemType>
+                </x:param>
+            </x:call>
+            <x:scenario label="$explicit = function(xs:anyAtomicType?) as xs:error?">
+                <x:call>
+                    <x:param position="1">
+                        <itemType>
+                            <functType>
+                                <itemType occurrence="zero-or-one">
+                                    <atomic name="xs:anyAtomicType"/>
+                                </itemType>
+                                <as>
+                                    <itemType occurrence="zero-or-one">
+                                        <atomic name="xs:error"/>
+                                    </itemType>
+                                </as>
+                            </functType>
                         </itemType>
                     </x:param>
                 </x:call>
