@@ -1245,7 +1245,7 @@
                 <x:like label="xpt:instance-of"/>
             </x:scenario>
         </x:scenario>
-        <x:scenario label="type = function(xs:integer) as empty-sequence()" focus="">
+        <x:scenario label="type = function(xs:integer) as empty-sequence()">
             <x:variable name="type">function(xs:integer) as empty-sequence()</x:variable>
             <x:scenario label="input = map{ }">
                 <x:variable name="xpath">map{ }</x:variable>
