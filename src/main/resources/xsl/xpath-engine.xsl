@@ -876,12 +876,16 @@
         
         <xsl:variable name="expr" select="xpm:xpath-serializer-sub(.)"/>
         
-        <xsl:variable name="nodes" select="
+        <xsl:variable name="context" select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context of a location step must be a node! Context is empty. (' || $expr || ')') 
             else if (not($context instance of node())) 
             then error(xpe:error-code('XPTY0019'), 'Context of a location step must be a node! Context is from type ' || (xpt:type-of($context) => xpm:xpath-serializer-sub())) 
-            else xpe:tree-walk($context, @axis, $nodeTest)
+            else $context
+            " as="node()"/>
+        
+        <xsl:variable name="nodes" select="
+            xpe:tree-walk($context, @axis, $nodeTest)
             "/>
         <xsl:sequence select="$nodes"/>
     </xsl:template>
@@ -1005,7 +1009,7 @@
                     "/>
             </xsl:when>
             <xsl:when test="$axis = 'ancestor'">
-                <xsl:sequence select="$context/ancestor::node()[xpe:node-test(., $node-test)]"/>
+                <xsl:sequence select="$context ! ancestor::node()[xpe:node-test(., $node-test)]"/>
             </xsl:when>
             <xsl:when test="$axis = 'ancestor-or-self'">
                 <xsl:sequence select="
@@ -1023,7 +1027,8 @@
                 <xsl:sequence select="$context/following::node()[xpe:node-test(., $node-test)]"/>
             </xsl:when>
             <xsl:when test="$axis = 'preceding'">
-                <xsl:sequence select="$context ! preceding::node()[xpe:node-test(., $node-test)]"/>
+                <xsl:sequence select="$context ! preceding::node()[xpe:node-test(., $node-test)]
+                    "/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="error(QName('', 'TODO'), 'Axis ' || $axis || ' not supported yet.')"/>
