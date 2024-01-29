@@ -13,6 +13,34 @@
     
     <x:helper package-name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
     
+    <x:scenario label="Testing function xpe:tree-walk" catch="yes">
+        <x:call function="xpe:tree-walk"/>
+        <x:scenario label="nodeTest: node()">
+            <x:call>
+                <x:param position="3">
+                    <nodeTest kind="node"/>
+                </x:param>
+            </x:call>
+            <x:scenario label="axis: ancestor">
+                <x:call>
+                    <x:param position="2" select="'ancestor'"/>
+                </x:call>
+                <x:scenario label="context: /foo/bar">
+                    <x:variable name="doc" select="/">
+                        <foo>
+                            <bar>
+                                <baz/>
+                            </bar>
+                        </foo>
+                    </x:variable>
+                    <x:call>
+                        <x:param position="1" select="$doc/foo/bar/baz"/>
+                    </x:call>
+                    <x:expect label="result name" test="$x:result ! name(.)" select="'', 'foo', 'bar'"/>
+                </x:scenario>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
     <x:scenario label="Testing function xpe:xpath-evaluate" catch="yes">
         <x:call function="xpe:xpath-evaluate"/>
             
@@ -65,6 +93,105 @@
                             >format-number(931.45, '000.##0', 'foo:bar')</x:param>
                     </x:call>
                     <x:expect label="should fail" test="$x:result instance of map(*)"/>
+                </x:scenario>
+            </x:scenario>
+            <x:scenario label="with reverse axis">
+                <x:variable name="context-doc" select="/">
+                    <asterix-universe>
+                        <group xml:id="galier">
+                            <name>Galier</name>
+                            <character xml:id="ast">
+                                <name>Asterix</name>
+                                <position>Warrior</position>
+                            </character>
+                            <character xml:id="obel">
+                                <name>Obelix</name>
+                                <position>Menhir supplier</position>
+                            </character>
+                            <character xml:id="idf">
+                                <name>Idefix</name>
+                                <position>Dog of Obelix</position>
+                            </character>
+                            <character xml:id="maj">
+                                <name>Majestix</name>
+                                <position>Chief</position>
+                            </character>
+                        </group>
+                        <group xml:id="roman">
+                            <character xml:id="cäs">
+                                <name>Cäsar</name>
+                                <position>Imperator</position>
+                            </character>
+                            <character xml:id="gabo">
+                                <name>Gaius Bonus</name>
+                                <position>Centurion</position>
+                            </character>
+                        </group>
+                    </asterix-universe>
+                </x:variable>
+                <x:scenario label="context: maj">
+                    <x:variable name="context" select="id('maj', $context-doc)"/>
+                    <x:call>
+                        <x:param position="1" select="$context"/>
+                    </x:call>
+                    <x:scenario label="select: .">
+                        <x:call>
+                            <x:param position="2" select="'.'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (.)"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: preceding-sibling::character">
+                        <x:call>
+                            <x:param position="2" select="'preceding-sibling::character'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (preceding-sibling::character)"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: preceding-sibling::character[1]">
+                        <x:call>
+                            <x:param position="2" select="'preceding-sibling::character[1]'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (preceding-sibling::character[1])"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: preceding-sibling::character[last()]">
+                        <x:call>
+                            <x:param position="2" select="'preceding-sibling::character[last()]'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (preceding-sibling::character[last()])"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: preceding-sibling::character[contains(position, ' ')][1]">
+                        <x:call>
+                            <x:param position="2"
+                                >preceding-sibling::character[contains(position, ' ')][1]</x:param>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (preceding-sibling::character[contains(position, ' ')][1])"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                        <x:expect label="Result ID: idf" test="$x:result ! string(@xml:id)" select="'idf'"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: preceding-sibling::character[1][contains(position, ' ')]">
+                        <x:call>
+                            <x:param position="2"
+                                >preceding-sibling::character[1][contains(position, ' ')]</x:param>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (preceding-sibling::character[contains(position, ' ')][1])"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                    
+                    <x:scenario label="select: ancestor::*">
+                        <x:call>
+                            <x:param position="2" select="'ancestor::*'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (ancestor::*)"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
                 </x:scenario>
             </x:scenario>
         </x:scenario>
