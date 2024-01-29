@@ -892,14 +892,20 @@
             <xsl:next-match/>
         </xsl:param>
         <xsl:param name="cPredicate" select="predicate[1]" as="element(predicate)?"/>
+        <xsl:param name="reverse" select="@axis = ('preceding-sibling', 'preceding', 'ancestor', 'ancestor-or-self')"/>
         <xsl:choose>
             <xsl:when test="$cPredicate">
                 <xsl:variable name="nodes" as="item()*">
                     <xsl:for-each select="$nodes">
                         <xsl:variable name="node" select="."/>
+                        <xsl:variable name="pos" select="
+                            if ($reverse) 
+                            then last() - position()  + 1 
+                            else position()
+                            "/>
                         <xsl:variable name="sub-context" select="map{
                             'context' : $node,
-                            'position' : position(),
+                            'position' : $pos,
                             'last' : last()
                             }"/>
                         <xsl:variable name="execution-context" select="($execution-context, $sub-context) => map:merge(map{'duplicates' : 'use-last'})"/>
