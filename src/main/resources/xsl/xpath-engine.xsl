@@ -1136,7 +1136,9 @@
                     </xsl:apply-templates>
                 </xsl:when>
                 <xsl:when test="parent::operation[@type = 'postfix']">
-                    <xsl:apply-templates select="preceding-sibling::arg/*" mode="#current"/>
+                    <xsl:apply-templates select="preceding-sibling::arg/*" mode="#current">
+                        <xsl:with-param name="arity" select="$pfa-arity" tunnel="yes"/>
+                    </xsl:apply-templates>
                 </xsl:when>
             </xsl:choose>
         </xsl:variable>
@@ -1281,7 +1283,8 @@
     
     <xsl:template match="function[@name]" mode="xpe:xpath-evaluate">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:param name="arity" select="@arity" as="xs:integer" tunnel="yes"/>
+        <xsl:param name="arity" select="()" as="xs:integer?" tunnel="yes"/>
+        <xsl:variable name="arity" select="(@arity, $arity)[1]" as="xs:integer"/>
         <xsl:variable name="qname" select="xpm:name-matcher(@name)"/>
         <xsl:variable name="local-name" select="$qname?local"/>
         <xsl:variable name="ns-uri" select="$qname?namespace"/>
