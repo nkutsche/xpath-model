@@ -403,7 +403,7 @@
 
     <xsl:template match="operation[@type = 'postfix'][function-call]" mode="xpe:xpath-evaluate" priority="10">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="function" as="item()?">
+        <xsl:variable name="function" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
         <xsl:variable name="args" select="function-call/arg"/>
@@ -429,6 +429,8 @@
             }
             else if (empty($function)) 
             then error(xpe:error-code('XPTY0004'), 'An empty sequence is not allowed as the target of dynamic function call.') 
+            else if (count($function) gt 1) 
+            then error(xpe:error-code('XPTY0004'), 'A sequence of more than one item is not allowed as the target of dynamic function call.') 
             else error(xpe:error-code('XPTY0004'), 'A function call requires a function, map or array.') 
             "/>
         
