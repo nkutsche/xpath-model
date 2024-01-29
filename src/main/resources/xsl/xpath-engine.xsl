@@ -238,6 +238,26 @@
             "/>
     </xsl:template>
     
+    <xsl:template match="operation[@type = 'map'][count(arg) gt 2]" mode="xpe:xpath-evaluate" priority="100">
+        <xsl:variable name="second-arg" select="arg[2]"/>
+        <xsl:variable name="first-two-args" select="node()[. &lt;&lt; $second-arg], $second-arg"/>
+        <xsl:variable name="rest" select="node() except $first-two-args"/>
+        
+        <xsl:variable name="equivalent" as="element(operation)">
+            <xsl:copy>
+                <xsl:sequence select="@*"/>
+                <arg>
+                    <xsl:copy>
+                        <xsl:sequence select="@*"/>
+                        <xsl:copy-of select="$first-two-args"/>
+                    </xsl:copy>
+                </arg>
+                <xsl:copy-of select="$rest"/>
+            </xsl:copy>
+        </xsl:variable>
+        <xsl:apply-templates select="$equivalent" mode="#current"/>
+    </xsl:template>
+    
     <xsl:template match="operation[@type = 'map']" mode="xpe:xpath-evaluate" name="xpe:xpath-map-operation" priority="50">
         <xsl:param name="execution-context" tunnel="yes"/>
         <xsl:param name="args" select="arg"/>
