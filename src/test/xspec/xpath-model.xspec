@@ -8318,7 +8318,7 @@
                     </x:expect>
                 </x:scenario>
             </x:scenario>
-            <x:scenario label="function references with ?">
+            <x:scenario label="function references with ?" pending="not valid agains rng, but this is a problem of the validation engine">
                 <x:scenario label="('3', '2', '1') => (string-join#1(?))()">
                     <x:call>
                         <x:param select="string(.)">('3', '2', '1') => (string-join#1(?))()</x:param>
