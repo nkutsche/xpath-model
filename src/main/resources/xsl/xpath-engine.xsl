@@ -1118,15 +1118,16 @@
         
         <xsl:variable name="has-addidtional-arg" select="array:size($first-arg) gt 0"/>
         
+        <xsl:variable name="pfa-arity" select="
+            if ($has-addidtional-arg) 
+            then (count(arg) + 1) 
+            else count(arg)
+            "/>
         <xsl:variable name="abstract-function" as="map(*)">
             <xsl:choose>
                 <xsl:when test="function">
                     <xsl:apply-templates select="function" mode="#current">
-                        <xsl:with-param name="arity" select="
-                            if ($has-addidtional-arg) 
-                            then (count(arg) + 1) 
-                            else count(arg)
-                            " tunnel="yes"/>
+                        <xsl:with-param name="arity" select="$pfa-arity" tunnel="yes"/>
                     </xsl:apply-templates>
                 </xsl:when>
                 <xsl:when test="parent::operation[@type = 'postfix']">
@@ -1136,6 +1137,14 @@
         </xsl:variable>
         
         <xsl:variable name="return-type" select="$abstract-function('return-type')"/>
+        <xsl:variable name="fi-arity" select="$abstract-function('arity')"/>
+        
+        <xsl:if test="$pfa-arity ne $fi-arity">
+            <xsl:sequence select="error(
+                xpe:error-code('XPTY0004'),
+                'The number of arguments supplied in the partial function application is ' || $pfa-arity || ', but the arity of the function item is ' || $fi-arity
+                )"/>
+        </xsl:if>
 
 <!--        
         Creates equivalent:
