@@ -1656,7 +1656,7 @@
         <xsl:param name="item" as="item()*"/>
         <xsl:sequence select="
             if ($item instance of map(*)) 
-            then ($item?type = QName($xpf:namespace-uri, 'function')) 
+            then ($item?type[. instance of xs:QName] = QName($xpf:namespace-uri, 'function')) 
             else false()
             "/>
     </xsl:function>
