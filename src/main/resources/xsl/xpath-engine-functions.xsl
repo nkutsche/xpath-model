@@ -60,7 +60,7 @@
         
         <xsl:variable name="namespaces" select="($exec-context?namespaces, map{})[1]"/>
         
-        <xsl:variable name="arg" select="xpf:data($exec-context, $arg)"/>
+        <xsl:variable name="arg" select="xpe:data($exec-context, $arg)"/>
         
         <xsl:variable name="arg" select="normalize-space($arg)"/>
         
@@ -92,14 +92,15 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call number()') 
-            else number(xpf:data($exec-context, $context))"/>
+            else xpe:fn-apply($exec-context, 'number', [$context])
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:compare" as="xs:integer?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="comparand1" as="item()?"/>
         <xsl:param name="comparand2" as="item()?"/>
-        <xsl:sequence select="compare(xpe:atomize($comparand1), xpe:atomize($comparand2), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="compare(xpe:data($exec-context, $comparand1), xpe:data($exec-context, $comparand2), xpe:default-collation($exec-context))"/>
     </xsl:function>
 
     <xsl:function name="xpf:string" as="xs:string">
@@ -108,7 +109,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call string()') 
-            else string(xpf:data($exec-context, $context))"/>
+            else xpe:fn-apply($exec-context, 'string', [$context])
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:node-name" as="xs:QName">
@@ -117,7 +119,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call node-name()') 
-            else node-name($context)"/>
+            else xpe:fn-apply($exec-context, 'node-name', [$context])
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:nilled" as="xs:boolean?">
@@ -126,7 +129,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call nilled()') 
-            else nilled($context)
+            else xpe:fn-apply($exec-context, 'nilled', [$context])
             "/>
     </xsl:function>
 
@@ -136,7 +139,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call data()') 
-            else xpf:data($exec-context, $context)"/>
+            else xpe:data($exec-context, $context)
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:data" as="item()*">
@@ -155,6 +159,12 @@
         </xsl:choose>
         
     </xsl:function>
+    
+    <xsl:function name="xpe:data" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg" as="item()*"/>
+        <xsl:sequence select="xpe:fn-apply($exec-context, 'data', [$arg])"/>
+    </xsl:function>
 
     <xsl:function name="xpf:document-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -162,7 +172,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call document-uri()') 
-            else document-uri($context)"/>
+            else xpe:fn-apply($exec-context, 'document-uri', [$context])
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:string-length" as="xs:integer">
@@ -171,7 +182,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call string-length()') 
-            else string-length(xpf:data($exec-context, $context))"/>
+            else xpe:fn-apply($exec-context, 'string-length', [$context])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:normalize-space" as="xs:string">
@@ -180,35 +192,42 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call normalize-space()') 
-            else normalize-space(xpf:data($exec-context, $context))"/>
+            else xpe:fn-apply($exec-context, 'normalize-space', [$context])
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:contains" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg1" as="item()?"/>
         <xsl:param name="arg2" as="item()?"/>
-        <xsl:sequence select="contains(xpe:atomize($arg1), xpe:atomize($arg2), xpf:default-collation($exec-context))"/>
+        <xsl:variable name="arg1" select="xpe:data($exec-context, $arg1)"/>
+        <xsl:variable name="arg2" select="xpe:data($exec-context, $arg2)"/>
+        <xsl:sequence select="contains($arg1, $arg2, xpf:default-collation($exec-context))"/>
     </xsl:function>
 
     <xsl:function name="xpf:starts-with" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg1" as="item()?"/>
         <xsl:param name="arg2" as="item()?"/>
-        <xsl:sequence select="starts-with(xpe:atomize($arg1), xpe:atomize($arg2), xpf:default-collation($exec-context))"/>
+        <xsl:variable name="arg1" select="xpe:data($exec-context, $arg1)"/>
+        <xsl:variable name="arg2" select="xpe:data($exec-context, $arg2)"/>
+        <xsl:sequence select="starts-with($arg1, $arg2, xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:ends-with" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg1" as="item()?"/>
         <xsl:param name="arg2" as="item()?"/>
-        <xsl:sequence select="ends-with(xpe:atomize($arg1), xpe:atomize($arg2), xpf:default-collation($exec-context))"/>
+        <xsl:variable name="arg1" select="xpe:data($exec-context, $arg1)"/>
+        <xsl:variable name="arg2" select="xpe:data($exec-context, $arg2)"/>
+        <xsl:sequence select="ends-with($arg1, $arg2, xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:substring-before" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg1" as="xs:string?"/>
         <xsl:param name="arg2" as="xs:string?"/>
-        <xsl:sequence select="xpf:substring-before($exec-context, $arg1, $arg2, xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="xpf:substring-before($exec-context, $arg1, $arg2, xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:substring-before" as="xs:string">
@@ -216,7 +235,7 @@
         <xsl:param name="arg1" as="xs:string?"/>
         <xsl:param name="arg2" as="xs:string?"/>
         <xsl:param name="collation" as="xs:string"/>
-        <xsl:variable name="collation" select="resolve-uri($collation, xpf:static-base-uri($exec-context))"/>
+        <xsl:variable name="collation" select="resolve-uri($collation, xpe:static-base-uri($exec-context))"/>
         <xsl:sequence select="substring-before($arg1, $arg2, $collation)"/>
     </xsl:function>
     
@@ -224,7 +243,7 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg1" as="xs:string?"/>
         <xsl:param name="arg2" as="xs:string?"/>
-        <xsl:sequence select="xpf:substring-after($exec-context, $arg1, $arg2, xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="xpf:substring-after($exec-context, $arg1, $arg2, xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:substring-after" as="xs:string">
@@ -232,7 +251,7 @@
         <xsl:param name="arg1" as="xs:string?"/>
         <xsl:param name="arg2" as="xs:string?"/>
         <xsl:param name="collation" as="xs:string"/>
-        <xsl:variable name="collation" select="resolve-uri($collation, xpf:static-base-uri($exec-context))"/>
+        <xsl:variable name="collation" select="resolve-uri($collation, xpe:static-base-uri($exec-context))"/>
         <xsl:sequence select="substring-after($arg1, $arg2, $collation)"/>
     </xsl:function>
 
@@ -253,7 +272,7 @@
     <xsl:function name="xpf:resolve-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="item()?"/>
-        <xsl:sequence select="resolve-uri(xpf:data($exec-context, $relative), xpf:static-base-uri($exec-context))"/>
+        <xsl:sequence select="resolve-uri(xpe:data($exec-context, $relative), xpe:static-base-uri($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:name" as="xs:string">
@@ -262,7 +281,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call name()') 
-            else name($context)"/>
+            else xpe:fn-apply($exec-context, 'name', [$context])"/>
     </xsl:function>
     <xsl:function name="xpf:local-name" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -270,7 +289,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call local-name()') 
-            else local-name($context)"/>
+            else xpe:fn-apply($exec-context, 'local-name', [$context])"/>
     </xsl:function>
     <xsl:function name="xpf:namespace-uri" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -278,7 +297,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call namespace-uri()') 
-            else xpf:namespace-uri($exec-context, $context)"/>
+            else xpe:fn-apply($exec-context, 'namespace-uri', [$context]) 
+            "/>
     </xsl:function>
     <xsl:function name="xpf:namespace-uri" as="xs:anyURI">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -286,6 +306,10 @@
         <xsl:sequence select="namespace-uri($arg)"/>
     </xsl:function>
     
+    <xsl:function name="xpe:default-language" as="xs:language">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="xpe:fn-apply($exec-context, 'default-language', [])"/>
+    </xsl:function>
     <xsl:function name="xpf:default-language" as="xs:language">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?default-language ! xs:language(.), default-language())[1]"/>
@@ -294,7 +318,9 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="value" as="xs:date?"/>
         <xsl:param name="picture" as="xs:string"/>
-        <xsl:sequence select="xpf:format-date($exec-context, $value, $picture, (), (), ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'format-date', [$value, $picture, (), (), ()]) 
+            "/>
     </xsl:function>
     <xsl:function name="xpf:format-date" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -304,7 +330,7 @@
         <xsl:param name="calendar" as="xs:string?"/>
         <xsl:param name="place" as="xs:string?"/>
         <xsl:variable name="language" select="
-            if (empty($language)) then xpf:default-language($exec-context) else $language
+            if (empty($language)) then xpe:default-language($exec-context) else $language
             "/>
         <xsl:variable name="calendar" select="
             if (empty($calendar)) then $exec-context?default-calendar else $calendar
@@ -319,7 +345,9 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="value" as="xs:dateTime?"/>
         <xsl:param name="picture" as="xs:string"/>
-        <xsl:sequence select="xpf:format-dateTime($exec-context, $value, $picture, (), (), ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'format-dateTime', [$value, $picture, (), (), ()]) 
+            "/>
     </xsl:function>
     <xsl:function name="xpf:format-dateTime" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -329,7 +357,7 @@
         <xsl:param name="calendar" as="xs:string?"/>
         <xsl:param name="place" as="xs:string?"/>
         <xsl:variable name="language" select="
-            if (empty($language)) then xpf:default-language($exec-context) else $language
+            if (empty($language)) then xpe:default-language($exec-context) else $language
             "/>
         <xsl:variable name="calendar" select="
             if (empty($calendar)) then $exec-context?default-calendar else $calendar
@@ -344,7 +372,9 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="value" as="xs:time?"/>
         <xsl:param name="picture" as="xs:string"/>
-        <xsl:sequence select="xpf:format-time($exec-context, $value, $picture, (), (), ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'format-time', [$value, $picture, (), (), ()]) 
+            "/>
     </xsl:function>
     <xsl:function name="xpf:format-time" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -354,7 +384,7 @@
         <xsl:param name="calendar" as="xs:string?"/>
         <xsl:param name="place" as="xs:string?"/>
         <xsl:variable name="language" select="
-            if (empty($language)) then xpf:default-language($exec-context) else $language
+            if (empty($language)) then xpe:default-language($exec-context) else $language
             "/>
         <xsl:variable name="calendar" select="
             if (empty($calendar)) then $exec-context?default-calendar else $calendar
@@ -369,7 +399,9 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="value" as="xs:integer?"/>
         <xsl:param name="picture" as="xs:string"/>
-        <xsl:sequence select="xpf:format-integer($exec-context, $value, $picture, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'format-integer', [$value, $picture, ()]) 
+            "/>
     </xsl:function>
 
     <xsl:function name="xpf:format-integer" as="xs:string">
@@ -378,7 +410,7 @@
         <xsl:param name="picture" as="xs:string"/>
         <xsl:param name="language" as="xs:string?"/>
         <xsl:variable name="language" select="
-            if (empty($language)) then xpf:default-language($exec-context) else $language
+            if (empty($language)) then xpe:default-language($exec-context) else $language
             "/>
         <xsl:sequence select="format-integer($value, $picture, $language)"/>
     </xsl:function>
@@ -388,7 +420,9 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="value" as="xs:numeric?"/>
         <xsl:param name="picture" as="xs:string"/>
-        <xsl:sequence select="xpf:format-number($exec-context, $value, $picture, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'format-number', [$value, $picture, ()]) 
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:format-number" xmlns:xpf="http://www.nkutsche.com/xmlml/xpath-engine/functions" 
@@ -470,7 +504,9 @@
     <xsl:function name="xpf:lang" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="testlang" as="xs:string?"/>
-        <xsl:sequence select="lang($testlang, $exec-context?context)"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'lang', [$testlang, $exec-context?context]) 
+            "/>
     </xsl:function>
     <xsl:function name="xpf:root" as="node()?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -478,7 +514,8 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call root()') 
-            else root($context)"/>
+            else xpe:fn-apply($exec-context, 'root', [$context])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:path" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -486,7 +523,7 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call path()') 
-            else path($context)"/>
+            else xpe:fn-apply($exec-context, 'path', [$context])"/>
     </xsl:function>
     <xsl:function name="xpf:has-children" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -494,72 +531,84 @@
         <xsl:sequence select="
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call has-children()') 
-            else has-children($context)
+            else xpe:fn-apply($exec-context, 'has-children', [$context])
             "/>
     </xsl:function>
     <xsl:function name="xpf:distinct-values" as="xs:anyAtomicType*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="distinct-values(xpe:atomize($arg), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="distinct-values(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:index-of" as="xs:integer*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="seq" as="item()*"/>
         <xsl:param name="search" as="item()"/>
-        <xsl:sequence select="index-of($seq ! xpf:data($exec-context, .), xpf:data($exec-context, $search), xpf:default-collation($exec-context))"/>
+        <xsl:variable name="seq" select="xpe:data($exec-context, $seq)"/>
+        <xsl:variable name="search" select="xpe:data($exec-context, $search)"/>
+        <xsl:sequence select="index-of($seq, $search, xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:deep-equal" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="parameter1" as="item()*"/>
         <xsl:param name="parameter2" as="item()*"/>
-        <xsl:sequence select="deep-equal($parameter1, $parameter2, xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="deep-equal($parameter1, $parameter2, xpe:default-collation($exec-context))"/>
     </xsl:function>
     <xsl:function name="xpf:max" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="max(xpf:data($exec-context, $arg), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="max(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:min" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="min(xpf:data($exec-context, $arg), xpf:default-collation($exec-context))"/>
+        <xsl:sequence select="min(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
     </xsl:function>
     
     <xsl:function name="xpf:id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="id($arg, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'id', [$arg, $context])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:element-with-id" as="element()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="element-with-id($arg, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'element-with-id', [$arg, $context])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:idref" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string*"/>
-        <xsl:sequence select="idref($arg, $exec-context?context)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'idref', [$arg, $context])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:generate-id" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:variable name="context" select="$exec-context?context"/>
         <xsl:sequence select="
-            if (empty($exec-context?context)) 
+            if (empty($context)) 
             then 
                 error(xpe:error-code('XPDY0002'), 'There is no context item for the call of the zero-argument function generate-id().') 
             else 
-                generate-id($exec-context?context)
+                xpe:fn-apply($exec-context, 'generate-id', [$context])
                 "/>
     </xsl:function>
     <xsl:function name="xpf:doc" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="uri" as="xs:string?"/>
         <xsl:variable name="atomized" select="xpe:atomize($uri)"/>
-        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:variable name="baseUri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:try>
             <xsl:choose>
                 <xsl:when test="empty($uri)"/>
@@ -579,28 +628,35 @@
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:collection($exec-context, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'collection', [()])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()?"/>
 
+        <xsl:variable name="uri-collection" select="
+            xpe:fn-apply($exec-context, 'uri-collection', [$arg])
+            "/>
         <xsl:sequence select="
-            xpf:uri-collection($exec-context, $arg) ! xpf:doc($exec-context, .)
+            $uri-collection ! xpe:fn-apply($exec-context, 'doc', [.])
             "/>
         
     </xsl:function>
     
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:uri-collection($exec-context, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'uri-collection', [()])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:uri-collection" as="xs:anyURI*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string?"/>
         
         <xsl:variable name="atomized" select="xpe:atomize($arg)"/>
-        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:variable name="baseUri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:try>
             <xsl:choose>
                 <xsl:when test="empty($exec-context?uri-collection-resolver)">
@@ -624,14 +680,18 @@
     <xsl:function name="xpf:unparsed-text-lines" as="xs:string*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:sequence select="xpf:unparsed-text-lines($exec-context, $href, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'unparsed-text-lines', [$href, ''])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:unparsed-text-lines" as="xs:string*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:param name="encoding" as="xs:string?"/>
-        <xsl:variable name="unparsed-text" select="xpf:unparsed-text($exec-context, $href, $encoding)"/>
+        <xsl:param name="encoding" as="xs:string"/>
+        <xsl:variable name="unparsed-text" select="
+            xpe:fn-apply($exec-context, 'unparsed-text', [$href, $encoding])
+            "/>
         <xsl:sequence select="tokenize($unparsed-text, '\r\n|\r|\n')[not(position()=last() and .='')]"/>
     </xsl:function>
 
@@ -639,7 +699,9 @@
     <xsl:function name="xpf:unparsed-text" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:sequence select="xpf:unparsed-text($exec-context, $href, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'unparsed-text', [$href, ''])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:unparsed-text" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -650,7 +712,7 @@
             xpe:verify-encoding($encoding)
             "/>
         
-        <xsl:variable name="baseUri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:variable name="baseUri" select="xpe:static-base-uri($exec-context)"/>
         
         <xsl:try>
             <xsl:choose>
@@ -704,7 +766,9 @@
     <xsl:function name="xpf:unparsed-text-available" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:sequence select="xpf:unparsed-text-available($exec-context, $href, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'unparsed-text-available', [$href, ''])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:unparsed-text-available" as="xs:boolean">
@@ -712,7 +776,10 @@
         <xsl:param name="href" as="xs:string?"/>
         <xsl:param name="encoding" as="xs:string?"/>
         <xsl:try>
-            <xsl:sequence select="xpf:unparsed-text($exec-context, $href, $encoding) => exists()"/>
+            <xsl:variable name="unparsed-text" select="
+                xpe:fn-apply($exec-context, 'unparsed-text', [$href, $encoding])
+                "/>
+            <xsl:sequence select="exists($unparsed-text)"/>
             <xsl:catch>
                 <xsl:sequence select="false()"/>
             </xsl:catch>
@@ -781,14 +848,21 @@
     <xsl:function name="xpf:json-doc" as="item()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:sequence select="xpf:json-doc($exec-context, $href, map{})"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'json-doc', [$href, map{}])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:json-doc" as="item()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
         <xsl:param name="options" as="map(*)"/>
-        <xsl:sequence select="xpf:parse-json($exec-context, xpf:unparsed-text($exec-context, $href), $options)"/>
+        <xsl:variable name="unparsed-text" select="
+            xpe:fn-apply($exec-context, 'unparsed-text', [$href])
+            "/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'parse-json', [$unparsed-text, $options])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:parse-json" as="item()?">
@@ -807,7 +881,9 @@
     <xsl:function name="xpf:json-to-xml" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="json-text" as="xs:string?"/>
-        <xsl:sequence select="xpf:json-to-xml($exec-context, $json-text, map{})"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'json-to-xml', [$json-text, map{}])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:json-to-xml" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
@@ -820,7 +896,7 @@
             else $options
             "/>
         
-        <xsl:variable name="static-base-uri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:variable name="static-base-uri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:sequence select="transform(map{
             'stylesheet-node' : $xpe:to-xml-stylesheet,
             'stylesheet-base-uri' : $static-base-uri,
@@ -852,7 +928,7 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string?"/>
         
-        <xsl:variable name="static-base-uri" select="xpf:static-base-uri($exec-context)"/>
+        <xsl:variable name="static-base-uri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:sequence select="transform(map{
             'stylesheet-node' : $xpe:to-xml-stylesheet,
             'stylesheet-base-uri' : $static-base-uri,
@@ -891,6 +967,7 @@
             if ($replace-style-loc) 
             then 
                 xpf:doc($exec-context, $options?stylesheet-location) 
+                (: TODO, not clear if xpe:fn-apply instead of xpf:doc should used:)
                 ! map:put($options, 'stylesheet-node', .)
                 => map:remove('stylesheet-location')
             else $options
@@ -910,7 +987,8 @@
         <xsl:variable name="options" select="
             if (exists($options?package-location)) 
             then 
-                map:put($options, 'package-node', xpf:doc($exec-context, $options?package-location))
+                map:put($options, 'package-node', xpf:doc($exec-context, $options?package-location)) 
+                (: TODO, not clear if xpe:fn-apply instead of xpf:doc should used:)
                 => map:remove('package-location')
             else $options
             "/>
@@ -934,17 +1012,29 @@
             else ($exec-context?last, 1)[1]
             "/>
     </xsl:function>
+    <xsl:function name="xpe:default-collation" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="xpe:fn-apply($exec-context, 'default-collation', [])"/>
+    </xsl:function>
     <xsl:function name="xpf:default-collation" as="xs:string">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?default-collation, default-collation())[1]"/>
     </xsl:function>
     <xsl:function name="xpf:base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="base-uri($exec-context?context)"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'base-uri', [$exec-context?context])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:static-base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="($exec-context?base-uri, static-base-uri())[1]"/>
+    </xsl:function>
+    <xsl:function name="xpe:static-base-uri" as="xs:anyURI?">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'static-base-uri', [])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:available-environment-variables" as="xs:string*">
@@ -1010,6 +1100,26 @@
         <xsl:message expand-text="yes">{$msg}</xsl:message>
     </xsl:function>-->
     
+    <xsl:function name="xpe:fn-apply" as="item()*" visibility="final">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="func-name" as="xs:string"/>
+        <xsl:param name="args" as="array(*)"/>
+        
+        <xsl:variable name="arity" select="array:size($args)"/>
+        <xsl:variable name="function" select="
+            xpf:function-lookup($exec-context, xs:QName('fn:' || $func-name), $arity)
+            "/>
+        <xsl:choose>
+            <xsl:when test="exists($function)">
+                <xsl:sequence select="xpf:apply($exec-context, $function, $args)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="error(xs:QName('xpe:unknown-function'), 
+                    'No function fn:' || $func-name || '#' || $arity || ' available!' 
+                    )"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
     <xsl:function name="xpf:function-lookup" as="map(*)?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="name" as="xs:QName"/>
@@ -1546,7 +1656,9 @@
     
     <xsl:function name="xpf:random-number-generator" as="map(xs:string, item())">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="xpf:random-number-generator($exec-context, ())"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'random-number-generator', [()])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:random-number-generator" as="map(xs:string, item())">
         <xsl:param name="exec-context" as="map(*)"/>
