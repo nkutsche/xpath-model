@@ -61,6 +61,24 @@
     </xsl:function>
 
 
+    <xsl:function name="nk:xpath-type-model" as="element(itemType)?" visibility="final">
+        <xsl:param name="type" as="xs:string"/>
+        <xsl:variable name="namespaces" select="
+            ($default-config?namespaces, map {'xs' : $build-in-namespaces('xs')}) 
+            => map:merge()
+            "/>
+        <xsl:variable name="config" select="map:put($default-config, 'namespaces', $namespaces)"/>
+        
+        <xsl:sequence select="nk:xpath-type-model($type, $config)"/>
+    </xsl:function>
+    <xsl:function name="nk:xpath-type-model" as="element(itemType)?" visibility="final">
+        <xsl:param name="type" as="xs:string"/>
+        <xsl:param name="config" as="map(*)"/>
+        <xsl:variable name="xpath" select="'. instance of ' || $type"/>
+        <xsl:variable name="model" select="nk:xpath-model($xpath, $config)"/>
+        <xsl:copy-of select="$model/operation/itemType"/>
+    </xsl:function>
+    
     <xsl:function name="nk:xpath-model" as="element()" visibility="final">
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:sequence select="nk:xpath-model($xpath, $default-config)"/>
