@@ -16,7 +16,7 @@
     xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns:xpt="http://www.nkutsche.com/xmlml/xpath-engine/types"
-    exclude-result-prefixes="xs math xd"
+    exclude-result-prefixes="math xd"
     version="3.0">
     <xsl:variable name="xpf:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/functions'"/>
     <xsl:variable name="xpfm:namespace-uri" select="'http://www.nkutsche.com/xmlml/xpath-engine/map'"/>
@@ -110,6 +110,31 @@
             if (empty($context)) 
             then error(xpe:error-code('XPDY0002'), 'Context item is absent for function call string()') 
             else xpe:fn-apply($exec-context, 'string', [$context])
+            "/>
+    </xsl:function>
+
+    <xsl:function name="xpf:string" as="xs:string">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="arg" as="item()?"/>
+        <xsl:variable name="stringType" as="element(itemType)">
+            <itemType>
+                <atomic name="xs:string"/>
+            </itemType>
+        </xsl:variable>
+        <xsl:sequence select="
+            if (empty($arg)) 
+            then '' 
+            else if ($arg instance of node()) 
+            then string($arg) 
+            else if ($arg instance of xs:anyAtomicType) 
+            then (xpt:cast-as($arg, $stringType)) 
+            else if ($arg instance of array(*)) 
+            then error(xpe:error-code('FOTY0014'), 'An array has not string value') 
+            else if ($arg instance of map(*)) 
+            then error(xpe:error-code('FOTY0014'), 'A map has not string value') 
+            else if ($arg instance of function(*)) 
+            then error(xpe:error-code('FOTY0014'), 'A function item has not string value') 
+            else error(xs:QName('xpe:internal-error'), 'This should never happen.')
             "/>
     </xsl:function>
 
