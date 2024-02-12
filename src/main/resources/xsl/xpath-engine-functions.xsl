@@ -713,7 +713,7 @@
     <xsl:function name="xpf:unparsed-text" as="xs:string?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string"/>
         
         <xsl:variable name="encoding" select="
             xpe:verify-encoding($encoding)
@@ -742,10 +742,10 @@
     </xsl:function>
     
     <xsl:function name="xpe:verify-encoding" as="xs:string?">
-        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string"/>
         <xsl:choose>
-            <xsl:when test="empty($encoding)">
-                <xsl:sequence select="$encoding"/>
+            <xsl:when test="$encoding = ''">
+                <xsl:sequence select="()"/>
             </xsl:when>
             <xsl:when test="matches($encoding, '^utf-(8|16)$', 'i')">
                 <xsl:sequence select="$encoding"/>
@@ -781,7 +781,7 @@
     <xsl:function name="xpf:unparsed-text-available" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="href" as="xs:string?"/>
-        <xsl:param name="encoding" as="xs:string?"/>
+        <xsl:param name="encoding" as="xs:string"/>
         <xsl:try>
             <xsl:variable name="unparsed-text" select="
                 xpe:fn-apply($exec-context, 'unparsed-text', [$href, $encoding])
