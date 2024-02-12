@@ -10,7 +10,7 @@
 
     <xsl:mode name="nk:xpath-model" on-no-match="shallow-copy"/>
 
-    <xsl:param name="default-config" as="map(xs:string, item()*)"
+    <xsl:variable name="default-config" as="map(xs:string, item()*)"
         select="
             map {
                 'validation-mode': 'lax',
