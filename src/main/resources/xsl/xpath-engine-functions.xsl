@@ -663,21 +663,20 @@
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="xs:string?"/>
         
-        <xsl:variable name="atomized" select="xpe:atomize($arg)"/>
         <xsl:variable name="baseUri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:try>
             <xsl:choose>
                 <xsl:when test="empty($exec-context?uri-collection-resolver)">
                     <xsl:sequence select="
-                        xpe:default-collection-resolver($exec-context, $atomized, $baseUri)
+                        xpe:default-collection-resolver($exec-context, $arg, $baseUri)
                         "/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:sequence select="$exec-context?uri-collection-resolver($atomized, $baseUri)"/>
+                    <xsl:sequence select="$exec-context?uri-collection-resolver($arg, $baseUri)"/>
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:catch errors="err:FORG0002">
-                <xsl:sequence select="error(xpe:error-code('FODC0004'), 'Malformed URI ' || $atomized)"/>
+                <xsl:sequence select="error(xpe:error-code('FODC0004'), 'Malformed URI ' || $arg)"/>
             </xsl:catch>
         </xsl:try>
     </xsl:function>

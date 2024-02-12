@@ -106,49 +106,38 @@
     
     <xsl:variable name="xpe:operations" select="
         map{
-            'or' : function($arg1, $arg2){$arg1 or $arg2},
-            'and' : function($arg1, $arg2){$arg1 and $arg2},
-            'union' : function($arg1, $arg2){$arg1 | $arg2},
-            'intersect' : function($arg1, $arg2){$arg1 intersect $arg2},
-            'except' : function($arg1, $arg2){$arg1 except $arg2},
-            'concat' : function($arg1, $arg2){xpe:atomize($arg1) || xpe:atomize($arg2)},
-            'sequence#comma' : function($arg1, $arg2){$arg1, $arg2},
-            'compare#gt' : function($arg1, $arg2){xpe:atomize($arg1) > xpe:atomize($arg2)},
-            'compare#lt' : function($arg1, $arg2){xpe:atomize($arg1) &lt; xpe:atomize($arg2)},
-            'compare#ge' : function($arg1, $arg2){xpe:atomize($arg1) >= xpe:atomize($arg2)},
-            'compare#le' : function($arg1, $arg2){xpe:atomize($arg1) &lt;= xpe:atomize($arg2)},
-            'compare#ne' : function($arg1, $arg2){xpe:atomize($arg1) != xpe:atomize($arg2)},
-            'compare#eq' : function($arg1, $arg2){xpe:atomize($arg1) = xpe:atomize($arg2)},
-            'value-compare#gt' : function($arg1, $arg2){xpe:atomize($arg1) gt xpe:atomize($arg2)},
-            'value-compare#lt' : function($arg1, $arg2){xpe:atomize($arg1) lt xpe:atomize($arg2)},
-            'value-compare#ge' : function($arg1, $arg2){xpe:atomize($arg1) ge xpe:atomize($arg2)},
-            'value-compare#le' : function($arg1, $arg2){xpe:atomize($arg1) le xpe:atomize($arg2)},
-            'value-compare#ne' : function($arg1, $arg2){xpe:atomize($arg1) ne xpe:atomize($arg2)},
-            'value-compare#eq' : function($arg1, $arg2){xpe:atomize($arg1) eq xpe:atomize($arg2)},
-            'node-compare#gt' : function($arg1, $arg2){$arg1 >> $arg2},
-            'node-compare#lt' : function($arg1, $arg2){$arg1 &lt;&lt; $arg2},
-            'node-compare#eq' : function($arg1, $arg2){$arg1 is $arg2},
-            'to' : function($arg1, $arg2){xpe:atomize($arg1) to xpe:atomize($arg2)},
-            'plus' : function($arg1, $arg2){xpe:atomize($arg1) + xpe:atomize($arg2)},
-            'minus' : function($arg1, $arg2){xpe:atomize($arg1) - xpe:atomize($arg2)},
-            'x' : function($arg1, $arg2){xpe:atomize($arg1) * xpe:atomize($arg2)},
-            'mod' : function($arg1, $arg2){xpe:atomize($arg1) mod xpe:atomize($arg2)},
-            'div' : function($arg1, $arg2){xpe:atomize($arg1) div xpe:atomize($arg2)},
-            'idiv' : function($arg1, $arg2){xpe:atomize($arg1) idiv xpe:atomize($arg2)}
+            'or' : function($ctx, $arg1, $arg2){$arg1 or $arg2},
+            'and' : function($ctx, $arg1, $arg2){$arg1 and $arg2},
+            'union' : function($ctx, $arg1, $arg2){$arg1 | $arg2},
+            'intersect' : function($ctx, $arg1, $arg2){$arg1 intersect $arg2},
+            'except' : function($ctx, $arg1, $arg2){$arg1 except $arg2},
+            'concat' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) || xpe:data($ctx, $arg2)},
+            'sequence#comma' : function($ctx, $arg1, $arg2){$arg1, $arg2},
+            'compare#gt' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) > xpe:data($ctx, $arg2)},
+            'compare#lt' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) &lt; xpe:data($ctx, $arg2)},
+            'compare#ge' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) >= xpe:data($ctx, $arg2)},
+            'compare#le' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) &lt;= xpe:data($ctx, $arg2)},
+            'compare#ne' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) != xpe:data($ctx, $arg2)},
+            'compare#eq' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) = xpe:data($ctx, $arg2)},
+            'value-compare#gt' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) gt xpe:data($ctx, $arg2)},
+            'value-compare#lt' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) lt xpe:data($ctx, $arg2)},
+            'value-compare#ge' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) ge xpe:data($ctx, $arg2)},
+            'value-compare#le' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) le xpe:data($ctx, $arg2)},
+            'value-compare#ne' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) ne xpe:data($ctx, $arg2)},
+            'value-compare#eq' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) eq xpe:data($ctx, $arg2)},
+            'node-compare#gt' : function($ctx, $arg1, $arg2){$arg1 >> $arg2},
+            'node-compare#lt' : function($ctx, $arg1, $arg2){$arg1 &lt;&lt; $arg2},
+            'node-compare#eq' : function($ctx, $arg1, $arg2){$arg1 is $arg2},
+            'to' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) to xpe:data($ctx, $arg2)},
+            'plus' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) + xpe:data($ctx, $arg2)},
+            'minus' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) - xpe:data($ctx, $arg2)},
+            'x' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) * xpe:data($ctx, $arg2)},
+            'mod' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) mod xpe:data($ctx, $arg2)},
+            'div' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) div xpe:data($ctx, $arg2)},
+            'idiv' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) idiv xpe:data($ctx, $arg2)}
         }
         "
-        as="map(xs:string, function(item()*, item()*) as item()*)"/>
-    
-    <xsl:function name="xpe:atomize" as="item()*" visibility="public">
-        <xsl:param name="items" as="item()*"/>
-        <xsl:sequence select="$items"/>
-    </xsl:function>
-
-    <xsl:function name="xpe:arg-array-atomize" as="array(*)">
-        <xsl:param name="args" as="array(*)"/>
-        <xsl:variable name="args" select="for $i in 1 to array:size($args) return [xpe:atomize($args($i))]"/>
-        <xsl:sequence select="array:join($args)"/>
-    </xsl:function>
+        as="map(xs:string, function(map(*), item()*, item()*) as item()*)"/>
     
 <!--    
     Operations
@@ -172,8 +161,9 @@
     </xsl:function>
 
     <xsl:function name="xpe:fold-left-wizzard" as="item()*" >
+        <xsl:param name="execution-context" as="map(*)"/>
         <xsl:param name="args" as="array(*)"/>
-        <xsl:param name="operations" as="array(function(item()*, item()*) as item()*)"/>
+        <xsl:param name="operations" as="array(function(map(*), item()*, item()*) as item()*)"/>
         <xsl:variable name="arg-sz" select="array:size($args)"/>
         <xsl:choose>
             <xsl:when test="$arg-sz eq array:size($operations)">
@@ -184,16 +174,17 @@
             </xsl:when>
             <xsl:when test="$arg-sz eq 2">
                 <xsl:variable name="op" select="$operations?1"/>
-                <xsl:sequence select="$op($args?1, $args?2)"/>
+                <xsl:sequence select="$op($execution-context, $args?1, $args?2)"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="last" select="$args($arg-sz)"/>
                 <xsl:variable name="operation" select="$operations($arg-sz - 1)"/>
                 <xsl:variable name="temp-result" select="xpe:fold-left-wizzard(
+                    $execution-context,
                     array:remove($args, $arg-sz),
                     array:remove($operations, $arg-sz - 1)
                     )"/>
-                <xsl:sequence select="$operation($temp-result, $last)"/>
+                <xsl:sequence select="$operation($execution-context, $temp-result, $last)"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -203,18 +194,18 @@
         <xsl:variable name="arg-array"  select="xpe:arg-array(arg, $execution-context)"/>
         <xsl:variable name="operators" select="* except arg"/>
         <xsl:variable name="type" select="@type"/>
-        <xsl:variable name="op-functions" as="(function(item()*, item()*) as item()*)*">
+        <xsl:variable name="op-functions" as="(function(map(*), item()*, item()*) as item()*)*">
             <xsl:apply-templates select="$operators" mode="xpe:xpath-operator"/>
         </xsl:variable>
-        <xsl:sequence select="xpe:fold-left-wizzard($arg-array, array{$op-functions})"/>
+        <xsl:sequence select="xpe:fold-left-wizzard($execution-context, $arg-array, array{$op-functions})"/>
         
     </xsl:template>
     
-    <xsl:template match="operation/*[exists($xpe:operations(../@type || '#' || local-name()))]" mode="xpe:xpath-operator" as="function(item()*, item()*) as item()*" priority="10">
+    <xsl:template match="operation/*[exists($xpe:operations(../@type || '#' || local-name()))]" mode="xpe:xpath-operator" as="function(map(*), item()*, item()*) as item()*" priority="10">
         <xsl:sequence select="$xpe:operations(../@type || '#' || local-name())"/>
     </xsl:template>
 
-    <xsl:template match="operation/*[exists($xpe:operations(local-name()))]" mode="xpe:xpath-operator" as="function(item()*, item()*) as item()*">
+    <xsl:template match="operation/*[exists($xpe:operations(local-name()))]" mode="xpe:xpath-operator" as="function(map(*), item()*, item()*) as item()*">
         <xsl:sequence select="$xpe:operations(local-name())"/>
     </xsl:template>
     
@@ -228,7 +219,7 @@
         <xsl:variable name="content" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
-        <xsl:variable name="content" select="xpe:atomize($content)"/>
+        <xsl:variable name="content" select="xpe:data($execution-context, $content)"/>
         <xsl:variable name="minus" select="minus"/>
         
         <xsl:sequence select="
@@ -1434,13 +1425,14 @@
     </xsl:template>
     
     <xsl:template match="map/entry" mode="xpe:xpath-evaluate">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="key" as="item()*">
             <xsl:apply-templates select="arg[@role = 'key']/*" mode="#current"/>
         </xsl:variable>
         <xsl:variable name="value" as="item()*">
             <xsl:apply-templates select="arg[@role = 'value']/*" mode="#current"/>
         </xsl:variable>
-        <xsl:map-entry key="xpe:atomize($key)" select="$value"/>
+        <xsl:map-entry key="xpe:data($execution-context, $key)" select="$value"/>
     </xsl:template>
 
     <!--    
