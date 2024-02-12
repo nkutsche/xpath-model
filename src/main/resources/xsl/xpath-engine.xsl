@@ -1389,7 +1389,7 @@
         <xsl:param name="arg-types" as="element(itemType)*"/>
         <xsl:param name="result-type" as="element(itemType)?"/>
         <xsl:param name="arguments" as="array(*)"/>
-        <xsl:variable name="arguments" select="xpe:prepare-arguments($arguments, $arg-types, ())"/>
+        <xsl:variable name="arguments" select="xpe:prepare-arguments($execution-context, $arguments, $arg-types, ())"/>
         
         <xsl:variable name="parameter" select="
             for $i in 1 to array:size($arguments)

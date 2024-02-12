@@ -307,87 +307,92 @@
     <x:scenario label="Testing function xpe:prepare-argument" catch="yes">
         <x:call function="xpe:prepare-argument"/>
         
-        <x:scenario label="$typeDef = array(*)">
+        <x:scenario label="with dummy execution context">
             <x:call>
-                <x:param position="2" name="typeDef">
-                    <itemType>
-                        <arrayType/>
-                    </itemType>
-                </x:param>
+                <x:param position="1" select="map{}"/>
             </x:call>
-            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+            <x:scenario label="$typeDef = array(*)">
                 <x:call>
-                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                    <x:param position="3" name="typeDef">
+                        <itemType>
+                            <arrayType/>
+                        </itemType>
+                    </x:param>
                 </x:call>
-                <x:expect label="argument should returned unchanged" 
-                    select="['a','b','c','d','e', 'f', 'g']"/>
+                <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                    <x:call>
+                        <x:param position="2" select="['a','b','c','d','e', 'f', 'g']"/>
+                    </x:call>
+                    <x:expect label="argument should returned unchanged" 
+                        select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:scenario>
             </x:scenario>
-        </x:scenario>
-        <x:scenario label="$typeDef = array(xs:string)">
-            <x:call>
-                <x:param position="2" name="typeDef">
-                    <itemType>
-                        <arrayType>
-                            <itemType>
-                                <atomic name="xs:string"/>
-                            </itemType>
-                        </arrayType>
-                    </itemType>
-                </x:param>
-            </x:call>
-            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+            <x:scenario label="$typeDef = array(xs:string)">
                 <x:call>
-                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                    <x:param position="3" name="typeDef">
+                        <itemType>
+                            <arrayType>
+                                <itemType>
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </arrayType>
+                        </itemType>
+                    </x:param>
                 </x:call>
-                <x:expect label="argument should returned unchanged" 
-                    select="['a','b','c','d','e', 'f', 'g']"/>
+                <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                    <x:call>
+                        <x:param position="2" select="['a','b','c','d','e', 'f', 'g']"/>
+                    </x:call>
+                    <x:expect label="argument should returned unchanged" 
+                        select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:scenario>
             </x:scenario>
-        </x:scenario>
-        <x:scenario label="$typeDef = array(xs:string+)">
-            <x:call>
-                <x:param position="2" name="typeDef">
-                    <itemType>
-                        <arrayType>
-                            <itemType occurrence="one-or-more">
-                                <atomic name="xs:string"/>
-                            </itemType>
-                        </arrayType>
-                    </itemType>
-                </x:param>
-            </x:call>
-            <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+            <x:scenario label="$typeDef = array(xs:string+)">
                 <x:call>
-                    <x:param position="1" select="['a','b','c','d','e', 'f', 'g']"/>
+                    <x:param position="3" name="typeDef">
+                        <itemType>
+                            <arrayType>
+                                <itemType occurrence="one-or-more">
+                                    <atomic name="xs:string"/>
+                                </itemType>
+                            </arrayType>
+                        </itemType>
+                    </x:param>
                 </x:call>
-                <x:expect label="argument should returned unchanged" 
-                    select="['a','b','c','d','e', 'f', 'g']"/>
+                <x:scenario label="$arg = ['a','b','c','d','e', 'f', 'g']">
+                    <x:call>
+                        <x:param position="2" select="['a','b','c','d','e', 'f', 'g']"/>
+                    </x:call>
+                    <x:expect label="argument should returned unchanged" 
+                        select="['a','b','c','d','e', 'f', 'g']"/>
+                </x:scenario>
+                <x:scenario label="$arg = ['a','b','c','d','e', ('f', 'g')]">
+                    <x:call>
+                        <x:param position="2" select="['a','b','c','d','e', ('f', 'g')]"/>
+                    </x:call>
+                    <x:expect label="argument should returned unchanged" 
+                        select="['a','b','c','d','e', ('f', 'g')]"/>
+                </x:scenario>
             </x:scenario>
-            <x:scenario label="$arg = ['a','b','c','d','e', ('f', 'g')]">
+            <x:scenario label="$typeDef = array(xs:integer)">
                 <x:call>
-                    <x:param position="1" select="['a','b','c','d','e', ('f', 'g')]"/>
+                    <x:param position="3" name="typeDef">
+                        <itemType>
+                            <arrayType>
+                                <itemType>
+                                    <atomic name="xs:integer"/>
+                                </itemType>
+                            </arrayType>
+                        </itemType>
+                    </x:param>
                 </x:call>
-                <x:expect label="argument should returned unchanged" 
-                    select="['a','b','c','d','e', ('f', 'g')]"/>
-            </x:scenario>
-        </x:scenario>
-        <x:scenario label="$typeDef = array(xs:integer)">
-            <x:call>
-                <x:param position="2" name="typeDef">
-                    <itemType>
-                        <arrayType>
-                            <itemType>
-                                <atomic name="xs:integer"/>
-                            </itemType>
-                        </arrayType>
-                    </itemType>
-                </x:param>
-            </x:call>
-            <x:scenario label="$arg = [1, 2, 3, 4, 5, 6, 7]">
-                <x:call>
-                    <x:param position="1" select="[1, 2, 3, 4, 5, 6, 7]"/>
-                </x:call>
-                <x:expect label="argument should returned unchanged" 
-                    select="[1, 2, 3, 4, 5, 6, 7]"/>
+                <x:scenario label="$arg = [1, 2, 3, 4, 5, 6, 7]">
+                    <x:call>
+                        <x:param position="2" select="[1, 2, 3, 4, 5, 6, 7]"/>
+                    </x:call>
+                    <x:expect label="argument should returned unchanged" 
+                        select="[1, 2, 3, 4, 5, 6, 7]"/>
+                </x:scenario>
             </x:scenario>
         </x:scenario>
     </x:scenario>

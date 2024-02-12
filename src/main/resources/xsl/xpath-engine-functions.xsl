@@ -1180,7 +1180,7 @@
                 </xsl:variable>
                 <xsl:variable name="underline-funct-body" select="
                     function($args){
-                    let $args := xpe:prepare-arguments($args, $arg-types, $name)
+                    let $args := xpe:prepare-arguments($exec-context, $args, $arg-types, $name)
                         return
                         let $args2 := if ($apply-static-context) then array:join(([$exec-context],$args)) else $args
                         return
@@ -1233,6 +1233,7 @@
             "/>
     </xsl:function>
     <xsl:function name="xpe:prepare-arguments" as="array(*)">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arguments" as="array(*)"/>
         <xsl:param name="types" as="element(itemType)*"/>
         <xsl:param name="origin-funct-name" as="xs:QName?"/>
@@ -1240,7 +1241,7 @@
             <xsl:for-each select="1 to array:size($arguments)">
                 <xsl:variable name="i" select="."/>
                 <xsl:try>
-                    <xsl:sequence select="[xpe:prepare-argument($arguments($i), $types[$i])]"/>
+                    <xsl:sequence select="[xpe:prepare-argument($exec-context, $arguments($i), $types[$i])]"/>
                     <xsl:catch>
                         <xsl:variable name="arg-no" select="
                             if ($i le 10) 
@@ -1262,12 +1263,13 @@
     </xsl:function>
     
     <xsl:function name="xpe:prepare-argument" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
         <xsl:param name="typeDef" as="element(itemType)?"/>
         <xsl:variable name="occurrence" select="$typeDef/@occurrence"/>
         <xsl:variable name="arg" select="
             if ($typeDef/atomic) 
-            then xpf:data(map{}, $arg) 
+            then xpe:data($exec-context, $arg) 
             else $arg
             "/>
         <xsl:choose>
@@ -1298,7 +1300,7 @@
                     </xsl:copy>
                 </xsl:variable>
                 
-                <xsl:sequence select="$arg ! xpe:prepare-argument(., $single-type)"/>
+                <xsl:sequence select="$arg ! xpe:prepare-argument($exec-context, ., $single-type)"/>
             </xsl:when>
             <xsl:when test="count($arg) gt 1">
                 <xsl:variable name="type-serialized" select="
