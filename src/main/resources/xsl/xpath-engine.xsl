@@ -19,7 +19,7 @@
     <xsl:import href="xpath-engine-types.xsl"/>
     
     
-    <xsl:function name="xpe:xpath-evaluate">
+    <xsl:function name="xpe:xpath-evaluate" visibility="final">
         <xsl:param name="context" as="item()?"/>
         <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="execution-context" as="map(*)"/>
@@ -1462,7 +1462,7 @@
         <xsl:sequence select="[$members]"/>
     </xsl:template>
     
-    <xsl:function name="xpe:error-code" as="xs:QName">
+    <xsl:function name="xpe:error-code" as="xs:QName" visibility="public">
         <xsl:param name="code" as="xs:string"/>
         
         <xsl:sequence select="QName('http://www.w3.org/2005/xqt-errors', $code)"/>

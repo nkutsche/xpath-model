@@ -809,7 +809,7 @@
             "/>
     </xsl:function>
     
-    <xsl:function name="xpe:default-uri-resolver" as="document-node()?">
+    <xsl:function name="xpe:default-uri-resolver" as="document-node()?" visibility="public">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
@@ -819,7 +819,7 @@
         <xsl:sequence select="doc($resolved)"/>
     </xsl:function>
     
-    <xsl:function name="xpe:default-collection-resolver" as="xs:anyURI*">
+    <xsl:function name="xpe:default-collection-resolver" as="xs:anyURI*" visibility="public">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>
@@ -836,7 +836,7 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:function name="xpe:default-uri-mapper" as="xs:anyURI">
+    <xsl:function name="xpe:default-uri-mapper" as="xs:anyURI" visibility="public">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string"/>
         <xsl:param name="base-uri" as="xs:string"/>
@@ -1559,7 +1559,7 @@
         <xsl:sequence select="xpe:create-function-wrapper($raw-function, (), $arg-types, $anyItemType)"/>
     </xsl:function>
     
-    <xsl:function name="xpe:create-function-wrapper" as="map(*)">
+    <xsl:function name="xpe:create-function-wrapper" as="map(*)" visibility="final">
         <xsl:param name="raw-function" as="function(*)"/>
         <xsl:param name="function-name" as="xs:QName?"/>
         <xsl:param name="arg-types" as="element(itemType)*"/>
