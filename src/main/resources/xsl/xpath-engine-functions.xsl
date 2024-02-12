@@ -95,7 +95,7 @@
             else xpe:fn-apply($exec-context, 'number', [$context])
             "/>
     </xsl:function>
-
+    
     <xsl:function name="xpf:compare" as="xs:integer?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="comparand1" as="item()?"/>
@@ -1350,6 +1350,7 @@
         <xsl:param name="arg" as="item()*"/>
         <xsl:param name="typeDef" as="element(itemType)?"/>
         <xsl:variable name="occurrence" select="$typeDef/@occurrence"/>
+        
         <xsl:variable name="arg" select="
             if ($typeDef/atomic) 
             then xpe:data($exec-context, $arg) 
@@ -1837,6 +1838,7 @@
         <xsl:param name="collation" as="xs:string?"/>
         <!-- function(item()*) as xs:anyAtomicType* -->
         <xsl:param name="key" as="map(*)"/>
+        
         <xsl:sequence select="array:sort($array, $collation, xpe:raw-function($key))"/>
     </xsl:function>
     
