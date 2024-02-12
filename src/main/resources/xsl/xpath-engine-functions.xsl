@@ -659,6 +659,17 @@
             </xsl:catch>
         </xsl:try>
     </xsl:function>
+    <xsl:function name="xpf:doc-available" as="xs:boolean">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="uri" as="xs:string"/>
+        <xsl:try>
+            <xsl:variable name="result" select="xpe:fn-apply($exec-context, 'doc', [$uri])"/>
+            <xsl:sequence select="exists($result)"/>
+            <xsl:catch>
+                <xsl:sequence select="false()"/>
+            </xsl:catch>
+        </xsl:try>
+    </xsl:function>
     <xsl:function name="xpf:collection" as="node()*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:sequence select="
