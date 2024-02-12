@@ -1071,7 +1071,7 @@
     </xsl:function>
     <xsl:function name="xpf:static-base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
-        <xsl:sequence select="($exec-context?base-uri, static-base-uri())[1]"/>
+        <xsl:sequence select="($exec-context?base-uri ! xs:anyURI(.), static-base-uri())[1]"/>
     </xsl:function>
     <xsl:function name="xpe:static-base-uri" as="xs:anyURI?">
         <xsl:param name="exec-context" as="map(*)"/>
