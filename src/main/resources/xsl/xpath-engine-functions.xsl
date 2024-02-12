@@ -1136,30 +1136,70 @@
         <xsl:variable name="ns-uri" select="namespace-uri-from-QName($name)"/>
         
         <xsl:variable name="xsd-constructor" select="$ns-uri = $build-in-namespaces('xs')"/>
+        
+        <xsl:variable name="ext-functions" select="($exec-context?extension-functions, map{})[1]"/>
+        
+        <xsl:variable name="extension-name" select="
+            if ($ns-uri = $build-in-namespaces('fn')) 
+            then xs:QName('xpf:' || $local-name) 
+            else if ($ns-uri = $build-in-namespaces('array')) 
+            then xs:QName('xpfa:' || $local-name) 
+            else if ($ns-uri = $build-in-namespaces('map')) 
+            then xs:QName('xpfm:' || $local-name) 
+            else if ($xsd-constructor) 
+            then xs:QName('xpfs:' || $local-name) 
+            else ()
+            "/>
+        
         <xsl:variable name="function" select="
-            if (exists($unsupported-functions($name))) 
+            if (map:contains($ext-functions, $name) and exists($ext-functions($name)[?arity = $arity])) 
+            then $ext-functions($name)[?arity = $arity] 
+            else if (exists($extension-name) and exists($ext-functions($extension-name)[?arity = $arity + 1])) 
+            then $ext-functions($extension-name)[?arity = $arity + 1] 
+            else if (exists($unsupported-functions($name))) 
             then ($unsupported-functions($name)()) 
-            else 
-            if ($ns-uri = $build-in-namespaces('fn') and function-available('xpf:' || $local-name, $arity + 1)) 
-            then function-lookup(xs:QName('xpf:' || $local-name), $arity + 1) 
-            else if ($ns-uri = $build-in-namespaces('array') and function-available('xpfa:' || $local-name, $arity + 1)) 
-            then function-lookup(xs:QName('xpfa:' || $local-name), $arity + 1) 
-            else if ($ns-uri = $build-in-namespaces('map') and function-available('xpfm:' || $local-name, $arity + 1)) 
-            then function-lookup(xs:QName('xpfm:' || $local-name), $arity + 1) 
-            else if ($xsd-constructor and function-available('xpfs:' || $local-name, $arity + 1)) 
-            then function-lookup(xs:QName('xpfs:' || $local-name), $arity + 1) 
-            else function-lookup($name, $arity)"/>
+            else if (exists($extension-name) and exists(function-lookup($extension-name, $arity + 1))) 
+            then function-lookup($extension-name, $arity + 1) 
+            else function-lookup($name, $arity)
+            "/>
+        
         
         
         <xsl:choose>
             <xsl:when test="empty($function)">
 <!--                <xsl:message expand-text="yes">Could not find funciton Q{{{$ns-uri}}}{$local-name}!</xsl:message>-->
             </xsl:when>
+            <xsl:when test="xpe:is-function($function)">
+                <xsl:variable name="apply-static-context" select="
+                    $function?arity eq $arity + 1
+                    "/>
+                <xsl:variable name="raw-function" select="xpe:raw-function($function)"/>
+                <xsl:variable name="arg-types" select="$function?arg-types"/>
+                <xsl:variable name="arg-types" select="
+                    if ($apply-static-context) 
+                    then ($arg-types except $arg-types[1]) 
+                    else ($arg-types)
+                    "/>
+                <xsl:variable name="underline-funct-body" select="
+                    function($args){
+                        let $args := xpe:prepare-arguments($exec-context, $args, $arg-types, $name)
+                        return
+                        let $args2 := if ($apply-static-context) then array:join(([$exec-context],$args)) else $args
+                        return
+                        (
+                        apply($raw-function, $args2)
+                        )
+                    }
+                    "/>
+                <xsl:variable name="exec-function" select="xpe:create-function($underline-funct-body, $arity)"/>
+                <xsl:sequence select="
+                    xpe:create-function-wrapper($exec-function, $name, $arg-types, $function?return-type)
+                    "/>
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="apply-static-context" select="
-                    namespace-uri-from-QName(function-name($function)) = ($xpf:namespace-uri, $xpfs:namespace-uri, $xpfa:namespace-uri, $xpfm:namespace-uri)
+                    function-arity($function) eq $arity + 1
                     "/>
-                
                 <xsl:variable name="funct-sign" select="
                     ((function-name($function), $name) ! key('functSign-qname', ., $function-signatures))[1]"/>
                 <xsl:variable name="funct-sign" select="$funct-sign/fos:signatures/fos:proto[
