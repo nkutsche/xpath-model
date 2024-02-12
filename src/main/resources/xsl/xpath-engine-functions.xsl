@@ -607,22 +607,30 @@
     <xsl:function name="xpf:doc" as="document-node()?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="uri" as="xs:string?"/>
-        <xsl:variable name="atomized" select="xpe:atomize($uri)"/>
         <xsl:variable name="baseUri" select="xpe:static-base-uri($exec-context)"/>
         <xsl:try>
             <xsl:choose>
                 <xsl:when test="empty($uri)"/>
-                <xsl:when test="empty($exec-context?uri-resolver)">
-                    <xsl:sequence select="
-                        xpe:default-uri-resolver($exec-context, $atomized, $baseUri)
-                        "/>
-                </xsl:when>
                 <xsl:otherwise>
-                    <xsl:sequence select="$exec-context?uri-resolver($atomized, $baseUri)"/>
+                    <xsl:variable name="resolved" select="
+                        if (exists($exec-context?uri-resolver)) 
+                        then $exec-context?uri-resolver($uri, $baseUri) 
+                        else ()
+                        "/>
+                    <xsl:variable name="resolved" select="
+                        if (empty($resolved)) 
+                        then xpe:default-uri-resolver($exec-context, $uri, $baseUri) 
+                        else $resolved
+                        "/>
+                    <xsl:sequence select="
+                        if (exists($resolved)) 
+                        then $resolved 
+                        else error(xpe:error-code('FODC0002'), 'Resource ' || $uri || ' is not available or is not well-formed XML.')
+                        "/>
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:catch errors="err:FORG0002">
-                <xsl:sequence select="error(xpe:error-code('FODC0005'), 'Malformed URI ' || $atomized)"/>
+                <xsl:sequence select="error(xpe:error-code('FODC0005'), 'Malformed URI ' || $uri)"/>
             </xsl:catch>
         </xsl:try>
     </xsl:function>
