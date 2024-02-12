@@ -5372,6 +5372,61 @@
         </x:scenario>
     </x:scenario>
     
+    <x:scenario label="Scenario testing function call nk:xpath-type-model">
+        <x:call function="nk:xpath-type-model"/>
+        
+        
+        <x:scenario label="atomics">
+            <x:scenario label="type: xs:string">
+                <x:call>
+                    <x:param select="string(.)">xs:string</x:param>
+                </x:call>
+                <x:expect label="expected itemType">
+                    <itemType>
+                        <atomic name="xs:string"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="type: xs:integer">
+                <x:call>
+                    <x:param select="string(.)">xs:integer</x:param>
+                </x:call>
+                <x:expect label="expected itemType">
+                    <itemType>
+                        <atomic name="xs:integer"/>
+                    </itemType>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        
+        <x:scenario label="item()">
+            <x:call>
+                <x:param select="string(.)">item()</x:param>
+            </x:call>
+            <x:expect label="expected itemType">
+                <itemType/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="item()?">
+            <x:call>
+                <x:param select="string(.)">item()?</x:param>
+            </x:call>
+            <x:expect label="expected itemType">
+                <itemType occurrence="zero-or-one"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="empty-sequence()">
+            <x:call>
+                <x:param select="string(.)">empty-sequence()</x:param>
+            </x:call>
+            <x:expect label="expected itemType">
+                <itemType occurrence="zero"/>
+            </x:expect>
+        </x:scenario>
+        
+            
+        
+    </x:scenario>
     <x:scenario label="Scenario testing function call nk:xpath-model">
         <x:call function="nk:xpath-model"/>
         

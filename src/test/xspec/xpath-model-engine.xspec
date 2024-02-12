@@ -195,6 +195,64 @@
                 </x:scenario>
             </x:scenario>
         </x:scenario>
+        
+        <x:scenario label="with available resources in test config">
+            <x:variable name="available-resources" select="
+                map{
+                    'http://www.nkutsche.com/testing/available.xml' : / 
+                }
+                ">
+                <available/>
+            </x:variable>
+            <x:variable name="test-config" select="map{
+                'namespaces' : $namespaces,
+                'base-uri' : 'http://www.nkutsche.com/testing/base.xml',
+                'uri-resolver' : function($rel, $base){$available-resources(resolve-uri($rel, $base))}
+                }"/>
+            <x:call>
+                <x:param position="3" select="$test-config"/>
+            </x:call>
+            
+            <x:scenario label="context: &lt;dummy/&gt;">
+                <x:call>
+                    <x:param position="1" select="*">
+                        <dummy/>
+                    </x:param>
+                </x:call>
+                
+                <x:scenario label="doc('available.xml')/available">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >doc('available.xml')/available</x:param>
+                    </x:call>
+                    <x:expect label="should return element">
+                        <available/>
+                    </x:expect>
+                </x:scenario>
+                <x:scenario label="doc('not-available.xml')">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >doc('not-available.xml')</x:param>
+                    </x:call>
+                    <x:expect label="should fail" test="$x:result instance of map(*)"/>
+                </x:scenario>
+                <x:scenario label="doc-available('available.xml')">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >doc-available('available.xml')</x:param>
+                    </x:call>
+                    <x:expect label="should return true()" select="true()"/>
+                </x:scenario>
+                <x:scenario label="doc-available('not-available.xml')">
+                    <x:call>
+                        <x:param position="2" select="string()"
+                            >doc-available('not-available.xml')</x:param>
+                    </x:call>
+                    <x:expect label="should return true()" select="false()"/>
+                </x:scenario>
+            </x:scenario>
+        </x:scenario>
+        
         <x:scenario label="Testsuite test cases">
             <x:scenario label="fn-apply-06">
                 <x:call>
