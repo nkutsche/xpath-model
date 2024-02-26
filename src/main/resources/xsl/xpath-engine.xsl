@@ -649,9 +649,11 @@
         <xsl:sequence select="xpt:instance-of($context, itemType)"/>
     </xsl:template>
     <xsl:template match="operation[@type = ('castable')]" mode="xpe:xpath-evaluate" priority="25">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="context" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
+        <xsl:variable name="context" select="xpe:data($execution-context, $context)"/>
         <xsl:sequence select="xpt:castable-as($context, itemType)"/>
     </xsl:template>
     
@@ -695,9 +697,11 @@
     </xsl:template>
     
     <xsl:template match="operation[@type = ('cast')]" mode="xpe:xpath-evaluate" priority="25">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="context" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current"/>
         </xsl:variable>
+        <xsl:variable name="context" select="xpe:data($execution-context, $context)"/>
         <xsl:sequence select="xpt:cast-as($context, itemType)"/>
     </xsl:template>
     <xsl:template match="operation[@type = ('treat-as')]" mode="xpe:xpath-evaluate" priority="25">
