@@ -1865,7 +1865,7 @@
     </xsl:function>
     
     
-    <xsl:function name="xpe:is-function" as="xs:boolean">
+    <xsl:function name="xpe:is-function" as="xs:boolean" visibility="final">
         <xsl:param name="item" as="item()*"/>
         <xsl:sequence select="
             if ($item instance of map(*)) 
@@ -1874,7 +1874,7 @@
             "/>
     </xsl:function>
     
-    <xsl:function name="xpe:raw-function" as="item()">
+    <xsl:function name="xpe:raw-function" as="item()" visibility="final">
         <xsl:param name="item" as="item()"/>
         <xsl:sequence select="
             if (xpe:is-function($item)) 
