@@ -1401,6 +1401,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates select="$typeDef" mode="xpe:prepare-argument">
+                    <xsl:with-param name="exec-context" select="$exec-context" tunnel="yes"/>
                     <xsl:with-param name="arg" select="$arg" tunnel="yes"/>
                 </xsl:apply-templates>
             </xsl:otherwise>
@@ -1408,11 +1409,12 @@
     </xsl:function>
     
     <xsl:template match="itemType" mode="xpe:prepare-argument" priority="100">
+        <xsl:param name="exec-context" tunnel="yes" as="map(*)"/>
         <xsl:variable name="arg" as="item()">
             <xsl:next-match/>
         </xsl:variable>
         <xsl:try>
-            <xsl:sequence select="xpt:treat-as($arg, .)"/>
+            <xsl:sequence select="xpe:treat-as($exec-context, $arg, .)"/>
             <xsl:catch errors="err:XPDY0050">
                 <xsl:sequence select="error(xpe:error-code('XPTY0004'), $err:description)"/>
             </xsl:catch>

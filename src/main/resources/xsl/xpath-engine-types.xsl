@@ -415,11 +415,18 @@
     </xsl:function>
     
     
+    <xsl:function name="xpe:treat-as" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="input" as="item()*"/>
+        <xsl:param name="type" as="element(itemType)"/>
+        <xsl:sequence select="xpe:operation($exec-context, [$input, $type], 'treat-as')"/>
+    </xsl:function>
     <xsl:function name="xpt:treat-as" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="input" as="item()*"/>
         <xsl:param name="type" as="element(itemType)"/>
         <xsl:choose>
-            <xsl:when test="not(xpt:instance-of($input, $type))">
+            <xsl:when test="not(xpe:instance-of($exec-context, $input, $type))">
                 <xsl:variable name="req-type" select="xpm:xpath-serializer-sub($type) => normalize-space()"/>
                 <xsl:variable name="deliverded-type" select="
                     xpt:type-of-sequence($input) => xpm:xpath-serializer-sub() => normalize-space()
@@ -429,6 +436,7 @@
             <xsl:otherwise>
                 <xsl:apply-templates select="$type" mode="xpt:treat-as">
                     <xsl:with-param name="input" select="$input" tunnel="yes"/>
+                    <xsl:with-param name="exec-context" select="$exec-context" tunnel="yes"/>
                 </xsl:apply-templates>
             </xsl:otherwise>
         </xsl:choose>
@@ -471,6 +479,7 @@
     </xsl:template>
     
     <xsl:template match="mapType[*]" mode="xpt:treat-as">
+        <xsl:param name="exec-context" tunnel="yes" as="map(*)"/>
         <xsl:param name="input" tunnel="yes" as="map(*)"/>
         <xsl:variable name="keyType" as="element(itemType)">
             <itemType>
@@ -482,19 +491,20 @@
             <xsl:for-each select="map:keys($input)">
                 <xsl:variable name="key" select="."/>
                 <xsl:variable name="value" select="$input($key)"/>
-                <xsl:map-entry key="xpt:treat-as($key, $keyType)" 
-                    select="xpt:treat-as($value, $valueType)"
+                <xsl:map-entry key="xpe:treat-as($exec-context, $key, $keyType)" 
+                    select="xpe:treat-as($exec-context, $value, $valueType)"
                 />
             </xsl:for-each>
         </xsl:map>
     </xsl:template>
     
     <xsl:template match="arrayType[*]" mode="xpt:treat-as">
+        <xsl:param name="exec-context" tunnel="yes" as="map(*)"/>
         <xsl:param name="input" tunnel="yes" as="array(*)"/>
         <xsl:variable name="memberType" select="*"/>
         <xsl:variable name="sub-arrays" select="
             for $i in 1 to array:size($input)
-            return [xpt:treat-as($input($i), $memberType)]
+            return [xpe:treat-as($exec-context, $input($i), $memberType)]
             "/>
         <xsl:sequence select="array:join($sub-arrays)"/>
     </xsl:template>
@@ -505,8 +515,14 @@
     </xsl:template>
     
     
-    
-    <xsl:function name="xpt:instance-of" as="xs:boolean">
+    <xsl:function name="xpe:instance-of" as="item()*">
+        <xsl:param name="exec-context" as="map(*)"/>
+        <xsl:param name="input" as="item()*"/>
+        <xsl:param name="type" as="element(itemType)"/>
+        <xsl:sequence select="xpe:operation($exec-context, [$input, $type], 'instance-of')"/>
+    </xsl:function>
+    <xsl:function name="xpt:instance-of" as="xs:boolean" visibility="final">
+        <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="input" as="item()*"/>
         <xsl:param name="type" as="element(itemType)"/>
         <xsl:apply-templates select="$type" mode="xpt:instance-of">

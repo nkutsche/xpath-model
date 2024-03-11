@@ -134,7 +134,10 @@
             'x' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) * xpe:data($ctx, $arg2)},
             'mod' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) mod xpe:data($ctx, $arg2)},
             'div' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) div xpe:data($ctx, $arg2)},
-            'idiv' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) idiv xpe:data($ctx, $arg2)}
+            'idiv' : function($ctx, $arg1, $arg2){xpe:data($ctx, $arg1) idiv xpe:data($ctx, $arg2)},
+            
+            'instance-of' : function($ctx, $arg, $itemType){xpt:instance-of($ctx, $arg, $itemType)},
+            'treat-as' : function($ctx, $arg, $itemType){xpt:treat-as($ctx, $arg, $itemType)}
         }
         "
         as="map(xs:string, function(map(*), item()*, item()*) as item()*)"/>
@@ -513,7 +516,7 @@
                     <xsl:variable name="return-value" select="
                         xpe:type-promotion($return-value, $return-type/atomic)
                         "/>
-                    <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
+                    <xsl:sequence select="xpe:treat-as($execution-context, $return-value, $return-type)"/>
                     <xsl:catch errors="err:XPTY0004">
                         <xsl:variable name="descr-prefix" select="
                             if (empty($function?name)) 
@@ -652,53 +655,6 @@
         
     </xsl:template>
     
-    
-    <xsl:template match="operation[@type = 'instance-of'][itemType/nodeTest]" mode="xpe:xpath-evaluate" name="xpe:xpath-instance-of-op" priority="50">
-        <xsl:param name="arg-value" as="item()*">
-            <xsl:apply-templates select="arg/*" mode="#current"/>
-        </xsl:param>
-        
-        <xsl:variable name="occur" select="itemType/@occurrence"/>
-        
-        <xsl:choose>
-            <xsl:when test="not($arg-value instance of node()*)">
-                <xsl:sequence select="false()"/>
-            </xsl:when>
-            <xsl:when test="$occur = ('one', 'zero-or-one') and count($arg-value) gt 1">
-                <xsl:sequence select="false()"/>
-            </xsl:when>
-            <xsl:when test="$occur = ('one', 'one-or-more') and empty($arg-value)">
-                <xsl:sequence select="false()"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:sequence select="every $n in $arg-value satisfies xpe:node-test($n, itemType/nodeTest)"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
-    <xsl:template match="operation[@type = 'treat-as'][itemType/nodeTest]" mode="xpe:xpath-evaluate" priority="50">
-        <xsl:param name="arg-value" as="item()*">
-            <xsl:apply-templates select="arg/*" mode="#current"/>
-        </xsl:param>
-        <xsl:variable name="instance-of" as="xs:boolean">
-            <xsl:call-template name="xpe:xpath-instance-of-op">
-                <xsl:with-param name="arg-value" select="$arg-value"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:sequence select="
-            if ($instance-of) 
-            then ($arg-value) 
-            else error(QName('', 'treat-as-fail'), 'Can not treat value ' || $arg-value || ' as ' || xpm:xpath-serializer-sub(itemType))
-            "/>
-    </xsl:template>
-    
-    
-    <xsl:template match="operation[@type = ('instance-of')]" mode="xpe:xpath-evaluate" priority="25">
-        <xsl:variable name="context" as="item()*">
-            <xsl:apply-templates select="arg/*" mode="#current"/>
-        </xsl:variable>
-        <xsl:sequence select="xpt:instance-of($context, itemType)"/>
-    </xsl:template>
     <xsl:template match="operation[@type = ('castable')]" mode="xpe:xpath-evaluate" priority="25">
         <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
         <xsl:variable name="context" as="item()*">
@@ -754,12 +710,6 @@
         </xsl:variable>
         <xsl:variable name="context" select="xpe:data($execution-context, $context)"/>
         <xsl:sequence select="xpt:cast-as($context, itemType)"/>
-    </xsl:template>
-    <xsl:template match="operation[@type = ('treat-as')]" mode="xpe:xpath-evaluate" priority="25">
-        <xsl:variable name="context" as="item()*">
-            <xsl:apply-templates select="arg/*" mode="#current"/>
-        </xsl:variable>
-        <xsl:sequence select="xpt:treat-as($context, itemType)"/>
     </xsl:template>
     
     <xsl:template match="itemType | itemType//*" mode="xpe:xpath-evaluate">
@@ -1324,7 +1274,9 @@
         <xsl:variable name="raw-function" select="xpe:raw-function($function)"/>
         <xsl:variable name="return-value" select="apply($raw-function, $arg-array)"/>
         <xsl:variable name="return-value" select="xpe:type-promotion($return-value, $return-type/atomic)"/>
-        <xsl:sequence select="xpt:treat-as($return-value, $return-type)"/>
+        <xsl:sequence select="
+            xpe:treat-as($execution-context, $return-value, $return-type)
+            "/>
     </xsl:template>
     
     <xsl:template match="function[@name]" mode="xpe:xpath-evaluate">
@@ -1453,7 +1405,7 @@
             <xsl:sequence select="
                 if ($result-type) 
                 then 
-                    xpt:treat-as(xpe:type-promotion($return-value, $result-type/atomic), $result-type)
+                    xpe:treat-as($execution-context, xpe:type-promotion($return-value, $result-type/atomic), $result-type)
                 else 
                     $return-value
                 "/>

@@ -849,9 +849,11 @@
             "/>
         <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
         <x:call function="xpt:instance-of">
-            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <!-- dummy execution context: -->
+            <x:param position="1" select="map{}"/>
+            <x:param position="2" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
             <x:param 
-                    position="2"
+                    position="3"
                     select="$type-model/operation/itemType"
                     />
         </x:call>
@@ -868,9 +870,11 @@
             "/>
         <x:variable name="type-model" select="xpm:xpath-model('. instance of ' || $type, $config)"/>
         <x:call function="xpt:treat-as">
-            <x:param position="1" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
+            <!-- dummy execution context: -->
+            <x:param position="1" select="map{}"/>
+            <x:param position="2" select="xpe:xpath-evaluate($context, $xpath, $config)"/>
             <x:param 
-                    position="2"
+                    position="3"
                     select="$type-model/operation/itemType"
                     />
         </x:call>
