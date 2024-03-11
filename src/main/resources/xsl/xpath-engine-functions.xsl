@@ -562,7 +562,11 @@
     <xsl:function name="xpf:distinct-values" as="xs:anyAtomicType*">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="distinct-values(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'distinct-values', 
+            [xpe:data($exec-context, $arg), xpe:default-collation($exec-context)]
+            )
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:index-of" as="xs:integer*">
@@ -571,25 +575,33 @@
         <xsl:param name="search" as="item()"/>
         <xsl:variable name="seq" select="xpe:data($exec-context, $seq)"/>
         <xsl:variable name="search" select="xpe:data($exec-context, $search)"/>
-        <xsl:sequence select="index-of($seq, $search, xpe:default-collation($exec-context))"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'index-of', [$seq, $search, xpe:default-collation($exec-context)])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:deep-equal" as="xs:boolean">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="parameter1" as="item()*"/>
         <xsl:param name="parameter2" as="item()*"/>
-        <xsl:sequence select="deep-equal($parameter1, $parameter2, xpe:default-collation($exec-context))"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'deep-equal', [$parameter1, $parameter2, xpe:default-collation($exec-context)])
+            "/>
     </xsl:function>
     <xsl:function name="xpf:max" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="max(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'max', [$arg, xpe:default-collation($exec-context)])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:min" as="xs:anyAtomicType?">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="arg" as="item()*"/>
-        <xsl:sequence select="min(xpe:data($exec-context, $arg), xpe:default-collation($exec-context))"/>
+        <xsl:sequence select="
+            xpe:fn-apply($exec-context, 'min', [$arg, xpe:default-collation($exec-context)])
+            "/>
     </xsl:function>
     
     <xsl:function name="xpf:id" as="element()*">

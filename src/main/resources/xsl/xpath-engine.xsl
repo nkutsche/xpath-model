@@ -338,7 +338,7 @@
     
     <xsl:template match="operation[@type = 'step'][count(arg) = 1]" mode="xpe:xpath-evaluate" priority="20">
         <xsl:param name="execution-context" tunnel="yes"/>
-        <xsl:variable name="context" as="item()?" select="xpf:root($execution-context)"/>
+        <xsl:variable name="context" as="item()?" select="xpe:fn-apply($execution-context, 'root', [])"/>
         <xsl:variable name="result" as="item()*">
             <xsl:apply-templates select="arg/*" mode="#current">
                 <xsl:with-param name="execution-context" select="map:put($execution-context, 'context', $context)" tunnel="yes"/>
