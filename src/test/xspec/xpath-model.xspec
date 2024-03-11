@@ -1690,19 +1690,15 @@
                                 <operation type="step">
                                     <slash/>
                                     <arg>
-                                        <operation type="step">
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element" name="foo"/>
-                                                </locationStep>
-                                            </arg>
-                                            <slash/>
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element" name="baz"/>
-                                                </locationStep>
-                                            </arg>
-                                        </operation>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="foo"/>
+                                        </locationStep>
+                                    </arg>
+                                    <slash/>
+                                    <arg>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="baz"/>
+                                        </locationStep>
                                     </arg>
                                 </operation>
                             </expr>
@@ -1782,19 +1778,15 @@
                                     </arg>
                                     <slash/>
                                     <arg>
-                                        <operation type="step">
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element" name="foo"/>
-                                                </locationStep>
-                                            </arg>
-                                            <slash/>
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element" name="baz"/>
-                                                </locationStep>
-                                            </arg>
-                                        </operation>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="foo"/>
+                                        </locationStep>
+                                    </arg>
+                                    <slash/>
+                                    <arg>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="baz"/>
+                                        </locationStep>
                                     </arg>
                                 </operation>
                             </expr>
@@ -3834,19 +3826,15 @@
                                 <operation type="step">
                                     <slash/>
                                     <arg>
-                                        <operation type="step">
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element" name="union"/>
-                                                </locationStep>
-                                            </arg>
-                                            <slash/>
-                                            <arg>
-                                                <locationStep axis="child">
-                                                    <nodeTest kind="element"/>
-                                                </locationStep>
-                                            </arg>
-                                        </operation>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element" name="union"/>
+                                        </locationStep>
+                                    </arg>
+                                    <slash/>
+                                    <arg>
+                                        <locationStep axis="child">
+                                            <nodeTest kind="element"/>
+                                        </locationStep>
                                     </arg>
                                 </operation>
                             </expr>
@@ -6886,19 +6874,15 @@
                             <operation type="step">
                                 <slash/>
                                 <arg>
-                                    <operation type="step">
-                                        <arg>
-                                            <locationStep axis="child">
-                                                <nodeTest name="foo" kind="element"/>
-                                            </locationStep>
-                                        </arg>
-                                        <slash/>
-                                        <arg>
-                                            <locationStep axis="child">
-                                                <nodeTest name="baz" kind="element"/>
-                                            </locationStep>
-                                        </arg>
-                                    </operation>
+                                    <locationStep axis="child">
+                                        <nodeTest name="foo" kind="element"/>
+                                    </locationStep>
+                                </arg>
+                                <slash/>
+                                <arg>
+                                    <locationStep axis="child">
+                                        <nodeTest name="baz" kind="element"/>
+                                    </locationStep>
                                 </arg>
                             </operation>
                         </expr>
@@ -6970,19 +6954,15 @@
                                 </arg>
                                 <slash/>
                                 <arg>
-                                    <operation type="step">
-                                        <arg>
-                                            <locationStep axis="child">
-                                                <nodeTest name="foo" kind="element"/>
-                                            </locationStep>
-                                        </arg>
-                                        <slash/>
-                                        <arg>
-                                            <locationStep axis="child">
-                                                <nodeTest name="baz" kind="element"/>
-                                            </locationStep>
-                                        </arg>
-                                    </operation>
+                                    <locationStep axis="child">
+                                        <nodeTest name="foo" kind="element"/>
+                                    </locationStep>
+                                </arg>
+                                <slash/>
+                                <arg>
+                                    <locationStep axis="child">
+                                        <nodeTest name="baz" kind="element"/>
+                                    </locationStep>
                                 </arg>
                             </operation>
                         </expr>
@@ -8230,20 +8210,16 @@
                         <operation type="step">
                             <slash/>
                             <arg>
-                                <operation type="step">
-                                    <arg>
-                                         <locationStep axis="child">
-                                             <nodeTest name="union" kind="element"/>
-                                         </locationStep>
-                                     </arg>
-                                     <slash/>
-                                     <arg>
-                                         <locationStep axis="child">
-                                             <nodeTest kind="element"/>
-                                         </locationStep>
-                                     </arg>
-                                 </operation>
-                            </arg>
+                                 <locationStep axis="child">
+                                     <nodeTest name="union" kind="element"/>
+                                 </locationStep>
+                             </arg>
+                             <slash/>
+                             <arg>
+                                 <locationStep axis="child">
+                                     <nodeTest kind="element"/>
+                                 </locationStep>
+                             </arg>
                         </operation>
                     </expr>
                 </x:expect>

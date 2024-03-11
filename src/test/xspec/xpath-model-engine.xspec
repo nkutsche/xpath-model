@@ -95,6 +95,29 @@
                     <x:expect label="should fail" test="$x:result instance of map(*)"/>
                 </x:scenario>
             </x:scenario>
+            <x:scenario label="node deduplication">
+                <x:variable name="context-doc" select="/">
+                    <root>
+                        <e1/>
+                        <e2/>
+                        <e3/>
+                        <e4/>
+                    </root>
+                </x:variable>
+                <x:scenario label="context: /">
+                    <x:variable name="context" select="$context-doc"/>
+                    <x:call>
+                        <x:param position="1" select="$context"/>
+                    </x:call>
+                    <x:scenario label="select: //following-sibling::*/name()">
+                        <x:call>
+                            <x:param position="2" select="'//following-sibling::*/name()'"/>
+                        </x:call>
+                        <x:expect label="compare with Saxon" select="$context ! (//following-sibling::*/name())"/>
+                        <x:expect label="not-empty" test="exists($x:result)"/>
+                    </x:scenario>
+                </x:scenario>
+            </x:scenario>
             <x:scenario label="with reverse axis">
                 <x:variable name="context-doc" select="/">
                     <asterix-universe>

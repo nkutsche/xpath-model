@@ -621,7 +621,26 @@
             <xsl:apply-templates select="*" mode="nk:xpath-operations"/>
         </operation>
     </xsl:template>
-
+    
+    <xsl:template match="PathExpr[TOKEN]" mode="nk:xpath-model" priority="10">
+        <xsl:variable name="next-match" as="element(operation)">
+            <xsl:next-match/>
+        </xsl:variable>
+        <xsl:copy select="$next-match">
+            <xsl:variable name="lastArg" select="arg[last()]"/>
+            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="* except $lastArg"/>
+            <xsl:choose>
+                <xsl:when test="$lastArg/operation[@type = 'step']">
+                    <xsl:copy-of select="$lastArg/operation[@type = 'step']/*"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy-of select="$lastArg"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:copy>
+    </xsl:template>
+    
     <xsl:template match="ComparisonExpr" mode="nk:xpath-model">
         <xsl:variable name="type-prefix"
             select="
