@@ -189,30 +189,81 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:template match="operation[count(arg) gt 1]" mode="xpe:xpath-evaluate">
-        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
-        <xsl:variable name="arg-array"  select="xpe:arg-array(arg, $execution-context)"/>
-        <xsl:variable name="operators" select="* except arg"/>
-        <xsl:variable name="type" select="@type"/>
-        <xsl:variable name="op-functions" as="(function(map(*), item()*, item()*) as item()*)*">
-            <xsl:apply-templates select="$operators" mode="xpe:xpath-operator"/>
+    <xsl:template match="operation[count(arg) gt 2]" mode="xpe:xpath-evaluate">
+        <xsl:variable name="second-arg" select="arg[2]"/>
+        <xsl:variable name="first-two-args" select="node()[. &lt;&lt; $second-arg], $second-arg"/>
+        <xsl:variable name="rest" select="node() except $first-two-args"/>
+        
+        <xsl:variable name="equivalent" as="element(operation)">
+            <xsl:copy>
+                <xsl:sequence select="@*"/>
+                <arg>
+                    <xsl:copy>
+                        <xsl:sequence select="@*"/>
+                        <xsl:copy-of select="$first-two-args"/>
+                    </xsl:copy>
+                </arg>
+                <xsl:copy-of select="$rest"/>
+            </xsl:copy>
         </xsl:variable>
-        <xsl:sequence select="xpe:fold-left-wizzard($execution-context, $arg-array, array{$op-functions})"/>
+        <xsl:apply-templates select="$equivalent" mode="#current"/>
+    </xsl:template>
+    
+    <xsl:template match="operation[count(arg) eq 2]" mode="xpe:xpath-evaluate" priority="-5">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="operator" select="* except arg" as="element()"/>
+        
+        <xsl:variable name="op-name" select="$operator/local-name(.)"/>
+        <xsl:variable name="operator-key" select="@type || '#' || $op-name"/>
+        <xsl:variable name="operator-key" select="
+            if ($op-name = 'div' and $operator/@type = 'integer') 
+            then 'idiv' 
+            else if (map:contains($xpe:operations, $operator-key)) 
+            then $operator-key 
+            else $op-name
+            "/>
+        
+        <xsl:variable name="arg1-result" as="item()*">
+            <xsl:apply-templates select="arg[1]" mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="arg2-result" as="item()*">
+            <xsl:apply-templates select="arg[2]" mode="#current"/>
+        </xsl:variable>
+        
+        <xsl:sequence select="
+            xpe:operation($execution-context, [$arg1-result, $arg2-result], $operator-key)
+            "/>
         
     </xsl:template>
     
-    <xsl:template match="operation/*[exists($xpe:operations(../@type || '#' || local-name()))]" mode="xpe:xpath-operator" as="function(map(*), item()*, item()*) as item()*" priority="10">
-        <xsl:sequence select="$xpe:operations(../@type || '#' || local-name())"/>
-    </xsl:template>
-
-    <xsl:template match="operation/*[exists($xpe:operations(local-name()))]" mode="xpe:xpath-operator" as="function(map(*), item()*, item()*) as item()*">
-        <xsl:sequence select="$xpe:operations(local-name())"/>
+    <xsl:template match="operation[@type = ('instance-of', 'treat-as')]" mode="xpe:xpath-evaluate">
+        <xsl:param name="execution-context" as="map(*)" tunnel="yes"/>
+        <xsl:variable name="arg-result" as="item()*">
+            <xsl:apply-templates select="arg" mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="itemType" select="itemType"/>
+        <xsl:sequence select="
+            xpe:operation($execution-context, [$arg-result, $itemType], @type)
+            "/>
     </xsl:template>
     
-    <xsl:template match="operation/div[@type = 'integer']" mode="xpe:xpath-operator" priority="10">
-        <xsl:variable name="type" select="@type"/>
-        <xsl:sequence select="$xpe:operations('idiv')"/>
-    </xsl:template>
+    
+    
+    <xsl:function name="xpe:operation" as="item()*">
+        <xsl:param name="execution-context" as="map(*)"/>
+        <xsl:param name="args" as="array(*)"/>
+        <xsl:param name="operator-key" as="xs:string"/>
+        
+        <xsl:variable name="extension-operators" select="($execution-context?extension-operators, map{})[1]"/>
+        <xsl:variable name="op-functions" select="
+            if (map:contains($extension-operators, $operator-key)) 
+            then $extension-operators($operator-key) 
+            else $xpe:operations($operator-key)
+            "/>
+        <xsl:sequence select="
+            apply($op-functions, array:join(([$execution-context],$args)))
+            "/>
+    </xsl:function>
     
     <xsl:template match="operation[@type = 'unary']" mode="xpe:xpath-evaluate" priority="50">
         <xsl:param name="execution-context" tunnel="yes"/>
