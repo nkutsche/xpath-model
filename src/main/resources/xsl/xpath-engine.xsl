@@ -1476,4 +1476,11 @@
         
     </xsl:function>
     
+    <xsl:function name="xpe:type-info" as="xs:string" visibility="final">
+        <xsl:param name="items" as="item()*"/>
+        <xsl:sequence select="
+            xpt:type-of-sequence($items) => xpm:xpath-serializer-sub() => normalize-space()
+            "/>
+    </xsl:function>
+    
 </xsl:stylesheet>
