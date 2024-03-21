@@ -42,6 +42,16 @@
         </repository>
     </repositories>
     
+    <pluginRepositories>
+        <pluginRepository>
+            <id>d2t-nexus-public</id>
+            <url>https://repo.data2type.de/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
