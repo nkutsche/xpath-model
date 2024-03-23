@@ -95,8 +95,8 @@
             <xpmt:ignore test="fo-test-fn-substring-after-005">Saxon-HE does not support this collation format</xpmt:ignore>
             <xpmt:ignore test="fo-test-fn-substring-after-006">Saxon-HE does not support this collation format</xpmt:ignore>
             <xpmt:ignore test="fo-test-fn-substring-after-007">Saxon-HE does not support this collation format</xpmt:ignore>
+            <xpmt:ignore test="RangeExpr-409d">Java heap size problems</xpmt:ignore>
             
-            <xpmt:ignore test="RangeExpr-409d">TODO: crashes the xspec process</xpmt:ignore>
         </xpmt:dependency>
         
         
