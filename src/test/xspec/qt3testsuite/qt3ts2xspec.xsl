@@ -96,15 +96,7 @@
             <xpmt:ignore test="fo-test-fn-substring-after-006">Saxon-HE does not support this collation format</xpmt:ignore>
             <xpmt:ignore test="fo-test-fn-substring-after-007">Saxon-HE does not support this collation format</xpmt:ignore>
             
-            <xpmt:ignore test="cbcl-divide-dayTimeDuration-003">TODO: crashes the xspec process</xpmt:ignore>
             <xpmt:ignore test="RangeExpr-409d">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="K2-SeqExprCast-480">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="cbcl-cast-dayTimeDuration-001">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="cbcl-cast-dayTimeDuration-002">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="K-Literals-29">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="cbcl-avg-002">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="format-date-en117">TODO: crashes the xspec process</xpmt:ignore>
-            <xpmt:ignore test="format-date-en118">TODO: crashes the xspec process</xpmt:ignore>
         </xpmt:dependency>
         
         
