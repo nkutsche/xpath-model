@@ -313,7 +313,7 @@
                 </xsl:if>
                 <x:variable name="base-uri" select="'{base-uri(.)}'"/>
                 <x:variable name="xpath" select="string(.)">
-                    <xsl:value-of select="test"/>
+                    <xsl:copy-of select="test"/>
                 </x:variable>
                 <x:variable name="result" select="*">
                     <xsl:copy-of select="xpmt:copy-for-xspec(result)"/>
