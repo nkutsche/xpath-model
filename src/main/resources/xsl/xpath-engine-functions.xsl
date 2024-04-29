@@ -842,7 +842,7 @@
     </xsl:function>
     
     
-    <xsl:function name="xpe:default-unparsed-text-resolver" as="xs:string?">
+    <xsl:function name="xpe:default-unparsed-text-resolver" as="xs:string?" visibility="public">
         <xsl:param name="exec-context" as="map(*)"/>
         <xsl:param name="relative" as="xs:string?"/>
         <xsl:param name="baseUri" as="xs:string"/>

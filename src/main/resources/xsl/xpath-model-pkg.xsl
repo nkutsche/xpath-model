@@ -13,6 +13,6 @@
     <xsl:use-package name="http://maxtoroq.github.io/rng-xsl" package-version="*"/>
     <xsl:import href="xpath-model.xsl"/>
     
-    <xsl:expose component="function" names="xpf:*" visibility="public"/>
+    <xsl:expose component="function" names="xpf:*" visibility="final"/>
     
 </xsl:package>
