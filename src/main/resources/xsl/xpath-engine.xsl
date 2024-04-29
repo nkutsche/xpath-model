@@ -1255,7 +1255,7 @@
             if (xpe:is-function($function)) 
             then ($function) 
             else if ($function instance of map(*) or $function instance of array(*)) 
-            then xpe:create-function-wrapper($function) 
+            then xpe:create-function-item($function) 
             else error(xpe:error-code('XPTY0004'), 'Fail to make a dynamic function call in ' || xpm:xpath-serializer-sub(.) || '. Item seems to be from type ' || xpm:xpath-serializer-sub(xpt:type-of($function)) || '. Required type is function(*).')
             "/>
         
@@ -1371,7 +1371,7 @@
         
         
         
-        <xsl:sequence select="xpe:create-function-wrapper(
+        <xsl:sequence select="xpe:create-function-item(
             $function,
             (),
             $arg-types,

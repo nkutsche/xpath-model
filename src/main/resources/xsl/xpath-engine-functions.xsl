@@ -1241,7 +1241,7 @@
                     "/>
                 <xsl:variable name="exec-function" select="xpe:create-function($underline-funct-body, $arity)"/>
                 <xsl:sequence select="
-                    xpe:create-function-wrapper($exec-function, $name, $arg-types, $function?return-type)
+                    xpe:create-function-item($exec-function, $name, $arg-types, $function?return-type)
                     "/>
             </xsl:when>
             <xsl:otherwise>
@@ -1301,7 +1301,7 @@
                 </xsl:variable>
                 
                 <xsl:sequence select="
-                    xpe:create-function-wrapper(
+                    xpe:create-function-item(
                         xpe:create-function($underline-funct-body, $arity),
                         $name,
                         $arg-types,
@@ -1548,7 +1548,7 @@
                 </xsl:variable>
                 <xsl:next-match>
                     <xsl:with-param name="arg" select="
-                        xpe:create-function-wrapper(function($p){$arg($p)}, (), $anyItemType, $anyItemType)
+                        xpe:create-function-item(function($p){$arg($p)}, (), $anyItemType, $anyItemType)
                         " tunnel="yes"/>
                 </xsl:next-match>
             </xsl:when>
@@ -1589,7 +1589,7 @@
                 $arg
             else if ($arg instance of function(*)) 
             then 
-                xpe:create-function-wrapper($arg)
+                xpe:create-function-item($arg)
             else 
                 error(
                     xpe:error-code('XPTY0004'),
@@ -1598,7 +1598,7 @@
             "/>
     </xsl:template>
     
-    <xsl:function name="xpe:create-function-wrapper" as="map(*)">
+    <xsl:function name="xpe:create-function-item" as="map(*)">
         <xsl:param name="raw-function" as="function(*)"/>
         <xsl:variable name="anyItemType" as="element(itemType)">
             <itemType occurrence="zero-or-more"/>
@@ -1607,10 +1607,10 @@
             (1 to function-arity($raw-function)) ! $anyItemType
             "/>
         
-        <xsl:sequence select="xpe:create-function-wrapper($raw-function, (), $arg-types, $anyItemType)"/>
+        <xsl:sequence select="xpe:create-function-item($raw-function, (), $arg-types, $anyItemType)"/>
     </xsl:function>
     
-    <xsl:function name="xpe:create-function-wrapper" as="map(*)" visibility="final">
+    <xsl:function name="xpe:create-function-item" as="map(*)" visibility="final">
         <xsl:param name="raw-function" as="function(*)"/>
         <xsl:param name="function-name" as="xs:QName?"/>
         <xsl:param name="arg-types" as="element(itemType)*"/>
@@ -1787,13 +1787,13 @@
             <itemType occurrence="zero-or-more"/>
         </xsl:variable>
         <xsl:variable name="next-funct" select="
-            xpe:create-function-wrapper($next-funct, (), (), $next-funct-return-type)
+            xpe:create-function-item($next-funct, (), (), $next-funct-return-type)
             "/>
         <xsl:variable name="permute-funct" select="
             function($seq){$underline-random-gen?permute($seq)}
             "/>
         <xsl:variable name="permute-funct" select="
-            xpe:create-function-wrapper($permute-funct, (), $any-seq-type, $any-seq-type)
+            xpe:create-function-item($permute-funct, (), $any-seq-type, $any-seq-type)
             "/>
         
         <xsl:sequence select="
