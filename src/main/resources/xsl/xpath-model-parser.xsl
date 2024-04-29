@@ -75,7 +75,7 @@
         <xsl:param name="type" as="xs:string"/>
         <xsl:param name="config" as="map(*)"/>
         <xsl:variable name="xpath" select="'. instance of ' || $type"/>
-        <xsl:variable name="model" select="nk:xpath-model($xpath, $config)"/>
+        <xsl:variable name="model" select="nk:xpath-model($xpath, $config, true())"/>
         <xsl:copy-of select="$model/operation/itemType"/>
     </xsl:function>
     
