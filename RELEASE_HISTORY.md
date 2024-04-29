@@ -1,6 +1,22 @@
 ## Release History
 -------------------------------
 
+### Current Snapshot
+
+* Implements XPath evaluation function `xpe:xpath-evaluate()`
+
+* Model parser
+    * Adds configuration option to allow/dissallow undeclared prefixes in the input XPath expression
+    * Adds parser function `nk:xpath-type-model` to API to parse item type declarations 
+    * Minor bug fixing
+
+* XPath model schema
+    * Adds missing support for partial function applications
+    * Changes model of the type `empty-sequence()` from `<empty/>` to `<itemType occurrence="zero"/>`
+
+* Misc
+    * Replace included RelaxNG implementation by referencing it as Maven dependency  
+
 ### Version 1.0.1
 
 * Features:
