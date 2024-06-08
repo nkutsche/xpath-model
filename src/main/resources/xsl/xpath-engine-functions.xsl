@@ -1202,8 +1202,6 @@
         <xsl:variable name="function" select="
             if (map:contains($ext-functions, $name) and exists($ext-functions($name)[?arity = $arity])) 
             then $ext-functions($name)[?arity = $arity] 
-            else if (exists($extension-name) and exists($ext-functions($extension-name)[?arity = $arity + 1])) 
-            then $ext-functions($extension-name)[?arity = $arity + 1] 
             else if (exists($unsupported-functions($name))) 
             then ($unsupported-functions($name)()) 
             else if (exists($extension-name) and exists(function-lookup($extension-name, $arity + 1))) 
@@ -1218,16 +1216,12 @@
 <!--                <xsl:message expand-text="yes">Could not find funciton Q{{{$ns-uri}}}{$local-name}!</xsl:message>-->
             </xsl:when>
             <xsl:when test="xpe:is-function($function)">
+                
                 <xsl:variable name="apply-static-context" select="
-                    $function?arity eq $arity + 1
-                    "/>
+                        ($function?context-dependent, false())[1]
+                    " as="xs:boolean"/>
                 <xsl:variable name="raw-function" select="xpe:raw-function($function)"/>
                 <xsl:variable name="arg-types" select="$function?arg-types"/>
-                <xsl:variable name="arg-types" select="
-                    if ($apply-static-context) 
-                    then ($arg-types except $arg-types[1]) 
-                    else ($arg-types)
-                    "/>
                 <xsl:variable name="underline-funct-body" select="
                     function($args){
                         let $args := xpe:prepare-arguments($exec-context, $args, $arg-types, $name)
@@ -1275,7 +1269,7 @@
                 </xsl:variable>
                 <xsl:variable name="underline-funct-body" select="
                     function($args){
-                    let $args := xpe:prepare-arguments($exec-context, $args, $arg-types, $name)
+                        let $args := xpe:prepare-arguments($exec-context, $args, $arg-types, $name)
                         return
                         let $args2 := if ($apply-static-context) then array:join(([$exec-context],$args)) else $args
                         return
@@ -1620,7 +1614,7 @@
             'type' : QName($xpf:namespace-uri, 'function'),
             'function' : $raw-function,
             'name' : ($function-name, function-name($raw-function))[1],
-            'arity' : function-arity($raw-function),
+            'arity' : count($arg-types),
             'arg-types' : $arg-types,
             'return-type' : $return-type
             }
