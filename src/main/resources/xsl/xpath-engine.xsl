@@ -22,6 +22,12 @@
     <xsl:function name="xpe:xpath-evaluate" visibility="final">
         <xsl:param name="context" as="item()?"/>
         <xsl:param name="xpath" as="xs:string"/>
+        <xsl:sequence select="xpe:xpath-evaluate($context, $xpath, map{})"/>
+    </xsl:function>
+    
+    <xsl:function name="xpe:xpath-evaluate" visibility="final">
+        <xsl:param name="context" as="item()?"/>
+        <xsl:param name="xpath" as="xs:string"/>
         <xsl:param name="execution-context" as="map(*)"/>
         <xsl:try>
             <xsl:variable name="namespaces" select="($execution-context?namespaces, map{})[1]"/>
