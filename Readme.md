@@ -32,7 +32,7 @@ A converter could manipulate given XPath expressions:
 
 ## Standard conformance
 
-* The core parser in this project is generated based on the official EBNF file which defines XPath 3.1 using the REx Parser Generator (see [Contribute](#contribute)).
+* The core parser in this project is generated based on an EBNF file which defines XPath 3.1 using the REx Parser Generator (see [Contribute](#contribute)).
 * There is an extra [testing project](https://github.com/nkutsche/xpath-model-qt3) that ensures that all valid expressions in the [QT3 testsuite](https://github.com/w3c/qt3tests) (~15k test cases):
     * are parsed to a valid model
     * can be parsed and re-serialized without any relevant changes.

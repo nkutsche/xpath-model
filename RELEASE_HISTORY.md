@@ -1,7 +1,7 @@
 ## Release History
 -------------------------------
 
-### Current Snapshot
+### Version 1.1.0
 
 * Implements XPath evaluation function `xpe:xpath-evaluate()`
 
