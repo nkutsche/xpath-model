@@ -97,6 +97,9 @@
             <xpmt:ignore test="fo-test-fn-substring-after-007">Saxon-HE does not support this collation format</xpmt:ignore>
             <xpmt:ignore test="RangeExpr-409d">Java heap size problems</xpmt:ignore>
             
+            <xpmt:ignore test="PathExpr-17">Bug in the QT3 testsuite: https://github.com/w3c/qt3tests/issues/64</xpmt:ignore>
+            <xpmt:ignore test="PathExpr-18">Bug in the QT3 testsuite: https://github.com/w3c/qt3tests/issues/64</xpmt:ignore>
+            <xpmt:ignore test="PathExpr-19">Bug in the QT3 testsuite: https://github.com/w3c/qt3tests/issues/64</xpmt:ignore>
             
         </xpmt:dependency>
         
