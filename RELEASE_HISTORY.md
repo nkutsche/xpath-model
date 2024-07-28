@@ -15,7 +15,8 @@
     * Changes model of the type `empty-sequence()` from `<empty/>` to `<itemType occurrence="zero"/>`
 
 * Misc
-    * Replace included RelaxNG implementation by referencing it as Maven dependency  
+    * Replace included RelaxNG implementation by referencing it as Maven dependency
+    * Removes dependency to Saxon and XSLT Package Manager to avoid restriction on a specific Saxon version for using projects.
 
 ### Version 1.0.1
 
