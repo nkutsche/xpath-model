@@ -97,12 +97,6 @@
             <xpmt:ignore test="fo-test-fn-substring-after-007">Saxon-HE does not support this collation format</xpmt:ignore>
             <xpmt:ignore test="RangeExpr-409d">Java heap size problems</xpmt:ignore>
             
-            <xpmt:ignore test="format-time-014">Saxon Bug: #6377</xpmt:ignore>
-            <xpmt:ignore test="format-time-015">Saxon Bug: #6377</xpmt:ignore>
-            <xpmt:ignore test="format-time-016">Saxon Bug: #6377</xpmt:ignore>
-            <xpmt:ignore test="format-time-017">Saxon Bug: #6377</xpmt:ignore>
-            <xpmt:ignore test="format-time-018">Saxon Bug: #6377</xpmt:ignore>
-            <xpmt:ignore test="format-time-025a">Saxon Bug: #6377</xpmt:ignore>
             
         </xpmt:dependency>
         

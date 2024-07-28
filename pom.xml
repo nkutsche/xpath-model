@@ -64,7 +64,7 @@
     </distributionManagement>
     
     <properties>
-        <saxon.version>12.4</saxon.version>
+        <saxon.version>12.5</saxon.version>
 
         <assembly.dir>${project.basedir}/src/assembly</assembly.dir>
         <resource.subdir>com/nkutsche/xpath-model</resource.subdir>
