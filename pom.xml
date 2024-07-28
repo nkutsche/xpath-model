@@ -78,19 +78,9 @@
     
     <dependencies>
         <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>Saxon-HE</artifactId>
-            <version>${saxon.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.nkutsche</groupId>
             <artifactId>rng-xsl</artifactId>
             <version>1.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.nkutsche</groupId>
-            <artifactId>xslt-pkg-manager120</artifactId>
-            <version>2.1.1</version>
         </dependency>
     </dependencies>
     
