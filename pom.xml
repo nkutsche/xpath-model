@@ -3,7 +3,7 @@
     
     <groupId>com.nkutsche</groupId>
     <artifactId>xpath-model</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
     
     <name>XPath Model</name>
     <description>This project contains an XPath parser and creates an XML model from it. The model can be used to make deeper analyzis, convert or serialize the expression to normalize XPath expressions.</description>
@@ -29,7 +29,7 @@
         <connection>scm:git:https://github.com/nkutsche/xpath-model.git</connection>
         <url>https://github.com/nkutsche/xpath-model</url>
         <developerConnection>scm:git:https://github.com/nkutsche/xpath-model.git</developerConnection>
-        <tag>releases/v1.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
     
     <repositories>
